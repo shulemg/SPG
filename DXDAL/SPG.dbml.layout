@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.875, 10.5" name="SPG">
+  <DataContextMoniker Name="/SPGDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f945dfa8-abb2-4ec2-860d-2eac3762f5e1" absoluteBounds="1.125, 0.875, 2, 3.1170068359375">
+      <DataClassMoniker Name="/SPGDataContext/tblInventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c70499a-0a6a-4e24-8426-e6edb065ac3f" absoluteBounds="1.1399999999999997, 1.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a5d29249-00ef-443b-9137-9b636af8c80e" absoluteBounds="4.875, 1.125, 2, 9.0783512369791648">
+      <DataClassMoniker Name="/SPGDataContext/tblItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38b851e8-38c4-4099-98ea-abb4473773e4" absoluteBounds="4.89, 1.585, 1.9700000000000002, 8.5183512369791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.875 : 2.55850341796875); (3.125 : 2.55850341796875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SPGDataContext/tblItem/tblItem_tblInventory" />
+      <nodes>
+        <classShapeMoniker Id="a5d29249-00ef-443b-9137-9b636af8c80e" />
+        <classShapeMoniker Id="f945dfa8-abb2-4ec2-860d-2eac3762f5e1" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d6c1052b-cfb0-4cf3-8f0d-0b193114a449" absoluteBounds="8.25, 2.25, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SPGDataContext/tblBOM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fff8bfa1-6bd4-4f9d-ba44-53dbd8976a3e" absoluteBounds="8.265, 2.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.875 : 3.32774983723958); (8.25 : 3.32774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SPGDataContext/tblItem/tblItem_tblBOM" />
+      <nodes>
+        <classShapeMoniker Id="a5d29249-00ef-443b-9137-9b636af8c80e" />
+        <classShapeMoniker Id="d6c1052b-cfb0-4cf3-8f0d-0b193114a449" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.875 : 2.72637491861979); (8.25 : 2.72637491861979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SPGDataContext/tblItem/tblItem_tblBOM1" />
+      <nodes>
+        <classShapeMoniker Id="a5d29249-00ef-443b-9137-9b636af8c80e" />
+        <classShapeMoniker Id="d6c1052b-cfb0-4cf3-8f0d-0b193114a449" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5f32b17f-2c58-4468-88fd-12b50864a0d8" absoluteBounds="11.625, 1.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/SPGDataContext/LocationInventory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0bed5eb5-a0d0-4ee4-a80f-255a25596e65" absoluteBounds="11.64, 1.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.875 : 1.84375); (11.625 : 1.84375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SPGDataContext/tblItem/tblItem_LocationInventory" />
+      <nodes>
+        <classShapeMoniker Id="a5d29249-00ef-443b-9137-9b636af8c80e" />
+        <classShapeMoniker Id="5f32b17f-2c58-4468-88fd-12b50864a0d8" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
