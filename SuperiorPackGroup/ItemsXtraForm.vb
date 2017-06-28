@@ -9,6 +9,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraReports.UI
 Imports DevExpress.Xpo
+Imports DevExpress.XtraGrid.Columns
 
 Public Class ItemsXtraForm
 
@@ -123,7 +124,8 @@ Public Class ItemsXtraForm
         shippingReturnBOLGridColumn.FieldName = "ShipMainBOL"
         shippingReturnDateGridColumn.FieldName = "ShipMainDate"
 
-        Me.productionDateGridColumn.FieldName = "InventoryDate"
+        Me.productionDateGridColumn.FieldName = "dtmEnteredOn"
+        Me.productionTimeGridColumn.FieldName = "dtmEnteredOn"
         Me.productionQuantityGridColumn.FieldName = "InventoryQuantity"
         Me.productionLotGridColumn.FieldName = "Lot"
         productionExpirationDateGridColumn.FieldName = "ExpirationDate"
@@ -181,7 +183,7 @@ Public Class ItemsXtraForm
         Utilities.MakeFormReadOnly(Me.specificationXtraTabPage, True)
         Me.BOMGridView.OptionsBehavior.Editable = False
         poolBomGridView.OptionsBehavior.Editable = False
-        productionStandardsGridView.OptionsBehavior.Editable = False 
+        productionStandardsGridView.OptionsBehavior.Editable = False
         Me.itemsSearchGridControl.Enabled = True
 
         Me.printGridBarButtonItem.Enabled = False
@@ -360,8 +362,8 @@ Public Class ItemsXtraForm
 
     End Sub
 
-    Private Sub AdvancedTextEditParseEditValue(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs) Handles priceTextEdit.ParseEditValue, stretchWrapTextEdit.ParseEditValue, _
-                palletsTextEdit.ParseEditValue, other5TextEdit.ParseEditValue, other4TextEdit.ParseEditValue, other3TextEdit.ParseEditValue, other2TextEdit.ParseEditValue, other1TextEdit.ParseEditValue, _
+    Private Sub AdvancedTextEditParseEditValue(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs) Handles priceTextEdit.ParseEditValue, stretchWrapTextEdit.ParseEditValue,
+                palletsTextEdit.ParseEditValue, other5TextEdit.ParseEditValue, other4TextEdit.ParseEditValue, other3TextEdit.ParseEditValue, other2TextEdit.ParseEditValue, other1TextEdit.ParseEditValue,
                 freightTextEdit.ParseEditValue, filmTextEdit.ParseEditValue, boxesTextEdit.ParseEditValue
 
         If e.Value IsNot Nothing AndAlso CStr(e.Value) <> String.Empty Then
@@ -412,9 +414,9 @@ Public Class ItemsXtraForm
                                      Utilities.ChangeType(Of Single?)(qtyOnHandTextEdit.EditValue), Utilities.ChangeType(Of Double?)(caseGrossWeightTextEdit.EditValue), Convert.ToString(packageCodeMemoEdit.EditValue),
                                      Convert.ToString(caseCodeMemoEdit.EditValue), Convert.ToString(requiredWeightTextEdit.EditValue), Convert.ToString(mavTextEdit.EditValue), Convert.ToString(cassesPerLayerTextEdit.EditValue),
                                      Convert.ToString(layersPerPalletTextEdit.EditValue), Convert.ToString(shelfLifeTextEdit.EditValue), Convert.ToString(instructionsMemoEdit.EditValue), Convert.ToString(palletPatternButtonEdit.EditValue),
-                                     inactiveCheckEdit.Checked, CDbl(packersTextEdit.EditValue), Convert.ToString(upcTextEdit.EditValue), Utilities.ChangeType(Of Integer?)(bagsPerCaseTextEdit.EditValue), 
-                                     Utilities.ChangeType(Of Boolean?)(requireslotcodecheckedit.Checked), Utilities.ChangeType(Of Boolean?)(requiresExpirationDateCheckEdit.Checked), Utilities.ChangeType(Of Boolean?)(generateLotCodesCheckEdit.Checked),
-                                     utilities.ChangeType(Of Integer?)(lotCodeFormatLookUpEdit.EditValue), Utilities.ChangeType(Of Double?)(minutesPerShiftTextEdit.EditValue), m_ItemsSession) <> True Then
+                                     inactiveCheckEdit.Checked, CDbl(packersTextEdit.EditValue), Convert.ToString(upcTextEdit.EditValue), Utilities.ChangeType(Of Integer?)(bagsPerCaseTextEdit.EditValue),
+                                     Utilities.ChangeType(Of Boolean?)(requiresLotCodeCheckEdit.Checked), Utilities.ChangeType(Of Boolean?)(requiresExpirationDateCheckEdit.Checked), Utilities.ChangeType(Of Boolean?)(generateLotCodesCheckEdit.Checked),
+                                     Utilities.ChangeType(Of Integer?)(lotCodeFormatLookUpEdit.EditValue), Utilities.ChangeType(Of Double?)(minutesPerShiftTextEdit.EditValue), m_ItemsSession) <> True Then
                 MessageBox.Show("The item was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If
@@ -433,8 +435,8 @@ Public Class ItemsXtraForm
                     For i As Integer = 0 To BOMGridView.SelectedRowsCount - 1
                         Dim row As Integer = BOMGridView.GetSelectedRows()(i)
                         If row >= 0 Then
-                            If BOM.UpdateBOM(CType(BOMGridView.GetRowCellValue(row, bomIDGridColumn), Integer?), CType(BOMGridView.GetRowCellValue(row, RMItemCodeGridColumn), Integer?), _
-                                    m_CurrentItemID.Value, CType(BOMGridView.GetRowCellValue(row, RMQuantityGridColumn), Single?), _
+                            If BOM.UpdateBOM(CType(BOMGridView.GetRowCellValue(row, bomIDGridColumn), Integer?), CType(BOMGridView.GetRowCellValue(row, RMItemCodeGridColumn), Integer?),
+                                    m_CurrentItemID.Value, CType(BOMGridView.GetRowCellValue(row, RMQuantityGridColumn), Single?),
                                     CType(BOMGridView.GetRowCellValue(row, scrapFactorGridColumn), Double?)) <> True Then
                                 MessageBox.Show("The item bom was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                 Return False
@@ -476,7 +478,7 @@ Public Class ItemsXtraForm
 
     Private Sub customerFilterLookUpEdit_EditValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles customerFilterLookUpEdit.EditValueChanged
 
-        If Me.customerFilterLookUpEdit.EditValue Is Nothing OrElse _
+        If Me.customerFilterLookUpEdit.EditValue Is Nothing OrElse
                                 CType(Me.customerFilterLookUpEdit.EditValue, String) = Me.customerFilterLookUpEdit.Properties.NullText Then
             BindItemsSearch()
         End If
@@ -542,9 +544,9 @@ Public Class ItemsXtraForm
         If Not IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.availabilityItemIDGridColumn)) AndAlso availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.availabilityItemIDGridColumn) IsNot Nothing _
                 AndAlso Not IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.quantityOnHandGridColumn)) Then
             If e.Column.Name = "quantityYieldsGridColumn" And e.IsGetData Then
-                e.Value = Int(Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.quantityOnHandGridColumn)) / _
-                        (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.quantityRequiredGridColumn)) + _
-                         (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.scrapPercentageGridColumn)) / 100 * _
+                e.Value = Int(Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.quantityOnHandGridColumn)) /
+                        (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.quantityRequiredGridColumn)) +
+                         (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.scrapPercentageGridColumn)) / 100 *
                           Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.quantityRequiredGridColumn)))))
                 'e.value = availabilityGridView.GetRowCellValue(e.RowHandle, Me.quantityOnHandGridColumn)
             ElseIf e.Column.Name = localQuantityYieldsGridColumn.Name And e.IsGetData Then
@@ -633,14 +635,14 @@ Public Class ItemsXtraForm
 
     Private Sub typeFilterLookUpEdit_EditValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles typeFilterLookUpEdit.EditValueChanged
 
-        If Me.typeFilterLookUpEdit.EditValue Is Nothing OrElse _
+        If Me.typeFilterLookUpEdit.EditValue Is Nothing OrElse
                 CType(Me.typeFilterLookUpEdit.EditValue, String) = Me.typeFilterLookUpEdit.Properties.NullText Then
             BindItemsSearch()
         End If
 
     End Sub
 
-    Private Sub UnitsPerPalletCalculation(ByVal sender As Object, ByVal e As EventArgs) Handles unitsPerCaseTextEdit.Validated, _
+    Private Sub UnitsPerPalletCalculation(ByVal sender As Object, ByVal e As EventArgs) Handles unitsPerCaseTextEdit.Validated,
             casesPerPalletTextEdit.Validated
 
         Me.unitsPerPalletTextEdit.Text = (Convert.ToDouble(unitsPerCaseTextEdit.EditValue) * Convert.ToDouble(casesPerPalletTextEdit.EditValue)).ToString
@@ -825,7 +827,7 @@ Public Class ItemsXtraForm
         Utilities.MakeFormReadOnly(Me.specificationXtraTabPage, False)
         Me.BOMGridView.OptionsBehavior.Editable = True
         poolBomGridView.OptionsBehavior.Editable = True
-        productionStandardsGridView.OptionsBehavior.Editable = True 
+        productionStandardsGridView.OptionsBehavior.Editable = True
         Me.itemsSearchGridControl.Enabled = False
         CheckPermissions()
 
@@ -859,7 +861,7 @@ Public Class ItemsXtraForm
         Utilities.MakeFormReadOnly(Me.specificationXtraTabPage, False)
         Me.BOMGridView.OptionsBehavior.Editable = True
         poolBomGridView.OptionsBehavior.Editable = True
-        productionStandardsGridView.OptionsBehavior.Editable = True 
+        productionStandardsGridView.OptionsBehavior.Editable = True
         Me.itemsSearchGridControl.Enabled = False
         CheckPermissions()
 
@@ -1155,7 +1157,7 @@ Public Class ItemsXtraForm
     Private Sub delProdStdRepositoryItemButtonEdit_Click(sender As Object, e As EventArgs) Handles delProdStdRepositoryItemButtonEdit.Click
 
         If MessageBox.Show("Are you sure you want to remove this production standard?", "Delete Item-Machine Standard", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) = DialogResult.No Then
-            Exit Sub 
+            Exit Sub
         End If
 
         Dim productionStandard As ItemMachineStandards = m_ItemsSession.GetObjectByKey(Of ItemMachineStandards)(productionStandardsGridView.GetFocusedRowCellValue(colOid1))
