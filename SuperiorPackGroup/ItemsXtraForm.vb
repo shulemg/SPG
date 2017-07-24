@@ -124,8 +124,7 @@ Public Class ItemsXtraForm
         shippingReturnBOLGridColumn.FieldName = "ShipMainBOL"
         shippingReturnDateGridColumn.FieldName = "ShipMainDate"
 
-        Me.productionDateGridColumn.FieldName = "dtmEnteredOn"
-        Me.productionTimeGridColumn.FieldName = "dtmEnteredOn"
+        Me.productionDateGridColumn.FieldName = "InventoryDate"
         Me.productionQuantityGridColumn.FieldName = "InventoryQuantity"
         Me.productionLotGridColumn.FieldName = "Lot"
         productionExpirationDateGridColumn.FieldName = "ExpirationDate"
@@ -1173,4 +1172,18 @@ Public Class ItemsXtraForm
 
     End Sub
 
+    Private Sub productionGridView_FilterEditorCreated(sender As Object, e As Views.Base.FilterControlEventArgs) Handles productionGridView.FilterEditorCreated
+        AddHandler e.FilterControl.BeforeShowValueEditor, AddressOf FilterControl_BeforeShowValueEditor
+    End Sub
+
+    Private Sub FilterControl_BeforeShowValueEditor(sender As Object, e As DevExpress.XtraEditors.Filtering.ShowValueEditorEventArgs)
+        If (e.CurrentNode.FirstOperand.PropertyName = "InventoryDate") Then
+            Dim editor As DateEdit
+            editor = CType(e.Editor, DateEdit)
+            editor.Width = 200
+            editor.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True
+            editor.Properties.CalendarTimeProperties.Mask.EditMask = "g"
+            editor.Properties.TimeEditWidth = 150
+        End If
+    End Sub
 End Class

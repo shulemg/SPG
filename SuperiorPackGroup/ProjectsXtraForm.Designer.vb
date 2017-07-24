@@ -52,7 +52,7 @@ Partial Class ProjectsXtraForm
         Me.dataEntrySplitContainerControl = New DevExpress.XtraEditors.SplitContainerControl()
         Me.notesMemoExEdit = New DevExpress.XtraEditors.MemoExEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
-        Me.scheduledWeekDatePeriodEdit = New SuperiorPackGroup.DatePeriodEdit()
+        'Me.scheduledWeekDatePeriodEdit = New SuperiorPackGroup.DatePeriodEdit()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.projectStatusComboBoxEdit = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -114,8 +114,8 @@ Partial Class ProjectsXtraForm
         CType(Me.dataEntrySplitContainerControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dataEntrySplitContainerControl.SuspendLayout()
         CType(Me.notesMemoExEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.scheduledWeekDatePeriodEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        'CType(Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        'CType(Me.scheduledWeekDatePeriodEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.projectStatusComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reqDeliveryDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reqDeliveryDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -369,7 +369,7 @@ Partial Class ProjectsXtraForm
         Me.dataEntrySplitContainerControl.Name = "dataEntrySplitContainerControl"
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.notesMemoExEdit)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.LabelControl9)
-        Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.scheduledWeekDatePeriodEdit)
+        ' Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.scheduledWeekDatePeriodEdit)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.LabelControl8)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.LabelControl7)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.projectStatusComboBoxEdit)
@@ -412,19 +412,19 @@ Partial Class ProjectsXtraForm
         '
         'scheduledWeekDatePeriodEdit
         '
-        Me.scheduledWeekDatePeriodEdit.EditValue = ""
-        Me.scheduledWeekDatePeriodEdit.Location = New System.Drawing.Point(375, 108)
-        Me.scheduledWeekDatePeriodEdit.MenuManager = Me.BarManager1
-        Me.scheduledWeekDatePeriodEdit.Name = "scheduledWeekDatePeriodEdit"
-        Me.scheduledWeekDatePeriodEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.scheduledWeekDatePeriodEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.scheduledWeekDatePeriodEdit.Properties.OptionsSelection.MultiSelectBehavior = SuperiorPackGroup.MultiSelectBehavior.Disabled
-        Me.scheduledWeekDatePeriodEdit.Properties.PeriodStoreMode = SuperiorPackGroup.StoreMode.StringMode
-        Me.scheduledWeekDatePeriodEdit.Properties.ShowWeekNumbers = True
-        Me.scheduledWeekDatePeriodEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.scheduledWeekDatePeriodEdit.Size = New System.Drawing.Size(137, 20)
-        Me.scheduledWeekDatePeriodEdit.TabIndex = 15
+        'Me.scheduledWeekDatePeriodEdit.EditValue = ""
+        'Me.scheduledWeekDatePeriodEdit.Location = New System.Drawing.Point(375, 108)
+        'Me.scheduledWeekDatePeriodEdit.MenuManager = Me.BarManager1
+        'Me.scheduledWeekDatePeriodEdit.Name = "scheduledWeekDatePeriodEdit"
+        'Me.scheduledWeekDatePeriodEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        'Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        'Me.scheduledWeekDatePeriodEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        'Me.scheduledWeekDatePeriodEdit.Properties.OptionsSelection.MultiSelectBehavior = SuperiorPackGroup.MultiSelectBehavior.Disabled
+        'Me.scheduledWeekDatePeriodEdit.Properties.PeriodStoreMode = SuperiorPackGroup.StoreMode.StringMode
+        'Me.scheduledWeekDatePeriodEdit.Properties.ShowWeekNumbers = True
+        'Me.scheduledWeekDatePeriodEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        'Me.scheduledWeekDatePeriodEdit.Size = New System.Drawing.Size(137, 20)
+        'Me.scheduledWeekDatePeriodEdit.TabIndex = 15
         '
         'LabelControl8
         '
@@ -854,8 +854,8 @@ Partial Class ProjectsXtraForm
         CType(Me.dataEntrySplitContainerControl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.dataEntrySplitContainerControl.ResumeLayout(False)
         CType(Me.notesMemoExEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.scheduledWeekDatePeriodEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        'CType(Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        'CType(Me.scheduledWeekDatePeriodEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.projectStatusComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.reqDeliveryDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.reqDeliveryDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -916,7 +916,7 @@ Partial Class ProjectsXtraForm
     Friend WithEvents projectStatusComboBoxEdit As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents scheduledWeekDatePeriodEdit As SuperiorPackGroup.DatePeriodEdit
+    'Friend WithEvents scheduledWeekDatePeriodEdit As SuperiorPackGroup.DatePeriodEdit
     Friend WithEvents notesMemoExEdit As DevExpress.XtraEditors.MemoExEdit
     Friend WithEvents LabelControl9 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents projectDetailsGridControl As DevExpress.XtraGrid.GridControl

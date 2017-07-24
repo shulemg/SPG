@@ -243,13 +243,13 @@ Partial Class InventoryXtraForm
         'dateGridColumn
         '
         Me.dateGridColumn.Caption = "Date"
-        Me.dateGridColumn.DisplayFormat.FormatString = "D"
+        Me.dateGridColumn.DisplayFormat.FormatString = "g"
         Me.dateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.dateGridColumn.FieldName = "InventoryDate"
         Me.dateGridColumn.Name = "dateGridColumn"
-        Me.dateGridColumn.OptionsColumn.AllowEdit = false
-        Me.dateGridColumn.OptionsColumn.ReadOnly = true
-        Me.dateGridColumn.Visible = true
+        Me.dateGridColumn.OptionsColumn.AllowEdit = False
+        Me.dateGridColumn.OptionsColumn.ReadOnly = True
+        Me.dateGridColumn.Visible = True
         Me.dateGridColumn.VisibleIndex = 2
         Me.dateGridColumn.Width = 105
         '
@@ -258,9 +258,9 @@ Partial Class InventoryXtraForm
         Me.shiftGridColumn.Caption = "Shift"
         Me.shiftGridColumn.FieldName = "Shift"
         Me.shiftGridColumn.Name = "shiftGridColumn"
-        Me.shiftGridColumn.OptionsColumn.AllowEdit = false
-        Me.shiftGridColumn.OptionsColumn.ReadOnly = true
-        Me.shiftGridColumn.Visible = true
+        Me.shiftGridColumn.OptionsColumn.AllowEdit = False
+        Me.shiftGridColumn.OptionsColumn.ReadOnly = True
+        Me.shiftGridColumn.Visible = True
         Me.shiftGridColumn.VisibleIndex = 4
         '
         'itemGridColumn
@@ -268,9 +268,9 @@ Partial Class InventoryXtraForm
         Me.itemGridColumn.Caption = "Item #"
         Me.itemGridColumn.FieldName = "ItemCode"
         Me.itemGridColumn.Name = "itemGridColumn"
-        Me.itemGridColumn.OptionsColumn.AllowEdit = false
-        Me.itemGridColumn.OptionsColumn.ReadOnly = true
-        Me.itemGridColumn.Visible = true
+        Me.itemGridColumn.OptionsColumn.AllowEdit = False
+        Me.itemGridColumn.OptionsColumn.ReadOnly = True
+        Me.itemGridColumn.Visible = True
         Me.itemGridColumn.VisibleIndex = 3
         Me.itemGridColumn.Width = 100
         '
@@ -279,9 +279,9 @@ Partial Class InventoryXtraForm
         Me.descriptionGridColumn.Caption = "Item Description"
         Me.descriptionGridColumn.FieldName = "ItemDescription"
         Me.descriptionGridColumn.Name = "descriptionGridColumn"
-        Me.descriptionGridColumn.OptionsColumn.AllowEdit = false
-        Me.descriptionGridColumn.OptionsColumn.ReadOnly = true
-        Me.descriptionGridColumn.Visible = true
+        Me.descriptionGridColumn.OptionsColumn.AllowEdit = False
+        Me.descriptionGridColumn.OptionsColumn.ReadOnly = True
+        Me.descriptionGridColumn.Visible = True
         Me.descriptionGridColumn.VisibleIndex = 5
         Me.descriptionGridColumn.Width = 190
         '
@@ -290,10 +290,10 @@ Partial Class InventoryXtraForm
         Me.quantityGridColumn.Caption = "Quantity"
         Me.quantityGridColumn.FieldName = "Quantity"
         Me.quantityGridColumn.Name = "quantityGridColumn"
-        Me.quantityGridColumn.OptionsColumn.AllowEdit = false
-        Me.quantityGridColumn.OptionsColumn.FixedWidth = true
-        Me.quantityGridColumn.OptionsColumn.ReadOnly = true
-        Me.quantityGridColumn.Visible = true
+        Me.quantityGridColumn.OptionsColumn.AllowEdit = False
+        Me.quantityGridColumn.OptionsColumn.FixedWidth = True
+        Me.quantityGridColumn.OptionsColumn.ReadOnly = True
+        Me.quantityGridColumn.Visible = True
         Me.quantityGridColumn.VisibleIndex = 6
         Me.quantityGridColumn.Width = 60
         '
@@ -302,10 +302,10 @@ Partial Class InventoryXtraForm
         Me.palletsGridColumn.Caption = "Pallets"
         Me.palletsGridColumn.FieldName = "Pallets"
         Me.palletsGridColumn.Name = "palletsGridColumn"
-        Me.palletsGridColumn.OptionsColumn.AllowEdit = false
-        Me.palletsGridColumn.OptionsColumn.FixedWidth = true
-        Me.palletsGridColumn.OptionsColumn.ReadOnly = true
-        Me.palletsGridColumn.Visible = true
+        Me.palletsGridColumn.OptionsColumn.AllowEdit = False
+        Me.palletsGridColumn.OptionsColumn.FixedWidth = True
+        Me.palletsGridColumn.OptionsColumn.ReadOnly = True
+        Me.palletsGridColumn.Visible = True
         Me.palletsGridColumn.VisibleIndex = 7
         Me.palletsGridColumn.Width = 60
         '
@@ -314,7 +314,7 @@ Partial Class InventoryXtraForm
         Me.poGridColumn.Caption = "PO #"
         Me.poGridColumn.FieldName = "PO"
         Me.poGridColumn.Name = "poGridColumn"
-        Me.poGridColumn.Visible = true
+        Me.poGridColumn.Visible = True
         Me.poGridColumn.VisibleIndex = 8
         '
         'lotGridColumn
@@ -322,7 +322,7 @@ Partial Class InventoryXtraForm
         Me.lotGridColumn.Caption = "Lot #"
         Me.lotGridColumn.FieldName = "Lot"
         Me.lotGridColumn.Name = "lotGridColumn"
-        Me.lotGridColumn.Visible = true
+        Me.lotGridColumn.Visible = True
         Me.lotGridColumn.VisibleIndex = 9
         '
         'palletGridColumn
@@ -330,9 +330,9 @@ Partial Class InventoryXtraForm
         Me.palletGridColumn.Caption = "Pallet"
         Me.palletGridColumn.FieldName = "Pallet"
         Me.palletGridColumn.Name = "palletGridColumn"
-        Me.palletGridColumn.OptionsColumn.AllowEdit = false
-        Me.palletGridColumn.OptionsColumn.ReadOnly = true
-        Me.palletGridColumn.Visible = true
+        Me.palletGridColumn.OptionsColumn.AllowEdit = False
+        Me.palletGridColumn.OptionsColumn.ReadOnly = True
+        Me.palletGridColumn.Visible = True
         Me.palletGridColumn.VisibleIndex = 11
         '
         'LPNGridColumn
@@ -340,9 +340,9 @@ Partial Class InventoryXtraForm
         Me.LPNGridColumn.Caption = "LPN Number"
         Me.LPNGridColumn.FieldName = "LPNNumber"
         Me.LPNGridColumn.Name = "LPNGridColumn"
-        Me.LPNGridColumn.OptionsColumn.AllowEdit = false
-        Me.LPNGridColumn.OptionsColumn.ReadOnly = true
-        Me.LPNGridColumn.Visible = true
+        Me.LPNGridColumn.OptionsColumn.AllowEdit = False
+        Me.LPNGridColumn.OptionsColumn.ReadOnly = True
+        Me.LPNGridColumn.Visible = True
         Me.LPNGridColumn.VisibleIndex = 12
         '
         'expirationDateGridColumn
@@ -352,9 +352,9 @@ Partial Class InventoryXtraForm
         Me.expirationDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.expirationDateGridColumn.FieldName = "ExpirationDate"
         Me.expirationDateGridColumn.Name = "expirationDateGridColumn"
-        Me.expirationDateGridColumn.OptionsColumn.AllowEdit = false
-        Me.expirationDateGridColumn.OptionsColumn.ReadOnly = true
-        Me.expirationDateGridColumn.Visible = true
+        Me.expirationDateGridColumn.OptionsColumn.AllowEdit = False
+        Me.expirationDateGridColumn.OptionsColumn.ReadOnly = True
+        Me.expirationDateGridColumn.Visible = True
         Me.expirationDateGridColumn.VisibleIndex = 10
         '
         'expirationDateFormatGridColumn
@@ -362,24 +362,24 @@ Partial Class InventoryXtraForm
         Me.expirationDateFormatGridColumn.Caption = "GridColumn1"
         Me.expirationDateFormatGridColumn.FieldName = "ExpirationDateFormat"
         Me.expirationDateFormatGridColumn.Name = "expirationDateFormatGridColumn"
-        Me.expirationDateFormatGridColumn.OptionsColumn.AllowEdit = false
-        Me.expirationDateFormatGridColumn.OptionsColumn.AllowShowHide = false
-        Me.expirationDateFormatGridColumn.OptionsColumn.ReadOnly = true
-        Me.expirationDateFormatGridColumn.OptionsColumn.ShowInCustomizationForm = false
+        Me.expirationDateFormatGridColumn.OptionsColumn.AllowEdit = False
+        Me.expirationDateFormatGridColumn.OptionsColumn.AllowShowHide = False
+        Me.expirationDateFormatGridColumn.OptionsColumn.ReadOnly = True
+        Me.expirationDateFormatGridColumn.OptionsColumn.ShowInCustomizationForm = False
         '
         'noteGridColumn
         '
         Me.noteGridColumn.Caption = "Note"
         Me.noteGridColumn.FieldName = "Note"
         Me.noteGridColumn.Name = "noteGridColumn"
-        Me.noteGridColumn.OptionsColumn.ReadOnly = true
-        Me.noteGridColumn.Visible = true
+        Me.noteGridColumn.OptionsColumn.ReadOnly = True
+        Me.noteGridColumn.Visible = True
         Me.noteGridColumn.VisibleIndex = 13
         '
         'recordGroupControl
         '
-        Me.recordGroupControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.recordGroupControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.recordGroupControl.Controls.Add(Me.LabelControl18)
         Me.recordGroupControl.Controls.Add(Me.noteMemoEdit)
         Me.recordGroupControl.Controls.Add(Me.productionDetailsXtraTabControl)
@@ -413,7 +413,7 @@ Partial Class InventoryXtraForm
         Me.recordGroupControl.Controls.Add(Me.inventoryDateEdit)
         Me.recordGroupControl.Location = New System.Drawing.Point(12, 12)
         Me.recordGroupControl.Name = "recordGroupControl"
-        Me.recordGroupControl.ShowCaption = false
+        Me.recordGroupControl.ShowCaption = False
         Me.recordGroupControl.Size = New System.Drawing.Size(1109, 201)
         Me.recordGroupControl.TabIndex = 0
         '
@@ -434,8 +434,8 @@ Partial Class InventoryXtraForm
         '
         'productionDetailsXtraTabControl
         '
-        Me.productionDetailsXtraTabControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.productionDetailsXtraTabControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.productionDetailsXtraTabControl.Location = New System.Drawing.Point(752, 6)
         Me.productionDetailsXtraTabControl.Name = "productionDetailsXtraTabControl"
         Me.productionDetailsXtraTabControl.SelectedTabPage = Me.poolDetailsXtraTabPage
@@ -465,7 +465,7 @@ Partial Class InventoryXtraForm
         'poolDetailsXpView
         '
         Me.poolDetailsXpView.ObjectType = GetType(DXDAL.SPGData.ItemPoolDetails)
-        Me.poolDetailsXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("Oid", DevExpress.Xpo.SortDirection.None, "[Oid]", false, true), New DevExpress.Xpo.ViewProperty("ItemPool", DevExpress.Xpo.SortDirection.None, "[ItemPoolID.PoolCode]", false, true), New DevExpress.Xpo.ViewProperty("RmItem", DevExpress.Xpo.SortDirection.None, "[ItemID]", false, true), New DevExpress.Xpo.ViewProperty("ItemPoolRatio", DevExpress.Xpo.SortDirection.None, "[ItemPoolRatio]", false, true), New DevExpress.Xpo.ViewProperty("ItemPoolID", DevExpress.Xpo.SortDirection.None, "[ItemPoolID.Oid]", false, true), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.None, "[ItemID.ItemCode]", false, true), New DevExpress.Xpo.ViewProperty("RMItemID", DevExpress.Xpo.SortDirection.None, "[ItemID.ItemID]", false, true)})
+        Me.poolDetailsXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("Oid", DevExpress.Xpo.SortDirection.None, "[Oid]", False, True), New DevExpress.Xpo.ViewProperty("ItemPool", DevExpress.Xpo.SortDirection.None, "[ItemPoolID.PoolCode]", False, True), New DevExpress.Xpo.ViewProperty("RmItem", DevExpress.Xpo.SortDirection.None, "[ItemID]", False, True), New DevExpress.Xpo.ViewProperty("ItemPoolRatio", DevExpress.Xpo.SortDirection.None, "[ItemPoolRatio]", False, True), New DevExpress.Xpo.ViewProperty("ItemPoolID", DevExpress.Xpo.SortDirection.None, "[ItemPoolID.Oid]", False, True), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.None, "[ItemID.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("RMItemID", DevExpress.Xpo.SortDirection.None, "[ItemID.ItemID]", False, True)})
         '
         'poolDetailsGridView
         '
@@ -474,39 +474,39 @@ Partial Class InventoryXtraForm
         Me.poolDetailsGridView.GroupCount = 1
         Me.poolDetailsGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Custom, "itemQuantityUsedGridColumn", Nothing, """Pool Quantity Used = {0:N2}""", "1")})
         Me.poolDetailsGridView.Name = "poolDetailsGridView"
-        Me.poolDetailsGridView.OptionsSelection.MultiSelect = true
-        Me.poolDetailsGridView.OptionsView.ShowDetailButtons = false
-        Me.poolDetailsGridView.OptionsView.ShowGroupPanel = false
+        Me.poolDetailsGridView.OptionsSelection.MultiSelect = True
+        Me.poolDetailsGridView.OptionsView.ShowDetailButtons = False
+        Me.poolDetailsGridView.OptionsView.ShowGroupPanel = False
         Me.poolDetailsGridView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.itemPoolGridColumn, DevExpress.Data.ColumnSortOrder.Ascending)})
         '
         'colOid
         '
         Me.colOid.FieldName = "Oid"
         Me.colOid.Name = "colOid"
-        Me.colOid.OptionsColumn.AllowEdit = false
-        Me.colOid.OptionsColumn.ReadOnly = true
+        Me.colOid.OptionsColumn.AllowEdit = False
+        Me.colOid.OptionsColumn.ReadOnly = True
         '
         'itemPoolGridColumn
         '
         Me.itemPoolGridColumn.Caption = "Pool Code"
         Me.itemPoolGridColumn.FieldName = "ItemPool"
         Me.itemPoolGridColumn.Name = "itemPoolGridColumn"
-        Me.itemPoolGridColumn.OptionsColumn.AllowEdit = false
-        Me.itemPoolGridColumn.OptionsColumn.ReadOnly = true
+        Me.itemPoolGridColumn.OptionsColumn.AllowEdit = False
+        Me.itemPoolGridColumn.OptionsColumn.ReadOnly = True
         '
         'rmItemGridColumn
         '
         Me.rmItemGridColumn.FieldName = "RmItem"
         Me.rmItemGridColumn.Name = "rmItemGridColumn"
-        Me.rmItemGridColumn.OptionsColumn.AllowEdit = false
-        Me.rmItemGridColumn.OptionsColumn.ReadOnly = true
+        Me.rmItemGridColumn.OptionsColumn.AllowEdit = False
+        Me.rmItemGridColumn.OptionsColumn.ReadOnly = True
         '
         'colItemPoolRatio
         '
         Me.colItemPoolRatio.FieldName = "ItemPoolRatio"
         Me.colItemPoolRatio.Name = "colItemPoolRatio"
-        Me.colItemPoolRatio.OptionsColumn.AllowEdit = false
-        Me.colItemPoolRatio.OptionsColumn.ReadOnly = true
+        Me.colItemPoolRatio.OptionsColumn.AllowEdit = False
+        Me.colItemPoolRatio.OptionsColumn.ReadOnly = True
         '
         'itemPoolIDGridColumn
         '
@@ -519,9 +519,9 @@ Partial Class InventoryXtraForm
         Me.itemCodeGridColumn.Caption = "Item Code"
         Me.itemCodeGridColumn.FieldName = "ItemCode"
         Me.itemCodeGridColumn.Name = "itemCodeGridColumn"
-        Me.itemCodeGridColumn.OptionsColumn.AllowEdit = false
-        Me.itemCodeGridColumn.OptionsColumn.ReadOnly = true
-        Me.itemCodeGridColumn.Visible = true
+        Me.itemCodeGridColumn.OptionsColumn.AllowEdit = False
+        Me.itemCodeGridColumn.OptionsColumn.ReadOnly = True
+        Me.itemCodeGridColumn.Visible = True
         Me.itemCodeGridColumn.VisibleIndex = 0
         '
         'itemQuantityGridColumn
@@ -529,10 +529,10 @@ Partial Class InventoryXtraForm
         Me.itemQuantityGridColumn.Caption = "Item Quantity On Hand"
         Me.itemQuantityGridColumn.FieldName = "ItemQuantity"
         Me.itemQuantityGridColumn.Name = "itemQuantityGridColumn"
-        Me.itemQuantityGridColumn.OptionsColumn.AllowEdit = false
-        Me.itemQuantityGridColumn.OptionsColumn.ReadOnly = true
+        Me.itemQuantityGridColumn.OptionsColumn.AllowEdit = False
+        Me.itemQuantityGridColumn.OptionsColumn.ReadOnly = True
         Me.itemQuantityGridColumn.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
-        Me.itemQuantityGridColumn.Visible = true
+        Me.itemQuantityGridColumn.Visible = True
         Me.itemQuantityGridColumn.VisibleIndex = 1
         '
         'itemQuantityUsedGridColumn
@@ -541,7 +541,7 @@ Partial Class InventoryXtraForm
         Me.itemQuantityUsedGridColumn.FieldName = "itemQuantityUsedGridColumn"
         Me.itemQuantityUsedGridColumn.Name = "itemQuantityUsedGridColumn"
         Me.itemQuantityUsedGridColumn.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
-        Me.itemQuantityUsedGridColumn.Visible = true
+        Me.itemQuantityUsedGridColumn.Visible = True
         Me.itemQuantityUsedGridColumn.VisibleIndex = 2
         '
         'rmItemIDGridColumn
@@ -570,8 +570,8 @@ Partial Class InventoryXtraForm
         '
         'productionProjectDetailXpCollection
         '
-        Me.productionProjectDetailXpCollection.DisplayableProperties = "This;Oid;HasChanges;ProjectDetail!;ProjectDetail!Key;ProjectDetail;Production!;Pr"& _ 
-    "oduction!Key;Production;UnitsProduced;BagsProduced;PalletsProduced;IsOverrun;Pro"& _ 
+        Me.productionProjectDetailXpCollection.DisplayableProperties = "This;Oid;HasChanges;ProjectDetail!;ProjectDetail!Key;ProjectDetail;Production!;Pr" &
+    "oduction!Key;Production;UnitsProduced;BagsProduced;PalletsProduced;IsOverrun;Pro" &
     "jectDetail.Project.Project"
         Me.productionProjectDetailXpCollection.ObjectType = GetType(DXDAL.SPGData.ProductionProjectDetails)
         '
@@ -580,78 +580,78 @@ Partial Class InventoryXtraForm
         Me.projectDetailsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colOid1, Me.colHasChanges, Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.colUnitsProduced, Me.colBagsProduced, Me.colPalletsProduced, Me.colIsOverrun, Me.colProject, Me.colCustomerPO})
         Me.projectDetailsGridView.GridControl = Me.projectDetailsGridControl
         Me.projectDetailsGridView.Name = "projectDetailsGridView"
-        Me.projectDetailsGridView.OptionsView.ShowDetailButtons = false
-        Me.projectDetailsGridView.OptionsView.ShowFooter = true
+        Me.projectDetailsGridView.OptionsView.ShowDetailButtons = False
+        Me.projectDetailsGridView.OptionsView.ShowFooter = True
         '
         'colOid1
         '
         Me.colOid1.FieldName = "Oid"
         Me.colOid1.Name = "colOid1"
-        Me.colOid1.OptionsColumn.ReadOnly = true
+        Me.colOid1.OptionsColumn.ReadOnly = True
         '
         'colHasChanges
         '
         Me.colHasChanges.FieldName = "HasChanges"
         Me.colHasChanges.Name = "colHasChanges"
-        Me.colHasChanges.OptionsColumn.ReadOnly = true
+        Me.colHasChanges.OptionsColumn.ReadOnly = True
         '
         'GridColumn1
         '
         Me.GridColumn1.FieldName = "ProjectDetail!"
         Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.OptionsColumn.ReadOnly = true
+        Me.GridColumn1.OptionsColumn.ReadOnly = True
         '
         'GridColumn2
         '
         Me.GridColumn2.FieldName = "ProjectDetail!Key"
         Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.OptionsColumn.ReadOnly = true
+        Me.GridColumn2.OptionsColumn.ReadOnly = True
         '
         'GridColumn3
         '
         Me.GridColumn3.FieldName = "Production!"
         Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.OptionsColumn.ReadOnly = true
+        Me.GridColumn3.OptionsColumn.ReadOnly = True
         '
         'GridColumn4
         '
         Me.GridColumn4.FieldName = "Production!Key"
         Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.OptionsColumn.ReadOnly = true
+        Me.GridColumn4.OptionsColumn.ReadOnly = True
         '
         'colUnitsProduced
         '
         Me.colUnitsProduced.FieldName = "UnitsProduced"
         Me.colUnitsProduced.Name = "colUnitsProduced"
-        Me.colUnitsProduced.OptionsColumn.ReadOnly = true
+        Me.colUnitsProduced.OptionsColumn.ReadOnly = True
         Me.colUnitsProduced.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)})
-        Me.colUnitsProduced.Visible = true
+        Me.colUnitsProduced.Visible = True
         Me.colUnitsProduced.VisibleIndex = 2
         '
         'colBagsProduced
         '
         Me.colBagsProduced.FieldName = "BagsProduced"
         Me.colBagsProduced.Name = "colBagsProduced"
-        Me.colBagsProduced.OptionsColumn.ReadOnly = true
+        Me.colBagsProduced.OptionsColumn.ReadOnly = True
         Me.colBagsProduced.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)})
-        Me.colBagsProduced.Visible = true
+        Me.colBagsProduced.Visible = True
         Me.colBagsProduced.VisibleIndex = 3
         '
         'colPalletsProduced
         '
         Me.colPalletsProduced.FieldName = "PalletsProduced"
         Me.colPalletsProduced.Name = "colPalletsProduced"
-        Me.colPalletsProduced.OptionsColumn.ReadOnly = true
+        Me.colPalletsProduced.OptionsColumn.ReadOnly = True
         Me.colPalletsProduced.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)})
-        Me.colPalletsProduced.Visible = true
+        Me.colPalletsProduced.Visible = True
         Me.colPalletsProduced.VisibleIndex = 4
         '
         'colIsOverrun
         '
         Me.colIsOverrun.FieldName = "IsOverrun"
         Me.colIsOverrun.Name = "colIsOverrun"
-        Me.colIsOverrun.OptionsColumn.ReadOnly = true
-        Me.colIsOverrun.Visible = true
+        Me.colIsOverrun.OptionsColumn.ReadOnly = True
+        Me.colIsOverrun.Visible = True
         Me.colIsOverrun.VisibleIndex = 5
         '
         'colProject
@@ -659,8 +659,8 @@ Partial Class InventoryXtraForm
         Me.colProject.Caption = "Project"
         Me.colProject.FieldName = "ProjectDetail.Project.Project"
         Me.colProject.Name = "colProject"
-        Me.colProject.OptionsColumn.ReadOnly = true
-        Me.colProject.Visible = true
+        Me.colProject.OptionsColumn.ReadOnly = True
+        Me.colProject.Visible = True
         Me.colProject.VisibleIndex = 0
         '
         'colCustomerPO
@@ -668,9 +668,9 @@ Partial Class InventoryXtraForm
         Me.colCustomerPO.CustomizationCaption = "Customer PO"
         Me.colCustomerPO.FieldName = "ProjectDetail.CustomerPO"
         Me.colCustomerPO.Name = "colCustomerPO"
-        Me.colCustomerPO.OptionsColumn.AllowEdit = false
-        Me.colCustomerPO.OptionsColumn.ReadOnly = true
-        Me.colCustomerPO.Visible = true
+        Me.colCustomerPO.OptionsColumn.AllowEdit = False
+        Me.colCustomerPO.OptionsColumn.ReadOnly = True
+        Me.colCustomerPO.Visible = True
         Me.colCustomerPO.VisibleIndex = 1
         '
         'LabelControl16
@@ -733,10 +733,10 @@ Partial Class InventoryXtraForm
         '
         Me.palletNumberTextEdit.Location = New System.Drawing.Point(324, 24)
         Me.palletNumberTextEdit.Name = "palletNumberTextEdit"
-        Me.palletNumberTextEdit.Properties.ReadOnly = true
+        Me.palletNumberTextEdit.Properties.ReadOnly = True
         Me.palletNumberTextEdit.Size = New System.Drawing.Size(100, 20)
         Me.palletNumberTextEdit.TabIndex = 11
-        Me.palletNumberTextEdit.TabStop = false
+        Me.palletNumberTextEdit.TabStop = False
         '
         'shiftLookUpEdit
         '
@@ -744,7 +744,7 @@ Partial Class InventoryXtraForm
         Me.shiftLookUpEdit.Name = "shiftLookUpEdit"
         Me.shiftLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.shiftLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.shiftLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftID", "Shift ID", 59, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftName", "Shift Name", 62, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)})
+        Me.shiftLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftID", "Shift ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftName", "Shift Name", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
         Me.shiftLookUpEdit.Properties.DataSource = Me.shiftXPView
         Me.shiftLookUpEdit.Properties.DisplayMember = "ShiftName"
         Me.shiftLookUpEdit.Properties.NullText = "[Select A Shift]"
@@ -756,7 +756,7 @@ Partial Class InventoryXtraForm
         'shiftXPView
         '
         Me.shiftXPView.ObjectType = GetType(DXDAL.SPGData.Shifts)
-        Me.shiftXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ShiftID", DevExpress.Xpo.SortDirection.None, "[ShiftID]", false, true), New DevExpress.Xpo.ViewProperty("ShiftName", DevExpress.Xpo.SortDirection.None, "[ShiftName]", false, true)})
+        Me.shiftXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ShiftID", DevExpress.Xpo.SortDirection.None, "[ShiftID]", False, True), New DevExpress.Xpo.ViewProperty("ShiftName", DevExpress.Xpo.SortDirection.None, "[ShiftName]", False, True)})
         '
         'ShiftLabel
         '
@@ -778,10 +778,10 @@ Partial Class InventoryXtraForm
         '
         Me.onHandTextEdit.Location = New System.Drawing.Point(324, 69)
         Me.onHandTextEdit.Name = "onHandTextEdit"
-        Me.onHandTextEdit.Properties.ReadOnly = true
+        Me.onHandTextEdit.Properties.ReadOnly = True
         Me.onHandTextEdit.Size = New System.Drawing.Size(100, 20)
         Me.onHandTextEdit.TabIndex = 10
-        Me.onHandTextEdit.TabStop = false
+        Me.onHandTextEdit.TabStop = False
         '
         'lotTextEdit
         '
@@ -843,7 +843,7 @@ Partial Class InventoryXtraForm
         Me.descriptionMemoEdit.Name = "descriptionMemoEdit"
         Me.descriptionMemoEdit.Size = New System.Drawing.Size(315, 65)
         Me.descriptionMemoEdit.TabIndex = 9
-        Me.descriptionMemoEdit.TabStop = false
+        Me.descriptionMemoEdit.TabStop = False
         '
         'LabelControl5
         '
@@ -896,7 +896,7 @@ Partial Class InventoryXtraForm
         Me.itemLookUpEdit.Location = New System.Drawing.Point(161, 24)
         Me.itemLookUpEdit.Name = "itemLookUpEdit"
         Me.itemLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.itemLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far)})
+        Me.itemLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far)})
         Me.itemLookUpEdit.Properties.DataSource = Me.itemsXPView
         Me.itemLookUpEdit.Properties.DisplayMember = "ItemCode"
         Me.itemLookUpEdit.Properties.NullText = "[Select A Item]"
@@ -909,7 +909,7 @@ Partial Class InventoryXtraForm
         '
         Me.itemsXPView.CriteriaString = "([ItemType] = 'FG' Or [ItemType] = 'IG') And [Inactive] = False"
         Me.itemsXPView.ObjectType = GetType(DXDAL.SPGData.Items)
-        Me.itemsXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", false, true), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[ItemCode]", false, true), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", false, true)})
+        Me.itemsXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", False, True)})
         '
         'LabelControl1
         '
@@ -927,25 +927,26 @@ Partial Class InventoryXtraForm
         Me.inventoryDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.inventoryDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.inventoryDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.inventoryDateEdit.Properties.DisplayFormat.FormatString = "D"
+        Me.inventoryDateEdit.Properties.DisplayFormat.FormatString = "g"
         Me.inventoryDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.inventoryDateEdit.Properties.EditFormat.FormatString = "D"
+        Me.inventoryDateEdit.Properties.EditFormat.FormatString = "g"
         Me.inventoryDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.inventoryDateEdit.Properties.Mask.EditMask = "g"
         Me.inventoryDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
         Me.inventoryDateEdit.Size = New System.Drawing.Size(150, 20)
         Me.inventoryDateEdit.TabIndex = 0
         '
         'poolDetailsXpCollection
         '
-        Me.poolDetailsXpCollection.DisplayableProperties = "This;Oid;ItemPoolID!;ItemPoolID!Key;ItemPoolID;PoolBomFiniGoodID!;PoolBomFiniGood"& _ 
-    "ID!Key;PoolBomFiniGoodID;PoolBomQuantity;ScrapFactor;ItemPoolID.Details.ItemID.I"& _ 
+        Me.poolDetailsXpCollection.DisplayableProperties = "This;Oid;ItemPoolID!;ItemPoolID!Key;ItemPoolID;PoolBomFiniGoodID!;PoolBomFiniGood" &
+    "ID!Key;PoolBomFiniGoodID;PoolBomQuantity;ScrapFactor;ItemPoolID.Details.ItemID.I" &
     "temCode"
         Me.poolDetailsXpCollection.ObjectType = GetType(DXDAL.SPGData.PoolBom)
         '
         'filtersGroupControl
         '
-        Me.filtersGroupControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.filtersGroupControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.filtersGroupControl.Controls.Add(Me.filterByPalletSimpleButton)
         Me.filtersGroupControl.Controls.Add(Me.LabelControl15)
         Me.filtersGroupControl.Controls.Add(Me.LPNFilterTextEdit)
@@ -1011,7 +1012,7 @@ Partial Class InventoryXtraForm
         Me.shiftFilterLookUpEdit.Name = "shiftFilterLookUpEdit"
         Me.shiftFilterLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.shiftFilterLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.shiftFilterLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftID", "Shift ID", 59, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftName", "Shift Name", 62, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)})
+        Me.shiftFilterLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftID", "Shift ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ShiftName", "Shift Name", 62, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
         Me.shiftFilterLookUpEdit.Properties.DataSource = Me.shiftXPView
         Me.shiftFilterLookUpEdit.Properties.DisplayMember = "ShiftName"
         Me.shiftFilterLookUpEdit.Properties.NullText = "[Select A Shift]"
@@ -1062,7 +1063,7 @@ Partial Class InventoryXtraForm
         Me.itemFilterLookUpEdit.Name = "itemFilterLookUpEdit"
         Me.itemFilterLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.itemFilterLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.itemFilterLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far)})
+        Me.itemFilterLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far)})
         Me.itemFilterLookUpEdit.Properties.DataSource = Me.itemsFilterXPView
         Me.itemFilterLookUpEdit.Properties.DisplayMember = "ItemCode"
         Me.itemFilterLookUpEdit.Properties.NullText = "[Select A Item]"
@@ -1075,7 +1076,7 @@ Partial Class InventoryXtraForm
         '
         Me.itemsFilterXPView.CriteriaString = "[ItemType] = 'FG' Or [ItemType] = 'IG'"
         Me.itemsFilterXPView.ObjectType = GetType(DXDAL.SPGData.Items)
-        Me.itemsFilterXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", false, true), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[ItemCode]", false, true), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", false, true), New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID.CustomerID]", false, true)})
+        Me.itemsFilterXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", False, True), New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID.CustomerID]", False, True)})
         '
         'customerFilterLookUpEdit
         '
@@ -1084,7 +1085,7 @@ Partial Class InventoryXtraForm
         Me.customerFilterLookUpEdit.Name = "customerFilterLookUpEdit"
         Me.customerFilterLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.customerFilterLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.customerFilterLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Inactive", "Inactive", 49, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near)})
+        Me.customerFilterLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Inactive", "Inactive", 49, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near)})
         Me.customerFilterLookUpEdit.Properties.DataSource = Me.customersXPView
         Me.customerFilterLookUpEdit.Properties.DisplayMember = "CustomerName"
         Me.customerFilterLookUpEdit.Properties.NullText = "[Select A Customer]"
@@ -1097,7 +1098,7 @@ Partial Class InventoryXtraForm
         '
         Me.customersXPView.CriteriaString = "[Inactive] = False"
         Me.customersXPView.ObjectType = GetType(DXDAL.SPGData.Customers)
-        Me.customersXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[CustomerID]", false, true), New DevExpress.Xpo.ViewProperty("CustomerName", DevExpress.Xpo.SortDirection.Ascending, "[CustomerName]", false, true), New DevExpress.Xpo.ViewProperty("Inactive", DevExpress.Xpo.SortDirection.None, "[Inactive]", false, true)})
+        Me.customersXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[CustomerID]", False, True), New DevExpress.Xpo.ViewProperty("CustomerName", DevExpress.Xpo.SortDirection.Ascending, "[CustomerName]", False, True), New DevExpress.Xpo.ViewProperty("Inactive", DevExpress.Xpo.SortDirection.None, "[Inactive]", False, True)})
         '
         'LabelControl9
         '
@@ -1147,6 +1148,7 @@ Partial Class InventoryXtraForm
         Me.toFilterDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.toFilterDateEdit.Properties.EditFormat.FormatString = "D"
         Me.toFilterDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.toFilterDateEdit.Properties.Mask.EditMask = "g"
         Me.toFilterDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
         Me.toFilterDateEdit.Properties.NullText = "[Select A To Date]"
         Me.toFilterDateEdit.Size = New System.Drawing.Size(152, 20)
@@ -1164,6 +1166,7 @@ Partial Class InventoryXtraForm
         Me.fromFilterDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.fromFilterDateEdit.Properties.EditFormat.FormatString = "D"
         Me.fromFilterDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.fromFilterDateEdit.Properties.Mask.EditMask = "g"
         Me.fromFilterDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret
         Me.fromFilterDateEdit.Properties.NullText = "[Select A From Date]"
         Me.fromFilterDateEdit.Size = New System.Drawing.Size(160, 20)

@@ -1217,7 +1217,6 @@ Partial Class ProjectSchedulingXtraForm
         Me.DateNavigator1.HotDate = Nothing
         Me.DateNavigator1.Location = New System.Drawing.Point(0, 0)
         Me.DateNavigator1.Name = "DateNavigator1"
-        Me.DateNavigator1.CellPadding = New System.Windows.Forms.Padding(2)
         Me.DateNavigator1.SchedulerControl = Me.productionSchedulerControl
         Me.DateNavigator1.Size = New System.Drawing.Size(182, 171)
         Me.DateNavigator1.TabIndex = 0

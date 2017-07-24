@@ -635,7 +635,7 @@ Public Class InventoryXtraForm
         'If Now.TimeOfDay < New TimeSpan(9, 0, 0) Then
         'inventoryDateEdit.DateTime = DateAdd(DateInterval.Day, -1, Today)
         'Else
-        inventoryDateEdit.DateTime = Today
+        inventoryDateEdit.DateTime = Now
         'End If
         itemLookUpEdit.EditValue = Nothing
         itemLookUpEdit.Properties.Tag = Nothing
@@ -1002,4 +1002,18 @@ Public Class InventoryXtraForm
 
     End Function
 
+    Private Sub inventoryGridView_FilterEditorCreated(sender As Object, e As Views.Base.FilterControlEventArgs) Handles inventoryGridView.FilterEditorCreated
+        AddHandler e.FilterControl.BeforeShowValueEditor, AddressOf FilterControl_BeforeShowValueEditor
+    End Sub
+
+    Private Sub FilterControl_BeforeShowValueEditor(sender As Object, e As DevExpress.XtraEditors.Filtering.ShowValueEditorEventArgs)
+        If (e.CurrentNode.FirstOperand.PropertyName = "InventoryDate") Then
+            Dim editor As DateEdit
+            editor = CType(e.Editor, DateEdit)
+            editor.Width = 200
+            editor.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True
+            editor.Properties.CalendarTimeProperties.Mask.EditMask = "g"
+            editor.Properties.TimeEditWidth = 150
+        End If
+    End Sub
 End Class

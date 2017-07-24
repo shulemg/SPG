@@ -18,7 +18,7 @@ Public Class ProjectsXtraForm
         reqShipDateEdit.EditValue = Nothing
         reqDeliveryDateEdit.EditValue = Nothing
         projectStatusComboBoxEdit.EditValue = Nothing
-        scheduledWeekDatePeriodEdit.EditValue = Nothing
+        'scheduledWeekDatePeriodEdit.EditValue = Nothing
         notesMemoExEdit.EditValue = Nothing
 
         projectDetailsXpCollection.Criteria = New BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, m_CurrentProject.Oid, BinaryOperatorType.Equal)
@@ -271,7 +271,7 @@ Public Class ProjectsXtraForm
         reqShipDateEdit.EditValue = m_CurrentProject.RequestedShippingDate
         reqDeliveryDateEdit.EditValue = m_CurrentProject.RequestedDeliveryDate
         projectStatusComboBoxEdit.EditValue = m_CurrentProject.ProjectStatus
-        scheduledWeekDatePeriodEdit.EditValue = m_CurrentProject.ScheduledWeek
+        'scheduledWeekDatePeriodEdit.EditValue = m_CurrentProject.ScheduledWeek
         notesMemoExEdit.EditValue = m_CurrentProject.Notes
 
         projectDetailsXpCollection.Criteria = New BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, m_CurrentProject.Oid, BinaryOperatorType.Equal)
@@ -382,7 +382,7 @@ Public Class ProjectsXtraForm
                 m_CurrentProject.RequestedShippingDate = CType(reqShipDateEdit.EditValue, Date?)
                 m_CurrentProject.RequestedStartDate = CType(reqStartDateEdit.EditValue, Date?)
                 m_CurrentProject.ProjectStatus = CType(projectStatusComboBoxEdit.EditValue, ProjectStatus)
-                m_CurrentProject.ScheduledWeek = scheduledWeekDatePeriodEdit.EditValue.ToString
+                'm_CurrentProject.ScheduledWeek = scheduledWeekDatePeriodEdit.EditValue.ToString
                 m_CurrentProject.Notes = CStr(notesMemoExEdit.EditValue)
 
                 For Each detail As ProjectDetails In projectDetailsXpCollection
@@ -465,7 +465,7 @@ Public Class ProjectsXtraForm
             With QuickReportsXtraForm
                 .MdiParent = MdiParent
                 .Show()
-                .SelectWeeklyScheduleReport(m_CurrentProject, scheduledWeekDatePeriodEdit.Text)
+                '.SelectWeeklyScheduleReport(m_CurrentProject, scheduledWeekDatePeriodEdit.Text)
                 '.FillReports(Nothing)
                 .Activate()
             End With

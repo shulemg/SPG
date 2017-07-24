@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ItemsXtraForm
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class ItemsXtraForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
@@ -273,7 +273,7 @@ Partial Class ItemsXtraForm
         Me.itemCustomerGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.itemTypeGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.inactiveSearchCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionTimeGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         CType(Me.poolDetailsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.poolBomGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.poolBomXpCollection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -382,6 +382,7 @@ Partial Class ItemsXtraForm
         CType(Me.itemSearchXPView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.itemSearchGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.inactiveSearchCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'poolDetailsGridView
@@ -595,6 +596,7 @@ Partial Class ItemsXtraForm
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Size = New System.Drawing.Size(947, 49)
         '
         'barDockControlBottom
@@ -602,6 +604,7 @@ Partial Class ItemsXtraForm
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 565)
+        Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(947, 23)
         '
         'barDockControlLeft
@@ -609,6 +612,7 @@ Partial Class ItemsXtraForm
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Manager = Me.BarManager1
         Me.barDockControlLeft.Size = New System.Drawing.Size(0, 516)
         '
         'barDockControlRight
@@ -616,6 +620,7 @@ Partial Class ItemsXtraForm
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(947, 49)
+        Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 516)
         '
         'customerFilterLookUpEdit
@@ -1192,7 +1197,7 @@ Partial Class ItemsXtraForm
         '
         'productionGridView
         '
-        Me.productionGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.productionDateGridColumn, Me.productionTimeGridColumn, Me.productionLotGridColumn, Me.productionPOGridColumn, Me.productionQuantityGridColumn, Me.productionExpirationDateGridColumn})
+        Me.productionGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.productionDateGridColumn, Me.productionLotGridColumn, Me.productionPOGridColumn, Me.productionQuantityGridColumn, Me.productionExpirationDateGridColumn})
         Me.productionGridView.GridControl = Me.productionGridControl
         Me.productionGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "InventoryQuantity", Me.productionQuantityGridColumn, "{0:#,##0.######}")})
         Me.productionGridView.Name = "productionGridView"
@@ -1203,9 +1208,14 @@ Partial Class ItemsXtraForm
         'productionDateGridColumn
         '
         Me.productionDateGridColumn.Caption = "Date"
+        Me.productionDateGridColumn.DisplayFormat.FormatString = "g"
+        Me.productionDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.productionDateGridColumn.Name = "productionDateGridColumn"
         Me.productionDateGridColumn.OptionsColumn.AllowEdit = False
         Me.productionDateGridColumn.OptionsColumn.ReadOnly = True
+        Me.productionDateGridColumn.OptionsFilter.AllowFilterModeChanging = DevExpress.Utils.DefaultBoolean.[False]
+        Me.productionDateGridColumn.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Equals
+        Me.productionDateGridColumn.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Excel
         Me.productionDateGridColumn.Visible = True
         Me.productionDateGridColumn.VisibleIndex = 0
         '
@@ -1216,7 +1226,7 @@ Partial Class ItemsXtraForm
         Me.productionLotGridColumn.OptionsColumn.AllowEdit = False
         Me.productionLotGridColumn.OptionsColumn.ReadOnly = True
         Me.productionLotGridColumn.Visible = True
-        Me.productionLotGridColumn.VisibleIndex = 2
+        Me.productionLotGridColumn.VisibleIndex = 1
         '
         'productionPOGridColumn
         '
@@ -1225,7 +1235,7 @@ Partial Class ItemsXtraForm
         Me.productionPOGridColumn.OptionsColumn.AllowEdit = False
         Me.productionPOGridColumn.OptionsColumn.ReadOnly = True
         Me.productionPOGridColumn.Visible = True
-        Me.productionPOGridColumn.VisibleIndex = 4
+        Me.productionPOGridColumn.VisibleIndex = 3
         '
         'productionQuantityGridColumn
         '
@@ -1235,7 +1245,7 @@ Partial Class ItemsXtraForm
         Me.productionQuantityGridColumn.OptionsColumn.ReadOnly = True
         Me.productionQuantityGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "TOTAL        {0}")})
         Me.productionQuantityGridColumn.Visible = True
-        Me.productionQuantityGridColumn.VisibleIndex = 5
+        Me.productionQuantityGridColumn.VisibleIndex = 4
         '
         'productionExpirationDateGridColumn
         '
@@ -1246,7 +1256,7 @@ Partial Class ItemsXtraForm
         Me.productionExpirationDateGridColumn.OptionsColumn.AllowEdit = False
         Me.productionExpirationDateGridColumn.OptionsColumn.ReadOnly = True
         Me.productionExpirationDateGridColumn.Visible = True
-        Me.productionExpirationDateGridColumn.VisibleIndex = 3
+        Me.productionExpirationDateGridColumn.VisibleIndex = 2
         '
         'receivingXtraTabPage
         '
@@ -2588,21 +2598,9 @@ Partial Class ItemsXtraForm
         Me.inactiveSearchCheckEdit.Size = New System.Drawing.Size(250, 19)
         Me.inactiveSearchCheckEdit.TabIndex = 0
         '
-        'productionTimeGridColumn
-        '
-        Me.productionTimeGridColumn.Caption = "Time"
-        Me.productionTimeGridColumn.DisplayFormat.FormatString = "HH.mm"
-        Me.productionTimeGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.productionTimeGridColumn.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText
-        Me.productionTimeGridColumn.Name = "productionTimeGridColumn"
-        Me.productionTimeGridColumn.OptionsColumn.AllowEdit = False
-        Me.productionTimeGridColumn.OptionsColumn.ReadOnly = True
-        Me.productionTimeGridColumn.Visible = True
-        Me.productionTimeGridColumn.VisibleIndex = 1
-        '
         'ItemsXtraForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(947, 588)
         Me.Controls.Add(Me.SplitContainerControl1)
@@ -2610,125 +2608,126 @@ Partial Class ItemsXtraForm
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ItemsXtraForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Items Manager"
-        CType(Me.poolDetailsGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.poolBomGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.poolBomXpCollection,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.poolBomGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.poolBomDeleteRepositoryItemButtonEdit,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.poolsRepositoryItemLookUpEdit,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemPoolsXpView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.BarManager1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.customerFilterLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsXtraTabControl,System.ComponentModel.ISupportInitialize).EndInit
-        Me.itemsXtraTabControl.ResumeLayout(false)
-        Me.generalXtraTabPage.ResumeLayout(false)
-        Me.generalXtraTabPage.PerformLayout
-        CType(Me.minutesPerShiftTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.lotCodeFormatLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.lotCodeFormatsXpView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.requiresExpirationDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.requiresLotCodeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.generateLotCodesCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.bagsPerCaseTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryXpView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.upcTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.packersTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inactiveCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.caseGrossWeightTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.qtyOnHandTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.uomLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.qtyPerUnitTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.unitsPerPalletTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.casesPerPalletTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.unitsPerCaseTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.standardProductionTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.codeTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.defaultMachineLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.machineLineXpView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.customerLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.typeLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.descriptionMemoEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.shippingXtraTabPage.ResumeLayout(false)
-        CType(Me.shippingGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shippingGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.productionXtraTabPage.ResumeLayout(false)
-        CType(Me.productionGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.receivingXtraTabPage.ResumeLayout(false)
-        CType(Me.receivingsGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.receivingsGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.bomXtraTabPage.ResumeLayout(false)
-        CType(Me.SplitContainerControl2,System.ComponentModel.ISupportInitialize).EndInit
-        Me.SplitContainerControl2.ResumeLayout(false)
-        CType(Me.bomGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.BOMGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RMRepositoryItemLookUpEdit,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.deleteRepositoryItemButtonEdit,System.ComponentModel.ISupportInitialize).EndInit
-        Me.availabilityXtraTabPage.ResumeLayout(false)
-        CType(Me.availabilityGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.availabilityGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.advancedXtraTabPage.ResumeLayout(false)
-        Me.advancedXtraTabPage.PerformLayout
-        CType(Me.other5TextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.other4TextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.other3TextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.other2TextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.other1TextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.palletsTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.stretchWrapTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.boxesTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.filmTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.freightTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.rebateTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.priceTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.specificationXtraTabPage.ResumeLayout(false)
-        Me.specificationXtraTabPage.PerformLayout
-        CType(Me.palletPatternButtonEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.instructionsMemoEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shelfLifeTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.layersPerPalletTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.cassesPerLayerTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.mavTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.requiredWeightTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.caseCodeMemoEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.packageCodeMemoEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.shippingReturnXtraTabPage.ResumeLayout(false)
-        CType(Me.shippingReturnGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shippingReturnGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.receivingReturnXtraTabPage.ResumeLayout(false)
-        CType(Me.receivingReturnGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.receivingReturnGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.adjustmentXtraTabPage.ResumeLayout(false)
-        CType(Me.adjustmentGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.adjustmentGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.reasonRepositoryItemMemoExEdit,System.ComponentModel.ISupportInitialize).EndInit
-        Me.transfersXtraTabPage.ResumeLayout(false)
-        CType(Me.transfersGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transfersXpView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transfersGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.productionStandardsXtraTabPage.ResumeLayout(false)
-        CType(Me.productionStandardsGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionStandardsXpCollection,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionStandardsGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.delProdStdRepositoryItemButtonEdit,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.machineRepositoryItemLookUpEdit,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.typeFilterLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SplitContainerControl1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.SplitContainerControl1.ResumeLayout(false)
-        CType(Me.itemsSearchGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemSearchXPView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemSearchGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inactiveSearchCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        CType(Me.poolDetailsGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.poolBomGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.poolBomXpCollection, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.poolBomGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.poolBomDeleteRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.poolsRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemPoolsXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.customerFilterLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsXtraTabControl, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.itemsXtraTabControl.ResumeLayout(False)
+        Me.generalXtraTabPage.ResumeLayout(False)
+        Me.generalXtraTabPage.PerformLayout()
+        CType(Me.minutesPerShiftTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lotCodeFormatLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lotCodeFormatsXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.requiresExpirationDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.requiresLotCodeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.generateLotCodesCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bagsPerCaseTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.upcTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.packersTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inactiveCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.caseGrossWeightTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.qtyOnHandTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.uomLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.qtyPerUnitTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.unitsPerPalletTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.casesPerPalletTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.unitsPerCaseTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.standardProductionTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.codeTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.defaultMachineLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.machineLineXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.customerLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.typeLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.descriptionMemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.shippingXtraTabPage.ResumeLayout(False)
+        CType(Me.shippingGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shippingGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.productionXtraTabPage.ResumeLayout(False)
+        CType(Me.productionGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.receivingXtraTabPage.ResumeLayout(False)
+        CType(Me.receivingsGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.receivingsGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.bomXtraTabPage.ResumeLayout(False)
+        CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainerControl2.ResumeLayout(False)
+        CType(Me.bomGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BOMGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RMRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.deleteRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.availabilityXtraTabPage.ResumeLayout(False)
+        CType(Me.availabilityGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.availabilityGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.advancedXtraTabPage.ResumeLayout(False)
+        Me.advancedXtraTabPage.PerformLayout()
+        CType(Me.other5TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.other4TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.other3TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.other2TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.other1TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.palletsTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.stretchWrapTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.boxesTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.filmTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.freightTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.rebateTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.priceTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.specificationXtraTabPage.ResumeLayout(False)
+        Me.specificationXtraTabPage.PerformLayout()
+        CType(Me.palletPatternButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.instructionsMemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shelfLifeTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layersPerPalletTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cassesPerLayerTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.mavTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.requiredWeightTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.caseCodeMemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.packageCodeMemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.shippingReturnXtraTabPage.ResumeLayout(False)
+        CType(Me.shippingReturnGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shippingReturnGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.receivingReturnXtraTabPage.ResumeLayout(False)
+        CType(Me.receivingReturnGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.receivingReturnGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.adjustmentXtraTabPage.ResumeLayout(False)
+        CType(Me.adjustmentGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.adjustmentGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reasonRepositoryItemMemoExEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.transfersXtraTabPage.ResumeLayout(False)
+        CType(Me.transfersGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transfersXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transfersGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.productionStandardsXtraTabPage.ResumeLayout(False)
+        CType(Me.productionStandardsGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionStandardsXpCollection, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionStandardsGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.delProdStdRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.machineRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.typeFilterLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainerControl1.ResumeLayout(False)
+        CType(Me.itemsSearchGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemSearchXPView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemSearchGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inactiveSearchCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents customerFilterLookUpEdit As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents itemsXtraTabControl As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents generalXtraTabPage As DevExpress.XtraTab.XtraTabPage
@@ -2979,5 +2978,5 @@ End Sub
     Friend WithEvents colProjectedPackers As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LabelControl38 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents minutesPerShiftTextEdit As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents productionTimeGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
 End Class
