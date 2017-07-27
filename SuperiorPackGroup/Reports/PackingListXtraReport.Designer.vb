@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Public Class PackingListXtraReport
     Inherits DevExpress.XtraReports.UI.XtraReport
 
     'XtraReport overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Public Class PackingListXtraReport
     'NOTE: The following procedure is required by the Designer
     'It can be modified using the Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PackingListXtraReport))
         Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
@@ -88,21 +88,14 @@ Partial Public Class PackingListXtraReport
         Me.totalPalletWeightXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.palletsTotalXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel33 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel32 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.additionalPalletsXrLabel = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrLabel31 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel23 = New DevExpress.XtraReports.UI.XRLabel()
         Me.totalPalletsXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.totalWeightXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
         Me.returnsGroupHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.XrLabel21 = New DevExpress.XtraReports.UI.XRLabel()
-        Me.XrCrossBandLine1XRCrossBandLine = New DevExpress.XtraReports.UI.XRCrossBandLine()
         Me.XrCrossBandLine1XRCrossBandLine2 = New DevExpress.XtraReports.UI.XRCrossBandLine()
-        Me.XrCrossBandLine1XRCrossBandLine3 = New DevExpress.XtraReports.UI.XRCrossBandLine()
-        Me.XrCrossBandLine1XRCrossBandLine4 = New DevExpress.XtraReports.UI.XRCrossBandLine()
         Me.XrCrossBandLine1XRCrossBandLine5 = New DevExpress.XtraReports.UI.XRCrossBandLine()
-        Me.XrCrossBandLine1 = New DevExpress.XtraReports.UI.XRCrossBandLine()
         Me.TopMarginBand1 = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMarginBand1 = New DevExpress.XtraReports.UI.BottomMarginBand()
         Me.XrPageInfo1 = New DevExpress.XtraReports.UI.XRPageInfo()
@@ -112,12 +105,11 @@ Partial Public Class PackingListXtraReport
         Me.groupItemDescriptionXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.groupItemCodeXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.itemTotalQuantityXrLabel = New DevExpress.XtraReports.UI.XRLabel()
+        Me.groupItemLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.itemGroupHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
-        Me.XrCrossBandLine2 = New DevExpress.XtraReports.UI.XRCrossBandLine()
-        Me.XrCrossBandLine3 = New DevExpress.XtraReports.UI.XRCrossBandLine()
-        Me.XrCrossBandLine4 = New DevExpress.XtraReports.UI.XRCrossBandLine()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.packingListpageinfo = New DevExpress.XtraReports.UI.XRPageInfo()
+        Me.locationId = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
@@ -133,7 +125,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.lpnXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.lpnXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lpnXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(398.0!, 0.0!)
+        Me.lpnXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(398.0!, 0!)
         Me.lpnXrLabel.Multiline = True
         Me.lpnXrLabel.Name = "lpnXrLabel"
         Me.lpnXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -148,7 +140,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.lotXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.lotXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lotXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(485.0!, 0.0!)
+        Me.lotXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(485.0!, 0!)
         Me.lotXrLabel.Multiline = True
         Me.lotXrLabel.Name = "lotXrLabel"
         Me.lotXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -163,7 +155,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.expirationDateXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.expirationDateXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.expirationDateXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(585.0!, 0.0!)
+        Me.expirationDateXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(585.0!, 0!)
         Me.expirationDateXrLabel.Multiline = True
         Me.expirationDateXrLabel.Name = "expirationDateXrLabel"
         Me.expirationDateXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -178,7 +170,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.itemDescriptionXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.itemDescriptionXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.itemDescriptionXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(148.0!, 0.0!)
+        Me.itemDescriptionXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(148.0!, 0!)
         Me.itemDescriptionXrLabel.Multiline = True
         Me.itemDescriptionXrLabel.Name = "itemDescriptionXrLabel"
         Me.itemDescriptionXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -193,7 +185,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.palletsXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.palletsXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.palletsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 0.0!)
+        Me.palletsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 0!)
         Me.palletsXrLabel.Name = "palletsXrLabel"
         Me.palletsXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.palletsXrLabel.SizeF = New System.Drawing.SizeF(58.0!, 25.0!)
@@ -207,7 +199,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.weightXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.weightXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.weightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(717.0!, 0.0!)
+        Me.weightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(717.0!, 0!)
         Me.weightXrLabel.Name = "weightXrLabel"
         Me.weightXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.weightXrLabel.SizeF = New System.Drawing.SizeF(61.0!, 25.0!)
@@ -221,7 +213,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.itemCodeXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.itemCodeXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.itemCodeXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(48.0!, 0.0!)
+        Me.itemCodeXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(48.0!, 0!)
         Me.itemCodeXrLabel.Name = "itemCodeXrLabel"
         Me.itemCodeXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.itemCodeXrLabel.SizeF = New System.Drawing.SizeF(100.0!, 25.0!)
@@ -235,7 +227,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.qtyXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.qtyXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.qtyXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
+        Me.qtyXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.qtyXrLabel.Name = "qtyXrLabel"
         Me.qtyXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.qtyXrLabel.SizeF = New System.Drawing.SizeF(48.0!, 25.0!)
@@ -247,7 +239,7 @@ Partial Public Class PackingListXtraReport
         '
         'ReportHeader
         '
-        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel8, Me.correctPalletsXrLabel, Me.insectActivityXrLabel, Me.XrLabel17, Me.XrLabel7, Me.foreignSubstanceXrLabel, Me.wheelsChockedXrLabel, Me.XrLabel1, Me.temperatureXrLabel, Me.finishTimeXrLabel, Me.XrLabel28, Me.XrLabel29, Me.loadedByLabelXrLabel, Me.XrLabel20, Me.XrLabel22, Me.XrLabel24, Me.XrLabel25, Me.loadedByXrLabel, Me.checkedByXrLabel, Me.physicalConditionXrLabel, Me.loadConditionXrLabel, Me.startTimeXrLabel, Me.lpnLabelXrLabel, Me.XrLabel19, Me.XrLabel18, Me.spgLogoXrPictureBox, Me.XrLabel34, Me.XrLabel16, Me.XrLabel15, Me.XrLabel14, Me.XrLabel13, Me.qtyLabelXrLabel, Me.sealXrLabel, Me.trailerXrLabel, Me.carrierXrLabel, Me.deliveryNoteNumberXrLabel, Me.poXrLabel, Me.XrLabel11, Me.XrLabel10, Me.XrLabel9, Me.deliveryNoteLabelXrLabel, Me.XrLabel6, Me.toXrLabel, Me.fromXrLabel, Me.XrLabel5, Me.XrLabel4, Me.bolXrLabel, Me.dateXrLabel, Me.XrLabel3, Me.XrLabel2, Me.reportTitleXrLabel})
+        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel8, Me.correctPalletsXrLabel, Me.insectActivityXrLabel, Me.XrLabel17, Me.XrLabel7, Me.foreignSubstanceXrLabel, Me.wheelsChockedXrLabel, Me.XrLabel1, Me.temperatureXrLabel, Me.finishTimeXrLabel, Me.XrLabel28, Me.XrLabel29, Me.loadedByLabelXrLabel, Me.XrLabel20, Me.XrLabel22, Me.XrLabel24, Me.XrLabel25, Me.loadedByXrLabel, Me.checkedByXrLabel, Me.physicalConditionXrLabel, Me.loadConditionXrLabel, Me.startTimeXrLabel, Me.lpnLabelXrLabel, Me.XrLabel19, Me.XrLabel18, Me.spgLogoXrPictureBox, Me.XrLabel34, Me.XrLabel16, Me.XrLabel15, Me.XrLabel14, Me.XrLabel13, Me.qtyLabelXrLabel, Me.sealXrLabel, Me.trailerXrLabel, Me.carrierXrLabel, Me.deliveryNoteNumberXrLabel, Me.poXrLabel, Me.XrLabel11, Me.XrLabel10, Me.XrLabel9, Me.deliveryNoteLabelXrLabel, Me.XrLabel6, Me.toXrLabel, Me.fromXrLabel, Me.XrLabel5, Me.XrLabel4, Me.bolXrLabel, Me.dateXrLabel, Me.XrLabel3, Me.XrLabel2, Me.reportTitleXrLabel, Me.locationId})
         Me.ReportHeader.HeightF = 400.0!
         Me.ReportHeader.KeepTogether = True
         Me.ReportHeader.Name = "ReportHeader"
@@ -354,7 +346,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.XrLabel1.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 350.0!)
+        Me.XrLabel1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 350.0!)
         Me.XrLabel1.Name = "XrLabel1"
         Me.XrLabel1.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel1.SizeF = New System.Drawing.SizeF(117.5!, 25.0!)
@@ -428,7 +420,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.loadedByLabelXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top), DevExpress.XtraPrinting.BorderSide)
         Me.loadedByLabelXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.loadedByLabelXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 300.0!)
+        Me.loadedByLabelXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 300.0!)
         Me.loadedByLabelXrLabel.Name = "loadedByLabelXrLabel"
         Me.loadedByLabelXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.loadedByLabelXrLabel.SizeF = New System.Drawing.SizeF(105.0!, 25.0!)
@@ -500,7 +492,7 @@ Partial Public Class PackingListXtraReport
         Me.loadedByXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top), DevExpress.XtraPrinting.BorderSide)
         Me.loadedByXrLabel.CanGrow = False
         Me.loadedByXrLabel.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.loadedByXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 325.0!)
+        Me.loadedByXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 325.0!)
         Me.loadedByXrLabel.Name = "loadedByXrLabel"
         Me.loadedByXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.loadedByXrLabel.SizeF = New System.Drawing.SizeF(105.0!, 25.0!)
@@ -622,7 +614,7 @@ Partial Public Class PackingListXtraReport
         'spgLogoXrPictureBox
         '
         Me.spgLogoXrPictureBox.Image = CType(resources.GetObject("spgLogoXrPictureBox.Image"), System.Drawing.Image)
-        Me.spgLogoXrPictureBox.LocationFloat = New DevExpress.Utils.PointFloat(10.00001!, 0.0!)
+        Me.spgLogoXrPictureBox.LocationFloat = New DevExpress.Utils.PointFloat(10.00001!, 0!)
         Me.spgLogoXrPictureBox.Name = "spgLogoXrPictureBox"
         Me.spgLogoXrPictureBox.SizeF = New System.Drawing.SizeF(211.62!, 97.04!)
         Me.spgLogoXrPictureBox.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage
@@ -710,7 +702,7 @@ Partial Public Class PackingListXtraReport
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.qtyLabelXrLabel.CanGrow = False
         Me.qtyLabelXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.qtyLabelXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 375.0!)
+        Me.qtyLabelXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 375.0!)
         Me.qtyLabelXrLabel.Name = "qtyLabelXrLabel"
         Me.qtyLabelXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.qtyLabelXrLabel.SizeF = New System.Drawing.SizeF(48.0!, 25.0!)
@@ -786,7 +778,7 @@ Partial Public Class PackingListXtraReport
         Me.poXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top), DevExpress.XtraPrinting.BorderSide)
         Me.poXrLabel.CanGrow = False
         Me.poXrLabel.Font = New System.Drawing.Font("Arial", 9.0!)
-        Me.poXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 275.0!)
+        Me.poXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 275.0!)
         Me.poXrLabel.Name = "poXrLabel"
         Me.poXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.poXrLabel.SizeF = New System.Drawing.SizeF(155.0!, 25.0!)
@@ -857,7 +849,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.XrLabel6.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel6.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 250.0!)
+        Me.XrLabel6.LocationFloat = New DevExpress.Utils.PointFloat(0!, 250.0!)
         Me.XrLabel6.Name = "XrLabel6"
         Me.XrLabel6.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel6.SizeF = New System.Drawing.SizeF(155.0!, 25.0!)
@@ -888,7 +880,7 @@ Partial Public Class PackingListXtraReport
             Or DevExpress.XtraPrinting.BorderSide.Right) _
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.fromXrLabel.Font = New System.Drawing.Font("Arial", 10.0!)
-        Me.fromXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 125.0!)
+        Me.fromXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 125.0!)
         Me.fromXrLabel.Multiline = True
         Me.fromXrLabel.Name = "fromXrLabel"
         Me.fromXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
@@ -902,7 +894,7 @@ Partial Public Class PackingListXtraReport
         Me.XrLabel5.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
             Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
         Me.XrLabel5.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 100.0!)
+        Me.XrLabel5.LocationFloat = New DevExpress.Utils.PointFloat(0!, 100.0!)
         Me.XrLabel5.Name = "XrLabel5"
         Me.XrLabel5.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel5.SizeF = New System.Drawing.SizeF(325.0!, 25.0!)
@@ -990,7 +982,7 @@ Partial Public Class PackingListXtraReport
         'reportTitleXrLabel
         '
         Me.reportTitleXrLabel.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Bold)
-        Me.reportTitleXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(312.5!, 0.0!)
+        Me.reportTitleXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(312.5!, 0!)
         Me.reportTitleXrLabel.Name = "reportTitleXrLabel"
         Me.reportTitleXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.reportTitleXrLabel.SizeF = New System.Drawing.SizeF(146.1667!, 25.0!)
@@ -1001,8 +993,8 @@ Partial Public Class PackingListXtraReport
         '
         'ReportFooter
         '
-        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.totalPalletWeightXrLabel, Me.palletsTotalXrLabel, Me.XrLabel33, Me.XrLabel32, Me.additionalPalletsXrLabel, Me.XrLabel31, Me.XrLabel23, Me.totalPalletsXrLabel, Me.totalWeightXrLabel, Me.XrLine1})
-        Me.ReportFooter.HeightF = 75.0!
+        Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.totalPalletWeightXrLabel, Me.palletsTotalXrLabel, Me.XrLabel33, Me.XrLabel23, Me.totalPalletsXrLabel, Me.totalWeightXrLabel, Me.XrLine1})
+        Me.ReportFooter.HeightF = 52.0!
         Me.ReportFooter.KeepTogether = True
         Me.ReportFooter.Name = "ReportFooter"
         Me.ReportFooter.PrintAtBottom = True
@@ -1011,7 +1003,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.totalPalletWeightXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.totalPalletWeightXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.totalPalletWeightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(717.0!, 25.0!)
+        Me.totalPalletWeightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(717.0!, 2.0!)
         Me.totalPalletWeightXrLabel.Name = "totalPalletWeightXrLabel"
         Me.totalPalletWeightXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.totalPalletWeightXrLabel.SizeF = New System.Drawing.SizeF(61.0!, 25.0!)
@@ -1025,7 +1017,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.palletsTotalXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.palletsTotalXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.palletsTotalXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 50.0!)
+        Me.palletsTotalXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 27.0!)
         Me.palletsTotalXrLabel.Name = "palletsTotalXrLabel"
         Me.palletsTotalXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.palletsTotalXrLabel.SizeF = New System.Drawing.SizeF(58.0!, 25.0!)
@@ -1038,7 +1030,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.XrLabel33.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel33.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(399.0!, 25.0!)
+        Me.XrLabel33.LocationFloat = New DevExpress.Utils.PointFloat(399.0!, 2.0!)
         Me.XrLabel33.Name = "XrLabel33"
         Me.XrLabel33.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel33.SizeF = New System.Drawing.SizeF(260.0!, 25.0!)
@@ -1048,52 +1040,11 @@ Partial Public Class PackingListXtraReport
         Me.XrLabel33.Text = "             Total Pallets    "
         Me.XrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
-        'XrLabel32
-        '
-        Me.XrLabel32.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
-        Me.XrLabel32.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel32.LocationFloat = New DevExpress.Utils.PointFloat(713.125!, 1.999982!)
-        Me.XrLabel32.Name = "XrLabel32"
-        Me.XrLabel32.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel32.SizeF = New System.Drawing.SizeF(65.0!, 25.0!)
-        Me.XrLabel32.StylePriority.UseBorders = False
-        Me.XrLabel32.StylePriority.UseFont = False
-        Me.XrLabel32.StylePriority.UseTextAlignment = False
-        Me.XrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        '
-        'additionalPalletsXrLabel
-        '
-        Me.additionalPalletsXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
-        Me.additionalPalletsXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.additionalPalletsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 1.999982!)
-        Me.additionalPalletsXrLabel.Name = "additionalPalletsXrLabel"
-        Me.additionalPalletsXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.additionalPalletsXrLabel.SizeF = New System.Drawing.SizeF(58.0!, 25.0!)
-        Me.additionalPalletsXrLabel.StylePriority.UseBorders = False
-        Me.additionalPalletsXrLabel.StylePriority.UseFont = False
-        Me.additionalPalletsXrLabel.StylePriority.UseTextAlignment = False
-        Me.additionalPalletsXrLabel.Text = "Pallets"
-        Me.additionalPalletsXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        '
-        'XrLabel31
-        '
-        Me.XrLabel31.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
-        Me.XrLabel31.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel31.LocationFloat = New DevExpress.Utils.PointFloat(399.0!, 1.999982!)
-        Me.XrLabel31.Name = "XrLabel31"
-        Me.XrLabel31.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel31.SizeF = New System.Drawing.SizeF(260.0!, 25.0!)
-        Me.XrLabel31.StylePriority.UseBorders = False
-        Me.XrLabel31.StylePriority.UseFont = False
-        Me.XrLabel31.StylePriority.UseTextAlignment = False
-        Me.XrLabel31.Text = "                      Additional Pallets"
-        Me.XrLabel31.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-        '
         'XrLabel23
         '
         Me.XrLabel23.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.XrLabel23.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel23.LocationFloat = New DevExpress.Utils.PointFloat(398.0!, 50.0!)
+        Me.XrLabel23.LocationFloat = New DevExpress.Utils.PointFloat(398.0!, 27.0!)
         Me.XrLabel23.Name = "XrLabel23"
         Me.XrLabel23.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel23.SizeF = New System.Drawing.SizeF(261.9999!, 25.0!)
@@ -1107,7 +1058,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.totalPalletsXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.totalPalletsXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.totalPalletsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 25.0!)
+        Me.totalPalletsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 2.0!)
         Me.totalPalletsXrLabel.Name = "totalPalletsXrLabel"
         Me.totalPalletsXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.totalPalletsXrLabel.SizeF = New System.Drawing.SizeF(58.0!, 25.0!)
@@ -1121,7 +1072,7 @@ Partial Public Class PackingListXtraReport
         '
         Me.totalWeightXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Bottom
         Me.totalWeightXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.totalWeightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(717.0!, 50.0!)
+        Me.totalWeightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(717.0!, 27.0!)
         Me.totalWeightXrLabel.Name = "totalWeightXrLabel"
         Me.totalWeightXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.totalWeightXrLabel.SizeF = New System.Drawing.SizeF(61.0!, 25.0!)
@@ -1133,7 +1084,7 @@ Partial Public Class PackingListXtraReport
         '
         'XrLine1
         '
-        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
+        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrLine1.Name = "XrLine1"
         Me.XrLine1.SizeF = New System.Drawing.SizeF(777.125!, 2.0!)
         '
@@ -1150,7 +1101,7 @@ Partial Public Class PackingListXtraReport
         Me.XrLabel21.BackColor = System.Drawing.Color.White
         Me.XrLabel21.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.XrLabel21.Font = New System.Drawing.Font("Arial", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(312.5!, 0.0!)
+        Me.XrLabel21.LocationFloat = New DevExpress.Utils.PointFloat(340.505!, 0!)
         Me.XrLabel21.Name = "XrLabel21"
         Me.XrLabel21.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.XrLabel21.SizeF = New System.Drawing.SizeF(111.5!, 25.0!)
@@ -1161,65 +1112,25 @@ Partial Public Class PackingListXtraReport
         Me.XrLabel21.Text = "Returns"
         Me.XrLabel21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
-        'XrCrossBandLine1XRCrossBandLine
-        '
-        Me.XrCrossBandLine1XRCrossBandLine.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine1XRCrossBandLine.EndPointFloat = New DevExpress.Utils.PointFloat(659.0!, 75.0!)
-        Me.XrCrossBandLine1XRCrossBandLine.LocationFloat = New DevExpress.Utils.PointFloat(659.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine.Name = "XrCrossBandLine1XRCrossBandLine"
-        Me.XrCrossBandLine1XRCrossBandLine.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine1XRCrossBandLine.StartPointFloat = New DevExpress.Utils.PointFloat(659.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine.WidthF = 1.0!
-        '
         'XrCrossBandLine1XRCrossBandLine2
         '
         Me.XrCrossBandLine1XRCrossBandLine2.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine1XRCrossBandLine2.EndPointFloat = New DevExpress.Utils.PointFloat(777.125!, 70.04166!)
+        Me.XrCrossBandLine1XRCrossBandLine2.EndPointFloat = New DevExpress.Utils.PointFloat(777.125!, 28.99998!)
         Me.XrCrossBandLine1XRCrossBandLine2.LocationFloat = New DevExpress.Utils.PointFloat(777.125!, 1.041667!)
         Me.XrCrossBandLine1XRCrossBandLine2.Name = "XrCrossBandLine1XRCrossBandLine2"
         Me.XrCrossBandLine1XRCrossBandLine2.StartBand = Me.returnsGroupHeader
         Me.XrCrossBandLine1XRCrossBandLine2.StartPointFloat = New DevExpress.Utils.PointFloat(777.125!, 1.041667!)
-        Me.XrCrossBandLine1XRCrossBandLine2.WidthF = 1.0!
-        '
-        'XrCrossBandLine1XRCrossBandLine3
-        '
-        Me.XrCrossBandLine1XRCrossBandLine3.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine1XRCrossBandLine3.EndPointFloat = New DevExpress.Utils.PointFloat(148.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine3.LocationFloat = New DevExpress.Utils.PointFloat(148.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine3.Name = "XrCrossBandLine1XRCrossBandLine3"
-        Me.XrCrossBandLine1XRCrossBandLine3.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine1XRCrossBandLine3.StartPointFloat = New DevExpress.Utils.PointFloat(148.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine3.WidthF = 1.0!
-        '
-        'XrCrossBandLine1XRCrossBandLine4
-        '
-        Me.XrCrossBandLine1XRCrossBandLine4.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine1XRCrossBandLine4.EndPointFloat = New DevExpress.Utils.PointFloat(48.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine4.LocationFloat = New DevExpress.Utils.PointFloat(48.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine4.Name = "XrCrossBandLine1XRCrossBandLine4"
-        Me.XrCrossBandLine1XRCrossBandLine4.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine1XRCrossBandLine4.StartPointFloat = New DevExpress.Utils.PointFloat(48.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine4.WidthF = 1.0!
+        Me.XrCrossBandLine1XRCrossBandLine2.WidthF = 1.041626!
         '
         'XrCrossBandLine1XRCrossBandLine5
         '
         Me.XrCrossBandLine1XRCrossBandLine5.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine1XRCrossBandLine5.EndPointFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
-        Me.XrCrossBandLine1XRCrossBandLine5.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
+        Me.XrCrossBandLine1XRCrossBandLine5.EndPointFloat = New DevExpress.Utils.PointFloat(0!, 2.0!)
+        Me.XrCrossBandLine1XRCrossBandLine5.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrCrossBandLine1XRCrossBandLine5.Name = "XrCrossBandLine1XRCrossBandLine5"
         Me.XrCrossBandLine1XRCrossBandLine5.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine1XRCrossBandLine5.StartPointFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
+        Me.XrCrossBandLine1XRCrossBandLine5.StartPointFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.XrCrossBandLine1XRCrossBandLine5.WidthF = 1.0!
-        '
-        'XrCrossBandLine1
-        '
-        Me.XrCrossBandLine1.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine1.EndPointFloat = New DevExpress.Utils.PointFloat(717.0!, 75.0!)
-        Me.XrCrossBandLine1.LocationFloat = New DevExpress.Utils.PointFloat(717.0!, 0.0!)
-        Me.XrCrossBandLine1.Name = "XrCrossBandLine1"
-        Me.XrCrossBandLine1.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine1.StartPointFloat = New DevExpress.Utils.PointFloat(717.0!, 0.0!)
-        Me.XrCrossBandLine1.WidthF = 1.0!
         '
         'TopMarginBand1
         '
@@ -1241,20 +1152,24 @@ Partial Public Class PackingListXtraReport
         '
         'itemsGroupFooter
         '
-        Me.itemsGroupFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.itemTotalWeightXrLabel, Me.itemTotalPalletsXrLabel, Me.groupItemDescriptionXrLabel, Me.groupItemCodeXrLabel, Me.itemTotalQuantityXrLabel})
-        Me.itemsGroupFooter.Expanded = False
+        Me.itemsGroupFooter.BackColor = System.Drawing.Color.Gray
+        Me.itemsGroupFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.itemTotalWeightXrLabel, Me.itemTotalPalletsXrLabel, Me.groupItemDescriptionXrLabel, Me.groupItemCodeXrLabel, Me.itemTotalQuantityXrLabel, Me.groupItemLabel})
+        Me.itemsGroupFooter.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold)
         Me.itemsGroupFooter.HeightF = 25.0!
         Me.itemsGroupFooter.Name = "itemsGroupFooter"
-        Me.itemsGroupFooter.Visible = False
+        Me.itemsGroupFooter.StylePriority.UseBackColor = False
+        Me.itemsGroupFooter.StylePriority.UseFont = False
         '
         'itemTotalWeightXrLabel
         '
-        Me.itemTotalWeightXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.itemTotalWeightXrLabel.BackColor = System.Drawing.Color.FromArgb(CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer))
+        Me.itemTotalWeightXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.itemTotalWeightXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.itemTotalWeightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(712.125!, 0.0!)
+        Me.itemTotalWeightXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(712.125!, 0!)
         Me.itemTotalWeightXrLabel.Name = "itemTotalWeightXrLabel"
         Me.itemTotalWeightXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.itemTotalWeightXrLabel.SizeF = New System.Drawing.SizeF(65.0!, 25.0!)
+        Me.itemTotalWeightXrLabel.StylePriority.UseBackColor = False
         Me.itemTotalWeightXrLabel.StylePriority.UseBorders = False
         Me.itemTotalWeightXrLabel.StylePriority.UseFont = False
         Me.itemTotalWeightXrLabel.StylePriority.UseTextAlignment = False
@@ -1266,15 +1181,18 @@ Partial Public Class PackingListXtraReport
         '
         'itemTotalPalletsXrLabel
         '
-        Me.itemTotalPalletsXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.itemTotalPalletsXrLabel.BackColor = System.Drawing.Color.FromArgb(CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer))
+        Me.itemTotalPalletsXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.itemTotalPalletsXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.itemTotalPalletsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(652.1251!, 0.0!)
+        Me.itemTotalPalletsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(652.1251!, 0!)
         Me.itemTotalPalletsXrLabel.Name = "itemTotalPalletsXrLabel"
         Me.itemTotalPalletsXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.itemTotalPalletsXrLabel.SizeF = New System.Drawing.SizeF(60.0!, 25.0!)
+        Me.itemTotalPalletsXrLabel.StylePriority.UseBackColor = False
         Me.itemTotalPalletsXrLabel.StylePriority.UseBorders = False
         Me.itemTotalPalletsXrLabel.StylePriority.UseFont = False
         Me.itemTotalPalletsXrLabel.StylePriority.UseTextAlignment = False
+        XrSummary2.FormatString = "{0:#,###.00}"
         XrSummary2.IgnoreNullValues = True
         XrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
         Me.itemTotalPalletsXrLabel.Summary = XrSummary2
@@ -1283,41 +1201,50 @@ Partial Public Class PackingListXtraReport
         '
         'groupItemDescriptionXrLabel
         '
-        Me.groupItemDescriptionXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.groupItemDescriptionXrLabel.BackColor = System.Drawing.Color.FromArgb(CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer))
+        Me.groupItemDescriptionXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.groupItemDescriptionXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.groupItemDescriptionXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(185.0!, 0.0!)
+        Me.groupItemDescriptionXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(650.0417!, 0!)
         Me.groupItemDescriptionXrLabel.Multiline = True
         Me.groupItemDescriptionXrLabel.Name = "groupItemDescriptionXrLabel"
         Me.groupItemDescriptionXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.groupItemDescriptionXrLabel.SizeF = New System.Drawing.SizeF(390.0!, 25.0!)
+        Me.groupItemDescriptionXrLabel.SizeF = New System.Drawing.SizeF(2.083374!, 25.0!)
+        Me.groupItemDescriptionXrLabel.StylePriority.UseBackColor = False
         Me.groupItemDescriptionXrLabel.StylePriority.UseBorders = False
         Me.groupItemDescriptionXrLabel.StylePriority.UseFont = False
         Me.groupItemDescriptionXrLabel.StylePriority.UseTextAlignment = False
         Me.groupItemDescriptionXrLabel.Text = "Item Description"
         Me.groupItemDescriptionXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.groupItemDescriptionXrLabel.Visible = False
         '
         'groupItemCodeXrLabel
         '
-        Me.groupItemCodeXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.groupItemCodeXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.groupItemCodeXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(60.0!, 0.0!)
+        Me.groupItemCodeXrLabel.BackColor = System.Drawing.Color.FromArgb(CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer))
+        Me.groupItemCodeXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Top Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.groupItemCodeXrLabel.Font = New System.Drawing.Font("Arial", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.groupItemCodeXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(155.0!, 0!)
         Me.groupItemCodeXrLabel.Name = "groupItemCodeXrLabel"
         Me.groupItemCodeXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.groupItemCodeXrLabel.SizeF = New System.Drawing.SizeF(125.0!, 25.0!)
+        Me.groupItemCodeXrLabel.SizeF = New System.Drawing.SizeF(497.1251!, 25.0!)
+        Me.groupItemCodeXrLabel.StylePriority.UseBackColor = False
         Me.groupItemCodeXrLabel.StylePriority.UseBorders = False
         Me.groupItemCodeXrLabel.StylePriority.UseFont = False
         Me.groupItemCodeXrLabel.StylePriority.UseTextAlignment = False
         Me.groupItemCodeXrLabel.Text = "Item #"
-        Me.groupItemCodeXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.groupItemCodeXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
         '
         'itemTotalQuantityXrLabel
         '
-        Me.itemTotalQuantityXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
-        Me.itemTotalQuantityXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.itemTotalQuantityXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.0!, 0.0!)
+        Me.itemTotalQuantityXrLabel.BackColor = System.Drawing.Color.FromArgb(CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer))
+        Me.itemTotalQuantityXrLabel.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Right) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.itemTotalQuantityXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.itemTotalQuantityXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
         Me.itemTotalQuantityXrLabel.Name = "itemTotalQuantityXrLabel"
         Me.itemTotalQuantityXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.itemTotalQuantityXrLabel.SizeF = New System.Drawing.SizeF(60.0!, 25.0!)
+        Me.itemTotalQuantityXrLabel.SizeF = New System.Drawing.SizeF(47.99998!, 25.0!)
+        Me.itemTotalQuantityXrLabel.StylePriority.UseBackColor = False
         Me.itemTotalQuantityXrLabel.StylePriority.UseBorders = False
         Me.itemTotalQuantityXrLabel.StylePriority.UseFont = False
         Me.itemTotalQuantityXrLabel.StylePriority.UseTextAlignment = False
@@ -1327,40 +1254,27 @@ Partial Public Class PackingListXtraReport
         Me.itemTotalQuantityXrLabel.Text = "Qty"
         Me.itemTotalQuantityXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
+        'groupItemLabel
+        '
+        Me.groupItemLabel.BackColor = System.Drawing.Color.FromArgb(CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(148, Byte), Integer))
+        Me.groupItemLabel.Borders = CType(((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
+            Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
+        Me.groupItemLabel.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.groupItemLabel.LocationFloat = New DevExpress.Utils.PointFloat(48.00002!, 0!)
+        Me.groupItemLabel.Name = "groupItemLabel"
+        Me.groupItemLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.groupItemLabel.SizeF = New System.Drawing.SizeF(107.0!, 25.0!)
+        Me.groupItemLabel.StylePriority.UseBackColor = False
+        Me.groupItemLabel.StylePriority.UseBorders = False
+        Me.groupItemLabel.StylePriority.UseFont = False
+        Me.groupItemLabel.StylePriority.UseTextAlignment = False
+        Me.groupItemLabel.Text = "Subtotal Item # "
+        Me.groupItemLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        '
         'itemGroupHeader
         '
-        Me.itemGroupHeader.HeightF = 0.0!
+        Me.itemGroupHeader.HeightF = 0!
         Me.itemGroupHeader.Name = "itemGroupHeader"
-        '
-        'XrCrossBandLine2
-        '
-        Me.XrCrossBandLine2.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine2.EndPointFloat = New DevExpress.Utils.PointFloat(398.0!, 75.0!)
-        Me.XrCrossBandLine2.LocationFloat = New DevExpress.Utils.PointFloat(398.0!, 0.0!)
-        Me.XrCrossBandLine2.Name = "XrCrossBandLine2"
-        Me.XrCrossBandLine2.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine2.StartPointFloat = New DevExpress.Utils.PointFloat(398.0!, 0.0!)
-        Me.XrCrossBandLine2.WidthF = 1.0!
-        '
-        'XrCrossBandLine3
-        '
-        Me.XrCrossBandLine3.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine3.EndPointFloat = New DevExpress.Utils.PointFloat(585.0!, 0.0!)
-        Me.XrCrossBandLine3.LocationFloat = New DevExpress.Utils.PointFloat(585.0!, 0.0!)
-        Me.XrCrossBandLine3.Name = "XrCrossBandLine3"
-        Me.XrCrossBandLine3.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine3.StartPointFloat = New DevExpress.Utils.PointFloat(585.0!, 0.0!)
-        Me.XrCrossBandLine3.WidthF = 1.0!
-        '
-        'XrCrossBandLine4
-        '
-        Me.XrCrossBandLine4.EndBand = Me.ReportFooter
-        Me.XrCrossBandLine4.EndPointFloat = New DevExpress.Utils.PointFloat(485.0!, 0.0!)
-        Me.XrCrossBandLine4.LocationFloat = New DevExpress.Utils.PointFloat(485.0!, 0.0!)
-        Me.XrCrossBandLine4.Name = "XrCrossBandLine4"
-        Me.XrCrossBandLine4.StartBand = Me.returnsGroupHeader
-        Me.XrCrossBandLine4.StartPointFloat = New DevExpress.Utils.PointFloat(485.0!, 0.0!)
-        Me.XrCrossBandLine4.WidthF = 1.0!
         '
         'PageFooter
         '
@@ -1371,17 +1285,25 @@ Partial Public Class PackingListXtraReport
         'packingListpageinfo
         '
         Me.packingListpageinfo.Format = "Page {0} of {1}"
-        Me.packingListpageinfo.LocationFloat = New DevExpress.Utils.PointFloat(670.0!, 0.0!)
+        Me.packingListpageinfo.LocationFloat = New DevExpress.Utils.PointFloat(670.0!, 0!)
         Me.packingListpageinfo.Name = "packingListpageinfo"
         Me.packingListpageinfo.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
         Me.packingListpageinfo.Visible = False
         '
+        'locationId
+        '
+        Me.locationId.LocationFloat = New DevExpress.Utils.PointFloat(194.2083!, 100.0!)
+        Me.locationId.Name = "locationId"
+        Me.locationId.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
+        Me.locationId.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+        Me.locationId.Visible = False
+        '
         'PackingListXtraReport
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.ReportHeader, Me.ReportFooter, Me.returnsGroupHeader, Me.TopMarginBand1, Me.BottomMarginBand1, Me.itemsGroupFooter, Me.itemGroupHeader, Me.PageFooter})
-        Me.CrossBandControls.AddRange(New DevExpress.XtraReports.UI.XRCrossBandControl() {Me.XrCrossBandLine4, Me.XrCrossBandLine3, Me.XrCrossBandLine2, Me.XrCrossBandLine1XRCrossBandLine3, Me.XrCrossBandLine1XRCrossBandLine4, Me.XrCrossBandLine1XRCrossBandLine, Me.XrCrossBandLine1XRCrossBandLine2, Me.XrCrossBandLine1XRCrossBandLine5, Me.XrCrossBandLine1})
-        Me.Margins = New System.Drawing.Printing.Margins(36, 34, 50, 50)
-        Me.Version = "13.1"
+        Me.CrossBandControls.AddRange(New DevExpress.XtraReports.UI.XRCrossBandControl() {Me.XrCrossBandLine1XRCrossBandLine2, Me.XrCrossBandLine1XRCrossBandLine5})
+        Me.Margins = New System.Drawing.Printing.Margins(36, 35, 50, 50)
+        Me.Version = "17.1"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -1423,26 +1345,16 @@ Partial Public Class PackingListXtraReport
     Friend WithEvents totalPalletsXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents totalWeightXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
-    Friend WithEvents XrCrossBandLine1XRCrossBandLine As DevExpress.XtraReports.UI.XRCrossBandLine
     Friend WithEvents XrCrossBandLine1XRCrossBandLine2 As DevExpress.XtraReports.UI.XRCrossBandLine
-    Friend WithEvents XrCrossBandLine1XRCrossBandLine3 As DevExpress.XtraReports.UI.XRCrossBandLine
-    Friend WithEvents XrCrossBandLine1XRCrossBandLine4 As DevExpress.XtraReports.UI.XRCrossBandLine
     Friend WithEvents XrCrossBandLine1XRCrossBandLine5 As DevExpress.XtraReports.UI.XRCrossBandLine
-    Friend WithEvents XrCrossBandLine1 As DevExpress.XtraReports.UI.XRCrossBandLine
-    Friend WithEvents additionalPalletsXrLabel As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel31 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents palletsTotalXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel33 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrLabel32 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents totalPalletWeightXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel34 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents TopMarginBand1 As DevExpress.XtraReports.UI.TopMarginBand
     Friend WithEvents BottomMarginBand1 As DevExpress.XtraReports.UI.BottomMarginBand
     Friend WithEvents spgLogoXrPictureBox As DevExpress.XtraReports.UI.XRPictureBox
     Friend WithEvents itemsGroupFooter As DevExpress.XtraReports.UI.GroupFooterBand
-    Friend WithEvents itemTotalWeightXrLabel As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents itemTotalPalletsXrLabel As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents groupItemDescriptionXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents groupItemCodeXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents itemTotalQuantityXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents itemGroupHeader As DevExpress.XtraReports.UI.GroupHeaderBand
@@ -1452,9 +1364,6 @@ Partial Public Class PackingListXtraReport
     Friend WithEvents lpnLabelXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel19 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel18 As DevExpress.XtraReports.UI.XRLabel
-    Friend WithEvents XrCrossBandLine2 As DevExpress.XtraReports.UI.XRCrossBandLine
-    Friend WithEvents XrCrossBandLine3 As DevExpress.XtraReports.UI.XRCrossBandLine
-    Friend WithEvents XrCrossBandLine4 As DevExpress.XtraReports.UI.XRCrossBandLine
     Friend WithEvents PageFooter As DevExpress.XtraReports.UI.PageFooterBand
     Friend WithEvents packingListpageinfo As DevExpress.XtraReports.UI.XRPageInfo
     Friend WithEvents XrPageInfo1 As DevExpress.XtraReports.UI.XRPageInfo
@@ -1480,5 +1389,9 @@ Partial Public Class PackingListXtraReport
     Friend WithEvents XrLabel17 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents XrLabel8 As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents correctPalletsXrLabel As DevExpress.XtraReports.UI.XRLabel
-
+    Friend WithEvents itemTotalWeightXrLabel As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents itemTotalPalletsXrLabel As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents groupItemDescriptionXrLabel As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents groupItemLabel As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents locationId As DevExpress.XtraReports.UI.XRLabel
 End Class

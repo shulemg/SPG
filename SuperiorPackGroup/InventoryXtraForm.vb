@@ -13,6 +13,7 @@ Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 
 Public Class InventoryXtraForm
 
+    Private WithEvents m_timer As New Timer
     Private m_AllowAdd As Boolean = False
     Private m_Customers As CustomersBLL
     Private m_Inventory As InventoryBLL
@@ -205,6 +206,9 @@ Public Class InventoryXtraForm
 
     Private Sub filterSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles filterSimpleButton.Click
 
+        If toFilterDateEdit.DateTime.TimeOfDay.TotalMinutes = 0 Then
+            toFilterDateEdit.DateTime = DateAdd(DateInterval.Minute, 1439, toFilterDateEdit.DateTime)
+        End If
         FillInventoryView()
 
     End Sub
@@ -230,7 +234,18 @@ Public Class InventoryXtraForm
 
     End Sub
 
+    Private Sub TimerEventProcessor(myObject As Object,
+                                           ByVal myEventArgs As EventArgs) _
+                                       Handles m_timer.Tick
+        If itemLookUpEdit.EditValue Is Nothing Then
+            inventoryDateEdit.EditValue = Now
+        End If
+    End Sub
+
     Private Sub InventoryXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        m_timer.Interval = CInt(TimeSpan.FromMinutes(1).TotalMilliseconds)
+        m_timer.Start()
 
         Cursor = Cursors.WaitCursor
 
@@ -803,7 +818,7 @@ Public Class InventoryXtraForm
 
         'Set the from filter to the sunday of this week
         fromFilterDateEdit.DateTime = DateAdd(DateInterval.Day, (Weekday(Today) - 1) * -1, Today)
-        toFilterDateEdit.DateTime = Today
+        toFilterDateEdit.DateTime = DateAdd(DateInterval.Minute, 1439, Today)
         customerFilterLookUpEdit.EditValue = Nothing
         itemFilterLookUpEdit.EditValue = Nothing
         lotFilterTextEdit.EditValue = Nothing

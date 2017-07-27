@@ -704,7 +704,7 @@ Public Class ShippingXtraForm
         Me.sealTextEdit.Text = String.Empty
         Me.destinationLookUpEdit.EditValue = Nothing
         Me.destinationMemoEdit.Text = ""
-        Me.noteMemoEdit.Text = String.Empty
+        Me.noteMemoEdit.Text = $"{vbNewLine}{vbNewLine}IDEAL REFER TEMPERATURE IS{vbNewLine}65°F - 75°F CANDY{vbNewLine}55°F - 60°F CHOCOLATE"
         Me.deliveryNoteNumberTextEdit.EditValue = String.Empty
         Me.totalGrossWeightTextEdit.EditValue = 0
         Me.customerShipperCheckEdit.Checked = False
@@ -752,7 +752,7 @@ Public Class ShippingXtraForm
     Private Sub editBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles editBarButtonItem.ItemClick
 
         If m_CurrentShippingID Is Nothing Then
-            MessageBox.Show("Please select a shipping entry to edit.")
+            MessageBox.Show("Please Select a shipping entry To edit.")
             Exit Sub
         End If
 
@@ -763,7 +763,7 @@ Public Class ShippingXtraForm
         Me.totalGrossWeightTextEdit.Properties.ReadOnly = True
         Me.destinationMemoEdit.Properties.ReadOnly = True
         Me.shippingGridView.OptionsBehavior.Editable = True
-        locationLookUpEdit.Properties.ReadOnly = True
+        locationLookUpEdit.Properties.ReadOnly = False
         lpnNumberTextEdit.Properties.ReadOnly = False
         Utilities.MakeGridReadOnly(Me.returnsGridView, False)
         Me.shippingSearchGridControl.Enabled = False
@@ -936,6 +936,8 @@ Public Class ShippingXtraForm
             Exit Sub
         End If
 
+        Dim cstmr As SPG.CustomersRow
+        cstmr = m_CustomerShippings.GetCustomerByID(CInt(customerLookUpEdit.EditValue)).Item(0)
         Dim bol As New BillOfLadingXtraReport
 
         With bol
@@ -952,7 +954,7 @@ Public Class ShippingXtraForm
             .itemCodeXrLabel.DataBindings.Add("Text", Nothing, "ItemCode")
             .itemDescriptionXrLabel.DataBindings.Add("Text", Nothing, "ItemDescription")
             .palletsXrLabel.DataBindings.Add("Text", Nothing, "sngPallets", "{0:N2}")
-            .additionalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngSkits")
+            '.additionalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngSkits")
             .totalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngTotalPallets", "{0:N2}")
             .palletsTotalXrLabel.DataBindings.Add("Text", Nothing, "sngTotalPallets", "{0:N2}")
             .weightXrLabel.DataBindings.Add("Text", Nothing, "Weight", "{0:N2}")
@@ -964,6 +966,7 @@ Public Class ShippingXtraForm
             .groupItemDescriptionXrLabel.DataBindings.Add("Text", Nothing, "ItemDescription")
             .itemTotalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngPallets", "{0:N2}")
             .itemTotalWeightXrLabel.DataBindings.Add("Text", Nothing, "Weight", "{0:N2}")
+            .billTo.Text = $"{cstmr.CustomerName}{vbNewLine}{cstmr.Address}{vbNewLine}{cstmr.City}, {cstmr.State} {cstmr.ZipCode}"
             .DataSource = New BOLReportBLL().Getbolreport(m_CurrentShippingID.Value)
             .ShowPreview()
         End With
@@ -1252,6 +1255,7 @@ Public Class ShippingXtraForm
         Dim packingList As New PackingListXtraReport
 
         With packingList
+            .locationId.Text = locationLookUpEdit.Text
             .dateXrLabel.DataBindings.Add("Text", Nothing, "ShipMainDate", "{0:MM/dd/yyyy}")
             .bolXrLabel.DataBindings.Add("Text", Nothing, "ShipMainBOL")
             .poXrLabel.DataBindings.Add("Text", Nothing, "strPO")
@@ -1260,11 +1264,12 @@ Public Class ShippingXtraForm
             .trailerXrLabel.DataBindings.Add("Text", Nothing, "strTrailer")
             .sealXrLabel.DataBindings.Add("Text", Nothing, "strSeal")
             .returnsGroupHeader.GroupFields.Add(New DevExpress.XtraReports.UI.GroupField("ShippingType", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending))
+            .itemGroupHeader.GroupFields.Add(New DevExpress.XtraReports.UI.GroupField("ItemCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending))
             .qtyXrLabel.DataBindings.Add("Text", Nothing, "ShipDetDetQty")
             .itemCodeXrLabel.DataBindings.Add("Text", Nothing, "ItemCode")
             .itemDescriptionXrLabel.DataBindings.Add("Text", Nothing, "ItemDescription")
             .palletsXrLabel.DataBindings.Add("Text", Nothing, "sngPallets", "{0:N2}")
-            .additionalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngSkits")
+            '.additionalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngSkits")
             .totalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngTotalPallets", "{0:N2}")
             .palletsTotalXrLabel.DataBindings.Add("Text", Nothing, "sngTotalPallets", "{0:N2}")
             .weightXrLabel.DataBindings.Add("Text", Nothing, "Weight", "{0:N2}")
@@ -1358,4 +1363,7 @@ Public Class ShippingXtraForm
 
     End Sub
 
+    Private Sub LabelControl14_Click(sender As Object, e As EventArgs) Handles LabelControl14.Click
+
+    End Sub
 End Class

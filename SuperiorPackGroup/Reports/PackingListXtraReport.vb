@@ -6,7 +6,7 @@ Public Class PackingListXtraReport
     Private Sub fromXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles fromXrLabel.BeforePrint
 
         If reportTitleXrLabel.Text = "Receiving List" Then
-            fromXrLabel.Text = String.Format("{0}{1}{2}{1}{3}", GetCurrentColumnValue("CustomerName").ToString, vbCrLf, GetCurrentColumnValue("Address").ToString, _
+            fromXrLabel.Text = String.Format("{0}{1}{2}{1}{3}", GetCurrentColumnValue("CustomerName").ToString, vbCrLf, GetCurrentColumnValue("Address").ToString,
                                                GetCurrentColumnValue("Address2").ToString)
         Else
             Dim str As StringBuilder = New StringBuilder(String.Empty)
@@ -17,10 +17,14 @@ Public Class PackingListXtraReport
                 Str.Append("Superior Pack Group")
             End If
 
-            str.Append(String.Format("{0}2 Bailey Farm Road{0}Harriman, N.Y. 10926", vbCrLf))
+            If locationId.Text = "001" Then
+                str.Append(String.Format($"{vbNewLine}2 Bailey Farm Road{vbNewLine}Harriman, N.Y. 10926"))
+            ElseIf locationId.Text = "002" Then
+                str.Append(String.Format($"{vbNewLine}19 Industry Drive suite #104{vbNewLine}Mountainville, NY 10953"))
+            End If
+
             fromXrLabel.Text = str.ToString
         End If
-
     End Sub
 
     Private Sub toXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles toXrLabel.BeforePrint

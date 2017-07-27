@@ -108,7 +108,7 @@ Public Class InventoryBLL
     Private Sub SetInventoryFields(ByVal session As Session, ByVal inventoryDate As Date, ByVal item As Integer, ByVal quantity As Integer, ByVal pallets As Nullable(Of Single), ByVal po As String, ByVal lot As String, ByVal shift As Integer?, ByVal pallet As Integer?,
                                    ByVal expirationDate As Date?, ByVal locationID As Integer, ByVal note As String, ByVal production As Inventory)
 
-        SetField(Inventory.Fields.InventoryDate.PropertyName, production.InventoryDate, CDate(Format(inventoryDate, "D")), production)
+        SetField(Inventory.Fields.InventoryDate.PropertyName, production.InventoryDate, inventoryDate, production)
         SetField(Inventory.Fields.InventoryItemID.PropertyName, production.InventoryItemID, session.GetObjectByKey(Of Items)(item), production)
         SetField(Inventory.Fields.InventoryQuantity.PropertyName, production.InventoryQuantity, quantity, production)
         SetField(Inventory.Fields.InventoryPallets.PropertyName, production.InventoryPallets, pallets.Value, production)
@@ -374,7 +374,8 @@ Public Class InventoryBLL
         Dim value As Integer?
 
         Dim filter As New CriteriaOperatorCollection
-        filter.Add(New BinaryOperator("InventoryDate", inventoryDate, BinaryOperatorType.Equal))
+        filter.Add(New BinaryOperator("InventoryDate", inventoryDate.Date, BinaryOperatorType.GreaterOrEqual))
+        filter.Add(New BinaryOperator("InventoryDate", DateAdd("d", 1, inventoryDate.Date), BinaryOperatorType.Less))
         filter.Add(New BinaryOperator("InventoryItemID", itemID, BinaryOperatorType.Equal))
         If shift.HasValue Then
             filter.Add(New BinaryOperator("Shift", shift, BinaryOperatorType.Equal))

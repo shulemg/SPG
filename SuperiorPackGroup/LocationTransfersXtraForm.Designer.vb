@@ -20,7 +20,7 @@ Partial Class LocationTransfersXtraForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LocationTransfersXtraForm))
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.transfersBar = New DevExpress.XtraBars.Bar()
@@ -86,6 +86,7 @@ Partial Class LocationTransfersXtraForm
         Me.colTransferQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTransferUnits = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTransferPallets = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.refreshBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -125,9 +126,9 @@ Partial Class LocationTransfersXtraForm
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.addBarButtonItem, Me.editBarButtonItem, Me.cancelBarButtonItem, Me.saveBarButtonItem, Me.deleteBarButtonItem})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.addBarButtonItem, Me.editBarButtonItem, Me.cancelBarButtonItem, Me.saveBarButtonItem, Me.deleteBarButtonItem, Me.refreshBarButtonItem})
         Me.BarManager1.MainMenu = Me.Bar2
-        Me.BarManager1.MaxItemId = 5
+        Me.BarManager1.MaxItemId = 6
         Me.BarManager1.StatusBar = Me.Bar3
         '
         'transfersBar
@@ -136,7 +137,7 @@ Partial Class LocationTransfersXtraForm
         Me.transfersBar.DockCol = 0
         Me.transfersBar.DockRow = 1
         Me.transfersBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.transfersBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.addBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.editBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.deleteBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.cancelBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.saveBarButtonItem)})
+        Me.transfersBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.addBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.editBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.deleteBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.cancelBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.saveBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.refreshBarButtonItem)})
         Me.transfersBar.OptionsBar.UseWholeRow = True
         Me.transfersBar.Text = "Tools"
         '
@@ -199,6 +200,7 @@ Partial Class LocationTransfersXtraForm
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Size = New System.Drawing.Size(797, 49)
         '
         'barDockControlBottom
@@ -206,6 +208,7 @@ Partial Class LocationTransfersXtraForm
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 491)
+        Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(797, 23)
         '
         'barDockControlLeft
@@ -213,6 +216,7 @@ Partial Class LocationTransfersXtraForm
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Manager = Me.BarManager1
         Me.barDockControlLeft.Size = New System.Drawing.Size(0, 442)
         '
         'barDockControlRight
@@ -220,6 +224,7 @@ Partial Class LocationTransfersXtraForm
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(797, 49)
+        Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 442)
         '
         'SplitContainerControl1
@@ -601,7 +606,7 @@ Partial Class LocationTransfersXtraForm
         'deleteRepositoryItemButtonEdit
         '
         Me.deleteRepositoryItemButtonEdit.AutoHeight = False
-        Me.deleteRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, False, True, False, DevExpress.XtraEditors.ImageLocation.MiddleCenter, Nothing, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, "", Nothing, Nothing, True)})
+        Me.deleteRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, False, True, False, EditorButtonImageOptions1)})
         Me.deleteRepositoryItemButtonEdit.Name = "deleteRepositoryItemButtonEdit"
         Me.deleteRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
@@ -702,6 +707,12 @@ Partial Class LocationTransfersXtraForm
         Me.colTransferPallets.VisibleIndex = 7
         Me.colTransferPallets.Width = 104
         '
+        'refreshBarButtonItem
+        '
+        Me.refreshBarButtonItem.Caption = "Refresh"
+        Me.refreshBarButtonItem.Id = 5
+        Me.refreshBarButtonItem.Name = "refreshBarButtonItem"
+        '
         'LocationTransfersXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -746,6 +757,7 @@ Partial Class LocationTransfersXtraForm
         CType(Me.itemRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.itemXpView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
@@ -812,4 +824,5 @@ Partial Class LocationTransfersXtraForm
     Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents lpnNumberTextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents fullLpnNumberGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents refreshBarButtonItem As DevExpress.XtraBars.BarButtonItem
 End Class

@@ -354,7 +354,9 @@ Public Class LocationTransfersXtraForm
             editBarButtonItem.Enabled = False
             addBarButtonItem.Enabled = False
             deleteBarButtonItem.Enabled = False
+            refreshBarButtonItem.Enabled = False
         Else
+            refreshBarButtonItem.Enabled = True
             cancelBarButtonItem.Enabled = False
             saveBarButtonItem.Enabled = False
             deleteRepositoryItemButtonEdit.Buttons(0).Enabled = False
@@ -548,4 +550,16 @@ Public Class LocationTransfersXtraForm
 
     End Function
 
+    Private Sub refreshBarButtonItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles refreshBarButtonItem.ItemClick
+
+        m_TransfersSession.DropIdentityMap()
+        locationsXpView.Reload()
+        employeesXpView.Reload()
+        carrierXpView.Reload()
+        transferDetailsXpCollection.Reload()
+        transferSearchXpView.Reload()
+        transferDetailsXpCollection.Reload()
+        itemXpView.Reload()
+
+    End Sub
 End Class

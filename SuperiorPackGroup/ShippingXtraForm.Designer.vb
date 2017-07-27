@@ -381,6 +381,7 @@ Partial Class ShippingXtraForm
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Size = New System.Drawing.Size(868, 49)
         '
         'barDockControlBottom
@@ -388,6 +389,7 @@ Partial Class ShippingXtraForm
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 482)
+        Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(868, 23)
         '
         'barDockControlLeft
@@ -395,6 +397,7 @@ Partial Class ShippingXtraForm
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Manager = Me.BarManager1
         Me.barDockControlLeft.Size = New System.Drawing.Size(0, 433)
         '
         'barDockControlRight
@@ -402,6 +405,7 @@ Partial Class ShippingXtraForm
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(868, 49)
+        Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 433)
         '
         'locationXpView
@@ -518,6 +522,7 @@ Partial Class ShippingXtraForm
         '
         'noteMemoEdit
         '
+        Me.noteMemoEdit.EditValue = ""
         Me.noteMemoEdit.Location = New System.Drawing.Point(387, 244)
         Me.noteMemoEdit.Name = "noteMemoEdit"
         Me.noteMemoEdit.Size = New System.Drawing.Size(190, 69)
@@ -527,9 +532,9 @@ Partial Class ShippingXtraForm
         '
         Me.LabelControl14.Location = New System.Drawing.Point(286, 247)
         Me.LabelControl14.Name = "LabelControl14"
-        Me.LabelControl14.Size = New System.Drawing.Size(69, 13)
+        Me.LabelControl14.Size = New System.Drawing.Size(97, 13)
         Me.LabelControl14.TabIndex = 29
-        Me.LabelControl14.Text = "Delivery Note:"
+        Me.LabelControl14.Text = "Special Instructions:"
         '
         'destinationMemoEdit
         '
@@ -1493,6 +1498,7 @@ Partial Class ShippingXtraForm
         CType(Me.shippingDateRepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.shippingDateRepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents shippingXtraTabControl As DevExpress.XtraTab.XtraTabControl
