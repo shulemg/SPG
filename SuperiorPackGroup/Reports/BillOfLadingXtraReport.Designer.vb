@@ -71,6 +71,7 @@ Partial Public Class BillOfLadingXtraReport
         Me.XrLabel18 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel17 = New DevExpress.XtraReports.UI.XRLabel()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
+        Me.billTo = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrRichText1 = New DevExpress.XtraReports.UI.XRRichText()
         Me.XrPanel3 = New DevExpress.XtraReports.UI.XRPanel()
         Me.XrLabel30 = New DevExpress.XtraReports.UI.XRLabel()
@@ -103,7 +104,7 @@ Partial Public Class BillOfLadingXtraReport
         Me.itemTotalQuantityXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.itemGroupHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.returnsGroupFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
-        Me.billTo = New DevExpress.XtraReports.UI.XRLabel()
+        Me.locationId = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me.XrRichText1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
@@ -190,7 +191,7 @@ Partial Public Class BillOfLadingXtraReport
         '
         'ReportHeader
         '
-        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.spgLogoXrPictureBox, Me.XrLabel34, Me.XrLabel16, Me.XrLabel15, Me.XrLabel14, Me.XrLabel13, Me.XrLabel12, Me.sealXrLabel, Me.trailerXrLabel, Me.carrierXrLabel, Me.deliveryNoteNumberXrLabel, Me.poXrLabel, Me.XrLabel11, Me.XrLabel10, Me.XrLabel9, Me.XrLabel8, Me.XrLabel6, Me.toXrLabel, Me.fromXrLabel, Me.XrLabel5, Me.XrLabel4, Me.bolXrLabel, Me.dateXrLabel, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1})
+        Me.ReportHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.locationId, Me.spgLogoXrPictureBox, Me.XrLabel34, Me.XrLabel16, Me.XrLabel15, Me.XrLabel14, Me.XrLabel13, Me.XrLabel12, Me.sealXrLabel, Me.trailerXrLabel, Me.carrierXrLabel, Me.deliveryNoteNumberXrLabel, Me.poXrLabel, Me.XrLabel11, Me.XrLabel10, Me.XrLabel9, Me.XrLabel8, Me.XrLabel6, Me.toXrLabel, Me.fromXrLabel, Me.XrLabel5, Me.XrLabel4, Me.bolXrLabel, Me.dateXrLabel, Me.XrLabel3, Me.XrLabel2, Me.XrLabel1})
         Me.ReportHeader.HeightF = 325.0!
         Me.ReportHeader.KeepTogether = True
         Me.ReportHeader.Name = "ReportHeader"
@@ -752,6 +753,16 @@ Partial Public Class BillOfLadingXtraReport
         Me.PageFooter.HeightF = 248.0!
         Me.PageFooter.Name = "PageFooter"
         '
+        'billTo
+        '
+        Me.billTo.Font = New System.Drawing.Font("Arial", 9.75!)
+        Me.billTo.LocationFloat = New DevExpress.Utils.PointFloat(61.99999!, 192.0!)
+        Me.billTo.Multiline = True
+        Me.billTo.Name = "billTo"
+        Me.billTo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.billTo.SizeF = New System.Drawing.SizeF(238.0!, 50.00002!)
+        Me.billTo.StylePriority.UseFont = False
+        '
         'XrRichText1
         '
         Me.XrRichText1.Borders = CType((((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top) _
@@ -1108,15 +1119,13 @@ Partial Public Class BillOfLadingXtraReport
         Me.returnsGroupFooter.Level = 1
         Me.returnsGroupFooter.Name = "returnsGroupFooter"
         '
-        'billTo
+        'locationId
         '
-        Me.billTo.Font = New System.Drawing.Font("Arial", 9.75!)
-        Me.billTo.LocationFloat = New DevExpress.Utils.PointFloat(61.99999!, 192.0!)
-        Me.billTo.Multiline = True
-        Me.billTo.Name = "billTo"
-        Me.billTo.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.billTo.SizeF = New System.Drawing.SizeF(238.0!, 50.00002!)
-        Me.billTo.StylePriority.UseFont = False
+        Me.locationId.LocationFloat = New DevExpress.Utils.PointFloat(188.0!, 102.0!)
+        Me.locationId.Name = "locationId"
+        Me.locationId.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.locationId.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+        Me.locationId.Visible = False
         '
         'BillOfLadingXtraReport
         '
@@ -1209,4 +1218,5 @@ Partial Public Class BillOfLadingXtraReport
     Friend WithEvents itemGroupHeader As DevExpress.XtraReports.UI.GroupHeaderBand
     Friend WithEvents returnsGroupFooter As DevExpress.XtraReports.UI.GroupFooterBand
     Friend WithEvents billTo As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents locationId As DevExpress.XtraReports.UI.XRLabel
 End Class

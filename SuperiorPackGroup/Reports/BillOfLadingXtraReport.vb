@@ -10,7 +10,11 @@ Public Class BillOfLadingXtraReport
             str.Append("Superior Pack Group")
         End If
 
-        str.Append(String.Format("{0}2 Bailey Farm Road{0}Harriman, N.Y. 10926", vbCrLf))
+        If locationId.Text = "001" Then
+            str.Append(String.Format($"{vbNewLine}2 Bailey Farm Road{vbNewLine}Harriman, N.Y. 10926"))
+        ElseIf locationId.Text = "002" Then
+            str.Append(String.Format($"{vbNewLine}19 Industry Drive suite #104{vbNewLine}Mountainville, NY 10953"))
+        End If
 
         fromXrLabel.Text = str.ToString
 

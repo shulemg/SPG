@@ -61,11 +61,17 @@ Public Class BomAvailabilityReportBLL
                             (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)))
                         BomDemand.QuantityOnUnscheduledProjects += projectLine.UnitsNeededToSchedule * (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)))
                     Else
-                        BomDemand.QuantityOnHand = BomNeeded.BOMRawMatID.TotalQuantityOnHand
+                        BomDemand.LocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal)).Sum(Function(i) i.QuantityOnHand)
+                        BomDemand.NonLocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual)).Sum(Function(i) i.QuantityOnHand)
+                        Try
+                            BomDemand.NonLocalPalletsQuantityOnHand = BomDemand.NonLocalQuantityOnHand / (BomNeeded.BOMRawMatID.intUnitsPerPallet * BomNeeded.BOMRawMatID.intQtyPerUnit)
+                        Catch
+                        End Try
+                        'BomDemand.QuantityOnHand = BomNeeded.BOMRawMatID.TotalQuantityOnHand
                         BomDemand.QuantityOnScheduledProjects = (projectLine.UnitsNeeded - projectLine.UnitsNeededToSchedule) *
                             (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)))
-                        BomDemand.QuantityOnUnscheduledProjects = projectLine.UnitsNeededToSchedule * (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)))
-                        DemandSummaryDictionary.Add(BomDemand.DemandKey, BomDemand)
+                            BomDemand.QuantityOnUnscheduledProjects = projectLine.UnitsNeededToSchedule * (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)))
+                            DemandSummaryDictionary.Add(BomDemand.DemandKey, BomDemand)
                     End If
                 Next
                 For Each PoolBomNeeded As PoolBom In projectLine.ProjectItem.ItemPoolBom
@@ -78,7 +84,10 @@ Public Class BomAvailabilityReportBLL
                             (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)))
                         BomDemand.QuantityOnUnscheduledProjects += projectLine.UnitsNeededToSchedule * (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)))
                     Else
-                        BomDemand.QuantityOnHand = PoolBomNeeded.ItemPoolID.QuantityOnHand
+                        '------------   not tested could be bugy
+                        BomDemand.LocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal)).Sum(Function(i) i.QuantityOnHand)
+                        BomDemand.NonLocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual)).Sum(Function(i) i.QuantityOnHand)
+                        'BomDemand.QuantityOnHand = PoolBomNeeded.ItemPoolID.QuantityOnHand
                         BomDemand.QuantityOnScheduledProjects = (projectLine.UnitsNeeded - projectLine.UnitsNeededToSchedule) *
                             (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)))
                         BomDemand.QuantityOnUnscheduledProjects = projectLine.UnitsNeededToSchedule * (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)))

@@ -5,10 +5,16 @@ Public Class BomDemandSummary
     Public Property ItemID As Items
     Public Property ItemType As String
     Public Property PoolItemID As ItemPool
-    Public Property QuantityOnHand As Double
+    Public Property LocalQuantityOnHand As Double
+    Public Property NonLocalQuantityOnHand As Double
+    Public Property NonLocalPalletsQuantityOnHand As Double
     Public Property QuantityOnScheduledProjects As Double
     Public Property QuantityOnUnscheduledProjects As Double
-
+    Public ReadOnly Property QuantityOnHand As Double
+        Get
+            Return LocalQuantityOnHand + NonLocalQuantityOnHand
+        End Get
+    End Property
     Public ReadOnly Property BomDemandShortage As Double
         Get
             Return Math.Max(QuantityOnScheduledProjects - QuantityOnHand, 0)
@@ -20,13 +26,17 @@ Public Class BomDemandSummary
             Return QuantityOnScheduledProjects + QuantityOnUnscheduledProjects
         End Get
     End Property
-
+    Public ReadOnly Property BomDemandLocalShortage As Double
+        Get
+            Return Math.Max(TotalBomDemand - LocalQuantityOnHand, 0)
+        End Get
+    End Property
     Public ReadOnly Property TotalBomDemandShortage As Double
         Get
             Return Math.Max(TotalBomDemand - QuantityOnHand, 0)
         End Get
     End Property
-    
+
 
     'used for summary report to find the bom demand in the collection
     Public ReadOnly Property DemandKey As String

@@ -941,6 +941,7 @@ Public Class ShippingXtraForm
         Dim bol As New BillOfLadingXtraReport
 
         With bol
+            .locationId.Text = locationLookUpEdit.Text
             .dateXrLabel.DataBindings.Add("Text", Nothing, "ShipMainDate", "{0:MM/dd/yyyy}")
             .bolXrLabel.DataBindings.Add("Text", Nothing, "ShipMainBOL")
             .poXrLabel.DataBindings.Add("Text", Nothing, "strPO")

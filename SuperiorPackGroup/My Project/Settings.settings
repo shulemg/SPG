@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="UserConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=OTSERVER1\SQLEXPRESS;User ID=SPGUser;Password=SPGUs3r;Initial Catalog=SPGData</Value>
-    </Setting>
     <Setting Name="UserSecurityLevel" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -19,8 +16,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=.;Initial Catalog=SPGData;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="UserConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=SERVER1\SPG;User ID=SPGUser;Password=SPGUs3r;Initial Catalog=SPGData</Value>
+    </Setting>
     <Setting Name="SPGServerName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">OTSERVER1\SQLEXPRESS</Value>
+      <Value Profile="(Default)">SERVER1\SPG</Value>
     </Setting>
   </Settings>
 </SettingsFile>

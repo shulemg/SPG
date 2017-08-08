@@ -1246,21 +1246,23 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailItemCodeGridColumn.FieldName = "ItemCode"
                 ProjBomAvailItemDescriptionGridColumn.FieldName = "ItemDescription"
                 ProjBomAvailItemTypeGridColumn.FieldName = "ItemType"
-                ProjBomAvailQtyNotOnSchedGridColumn.FieldName = "QuantityOnUnscheduledProjects"
+                ProjBomAvailLocalQtyGridColumn.FieldName = "LocalQuantityOnHand"
                 ProjBomAvailQtyOnHndGridColumn.FieldName = "QuantityOnHand"
-                ProjBomAvailQtyOnSchedGridColumn.FieldName = "QuantityOnScheduledProjects"
-                ProjBomAvailQtyReqForProjGridColumn.FieldName = "QuantityRequiredForProject"
-                ProjBomAvailQtyShortageGridColumn.FieldName = "BomDemandShortage"
+                ProjBomAvailNonLocalQtyGridColumn.FieldName = "NonLocalQuantityOnHand"
+                ProjBomLocalShortageGridColumn.FieldName = "BomDemandLocalShortage"
+                ProjBomAvailQtyShortageGridColumn.FieldName = "TotalBomDemandShortage"
+                ProjBomAvailNonLocalPalletsQtyGridColumn.FieldName = "NonLocalPalletsQuantityOnHand"
             Case "BomDemandSummaryXtraReport"
                 ProjBomAvailItemCodeGridColumn.FieldName = "ItemCode"
                 ProjBomAvailItemDescriptionGridColumn.FieldName = "ItemDescription"
                 ProjBomAvailItemTypeGridColumn.FieldName = "ItemType"
-                ProjBomAvailQtyNotOnSchedGridColumn.FieldName = "QuantityOnUnscheduledProjects"
+                ProjBomAvailLocalQtyGridColumn.FieldName = "LocalQuantityOnHand"
                 ProjBomAvailQtyOnHndGridColumn.FieldName = "QuantityOnHand"
-                ProjBomAvailQtyOnSchedGridColumn.FieldName = "QuantityOnScheduledProjects"
-                ProjBomAvailQtyShortageGridColumn.FieldName = "BomDemandShortage"
+                ProjBomAvailNonLocalQtyGridColumn.FieldName = "NonLocalQuantityOnHand"
+                ProjBomAvailQtyShortageGridColumn.FieldName = "TotalBomDemandShortage"
                 ProjBomAvailTotalAmtNeededGridColumn.FieldName = "TotalBomDemand"
-                ProjBomAvailTotalShortageGridColumn.FieldName = "TotalBomDemandShortage"
+                ProjBomLocalShortageGridColumn.FieldName = "BomDemandLocalShortage"
+                ProjBomAvailNonLocalPalletsQtyGridColumn.FieldName = "NonLocalPalletsQuantityOnHand"
             Case "ProductionBillingXtraReport"
                 productionBillingDateGridColumn.FieldName = "Production Date"
                 productionBillingCustomerGridColumn.FieldName = "Customer Name"
@@ -1458,25 +1460,25 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailItemCodeGridColumn.Visible = True
                 ProjBomAvailItemDescriptionGridColumn.Visible = True
                 ProjBomAvailItemTypeGridColumn.Visible = True
-                ProjBomAvailQtyNotOnSchedGridColumn.Visible = True
-                ProjBomAvailQtyOnHndGridColumn.Visible = True
-                ProjBomAvailQtyOnSchedGridColumn.Visible = True
-                ProjBomAvailQtyReqForProjGridColumn.Visible = True
-                ProjBomAvailQtyShortageGridColumn.Visible = True
+                ProjBomLocalShortageGridColumn.Visible = True
+                ProjBomAvailQtyOnHndGridColumn.Visible = False
+                ProjBomAvailLocalQtyGridColumn.Visible = True
+                ProjBomAvailNonLocalQtyGridColumn.Visible = False
+                ProjBomAvailQtyShortageGridColumn.Visible = False
                 ProjBomAvailTotalAmtNeededGridColumn.Visible = False
-                ProjBomAvailTotalShortageGridColumn.Visible = False
+                ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = False
 
                 ProjBomAvailCustPOGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailItemCodeGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailItemDescriptionGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailItemTypeGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyNotOnSchedGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyOnHndGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyOnSchedGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyReqForProjGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyShortageGridColumn.OptionsColumn.ShowInCustomizationForm = True
+                ProjBomAvailNonLocalQtyGridColumn.OptionsColumn.ShowInCustomizationForm = False
+                ProjBomAvailQtyOnHndGridColumn.OptionsColumn.ShowInCustomizationForm = False
+                ProjBomAvailLocalQtyGridColumn.OptionsColumn.ShowInCustomizationForm = True
+                ProjBomLocalShortageGridColumn.OptionsColumn.ShowInCustomizationForm = True
+                ProjBomAvailQtyShortageGridColumn.OptionsColumn.ShowInCustomizationForm = False
                 ProjBomAvailTotalAmtNeededGridColumn.OptionsColumn.ShowInCustomizationForm = False
-                ProjBomAvailTotalShortageGridColumn.OptionsColumn.ShowInCustomizationForm = False
+                ProjBomAvailNonLocalPalletsQtyGridColumn.OptionsColumn.ShowInCustomizationForm = False
 
                 ProjBomAvailGridView.BestFitColumns()
             Case "BomDemandSummaryXtraReport"
@@ -1484,25 +1486,25 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailItemCodeGridColumn.Visible = True
                 ProjBomAvailItemDescriptionGridColumn.Visible = True
                 ProjBomAvailItemTypeGridColumn.Visible = True
-                ProjBomAvailQtyNotOnSchedGridColumn.Visible = True
+                ProjBomAvailLocalQtyGridColumn.Visible = True
                 ProjBomAvailQtyOnHndGridColumn.Visible = True
-                ProjBomAvailQtyOnSchedGridColumn.Visible = True
-                ProjBomAvailQtyReqForProjGridColumn.Visible = False
+                ProjBomAvailNonLocalQtyGridColumn.Visible = True
                 ProjBomAvailQtyShortageGridColumn.Visible = True
                 ProjBomAvailTotalAmtNeededGridColumn.Visible = True
-                ProjBomAvailTotalShortageGridColumn.Visible = True
+                ProjBomLocalShortageGridColumn.Visible = True
+                ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = True
 
                 ProjBomAvailCustPOGridColumn.OptionsColumn.ShowInCustomizationForm = False
                 ProjBomAvailItemCodeGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailItemDescriptionGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailItemTypeGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyNotOnSchedGridColumn.OptionsColumn.ShowInCustomizationForm = True
+                ProjBomLocalShortageGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailQtyOnHndGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyOnSchedGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailQtyReqForProjGridColumn.OptionsColumn.ShowInCustomizationForm = False
+                ProjBomAvailNonLocalQtyGridColumn.OptionsColumn.ShowInCustomizationForm = True
+                ProjBomAvailLocalQtyGridColumn.OptionsColumn.ShowInCustomizationForm = False
                 ProjBomAvailQtyShortageGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailTotalAmtNeededGridColumn.OptionsColumn.ShowInCustomizationForm = True
-                ProjBomAvailTotalShortageGridColumn.OptionsColumn.ShowInCustomizationForm = True
+                ProjBomAvailNonLocalPalletsQtyGridColumn.OptionsColumn.ShowInCustomizationForm = True
 
                 ProjBomAvailGridView.BestFitColumns()
             Case "ProductionBillingXtraReport"

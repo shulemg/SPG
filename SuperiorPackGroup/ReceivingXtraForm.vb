@@ -688,7 +688,7 @@ Public Class ReceivingXtraForm
 
         Utilities.MakeFormReadOnly(Me.generalXtraTabPage, False)
         Me.palletsTextEdit.Properties.ReadOnly = True
-        locationLookUpEdit.Properties.ReadOnly = True
+        'locationLookUpEdit.Properties.ReadOnly = True
         Me.receivingGridView.OptionsBehavior.Editable = True
         Utilities.MakeGridReadOnly(Me.returnsGridView, False)
         Me.receivingSearchGridControl.Enabled = False
@@ -938,6 +938,7 @@ Public Class ReceivingXtraForm
         Dim packingList As New PackingListXtraReport
 
         With packingList
+            .locationId.Text = locationLookUpEdit.Text
             .reportTitleXrLabel.Text = "Receiving List"
             .dateXrLabel.DataBindings.Add("Text", Nothing, "ReceivDate", "{0:MM/dd/yyyy}")
             .bolXrLabel.DataBindings.Add("Text", Nothing, "ReceivBOL")

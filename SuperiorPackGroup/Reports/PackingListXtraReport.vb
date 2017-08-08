@@ -31,9 +31,13 @@ Public Class PackingListXtraReport
 
         Try
             If reportTitleXrLabel.Text = "Receiving List" Then
-                toXrLabel.Text = String.Format("Superior Pack Group{0}2 Bailey Farm Road{0}Harriman, N.Y. 10926", vbCrLf)
+                If locationId.Text = "001" Then
+                    toXrLabel.Text = $"Superior Pack Group{vbNewLine}2 Bailey Farm Road{vbNewLine}Harriman, N.Y. 10926"
+                ElseIf locationId.Text = "002" Then
+                    toXrLabel.Text = $"Superior Pack Group{vbNewLine}19 Industry Drive suite #104{vbNewLine}Mountainville, NY 10953"
+                End If
             Else
-                toXrLabel.Text = String.Format("{0}{1}{2}{1}{3}", GetCurrentColumnValue("ShippingName").ToString, vbCrLf, GetCurrentColumnValue("ShippingAddress").ToString, _
+                    toXrLabel.Text = String.Format("{0}{1}{2}{1}{3}", GetCurrentColumnValue("ShippingName").ToString, vbCrLf, GetCurrentColumnValue("ShippingAddress").ToString, _
                                                GetCurrentColumnValue("ShippingAddress2").ToString)
             End If
         Catch

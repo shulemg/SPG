@@ -181,13 +181,12 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailItemCodeGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ProjBomAvailItemDescriptionGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ProjBomAvailItemTypeGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ProjBomAvailQtyReqForProjGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ProjBomAvailQtyOnHndGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ProjBomAvailQtyOnSchedGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ProjBomAvailQtyShortageGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ProjBomAvailQtyNotOnSchedGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ProjBomAvailTotalAmtNeededGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ProjBomAvailTotalShortageGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ProjBomAvailLocalQtyGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ProjBomLocalShortageGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ProjBomAvailNonLocalQtyGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ProjBomAvailQtyOnHndGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ProjBomAvailQtyShortageGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.previewProductionBillingXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.previewProductionBillingGridControl = New DevExpress.XtraGrid.GridControl()
         Me.previewProductionBillingGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -211,53 +210,54 @@ Partial Class QuickReportsXtraForm
         Me.reasonsPivotGridField = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.minutesPivotGridField = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.exportSaveFileDialog = New System.Windows.Forms.SaveFileDialog()
-        CType(Me.BarManager1,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SplitContainerControl1,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SplitContainerControl1.SuspendLayout
-        CType(Me.quickReportsGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.quickReportsGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.reportsXtraTabControl,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.reportsXtraTabControl.SuspendLayout
-        Me.previewCustoemrsXtraTabPage.SuspendLayout
-        CType(Me.previewGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewProductionEntriesXtraTabPage.SuspendLayout
-        CType(Me.previewProductionEntriesGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewProductionEntriesGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewLpnStatusXtraTabPage.SuspendLayout
-        CType(Me.previewLpnStatusGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewLpnStatusGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewCurrentRMInventoryXtraTabPage.SuspendLayout
-        CType(Me.previewCurrentRMInventoryGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewCurrentRMInventoryGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewCurrentInventoryXtraTabPage.SuspendLayout
-        CType(Me.outOfStockItemsCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.currentInventoryInactiveItemsCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.currentInventoryInactiveCustomersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewCurrentInventoryGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewCurrentInventoryGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewLocationTransfersXtraTabPage.SuspendLayout
-        CType(Me.previewLocationTransfersGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewLocationTransfersGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewShiftScheduleXtraTabPage.SuspendLayout
-        CType(Me.shiftScheduleGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.shiftScheduleGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.shiftScheduleShiftComboBoxEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.shiftScheduleDateDateEdit.Properties.CalendarTimeProperties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.shiftScheduleDateDateEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewWeeklyProductionXtraTabPage.SuspendLayout
-        CType(Me.weeklyProductionGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.weeklyProductionGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewProjBomAvailXtraTabPage.SuspendLayout
-        CType(Me.ProjBomAvailGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ProjBomAvailGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewProductionBillingXtraTabPage.SuspendLayout
-        CType(Me.previewProductionBillingGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.previewProductionBillingGridView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.previewBaggingXtraTabPage.SuspendLayout
-        CType(Me.baggingReportPivotGridControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.baggingReportXpView,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainerControl1.SuspendLayout()
+        CType(Me.quickReportsGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.quickReportsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reportsXtraTabControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.reportsXtraTabControl.SuspendLayout()
+        Me.previewCustoemrsXtraTabPage.SuspendLayout()
+        CType(Me.previewGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewProductionEntriesXtraTabPage.SuspendLayout()
+        CType(Me.previewProductionEntriesGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewProductionEntriesGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewLpnStatusXtraTabPage.SuspendLayout()
+        CType(Me.previewLpnStatusGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewLpnStatusGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewCurrentRMInventoryXtraTabPage.SuspendLayout()
+        CType(Me.previewCurrentRMInventoryGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewCurrentRMInventoryGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewCurrentInventoryXtraTabPage.SuspendLayout()
+        CType(Me.outOfStockItemsCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.currentInventoryInactiveItemsCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.currentInventoryInactiveCustomersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewCurrentInventoryGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewCurrentInventoryGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewLocationTransfersXtraTabPage.SuspendLayout()
+        CType(Me.previewLocationTransfersGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewLocationTransfersGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewShiftScheduleXtraTabPage.SuspendLayout()
+        CType(Me.shiftScheduleGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.shiftScheduleGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.shiftScheduleShiftComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.shiftScheduleDateDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.shiftScheduleDateDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewWeeklyProductionXtraTabPage.SuspendLayout()
+        CType(Me.weeklyProductionGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.weeklyProductionGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewProjBomAvailXtraTabPage.SuspendLayout()
+        CType(Me.ProjBomAvailGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProjBomAvailGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewProductionBillingXtraTabPage.SuspendLayout()
+        CType(Me.previewProductionBillingGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.previewProductionBillingGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.previewBaggingXtraTabPage.SuspendLayout()
+        CType(Me.baggingReportPivotGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.baggingReportXpView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'fieldMachineName1
         '
@@ -288,7 +288,7 @@ Partial Class QuickReportsXtraForm
         Me.customersMenuBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.customersMenuBar.FloatLocation = New System.Drawing.Point(375, 173)
         Me.customersMenuBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.printBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.exportXLSBarButtonItem)})
-        Me.customersMenuBar.OptionsBar.UseWholeRow = true
+        Me.customersMenuBar.OptionsBar.UseWholeRow = True
         Me.customersMenuBar.Text = "Tools"
         '
         'printBarButtonItem
@@ -309,10 +309,10 @@ Partial Class QuickReportsXtraForm
         Me.Bar2.DockCol = 0
         Me.Bar2.DockRow = 1
         Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar2.OptionsBar.MultiLine = true
-        Me.Bar2.OptionsBar.UseWholeRow = true
+        Me.Bar2.OptionsBar.MultiLine = True
+        Me.Bar2.OptionsBar.UseWholeRow = True
         Me.Bar2.Text = "Main menu"
-        Me.Bar2.Visible = false
+        Me.Bar2.Visible = False
         '
         'Bar3
         '
@@ -321,37 +321,41 @@ Partial Class QuickReportsXtraForm
         Me.Bar3.DockCol = 0
         Me.Bar3.DockRow = 0
         Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.Bar3.OptionsBar.AllowQuickCustomization = false
-        Me.Bar3.OptionsBar.DrawDragBorder = false
-        Me.Bar3.OptionsBar.UseWholeRow = true
+        Me.Bar3.OptionsBar.AllowQuickCustomization = False
+        Me.Bar3.OptionsBar.DrawDragBorder = False
+        Me.Bar3.OptionsBar.UseWholeRow = True
         Me.Bar3.Text = "Status bar"
         '
         'barDockControlTop
         '
-        Me.barDockControlTop.CausesValidation = false
+        Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Size = New System.Drawing.Size(959, 49)
         '
         'barDockControlBottom
         '
-        Me.barDockControlBottom.CausesValidation = false
+        Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 661)
+        Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(959, 23)
         '
         'barDockControlLeft
         '
-        Me.barDockControlLeft.CausesValidation = false
+        Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Manager = Me.BarManager1
         Me.barDockControlLeft.Size = New System.Drawing.Size(0, 612)
         '
         'barDockControlRight
         '
-        Me.barDockControlRight.CausesValidation = false
+        Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(959, 49)
+        Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 612)
         '
         'SplitContainerControl1
@@ -383,15 +387,15 @@ Partial Class QuickReportsXtraForm
         Me.quickReportsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.reportNameGridColumn, Me.reportCodeNameGridColumn, Me.reportTypeGridColumn, Me.filterReportGridColumn, Me.dateFilterGridColumn, Me.customerFilterGridColumn, Me.itemFilterGridColumn, Me.lotFilterGridColumn, Me.poFilterGridColumn, Me.machineFilterGridColumn, Me.shiftFilterGridColumn, Me.bolFilterGridColumn, Me.dnFilterGridColumn, Me.destinationFilterGridColumn, Me.carrierFilterGridColumn, Me.vendorFilterGridColumn, Me.itemTypeFilterGridColumn, Me.outOfStockFilterGridColumn})
         Me.quickReportsGridView.GridControl = Me.quickReportsGridControl
         Me.quickReportsGridView.Name = "quickReportsGridView"
-        Me.quickReportsGridView.OptionsBehavior.Editable = false
-        Me.quickReportsGridView.OptionsView.ShowGroupPanel = false
+        Me.quickReportsGridView.OptionsBehavior.Editable = False
+        Me.quickReportsGridView.OptionsView.ShowGroupPanel = False
         Me.quickReportsGridView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.reportNameGridColumn, DevExpress.Data.ColumnSortOrder.Ascending)})
         '
         'reportNameGridColumn
         '
         Me.reportNameGridColumn.Caption = "Report Name"
         Me.reportNameGridColumn.Name = "reportNameGridColumn"
-        Me.reportNameGridColumn.Visible = true
+        Me.reportNameGridColumn.Visible = True
         Me.reportNameGridColumn.VisibleIndex = 0
         '
         'reportCodeNameGridColumn
@@ -488,7 +492,7 @@ Partial Class QuickReportsXtraForm
         Me.reportsXtraTabControl.Size = New System.Drawing.Size(654, 612)
         Me.reportsXtraTabControl.TabIndex = 0
         Me.reportsXtraTabControl.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.filterXtraTabPage, Me.previewCustoemrsXtraTabPage, Me.previewProductionEntriesXtraTabPage, Me.previewLpnStatusXtraTabPage, Me.previewCurrentRMInventoryXtraTabPage, Me.previewCurrentInventoryXtraTabPage, Me.previewLocationTransfersXtraTabPage, Me.previewShiftScheduleXtraTabPage, Me.previewWeeklyProductionXtraTabPage, Me.previewProjBomAvailXtraTabPage, Me.previewProductionBillingXtraTabPage, Me.previewBaggingXtraTabPage})
-        Me.reportsXtraTabControl.Visible = false
+        Me.reportsXtraTabControl.Visible = False
         '
         'filterXtraTabPage
         '
@@ -518,78 +522,78 @@ Partial Class QuickReportsXtraForm
         Me.previewGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.nameGridColumn, Me.contactNameGridColumn, Me.addressGridColumn, Me.cityGridColumn, Me.stateGridColumn, Me.postalGridColumn, Me.phoneGridColumn, Me.faxGridColumn, Me.emailGridColumn, Me.inactiveGridColumn})
         Me.previewGridView.GridControl = Me.previewGridControl
         Me.previewGridView.Name = "previewGridView"
-        Me.previewGridView.OptionsBehavior.Editable = false
-        Me.previewGridView.OptionsView.ShowAutoFilterRow = true
-        Me.previewGridView.OptionsView.ShowDetailButtons = false
+        Me.previewGridView.OptionsBehavior.Editable = False
+        Me.previewGridView.OptionsView.ShowAutoFilterRow = True
+        Me.previewGridView.OptionsView.ShowDetailButtons = False
         '
         'nameGridColumn
         '
         Me.nameGridColumn.Caption = "Name"
         Me.nameGridColumn.Name = "nameGridColumn"
-        Me.nameGridColumn.Visible = true
+        Me.nameGridColumn.Visible = True
         Me.nameGridColumn.VisibleIndex = 0
         '
         'contactNameGridColumn
         '
         Me.contactNameGridColumn.Caption = "Contact Name"
         Me.contactNameGridColumn.Name = "contactNameGridColumn"
-        Me.contactNameGridColumn.Visible = true
+        Me.contactNameGridColumn.Visible = True
         Me.contactNameGridColumn.VisibleIndex = 1
         '
         'addressGridColumn
         '
         Me.addressGridColumn.Caption = "Address"
         Me.addressGridColumn.Name = "addressGridColumn"
-        Me.addressGridColumn.Visible = true
+        Me.addressGridColumn.Visible = True
         Me.addressGridColumn.VisibleIndex = 2
         '
         'cityGridColumn
         '
         Me.cityGridColumn.Caption = "City"
         Me.cityGridColumn.Name = "cityGridColumn"
-        Me.cityGridColumn.Visible = true
+        Me.cityGridColumn.Visible = True
         Me.cityGridColumn.VisibleIndex = 3
         '
         'stateGridColumn
         '
         Me.stateGridColumn.Caption = "State"
         Me.stateGridColumn.Name = "stateGridColumn"
-        Me.stateGridColumn.Visible = true
+        Me.stateGridColumn.Visible = True
         Me.stateGridColumn.VisibleIndex = 4
         '
         'postalGridColumn
         '
         Me.postalGridColumn.Caption = "Zip Code"
         Me.postalGridColumn.Name = "postalGridColumn"
-        Me.postalGridColumn.Visible = true
+        Me.postalGridColumn.Visible = True
         Me.postalGridColumn.VisibleIndex = 5
         '
         'phoneGridColumn
         '
         Me.phoneGridColumn.Caption = "Phone"
         Me.phoneGridColumn.Name = "phoneGridColumn"
-        Me.phoneGridColumn.Visible = true
+        Me.phoneGridColumn.Visible = True
         Me.phoneGridColumn.VisibleIndex = 6
         '
         'faxGridColumn
         '
         Me.faxGridColumn.Caption = "Fax"
         Me.faxGridColumn.Name = "faxGridColumn"
-        Me.faxGridColumn.Visible = true
+        Me.faxGridColumn.Visible = True
         Me.faxGridColumn.VisibleIndex = 7
         '
         'emailGridColumn
         '
         Me.emailGridColumn.Caption = "Email"
         Me.emailGridColumn.Name = "emailGridColumn"
-        Me.emailGridColumn.Visible = true
+        Me.emailGridColumn.Visible = True
         Me.emailGridColumn.VisibleIndex = 8
         '
         'inactiveGridColumn
         '
         Me.inactiveGridColumn.Caption = "Inactive"
         Me.inactiveGridColumn.Name = "inactiveGridColumn"
-        Me.inactiveGridColumn.Visible = true
+        Me.inactiveGridColumn.Visible = True
         Me.inactiveGridColumn.VisibleIndex = 9
         '
         'previewProductionEntriesXtraTabPage
@@ -615,115 +619,115 @@ Partial Class QuickReportsXtraForm
         Me.previewProductionEntriesGridView.GridControl = Me.previewProductionEntriesGridControl
         Me.previewProductionEntriesGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", Me.quantityGridColumn, "{0:#,##0.######}")})
         Me.previewProductionEntriesGridView.Name = "previewProductionEntriesGridView"
-        Me.previewProductionEntriesGridView.OptionsBehavior.Editable = false
-        Me.previewProductionEntriesGridView.OptionsView.ShowAutoFilterRow = true
-        Me.previewProductionEntriesGridView.OptionsView.ShowDetailButtons = false
-        Me.previewProductionEntriesGridView.OptionsView.ShowFooter = true
+        Me.previewProductionEntriesGridView.OptionsBehavior.Editable = False
+        Me.previewProductionEntriesGridView.OptionsView.ShowAutoFilterRow = True
+        Me.previewProductionEntriesGridView.OptionsView.ShowDetailButtons = False
+        Me.previewProductionEntriesGridView.OptionsView.ShowFooter = True
         '
         'productionDateGridColumn
         '
-        Me.productionDateGridColumn.AppearanceCell.Options.UseTextOptions = true
+        Me.productionDateGridColumn.AppearanceCell.Options.UseTextOptions = True
         Me.productionDateGridColumn.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.productionDateGridColumn.Caption = "Production Date"
         Me.productionDateGridColumn.DisplayFormat.FormatString = "d"
         Me.productionDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.productionDateGridColumn.Name = "productionDateGridColumn"
-        Me.productionDateGridColumn.Visible = true
+        Me.productionDateGridColumn.Visible = True
         Me.productionDateGridColumn.VisibleIndex = 0
         '
         'customerNameGridColumn
         '
         Me.customerNameGridColumn.Caption = "Customer Name"
         Me.customerNameGridColumn.Name = "customerNameGridColumn"
-        Me.customerNameGridColumn.Visible = true
+        Me.customerNameGridColumn.Visible = True
         Me.customerNameGridColumn.VisibleIndex = 1
         '
         'itemNumberGridColumn
         '
         Me.itemNumberGridColumn.Caption = "Item #"
         Me.itemNumberGridColumn.Name = "itemNumberGridColumn"
-        Me.itemNumberGridColumn.Visible = true
+        Me.itemNumberGridColumn.Visible = True
         Me.itemNumberGridColumn.VisibleIndex = 2
         '
         'itemDescriptionGridColumn
         '
         Me.itemDescriptionGridColumn.Caption = "Item Description"
         Me.itemDescriptionGridColumn.Name = "itemDescriptionGridColumn"
-        Me.itemDescriptionGridColumn.Visible = true
+        Me.itemDescriptionGridColumn.Visible = True
         Me.itemDescriptionGridColumn.VisibleIndex = 3
         '
         'itemTypeGridColumn
         '
         Me.itemTypeGridColumn.Caption = "Item Type"
         Me.itemTypeGridColumn.Name = "itemTypeGridColumn"
-        Me.itemTypeGridColumn.Visible = true
+        Me.itemTypeGridColumn.Visible = True
         Me.itemTypeGridColumn.VisibleIndex = 4
         '
         'shiftGridColumn
         '
         Me.shiftGridColumn.Caption = "Shift"
         Me.shiftGridColumn.Name = "shiftGridColumn"
-        Me.shiftGridColumn.Visible = true
+        Me.shiftGridColumn.Visible = True
         Me.shiftGridColumn.VisibleIndex = 5
         '
         'quantityGridColumn
         '
-        Me.quantityGridColumn.AppearanceCell.Options.UseTextOptions = true
+        Me.quantityGridColumn.AppearanceCell.Options.UseTextOptions = True
         Me.quantityGridColumn.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.quantityGridColumn.Caption = "Quantity"
         Me.quantityGridColumn.Name = "quantityGridColumn"
-        Me.quantityGridColumn.Visible = true
+        Me.quantityGridColumn.Visible = True
         Me.quantityGridColumn.VisibleIndex = 6
         '
         'poGridColumn
         '
         Me.poGridColumn.Caption = "PO #"
         Me.poGridColumn.Name = "poGridColumn"
-        Me.poGridColumn.Visible = true
+        Me.poGridColumn.Visible = True
         Me.poGridColumn.VisibleIndex = 7
         '
         'lotGridColumn
         '
         Me.lotGridColumn.Caption = "Lot #"
         Me.lotGridColumn.Name = "lotGridColumn"
-        Me.lotGridColumn.Visible = true
+        Me.lotGridColumn.Visible = True
         Me.lotGridColumn.VisibleIndex = 8
         '
         'palletNumberGridColumn
         '
-        Me.palletNumberGridColumn.AppearanceCell.Options.UseTextOptions = true
+        Me.palletNumberGridColumn.AppearanceCell.Options.UseTextOptions = True
         Me.palletNumberGridColumn.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.palletNumberGridColumn.Caption = "Pallet #"
         Me.palletNumberGridColumn.Name = "palletNumberGridColumn"
-        Me.palletNumberGridColumn.Visible = true
+        Me.palletNumberGridColumn.Visible = True
         Me.palletNumberGridColumn.VisibleIndex = 10
         '
         'lpnNumberGridColumn
         '
         Me.lpnNumberGridColumn.Caption = "LPN #"
         Me.lpnNumberGridColumn.Name = "lpnNumberGridColumn"
-        Me.lpnNumberGridColumn.Visible = true
+        Me.lpnNumberGridColumn.Visible = True
         Me.lpnNumberGridColumn.VisibleIndex = 11
         '
         'expirationDateGridColumn
         '
         Me.expirationDateGridColumn.Caption = "Expiration Date"
         Me.expirationDateGridColumn.Name = "expirationDateGridColumn"
-        Me.expirationDateGridColumn.Visible = true
+        Me.expirationDateGridColumn.Visible = True
         Me.expirationDateGridColumn.VisibleIndex = 9
         '
         'expirationDateFormatGridColumn
         '
         Me.expirationDateFormatGridColumn.Caption = "GridColumn1"
         Me.expirationDateFormatGridColumn.Name = "expirationDateFormatGridColumn"
-        Me.expirationDateFormatGridColumn.OptionsColumn.AllowShowHide = false
-        Me.expirationDateFormatGridColumn.OptionsColumn.ShowInCustomizationForm = false
+        Me.expirationDateFormatGridColumn.OptionsColumn.AllowShowHide = False
+        Me.expirationDateFormatGridColumn.OptionsColumn.ShowInCustomizationForm = False
         '
         'noteGridColumn
         '
         Me.noteGridColumn.Caption = "Note"
         Me.noteGridColumn.Name = "noteGridColumn"
-        Me.noteGridColumn.Visible = true
+        Me.noteGridColumn.Visible = True
         Me.noteGridColumn.VisibleIndex = 12
         '
         'previewLpnStatusXtraTabPage
@@ -749,56 +753,56 @@ Partial Class QuickReportsXtraForm
         Me.previewLpnStatusGridView.GridControl = Me.previewLpnStatusGridControl
         Me.previewLpnStatusGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", Me.lpnQuantityGridColumn, "{0:#,##0.######}")})
         Me.previewLpnStatusGridView.Name = "previewLpnStatusGridView"
-        Me.previewLpnStatusGridView.OptionsBehavior.Editable = false
-        Me.previewLpnStatusGridView.OptionsView.ShowAutoFilterRow = true
-        Me.previewLpnStatusGridView.OptionsView.ShowFooter = true
+        Me.previewLpnStatusGridView.OptionsBehavior.Editable = False
+        Me.previewLpnStatusGridView.OptionsView.ShowAutoFilterRow = True
+        Me.previewLpnStatusGridView.OptionsView.ShowFooter = True
         '
         'lpnCustomerNameGridColumn
         '
         Me.lpnCustomerNameGridColumn.Caption = "Customer Name"
         Me.lpnCustomerNameGridColumn.Name = "lpnCustomerNameGridColumn"
-        Me.lpnCustomerNameGridColumn.Visible = true
+        Me.lpnCustomerNameGridColumn.Visible = True
         Me.lpnCustomerNameGridColumn.VisibleIndex = 0
         '
         'fullLpnGridColumn
         '
         Me.fullLpnGridColumn.Caption = "Full LPN #"
         Me.fullLpnGridColumn.Name = "fullLpnGridColumn"
-        Me.fullLpnGridColumn.Visible = true
+        Me.fullLpnGridColumn.Visible = True
         Me.fullLpnGridColumn.VisibleIndex = 1
         '
         'lpnItemCodeGridColumn
         '
         Me.lpnItemCodeGridColumn.Caption = "Item #"
         Me.lpnItemCodeGridColumn.Name = "lpnItemCodeGridColumn"
-        Me.lpnItemCodeGridColumn.Visible = true
+        Me.lpnItemCodeGridColumn.Visible = True
         Me.lpnItemCodeGridColumn.VisibleIndex = 2
         '
         'lpnItemDescriptionGridColumn
         '
         Me.lpnItemDescriptionGridColumn.Caption = "Item Description"
         Me.lpnItemDescriptionGridColumn.Name = "lpnItemDescriptionGridColumn"
-        Me.lpnItemDescriptionGridColumn.Visible = true
+        Me.lpnItemDescriptionGridColumn.Visible = True
         Me.lpnItemDescriptionGridColumn.VisibleIndex = 3
         '
         'lpnQuantityGridColumn
         '
-        Me.lpnQuantityGridColumn.AppearanceCell.Options.UseTextOptions = true
+        Me.lpnQuantityGridColumn.AppearanceCell.Options.UseTextOptions = True
         Me.lpnQuantityGridColumn.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.lpnQuantityGridColumn.Caption = "Quantity"
         Me.lpnQuantityGridColumn.Name = "lpnQuantityGridColumn"
-        Me.lpnQuantityGridColumn.Visible = true
+        Me.lpnQuantityGridColumn.Visible = True
         Me.lpnQuantityGridColumn.VisibleIndex = 4
         '
         'lpnProductionDateGridColumn
         '
-        Me.lpnProductionDateGridColumn.AppearanceCell.Options.UseTextOptions = true
+        Me.lpnProductionDateGridColumn.AppearanceCell.Options.UseTextOptions = True
         Me.lpnProductionDateGridColumn.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.lpnProductionDateGridColumn.Caption = "Production Date"
         Me.lpnProductionDateGridColumn.DisplayFormat.FormatString = "d"
         Me.lpnProductionDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.lpnProductionDateGridColumn.Name = "lpnProductionDateGridColumn"
-        Me.lpnProductionDateGridColumn.Visible = true
+        Me.lpnProductionDateGridColumn.Visible = True
         Me.lpnProductionDateGridColumn.VisibleIndex = 5
         '
         'lpnShippingDateGridColumn
@@ -807,14 +811,14 @@ Partial Class QuickReportsXtraForm
         Me.lpnShippingDateGridColumn.DisplayFormat.FormatString = "d"
         Me.lpnShippingDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.lpnShippingDateGridColumn.Name = "lpnShippingDateGridColumn"
-        Me.lpnShippingDateGridColumn.Visible = true
+        Me.lpnShippingDateGridColumn.Visible = True
         Me.lpnShippingDateGridColumn.VisibleIndex = 6
         '
         'lpnShippingBolGridColumn
         '
         Me.lpnShippingBolGridColumn.Caption = "BOL #"
         Me.lpnShippingBolGridColumn.Name = "lpnShippingBolGridColumn"
-        Me.lpnShippingBolGridColumn.Visible = true
+        Me.lpnShippingBolGridColumn.Visible = True
         Me.lpnShippingBolGridColumn.VisibleIndex = 7
         '
         'previewCurrentRMInventoryXtraTabPage
@@ -841,37 +845,37 @@ Partial Class QuickReportsXtraForm
         Me.previewCurrentRMInventoryGridView.GridControl = Me.previewCurrentRMInventoryGridControl
         Me.previewCurrentRMInventoryGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuantityOnHand", Me.rmInventoryQtyOnHandGridColumn, "{0:#,##0.######}")})
         Me.previewCurrentRMInventoryGridView.Name = "previewCurrentRMInventoryGridView"
-        Me.previewCurrentRMInventoryGridView.OptionsBehavior.Editable = false
-        Me.previewCurrentRMInventoryGridView.OptionsView.ShowAutoFilterRow = true
-        Me.previewCurrentRMInventoryGridView.OptionsView.ShowDetailButtons = false
-        Me.previewCurrentRMInventoryGridView.OptionsView.ShowFooter = true
+        Me.previewCurrentRMInventoryGridView.OptionsBehavior.Editable = False
+        Me.previewCurrentRMInventoryGridView.OptionsView.ShowAutoFilterRow = True
+        Me.previewCurrentRMInventoryGridView.OptionsView.ShowDetailButtons = False
+        Me.previewCurrentRMInventoryGridView.OptionsView.ShowFooter = True
         '
         'rmInventoryCustomerNameGridColumn
         '
         Me.rmInventoryCustomerNameGridColumn.Caption = "Customer Name"
         Me.rmInventoryCustomerNameGridColumn.Name = "rmInventoryCustomerNameGridColumn"
-        Me.rmInventoryCustomerNameGridColumn.Visible = true
+        Me.rmInventoryCustomerNameGridColumn.Visible = True
         Me.rmInventoryCustomerNameGridColumn.VisibleIndex = 0
         '
         'rmInventoryIemCodeGridColumn
         '
         Me.rmInventoryIemCodeGridColumn.Caption = "Item Code"
         Me.rmInventoryIemCodeGridColumn.Name = "rmInventoryIemCodeGridColumn"
-        Me.rmInventoryIemCodeGridColumn.Visible = true
+        Me.rmInventoryIemCodeGridColumn.Visible = True
         Me.rmInventoryIemCodeGridColumn.VisibleIndex = 1
         '
         'rmInventoryItemDescriptionGridColumn
         '
         Me.rmInventoryItemDescriptionGridColumn.Caption = "Item Description"
         Me.rmInventoryItemDescriptionGridColumn.Name = "rmInventoryItemDescriptionGridColumn"
-        Me.rmInventoryItemDescriptionGridColumn.Visible = true
+        Me.rmInventoryItemDescriptionGridColumn.Visible = True
         Me.rmInventoryItemDescriptionGridColumn.VisibleIndex = 2
         '
         'rmInventoryLocationGridColumn
         '
         Me.rmInventoryLocationGridColumn.Caption = "Location"
         Me.rmInventoryLocationGridColumn.Name = "rmInventoryLocationGridColumn"
-        Me.rmInventoryLocationGridColumn.Visible = true
+        Me.rmInventoryLocationGridColumn.Visible = True
         Me.rmInventoryLocationGridColumn.VisibleIndex = 3
         '
         'rmInventoryQtyOnHandGridColumn
@@ -880,7 +884,7 @@ Partial Class QuickReportsXtraForm
         Me.rmInventoryQtyOnHandGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
         Me.rmInventoryQtyOnHandGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.rmInventoryQtyOnHandGridColumn.Name = "rmInventoryQtyOnHandGridColumn"
-        Me.rmInventoryQtyOnHandGridColumn.Visible = true
+        Me.rmInventoryQtyOnHandGridColumn.Visible = True
         Me.rmInventoryQtyOnHandGridColumn.VisibleIndex = 4
         '
         'rmInventoryInactiveGridColumn
@@ -942,7 +946,8 @@ Partial Class QuickReportsXtraForm
         '
         'LabelControl1
         '
-        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 10!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl1.Appearance.Options.UseFont = True
         Me.LabelControl1.Location = New System.Drawing.Point(18, 12)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(52, 16)
@@ -951,9 +956,9 @@ Partial Class QuickReportsXtraForm
         '
         'previewCurrentInventoryGridControl
         '
-        Me.previewCurrentInventoryGridControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.previewCurrentInventoryGridControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.previewCurrentInventoryGridControl.Location = New System.Drawing.Point(0, 34)
         Me.previewCurrentInventoryGridControl.MainView = Me.previewCurrentInventoryGridView
         Me.previewCurrentInventoryGridControl.MenuManager = Me.BarManager1
@@ -968,37 +973,37 @@ Partial Class QuickReportsXtraForm
         Me.previewCurrentInventoryGridView.GridControl = Me.previewCurrentInventoryGridControl
         Me.previewCurrentInventoryGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuantityOnHand", Me.currentInventoryQuantityOnHandGridColumn, "{0:#,##0.######}")})
         Me.previewCurrentInventoryGridView.Name = "previewCurrentInventoryGridView"
-        Me.previewCurrentInventoryGridView.OptionsBehavior.Editable = false
-        Me.previewCurrentInventoryGridView.OptionsView.ShowAutoFilterRow = true
-        Me.previewCurrentInventoryGridView.OptionsView.ShowDetailButtons = false
-        Me.previewCurrentInventoryGridView.OptionsView.ShowFooter = true
+        Me.previewCurrentInventoryGridView.OptionsBehavior.Editable = False
+        Me.previewCurrentInventoryGridView.OptionsView.ShowAutoFilterRow = True
+        Me.previewCurrentInventoryGridView.OptionsView.ShowDetailButtons = False
+        Me.previewCurrentInventoryGridView.OptionsView.ShowFooter = True
         '
         'currentInventoryCustomerNameGridColumn
         '
         Me.currentInventoryCustomerNameGridColumn.Caption = "Customer Name"
         Me.currentInventoryCustomerNameGridColumn.Name = "currentInventoryCustomerNameGridColumn"
-        Me.currentInventoryCustomerNameGridColumn.Visible = true
+        Me.currentInventoryCustomerNameGridColumn.Visible = True
         Me.currentInventoryCustomerNameGridColumn.VisibleIndex = 0
         '
         'currentInventoryItemCodeGridColumn
         '
         Me.currentInventoryItemCodeGridColumn.Caption = "Item Code"
         Me.currentInventoryItemCodeGridColumn.Name = "currentInventoryItemCodeGridColumn"
-        Me.currentInventoryItemCodeGridColumn.Visible = true
+        Me.currentInventoryItemCodeGridColumn.Visible = True
         Me.currentInventoryItemCodeGridColumn.VisibleIndex = 1
         '
         'currentInventoryItemDescriptionGridColumn
         '
         Me.currentInventoryItemDescriptionGridColumn.Caption = "Item Description"
         Me.currentInventoryItemDescriptionGridColumn.Name = "currentInventoryItemDescriptionGridColumn"
-        Me.currentInventoryItemDescriptionGridColumn.Visible = true
+        Me.currentInventoryItemDescriptionGridColumn.Visible = True
         Me.currentInventoryItemDescriptionGridColumn.VisibleIndex = 2
         '
         'currentInventoryItemTypeGridColumn
         '
         Me.currentInventoryItemTypeGridColumn.Caption = "Item Type"
         Me.currentInventoryItemTypeGridColumn.Name = "currentInventoryItemTypeGridColumn"
-        Me.currentInventoryItemTypeGridColumn.Visible = true
+        Me.currentInventoryItemTypeGridColumn.Visible = True
         Me.currentInventoryItemTypeGridColumn.VisibleIndex = 3
         '
         'currentInventoryQuantityOnHandGridColumn
@@ -1007,7 +1012,7 @@ Partial Class QuickReportsXtraForm
         Me.currentInventoryQuantityOnHandGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
         Me.currentInventoryQuantityOnHandGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.currentInventoryQuantityOnHandGridColumn.Name = "currentInventoryQuantityOnHandGridColumn"
-        Me.currentInventoryQuantityOnHandGridColumn.Visible = true
+        Me.currentInventoryQuantityOnHandGridColumn.Visible = True
         Me.currentInventoryQuantityOnHandGridColumn.VisibleIndex = 5
         '
         'currentInventoryInventoryByPalletsGridColumn
@@ -1018,21 +1023,21 @@ Partial Class QuickReportsXtraForm
         Me.currentInventoryInventoryByPalletsGridColumn.GroupFormat.FormatString = "{0:#,##0.00####}"
         Me.currentInventoryInventoryByPalletsGridColumn.GroupFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.currentInventoryInventoryByPalletsGridColumn.Name = "currentInventoryInventoryByPalletsGridColumn"
-        Me.currentInventoryInventoryByPalletsGridColumn.Visible = true
+        Me.currentInventoryInventoryByPalletsGridColumn.Visible = True
         Me.currentInventoryInventoryByPalletsGridColumn.VisibleIndex = 7
         '
         'currentInventoryUOMGridColumn
         '
         Me.currentInventoryUOMGridColumn.Caption = "UOM"
         Me.currentInventoryUOMGridColumn.Name = "currentInventoryUOMGridColumn"
-        Me.currentInventoryUOMGridColumn.Visible = true
+        Me.currentInventoryUOMGridColumn.Visible = True
         Me.currentInventoryUOMGridColumn.VisibleIndex = 6
         '
         'currentInventoryLocationGridColumn
         '
         Me.currentInventoryLocationGridColumn.Caption = "Location"
         Me.currentInventoryLocationGridColumn.Name = "currentInventoryLocationGridColumn"
-        Me.currentInventoryLocationGridColumn.Visible = true
+        Me.currentInventoryLocationGridColumn.Visible = True
         Me.currentInventoryLocationGridColumn.VisibleIndex = 4
         '
         'previewLocationTransfersXtraTabPage
@@ -1059,58 +1064,58 @@ Partial Class QuickReportsXtraForm
         Me.previewLocationTransfersGridView.GridControl = Me.previewLocationTransfersGridControl
         Me.previewLocationTransfersGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TransferQuantity", Me.locationTransferQuantityGridColumn, "{0:#,##0.######}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TransferUnits", Me.locationTransferUnitsGridColumn, "{0:#,##0.######}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TransferPallets", Me.locationTransferPalletsGridColumn, "{0:#,##0.######}")})
         Me.previewLocationTransfersGridView.Name = "previewLocationTransfersGridView"
-        Me.previewLocationTransfersGridView.OptionsBehavior.Editable = false
-        Me.previewLocationTransfersGridView.OptionsView.ShowAutoFilterRow = true
-        Me.previewLocationTransfersGridView.OptionsView.ShowDetailButtons = false
-        Me.previewLocationTransfersGridView.OptionsView.ShowFooter = true
+        Me.previewLocationTransfersGridView.OptionsBehavior.Editable = False
+        Me.previewLocationTransfersGridView.OptionsView.ShowAutoFilterRow = True
+        Me.previewLocationTransfersGridView.OptionsView.ShowDetailButtons = False
+        Me.previewLocationTransfersGridView.OptionsView.ShowFooter = True
         '
         'locationTransfersDateGridColumn
         '
         Me.locationTransfersDateGridColumn.Caption = "Transfer Date"
         Me.locationTransfersDateGridColumn.Name = "locationTransfersDateGridColumn"
-        Me.locationTransfersDateGridColumn.Visible = true
+        Me.locationTransfersDateGridColumn.Visible = True
         Me.locationTransfersDateGridColumn.VisibleIndex = 0
         '
         'locationTransferFromLocationGridColumn
         '
         Me.locationTransferFromLocationGridColumn.Caption = "From Location"
         Me.locationTransferFromLocationGridColumn.Name = "locationTransferFromLocationGridColumn"
-        Me.locationTransferFromLocationGridColumn.Visible = true
+        Me.locationTransferFromLocationGridColumn.Visible = True
         Me.locationTransferFromLocationGridColumn.VisibleIndex = 2
         '
         'locationTransferToLocationGridColumn
         '
         Me.locationTransferToLocationGridColumn.Caption = "To Location"
         Me.locationTransferToLocationGridColumn.Name = "locationTransferToLocationGridColumn"
-        Me.locationTransferToLocationGridColumn.Visible = true
+        Me.locationTransferToLocationGridColumn.Visible = True
         Me.locationTransferToLocationGridColumn.VisibleIndex = 3
         '
         'locationTransferItemCodeGridColumn
         '
         Me.locationTransferItemCodeGridColumn.Caption = "Item Code"
         Me.locationTransferItemCodeGridColumn.Name = "locationTransferItemCodeGridColumn"
-        Me.locationTransferItemCodeGridColumn.Visible = true
+        Me.locationTransferItemCodeGridColumn.Visible = True
         Me.locationTransferItemCodeGridColumn.VisibleIndex = 4
         '
         'locationTransferItemDescriptionGridColumn
         '
         Me.locationTransferItemDescriptionGridColumn.Caption = "Item Description"
         Me.locationTransferItemDescriptionGridColumn.Name = "locationTransferItemDescriptionGridColumn"
-        Me.locationTransferItemDescriptionGridColumn.Visible = true
+        Me.locationTransferItemDescriptionGridColumn.Visible = True
         Me.locationTransferItemDescriptionGridColumn.VisibleIndex = 5
         '
         'locationTransferNumberGridColumn
         '
         Me.locationTransferNumberGridColumn.Caption = "Transfer Number"
         Me.locationTransferNumberGridColumn.Name = "locationTransferNumberGridColumn"
-        Me.locationTransferNumberGridColumn.Visible = true
+        Me.locationTransferNumberGridColumn.Visible = True
         Me.locationTransferNumberGridColumn.VisibleIndex = 1
         '
         'locationTransferItemLotGridColumn
         '
         Me.locationTransferItemLotGridColumn.Caption = "Item Lot #"
         Me.locationTransferItemLotGridColumn.Name = "locationTransferItemLotGridColumn"
-        Me.locationTransferItemLotGridColumn.Visible = true
+        Me.locationTransferItemLotGridColumn.Visible = True
         Me.locationTransferItemLotGridColumn.VisibleIndex = 6
         '
         'locationTransferExpirationDateGridColumn
@@ -1119,14 +1124,14 @@ Partial Class QuickReportsXtraForm
         Me.locationTransferExpirationDateGridColumn.DisplayFormat.FormatString = "d"
         Me.locationTransferExpirationDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.locationTransferExpirationDateGridColumn.Name = "locationTransferExpirationDateGridColumn"
-        Me.locationTransferExpirationDateGridColumn.Visible = true
+        Me.locationTransferExpirationDateGridColumn.Visible = True
         Me.locationTransferExpirationDateGridColumn.VisibleIndex = 7
         '
         'locationTransferQuantityGridColumn
         '
         Me.locationTransferQuantityGridColumn.Caption = "Transfer Quantity"
         Me.locationTransferQuantityGridColumn.Name = "locationTransferQuantityGridColumn"
-        Me.locationTransferQuantityGridColumn.Visible = true
+        Me.locationTransferQuantityGridColumn.Visible = True
         Me.locationTransferQuantityGridColumn.VisibleIndex = 8
         '
         'locationTransferExpirationDateFormatGridColumn
@@ -1138,21 +1143,21 @@ Partial Class QuickReportsXtraForm
         '
         Me.locationTransferPalletsGridColumn.Caption = "Transfer Pallets"
         Me.locationTransferPalletsGridColumn.Name = "locationTransferPalletsGridColumn"
-        Me.locationTransferPalletsGridColumn.Visible = true
+        Me.locationTransferPalletsGridColumn.Visible = True
         Me.locationTransferPalletsGridColumn.VisibleIndex = 10
         '
         'locationTransferUnitsGridColumn
         '
         Me.locationTransferUnitsGridColumn.Caption = "Transfer Units"
         Me.locationTransferUnitsGridColumn.Name = "locationTransferUnitsGridColumn"
-        Me.locationTransferUnitsGridColumn.Visible = true
+        Me.locationTransferUnitsGridColumn.Visible = True
         Me.locationTransferUnitsGridColumn.VisibleIndex = 9
         '
         'locationTransferCarrierGridColumn
         '
         Me.locationTransferCarrierGridColumn.Caption = "Transfer Carrier"
         Me.locationTransferCarrierGridColumn.Name = "locationTransferCarrierGridColumn"
-        Me.locationTransferCarrierGridColumn.Visible = true
+        Me.locationTransferCarrierGridColumn.Visible = True
         Me.locationTransferCarrierGridColumn.VisibleIndex = 11
         '
         'previewShiftScheduleXtraTabPage
@@ -1168,9 +1173,9 @@ Partial Class QuickReportsXtraForm
         '
         'shiftScheduleGridControl
         '
-        Me.shiftScheduleGridControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.shiftScheduleGridControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.shiftScheduleGridControl.Location = New System.Drawing.Point(0, 40)
         Me.shiftScheduleGridControl.MainView = Me.shiftScheduleGridView
         Me.shiftScheduleGridControl.MenuManager = Me.BarManager1
@@ -1184,16 +1189,16 @@ Partial Class QuickReportsXtraForm
         Me.shiftScheduleGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.shiftScheduleMachineNameGridColumn, Me.shiftSchedulePeopleGridColumn, Me.shiftScheduleOperatorGridColumn, Me.shiftScheduleItemCodeGridColumn, Me.shiftScheduleItemDescriptionGridColumn, Me.shiftScheduleQuantityGridColumn, Me.shiftScheduleSchedByQtyGridColumn, Me.shiftScheduleNoteGridColumn, Me.shiftScheduleMustRunGridColumn, Me.shiftSchedulePriorityLevelGridColumn})
         Me.shiftScheduleGridView.GridControl = Me.shiftScheduleGridControl
         Me.shiftScheduleGridView.Name = "shiftScheduleGridView"
-        Me.shiftScheduleGridView.OptionsBehavior.Editable = false
-        Me.shiftScheduleGridView.OptionsView.ShowAutoFilterRow = true
-        Me.shiftScheduleGridView.OptionsView.ShowDetailButtons = false
-        Me.shiftScheduleGridView.OptionsView.ShowFooter = true
+        Me.shiftScheduleGridView.OptionsBehavior.Editable = False
+        Me.shiftScheduleGridView.OptionsView.ShowAutoFilterRow = True
+        Me.shiftScheduleGridView.OptionsView.ShowDetailButtons = False
+        Me.shiftScheduleGridView.OptionsView.ShowFooter = True
         '
         'shiftScheduleMachineNameGridColumn
         '
         Me.shiftScheduleMachineNameGridColumn.Caption = "Machine Name"
         Me.shiftScheduleMachineNameGridColumn.Name = "shiftScheduleMachineNameGridColumn"
-        Me.shiftScheduleMachineNameGridColumn.Visible = true
+        Me.shiftScheduleMachineNameGridColumn.Visible = True
         Me.shiftScheduleMachineNameGridColumn.VisibleIndex = 0
         '
         'shiftSchedulePeopleGridColumn
@@ -1201,7 +1206,7 @@ Partial Class QuickReportsXtraForm
         Me.shiftSchedulePeopleGridColumn.Caption = "People"
         Me.shiftSchedulePeopleGridColumn.Name = "shiftSchedulePeopleGridColumn"
         Me.shiftSchedulePeopleGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "People", "{0:0.##}")})
-        Me.shiftSchedulePeopleGridColumn.Visible = true
+        Me.shiftSchedulePeopleGridColumn.Visible = True
         Me.shiftSchedulePeopleGridColumn.VisibleIndex = 1
         '
         'shiftScheduleOperatorGridColumn
@@ -1209,56 +1214,56 @@ Partial Class QuickReportsXtraForm
         Me.shiftScheduleOperatorGridColumn.Caption = "Operator"
         Me.shiftScheduleOperatorGridColumn.Name = "shiftScheduleOperatorGridColumn"
         Me.shiftScheduleOperatorGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Operator", "{0:0.##}")})
-        Me.shiftScheduleOperatorGridColumn.Visible = true
+        Me.shiftScheduleOperatorGridColumn.Visible = True
         Me.shiftScheduleOperatorGridColumn.VisibleIndex = 2
         '
         'shiftScheduleItemCodeGridColumn
         '
         Me.shiftScheduleItemCodeGridColumn.Caption = "Item Code"
         Me.shiftScheduleItemCodeGridColumn.Name = "shiftScheduleItemCodeGridColumn"
-        Me.shiftScheduleItemCodeGridColumn.Visible = true
+        Me.shiftScheduleItemCodeGridColumn.Visible = True
         Me.shiftScheduleItemCodeGridColumn.VisibleIndex = 3
         '
         'shiftScheduleItemDescriptionGridColumn
         '
         Me.shiftScheduleItemDescriptionGridColumn.Caption = "Item Description"
         Me.shiftScheduleItemDescriptionGridColumn.Name = "shiftScheduleItemDescriptionGridColumn"
-        Me.shiftScheduleItemDescriptionGridColumn.Visible = true
+        Me.shiftScheduleItemDescriptionGridColumn.Visible = True
         Me.shiftScheduleItemDescriptionGridColumn.VisibleIndex = 4
         '
         'shiftScheduleQuantityGridColumn
         '
         Me.shiftScheduleQuantityGridColumn.Caption = "Quantity"
         Me.shiftScheduleQuantityGridColumn.Name = "shiftScheduleQuantityGridColumn"
-        Me.shiftScheduleQuantityGridColumn.Visible = true
+        Me.shiftScheduleQuantityGridColumn.Visible = True
         Me.shiftScheduleQuantityGridColumn.VisibleIndex = 5
         '
         'shiftScheduleSchedByQtyGridColumn
         '
         Me.shiftScheduleSchedByQtyGridColumn.Caption = "Sched By Qty"
         Me.shiftScheduleSchedByQtyGridColumn.Name = "shiftScheduleSchedByQtyGridColumn"
-        Me.shiftScheduleSchedByQtyGridColumn.Visible = true
+        Me.shiftScheduleSchedByQtyGridColumn.Visible = True
         Me.shiftScheduleSchedByQtyGridColumn.VisibleIndex = 6
         '
         'shiftScheduleNoteGridColumn
         '
         Me.shiftScheduleNoteGridColumn.Caption = "Note"
         Me.shiftScheduleNoteGridColumn.Name = "shiftScheduleNoteGridColumn"
-        Me.shiftScheduleNoteGridColumn.Visible = true
+        Me.shiftScheduleNoteGridColumn.Visible = True
         Me.shiftScheduleNoteGridColumn.VisibleIndex = 7
         '
         'shiftScheduleMustRunGridColumn
         '
         Me.shiftScheduleMustRunGridColumn.Caption = "Must Run"
         Me.shiftScheduleMustRunGridColumn.Name = "shiftScheduleMustRunGridColumn"
-        Me.shiftScheduleMustRunGridColumn.Visible = true
+        Me.shiftScheduleMustRunGridColumn.Visible = True
         Me.shiftScheduleMustRunGridColumn.VisibleIndex = 8
         '
         'shiftSchedulePriorityLevelGridColumn
         '
         Me.shiftSchedulePriorityLevelGridColumn.Caption = "Priority Level"
         Me.shiftSchedulePriorityLevelGridColumn.Name = "shiftSchedulePriorityLevelGridColumn"
-        Me.shiftSchedulePriorityLevelGridColumn.Visible = true
+        Me.shiftSchedulePriorityLevelGridColumn.Visible = True
         Me.shiftSchedulePriorityLevelGridColumn.VisibleIndex = 9
         '
         'refreshShiftScheduleSimpleButton
@@ -1292,7 +1297,8 @@ Partial Class QuickReportsXtraForm
         '
         'LabelControl2
         '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 10!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelControl2.Appearance.Options.UseFont = True
         Me.LabelControl2.Location = New System.Drawing.Point(18, 12)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(137, 16)
@@ -1324,31 +1330,31 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionGridView.GroupCount = 1
         Me.weeklyProductionGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalProducedWeek", Nothing, "Produced = {0:0.##}")})
         Me.weeklyProductionGridView.Name = "weeklyProductionGridView"
-        Me.weeklyProductionGridView.OptionsBehavior.Editable = false
-        Me.weeklyProductionGridView.OptionsView.ShowAutoFilterRow = true
-        Me.weeklyProductionGridView.OptionsView.ShowDetailButtons = false
-        Me.weeklyProductionGridView.OptionsView.ShowFooter = true
+        Me.weeklyProductionGridView.OptionsBehavior.Editable = False
+        Me.weeklyProductionGridView.OptionsView.ShowAutoFilterRow = True
+        Me.weeklyProductionGridView.OptionsView.ShowDetailButtons = False
+        Me.weeklyProductionGridView.OptionsView.ShowFooter = True
         Me.weeklyProductionGridView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.weeklyProductionProductionWeekGridColumn, DevExpress.Data.ColumnSortOrder.Ascending)})
         '
         'weeklyProductionProductionWeekGridColumn
         '
         Me.weeklyProductionProductionWeekGridColumn.Caption = "Production Week"
         Me.weeklyProductionProductionWeekGridColumn.Name = "weeklyProductionProductionWeekGridColumn"
-        Me.weeklyProductionProductionWeekGridColumn.Visible = true
+        Me.weeklyProductionProductionWeekGridColumn.Visible = True
         Me.weeklyProductionProductionWeekGridColumn.VisibleIndex = 0
         '
         'weeklyProductionItemCodeGridColumn
         '
         Me.weeklyProductionItemCodeGridColumn.Caption = "Item Code"
         Me.weeklyProductionItemCodeGridColumn.Name = "weeklyProductionItemCodeGridColumn"
-        Me.weeklyProductionItemCodeGridColumn.Visible = true
+        Me.weeklyProductionItemCodeGridColumn.Visible = True
         Me.weeklyProductionItemCodeGridColumn.VisibleIndex = 0
         '
         'weeklyProductionItemDescriptionGridColumn
         '
         Me.weeklyProductionItemDescriptionGridColumn.Caption = "Item Description"
         Me.weeklyProductionItemDescriptionGridColumn.Name = "weeklyProductionItemDescriptionGridColumn"
-        Me.weeklyProductionItemDescriptionGridColumn.Visible = true
+        Me.weeklyProductionItemDescriptionGridColumn.Visible = True
         Me.weeklyProductionItemDescriptionGridColumn.VisibleIndex = 1
         '
         'weeklyProductionCasesRequiredGridColumn
@@ -1356,7 +1362,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionCasesRequiredGridColumn.Caption = "Cases Required"
         Me.weeklyProductionCasesRequiredGridColumn.Name = "weeklyProductionCasesRequiredGridColumn"
         Me.weeklyProductionCasesRequiredGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionCasesRequiredGridColumn.Visible = true
+        Me.weeklyProductionCasesRequiredGridColumn.Visible = True
         Me.weeklyProductionCasesRequiredGridColumn.VisibleIndex = 2
         '
         'weeklyProductionBagsRequiredGridColumn
@@ -1364,7 +1370,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionBagsRequiredGridColumn.Caption = "Bags Required"
         Me.weeklyProductionBagsRequiredGridColumn.Name = "weeklyProductionBagsRequiredGridColumn"
         Me.weeklyProductionBagsRequiredGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionBagsRequiredGridColumn.Visible = true
+        Me.weeklyProductionBagsRequiredGridColumn.Visible = True
         Me.weeklyProductionBagsRequiredGridColumn.VisibleIndex = 3
         '
         'weeklyProductionMondayGridColumn
@@ -1372,7 +1378,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionMondayGridColumn.Caption = "Monday"
         Me.weeklyProductionMondayGridColumn.Name = "weeklyProductionMondayGridColumn"
         Me.weeklyProductionMondayGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionMondayGridColumn.Visible = true
+        Me.weeklyProductionMondayGridColumn.Visible = True
         Me.weeklyProductionMondayGridColumn.VisibleIndex = 4
         '
         'weeklyProductionTuesdayGridColumn
@@ -1380,7 +1386,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionTuesdayGridColumn.Caption = "Tuesday"
         Me.weeklyProductionTuesdayGridColumn.Name = "weeklyProductionTuesdayGridColumn"
         Me.weeklyProductionTuesdayGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionTuesdayGridColumn.Visible = true
+        Me.weeklyProductionTuesdayGridColumn.Visible = True
         Me.weeklyProductionTuesdayGridColumn.VisibleIndex = 5
         '
         'weeklyProductionWednesdayGridColumn
@@ -1388,7 +1394,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionWednesdayGridColumn.Caption = "Wednesday"
         Me.weeklyProductionWednesdayGridColumn.Name = "weeklyProductionWednesdayGridColumn"
         Me.weeklyProductionWednesdayGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionWednesdayGridColumn.Visible = true
+        Me.weeklyProductionWednesdayGridColumn.Visible = True
         Me.weeklyProductionWednesdayGridColumn.VisibleIndex = 6
         '
         'weeklyProductionThursdayGridColumn
@@ -1396,7 +1402,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionThursdayGridColumn.Caption = "Thursday"
         Me.weeklyProductionThursdayGridColumn.Name = "weeklyProductionThursdayGridColumn"
         Me.weeklyProductionThursdayGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionThursdayGridColumn.Visible = true
+        Me.weeklyProductionThursdayGridColumn.Visible = True
         Me.weeklyProductionThursdayGridColumn.VisibleIndex = 7
         '
         'weeklyProductionFridayGridColumn
@@ -1404,7 +1410,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionFridayGridColumn.Caption = "Friday"
         Me.weeklyProductionFridayGridColumn.Name = "weeklyProductionFridayGridColumn"
         Me.weeklyProductionFridayGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionFridayGridColumn.Visible = true
+        Me.weeklyProductionFridayGridColumn.Visible = True
         Me.weeklyProductionFridayGridColumn.VisibleIndex = 8
         '
         'weeklyProductionSaturdayGridColumn
@@ -1412,7 +1418,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionSaturdayGridColumn.Caption = "Saturday"
         Me.weeklyProductionSaturdayGridColumn.Name = "weeklyProductionSaturdayGridColumn"
         Me.weeklyProductionSaturdayGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionSaturdayGridColumn.Visible = true
+        Me.weeklyProductionSaturdayGridColumn.Visible = True
         Me.weeklyProductionSaturdayGridColumn.VisibleIndex = 9
         '
         'weeklyProductionSundayGridColumn
@@ -1420,7 +1426,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionSundayGridColumn.Caption = "Sunday"
         Me.weeklyProductionSundayGridColumn.Name = "weeklyProductionSundayGridColumn"
         Me.weeklyProductionSundayGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionSundayGridColumn.Visible = true
+        Me.weeklyProductionSundayGridColumn.Visible = True
         Me.weeklyProductionSundayGridColumn.VisibleIndex = 10
         '
         'weeklyProductionTotalProducedWeeklyGridColumn
@@ -1428,14 +1434,14 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionTotalProducedWeeklyGridColumn.Caption = "Total Week Production"
         Me.weeklyProductionTotalProducedWeeklyGridColumn.Name = "weeklyProductionTotalProducedWeeklyGridColumn"
         Me.weeklyProductionTotalProducedWeeklyGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.00}")})
-        Me.weeklyProductionTotalProducedWeeklyGridColumn.Visible = true
+        Me.weeklyProductionTotalProducedWeeklyGridColumn.Visible = True
         Me.weeklyProductionTotalProducedWeeklyGridColumn.VisibleIndex = 11
         '
         'weeklyProductionTotalProducedGridColumn
         '
         Me.weeklyProductionTotalProducedGridColumn.Caption = "Total Produced"
         Me.weeklyProductionTotalProducedGridColumn.Name = "weeklyProductionTotalProducedGridColumn"
-        Me.weeklyProductionTotalProducedGridColumn.Visible = true
+        Me.weeklyProductionTotalProducedGridColumn.Visible = True
         Me.weeklyProductionTotalProducedGridColumn.VisibleIndex = 12
         '
         'weeklyProductionPercentageCompleteGridColumn
@@ -1445,7 +1451,7 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionPercentageCompleteGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.weeklyProductionPercentageCompleteGridColumn.Name = "weeklyProductionPercentageCompleteGridColumn"
         Me.weeklyProductionPercentageCompleteGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Average, "", "{0:P}")})
-        Me.weeklyProductionPercentageCompleteGridColumn.Visible = true
+        Me.weeklyProductionPercentageCompleteGridColumn.Visible = True
         Me.weeklyProductionPercentageCompleteGridColumn.VisibleIndex = 13
         '
         'previewProjBomAvailXtraTabPage
@@ -1468,103 +1474,94 @@ Partial Class QuickReportsXtraForm
         '
         'ProjBomAvailGridView
         '
-        Me.ProjBomAvailGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ProjBomAvailCustPOGridColumn, Me.ProjBomAvailItemCodeGridColumn, Me.ProjBomAvailItemDescriptionGridColumn, Me.ProjBomAvailItemTypeGridColumn, Me.ProjBomAvailQtyReqForProjGridColumn, Me.ProjBomAvailQtyOnHndGridColumn, Me.ProjBomAvailQtyOnSchedGridColumn, Me.ProjBomAvailQtyShortageGridColumn, Me.ProjBomAvailQtyNotOnSchedGridColumn, Me.ProjBomAvailTotalAmtNeededGridColumn, Me.ProjBomAvailTotalShortageGridColumn})
+        Me.ProjBomAvailGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ProjBomAvailCustPOGridColumn, Me.ProjBomAvailItemCodeGridColumn, Me.ProjBomAvailItemDescriptionGridColumn, Me.ProjBomAvailItemTypeGridColumn, Me.ProjBomAvailTotalAmtNeededGridColumn, Me.ProjBomAvailLocalQtyGridColumn, Me.ProjBomLocalShortageGridColumn, Me.ProjBomAvailNonLocalQtyGridColumn, Me.ProjBomAvailNonLocalPalletsQtyGridColumn, Me.ProjBomAvailQtyOnHndGridColumn, Me.ProjBomAvailQtyShortageGridColumn})
         Me.ProjBomAvailGridView.GridControl = Me.ProjBomAvailGridControl
         Me.ProjBomAvailGridView.Name = "ProjBomAvailGridView"
-        Me.ProjBomAvailGridView.OptionsBehavior.Editable = false
-        Me.ProjBomAvailGridView.OptionsView.ShowAutoFilterRow = true
-        Me.ProjBomAvailGridView.OptionsView.ShowDetailButtons = false
+        Me.ProjBomAvailGridView.OptionsBehavior.Editable = False
+        Me.ProjBomAvailGridView.OptionsView.ShowAutoFilterRow = True
+        Me.ProjBomAvailGridView.OptionsView.ShowDetailButtons = False
         '
         'ProjBomAvailCustPOGridColumn
         '
         Me.ProjBomAvailCustPOGridColumn.Caption = "Customer PO"
         Me.ProjBomAvailCustPOGridColumn.Name = "ProjBomAvailCustPOGridColumn"
-        Me.ProjBomAvailCustPOGridColumn.Visible = true
+        Me.ProjBomAvailCustPOGridColumn.Visible = True
         Me.ProjBomAvailCustPOGridColumn.VisibleIndex = 0
         '
         'ProjBomAvailItemCodeGridColumn
         '
         Me.ProjBomAvailItemCodeGridColumn.Caption = "Item Code"
         Me.ProjBomAvailItemCodeGridColumn.Name = "ProjBomAvailItemCodeGridColumn"
-        Me.ProjBomAvailItemCodeGridColumn.Visible = true
+        Me.ProjBomAvailItemCodeGridColumn.Visible = True
         Me.ProjBomAvailItemCodeGridColumn.VisibleIndex = 1
         '
         'ProjBomAvailItemDescriptionGridColumn
         '
         Me.ProjBomAvailItemDescriptionGridColumn.Caption = "Item Description"
         Me.ProjBomAvailItemDescriptionGridColumn.Name = "ProjBomAvailItemDescriptionGridColumn"
-        Me.ProjBomAvailItemDescriptionGridColumn.Visible = true
+        Me.ProjBomAvailItemDescriptionGridColumn.Visible = True
         Me.ProjBomAvailItemDescriptionGridColumn.VisibleIndex = 2
         '
         'ProjBomAvailItemTypeGridColumn
         '
         Me.ProjBomAvailItemTypeGridColumn.Caption = "Item Type"
         Me.ProjBomAvailItemTypeGridColumn.Name = "ProjBomAvailItemTypeGridColumn"
-        Me.ProjBomAvailItemTypeGridColumn.Visible = true
+        Me.ProjBomAvailItemTypeGridColumn.Visible = True
         Me.ProjBomAvailItemTypeGridColumn.VisibleIndex = 3
-        '
-        'ProjBomAvailQtyReqForProjGridColumn
-        '
-        Me.ProjBomAvailQtyReqForProjGridColumn.Caption = "Amount Needed"
-        Me.ProjBomAvailQtyReqForProjGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
-        Me.ProjBomAvailQtyReqForProjGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ProjBomAvailQtyReqForProjGridColumn.Name = "ProjBomAvailQtyReqForProjGridColumn"
-        Me.ProjBomAvailQtyReqForProjGridColumn.Visible = true
-        Me.ProjBomAvailQtyReqForProjGridColumn.VisibleIndex = 4
-        '
-        'ProjBomAvailQtyOnHndGridColumn
-        '
-        Me.ProjBomAvailQtyOnHndGridColumn.Caption = "Amount On Hand"
-        Me.ProjBomAvailQtyOnHndGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
-        Me.ProjBomAvailQtyOnHndGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ProjBomAvailQtyOnHndGridColumn.Name = "ProjBomAvailQtyOnHndGridColumn"
-        Me.ProjBomAvailQtyOnHndGridColumn.Visible = true
-        Me.ProjBomAvailQtyOnHndGridColumn.VisibleIndex = 5
-        '
-        'ProjBomAvailQtyOnSchedGridColumn
-        '
-        Me.ProjBomAvailQtyOnSchedGridColumn.Caption = "Amount On Schedule"
-        Me.ProjBomAvailQtyOnSchedGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
-        Me.ProjBomAvailQtyOnSchedGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ProjBomAvailQtyOnSchedGridColumn.Name = "ProjBomAvailQtyOnSchedGridColumn"
-        Me.ProjBomAvailQtyOnSchedGridColumn.Visible = true
-        Me.ProjBomAvailQtyOnSchedGridColumn.VisibleIndex = 6
-        '
-        'ProjBomAvailQtyShortageGridColumn
-        '
-        Me.ProjBomAvailQtyShortageGridColumn.Caption = "Shortage Amount"
-        Me.ProjBomAvailQtyShortageGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
-        Me.ProjBomAvailQtyShortageGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ProjBomAvailQtyShortageGridColumn.Name = "ProjBomAvailQtyShortageGridColumn"
-        Me.ProjBomAvailQtyShortageGridColumn.Visible = true
-        Me.ProjBomAvailQtyShortageGridColumn.VisibleIndex = 7
-        '
-        'ProjBomAvailQtyNotOnSchedGridColumn
-        '
-        Me.ProjBomAvailQtyNotOnSchedGridColumn.Caption = "Additional Requirements"
-        Me.ProjBomAvailQtyNotOnSchedGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
-        Me.ProjBomAvailQtyNotOnSchedGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ProjBomAvailQtyNotOnSchedGridColumn.Name = "ProjBomAvailQtyNotOnSchedGridColumn"
-        Me.ProjBomAvailQtyNotOnSchedGridColumn.Visible = true
-        Me.ProjBomAvailQtyNotOnSchedGridColumn.VisibleIndex = 8
         '
         'ProjBomAvailTotalAmtNeededGridColumn
         '
-        Me.ProjBomAvailTotalAmtNeededGridColumn.Caption = "Total Amount Needed"
+        Me.ProjBomAvailTotalAmtNeededGridColumn.Caption = "Required Qty"
         Me.ProjBomAvailTotalAmtNeededGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
         Me.ProjBomAvailTotalAmtNeededGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomAvailTotalAmtNeededGridColumn.Name = "ProjBomAvailTotalAmtNeededGridColumn"
-        Me.ProjBomAvailTotalAmtNeededGridColumn.Visible = true
-        Me.ProjBomAvailTotalAmtNeededGridColumn.VisibleIndex = 9
+        Me.ProjBomAvailTotalAmtNeededGridColumn.Visible = True
+        Me.ProjBomAvailTotalAmtNeededGridColumn.VisibleIndex = 4
         '
-        'ProjBomAvailTotalShortageGridColumn
+        'ProjBomAvailLocalQtyGridColumn
         '
-        Me.ProjBomAvailTotalShortageGridColumn.Caption = "Total Shortage Amount"
-        Me.ProjBomAvailTotalShortageGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
-        Me.ProjBomAvailTotalShortageGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ProjBomAvailTotalShortageGridColumn.Name = "ProjBomAvailTotalShortageGridColumn"
-        Me.ProjBomAvailTotalShortageGridColumn.Visible = true
-        Me.ProjBomAvailTotalShortageGridColumn.VisibleIndex = 10
+        Me.ProjBomAvailLocalQtyGridColumn.Caption = "LOCAL Qty On Hand"
+        Me.ProjBomAvailLocalQtyGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
+        Me.ProjBomAvailLocalQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ProjBomAvailLocalQtyGridColumn.Name = "ProjBomAvailLocalQtyGridColumn"
+        Me.ProjBomAvailLocalQtyGridColumn.Visible = True
+        Me.ProjBomAvailLocalQtyGridColumn.VisibleIndex = 5
+        '
+        'ProjBomLocalShortageGridColumn
+        '
+        Me.ProjBomLocalShortageGridColumn.Caption = "LOCAL Shortage"
+        Me.ProjBomLocalShortageGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
+        Me.ProjBomLocalShortageGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ProjBomLocalShortageGridColumn.Name = "ProjBomLocalShortageGridColumn"
+        Me.ProjBomLocalShortageGridColumn.Visible = True
+        Me.ProjBomLocalShortageGridColumn.VisibleIndex = 6
+        '
+        'ProjBomAvailNonLocalQtyGridColumn
+        '
+        Me.ProjBomAvailNonLocalQtyGridColumn.Caption = "NON-LOCAL Qty On Hand"
+        Me.ProjBomAvailNonLocalQtyGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
+        Me.ProjBomAvailNonLocalQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ProjBomAvailNonLocalQtyGridColumn.Name = "ProjBomAvailNonLocalQtyGridColumn"
+        Me.ProjBomAvailNonLocalQtyGridColumn.Visible = True
+        Me.ProjBomAvailNonLocalQtyGridColumn.VisibleIndex = 7
+        '
+        'ProjBomAvailQtyOnHndGridColumn
+        '
+        Me.ProjBomAvailQtyOnHndGridColumn.Caption = "TOTAL Qty On Hand"
+        Me.ProjBomAvailQtyOnHndGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
+        Me.ProjBomAvailQtyOnHndGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ProjBomAvailQtyOnHndGridColumn.Name = "ProjBomAvailQtyOnHndGridColumn"
+        Me.ProjBomAvailQtyOnHndGridColumn.Visible = True
+        Me.ProjBomAvailQtyOnHndGridColumn.VisibleIndex = 9
+        '
+        'ProjBomAvailQtyShortageGridColumn
+        '
+        Me.ProjBomAvailQtyShortageGridColumn.Caption = "TOTAL Shortage"
+        Me.ProjBomAvailQtyShortageGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
+        Me.ProjBomAvailQtyShortageGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ProjBomAvailQtyShortageGridColumn.Name = "ProjBomAvailQtyShortageGridColumn"
+        Me.ProjBomAvailQtyShortageGridColumn.Visible = True
+        Me.ProjBomAvailQtyShortageGridColumn.VisibleIndex = 10
         '
         'previewProductionBillingXtraTabPage
         '
@@ -1590,10 +1587,10 @@ Partial Class QuickReportsXtraForm
         Me.previewProductionBillingGridView.GridControl = Me.previewProductionBillingGridControl
         Me.previewProductionBillingGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Price", Me.productionBillingPriceGridColumn, "{0:c}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Cases", Me.productionBillingCasesGridColumn, "{0:f2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", Me.productionBillingQuantityGridColumn, "{0:#,##0.######}")})
         Me.previewProductionBillingGridView.Name = "previewProductionBillingGridView"
-        Me.previewProductionBillingGridView.OptionsBehavior.Editable = false
-        Me.previewProductionBillingGridView.OptionsView.ShowAutoFilterRow = true
-        Me.previewProductionBillingGridView.OptionsView.ShowDetailButtons = false
-        Me.previewProductionBillingGridView.OptionsView.ShowFooter = true
+        Me.previewProductionBillingGridView.OptionsBehavior.Editable = False
+        Me.previewProductionBillingGridView.OptionsView.ShowAutoFilterRow = True
+        Me.previewProductionBillingGridView.OptionsView.ShowDetailButtons = False
+        Me.previewProductionBillingGridView.OptionsView.ShowFooter = True
         '
         'productionBillingDateGridColumn
         '
@@ -1601,63 +1598,63 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingDateGridColumn.DisplayFormat.FormatString = "d"
         Me.productionBillingDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.productionBillingDateGridColumn.Name = "productionBillingDateGridColumn"
-        Me.productionBillingDateGridColumn.Visible = true
+        Me.productionBillingDateGridColumn.Visible = True
         Me.productionBillingDateGridColumn.VisibleIndex = 0
         '
         'productionBillingCustomerGridColumn
         '
         Me.productionBillingCustomerGridColumn.Caption = "Customer Name"
         Me.productionBillingCustomerGridColumn.Name = "productionBillingCustomerGridColumn"
-        Me.productionBillingCustomerGridColumn.Visible = true
+        Me.productionBillingCustomerGridColumn.Visible = True
         Me.productionBillingCustomerGridColumn.VisibleIndex = 1
         '
         'productionBillingItemCodeGridColumn
         '
         Me.productionBillingItemCodeGridColumn.Caption = "Item Code"
         Me.productionBillingItemCodeGridColumn.Name = "productionBillingItemCodeGridColumn"
-        Me.productionBillingItemCodeGridColumn.Visible = true
+        Me.productionBillingItemCodeGridColumn.Visible = True
         Me.productionBillingItemCodeGridColumn.VisibleIndex = 2
         '
         'productionBillingItemDescriptionGridColumn
         '
         Me.productionBillingItemDescriptionGridColumn.Caption = "Item Description"
         Me.productionBillingItemDescriptionGridColumn.Name = "productionBillingItemDescriptionGridColumn"
-        Me.productionBillingItemDescriptionGridColumn.Visible = true
+        Me.productionBillingItemDescriptionGridColumn.Visible = True
         Me.productionBillingItemDescriptionGridColumn.VisibleIndex = 3
         '
         'productionBillingItemTypeGridColumn
         '
         Me.productionBillingItemTypeGridColumn.Caption = "Item Type"
         Me.productionBillingItemTypeGridColumn.Name = "productionBillingItemTypeGridColumn"
-        Me.productionBillingItemTypeGridColumn.Visible = true
+        Me.productionBillingItemTypeGridColumn.Visible = True
         Me.productionBillingItemTypeGridColumn.VisibleIndex = 4
         '
         'productionBillingShiftGridColumn
         '
         Me.productionBillingShiftGridColumn.Caption = "Shift"
         Me.productionBillingShiftGridColumn.Name = "productionBillingShiftGridColumn"
-        Me.productionBillingShiftGridColumn.Visible = true
+        Me.productionBillingShiftGridColumn.Visible = True
         Me.productionBillingShiftGridColumn.VisibleIndex = 5
         '
         'productionBillingPOGridColumn
         '
         Me.productionBillingPOGridColumn.Caption = "PO"
         Me.productionBillingPOGridColumn.Name = "productionBillingPOGridColumn"
-        Me.productionBillingPOGridColumn.Visible = true
+        Me.productionBillingPOGridColumn.Visible = True
         Me.productionBillingPOGridColumn.VisibleIndex = 6
         '
         'productionBillingUOMGridColumn
         '
         Me.productionBillingUOMGridColumn.Caption = "UOM"
         Me.productionBillingUOMGridColumn.Name = "productionBillingUOMGridColumn"
-        Me.productionBillingUOMGridColumn.Visible = true
+        Me.productionBillingUOMGridColumn.Visible = True
         Me.productionBillingUOMGridColumn.VisibleIndex = 7
         '
         'productionBillingQuantityGridColumn
         '
         Me.productionBillingQuantityGridColumn.Caption = "Quantity"
         Me.productionBillingQuantityGridColumn.Name = "productionBillingQuantityGridColumn"
-        Me.productionBillingQuantityGridColumn.Visible = true
+        Me.productionBillingQuantityGridColumn.Visible = True
         Me.productionBillingQuantityGridColumn.VisibleIndex = 8
         '
         'productionBillingCasesGridColumn
@@ -1667,7 +1664,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingCasesGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.productionBillingCasesGridColumn.Name = "productionBillingCasesGridColumn"
         Me.productionBillingCasesGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Cases", "{0:f2}")})
-        Me.productionBillingCasesGridColumn.Visible = true
+        Me.productionBillingCasesGridColumn.Visible = True
         Me.productionBillingCasesGridColumn.VisibleIndex = 9
         '
         'productionBillingPriceGridColumn
@@ -1677,7 +1674,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingPriceGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.productionBillingPriceGridColumn.Name = "productionBillingPriceGridColumn"
         Me.productionBillingPriceGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Price", "{0:c}")})
-        Me.productionBillingPriceGridColumn.Visible = true
+        Me.productionBillingPriceGridColumn.Visible = True
         Me.productionBillingPriceGridColumn.VisibleIndex = 10
         '
         'previewBaggingXtraTabPage
@@ -1694,7 +1691,7 @@ Partial Class QuickReportsXtraForm
         Me.baggingReportPivotGridControl.Fields.AddRange(New DevExpress.XtraPivotGrid.PivotGridField() {Me.fieldMachineName1, Me.fieldProductionDate1, Me.fieldProductionShift1, Me.fieldQuantity1, Me.reasonsPivotGridField, Me.minutesPivotGridField})
         PivotGridGroup1.Fields.Add(Me.fieldMachineName1)
         PivotGridGroup1.Hierarchy = Nothing
-        PivotGridGroup1.ShowNewValues = true
+        PivotGridGroup1.ShowNewValues = True
         Me.baggingReportPivotGridControl.Groups.AddRange(New DevExpress.XtraPivotGrid.PivotGridGroup() {PivotGridGroup1})
         Me.baggingReportPivotGridControl.Location = New System.Drawing.Point(0, 0)
         Me.baggingReportPivotGridControl.Name = "baggingReportPivotGridControl"
@@ -1704,8 +1701,8 @@ Partial Class QuickReportsXtraForm
         'baggingReportXpView
         '
         Me.baggingReportXpView.ObjectType = GetType(DXDAL.SPGData.Production)
-        Me.baggingReportXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("MachineName", DevExpress.Xpo.SortDirection.None, "[ProdMainMachineLine.MachineLineName]", false, true), New DevExpress.Xpo.ViewProperty("ProductionDate", DevExpress.Xpo.SortDirection.None, "[ProdMainDate]", false, true), New DevExpress.Xpo.ViewProperty("ProductionShift", DevExpress.Xpo.SortDirection.None, "[ProdMainShift.ShiftName]", false, true), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[ProdMainQuantity] * Iif([ProdMainItemID.intQtyPerUnit] > 0, [ProdMainItemID.intQ"& _ 
-                    "tyPerUnit], 1)", false, true), New DevExpress.Xpo.ViewProperty("ProductionID", DevExpress.Xpo.SortDirection.None, "[ProdMainID]", false, true), New DevExpress.Xpo.ViewProperty("ProductionStartTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStart]", false, true), New DevExpress.Xpo.ViewProperty("ProductionStopTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStop]", false, true)})
+        Me.baggingReportXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("MachineName", DevExpress.Xpo.SortDirection.None, "[ProdMainMachineLine.MachineLineName]", False, True), New DevExpress.Xpo.ViewProperty("ProductionDate", DevExpress.Xpo.SortDirection.None, "[ProdMainDate]", False, True), New DevExpress.Xpo.ViewProperty("ProductionShift", DevExpress.Xpo.SortDirection.None, "[ProdMainShift.ShiftName]", False, True), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[ProdMainQuantity] * Iif([ProdMainItemID.intQtyPerUnit] > 0, [ProdMainItemID.intQ" &
+                    "tyPerUnit], 1)", False, True), New DevExpress.Xpo.ViewProperty("ProductionID", DevExpress.Xpo.SortDirection.None, "[ProdMainID]", False, True), New DevExpress.Xpo.ViewProperty("ProductionStartTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStart]", False, True), New DevExpress.Xpo.ViewProperty("ProductionStopTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStop]", False, True)})
         '
         'fieldProductionDate1
         '
@@ -1755,7 +1752,7 @@ Partial Class QuickReportsXtraForm
         Me.reasonsPivotGridField.AreaIndex = 1
         Me.reasonsPivotGridField.Caption = "Reasons"
         Me.reasonsPivotGridField.Name = "reasonsPivotGridField"
-        Me.reasonsPivotGridField.Options.ShowGrandTotal = false
+        Me.reasonsPivotGridField.Options.ShowGrandTotal = False
         Me.reasonsPivotGridField.SummaryType = DevExpress.Data.PivotGrid.PivotSummaryType.Custom
         Me.reasonsPivotGridField.UnboundFieldName = "Reasons"
         Me.reasonsPivotGridField.UnboundType = DevExpress.Data.UnboundColumnType.[String]
@@ -1780,6 +1777,15 @@ Partial Class QuickReportsXtraForm
         Me.minutesPivotGridField.ValueFormat.FormatString = "f2"
         Me.minutesPivotGridField.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.Width = 75
+        '
+        'ProjBomAvailNonLocalPalletsQtyGridColumn
+        '
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Caption = "NON-LOCAL Pallets On Hand"
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Name = "ProjBomAvailNonLocalPalletsQtyGridColumn"
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = True
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.VisibleIndex = 8
         '
         'QuickReportsXtraForm
         '
@@ -2004,11 +2010,8 @@ End Sub
     Friend WithEvents ProjBomAvailItemCodeGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjBomAvailItemDescriptionGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjBomAvailItemTypeGridColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ProjBomAvailQtyReqForProjGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjBomAvailQtyOnHndGridColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ProjBomAvailQtyOnSchedGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjBomAvailQtyShortageGridColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ProjBomAvailQtyNotOnSchedGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents previewProductionBillingXtraTabPage As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents previewProductionBillingGridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents previewProductionBillingGridView As DevExpress.XtraGrid.Views.Grid.GridView
@@ -2026,7 +2029,6 @@ End Sub
     Friend WithEvents weeklyProductionProductionWeekGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents weeklyProductionTotalProducedWeeklyGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjBomAvailTotalAmtNeededGridColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ProjBomAvailTotalShortageGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents previewBaggingXtraTabPage As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents baggingReportPivotGridControl As DevExpress.XtraPivotGrid.PivotGridControl
     Friend WithEvents baggingReportXpView As DevExpress.Xpo.XPView
@@ -2036,4 +2038,8 @@ End Sub
     Friend WithEvents fieldQuantity1 As DevExpress.XtraPivotGrid.PivotGridField
     Friend WithEvents reasonsPivotGridField As DevExpress.XtraPivotGrid.PivotGridField
     Friend WithEvents minutesPivotGridField As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents ProjBomAvailLocalQtyGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProjBomLocalShortageGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProjBomAvailNonLocalQtyGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProjBomAvailNonLocalPalletsQtyGridColumn As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Style Enforcer", "Code Style Enforcer", "{89C2E8D7-EF73-4D0E-B2E0-E7C0ABA81EC0}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\..\Program Files\Code Style Enforcer\CustomRules\ImplementationRules.xml = ..\..\..\..\..\..\Program Files\Code Style Enforcer\CustomRules\ImplementationRules.xml
-		..\..\..\..\..\..\Program Files\Code Style Enforcer\CustomRules\NameRules.xml = ..\..\..\..\..\..\Program Files\Code Style Enforcer\CustomRules\NameRules.xml
-		..\..\..\..\..\..\Program Files\Code Style Enforcer\CustomRules\VisibilityRules.xml = ..\..\..\..\..\..\Program Files\Code Style Enforcer\CustomRules\VisibilityRules.xml
+		..\..\..\..\Program Files\Code Style Enforcer\CustomRules\ImplementationRules.xml = ..\..\..\..\Program Files\Code Style Enforcer\CustomRules\ImplementationRules.xml
+		..\..\..\..\Program Files\Code Style Enforcer\CustomRules\NameRules.xml = ..\..\..\..\Program Files\Code Style Enforcer\CustomRules\NameRules.xml
+		..\..\..\..\Program Files\Code Style Enforcer\CustomRules\VisibilityRules.xml = ..\..\..\..\Program Files\Code Style Enforcer\CustomRules\VisibilityRules.xml
 	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SuperiorPackGroup", "SuperiorPackGroup\SuperiorPackGroup.vbproj", "{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}"
@@ -47,8 +47,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		CodeStyleEnforcer_RulesLocation = 0
-		CodeStyleEnforcer_Active = -1
 		VisualSVNWorkingCopyRoot = .
+		CodeStyleEnforcer_Active = -1
+		CodeStyleEnforcer_RulesLocation = 0
 	EndGlobalSection
 EndGlobal

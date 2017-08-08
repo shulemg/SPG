@@ -4,7 +4,7 @@
     <sectionGroup name="userSettings" type="System.Configuration.UserSettingsGroup, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <section name="SuperiorPackGroup.My.MySettings" type="System.Configuration.ClientSettingsSection, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" allowExeDefinition="MachineToLocalUser" requirePermission="false" />
     </sectionGroup>
-    <section name="DevExpressXpoProfiler" type="DevExpress.Xpo.Logger.ProfilerConfigSection, DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" allowLocation="true" allowDefinition="Everywhere" />
+    <section name="DevExpressXpoProfiler" type="DevExpress.Xpo.Logger.ProfilerConfigSection, DevExpress.Data.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" allowLocation="true" allowDefinition="Everywhere" />
   </configSections>
   <connectionStrings>
     <add name="SuperiorPackGroup.My.MySettings.SPGDataDefaultConnectionString" connectionString="Data Source=.;Initial Catalog=SPGData;Integrated Security=True" providerName="System.Data.SqlClient" />
@@ -48,5 +48,5 @@
   <startup>
     <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0" />
   </startup>
-  <DevExpressXpoProfiler serverType="DevExpress.Xpo.Logger.Transport.LogServer" serverAssembly="DevExpress.Xpo.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" categories="SQL;Session;DataCache" port="52934" />
+  <DevExpressXpoProfiler serverType="DevExpress.Xpo.Logger.Transport.LogServer" serverAssembly="DevExpress.Xpo.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" categories="SQL;Session;DataCache" port="52934" />
 </configuration>
