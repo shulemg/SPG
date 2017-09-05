@@ -7,6 +7,7 @@ Imports DXDAL.SPGData
 Imports DevExpress.Data.Filtering
 Imports DevExpress.XtraPivotGrid
 Imports System.Linq
+Imports DevExpress.XtraEditors
 
 Public Class QuickReportsXtraForm
 
@@ -59,7 +60,7 @@ Public Class QuickReportsXtraForm
         previewWeeklyProductionXtraTabPage.PageVisible = False
         previewProjBomAvailXtraTabPage.PageVisible = False
         previewProductionBillingXtraTabPage.PageVisible = False
-        previewBaggingXtraTabPage.PageVisible = False 
+        previewBaggingXtraTabPage.PageVisible = False
 
     End Sub
 
@@ -1111,8 +1112,8 @@ Public Class QuickReportsXtraForm
                     Exit Sub
                 End If
                 baggingReportPivotGridControl.DataSource = baggingReportXpView
-                baggingReportPivotGridControl.Prefilter.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator("ProductionDate", DateAdd(DateInterval.Day,-14,Today), BinaryOperatorType.GreaterOrEqual),
-                                                                                     New BinaryOperator("ProductionDate", DateAdd(DateInterval.Day, 1,Today), BinaryOperatorType.LessOrEqual))
+                baggingReportPivotGridControl.Prefilter.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator("ProductionDate", DateAdd(DateInterval.Day, -14, Today), BinaryOperatorType.GreaterOrEqual),
+                                                                                     New BinaryOperator("ProductionDate", DateAdd(DateInterval.Day, 1, Today), BinaryOperatorType.LessOrEqual))
                 previewBaggingXtraTabPage.PageVisible = True
                 reportsXtraTabControl.SelectedTabPage = previewBaggingXtraTabPage
                 baggingReportPivotGridControl.Text = "Bagging"
@@ -1246,12 +1247,8 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailItemCodeGridColumn.FieldName = "ItemCode"
                 ProjBomAvailItemDescriptionGridColumn.FieldName = "ItemDescription"
                 ProjBomAvailItemTypeGridColumn.FieldName = "ItemType"
-                ProjBomAvailLocalQtyGridColumn.FieldName = "LocalQuantityOnHand"
-                ProjBomAvailQtyOnHndGridColumn.FieldName = "QuantityOnHand"
-                ProjBomAvailNonLocalQtyGridColumn.FieldName = "NonLocalQuantityOnHand"
-                ProjBomLocalShortageGridColumn.FieldName = "BomDemandLocalShortage"
-                ProjBomAvailQtyShortageGridColumn.FieldName = "TotalBomDemandShortage"
-                ProjBomAvailNonLocalPalletsQtyGridColumn.FieldName = "NonLocalPalletsQuantityOnHand"
+                ProjBomAvailLocalQtyGridColumn.FieldName = "QuantityOnHand"
+                ProjBomLocalShortageGridColumn.FieldName = "BomDemandShortage"
             Case "BomDemandSummaryXtraReport"
                 ProjBomAvailItemCodeGridColumn.FieldName = "ItemCode"
                 ProjBomAvailItemDescriptionGridColumn.FieldName = "ItemDescription"
@@ -1467,6 +1464,8 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailQtyShortageGridColumn.Visible = False
                 ProjBomAvailTotalAmtNeededGridColumn.Visible = False
                 ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = False
+                neededBy.Visible = False
+                lblNededBy.Visible = False
 
                 ProjBomAvailCustPOGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailItemCodeGridColumn.OptionsColumn.ShowInCustomizationForm = True
@@ -1493,6 +1492,8 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailTotalAmtNeededGridColumn.Visible = True
                 ProjBomLocalShortageGridColumn.Visible = True
                 ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = True
+                neededBy.Visible = True
+                lblNededBy.Visible = True
 
                 ProjBomAvailCustPOGridColumn.OptionsColumn.ShowInCustomizationForm = False
                 ProjBomAvailItemCodeGridColumn.OptionsColumn.ShowInCustomizationForm = True
@@ -1534,8 +1535,8 @@ Public Class QuickReportsXtraForm
 
                 previewProductionBillingGridView.BestFitColumns()
             Case "BaggingXtraReport"
-                baggingReportPivotGridControl.BestFit 
-                
+                baggingReportPivotGridControl.BestFit()
+
         End Select
 
     End Sub
@@ -1745,49 +1746,79 @@ Public Class QuickReportsXtraForm
 
     End Sub
 
-    Private Sub baggingReportPivotGridControl_CustomUnboundFieldData(sender As Object, e As DevExpress.XtraPivotGrid.CustomFieldDataEventArgs) Handles baggingReportPivotGridControl.CustomUnboundFieldData
+    'Private Sub baggingReportPivotGridControl_CustomUnboundFieldData(sender As Object, e As DevExpress.XtraPivotGrid.CustomFieldDataEventArgs) Handles baggingReportPivotGridControl.CustomUnboundFieldData
 
-        If e.Field.UnboundFieldName = reasonsPivotGridField.UnboundFieldName Then
-            e.Value = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID")).Reasons
-        ElseIf e.Field.UnboundFieldName = minutesPivotGridField.UnboundFieldName Then
-            'Dim MinPerHour As Integer = MainXtraForm.MinPerHOur
-            'Dim currentProduction = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID"))
-            'Dim MachineStandard = currentProduction.ProdMainItemID.MachineStandards.Where(Function(IMS) IMS.Machine.MachineLineID = CurrentProduction.ProdMainMachineLine.MachineLineID).FirstOrDefault()
-            'If MachineStandard IsNot Nothing Then
-            '    If MachineStandard.MinutesPerShift > 0 Then
-            '        MinPerHour = CInt(MachineStandard.MinutesPerShift / 7.16667)
-            '    Else If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
-            '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
-            '    End If
-            'Else
-            '    If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
-            '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
-            '    End If
-            'End If
-            Dim Minutes = DateDiff(DateInterval.Minute, CType(e.GetListSourceColumnValue("ProductionStartTime"), DateTime), CType(e.GetListSourceColumnValue("ProductionStopTime"), DateTime))
-            Dim BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(e.GetListSourceColumnValue("ProductionDate")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")), _
-                                                      Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")))
-            e.Value = Minutes - BreakMinutes
-        End If
+    '    If e.Field.UnboundFieldName = reasonsPivotGridField.UnboundFieldName Then
+    '        e.Value = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID")).Reasons
+    '    ElseIf e.Field.UnboundFieldName = minutesPivotGridField.UnboundFieldName Then
+    '        'Dim MinPerHour As Integer = MainXtraForm.MinPerHOur
+    '        'Dim currentProduction = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID"))
+    '        'Dim MachineStandard = currentProduction.ProdMainItemID.MachineStandards.Where(Function(IMS) IMS.Machine.MachineLineID = CurrentProduction.ProdMainMachineLine.MachineLineID).FirstOrDefault()
+    '        'If MachineStandard IsNot Nothing Then
+    '        '    If MachineStandard.MinutesPerShift > 0 Then
+    '        '        MinPerHour = CInt(MachineStandard.MinutesPerShift / 7.16667)
+    '        '    Else If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
+    '        '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
+    '        '    End If
+    '        'Else
+    '        '    If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
+    '        '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
+    '        '    End If
+    '        'End If
+    '        Dim Minutes = DateDiff(DateInterval.Minute, CType(e.GetListSourceColumnValue("ProductionStartTime"), DateTime), CType(e.GetListSourceColumnValue("ProductionStopTime"), DateTime))
+    '        Dim BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(e.GetListSourceColumnValue("ProductionDate")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")), _
+    '                                                  Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")))
+    '        e.Value = Minutes - BreakMinutes
+    '    End If
 
-    End Sub
+    'End Sub
 
     Private Sub baggingReportPivotGridControl_CustomSummary(sender As Object, e As DevExpress.XtraPivotGrid.PivotGridCustomSummaryEventArgs) Handles baggingReportPivotGridControl.CustomSummary
 
-        If e.DataField Is reasonsPivotGridField
-            Dim currentRow As PivotDrillDownDataRow
-            Dim reasonSummary As List(Of String) = New List(Of String)
-            Dim ds = e.CreateDrillDownDataSource()
-            For i = 0 To ds.RowCount - 1
-                currentRow = ds(i)
-                For Each reason In currentRow(reasonsPivotGridField).ToString.Split(";"c)
-                    If reasonSummary.Contains(reason) = False Then
-                        reasonSummary.Add(reason)
-                    End If
-                Next
-            Next
-            e.CustomValue = String.Join(";", reasonSummary)
-        End If
+        'If e.DataField Is reasonsPivotGridField
+        '    Dim currentRow As PivotDrillDownDataRow
+        '    Dim reasonSummary As List(Of String) = New List(Of String)
+        '    Dim ds = e.CreateDrillDownDataSource()
+        '    For i = 0 To ds.RowCount - 1
+        '        currentRow = ds(i)
+        '        For Each reason In currentRow(reasonsPivotGridField).ToString.Split(";"c)
+        '            If reasonSummary.Contains(reason) = False Then
+        '                reasonSummary.Add(reason)
+        '            End If
+        '        Next
+        '    Next
+        '    e.CustomValue = String.Join(";", reasonSummary)
+        'End If
 
+    End Sub
+
+    Private Sub neededBy_Properties_DateTimeChanged(sender As Object, e As EventArgs) Handles neededBy.Properties.DateTimeChanged
+        If neededBy.Visible = False Then Exit Sub
+        If neededBy IsNot Nothing Then
+            ProjBomAvailGridControl.DataSource = BomAvailabilityReportBLL.GetDemandSummary(XpoDefault.Session, neededBy.DateTime)
+        Else
+            ProjBomAvailGridControl.DataSource = BomAvailabilityReportBLL.GetDemandSummary(XpoDefault.Session)
+        End If
+        ProjBomAvailGridControl.RefreshDataSource()
+    End Sub
+
+    Private Sub LabelControl3_Click(sender As Object, e As EventArgs) Handles lblNededBy.Click
+
+    End Sub
+
+    Private Sub previewProductionBillingGridView_FilterEditorCreated(sender As Object, e As DevExpress.XtraGrid.Views.Base.FilterControlEventArgs) Handles previewProductionBillingGridView.FilterEditorCreated
+
+        AddHandler e.FilterControl.BeforeShowValueEditor, AddressOf FilterControl_BeforeShowValueEditor
+    End Sub
+
+    Private Sub FilterControl_BeforeShowValueEditor(sender As Object, e As DevExpress.XtraEditors.Filtering.ShowValueEditorEventArgs)
+        If (e.CurrentNode.FirstOperand.PropertyName = "Production Date") Then
+            Dim editor As DateEdit
+            editor = CType(e.Editor, DateEdit)
+            editor.Width = 200
+            editor.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True
+            editor.Properties.CalendarTimeProperties.Mask.EditMask = "g"
+            editor.Properties.TimeEditWidth = 150
+        End If
     End Sub
 End Class

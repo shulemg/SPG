@@ -1186,4 +1186,8 @@ Public Class ItemsXtraForm
             editor.Properties.TimeEditWidth = 150
         End If
     End Sub
+
+    Private Sub productionGridControl_Click(sender As Object, e As EventArgs) Handles productionGridControl.Click
+
+    End Sub
 End Class

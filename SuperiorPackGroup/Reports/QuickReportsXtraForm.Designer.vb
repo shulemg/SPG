@@ -175,6 +175,8 @@ Partial Class QuickReportsXtraForm
         Me.weeklyProductionTotalProducedGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.weeklyProductionPercentageCompleteGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.previewProjBomAvailXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.lblNededBy = New DevExpress.XtraEditors.LabelControl()
+        Me.neededBy = New DevExpress.XtraEditors.DateEdit()
         Me.ProjBomAvailGridControl = New DevExpress.XtraGrid.GridControl()
         Me.ProjBomAvailGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.ProjBomAvailCustPOGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -185,6 +187,7 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailLocalQtyGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ProjBomLocalShortageGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ProjBomAvailNonLocalQtyGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ProjBomAvailQtyOnHndGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ProjBomAvailQtyShortageGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.previewProductionBillingXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
@@ -210,7 +213,6 @@ Partial Class QuickReportsXtraForm
         Me.reasonsPivotGridField = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.minutesPivotGridField = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.exportSaveFileDialog = New System.Windows.Forms.SaveFileDialog()
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -249,6 +251,8 @@ Partial Class QuickReportsXtraForm
         CType(Me.weeklyProductionGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.weeklyProductionGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.previewProjBomAvailXtraTabPage.SuspendLayout()
+        CType(Me.neededBy.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.neededBy.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProjBomAvailGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProjBomAvailGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.previewProductionBillingXtraTabPage.SuspendLayout()
@@ -1456,10 +1460,34 @@ Partial Class QuickReportsXtraForm
         '
         'previewProjBomAvailXtraTabPage
         '
+        Me.previewProjBomAvailXtraTabPage.Controls.Add(Me.lblNededBy)
+        Me.previewProjBomAvailXtraTabPage.Controls.Add(Me.neededBy)
         Me.previewProjBomAvailXtraTabPage.Controls.Add(Me.ProjBomAvailGridControl)
         Me.previewProjBomAvailXtraTabPage.Name = "previewProjBomAvailXtraTabPage"
         Me.previewProjBomAvailXtraTabPage.Size = New System.Drawing.Size(648, 584)
         Me.previewProjBomAvailXtraTabPage.Text = "Preview Project Bom Availibility"
+        '
+        'lblNededBy
+        '
+        Me.lblNededBy.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.lblNededBy.Appearance.Options.UseBackColor = True
+        Me.lblNededBy.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.lblNededBy.Location = New System.Drawing.Point(282, 6)
+        Me.lblNededBy.Name = "lblNededBy"
+        Me.lblNededBy.Size = New System.Drawing.Size(52, 13)
+        Me.lblNededBy.TabIndex = 2
+        Me.lblNededBy.Text = "Needed By"
+        '
+        'neededBy
+        '
+        Me.neededBy.EditValue = Nothing
+        Me.neededBy.Location = New System.Drawing.Point(340, 3)
+        Me.neededBy.MenuManager = Me.BarManager1
+        Me.neededBy.Name = "neededBy"
+        Me.neededBy.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.neededBy.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.neededBy.Size = New System.Drawing.Size(100, 20)
+        Me.neededBy.TabIndex = 1
         '
         'ProjBomAvailGridControl
         '
@@ -1545,6 +1573,15 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailNonLocalQtyGridColumn.Visible = True
         Me.ProjBomAvailNonLocalQtyGridColumn.VisibleIndex = 7
         '
+        'ProjBomAvailNonLocalPalletsQtyGridColumn
+        '
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Caption = "NON-LOCAL Pallets On Hand"
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Name = "ProjBomAvailNonLocalPalletsQtyGridColumn"
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = True
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.VisibleIndex = 8
+        '
         'ProjBomAvailQtyOnHndGridColumn
         '
         Me.ProjBomAvailQtyOnHndGridColumn.Caption = "TOTAL Qty On Hand"
@@ -1595,11 +1632,12 @@ Partial Class QuickReportsXtraForm
         'productionBillingDateGridColumn
         '
         Me.productionBillingDateGridColumn.Caption = "Production Date"
-        Me.productionBillingDateGridColumn.DisplayFormat.FormatString = "d"
+        Me.productionBillingDateGridColumn.DisplayFormat.FormatString = "g"
         Me.productionBillingDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.productionBillingDateGridColumn.Name = "productionBillingDateGridColumn"
         Me.productionBillingDateGridColumn.Visible = True
         Me.productionBillingDateGridColumn.VisibleIndex = 0
+        Me.productionBillingDateGridColumn.Width = 130
         '
         'productionBillingCustomerGridColumn
         '
@@ -1607,6 +1645,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingCustomerGridColumn.Name = "productionBillingCustomerGridColumn"
         Me.productionBillingCustomerGridColumn.Visible = True
         Me.productionBillingCustomerGridColumn.VisibleIndex = 1
+        Me.productionBillingCustomerGridColumn.Width = 49
         '
         'productionBillingItemCodeGridColumn
         '
@@ -1614,6 +1653,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingItemCodeGridColumn.Name = "productionBillingItemCodeGridColumn"
         Me.productionBillingItemCodeGridColumn.Visible = True
         Me.productionBillingItemCodeGridColumn.VisibleIndex = 2
+        Me.productionBillingItemCodeGridColumn.Width = 49
         '
         'productionBillingItemDescriptionGridColumn
         '
@@ -1621,6 +1661,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingItemDescriptionGridColumn.Name = "productionBillingItemDescriptionGridColumn"
         Me.productionBillingItemDescriptionGridColumn.Visible = True
         Me.productionBillingItemDescriptionGridColumn.VisibleIndex = 3
+        Me.productionBillingItemDescriptionGridColumn.Width = 49
         '
         'productionBillingItemTypeGridColumn
         '
@@ -1628,6 +1669,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingItemTypeGridColumn.Name = "productionBillingItemTypeGridColumn"
         Me.productionBillingItemTypeGridColumn.Visible = True
         Me.productionBillingItemTypeGridColumn.VisibleIndex = 4
+        Me.productionBillingItemTypeGridColumn.Width = 49
         '
         'productionBillingShiftGridColumn
         '
@@ -1635,6 +1677,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingShiftGridColumn.Name = "productionBillingShiftGridColumn"
         Me.productionBillingShiftGridColumn.Visible = True
         Me.productionBillingShiftGridColumn.VisibleIndex = 5
+        Me.productionBillingShiftGridColumn.Width = 49
         '
         'productionBillingPOGridColumn
         '
@@ -1642,6 +1685,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingPOGridColumn.Name = "productionBillingPOGridColumn"
         Me.productionBillingPOGridColumn.Visible = True
         Me.productionBillingPOGridColumn.VisibleIndex = 6
+        Me.productionBillingPOGridColumn.Width = 49
         '
         'productionBillingUOMGridColumn
         '
@@ -1649,6 +1693,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingUOMGridColumn.Name = "productionBillingUOMGridColumn"
         Me.productionBillingUOMGridColumn.Visible = True
         Me.productionBillingUOMGridColumn.VisibleIndex = 7
+        Me.productionBillingUOMGridColumn.Width = 49
         '
         'productionBillingQuantityGridColumn
         '
@@ -1656,6 +1701,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingQuantityGridColumn.Name = "productionBillingQuantityGridColumn"
         Me.productionBillingQuantityGridColumn.Visible = True
         Me.productionBillingQuantityGridColumn.VisibleIndex = 8
+        Me.productionBillingQuantityGridColumn.Width = 49
         '
         'productionBillingCasesGridColumn
         '
@@ -1666,6 +1712,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingCasesGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Cases", "{0:f2}")})
         Me.productionBillingCasesGridColumn.Visible = True
         Me.productionBillingCasesGridColumn.VisibleIndex = 9
+        Me.productionBillingCasesGridColumn.Width = 49
         '
         'productionBillingPriceGridColumn
         '
@@ -1676,6 +1723,7 @@ Partial Class QuickReportsXtraForm
         Me.productionBillingPriceGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Price", "{0:c}")})
         Me.productionBillingPriceGridColumn.Visible = True
         Me.productionBillingPriceGridColumn.VisibleIndex = 10
+        Me.productionBillingPriceGridColumn.Width = 59
         '
         'previewBaggingXtraTabPage
         '
@@ -1778,18 +1826,9 @@ Partial Class QuickReportsXtraForm
         Me.minutesPivotGridField.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.Width = 75
         '
-        'ProjBomAvailNonLocalPalletsQtyGridColumn
-        '
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Caption = "NON-LOCAL Pallets On Hand"
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Name = "ProjBomAvailNonLocalPalletsQtyGridColumn"
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = True
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.VisibleIndex = 8
-        '
         'QuickReportsXtraForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(959, 684)
         Me.Controls.Add(Me.SplitContainerControl1)
@@ -1797,59 +1836,62 @@ Partial Class QuickReportsXtraForm
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "QuickReportsXtraForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " Reports"
-        CType(Me.BarManager1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SplitContainerControl1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.SplitContainerControl1.ResumeLayout(false)
-        CType(Me.quickReportsGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.quickReportsGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.reportsXtraTabControl,System.ComponentModel.ISupportInitialize).EndInit
-        Me.reportsXtraTabControl.ResumeLayout(false)
-        Me.previewCustoemrsXtraTabPage.ResumeLayout(false)
-        CType(Me.previewGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewProductionEntriesXtraTabPage.ResumeLayout(false)
-        CType(Me.previewProductionEntriesGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewProductionEntriesGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewLpnStatusXtraTabPage.ResumeLayout(false)
-        CType(Me.previewLpnStatusGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewLpnStatusGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewCurrentRMInventoryXtraTabPage.ResumeLayout(false)
-        CType(Me.previewCurrentRMInventoryGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewCurrentRMInventoryGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewCurrentInventoryXtraTabPage.ResumeLayout(false)
-        Me.previewCurrentInventoryXtraTabPage.PerformLayout
-        CType(Me.outOfStockItemsCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.currentInventoryInactiveItemsCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.currentInventoryInactiveCustomersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewCurrentInventoryGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewCurrentInventoryGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewLocationTransfersXtraTabPage.ResumeLayout(false)
-        CType(Me.previewLocationTransfersGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewLocationTransfersGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewShiftScheduleXtraTabPage.ResumeLayout(false)
-        Me.previewShiftScheduleXtraTabPage.PerformLayout
-        CType(Me.shiftScheduleGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shiftScheduleGridView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shiftScheduleShiftComboBoxEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shiftScheduleDateDateEdit.Properties.CalendarTimeProperties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shiftScheduleDateDateEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewWeeklyProductionXtraTabPage.ResumeLayout(false)
-        CType(Me.weeklyProductionGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.weeklyProductionGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewProjBomAvailXtraTabPage.ResumeLayout(false)
-        CType(Me.ProjBomAvailGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ProjBomAvailGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewProductionBillingXtraTabPage.ResumeLayout(false)
-        CType(Me.previewProductionBillingGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.previewProductionBillingGridView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.previewBaggingXtraTabPage.ResumeLayout(false)
-        CType(Me.baggingReportPivotGridControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.baggingReportXpView,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainerControl1.ResumeLayout(False)
+        CType(Me.quickReportsGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.quickReportsGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reportsXtraTabControl, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.reportsXtraTabControl.ResumeLayout(False)
+        Me.previewCustoemrsXtraTabPage.ResumeLayout(False)
+        CType(Me.previewGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewProductionEntriesXtraTabPage.ResumeLayout(False)
+        CType(Me.previewProductionEntriesGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewProductionEntriesGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewLpnStatusXtraTabPage.ResumeLayout(False)
+        CType(Me.previewLpnStatusGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewLpnStatusGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewCurrentRMInventoryXtraTabPage.ResumeLayout(False)
+        CType(Me.previewCurrentRMInventoryGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewCurrentRMInventoryGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewCurrentInventoryXtraTabPage.ResumeLayout(False)
+        Me.previewCurrentInventoryXtraTabPage.PerformLayout()
+        CType(Me.outOfStockItemsCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.currentInventoryInactiveItemsCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.currentInventoryInactiveCustomersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewCurrentInventoryGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewCurrentInventoryGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewLocationTransfersXtraTabPage.ResumeLayout(False)
+        CType(Me.previewLocationTransfersGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewLocationTransfersGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewShiftScheduleXtraTabPage.ResumeLayout(False)
+        Me.previewShiftScheduleXtraTabPage.PerformLayout()
+        CType(Me.shiftScheduleGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shiftScheduleGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shiftScheduleShiftComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shiftScheduleDateDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shiftScheduleDateDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewWeeklyProductionXtraTabPage.ResumeLayout(False)
+        CType(Me.weeklyProductionGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.weeklyProductionGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewProjBomAvailXtraTabPage.ResumeLayout(False)
+        Me.previewProjBomAvailXtraTabPage.PerformLayout()
+        CType(Me.neededBy.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.neededBy.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProjBomAvailGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProjBomAvailGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewProductionBillingXtraTabPage.ResumeLayout(False)
+        CType(Me.previewProductionBillingGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.previewProductionBillingGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.previewBaggingXtraTabPage.ResumeLayout(False)
+        CType(Me.baggingReportPivotGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.baggingReportXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
         Me.PerformLayout
 
 End Sub
@@ -2042,4 +2084,6 @@ End Sub
     Friend WithEvents ProjBomLocalShortageGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjBomAvailNonLocalQtyGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjBomAvailNonLocalPalletsQtyGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents neededBy As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents lblNededBy As DevExpress.XtraEditors.LabelControl
 End Class
