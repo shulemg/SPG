@@ -150,13 +150,19 @@ Namespace SPGData
             End Get
         End Property
 
+        Public ReadOnly Property RemainingBalance As Double
+            Get
+                Return UnitsRequested - UnitsProduced
+            End Get
+        End Property
+
         Public ReadOnly Property EstimatedShifts As Double?
             Get
-                If ProjectItem Is Nothing OrElse UnitsRequested = 0 OrElse ProjectItem.ItemProdStandard.HasValue = False OrElse ProjectItem.ItemProdStandard.Value = 0 Then
+                If ProjectItem Is Nothing OrElse RemainingBalance = 0 OrElse ProjectItem.ItemProdStandard.HasValue = False OrElse ProjectItem.ItemProdStandard.Value = 0 Then
                     Return Nothing
                 End If
 
-                Return (UnitsRequested * ProjectItem.intQtyPerUnit) / (ProjectItem.ItemProdStandard.Value * 358.3333)     '7:10 * 50 min per hour
+                Return (RemainingBalance * ProjectItem.intQtyPerUnit) / (ProjectItem.ItemProdStandard.Value * 358.3333)     '7:10 * 50 min per hour
             End Get
         End Property
 

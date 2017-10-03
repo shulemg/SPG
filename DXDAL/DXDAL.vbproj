@@ -92,6 +92,7 @@
     <Compile Include="CustomerPlants.vb" />
     <Compile Include="CustomerShifts.vb" />
     <Compile Include="LotCodeSectionSettings.vb" />
+    <Compile Include="TestTable.vb" />
     <Compile Include="SPGEnums.vb" />
     <Compile Include="Customers.vb" />
     <Compile Include="Employees.vb" />

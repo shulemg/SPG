@@ -52,7 +52,6 @@ Partial Class ProjectsXtraForm
         Me.dataEntrySplitContainerControl = New DevExpress.XtraEditors.SplitContainerControl()
         Me.notesMemoExEdit = New DevExpress.XtraEditors.MemoExEdit()
         Me.LabelControl9 = New DevExpress.XtraEditors.LabelControl()
-        'Me.scheduledWeekDatePeriodEdit = New SuperiorPackGroup.DatePeriodEdit()
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.projectStatusComboBoxEdit = New DevExpress.XtraEditors.ComboBoxEdit()
@@ -99,6 +98,8 @@ Partial Class ProjectsXtraForm
         Me.PropertyNameGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.PrevValueGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.NewValueGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.refreshBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.colRemainingBalance = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.deleteRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.itemXpView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,8 +115,6 @@ Partial Class ProjectsXtraForm
         CType(Me.dataEntrySplitContainerControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dataEntrySplitContainerControl.SuspendLayout()
         CType(Me.notesMemoExEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        'CType(Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        'CType(Me.scheduledWeekDatePeriodEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.projectStatusComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reqDeliveryDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.reqDeliveryDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -167,9 +166,9 @@ Partial Class ProjectsXtraForm
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.addBarButtonItem, Me.editBarButtonItem, Me.deleteBarButtonItem, Me.cancelBarButtonItem, Me.saveBarButtonItem, Me.printProductionReportBarButtonItem, Me.printBomAvailabilityBarButtonItem})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.addBarButtonItem, Me.editBarButtonItem, Me.deleteBarButtonItem, Me.cancelBarButtonItem, Me.saveBarButtonItem, Me.printProductionReportBarButtonItem, Me.printBomAvailabilityBarButtonItem, Me.refreshBarButtonItem})
         Me.BarManager1.MainMenu = Me.Bar2
-        Me.BarManager1.MaxItemId = 7
+        Me.BarManager1.MaxItemId = 10
         Me.BarManager1.StatusBar = Me.Bar3
         '
         'projectsBar
@@ -178,7 +177,7 @@ Partial Class ProjectsXtraForm
         Me.projectsBar.DockCol = 0
         Me.projectsBar.DockRow = 1
         Me.projectsBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.projectsBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.addBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.editBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.deleteBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.cancelBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.saveBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.printProductionReportBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.printBomAvailabilityBarButtonItem)})
+        Me.projectsBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.addBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.editBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.deleteBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.cancelBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.saveBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.printProductionReportBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.printBomAvailabilityBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.refreshBarButtonItem, True)})
         Me.projectsBar.OptionsBar.UseWholeRow = True
         Me.projectsBar.Text = "Tools"
         '
@@ -251,6 +250,7 @@ Partial Class ProjectsXtraForm
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Size = New System.Drawing.Size(797, 49)
         '
         'barDockControlBottom
@@ -258,6 +258,7 @@ Partial Class ProjectsXtraForm
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 491)
+        Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(797, 23)
         '
         'barDockControlLeft
@@ -265,6 +266,7 @@ Partial Class ProjectsXtraForm
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Manager = Me.BarManager1
         Me.barDockControlLeft.Size = New System.Drawing.Size(0, 442)
         '
         'barDockControlRight
@@ -272,6 +274,7 @@ Partial Class ProjectsXtraForm
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(797, 49)
+        Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 442)
         '
         'SplitContainerControl1
@@ -369,7 +372,6 @@ Partial Class ProjectsXtraForm
         Me.dataEntrySplitContainerControl.Name = "dataEntrySplitContainerControl"
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.notesMemoExEdit)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.LabelControl9)
-        ' Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.scheduledWeekDatePeriodEdit)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.LabelControl8)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.LabelControl7)
         Me.dataEntrySplitContainerControl.Panel1.Controls.Add(Me.projectStatusComboBoxEdit)
@@ -409,22 +411,6 @@ Partial Class ProjectsXtraForm
         Me.LabelControl9.Size = New System.Drawing.Size(32, 13)
         Me.LabelControl9.TabIndex = 16
         Me.LabelControl9.Text = "Notes:"
-        '
-        'scheduledWeekDatePeriodEdit
-        '
-        'Me.scheduledWeekDatePeriodEdit.EditValue = ""
-        'Me.scheduledWeekDatePeriodEdit.Location = New System.Drawing.Point(375, 108)
-        'Me.scheduledWeekDatePeriodEdit.MenuManager = Me.BarManager1
-        'Me.scheduledWeekDatePeriodEdit.Name = "scheduledWeekDatePeriodEdit"
-        'Me.scheduledWeekDatePeriodEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        'Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        'Me.scheduledWeekDatePeriodEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        'Me.scheduledWeekDatePeriodEdit.Properties.OptionsSelection.MultiSelectBehavior = SuperiorPackGroup.MultiSelectBehavior.Disabled
-        'Me.scheduledWeekDatePeriodEdit.Properties.PeriodStoreMode = SuperiorPackGroup.StoreMode.StringMode
-        'Me.scheduledWeekDatePeriodEdit.Properties.ShowWeekNumbers = True
-        'Me.scheduledWeekDatePeriodEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        'Me.scheduledWeekDatePeriodEdit.Size = New System.Drawing.Size(137, 20)
-        'Me.scheduledWeekDatePeriodEdit.TabIndex = 15
         '
         'LabelControl8
         '
@@ -602,7 +588,7 @@ Partial Class ProjectsXtraForm
         '
         'projectDetailsGridView
         '
-        Me.projectDetailsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemNumber, Me.delGridColumn, Me.colOid, Me.colHasChanges, Me.GridColumn1, Me.GridColumn2, Me.colCustomerPO, Me.GridColumn3, Me.colUnitsRequested, Me.colBagsRequested, Me.colPalletsRequested, Me.colUnitsProduced, Me.colBagsProduced, Me.colPalletsProduced, Me.colPercentageComplete, Me.colAllowOverrun, Me.colEstimatiedShifts})
+        Me.projectDetailsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemNumber, Me.delGridColumn, Me.colOid, Me.colHasChanges, Me.GridColumn1, Me.GridColumn2, Me.colCustomerPO, Me.GridColumn3, Me.colUnitsRequested, Me.colBagsRequested, Me.colPalletsRequested, Me.colRemainingBalance, Me.colUnitsProduced, Me.colBagsProduced, Me.colPalletsProduced, Me.colPercentageComplete, Me.colAllowOverrun, Me.colEstimatiedShifts})
         Me.projectDetailsGridView.GridControl = Me.projectDetailsGridControl
         Me.projectDetailsGridView.Name = "projectDetailsGridView"
         Me.projectDetailsGridView.OptionsBehavior.Editable = False
@@ -749,7 +735,7 @@ Partial Class ProjectsXtraForm
         Me.colEstimatiedShifts.Name = "colEstimatiedShifts"
         Me.colEstimatiedShifts.OptionsColumn.AllowEdit = False
         Me.colEstimatiedShifts.Visible = True
-        Me.colEstimatiedShifts.VisibleIndex = 11
+        Me.colEstimatiedShifts.VisibleIndex = 12
         '
         'auditXtraTabPage
         '
@@ -825,6 +811,20 @@ Partial Class ProjectsXtraForm
         Me.NewValueGridColumn.Visible = True
         Me.NewValueGridColumn.VisibleIndex = 4
         '
+        'refreshBarButtonItem
+        '
+        Me.refreshBarButtonItem.Caption = "Refresh"
+        Me.refreshBarButtonItem.Id = 9
+        Me.refreshBarButtonItem.Name = "refreshBarButtonItem"
+        '
+        'colRemainingBalance
+        '
+        Me.colRemainingBalance.Caption = "Remaining Balance"
+        Me.colRemainingBalance.FieldName = "RemainingBalance"
+        Me.colRemainingBalance.Name = "colRemainingBalance"
+        Me.colRemainingBalance.Visible = True
+        Me.colRemainingBalance.VisibleIndex = 11
+        '
         'ProjectsXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -854,8 +854,6 @@ Partial Class ProjectsXtraForm
         CType(Me.dataEntrySplitContainerControl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.dataEntrySplitContainerControl.ResumeLayout(False)
         CType(Me.notesMemoExEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        'CType(Me.scheduledWeekDatePeriodEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        'CType(Me.scheduledWeekDatePeriodEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.projectStatusComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.reqDeliveryDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.reqDeliveryDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -956,4 +954,6 @@ Partial Class ProjectsXtraForm
     Friend WithEvents NewValueGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents printProductionReportBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents printBomAvailabilityBarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents refreshBarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents colRemainingBalance As DevExpress.XtraGrid.Columns.GridColumn
 End Class

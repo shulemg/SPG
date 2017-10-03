@@ -490,4 +490,8 @@ Public Class ProjectsXtraForm
 
     End Sub
 
+    Private Sub refreshBarButtonItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles refreshBarButtonItem.ItemClick
+        BindProjectControls(m_CurrentProject.Oid)
+        projectSearchXpView.Reload()
+    End Sub
 End Class
