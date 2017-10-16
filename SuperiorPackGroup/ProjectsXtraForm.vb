@@ -465,7 +465,7 @@ Public Class ProjectsXtraForm
             With QuickReportsXtraForm
                 .MdiParent = MdiParent
                 .Show()
-                '.SelectWeeklyScheduleReport(m_CurrentProject, scheduledWeekDatePeriodEdit.Text)
+                .SelectWeeklyScheduleReport(m_CurrentProject, "") 'scheduledWeekDatePeriodEdit.Text)
                 '.FillReports(Nothing)
                 .Activate()
             End With
