@@ -1746,36 +1746,36 @@ Public Class QuickReportsXtraForm
 
     End Sub
 
-    'Private Sub baggingReportPivotGridControl_CustomUnboundFieldData(sender As Object, e As DevExpress.XtraPivotGrid.CustomFieldDataEventArgs) Handles baggingReportPivotGridControl.CustomUnboundFieldData
+    Private Sub baggingReportPivotGridControl_CustomUnboundFieldData(sender As Object, e As DevExpress.XtraPivotGrid.CustomFieldDataEventArgs) Handles baggingReportPivotGridControl.CustomUnboundFieldData
 
-    '    If e.Field.UnboundFieldName = reasonsPivotGridField.UnboundFieldName Then
-    '        e.Value = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID")).Reasons
-    '    ElseIf e.Field.UnboundFieldName = minutesPivotGridField.UnboundFieldName Then
-    '        'Dim MinPerHour As Integer = MainXtraForm.MinPerHOur
-    '        'Dim currentProduction = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID"))
-    '        'Dim MachineStandard = currentProduction.ProdMainItemID.MachineStandards.Where(Function(IMS) IMS.Machine.MachineLineID = CurrentProduction.ProdMainMachineLine.MachineLineID).FirstOrDefault()
-    '        'If MachineStandard IsNot Nothing Then
-    '        '    If MachineStandard.MinutesPerShift > 0 Then
-    '        '        MinPerHour = CInt(MachineStandard.MinutesPerShift / 7.16667)
-    '        '    Else If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
-    '        '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
-    '        '    End If
-    '        'Else
-    '        '    If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
-    '        '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
-    '        '    End If
-    '        'End If
-    '        Dim Minutes = DateDiff(DateInterval.Minute, CType(e.GetListSourceColumnValue("ProductionStartTime"), DateTime), CType(e.GetListSourceColumnValue("ProductionStopTime"), DateTime))
-    '        Dim BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(e.GetListSourceColumnValue("ProductionDate")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")), _
-    '                                                  Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")))
-    '        e.Value = Minutes - BreakMinutes
-    '    End If
+        If e.Field.UnboundFieldName = "reasons" Then 'reasonsPivotGridField.UnboundFieldName Then
+            'e.Value = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID")).Reasons
+        ElseIf e.Field.UnboundFieldName = "minutes" Then 'PivotGridField.UnboundFieldName Then
+            'Dim MinPerHour As Integer = MainXtraForm.MinPerHOur
+            'Dim currentProduction = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID"))
+            'Dim MachineStandard = currentProduction.ProdMainItemID.MachineStandards.Where(Function(IMS) IMS.Machine.MachineLineID = CurrentProduction.ProdMainMachineLine.MachineLineID).FirstOrDefault()
+            'If MachineStandard IsNot Nothing Then
+            '    If MachineStandard.MinutesPerShift > 0 Then
+            '        MinPerHour = CInt(MachineStandard.MinutesPerShift / 7.16667)
+            '    Else If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
+            '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
+            '    End If
+            'Else
+            '    If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
+            '        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
+            '    End If
+            'End If
+            Dim Minutes = DateDiff(DateInterval.Minute, CType(e.GetListSourceColumnValue("ProductionStartTime"), DateTime), CType(e.GetListSourceColumnValue("ProductionStopTime"), DateTime))
+            Dim BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(e.GetListSourceColumnValue("ProductionDate")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")),
+                                                      Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")))
+            e.Value = Minutes - BreakMinutes
+        End If
 
-    'End Sub
+    End Sub
 
     Private Sub baggingReportPivotGridControl_CustomSummary(sender As Object, e As DevExpress.XtraPivotGrid.PivotGridCustomSummaryEventArgs) Handles baggingReportPivotGridControl.CustomSummary
 
-        'If e.DataField Is reasonsPivotGridField
+        'If e.DataField Is reasonsPivotGridField Then
         '    Dim currentRow As PivotDrillDownDataRow
         '    Dim reasonSummary As List(Of String) = New List(Of String)
         '    Dim ds = e.CreateDrillDownDataSource()

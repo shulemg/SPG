@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class QuickReportsXtraForm
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class QuickReportsXtraForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim PivotGridGroup1 As DevExpress.XtraPivotGrid.PivotGridGroup = New DevExpress.XtraPivotGrid.PivotGridGroup()
@@ -212,6 +212,7 @@ Partial Class QuickReportsXtraForm
         Me.fieldQuantity1 = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.reasonsPivotGridField = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.minutesPivotGridField = New DevExpress.XtraPivotGrid.PivotGridField()
+        Me.fieldItemCode = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.exportSaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1736,7 +1737,7 @@ Partial Class QuickReportsXtraForm
         '
         Me.baggingReportPivotGridControl.DataSource = Me.baggingReportXpView
         Me.baggingReportPivotGridControl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.baggingReportPivotGridControl.Fields.AddRange(New DevExpress.XtraPivotGrid.PivotGridField() {Me.fieldMachineName1, Me.fieldProductionDate1, Me.fieldProductionShift1, Me.fieldQuantity1, Me.reasonsPivotGridField, Me.minutesPivotGridField})
+        Me.baggingReportPivotGridControl.Fields.AddRange(New DevExpress.XtraPivotGrid.PivotGridField() {Me.fieldMachineName1, Me.fieldProductionDate1, Me.fieldProductionShift1, Me.fieldQuantity1, Me.reasonsPivotGridField, Me.minutesPivotGridField, Me.fieldItemCode})
         PivotGridGroup1.Fields.Add(Me.fieldMachineName1)
         PivotGridGroup1.Hierarchy = Nothing
         PivotGridGroup1.ShowNewValues = True
@@ -1750,7 +1751,7 @@ Partial Class QuickReportsXtraForm
         '
         Me.baggingReportXpView.ObjectType = GetType(DXDAL.SPGData.Production)
         Me.baggingReportXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("MachineName", DevExpress.Xpo.SortDirection.None, "[ProdMainMachineLine.MachineLineName]", False, True), New DevExpress.Xpo.ViewProperty("ProductionDate", DevExpress.Xpo.SortDirection.None, "[ProdMainDate]", False, True), New DevExpress.Xpo.ViewProperty("ProductionShift", DevExpress.Xpo.SortDirection.None, "[ProdMainShift.ShiftName]", False, True), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[ProdMainQuantity] * Iif([ProdMainItemID.intQtyPerUnit] > 0, [ProdMainItemID.intQ" &
-                    "tyPerUnit], 1)", False, True), New DevExpress.Xpo.ViewProperty("ProductionID", DevExpress.Xpo.SortDirection.None, "[ProdMainID]", False, True), New DevExpress.Xpo.ViewProperty("ProductionStartTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStart]", False, True), New DevExpress.Xpo.ViewProperty("ProductionStopTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStop]", False, True)})
+                    "tyPerUnit], 1)", False, True), New DevExpress.Xpo.ViewProperty("ProductionID", DevExpress.Xpo.SortDirection.None, "[ProdMainID]", False, True), New DevExpress.Xpo.ViewProperty("ProductionStartTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStart]", False, True), New DevExpress.Xpo.ViewProperty("ProductionStopTime", DevExpress.Xpo.SortDirection.None, "[ProdMainTimeStop]", False, True), New DevExpress.Xpo.ViewProperty("ProductionItemID", DevExpress.Xpo.SortDirection.None, "[ProdMainItemID.ItemCode]", False, True)})
         '
         'fieldProductionDate1
         '
@@ -1765,6 +1766,7 @@ Partial Class QuickReportsXtraForm
         Me.fieldProductionDate1.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.fieldProductionDate1.TotalValueFormat.FormatString = "d"
         Me.fieldProductionDate1.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.fieldProductionDate1.UnboundFieldName = "fieldProductionDate1"
         Me.fieldProductionDate1.ValueFormat.FormatString = "d"
         Me.fieldProductionDate1.ValueFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         '
@@ -1782,13 +1784,15 @@ Partial Class QuickReportsXtraForm
         Me.fieldQuantity1.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
         Me.fieldQuantity1.AreaIndex = 0
         Me.fieldQuantity1.Caption = "Quantity"
-        Me.fieldQuantity1.CellFormat.FormatString = "f2"
+        Me.fieldQuantity1.CellFormat.FormatString = "#,#"
         Me.fieldQuantity1.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.fieldQuantity1.FieldName = "Quantity"
+        Me.fieldQuantity1.GrandTotalCellFormat.FormatString = "#,#"
+        Me.fieldQuantity1.GrandTotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.fieldQuantity1.Name = "fieldQuantity1"
-        Me.fieldQuantity1.TotalCellFormat.FormatString = "f2"
+        Me.fieldQuantity1.TotalCellFormat.FormatString = "#,#"
         Me.fieldQuantity1.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.fieldQuantity1.TotalValueFormat.FormatString = "f2"
+        Me.fieldQuantity1.TotalValueFormat.FormatString = "#,#"
         Me.fieldQuantity1.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.fieldQuantity1.ValueFormat.FormatString = "f2"
         Me.fieldQuantity1.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -1800,9 +1804,9 @@ Partial Class QuickReportsXtraForm
         Me.reasonsPivotGridField.AreaIndex = 1
         Me.reasonsPivotGridField.Caption = "Reasons"
         Me.reasonsPivotGridField.Name = "reasonsPivotGridField"
-        Me.reasonsPivotGridField.Options.ShowGrandTotal = False
         Me.reasonsPivotGridField.SummaryType = DevExpress.Data.PivotGrid.PivotSummaryType.Custom
-        Me.reasonsPivotGridField.UnboundFieldName = "Reasons"
+        Me.reasonsPivotGridField.TotalsVisibility = DevExpress.XtraPivotGrid.PivotTotalsVisibility.None
+        Me.reasonsPivotGridField.UnboundFieldName = "reasons"
         Me.reasonsPivotGridField.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         Me.reasonsPivotGridField.Width = 50
         '
@@ -1811,20 +1815,27 @@ Partial Class QuickReportsXtraForm
         Me.minutesPivotGridField.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea
         Me.minutesPivotGridField.AreaIndex = 2
         Me.minutesPivotGridField.Caption = "Minutes"
-        Me.minutesPivotGridField.CellFormat.FormatString = "f2"
+        Me.minutesPivotGridField.CellFormat.FormatString = "#"
         Me.minutesPivotGridField.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.GrandTotalCellFormat.FormatString = "f2"
         Me.minutesPivotGridField.GrandTotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.Name = "minutesPivotGridField"
-        Me.minutesPivotGridField.TotalCellFormat.FormatString = "f2"
+        Me.minutesPivotGridField.TotalCellFormat.FormatString = "#"
         Me.minutesPivotGridField.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.TotalValueFormat.FormatString = "f2"
         Me.minutesPivotGridField.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.minutesPivotGridField.UnboundFieldName = "minutesPivotGridField"
+        Me.minutesPivotGridField.UnboundFieldName = "minutes"
         Me.minutesPivotGridField.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
         Me.minutesPivotGridField.ValueFormat.FormatString = "f2"
         Me.minutesPivotGridField.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.Width = 75
+        '
+        'fieldItemCode
+        '
+        Me.fieldItemCode.AreaIndex = 0
+        Me.fieldItemCode.Caption = "Item #"
+        Me.fieldItemCode.FieldName = "ProductionItemID"
+        Me.fieldItemCode.Name = "fieldItemCode"
         '
         'QuickReportsXtraForm
         '
@@ -1892,9 +1903,9 @@ Partial Class QuickReportsXtraForm
         CType(Me.baggingReportPivotGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.baggingReportXpView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
     Friend WithEvents customersMenuBar As DevExpress.XtraBars.Bar
     Friend WithEvents printBarButtonItem As DevExpress.XtraBars.BarButtonItem
@@ -2086,4 +2097,5 @@ End Sub
     Friend WithEvents ProjBomAvailNonLocalPalletsQtyGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents neededBy As DevExpress.XtraEditors.DateEdit
     Friend WithEvents lblNededBy As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents fieldItemCode As DevExpress.XtraPivotGrid.PivotGridField
 End Class

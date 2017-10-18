@@ -84,6 +84,7 @@ Partial Public Class PackingListXtraReport
         Me.XrLabel3 = New DevExpress.XtraReports.UI.XRLabel()
         Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
         Me.reportTitleXrLabel = New DevExpress.XtraReports.UI.XRLabel()
+        Me.locationId = New DevExpress.XtraReports.UI.XRLabel()
         Me.ReportFooter = New DevExpress.XtraReports.UI.ReportFooterBand()
         Me.totalPalletWeightXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.palletsTotalXrLabel = New DevExpress.XtraReports.UI.XRLabel()
@@ -109,7 +110,6 @@ Partial Public Class PackingListXtraReport
         Me.itemGroupHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.packingListpageinfo = New DevExpress.XtraReports.UI.XRPageInfo()
-        Me.locationId = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
@@ -991,6 +991,14 @@ Partial Public Class PackingListXtraReport
         Me.reportTitleXrLabel.Text = "PACKING LIST"
         Me.reportTitleXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
+        'locationId
+        '
+        Me.locationId.LocationFloat = New DevExpress.Utils.PointFloat(194.2083!, 100.0!)
+        Me.locationId.Name = "locationId"
+        Me.locationId.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.locationId.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+        Me.locationId.Visible = False
+        '
         'ReportFooter
         '
         Me.ReportFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.totalPalletWeightXrLabel, Me.palletsTotalXrLabel, Me.XrLabel33, Me.XrLabel23, Me.totalPalletsXrLabel, Me.totalWeightXrLabel, Me.XrLine1})
@@ -1173,6 +1181,7 @@ Partial Public Class PackingListXtraReport
         Me.itemTotalWeightXrLabel.StylePriority.UseBorders = False
         Me.itemTotalWeightXrLabel.StylePriority.UseFont = False
         Me.itemTotalWeightXrLabel.StylePriority.UseTextAlignment = False
+        XrSummary1.FormatString = "{0:#0.00}"
         XrSummary1.IgnoreNullValues = True
         XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
         Me.itemTotalWeightXrLabel.Summary = XrSummary1
@@ -1289,14 +1298,6 @@ Partial Public Class PackingListXtraReport
         Me.packingListpageinfo.Name = "packingListpageinfo"
         Me.packingListpageinfo.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
         Me.packingListpageinfo.Visible = False
-        '
-        'locationId
-        '
-        Me.locationId.LocationFloat = New DevExpress.Utils.PointFloat(194.2083!, 100.0!)
-        Me.locationId.Name = "locationId"
-        Me.locationId.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96.0!)
-        Me.locationId.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
-        Me.locationId.Visible = False
         '
         'PackingListXtraReport
         '
