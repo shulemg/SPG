@@ -1762,6 +1762,7 @@ Partial Class QuickReportsXtraForm
         Me.fieldProductionDate1.CellFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.fieldProductionDate1.FieldName = "ProductionDate"
         Me.fieldProductionDate1.Name = "fieldProductionDate1"
+        Me.fieldProductionDate1.SortOrder = DevExpress.XtraPivotGrid.PivotSortOrder.Descending
         Me.fieldProductionDate1.TotalCellFormat.FormatString = "d"
         Me.fieldProductionDate1.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.fieldProductionDate1.TotalValueFormat.FormatString = "d"

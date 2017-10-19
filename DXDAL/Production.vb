@@ -157,10 +157,12 @@ Namespace SPGData
                 Dim result As New StringBuilder(String.Empty)
 
                 For Each reason In ReasonCodes
-                    If result.Length < 1 Then
-                        result.Append(reason.ReasonCode)
-                    Else
-                        result.AppendFormat("; {0}", reason.ReasonCode)
+                    If Len(reason.ReasonCode) > 0 Then
+                        If result.Length < 1 Then
+                            result.Append(reason.ReasonCode)
+                        Else
+                            result.AppendFormat("; {0}", reason.ReasonCode)
+                        End If
                     End If
                 Next
 

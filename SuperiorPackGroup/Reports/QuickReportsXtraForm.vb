@@ -1777,7 +1777,7 @@ Public Class QuickReportsXtraForm
         If e.DataField Is reasonsPivotGridField Then
             ' This is a Grand Total cell.
             If ReferenceEquals(e.ColumnField, Nothing) OrElse ReferenceEquals(e.RowField, Nothing) Then
-                e.CustomValue = ""
+                'e.CustomValue = ""
                 Return
             End If
             Dim pivot As PivotGridControl = TryCast(sender, PivotGridControl)
@@ -1786,25 +1786,26 @@ Public Class QuickReportsXtraForm
 
             ' This is a Total cell.
             If Not (e.RowField.AreaIndex = lastRowFieldIndex AndAlso e.ColumnField.AreaIndex = lastColumnFieldIndex) Then
-                e.CustomValue = ""
+                'e.CustomValue = ""
                 Return
             End If
-            Dim currentRow As PivotDrillDownDataRow
-            Dim reasonSummary As List(Of String) = New List(Of String)
-            Dim ds = e.CreateDrillDownDataSource()
-            'If ds.RowCount > 10 Then
-            '    e.CustomValue = ds.RowCount
-            '    Exit Sub
-            'End If
-            For i = 0 To ds.RowCount - 1
-                currentRow = ds(i)
-                For Each reason In currentRow(reasonsPivotGridField).ToString.Split(";"c)
-                    If Len(reason) > 0 AndAlso reasonSummary.Contains(reason) = False Then
-                        reasonSummary.Add(reason)
-                    End If
-                Next
-            Next
-            e.CustomValue = String.Join(";", reasonSummary)
+            'Dim currentRow As PivotDrillDownDataRow
+            'Dim reasonSummary As List(Of String) = New List(Of String)
+            'Dim ds = e.CreateDrillDownDataSource()
+            ''If ds.RowCount > 10 Then
+            ''    e.CustomValue = ds.RowCount
+            ''    Exit Sub
+            ''End If
+            'For i = 0 To ds.RowCount - 1
+            '    currentRow = ds(i)
+            '    For Each reason In currentRow(reasonsPivotGridField).ToString.Split(";"c)
+            '        If Len(reason) > 0 AndAlso reasonSummary.Contains(reason) = False Then
+            '            reasonSummary.Add(reason)
+            '        End If
+            '    Next
+            'Next
+            'e.CustomValue = String.Join(";", reasonSummary)
+            e.CustomValue = e.SummaryValue.Max
         End If
 
     End Sub
