@@ -1749,7 +1749,7 @@ Public Class QuickReportsXtraForm
     Private Sub baggingReportPivotGridControl_CustomUnboundFieldData(sender As Object, e As DevExpress.XtraPivotGrid.CustomFieldDataEventArgs) Handles baggingReportPivotGridControl.CustomUnboundFieldData
 
         If e.Field.UnboundFieldName = "reasons" Then 'reasonsPivotGridField.UnboundFieldName Then
-            'e.Value = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID")).Reasons
+            e.Value = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID")).Reasons
         ElseIf e.Field.UnboundFieldName = "minutes" Then 'PivotGridField.UnboundFieldName Then
             'Dim MinPerHour As Integer = MainXtraForm.MinPerHOur
             'Dim currentProduction = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID"))
@@ -1774,21 +1774,38 @@ Public Class QuickReportsXtraForm
     End Sub
 
     Private Sub baggingReportPivotGridControl_CustomSummary(sender As Object, e As DevExpress.XtraPivotGrid.PivotGridCustomSummaryEventArgs) Handles baggingReportPivotGridControl.CustomSummary
+        If e.DataField Is reasonsPivotGridField Then
+            ' This is a Grand Total cell.
+            If ReferenceEquals(e.ColumnField, Nothing) OrElse ReferenceEquals(e.RowField, Nothing) Then
+                e.CustomValue = ""
+                Return
+            End If
+            Dim pivot As PivotGridControl = TryCast(sender, PivotGridControl)
+            Dim lastRowFieldIndex As Integer = pivot.Fields.GetVisibleFieldCount(PivotArea.RowArea) - 1
+            Dim lastColumnFieldIndex As Integer = pivot.Fields.GetVisibleFieldCount(PivotArea.ColumnArea) - 1
 
-        'If e.DataField Is reasonsPivotGridField Then
-        '    Dim currentRow As PivotDrillDownDataRow
-        '    Dim reasonSummary As List(Of String) = New List(Of String)
-        '    Dim ds = e.CreateDrillDownDataSource()
-        '    For i = 0 To ds.RowCount - 1
-        '        currentRow = ds(i)
-        '        For Each reason In currentRow(reasonsPivotGridField).ToString.Split(";"c)
-        '            If reasonSummary.Contains(reason) = False Then
-        '                reasonSummary.Add(reason)
-        '            End If
-        '        Next
-        '    Next
-        '    e.CustomValue = String.Join(";", reasonSummary)
-        'End If
+            ' This is a Total cell.
+            If Not (e.RowField.AreaIndex = lastRowFieldIndex AndAlso e.ColumnField.AreaIndex = lastColumnFieldIndex) Then
+                e.CustomValue = ""
+                Return
+            End If
+            Dim currentRow As PivotDrillDownDataRow
+            Dim reasonSummary As List(Of String) = New List(Of String)
+            Dim ds = e.CreateDrillDownDataSource()
+            'If ds.RowCount > 10 Then
+            '    e.CustomValue = ds.RowCount
+            '    Exit Sub
+            'End If
+            For i = 0 To ds.RowCount - 1
+                currentRow = ds(i)
+                For Each reason In currentRow(reasonsPivotGridField).ToString.Split(";"c)
+                    If Len(reason) > 0 AndAlso reasonSummary.Contains(reason) = False Then
+                        reasonSummary.Add(reason)
+                    End If
+                Next
+            Next
+            e.CustomValue = String.Join(";", reasonSummary)
+        End If
 
     End Sub
 
