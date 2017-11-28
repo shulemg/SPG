@@ -214,6 +214,7 @@ Partial Class QuickReportsXtraForm
         Me.minutesPivotGridField = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.fieldItemCode = New DevExpress.XtraPivotGrid.PivotGridField()
         Me.exportSaveFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.ProjBomAvailCustNameGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -1503,7 +1504,7 @@ Partial Class QuickReportsXtraForm
         '
         'ProjBomAvailGridView
         '
-        Me.ProjBomAvailGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ProjBomAvailCustPOGridColumn, Me.ProjBomAvailItemCodeGridColumn, Me.ProjBomAvailItemDescriptionGridColumn, Me.ProjBomAvailItemTypeGridColumn, Me.ProjBomAvailTotalAmtNeededGridColumn, Me.ProjBomAvailLocalQtyGridColumn, Me.ProjBomLocalShortageGridColumn, Me.ProjBomAvailNonLocalQtyGridColumn, Me.ProjBomAvailNonLocalPalletsQtyGridColumn, Me.ProjBomAvailQtyOnHndGridColumn, Me.ProjBomAvailQtyShortageGridColumn})
+        Me.ProjBomAvailGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.ProjBomAvailCustPOGridColumn, Me.ProjBomAvailCustNameGridColumn, Me.ProjBomAvailItemCodeGridColumn, Me.ProjBomAvailItemDescriptionGridColumn, Me.ProjBomAvailItemTypeGridColumn, Me.ProjBomAvailTotalAmtNeededGridColumn, Me.ProjBomAvailLocalQtyGridColumn, Me.ProjBomLocalShortageGridColumn, Me.ProjBomAvailNonLocalQtyGridColumn, Me.ProjBomAvailNonLocalPalletsQtyGridColumn, Me.ProjBomAvailQtyOnHndGridColumn, Me.ProjBomAvailQtyShortageGridColumn})
         Me.ProjBomAvailGridView.GridControl = Me.ProjBomAvailGridControl
         Me.ProjBomAvailGridView.Name = "ProjBomAvailGridView"
         Me.ProjBomAvailGridView.OptionsBehavior.Editable = False
@@ -1516,27 +1517,31 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailCustPOGridColumn.Name = "ProjBomAvailCustPOGridColumn"
         Me.ProjBomAvailCustPOGridColumn.Visible = True
         Me.ProjBomAvailCustPOGridColumn.VisibleIndex = 0
+        Me.ProjBomAvailCustPOGridColumn.Width = 90
         '
         'ProjBomAvailItemCodeGridColumn
         '
         Me.ProjBomAvailItemCodeGridColumn.Caption = "Item Code"
         Me.ProjBomAvailItemCodeGridColumn.Name = "ProjBomAvailItemCodeGridColumn"
         Me.ProjBomAvailItemCodeGridColumn.Visible = True
-        Me.ProjBomAvailItemCodeGridColumn.VisibleIndex = 1
+        Me.ProjBomAvailItemCodeGridColumn.VisibleIndex = 2
+        Me.ProjBomAvailItemCodeGridColumn.Width = 53
         '
         'ProjBomAvailItemDescriptionGridColumn
         '
         Me.ProjBomAvailItemDescriptionGridColumn.Caption = "Item Description"
         Me.ProjBomAvailItemDescriptionGridColumn.Name = "ProjBomAvailItemDescriptionGridColumn"
         Me.ProjBomAvailItemDescriptionGridColumn.Visible = True
-        Me.ProjBomAvailItemDescriptionGridColumn.VisibleIndex = 2
+        Me.ProjBomAvailItemDescriptionGridColumn.VisibleIndex = 3
+        Me.ProjBomAvailItemDescriptionGridColumn.Width = 53
         '
         'ProjBomAvailItemTypeGridColumn
         '
         Me.ProjBomAvailItemTypeGridColumn.Caption = "Item Type"
         Me.ProjBomAvailItemTypeGridColumn.Name = "ProjBomAvailItemTypeGridColumn"
         Me.ProjBomAvailItemTypeGridColumn.Visible = True
-        Me.ProjBomAvailItemTypeGridColumn.VisibleIndex = 3
+        Me.ProjBomAvailItemTypeGridColumn.VisibleIndex = 4
+        Me.ProjBomAvailItemTypeGridColumn.Width = 53
         '
         'ProjBomAvailTotalAmtNeededGridColumn
         '
@@ -1545,7 +1550,8 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailTotalAmtNeededGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomAvailTotalAmtNeededGridColumn.Name = "ProjBomAvailTotalAmtNeededGridColumn"
         Me.ProjBomAvailTotalAmtNeededGridColumn.Visible = True
-        Me.ProjBomAvailTotalAmtNeededGridColumn.VisibleIndex = 4
+        Me.ProjBomAvailTotalAmtNeededGridColumn.VisibleIndex = 5
+        Me.ProjBomAvailTotalAmtNeededGridColumn.Width = 53
         '
         'ProjBomAvailLocalQtyGridColumn
         '
@@ -1554,7 +1560,8 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailLocalQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomAvailLocalQtyGridColumn.Name = "ProjBomAvailLocalQtyGridColumn"
         Me.ProjBomAvailLocalQtyGridColumn.Visible = True
-        Me.ProjBomAvailLocalQtyGridColumn.VisibleIndex = 5
+        Me.ProjBomAvailLocalQtyGridColumn.VisibleIndex = 6
+        Me.ProjBomAvailLocalQtyGridColumn.Width = 53
         '
         'ProjBomLocalShortageGridColumn
         '
@@ -1563,7 +1570,8 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomLocalShortageGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomLocalShortageGridColumn.Name = "ProjBomLocalShortageGridColumn"
         Me.ProjBomLocalShortageGridColumn.Visible = True
-        Me.ProjBomLocalShortageGridColumn.VisibleIndex = 6
+        Me.ProjBomLocalShortageGridColumn.VisibleIndex = 7
+        Me.ProjBomLocalShortageGridColumn.Width = 53
         '
         'ProjBomAvailNonLocalQtyGridColumn
         '
@@ -1572,16 +1580,18 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailNonLocalQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomAvailNonLocalQtyGridColumn.Name = "ProjBomAvailNonLocalQtyGridColumn"
         Me.ProjBomAvailNonLocalQtyGridColumn.Visible = True
-        Me.ProjBomAvailNonLocalQtyGridColumn.VisibleIndex = 7
+        Me.ProjBomAvailNonLocalQtyGridColumn.VisibleIndex = 8
+        Me.ProjBomAvailNonLocalQtyGridColumn.Width = 53
         '
         'ProjBomAvailNonLocalPalletsQtyGridColumn
         '
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Caption = "NON-LOCAL Pallets On Hand"
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Caption = "LOCAL Shortage - Pallets"
         Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatString = "{0:#,##0.00####}"
         Me.ProjBomAvailNonLocalPalletsQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Name = "ProjBomAvailNonLocalPalletsQtyGridColumn"
         Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = True
-        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.VisibleIndex = 8
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.VisibleIndex = 9
+        Me.ProjBomAvailNonLocalPalletsQtyGridColumn.Width = 53
         '
         'ProjBomAvailQtyOnHndGridColumn
         '
@@ -1590,7 +1600,8 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailQtyOnHndGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomAvailQtyOnHndGridColumn.Name = "ProjBomAvailQtyOnHndGridColumn"
         Me.ProjBomAvailQtyOnHndGridColumn.Visible = True
-        Me.ProjBomAvailQtyOnHndGridColumn.VisibleIndex = 9
+        Me.ProjBomAvailQtyOnHndGridColumn.VisibleIndex = 10
+        Me.ProjBomAvailQtyOnHndGridColumn.Width = 53
         '
         'ProjBomAvailQtyShortageGridColumn
         '
@@ -1599,7 +1610,8 @@ Partial Class QuickReportsXtraForm
         Me.ProjBomAvailQtyShortageGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.ProjBomAvailQtyShortageGridColumn.Name = "ProjBomAvailQtyShortageGridColumn"
         Me.ProjBomAvailQtyShortageGridColumn.Visible = True
-        Me.ProjBomAvailQtyShortageGridColumn.VisibleIndex = 10
+        Me.ProjBomAvailQtyShortageGridColumn.VisibleIndex = 11
+        Me.ProjBomAvailQtyShortageGridColumn.Width = 63
         '
         'previewProductionBillingXtraTabPage
         '
@@ -1837,6 +1849,13 @@ Partial Class QuickReportsXtraForm
         Me.fieldItemCode.Caption = "Item #"
         Me.fieldItemCode.FieldName = "ProductionItemID"
         Me.fieldItemCode.Name = "fieldItemCode"
+        '
+        'ProjBomAvailCustNameGridColumn
+        '
+        Me.ProjBomAvailCustNameGridColumn.Caption = "Customer Name"
+        Me.ProjBomAvailCustNameGridColumn.Name = "ProjBomAvailCustNameGridColumn"
+        Me.ProjBomAvailCustNameGridColumn.Visible = True
+        Me.ProjBomAvailCustNameGridColumn.VisibleIndex = 1
         '
         'QuickReportsXtraForm
         '
@@ -2099,4 +2118,5 @@ Partial Class QuickReportsXtraForm
     Friend WithEvents neededBy As DevExpress.XtraEditors.DateEdit
     Friend WithEvents lblNededBy As DevExpress.XtraEditors.LabelControl
     Friend WithEvents fieldItemCode As DevExpress.XtraPivotGrid.PivotGridField
+    Friend WithEvents ProjBomAvailCustNameGridColumn As DevExpress.XtraGrid.Columns.GridColumn
 End Class

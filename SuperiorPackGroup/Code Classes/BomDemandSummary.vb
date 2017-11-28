@@ -7,9 +7,10 @@ Public Class BomDemandSummary
     Public Property PoolItemID As ItemPool
     Public Property LocalQuantityOnHand As Double
     Public Property NonLocalQuantityOnHand As Double
-    Public Property NonLocalPalletsQuantityOnHand As Double
+    'Public Property NonLocalPalletsQuantityOnHand As Double
     Public Property QuantityOnScheduledProjects As Double
     Public Property QuantityOnUnscheduledProjects As Double
+    Public Property CustomerName As String
     Public ReadOnly Property QuantityOnHand As Double
         Get
             Return LocalQuantityOnHand + NonLocalQuantityOnHand
@@ -34,6 +35,15 @@ Public Class BomDemandSummary
     Public ReadOnly Property TotalBomDemandShortage As Double
         Get
             Return Math.Max(TotalBomDemand - QuantityOnHand, 0)
+        End Get
+    End Property
+    Public ReadOnly Property NonLocalPalletsQuantityOnHand As Double
+        Get
+            Try
+                If ItemID.intUnitsPerPallet = 0 Then Return 0
+                Return BomDemandLocalShortage / ItemID.intUnitsPerPallet
+            Catch
+            End Try
         End Get
     End Property
 

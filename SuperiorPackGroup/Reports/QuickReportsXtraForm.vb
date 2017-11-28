@@ -1260,6 +1260,7 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailTotalAmtNeededGridColumn.FieldName = "TotalBomDemand"
                 ProjBomLocalShortageGridColumn.FieldName = "BomDemandLocalShortage"
                 ProjBomAvailNonLocalPalletsQtyGridColumn.FieldName = "NonLocalPalletsQuantityOnHand"
+                ProjBomAvailCustNameGridColumn.FieldName = "CustomerName"
             Case "ProductionBillingXtraReport"
                 productionBillingDateGridColumn.FieldName = "Production Date"
                 productionBillingCustomerGridColumn.FieldName = "Customer Name"
@@ -1464,6 +1465,7 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailQtyShortageGridColumn.Visible = False
                 ProjBomAvailTotalAmtNeededGridColumn.Visible = False
                 ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = False
+                ProjBomAvailCustNameGridColumn.Visible = False
                 neededBy.Visible = False
                 lblNededBy.Visible = False
 
@@ -1478,6 +1480,7 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailQtyShortageGridColumn.OptionsColumn.ShowInCustomizationForm = False
                 ProjBomAvailTotalAmtNeededGridColumn.OptionsColumn.ShowInCustomizationForm = False
                 ProjBomAvailNonLocalPalletsQtyGridColumn.OptionsColumn.ShowInCustomizationForm = False
+                ProjBomAvailCustNameGridColumn.OptionsColumn.ShowInCustomizationForm = False
 
                 ProjBomAvailGridView.BestFitColumns()
             Case "BomDemandSummaryXtraReport"
@@ -1494,6 +1497,7 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailNonLocalPalletsQtyGridColumn.Visible = True
                 neededBy.Visible = True
                 lblNededBy.Visible = True
+                ProjBomAvailCustNameGridColumn.Visible = True
 
                 ProjBomAvailCustPOGridColumn.OptionsColumn.ShowInCustomizationForm = False
                 ProjBomAvailItemCodeGridColumn.OptionsColumn.ShowInCustomizationForm = True
@@ -1506,6 +1510,7 @@ Public Class QuickReportsXtraForm
                 ProjBomAvailQtyShortageGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailTotalAmtNeededGridColumn.OptionsColumn.ShowInCustomizationForm = True
                 ProjBomAvailNonLocalPalletsQtyGridColumn.OptionsColumn.ShowInCustomizationForm = True
+                ProjBomAvailCustNameGridColumn.OptionsColumn.ShowInCustomizationForm = True
 
                 ProjBomAvailGridView.BestFitColumns()
             Case "ProductionBillingXtraReport"

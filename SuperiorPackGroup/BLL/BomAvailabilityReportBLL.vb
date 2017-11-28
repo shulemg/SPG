@@ -52,6 +52,7 @@ Public Class BomAvailabilityReportBLL
                     Dim BomDemand As BomDemandSummary
                     For Each BomNeeded As BOMs In projectLine.ProjectItem.ItemBOM
                         BomDemand = New BomDemandSummary
+                        BomDemand.CustomerName = projectLine.Project.Customer.CustomerName
                         BomDemand.ItemID = BomNeeded.BOMRawMatID
                         BomDemand.ItemType = BomNeeded.BOMRawMatID.ItemType
                         If DemandSummaryDictionary.ContainsKey(BomDemand.DemandKey) Then
@@ -62,10 +63,10 @@ Public Class BomAvailabilityReportBLL
                         Else
                             BomDemand.LocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal)).Sum(Function(i) i.QuantityOnHand)
                             BomDemand.NonLocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual)).Sum(Function(i) i.QuantityOnHand)
-                            Try
-                                BomDemand.NonLocalPalletsQuantityOnHand = BomDemand.NonLocalQuantityOnHand / BomNeeded.BOMRawMatID.intUnitsPerPallet
-                            Catch
-                            End Try
+                            'Try
+                            '    BomDemand.NonLocalPalletsQuantityOnHand = BomDemand.NonLocalQuantityOnHand / BomNeeded.BOMRawMatID.intUnitsPerPallet
+                            'Catch
+                            'End Try
                             'BomDemand.QuantityOnHand = BomNeeded.BOMRawMatID.TotalQuantityOnHand
                             BomDemand.QuantityOnScheduledProjects = (projectLine.UnitsNeeded - projectLine.UnitsNeededToSchedule) *
                                 (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)))
@@ -122,10 +123,10 @@ Public Class BomAvailabilityReportBLL
                         Else
                             BomDemand.LocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal)).Sum(Function(i) i.QuantityOnHand)
                             BomDemand.NonLocalQuantityOnHand = New XPCollection(Of SPGData.LocationInventory)(session, New BinaryOperator(SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) And New BinaryOperator(SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual)).Sum(Function(i) i.QuantityOnHand)
-                            Try
-                                BomDemand.NonLocalPalletsQuantityOnHand = BomDemand.NonLocalQuantityOnHand / BomNeeded.BOMRawMatID.intUnitsPerPallet
-                            Catch
-                            End Try
+                            'Try
+                            '    BomDemand.NonLocalPalletsQuantityOnHand = BomDemand.NonLocalQuantityOnHand / BomNeeded.BOMRawMatID.intUnitsPerPallet
+                            'Catch
+                            'End Try
                             'BomDemand.QuantityOnHand = BomNeeded.BOMRawMatID.TotalQuantityOnHand
                             BomDemand.QuantityOnScheduledProjects = (projectLine.UnitsNeeded - projectLine.UnitsNeededToSchedule) *
                                 (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)))
