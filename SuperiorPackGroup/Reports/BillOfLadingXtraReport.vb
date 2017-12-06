@@ -47,7 +47,7 @@ Public Class BillOfLadingXtraReport
 
     Private Sub totalPalletWeightXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalPalletWeightXrLabel.BeforePrint
 
-        totalPalletWeightXrLabel.Text = (CDbl(GetCurrentColumnValue("sngTotalPallets")) * 40).ToString
+        totalPalletWeightXrLabel.Text = (CDbl(GetCurrentColumnValue("sngTotalPallets")) * 65).ToString
 
     End Sub
 

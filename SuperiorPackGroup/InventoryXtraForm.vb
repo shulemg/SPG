@@ -95,7 +95,7 @@ Public Class InventoryXtraForm
         If MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) _
                 = Windows.Forms.DialogResult.Yes Then
             If InventoryBLL.DeleteInventory(m_InventoryUOW, CType(inventoryGridView.GetFocusedRowCellValue(idGridColumn), Integer)) <> True Then
-                MessageBox.Show("The inventory record was not deleted succesfully.", "Error Encountered", MessageBoxButtons.OK, _
+                MessageBox.Show("The inventory record was not deleted succesfully.", "Error Encountered", MessageBoxButtons.OK,
                         MessageBoxIcon.Error)
                 Exit Sub
             End If
@@ -457,6 +457,12 @@ Public Class InventoryXtraForm
 
     Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles saveSimpleButton.Click
 
+        If CType(itemLookUpEdit.Properties.Tag, Integer?) <> CType(itemLookUpEdit.EditValue, Integer?) Then
+            m_InventoryUOW.Delete(productionProjectDetailXpCollection)
+            m_InventoryUOW.Save(productionProjectDetailXpCollection)
+            productionProjectDetailXpCollection.Reload()
+        End If
+
         If ValidateRecord() Then
             Try
                 If SaveRecord() Then
@@ -602,11 +608,11 @@ Public Class InventoryXtraForm
     Private Sub FilterAssignedCustomers()
 
         inventoryXPView.Filter = New InOperator("CustomerID", UsersCustomerBLL.GetAssignedCustomerIDs(m_InventoryUOW))
-        customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
+        customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)))
-        itemsFilterXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)), _
+        itemsFilterXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)),
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"FG", "IG"}))
-        itemsXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)), _
+        itemsXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)),
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"FG", "IG"}), New BinaryOperator(Items.Fields.Inactive.PropertyName, False))
 
     End Sub
@@ -850,7 +856,7 @@ Public Class InventoryXtraForm
 
     Private Sub UpdatePallets()
 
-        If itemLookUpEdit.EditValue Is Nothing OrElse _
+        If itemLookUpEdit.EditValue Is Nothing OrElse
                 itemLookUpEdit.Text = itemLookUpEdit.Properties.NullText OrElse quantityTextEdit.Text = String.Empty Then
             Exit Sub
         End If

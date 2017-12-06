@@ -33,6 +33,7 @@ Partial Class ProjectsXtraForm
         Me.saveBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.printProductionReportBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.printBomAvailabilityBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.refreshBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
@@ -83,6 +84,7 @@ Partial Class ProjectsXtraForm
         Me.colUnitsRequested = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colBagsRequested = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPalletsRequested = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRemainingBalance = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colUnitsProduced = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colBagsProduced = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPalletsProduced = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -98,8 +100,7 @@ Partial Class ProjectsXtraForm
         Me.PropertyNameGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.PrevValueGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.NewValueGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.refreshBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.colRemainingBalance = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.deleteRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.itemXpView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,7 +147,7 @@ Partial Class ProjectsXtraForm
         '
         Me.RepositoryItemLookUpEdit1.AutoHeight = False
         Me.RepositoryItemLookUpEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemLookUpEdit1.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CaseQuantity", "Case Quantity", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BagsPerCase", "Bags Per Case", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CasePerPallet", "Case Per Pallet", 82, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far)})
+        Me.RepositoryItemLookUpEdit1.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CaseQuantity", "Case Quantity", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BagsPerCase", "Bags Per Case", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CasePerPallet", "Case Per Pallet", 82, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.RepositoryItemLookUpEdit1.DataSource = Me.itemXpView
         Me.RepositoryItemLookUpEdit1.DisplayMember = "ItemCode"
         Me.RepositoryItemLookUpEdit1.Name = "RepositoryItemLookUpEdit1"
@@ -222,6 +223,12 @@ Partial Class ProjectsXtraForm
         Me.printBomAvailabilityBarButtonItem.Caption = "Print &Bom Availability"
         Me.printBomAvailabilityBarButtonItem.Id = 6
         Me.printBomAvailabilityBarButtonItem.Name = "printBomAvailabilityBarButtonItem"
+        '
+        'refreshBarButtonItem
+        '
+        Me.refreshBarButtonItem.Caption = "Refresh"
+        Me.refreshBarButtonItem.Id = 9
+        Me.refreshBarButtonItem.Name = "refreshBarButtonItem"
         '
         'Bar2
         '
@@ -520,7 +527,7 @@ Partial Class ProjectsXtraForm
         Me.customerLookUpEdit.MenuManager = Me.BarManager1
         Me.customerLookUpEdit.Name = "customerLookUpEdit"
         Me.customerLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.customerLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.customerLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.customerLookUpEdit.Properties.DataSource = Me.customerXpView
         Me.customerLookUpEdit.Properties.DisplayMember = "CustomerName"
         Me.customerLookUpEdit.Properties.NullText = "[Select A Customer]"
@@ -588,7 +595,7 @@ Partial Class ProjectsXtraForm
         '
         'projectDetailsGridView
         '
-        Me.projectDetailsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemNumber, Me.delGridColumn, Me.colOid, Me.colHasChanges, Me.GridColumn1, Me.GridColumn2, Me.colCustomerPO, Me.GridColumn3, Me.colUnitsRequested, Me.colBagsRequested, Me.colPalletsRequested, Me.colRemainingBalance, Me.colUnitsProduced, Me.colBagsProduced, Me.colPalletsProduced, Me.colPercentageComplete, Me.colAllowOverrun, Me.colEstimatiedShifts})
+        Me.projectDetailsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemNumber, Me.delGridColumn, Me.colOid, Me.colHasChanges, Me.GridColumn1, Me.GridColumn2, Me.colCustomerPO, Me.GridColumn3, Me.colUnitsRequested, Me.colBagsRequested, Me.colPalletsRequested, Me.colRemainingBalance, Me.colUnitsProduced, Me.colBagsProduced, Me.colPalletsProduced, Me.colPercentageComplete, Me.colAllowOverrun, Me.colEstimatiedShifts, Me.GridColumn4})
         Me.projectDetailsGridView.GridControl = Me.projectDetailsGridControl
         Me.projectDetailsGridView.Name = "projectDetailsGridView"
         Me.projectDetailsGridView.OptionsBehavior.Editable = False
@@ -608,7 +615,7 @@ Partial Class ProjectsXtraForm
         '
         Me.itemRepositoryItemLookUpEdit.AutoHeight = False
         Me.itemRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.itemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CaseQuantity", "Case Quantity", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BagsPerCase", "Bags Per Case", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CasePerPallet", "Case Per Pallet", 82, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far)})
+        Me.itemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CaseQuantity", "Case Quantity", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("BagsPerCase", "Bags Per Case", 79, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CasePerPallet", "Case Per Pallet", 82, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.itemRepositoryItemLookUpEdit.DataSource = Me.itemXpView
         Me.itemRepositoryItemLookUpEdit.DisplayMember = "ItemCode"
         Me.itemRepositoryItemLookUpEdit.Name = "itemRepositoryItemLookUpEdit"
@@ -680,6 +687,14 @@ Partial Class ProjectsXtraForm
         Me.colPalletsRequested.Visible = True
         Me.colPalletsRequested.VisibleIndex = 5
         Me.colPalletsRequested.Width = 49
+        '
+        'colRemainingBalance
+        '
+        Me.colRemainingBalance.Caption = "Remaining Balance"
+        Me.colRemainingBalance.FieldName = "RemainingBalance"
+        Me.colRemainingBalance.Name = "colRemainingBalance"
+        Me.colRemainingBalance.Visible = True
+        Me.colRemainingBalance.VisibleIndex = 11
         '
         'colUnitsProduced
         '
@@ -811,19 +826,12 @@ Partial Class ProjectsXtraForm
         Me.NewValueGridColumn.Visible = True
         Me.NewValueGridColumn.VisibleIndex = 4
         '
-        'refreshBarButtonItem
+        'GridColumn4
         '
-        Me.refreshBarButtonItem.Caption = "Refresh"
-        Me.refreshBarButtonItem.Id = 9
-        Me.refreshBarButtonItem.Name = "refreshBarButtonItem"
-        '
-        'colRemainingBalance
-        '
-        Me.colRemainingBalance.Caption = "Remaining Balance"
-        Me.colRemainingBalance.FieldName = "RemainingBalance"
-        Me.colRemainingBalance.Name = "colRemainingBalance"
-        Me.colRemainingBalance.Visible = True
-        Me.colRemainingBalance.VisibleIndex = 11
+        Me.GridColumn4.FieldName = "ProjectItem!"
+        Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.Visible = True
+        Me.GridColumn4.VisibleIndex = 13
         '
         'ProjectsXtraForm
         '
@@ -956,4 +964,5 @@ Partial Class ProjectsXtraForm
     Friend WithEvents printBomAvailabilityBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents refreshBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents colRemainingBalance As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
 End Class
