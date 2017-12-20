@@ -5,6 +5,8 @@ Imports DevExpress.Data.Filtering
 
 Public Class ProjectsXtraForm
 
+    Private m_lastColumnChanged As String
+    Private m_changedByUser As Boolean = True
     Private m_CurrentProject As Project
     Private m_ProjectSession As Session
 
@@ -24,8 +26,7 @@ Public Class ProjectsXtraForm
         projectDetailsXpCollection.Criteria = New BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, m_CurrentProject.Oid, BinaryOperatorType.Equal)
         projectDetailsXpCollection.Reload()
 
-        Utilities.MakeFormReadOnly(dataEntrySplitContainerControl.Panel1, False)
-        projectDetailsGridView.OptionsBehavior.Editable = True
+        customerLookUpEdit.Properties.ReadOnly = False
         projectSearchGridControl.Enabled = False
         CheckPermissions()
 
@@ -49,6 +50,8 @@ Public Class ProjectsXtraForm
     Private Sub customerLookUpEdit_Validated(sender As Object, e As EventArgs) Handles customerLookUpEdit.Validated
 
         BindItemLookupEdit()
+        Utilities.MakeFormReadOnly(dataEntrySplitContainerControl.Panel1, False)
+        projectDetailsGridView.OptionsBehavior.Editable = True
 
     End Sub
 
@@ -134,6 +137,10 @@ Public Class ProjectsXtraForm
 
     Private Sub projectDetailsGridView_CellValueChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles projectDetailsGridView.CellValueChanged
 
+        If Not m_changedByUser Then
+            Exit Sub
+        End If
+
         If IsNothing(projectDetailsGridView.GetFocusedRowCellValue(colItemNumber)) OrElse IsDBNull(projectDetailsGridView.GetFocusedRowCellValue(colItemNumber)) Then
             Exit Sub
         End If
@@ -141,6 +148,7 @@ Public Class ProjectsXtraForm
         If e.Column Is colItemNumber OrElse e.Column Is colBagsRequested OrElse e.Column Is colPalletsRequested OrElse e.Column Is colUnitsRequested Then
             If CDbl(projectDetailsGridView.GetFocusedRowCellValue(colBagsRequested)) > 0 OrElse CDbl(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) > 0 OrElse
                     CDbl(projectDetailsGridView.GetFocusedRowCellValue(colUnitsRequested)) > 0 Then
+                m_changedByUser = False
                 UpdateRequestedQuantities(e.Column.Name)
             End If
             'ElseIf e.Column Is colBagsRequested OrElse e.Column Is colPalletsRequested OrElse e.Column Is colUnitsRequested Then
@@ -149,6 +157,8 @@ Public Class ProjectsXtraForm
             '        UpdateRequestedQuantities(e.Column.Name)
             '    End If
         End If
+
+        m_changedByUser = True
 
     End Sub
 
@@ -430,30 +440,26 @@ Public Class ProjectsXtraForm
                 End If
             Case colUnitsRequested.Name
                 If CInt(projectDetailsGridView.GetFocusedRowCellValue(colUnitsRequested)) >= 1 Then
-                    If CInt(projectDetailsGridView.GetFocusedRowCellValue(colBagsRequested)) = 0 AndAlso unitsPerCase > 0 Then
+                    If unitsPerCase > 0 Then
                         projectDetailsGridView.SetFocusedRowCellValue(colBagsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colUnitsRequested)) / unitsPerCase) * bagsPerCase)
                     End If
-                    If CInt(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) = 0 AndAlso unitsPerCase > 0 AndAlso casesPerPallet > 0 Then
+                    If unitsPerCase > 0 AndAlso casesPerPallet > 0 Then
                         projectDetailsGridView.SetFocusedRowCellValue(colPalletsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colUnitsRequested)) / unitsPerCase) / casesPerPallet)
                     End If
                 End If
             Case colBagsRequested.Name
                 If CInt(projectDetailsGridView.GetFocusedRowCellValue(colBagsRequested)) >= 1 Then
-                    If CInt(projectDetailsGridView.GetFocusedRowCellValue(colUnitsRequested)) = 0 AndAlso bagsPerCase > 0 Then
+                    If bagsPerCase > 0 Then
                         projectDetailsGridView.SetFocusedRowCellValue(colUnitsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colBagsRequested)) / bagsPerCase) * unitsPerCase)
                     End If
-                    If CInt(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) = 0 AndAlso bagsPerCase  > 0 AndAlso casesPerPallet > 0 Then
+                    If bagsPerCase > 0 AndAlso casesPerPallet > 0 Then
                         projectDetailsGridView.SetFocusedRowCellValue(colPalletsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colBagsRequested)) / bagsPerCase) / casesPerPallet)
                     End If
                 End If
             Case colPalletsRequested.Name
                 If CInt(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) >= 1 Then
-                    If CInt(projectDetailsGridView.GetFocusedRowCellValue(colUnitsRequested)) = 0 Then
-                        projectDetailsGridView.SetFocusedRowCellValue(colUnitsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) * casesPerPallet) * unitsPerCase)
-                    End If
-                    If CInt(projectDetailsGridView.GetFocusedRowCellValue(colBagsRequested)) = 0 Then
-                        projectDetailsGridView.SetFocusedRowCellValue(colBagsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) * casesPerPallet) * bagsPerCase)
-                    End If
+                    projectDetailsGridView.SetFocusedRowCellValue(colUnitsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) * casesPerPallet) * unitsPerCase)
+                    projectDetailsGridView.SetFocusedRowCellValue(colBagsRequested, (CInt(projectDetailsGridView.GetFocusedRowCellValue(colPalletsRequested)) * casesPerPallet) * bagsPerCase)
                 End If
         End Select
 
