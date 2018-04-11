@@ -34,45 +34,7 @@ Partial Class ReportsXtraForm
         Me.reportColumnsXtraTabControl = New DevExpress.XtraTab.XtraTabControl()
         Me.productionXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.productionColumnsXtraScrollableControl = New DevExpress.XtraEditors.XtraScrollableControl()
-        Me.productionPOCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionTotalPayrollCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionShiftCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionCustomerNameCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionLotCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionItemCodeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionItemDescriptionCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionStartTimeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionStopTimeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionTotalHoursCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionTotalMinutesCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionPackersCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionActualSpeedCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionDifferenceCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionExpectedCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionQuantityCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionMachineLineCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
-        Me.transportationXtraScrollableControl = New DevExpress.XtraEditors.XtraScrollableControl()
-        Me.transportationExpirationDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationVendorCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationBolCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationSealCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationTrailerCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationCarrierCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationDestinationCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationDeliveryNoteCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationPOCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationShiftCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationCustomerCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationLotCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationItemCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationItemDescriptionCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationQuantityCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.transportationDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.inventoryXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
-        Me.inventoryXtraScrollableControl = New DevExpress.XtraEditors.XtraScrollableControl()
-        Me.UOMCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionReasonCodeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.reportsPrintBarManager = New DevExpress.XtraPrinting.Preview.PrintBarManager(Me.components)
         Me.PreviewBar1 = New DevExpress.XtraPrinting.Preview.PreviewBar()
         Me.PrintPreviewBarItem1 = New DevExpress.XtraPrinting.Preview.PrintPreviewBarItem()
@@ -134,6 +96,48 @@ Partial Class ReportsXtraForm
         Me.PrintPreviewBarCheckItem14 = New DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem()
         Me.PrintPreviewBarCheckItem15 = New DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem()
         Me.reportsPrintControl = New DevExpress.XtraPrinting.Control.PrintControl()
+        Me.productionUOMCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionProjectedPackersCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionProjectedSpeedCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionPOCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionTotalPayrollCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionShiftCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionCustomerNameCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionLotCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionItemCodeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionItemDescriptionCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionStartTimeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionStopTimeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionTotalHoursCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionTotalMinutesCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionPackersCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionActualSpeedCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionDifferenceCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionExpectedCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionQuantityCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionMachineLineCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.productionDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.transportationXtraScrollableControl = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.transportationExpirationDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationVendorCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationBolCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationSealCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationTrailerCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationCarrierCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationDestinationCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationDeliveryNoteCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationPOCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationShiftCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationCustomerCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationLotCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationItemCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationItemDescriptionCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationQuantityCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.transportationDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.inventoryXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.inventoryXtraScrollableControl = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.UOMCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.RMItemDescriptionCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.RMItemCodeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.inventoryPalletAvailabilityCheckEdit = New DevExpress.XtraEditors.CheckEdit()
@@ -256,141 +260,139 @@ Partial Class ReportsXtraForm
         Me.fromDateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.detailSimpleButton = New DevExpress.XtraEditors.SimpleButton()
         Me.filterRefreshSimpleButton = New DevExpress.XtraEditors.SimpleButton()
-        Me.productionProjectedSpeedCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionProjectedPackersCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionUOMCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        Me.productionReasonCodeCheckEdit = New DevExpress.XtraEditors.CheckEdit()
-        CType(Me.reportsDockManager,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.hideContainerLeft.SuspendLayout
-        Me.columnsDockPanel.SuspendLayout
-        Me.DockPanel1_Container.SuspendLayout
-        CType(Me.reportColumnsXtraTabControl,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.reportColumnsXtraTabControl.SuspendLayout
-        Me.productionXtraTabPage.SuspendLayout
-        Me.productionColumnsXtraScrollableControl.SuspendLayout
-        CType(Me.productionPOCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionTotalPayrollCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionShiftCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionCustomerNameCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionLotCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionItemCodeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionStartTimeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionStopTimeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionTotalHoursCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionTotalMinutesCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionActualSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionDifferenceCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionExpectedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionQuantityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionMachineLineCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.transportationXtraTabPage.SuspendLayout
-        Me.transportationXtraScrollableControl.SuspendLayout
-        CType(Me.transportationExpirationDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationVendorCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationBolCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationSealCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationTrailerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationCarrierCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationDestinationCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationDeliveryNoteCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationPOCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationShiftCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationCustomerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationLotCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationItemCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationQuantityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.transportationDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.inventoryXtraTabPage.SuspendLayout
-        Me.inventoryXtraScrollableControl.SuspendLayout
-        CType(Me.UOMCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.reportsPrintBarManager,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PrintPreviewRepositoryItemComboBox1,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RMItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RMItemCodeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryPalletAvailabilityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryAvailabilityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryInventoryByPalletCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryCurrentInventoryCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryItemTypeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryAdjustmentReasonCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryAdjustmentCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryCustomerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryItemCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.inventoryDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.itemsXtraTabPage.SuspendLayout
-        Me.itemsXtraScrollableControl.SuspendLayout
-        CType(Me.itemUsedInProductionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsCustomerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsItemCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsItemTypeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsUnitsOfMeasureCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsQtyPerUnitCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsUnitsPerCaseCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsAdjustedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsShippedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsProducedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsCasesPerPalletCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemsReceivedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.costingXtraTabPage.SuspendLayout
-        Me.costingXtraScrollableControl.SuspendLayout
-        Me.productionMachineXtraTabPage.SuspendLayout
-        Me.productionMachineXtraScrollableControl.SuspendLayout
-        CType(Me.pmsTotalSalesCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsPriceCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsQuantityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsProjectedSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsAverageSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsSpeedVariationVolCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsSpeedVariationPerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsProjectedPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsPackersVariationVolCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsPackersVariationPerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsSalesVsPayrollCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsPricePerPieceCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsCostVariationCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsCostCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsProjectedCostCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsCostVariationPerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pmsTotalMinutesCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.palletTransactionXtraTabPage.SuspendLayout
-        Me.XtraScrollableControl1.SuspendLayout
-        CType(Me.ptReceivedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ptDestinationCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ptShippedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ptVendorCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.filterDockPanel.SuspendLayout
-        Me.ControlContainer1.SuspendLayout
-        CType(Me.outOfStockCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.vendorLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.InactiveCustomersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.InactiveItemsCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemTypeLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.carrierLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.destinationLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.deliveryNoteNumberTextEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.poTextEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.lotTextEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.bolTextEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.customerLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.shiftLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.machineLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.itemCheckedListBoxControl,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.toDateEdit.Properties.CalendarTimeProperties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.toDateEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.fromDateEdit.Properties.CalendarTimeProperties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.fromDateEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionProjectedSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionProjectedPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionUOMCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.productionReasonCodeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.transportationLpnCheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        CType(Me.reportsDockManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.hideContainerLeft.SuspendLayout()
+        Me.columnsDockPanel.SuspendLayout()
+        Me.DockPanel1_Container.SuspendLayout()
+        CType(Me.reportColumnsXtraTabControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.reportColumnsXtraTabControl.SuspendLayout()
+        Me.productionXtraTabPage.SuspendLayout()
+        Me.productionColumnsXtraScrollableControl.SuspendLayout()
+        CType(Me.productionReasonCodeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.reportsPrintBarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PrintPreviewRepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionUOMCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionProjectedPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionProjectedSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionPOCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionTotalPayrollCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionShiftCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionCustomerNameCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionLotCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionItemCodeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionStartTimeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionStopTimeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionTotalHoursCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionTotalMinutesCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionActualSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionDifferenceCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionExpectedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionQuantityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionMachineLineCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.productionDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.transportationXtraTabPage.SuspendLayout()
+        Me.transportationXtraScrollableControl.SuspendLayout()
+        CType(Me.transportationExpirationDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationVendorCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationBolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationSealCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationTrailerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationCarrierCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationDestinationCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationDeliveryNoteCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationPOCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationShiftCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationCustomerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationLotCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationItemCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationQuantityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.inventoryXtraTabPage.SuspendLayout()
+        Me.inventoryXtraScrollableControl.SuspendLayout()
+        CType(Me.UOMCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RMItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RMItemCodeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryPalletAvailabilityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryAvailabilityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryInventoryByPalletCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryCurrentInventoryCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryItemTypeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryAdjustmentReasonCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryAdjustmentCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryCustomerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryItemCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.itemsXtraTabPage.SuspendLayout()
+        Me.itemsXtraScrollableControl.SuspendLayout()
+        CType(Me.itemUsedInProductionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsCustomerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsItemCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsItemTypeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsUnitsOfMeasureCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsQtyPerUnitCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsUnitsPerCaseCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsAdjustedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsShippedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsProducedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsCasesPerPalletCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemsReceivedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.costingXtraTabPage.SuspendLayout()
+        Me.costingXtraScrollableControl.SuspendLayout()
+        Me.productionMachineXtraTabPage.SuspendLayout()
+        Me.productionMachineXtraScrollableControl.SuspendLayout()
+        CType(Me.pmsTotalSalesCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsPriceCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsQuantityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsProjectedSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsAverageSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsSpeedVariationVolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsSpeedVariationPerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsProjectedPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsPackersVariationVolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsPackersVariationPerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsSalesVsPayrollCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsPricePerPieceCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsCostVariationCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsCostCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsProjectedCostCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsCostVariationPerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmsTotalMinutesCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.palletTransactionXtraTabPage.SuspendLayout()
+        Me.XtraScrollableControl1.SuspendLayout()
+        CType(Me.ptReceivedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ptDestinationCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ptShippedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ptVendorCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.filterDockPanel.SuspendLayout()
+        Me.ControlContainer1.SuspendLayout()
+        CType(Me.outOfStockCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.vendorLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InactiveCustomersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InactiveItemsCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemTypeLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.carrierLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.destinationLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.deliveryNoteNumberTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.poTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lotTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bolTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.customerLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.shiftLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.machineLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.itemCheckedListBoxControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.toDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.toDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.fromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.fromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.transportationLpnCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'LabelControl2
         '
@@ -443,8 +445,8 @@ Partial Class ReportsXtraForm
         'reportsDockManager
         '
         Me.reportsDockManager.AutoHideContainers.AddRange(New DevExpress.XtraBars.Docking.AutoHideContainer() {Me.hideContainerLeft})
-        Me.reportsDockManager.DockingOptions.ShowCloseButton = false
-        Me.reportsDockManager.DockingOptions.ShowMaximizeButton = false
+        Me.reportsDockManager.DockingOptions.ShowCloseButton = False
+        Me.reportsDockManager.DockingOptions.ShowMaximizeButton = False
         Me.reportsDockManager.Form = Me
         Me.reportsDockManager.MenuManager = Me.reportsPrintBarManager
         Me.reportsDockManager.RootPanels.AddRange(New DevExpress.XtraBars.Docking.DockPanel() {Me.filterDockPanel})
@@ -452,7 +454,7 @@ Partial Class ReportsXtraForm
         '
         'hideContainerLeft
         '
-        Me.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(CType(CType(235,Byte),Integer), CType(CType(236,Byte),Integer), CType(CType(239,Byte),Integer))
+        Me.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(CType(CType(235, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(239, Byte), Integer))
         Me.hideContainerLeft.Controls.Add(Me.columnsDockPanel)
         Me.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.hideContainerLeft.Location = New System.Drawing.Point(0, 53)
@@ -461,17 +463,17 @@ Partial Class ReportsXtraForm
         '
         'columnsDockPanel
         '
-        Me.columnsDockPanel.AutoScroll = true
+        Me.columnsDockPanel.AutoScroll = True
         Me.columnsDockPanel.Controls.Add(Me.DockPanel1_Container)
         Me.columnsDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left
         Me.columnsDockPanel.ID = New System.Guid("08c3238e-2314-48e1-bd63-74c1aaf39076")
         Me.columnsDockPanel.Location = New System.Drawing.Point(0, 0)
         Me.columnsDockPanel.Name = "columnsDockPanel"
-        Me.columnsDockPanel.Options.AllowDockBottom = false
-        Me.columnsDockPanel.Options.AllowDockFill = false
-        Me.columnsDockPanel.Options.AllowDockTop = false
-        Me.columnsDockPanel.Options.ShowCloseButton = false
-        Me.columnsDockPanel.Options.ShowMaximizeButton = false
+        Me.columnsDockPanel.Options.AllowDockBottom = False
+        Me.columnsDockPanel.Options.AllowDockFill = False
+        Me.columnsDockPanel.Options.AllowDockTop = False
+        Me.columnsDockPanel.Options.ShowCloseButton = False
+        Me.columnsDockPanel.Options.ShowMaximizeButton = False
         Me.columnsDockPanel.OriginalSize = New System.Drawing.Size(200, 200)
         Me.columnsDockPanel.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left
         Me.columnsDockPanel.SavedIndex = 0
@@ -485,18 +487,18 @@ Partial Class ReportsXtraForm
         Me.DockPanel1_Container.Controls.Add(Me.columnsRefreshSimpleButton)
         Me.DockPanel1_Container.Location = New System.Drawing.Point(4, 23)
         Me.DockPanel1_Container.Name = "DockPanel1_Container"
-        Me.DockPanel1_Container.Size = New System.Drawing.Size(192, 499)
+        Me.DockPanel1_Container.Size = New System.Drawing.Size(191, 499)
         Me.DockPanel1_Container.TabIndex = 0
         '
         'reportColumnsXtraTabControl
         '
-        Me.reportColumnsXtraTabControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.reportColumnsXtraTabControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.reportColumnsXtraTabControl.Location = New System.Drawing.Point(0, 33)
         Me.reportColumnsXtraTabControl.Name = "reportColumnsXtraTabControl"
         Me.reportColumnsXtraTabControl.SelectedTabPage = Me.productionXtraTabPage
-        Me.reportColumnsXtraTabControl.Size = New System.Drawing.Size(192, 499)
+        Me.reportColumnsXtraTabControl.Size = New System.Drawing.Size(191, 499)
         Me.reportColumnsXtraTabControl.TabIndex = 2
         Me.reportColumnsXtraTabControl.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.productionXtraTabPage, Me.transportationXtraTabPage, Me.inventoryXtraTabPage, Me.itemsXtraTabPage, Me.costingXtraTabPage, Me.productionMachineXtraTabPage, Me.palletTransactionXtraTabPage})
         '
@@ -504,7 +506,7 @@ Partial Class ReportsXtraForm
         '
         Me.productionXtraTabPage.Controls.Add(Me.productionColumnsXtraScrollableControl)
         Me.productionXtraTabPage.Name = "productionXtraTabPage"
-        Me.productionXtraTabPage.Size = New System.Drawing.Size(186, 471)
+        Me.productionXtraTabPage.Size = New System.Drawing.Size(185, 471)
         Me.productionXtraTabPage.Text = "Production"
         '
         'productionColumnsXtraScrollableControl
@@ -534,12 +536,668 @@ Partial Class ReportsXtraForm
         Me.productionColumnsXtraScrollableControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.productionColumnsXtraScrollableControl.Location = New System.Drawing.Point(0, 0)
         Me.productionColumnsXtraScrollableControl.Name = "productionColumnsXtraScrollableControl"
-        Me.productionColumnsXtraScrollableControl.Size = New System.Drawing.Size(186, 471)
+        Me.productionColumnsXtraScrollableControl.Size = New System.Drawing.Size(185, 471)
         Me.productionColumnsXtraScrollableControl.TabIndex = 1
+        '
+        'productionReasonCodeCheckEdit
+        '
+        Me.productionReasonCodeCheckEdit.EditValue = True
+        Me.productionReasonCodeCheckEdit.Location = New System.Drawing.Point(4, 365)
+        Me.productionReasonCodeCheckEdit.MenuManager = Me.reportsPrintBarManager
+        Me.productionReasonCodeCheckEdit.Name = "productionReasonCodeCheckEdit"
+        Me.productionReasonCodeCheckEdit.Properties.Caption = "Reason Codes"
+        Me.productionReasonCodeCheckEdit.Size = New System.Drawing.Size(158, 19)
+        Me.productionReasonCodeCheckEdit.TabIndex = 24
+        '
+        'reportsPrintBarManager
+        '
+        Me.reportsPrintBarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.PreviewBar1, Me.PreviewBar2, Me.PreviewBar3})
+        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlTop)
+        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlBottom)
+        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlLeft)
+        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlRight)
+        Me.reportsPrintBarManager.DockManager = Me.reportsDockManager
+        Me.reportsPrintBarManager.Form = Me
+        Me.reportsPrintBarManager.ImageStream = CType(resources.GetObject("reportsPrintBarManager.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
+        Me.reportsPrintBarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.PrintPreviewStaticItem1, Me.PrintPreviewStaticItem2, Me.PrintPreviewStaticItem3, Me.PrintPreviewBarItem1, Me.PrintPreviewBarItem2, Me.PrintPreviewBarItem3, Me.PrintPreviewBarItem4, Me.PrintPreviewBarItem5, Me.PrintPreviewBarItem6, Me.PrintPreviewBarItem7, Me.PrintPreviewBarItem8, Me.PrintPreviewBarItem9, Me.PrintPreviewBarItem10, Me.PrintPreviewBarItem11, Me.PrintPreviewBarItem12, Me.PrintPreviewBarItem13, Me.PrintPreviewBarItem14, Me.ZoomBarEditItem1, Me.PrintPreviewBarItem15, Me.PrintPreviewBarItem16, Me.PrintPreviewBarItem17, Me.PrintPreviewBarItem18, Me.PrintPreviewBarItem19, Me.PrintPreviewBarItem20, Me.PrintPreviewBarItem21, Me.PrintPreviewBarItem22, Me.PrintPreviewBarItem23, Me.PrintPreviewBarItem24, Me.PrintPreviewBarItem25, Me.PrintPreviewSubItem1, Me.PrintPreviewSubItem2, Me.PrintPreviewSubItem3, Me.PrintPreviewSubItem4, Me.PrintPreviewBarItem26, Me.PrintPreviewBarItem27, Me.BarToolbarsListItem1, Me.PrintPreviewBarCheckItem1, Me.PrintPreviewBarCheckItem2, Me.PrintPreviewBarCheckItem3, Me.PrintPreviewBarCheckItem4, Me.PrintPreviewBarCheckItem5, Me.PrintPreviewBarCheckItem6, Me.PrintPreviewBarCheckItem7, Me.PrintPreviewBarCheckItem8, Me.PrintPreviewBarCheckItem9, Me.PrintPreviewBarCheckItem10, Me.PrintPreviewBarCheckItem11, Me.PrintPreviewBarCheckItem12, Me.PrintPreviewBarCheckItem13, Me.PrintPreviewBarCheckItem14, Me.PrintPreviewBarCheckItem15})
+        Me.reportsPrintBarManager.MainMenu = Me.PreviewBar3
+        Me.reportsPrintBarManager.MaxItemId = 51
+        Me.reportsPrintBarManager.PreviewBar = Me.PreviewBar1
+        Me.reportsPrintBarManager.PrintControl = Me.reportsPrintControl
+        Me.reportsPrintBarManager.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.PrintPreviewRepositoryItemComboBox1})
+        Me.reportsPrintBarManager.StatusBar = Me.PreviewBar2
+        '
+        'PreviewBar1
+        '
+        Me.PreviewBar1.BarName = "Toolbar"
+        Me.PreviewBar1.DockCol = 0
+        Me.PreviewBar1.DockRow = 1
+        Me.PreviewBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.PreviewBar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem4, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem5, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem6), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem7, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem10), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem11), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem12, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem13), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem14, True), New DevExpress.XtraBars.LinkPersistInfo(Me.ZoomBarEditItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem15), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem16, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem17), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem18), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem19), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem20, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem21), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem22), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem23, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem24), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem25, True)})
+        Me.PreviewBar1.Text = "Toolbar"
+        '
+        'PrintPreviewBarItem1
+        '
+        Me.PrintPreviewBarItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem1.Caption = "Document Map"
+        Me.PrintPreviewBarItem1.Command = DevExpress.XtraPrinting.PrintingSystemCommand.DocumentMap
+        Me.PrintPreviewBarItem1.Enabled = False
+        Me.PrintPreviewBarItem1.Hint = "Document Map"
+        Me.PrintPreviewBarItem1.Id = 3
+        Me.PrintPreviewBarItem1.ImageOptions.ImageIndex = 19
+        Me.PrintPreviewBarItem1.Name = "PrintPreviewBarItem1"
+        '
+        'PrintPreviewBarItem2
+        '
+        Me.PrintPreviewBarItem2.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem2.Caption = "Parameters"
+        Me.PrintPreviewBarItem2.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Parameters
+        Me.PrintPreviewBarItem2.Enabled = False
+        Me.PrintPreviewBarItem2.Hint = "Parameters"
+        Me.PrintPreviewBarItem2.Id = 4
+        Me.PrintPreviewBarItem2.ImageOptions.ImageIndex = 22
+        Me.PrintPreviewBarItem2.Name = "PrintPreviewBarItem2"
+        '
+        'PrintPreviewBarItem3
+        '
+        Me.PrintPreviewBarItem3.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem3.Caption = "Search"
+        Me.PrintPreviewBarItem3.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Find
+        Me.PrintPreviewBarItem3.Enabled = False
+        Me.PrintPreviewBarItem3.Hint = "Search"
+        Me.PrintPreviewBarItem3.Id = 5
+        Me.PrintPreviewBarItem3.ImageOptions.ImageIndex = 20
+        Me.PrintPreviewBarItem3.Name = "PrintPreviewBarItem3"
+        '
+        'PrintPreviewBarItem4
+        '
+        Me.PrintPreviewBarItem4.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem4.Caption = "Customize"
+        Me.PrintPreviewBarItem4.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Customize
+        Me.PrintPreviewBarItem4.Enabled = False
+        Me.PrintPreviewBarItem4.Hint = "Customize"
+        Me.PrintPreviewBarItem4.Id = 6
+        Me.PrintPreviewBarItem4.ImageOptions.ImageIndex = 14
+        Me.PrintPreviewBarItem4.Name = "PrintPreviewBarItem4"
+        '
+        'PrintPreviewBarItem5
+        '
+        Me.PrintPreviewBarItem5.Caption = "Open"
+        Me.PrintPreviewBarItem5.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Open
+        Me.PrintPreviewBarItem5.Enabled = False
+        Me.PrintPreviewBarItem5.Hint = "Open a document"
+        Me.PrintPreviewBarItem5.Id = 7
+        Me.PrintPreviewBarItem5.ImageOptions.ImageIndex = 23
+        Me.PrintPreviewBarItem5.Name = "PrintPreviewBarItem5"
+        '
+        'PrintPreviewBarItem6
+        '
+        Me.PrintPreviewBarItem6.Caption = "Save"
+        Me.PrintPreviewBarItem6.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Save
+        Me.PrintPreviewBarItem6.Enabled = False
+        Me.PrintPreviewBarItem6.Hint = "Save the document"
+        Me.PrintPreviewBarItem6.Id = 8
+        Me.PrintPreviewBarItem6.ImageOptions.ImageIndex = 24
+        Me.PrintPreviewBarItem6.Name = "PrintPreviewBarItem6"
+        '
+        'PrintPreviewBarItem7
+        '
+        Me.PrintPreviewBarItem7.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem7.Caption = "&Print..."
+        Me.PrintPreviewBarItem7.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Print
+        Me.PrintPreviewBarItem7.Enabled = False
+        Me.PrintPreviewBarItem7.Hint = "Print"
+        Me.PrintPreviewBarItem7.Id = 9
+        Me.PrintPreviewBarItem7.ImageOptions.ImageIndex = 0
+        Me.PrintPreviewBarItem7.Name = "PrintPreviewBarItem7"
+        '
+        'PrintPreviewBarItem8
+        '
+        Me.PrintPreviewBarItem8.Caption = "P&rint"
+        Me.PrintPreviewBarItem8.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PrintDirect
+        Me.PrintPreviewBarItem8.Enabled = False
+        Me.PrintPreviewBarItem8.Hint = "Quick Print"
+        Me.PrintPreviewBarItem8.Id = 10
+        Me.PrintPreviewBarItem8.ImageOptions.ImageIndex = 1
+        Me.PrintPreviewBarItem8.Name = "PrintPreviewBarItem8"
+        '
+        'PrintPreviewBarItem9
+        '
+        Me.PrintPreviewBarItem9.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem9.Caption = "Page Set&up..."
+        Me.PrintPreviewBarItem9.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageSetup
+        Me.PrintPreviewBarItem9.Enabled = False
+        Me.PrintPreviewBarItem9.Hint = "Page Setup"
+        Me.PrintPreviewBarItem9.Id = 11
+        Me.PrintPreviewBarItem9.ImageOptions.ImageIndex = 2
+        Me.PrintPreviewBarItem9.Name = "PrintPreviewBarItem9"
+        '
+        'PrintPreviewBarItem10
+        '
+        Me.PrintPreviewBarItem10.Caption = "Header And Footer"
+        Me.PrintPreviewBarItem10.Command = DevExpress.XtraPrinting.PrintingSystemCommand.EditPageHF
+        Me.PrintPreviewBarItem10.Enabled = False
+        Me.PrintPreviewBarItem10.Hint = "Header And Footer"
+        Me.PrintPreviewBarItem10.Id = 12
+        Me.PrintPreviewBarItem10.ImageOptions.ImageIndex = 15
+        Me.PrintPreviewBarItem10.Name = "PrintPreviewBarItem10"
+        '
+        'PrintPreviewBarItem11
+        '
+        Me.PrintPreviewBarItem11.ActAsDropDown = True
+        Me.PrintPreviewBarItem11.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.PrintPreviewBarItem11.Caption = "Scale"
+        Me.PrintPreviewBarItem11.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Scale
+        Me.PrintPreviewBarItem11.Enabled = False
+        Me.PrintPreviewBarItem11.Hint = "Scale"
+        Me.PrintPreviewBarItem11.Id = 13
+        Me.PrintPreviewBarItem11.ImageOptions.ImageIndex = 25
+        Me.PrintPreviewBarItem11.Name = "PrintPreviewBarItem11"
+        '
+        'PrintPreviewBarItem12
+        '
+        Me.PrintPreviewBarItem12.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem12.Caption = "Hand Tool"
+        Me.PrintPreviewBarItem12.Command = DevExpress.XtraPrinting.PrintingSystemCommand.HandTool
+        Me.PrintPreviewBarItem12.Enabled = False
+        Me.PrintPreviewBarItem12.Hint = "Hand Tool"
+        Me.PrintPreviewBarItem12.Id = 14
+        Me.PrintPreviewBarItem12.ImageOptions.ImageIndex = 16
+        Me.PrintPreviewBarItem12.Name = "PrintPreviewBarItem12"
+        '
+        'PrintPreviewBarItem13
+        '
+        Me.PrintPreviewBarItem13.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem13.Caption = "Magnifier"
+        Me.PrintPreviewBarItem13.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Magnifier
+        Me.PrintPreviewBarItem13.Enabled = False
+        Me.PrintPreviewBarItem13.Hint = "Magnifier"
+        Me.PrintPreviewBarItem13.Id = 15
+        Me.PrintPreviewBarItem13.ImageOptions.ImageIndex = 3
+        Me.PrintPreviewBarItem13.Name = "PrintPreviewBarItem13"
+        '
+        'PrintPreviewBarItem14
+        '
+        Me.PrintPreviewBarItem14.Caption = "Zoom Out"
+        Me.PrintPreviewBarItem14.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ZoomOut
+        Me.PrintPreviewBarItem14.Enabled = False
+        Me.PrintPreviewBarItem14.Hint = "Zoom Out"
+        Me.PrintPreviewBarItem14.Id = 16
+        Me.PrintPreviewBarItem14.ImageOptions.ImageIndex = 5
+        Me.PrintPreviewBarItem14.Name = "PrintPreviewBarItem14"
+        '
+        'ZoomBarEditItem1
+        '
+        Me.ZoomBarEditItem1.Caption = "Zoom"
+        Me.ZoomBarEditItem1.Edit = Me.PrintPreviewRepositoryItemComboBox1
+        Me.ZoomBarEditItem1.EditValue = "100%"
+        Me.ZoomBarEditItem1.EditWidth = 70
+        Me.ZoomBarEditItem1.Enabled = False
+        Me.ZoomBarEditItem1.Hint = "Zoom"
+        Me.ZoomBarEditItem1.Id = 17
+        Me.ZoomBarEditItem1.Name = "ZoomBarEditItem1"
+        '
+        'PrintPreviewRepositoryItemComboBox1
+        '
+        Me.PrintPreviewRepositoryItemComboBox1.AutoComplete = False
+        Me.PrintPreviewRepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.PrintPreviewRepositoryItemComboBox1.DropDownRows = 11
+        Me.PrintPreviewRepositoryItemComboBox1.Name = "PrintPreviewRepositoryItemComboBox1"
+        '
+        'PrintPreviewBarItem15
+        '
+        Me.PrintPreviewBarItem15.Caption = "Zoom In"
+        Me.PrintPreviewBarItem15.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ZoomIn
+        Me.PrintPreviewBarItem15.Enabled = False
+        Me.PrintPreviewBarItem15.Hint = "Zoom In"
+        Me.PrintPreviewBarItem15.Id = 18
+        Me.PrintPreviewBarItem15.ImageOptions.ImageIndex = 4
+        Me.PrintPreviewBarItem15.Name = "PrintPreviewBarItem15"
+        '
+        'PrintPreviewBarItem16
+        '
+        Me.PrintPreviewBarItem16.Caption = "First Page"
+        Me.PrintPreviewBarItem16.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowFirstPage
+        Me.PrintPreviewBarItem16.Enabled = False
+        Me.PrintPreviewBarItem16.Hint = "First Page"
+        Me.PrintPreviewBarItem16.Id = 19
+        Me.PrintPreviewBarItem16.ImageOptions.ImageIndex = 7
+        Me.PrintPreviewBarItem16.Name = "PrintPreviewBarItem16"
+        '
+        'PrintPreviewBarItem17
+        '
+        Me.PrintPreviewBarItem17.Caption = "Previous Page"
+        Me.PrintPreviewBarItem17.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowPrevPage
+        Me.PrintPreviewBarItem17.Enabled = False
+        Me.PrintPreviewBarItem17.Hint = "Previous Page"
+        Me.PrintPreviewBarItem17.Id = 20
+        Me.PrintPreviewBarItem17.ImageOptions.ImageIndex = 8
+        Me.PrintPreviewBarItem17.Name = "PrintPreviewBarItem17"
+        '
+        'PrintPreviewBarItem18
+        '
+        Me.PrintPreviewBarItem18.Caption = "Next Page"
+        Me.PrintPreviewBarItem18.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowNextPage
+        Me.PrintPreviewBarItem18.Enabled = False
+        Me.PrintPreviewBarItem18.Hint = "Next Page"
+        Me.PrintPreviewBarItem18.Id = 21
+        Me.PrintPreviewBarItem18.ImageOptions.ImageIndex = 9
+        Me.PrintPreviewBarItem18.Name = "PrintPreviewBarItem18"
+        '
+        'PrintPreviewBarItem19
+        '
+        Me.PrintPreviewBarItem19.Caption = "Last Page"
+        Me.PrintPreviewBarItem19.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowLastPage
+        Me.PrintPreviewBarItem19.Enabled = False
+        Me.PrintPreviewBarItem19.Hint = "Last Page"
+        Me.PrintPreviewBarItem19.Id = 22
+        Me.PrintPreviewBarItem19.ImageOptions.ImageIndex = 10
+        Me.PrintPreviewBarItem19.Name = "PrintPreviewBarItem19"
+        '
+        'PrintPreviewBarItem20
+        '
+        Me.PrintPreviewBarItem20.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.PrintPreviewBarItem20.Caption = "Multiple Pages"
+        Me.PrintPreviewBarItem20.Command = DevExpress.XtraPrinting.PrintingSystemCommand.MultiplePages
+        Me.PrintPreviewBarItem20.Enabled = False
+        Me.PrintPreviewBarItem20.Hint = "Multiple Pages"
+        Me.PrintPreviewBarItem20.Id = 23
+        Me.PrintPreviewBarItem20.ImageOptions.ImageIndex = 11
+        Me.PrintPreviewBarItem20.Name = "PrintPreviewBarItem20"
+        '
+        'PrintPreviewBarItem21
+        '
+        Me.PrintPreviewBarItem21.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.PrintPreviewBarItem21.Caption = "&Color..."
+        Me.PrintPreviewBarItem21.Command = DevExpress.XtraPrinting.PrintingSystemCommand.FillBackground
+        Me.PrintPreviewBarItem21.Enabled = False
+        Me.PrintPreviewBarItem21.Hint = "Background"
+        Me.PrintPreviewBarItem21.Id = 24
+        Me.PrintPreviewBarItem21.ImageOptions.ImageIndex = 12
+        Me.PrintPreviewBarItem21.Name = "PrintPreviewBarItem21"
+        '
+        'PrintPreviewBarItem22
+        '
+        Me.PrintPreviewBarItem22.Caption = "&Watermark..."
+        Me.PrintPreviewBarItem22.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Watermark
+        Me.PrintPreviewBarItem22.Enabled = False
+        Me.PrintPreviewBarItem22.Hint = "Watermark"
+        Me.PrintPreviewBarItem22.Id = 25
+        Me.PrintPreviewBarItem22.ImageOptions.ImageIndex = 21
+        Me.PrintPreviewBarItem22.Name = "PrintPreviewBarItem22"
+        '
+        'PrintPreviewBarItem23
+        '
+        Me.PrintPreviewBarItem23.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.PrintPreviewBarItem23.Caption = "Export Document..."
+        Me.PrintPreviewBarItem23.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportFile
+        Me.PrintPreviewBarItem23.Enabled = False
+        Me.PrintPreviewBarItem23.Hint = "Export Document..."
+        Me.PrintPreviewBarItem23.Id = 26
+        Me.PrintPreviewBarItem23.ImageOptions.ImageIndex = 18
+        Me.PrintPreviewBarItem23.Name = "PrintPreviewBarItem23"
+        '
+        'PrintPreviewBarItem24
+        '
+        Me.PrintPreviewBarItem24.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
+        Me.PrintPreviewBarItem24.Caption = "Send via E-Mail..."
+        Me.PrintPreviewBarItem24.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendFile
+        Me.PrintPreviewBarItem24.Enabled = False
+        Me.PrintPreviewBarItem24.Hint = "Send via E-Mail..."
+        Me.PrintPreviewBarItem24.Id = 27
+        Me.PrintPreviewBarItem24.ImageOptions.ImageIndex = 17
+        Me.PrintPreviewBarItem24.Name = "PrintPreviewBarItem24"
+        '
+        'PrintPreviewBarItem25
+        '
+        Me.PrintPreviewBarItem25.Caption = "E&xit"
+        Me.PrintPreviewBarItem25.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ClosePreview
+        Me.PrintPreviewBarItem25.Enabled = False
+        Me.PrintPreviewBarItem25.Hint = "Close Preview"
+        Me.PrintPreviewBarItem25.Id = 28
+        Me.PrintPreviewBarItem25.ImageOptions.ImageIndex = 13
+        Me.PrintPreviewBarItem25.Name = "PrintPreviewBarItem25"
+        '
+        'PreviewBar2
+        '
+        Me.PreviewBar2.BarName = "Status Bar"
+        Me.PreviewBar2.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom
+        Me.PreviewBar2.DockCol = 0
+        Me.PreviewBar2.DockRow = 0
+        Me.PreviewBar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
+        Me.PreviewBar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewStaticItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewStaticItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewStaticItem3)})
+        Me.PreviewBar2.OptionsBar.AllowQuickCustomization = False
+        Me.PreviewBar2.OptionsBar.DrawDragBorder = False
+        Me.PreviewBar2.OptionsBar.UseWholeRow = True
+        Me.PreviewBar2.Text = "Status Bar"
+        '
+        'PrintPreviewStaticItem1
+        '
+        Me.PrintPreviewStaticItem1.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
+        Me.PrintPreviewStaticItem1.Caption = "Current Page: none"
+        Me.PrintPreviewStaticItem1.Id = 0
+        Me.PrintPreviewStaticItem1.Name = "PrintPreviewStaticItem1"
+        Me.PrintPreviewStaticItem1.Size = New System.Drawing.Size(200, 0)
+        Me.PrintPreviewStaticItem1.Type = "CurrentPageNo"
+        Me.PrintPreviewStaticItem1.Width = 200
+        '
+        'PrintPreviewStaticItem2
+        '
+        Me.PrintPreviewStaticItem2.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
+        Me.PrintPreviewStaticItem2.Caption = "Total Pages: 0"
+        Me.PrintPreviewStaticItem2.Id = 1
+        Me.PrintPreviewStaticItem2.Name = "PrintPreviewStaticItem2"
+        Me.PrintPreviewStaticItem2.Size = New System.Drawing.Size(200, 0)
+        Me.PrintPreviewStaticItem2.Type = "TotalPageNo"
+        Me.PrintPreviewStaticItem2.Width = 200
+        '
+        'PrintPreviewStaticItem3
+        '
+        Me.PrintPreviewStaticItem3.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
+        Me.PrintPreviewStaticItem3.Caption = "100%"
+        Me.PrintPreviewStaticItem3.Id = 2
+        Me.PrintPreviewStaticItem3.Name = "PrintPreviewStaticItem3"
+        Me.PrintPreviewStaticItem3.Size = New System.Drawing.Size(200, 0)
+        Me.PrintPreviewStaticItem3.Type = "ZoomFactor"
+        Me.PrintPreviewStaticItem3.Width = 200
+        '
+        'PreviewBar3
+        '
+        Me.PreviewBar3.BarName = "Main Menu"
+        Me.PreviewBar3.DockCol = 0
+        Me.PreviewBar3.DockRow = 0
+        Me.PreviewBar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
+        Me.PreviewBar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem3)})
+        Me.PreviewBar3.OptionsBar.MultiLine = True
+        Me.PreviewBar3.OptionsBar.UseWholeRow = True
+        Me.PreviewBar3.Text = "Main Menu"
+        '
+        'PrintPreviewSubItem1
+        '
+        Me.PrintPreviewSubItem1.Caption = "&File"
+        Me.PrintPreviewSubItem1.Command = DevExpress.XtraPrinting.PrintingSystemCommand.File
+        Me.PrintPreviewSubItem1.Id = 29
+        Me.PrintPreviewSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem7), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem23, True), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem24), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem25, True)})
+        Me.PrintPreviewSubItem1.Name = "PrintPreviewSubItem1"
+        '
+        'PrintPreviewSubItem2
+        '
+        Me.PrintPreviewSubItem2.Caption = "&View"
+        Me.PrintPreviewSubItem2.Command = DevExpress.XtraPrinting.PrintingSystemCommand.View
+        Me.PrintPreviewSubItem2.Id = 30
+        Me.PrintPreviewSubItem2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem4, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarToolbarsListItem1, True)})
+        Me.PrintPreviewSubItem2.Name = "PrintPreviewSubItem2"
+        '
+        'PrintPreviewSubItem4
+        '
+        Me.PrintPreviewSubItem4.Caption = "&Page Layout"
+        Me.PrintPreviewSubItem4.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageLayout
+        Me.PrintPreviewSubItem4.Id = 32
+        Me.PrintPreviewSubItem4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem26), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem27)})
+        Me.PrintPreviewSubItem4.Name = "PrintPreviewSubItem4"
+        '
+        'PrintPreviewBarItem26
+        '
+        Me.PrintPreviewBarItem26.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem26.Caption = "&Facing"
+        Me.PrintPreviewBarItem26.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutFacing
+        Me.PrintPreviewBarItem26.Enabled = False
+        Me.PrintPreviewBarItem26.GroupIndex = 100
+        Me.PrintPreviewBarItem26.Id = 33
+        Me.PrintPreviewBarItem26.Name = "PrintPreviewBarItem26"
+        '
+        'PrintPreviewBarItem27
+        '
+        Me.PrintPreviewBarItem27.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
+        Me.PrintPreviewBarItem27.Caption = "&Continuous"
+        Me.PrintPreviewBarItem27.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutContinuous
+        Me.PrintPreviewBarItem27.Enabled = False
+        Me.PrintPreviewBarItem27.GroupIndex = 100
+        Me.PrintPreviewBarItem27.Id = 34
+        Me.PrintPreviewBarItem27.Name = "PrintPreviewBarItem27"
+        '
+        'BarToolbarsListItem1
+        '
+        Me.BarToolbarsListItem1.Caption = "Bars"
+        Me.BarToolbarsListItem1.Id = 35
+        Me.BarToolbarsListItem1.Name = "BarToolbarsListItem1"
+        '
+        'PrintPreviewSubItem3
+        '
+        Me.PrintPreviewSubItem3.Caption = "&Background"
+        Me.PrintPreviewSubItem3.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Background
+        Me.PrintPreviewSubItem3.Id = 31
+        Me.PrintPreviewSubItem3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem21), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem22)})
+        Me.PrintPreviewSubItem3.Name = "PrintPreviewSubItem3"
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.reportsPrintBarManager
+        Me.barDockControlTop.Size = New System.Drawing.Size(734, 53)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 579)
+        Me.barDockControlBottom.Manager = Me.reportsPrintBarManager
+        Me.barDockControlBottom.Size = New System.Drawing.Size(734, 25)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 53)
+        Me.barDockControlLeft.Manager = Me.reportsPrintBarManager
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 526)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(734, 53)
+        Me.barDockControlRight.Manager = Me.reportsPrintBarManager
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 526)
+        '
+        'PrintPreviewBarCheckItem1
+        '
+        Me.PrintPreviewBarCheckItem1.BindableChecked = True
+        Me.PrintPreviewBarCheckItem1.Caption = "PDF File"
+        Me.PrintPreviewBarCheckItem1.Checked = True
+        Me.PrintPreviewBarCheckItem1.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportPdf
+        Me.PrintPreviewBarCheckItem1.Enabled = False
+        Me.PrintPreviewBarCheckItem1.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem1.Hint = "PDF File"
+        Me.PrintPreviewBarCheckItem1.Id = 36
+        Me.PrintPreviewBarCheckItem1.Name = "PrintPreviewBarCheckItem1"
+        '
+        'PrintPreviewBarCheckItem2
+        '
+        Me.PrintPreviewBarCheckItem2.Caption = "HTML File"
+        Me.PrintPreviewBarCheckItem2.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm
+        Me.PrintPreviewBarCheckItem2.Enabled = False
+        Me.PrintPreviewBarCheckItem2.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem2.Hint = "HTML File"
+        Me.PrintPreviewBarCheckItem2.Id = 37
+        Me.PrintPreviewBarCheckItem2.Name = "PrintPreviewBarCheckItem2"
+        '
+        'PrintPreviewBarCheckItem3
+        '
+        Me.PrintPreviewBarCheckItem3.Caption = "MHT File"
+        Me.PrintPreviewBarCheckItem3.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportMht
+        Me.PrintPreviewBarCheckItem3.Enabled = False
+        Me.PrintPreviewBarCheckItem3.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem3.Hint = "MHT File"
+        Me.PrintPreviewBarCheckItem3.Id = 38
+        Me.PrintPreviewBarCheckItem3.Name = "PrintPreviewBarCheckItem3"
+        '
+        'PrintPreviewBarCheckItem4
+        '
+        Me.PrintPreviewBarCheckItem4.Caption = "RTF File"
+        Me.PrintPreviewBarCheckItem4.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportRtf
+        Me.PrintPreviewBarCheckItem4.Enabled = False
+        Me.PrintPreviewBarCheckItem4.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem4.Hint = "RTF File"
+        Me.PrintPreviewBarCheckItem4.Id = 39
+        Me.PrintPreviewBarCheckItem4.Name = "PrintPreviewBarCheckItem4"
+        '
+        'PrintPreviewBarCheckItem5
+        '
+        Me.PrintPreviewBarCheckItem5.Caption = "Excel File"
+        Me.PrintPreviewBarCheckItem5.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls
+        Me.PrintPreviewBarCheckItem5.Enabled = False
+        Me.PrintPreviewBarCheckItem5.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem5.Hint = "Excel File"
+        Me.PrintPreviewBarCheckItem5.Id = 40
+        Me.PrintPreviewBarCheckItem5.Name = "PrintPreviewBarCheckItem5"
+        '
+        'PrintPreviewBarCheckItem6
+        '
+        Me.PrintPreviewBarCheckItem6.Caption = "CSV File"
+        Me.PrintPreviewBarCheckItem6.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportCsv
+        Me.PrintPreviewBarCheckItem6.Enabled = False
+        Me.PrintPreviewBarCheckItem6.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem6.Hint = "CSV File"
+        Me.PrintPreviewBarCheckItem6.Id = 41
+        Me.PrintPreviewBarCheckItem6.Name = "PrintPreviewBarCheckItem6"
+        '
+        'PrintPreviewBarCheckItem7
+        '
+        Me.PrintPreviewBarCheckItem7.Caption = "Text File"
+        Me.PrintPreviewBarCheckItem7.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportTxt
+        Me.PrintPreviewBarCheckItem7.Enabled = False
+        Me.PrintPreviewBarCheckItem7.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem7.Hint = "Text File"
+        Me.PrintPreviewBarCheckItem7.Id = 42
+        Me.PrintPreviewBarCheckItem7.Name = "PrintPreviewBarCheckItem7"
+        '
+        'PrintPreviewBarCheckItem8
+        '
+        Me.PrintPreviewBarCheckItem8.Caption = "Image File"
+        Me.PrintPreviewBarCheckItem8.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportGraphic
+        Me.PrintPreviewBarCheckItem8.Enabled = False
+        Me.PrintPreviewBarCheckItem8.GroupIndex = 2
+        Me.PrintPreviewBarCheckItem8.Hint = "Image File"
+        Me.PrintPreviewBarCheckItem8.Id = 43
+        Me.PrintPreviewBarCheckItem8.Name = "PrintPreviewBarCheckItem8"
+        '
+        'PrintPreviewBarCheckItem9
+        '
+        Me.PrintPreviewBarCheckItem9.BindableChecked = True
+        Me.PrintPreviewBarCheckItem9.Caption = "PDF File"
+        Me.PrintPreviewBarCheckItem9.Checked = True
+        Me.PrintPreviewBarCheckItem9.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendPdf
+        Me.PrintPreviewBarCheckItem9.Enabled = False
+        Me.PrintPreviewBarCheckItem9.GroupIndex = 1
+        Me.PrintPreviewBarCheckItem9.Hint = "PDF File"
+        Me.PrintPreviewBarCheckItem9.Id = 44
+        Me.PrintPreviewBarCheckItem9.Name = "PrintPreviewBarCheckItem9"
+        '
+        'PrintPreviewBarCheckItem10
+        '
+        Me.PrintPreviewBarCheckItem10.Caption = "MHT File"
+        Me.PrintPreviewBarCheckItem10.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendMht
+        Me.PrintPreviewBarCheckItem10.Enabled = False
+        Me.PrintPreviewBarCheckItem10.GroupIndex = 1
+        Me.PrintPreviewBarCheckItem10.Hint = "MHT File"
+        Me.PrintPreviewBarCheckItem10.Id = 45
+        Me.PrintPreviewBarCheckItem10.Name = "PrintPreviewBarCheckItem10"
+        '
+        'PrintPreviewBarCheckItem11
+        '
+        Me.PrintPreviewBarCheckItem11.Caption = "RTF File"
+        Me.PrintPreviewBarCheckItem11.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendRtf
+        Me.PrintPreviewBarCheckItem11.Enabled = False
+        Me.PrintPreviewBarCheckItem11.GroupIndex = 1
+        Me.PrintPreviewBarCheckItem11.Hint = "RTF File"
+        Me.PrintPreviewBarCheckItem11.Id = 46
+        Me.PrintPreviewBarCheckItem11.Name = "PrintPreviewBarCheckItem11"
+        '
+        'PrintPreviewBarCheckItem12
+        '
+        Me.PrintPreviewBarCheckItem12.Caption = "Excel File"
+        Me.PrintPreviewBarCheckItem12.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendXls
+        Me.PrintPreviewBarCheckItem12.Enabled = False
+        Me.PrintPreviewBarCheckItem12.GroupIndex = 1
+        Me.PrintPreviewBarCheckItem12.Hint = "Excel File"
+        Me.PrintPreviewBarCheckItem12.Id = 47
+        Me.PrintPreviewBarCheckItem12.Name = "PrintPreviewBarCheckItem12"
+        '
+        'PrintPreviewBarCheckItem13
+        '
+        Me.PrintPreviewBarCheckItem13.Caption = "CSV File"
+        Me.PrintPreviewBarCheckItem13.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendCsv
+        Me.PrintPreviewBarCheckItem13.Enabled = False
+        Me.PrintPreviewBarCheckItem13.GroupIndex = 1
+        Me.PrintPreviewBarCheckItem13.Hint = "CSV File"
+        Me.PrintPreviewBarCheckItem13.Id = 48
+        Me.PrintPreviewBarCheckItem13.Name = "PrintPreviewBarCheckItem13"
+        '
+        'PrintPreviewBarCheckItem14
+        '
+        Me.PrintPreviewBarCheckItem14.Caption = "Text File"
+        Me.PrintPreviewBarCheckItem14.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendTxt
+        Me.PrintPreviewBarCheckItem14.Enabled = False
+        Me.PrintPreviewBarCheckItem14.GroupIndex = 1
+        Me.PrintPreviewBarCheckItem14.Hint = "Text File"
+        Me.PrintPreviewBarCheckItem14.Id = 49
+        Me.PrintPreviewBarCheckItem14.Name = "PrintPreviewBarCheckItem14"
+        '
+        'PrintPreviewBarCheckItem15
+        '
+        Me.PrintPreviewBarCheckItem15.Caption = "Image File"
+        Me.PrintPreviewBarCheckItem15.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendGraphic
+        Me.PrintPreviewBarCheckItem15.Enabled = False
+        Me.PrintPreviewBarCheckItem15.GroupIndex = 1
+        Me.PrintPreviewBarCheckItem15.Hint = "Image File"
+        Me.PrintPreviewBarCheckItem15.Id = 50
+        Me.PrintPreviewBarCheckItem15.Name = "PrintPreviewBarCheckItem15"
+        '
+        'reportsPrintControl
+        '
+        Me.reportsPrintControl.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.reportsPrintControl.IsMetric = False
+        Me.reportsPrintControl.Location = New System.Drawing.Point(219, 53)
+        Me.reportsPrintControl.Name = "reportsPrintControl"
+        Me.reportsPrintControl.Size = New System.Drawing.Size(515, 526)
+        Me.reportsPrintControl.TabIndex = 4
+        '
+        'productionUOMCheckEdit
+        '
+        Me.productionUOMCheckEdit.EditValue = True
+        Me.productionUOMCheckEdit.Location = New System.Drawing.Point(4, 347)
+        Me.productionUOMCheckEdit.MenuManager = Me.reportsPrintBarManager
+        Me.productionUOMCheckEdit.Name = "productionUOMCheckEdit"
+        Me.productionUOMCheckEdit.Properties.Caption = "Unit Of Measure"
+        Me.productionUOMCheckEdit.Size = New System.Drawing.Size(158, 19)
+        Me.productionUOMCheckEdit.TabIndex = 23
+        '
+        'productionProjectedPackersCheckEdit
+        '
+        Me.productionProjectedPackersCheckEdit.EditValue = True
+        Me.productionProjectedPackersCheckEdit.Location = New System.Drawing.Point(4, 329)
+        Me.productionProjectedPackersCheckEdit.MenuManager = Me.reportsPrintBarManager
+        Me.productionProjectedPackersCheckEdit.Name = "productionProjectedPackersCheckEdit"
+        Me.productionProjectedPackersCheckEdit.Properties.Caption = "Projected Packers"
+        Me.productionProjectedPackersCheckEdit.Size = New System.Drawing.Size(158, 19)
+        Me.productionProjectedPackersCheckEdit.TabIndex = 22
+        '
+        'productionProjectedSpeedCheckEdit
+        '
+        Me.productionProjectedSpeedCheckEdit.EditValue = True
+        Me.productionProjectedSpeedCheckEdit.Location = New System.Drawing.Point(4, 311)
+        Me.productionProjectedSpeedCheckEdit.MenuManager = Me.reportsPrintBarManager
+        Me.productionProjectedSpeedCheckEdit.Name = "productionProjectedSpeedCheckEdit"
+        Me.productionProjectedSpeedCheckEdit.Properties.Caption = "Projected Speed"
+        Me.productionProjectedSpeedCheckEdit.Size = New System.Drawing.Size(158, 19)
+        Me.productionProjectedSpeedCheckEdit.TabIndex = 21
         '
         'productionPOCheckEdit
         '
-        Me.productionPOCheckEdit.EditValue = true
+        Me.productionPOCheckEdit.EditValue = True
         Me.productionPOCheckEdit.Location = New System.Drawing.Point(4, 293)
         Me.productionPOCheckEdit.Name = "productionPOCheckEdit"
         Me.productionPOCheckEdit.Properties.Caption = "PO #"
@@ -548,7 +1206,7 @@ Partial Class ReportsXtraForm
         '
         'productionTotalPayrollCheckEdit
         '
-        Me.productionTotalPayrollCheckEdit.EditValue = true
+        Me.productionTotalPayrollCheckEdit.EditValue = True
         Me.productionTotalPayrollCheckEdit.Location = New System.Drawing.Point(4, 275)
         Me.productionTotalPayrollCheckEdit.Name = "productionTotalPayrollCheckEdit"
         Me.productionTotalPayrollCheckEdit.Properties.Caption = "Total Payroll"
@@ -557,7 +1215,7 @@ Partial Class ReportsXtraForm
         '
         'productionShiftCheckEdit
         '
-        Me.productionShiftCheckEdit.EditValue = true
+        Me.productionShiftCheckEdit.EditValue = True
         Me.productionShiftCheckEdit.Location = New System.Drawing.Point(4, 20)
         Me.productionShiftCheckEdit.Name = "productionShiftCheckEdit"
         Me.productionShiftCheckEdit.Properties.Caption = "Shift"
@@ -566,7 +1224,7 @@ Partial Class ReportsXtraForm
         '
         'productionCustomerNameCheckEdit
         '
-        Me.productionCustomerNameCheckEdit.EditValue = true
+        Me.productionCustomerNameCheckEdit.EditValue = True
         Me.productionCustomerNameCheckEdit.Location = New System.Drawing.Point(4, 37)
         Me.productionCustomerNameCheckEdit.Name = "productionCustomerNameCheckEdit"
         Me.productionCustomerNameCheckEdit.Properties.Caption = "Customer Name"
@@ -575,7 +1233,7 @@ Partial Class ReportsXtraForm
         '
         'productionLotCheckEdit
         '
-        Me.productionLotCheckEdit.EditValue = true
+        Me.productionLotCheckEdit.EditValue = True
         Me.productionLotCheckEdit.Location = New System.Drawing.Point(4, 54)
         Me.productionLotCheckEdit.Name = "productionLotCheckEdit"
         Me.productionLotCheckEdit.Properties.Caption = "Lot #"
@@ -584,7 +1242,7 @@ Partial Class ReportsXtraForm
         '
         'productionItemCodeCheckEdit
         '
-        Me.productionItemCodeCheckEdit.EditValue = true
+        Me.productionItemCodeCheckEdit.EditValue = True
         Me.productionItemCodeCheckEdit.Location = New System.Drawing.Point(4, 71)
         Me.productionItemCodeCheckEdit.Name = "productionItemCodeCheckEdit"
         Me.productionItemCodeCheckEdit.Properties.Caption = "Item Code"
@@ -593,7 +1251,7 @@ Partial Class ReportsXtraForm
         '
         'productionItemDescriptionCheckEdit
         '
-        Me.productionItemDescriptionCheckEdit.EditValue = true
+        Me.productionItemDescriptionCheckEdit.EditValue = True
         Me.productionItemDescriptionCheckEdit.Location = New System.Drawing.Point(4, 88)
         Me.productionItemDescriptionCheckEdit.Name = "productionItemDescriptionCheckEdit"
         Me.productionItemDescriptionCheckEdit.Properties.Caption = "Item Description"
@@ -602,7 +1260,7 @@ Partial Class ReportsXtraForm
         '
         'productionStartTimeCheckEdit
         '
-        Me.productionStartTimeCheckEdit.EditValue = true
+        Me.productionStartTimeCheckEdit.EditValue = True
         Me.productionStartTimeCheckEdit.Location = New System.Drawing.Point(4, 105)
         Me.productionStartTimeCheckEdit.Name = "productionStartTimeCheckEdit"
         Me.productionStartTimeCheckEdit.Properties.Caption = "Start Time"
@@ -611,7 +1269,7 @@ Partial Class ReportsXtraForm
         '
         'productionStopTimeCheckEdit
         '
-        Me.productionStopTimeCheckEdit.EditValue = true
+        Me.productionStopTimeCheckEdit.EditValue = True
         Me.productionStopTimeCheckEdit.Location = New System.Drawing.Point(4, 122)
         Me.productionStopTimeCheckEdit.Name = "productionStopTimeCheckEdit"
         Me.productionStopTimeCheckEdit.Properties.Caption = "Stop Time"
@@ -620,7 +1278,7 @@ Partial Class ReportsXtraForm
         '
         'productionTotalHoursCheckEdit
         '
-        Me.productionTotalHoursCheckEdit.EditValue = true
+        Me.productionTotalHoursCheckEdit.EditValue = True
         Me.productionTotalHoursCheckEdit.Location = New System.Drawing.Point(4, 139)
         Me.productionTotalHoursCheckEdit.Name = "productionTotalHoursCheckEdit"
         Me.productionTotalHoursCheckEdit.Properties.Caption = "Total Hours"
@@ -629,7 +1287,7 @@ Partial Class ReportsXtraForm
         '
         'productionTotalMinutesCheckEdit
         '
-        Me.productionTotalMinutesCheckEdit.EditValue = true
+        Me.productionTotalMinutesCheckEdit.EditValue = True
         Me.productionTotalMinutesCheckEdit.Location = New System.Drawing.Point(4, 156)
         Me.productionTotalMinutesCheckEdit.Name = "productionTotalMinutesCheckEdit"
         Me.productionTotalMinutesCheckEdit.Properties.Caption = "Total Minutes"
@@ -638,7 +1296,7 @@ Partial Class ReportsXtraForm
         '
         'productionPackersCheckEdit
         '
-        Me.productionPackersCheckEdit.EditValue = true
+        Me.productionPackersCheckEdit.EditValue = True
         Me.productionPackersCheckEdit.Location = New System.Drawing.Point(4, 258)
         Me.productionPackersCheckEdit.Name = "productionPackersCheckEdit"
         Me.productionPackersCheckEdit.Properties.Caption = "Packers"
@@ -647,7 +1305,7 @@ Partial Class ReportsXtraForm
         '
         'productionActualSpeedCheckEdit
         '
-        Me.productionActualSpeedCheckEdit.EditValue = true
+        Me.productionActualSpeedCheckEdit.EditValue = True
         Me.productionActualSpeedCheckEdit.Location = New System.Drawing.Point(4, 241)
         Me.productionActualSpeedCheckEdit.Name = "productionActualSpeedCheckEdit"
         Me.productionActualSpeedCheckEdit.Properties.Caption = "Actual Speed"
@@ -656,7 +1314,7 @@ Partial Class ReportsXtraForm
         '
         'productionDifferenceCheckEdit
         '
-        Me.productionDifferenceCheckEdit.EditValue = true
+        Me.productionDifferenceCheckEdit.EditValue = True
         Me.productionDifferenceCheckEdit.Location = New System.Drawing.Point(4, 207)
         Me.productionDifferenceCheckEdit.Name = "productionDifferenceCheckEdit"
         Me.productionDifferenceCheckEdit.Properties.Caption = "Difference"
@@ -665,7 +1323,7 @@ Partial Class ReportsXtraForm
         '
         'productionExpectedCheckEdit
         '
-        Me.productionExpectedCheckEdit.EditValue = true
+        Me.productionExpectedCheckEdit.EditValue = True
         Me.productionExpectedCheckEdit.Location = New System.Drawing.Point(4, 190)
         Me.productionExpectedCheckEdit.Name = "productionExpectedCheckEdit"
         Me.productionExpectedCheckEdit.Properties.Caption = "Expected"
@@ -674,7 +1332,7 @@ Partial Class ReportsXtraForm
         '
         'productionQuantityCheckEdit
         '
-        Me.productionQuantityCheckEdit.EditValue = true
+        Me.productionQuantityCheckEdit.EditValue = True
         Me.productionQuantityCheckEdit.Location = New System.Drawing.Point(4, 173)
         Me.productionQuantityCheckEdit.Name = "productionQuantityCheckEdit"
         Me.productionQuantityCheckEdit.Properties.Caption = "Quantity"
@@ -683,7 +1341,7 @@ Partial Class ReportsXtraForm
         '
         'productionMachineLineCheckEdit
         '
-        Me.productionMachineLineCheckEdit.EditValue = true
+        Me.productionMachineLineCheckEdit.EditValue = True
         Me.productionMachineLineCheckEdit.Location = New System.Drawing.Point(4, 224)
         Me.productionMachineLineCheckEdit.Name = "productionMachineLineCheckEdit"
         Me.productionMachineLineCheckEdit.Properties.Caption = "Machine Line"
@@ -692,7 +1350,7 @@ Partial Class ReportsXtraForm
         '
         'productionDateCheckEdit
         '
-        Me.productionDateCheckEdit.EditValue = true
+        Me.productionDateCheckEdit.EditValue = True
         Me.productionDateCheckEdit.Location = New System.Drawing.Point(4, 3)
         Me.productionDateCheckEdit.Name = "productionDateCheckEdit"
         Me.productionDateCheckEdit.Properties.Caption = "Date"
@@ -703,11 +1361,12 @@ Partial Class ReportsXtraForm
         '
         Me.transportationXtraTabPage.Controls.Add(Me.transportationXtraScrollableControl)
         Me.transportationXtraTabPage.Name = "transportationXtraTabPage"
-        Me.transportationXtraTabPage.Size = New System.Drawing.Size(186, 471)
+        Me.transportationXtraTabPage.Size = New System.Drawing.Size(185, 471)
         Me.transportationXtraTabPage.Text = "Transportation"
         '
         'transportationXtraScrollableControl
         '
+        Me.transportationXtraScrollableControl.Controls.Add(Me.transportationLpnCheckEdit)
         Me.transportationXtraScrollableControl.Controls.Add(Me.transportationExpirationDateCheckEdit)
         Me.transportationXtraScrollableControl.Controls.Add(Me.transportationVendorCheckEdit)
         Me.transportationXtraScrollableControl.Controls.Add(Me.transportationBolCheckEdit)
@@ -727,12 +1386,12 @@ Partial Class ReportsXtraForm
         Me.transportationXtraScrollableControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.transportationXtraScrollableControl.Location = New System.Drawing.Point(0, 0)
         Me.transportationXtraScrollableControl.Name = "transportationXtraScrollableControl"
-        Me.transportationXtraScrollableControl.Size = New System.Drawing.Size(186, 471)
+        Me.transportationXtraScrollableControl.Size = New System.Drawing.Size(185, 471)
         Me.transportationXtraScrollableControl.TabIndex = 2
         '
         'transportationExpirationDateCheckEdit
         '
-        Me.transportationExpirationDateCheckEdit.EditValue = true
+        Me.transportationExpirationDateCheckEdit.EditValue = True
         Me.transportationExpirationDateCheckEdit.Location = New System.Drawing.Point(3, 282)
         Me.transportationExpirationDateCheckEdit.Name = "transportationExpirationDateCheckEdit"
         Me.transportationExpirationDateCheckEdit.Properties.Caption = "Expiration Date"
@@ -741,7 +1400,7 @@ Partial Class ReportsXtraForm
         '
         'transportationVendorCheckEdit
         '
-        Me.transportationVendorCheckEdit.EditValue = true
+        Me.transportationVendorCheckEdit.EditValue = True
         Me.transportationVendorCheckEdit.Location = New System.Drawing.Point(3, 264)
         Me.transportationVendorCheckEdit.Name = "transportationVendorCheckEdit"
         Me.transportationVendorCheckEdit.Properties.Caption = "Vendor"
@@ -750,7 +1409,7 @@ Partial Class ReportsXtraForm
         '
         'transportationBolCheckEdit
         '
-        Me.transportationBolCheckEdit.EditValue = true
+        Me.transportationBolCheckEdit.EditValue = True
         Me.transportationBolCheckEdit.Location = New System.Drawing.Point(3, 245)
         Me.transportationBolCheckEdit.Name = "transportationBolCheckEdit"
         Me.transportationBolCheckEdit.Properties.Caption = "BOL #"
@@ -759,7 +1418,7 @@ Partial Class ReportsXtraForm
         '
         'transportationSealCheckEdit
         '
-        Me.transportationSealCheckEdit.EditValue = true
+        Me.transportationSealCheckEdit.EditValue = True
         Me.transportationSealCheckEdit.Location = New System.Drawing.Point(3, 226)
         Me.transportationSealCheckEdit.Name = "transportationSealCheckEdit"
         Me.transportationSealCheckEdit.Properties.Caption = "Seal #"
@@ -768,7 +1427,7 @@ Partial Class ReportsXtraForm
         '
         'transportationTrailerCheckEdit
         '
-        Me.transportationTrailerCheckEdit.EditValue = true
+        Me.transportationTrailerCheckEdit.EditValue = True
         Me.transportationTrailerCheckEdit.Location = New System.Drawing.Point(3, 207)
         Me.transportationTrailerCheckEdit.Name = "transportationTrailerCheckEdit"
         Me.transportationTrailerCheckEdit.Properties.Caption = "Trailer #"
@@ -777,7 +1436,7 @@ Partial Class ReportsXtraForm
         '
         'transportationCarrierCheckEdit
         '
-        Me.transportationCarrierCheckEdit.EditValue = true
+        Me.transportationCarrierCheckEdit.EditValue = True
         Me.transportationCarrierCheckEdit.Location = New System.Drawing.Point(3, 188)
         Me.transportationCarrierCheckEdit.Name = "transportationCarrierCheckEdit"
         Me.transportationCarrierCheckEdit.Properties.Caption = "Carrier"
@@ -786,7 +1445,7 @@ Partial Class ReportsXtraForm
         '
         'transportationDestinationCheckEdit
         '
-        Me.transportationDestinationCheckEdit.EditValue = true
+        Me.transportationDestinationCheckEdit.EditValue = True
         Me.transportationDestinationCheckEdit.Location = New System.Drawing.Point(3, 169)
         Me.transportationDestinationCheckEdit.Name = "transportationDestinationCheckEdit"
         Me.transportationDestinationCheckEdit.Properties.Caption = "Destination"
@@ -795,7 +1454,7 @@ Partial Class ReportsXtraForm
         '
         'transportationDeliveryNoteCheckEdit
         '
-        Me.transportationDeliveryNoteCheckEdit.EditValue = true
+        Me.transportationDeliveryNoteCheckEdit.EditValue = True
         Me.transportationDeliveryNoteCheckEdit.Location = New System.Drawing.Point(3, 151)
         Me.transportationDeliveryNoteCheckEdit.Name = "transportationDeliveryNoteCheckEdit"
         Me.transportationDeliveryNoteCheckEdit.Properties.Caption = "Delivery Note #"
@@ -804,7 +1463,7 @@ Partial Class ReportsXtraForm
         '
         'transportationPOCheckEdit
         '
-        Me.transportationPOCheckEdit.EditValue = true
+        Me.transportationPOCheckEdit.EditValue = True
         Me.transportationPOCheckEdit.Location = New System.Drawing.Point(3, 133)
         Me.transportationPOCheckEdit.Name = "transportationPOCheckEdit"
         Me.transportationPOCheckEdit.Properties.Caption = "PO #"
@@ -813,7 +1472,7 @@ Partial Class ReportsXtraForm
         '
         'transportationShiftCheckEdit
         '
-        Me.transportationShiftCheckEdit.EditValue = true
+        Me.transportationShiftCheckEdit.EditValue = True
         Me.transportationShiftCheckEdit.Location = New System.Drawing.Point(3, 22)
         Me.transportationShiftCheckEdit.Name = "transportationShiftCheckEdit"
         Me.transportationShiftCheckEdit.Properties.Caption = "Shift"
@@ -822,7 +1481,7 @@ Partial Class ReportsXtraForm
         '
         'transportationCustomerCheckEdit
         '
-        Me.transportationCustomerCheckEdit.EditValue = true
+        Me.transportationCustomerCheckEdit.EditValue = True
         Me.transportationCustomerCheckEdit.Location = New System.Drawing.Point(3, 41)
         Me.transportationCustomerCheckEdit.Name = "transportationCustomerCheckEdit"
         Me.transportationCustomerCheckEdit.Properties.Caption = "Customer Name"
@@ -831,16 +1490,18 @@ Partial Class ReportsXtraForm
         '
         'transportationLotCheckEdit
         '
-        Me.transportationLotCheckEdit.EditValue = true
+        Me.transportationLotCheckEdit.EditValue = True
         Me.transportationLotCheckEdit.Location = New System.Drawing.Point(3, 60)
         Me.transportationLotCheckEdit.Name = "transportationLotCheckEdit"
+        Me.transportationLotCheckEdit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.transportationLotCheckEdit.Properties.Appearance.Options.UseBackColor = True
         Me.transportationLotCheckEdit.Properties.Caption = "Lot #"
         Me.transportationLotCheckEdit.Size = New System.Drawing.Size(158, 19)
         Me.transportationLotCheckEdit.TabIndex = 23
         '
         'transportationItemCheckEdit
         '
-        Me.transportationItemCheckEdit.EditValue = true
+        Me.transportationItemCheckEdit.EditValue = True
         Me.transportationItemCheckEdit.Location = New System.Drawing.Point(3, 78)
         Me.transportationItemCheckEdit.Name = "transportationItemCheckEdit"
         Me.transportationItemCheckEdit.Properties.Caption = "Item Code"
@@ -849,7 +1510,7 @@ Partial Class ReportsXtraForm
         '
         'transportationItemDescriptionCheckEdit
         '
-        Me.transportationItemDescriptionCheckEdit.EditValue = true
+        Me.transportationItemDescriptionCheckEdit.EditValue = True
         Me.transportationItemDescriptionCheckEdit.Location = New System.Drawing.Point(3, 96)
         Me.transportationItemDescriptionCheckEdit.Name = "transportationItemDescriptionCheckEdit"
         Me.transportationItemDescriptionCheckEdit.Properties.Caption = "Item Description"
@@ -858,7 +1519,7 @@ Partial Class ReportsXtraForm
         '
         'transportationQuantityCheckEdit
         '
-        Me.transportationQuantityCheckEdit.EditValue = true
+        Me.transportationQuantityCheckEdit.EditValue = True
         Me.transportationQuantityCheckEdit.Location = New System.Drawing.Point(3, 115)
         Me.transportationQuantityCheckEdit.Name = "transportationQuantityCheckEdit"
         Me.transportationQuantityCheckEdit.Properties.Caption = "Quantity"
@@ -867,7 +1528,7 @@ Partial Class ReportsXtraForm
         '
         'transportationDateCheckEdit
         '
-        Me.transportationDateCheckEdit.EditValue = true
+        Me.transportationDateCheckEdit.EditValue = True
         Me.transportationDateCheckEdit.Location = New System.Drawing.Point(3, 3)
         Me.transportationDateCheckEdit.Name = "transportationDateCheckEdit"
         Me.transportationDateCheckEdit.Properties.Caption = "Date"
@@ -878,7 +1539,7 @@ Partial Class ReportsXtraForm
         '
         Me.inventoryXtraTabPage.Controls.Add(Me.inventoryXtraScrollableControl)
         Me.inventoryXtraTabPage.Name = "inventoryXtraTabPage"
-        Me.inventoryXtraTabPage.Size = New System.Drawing.Size(186, 471)
+        Me.inventoryXtraTabPage.Size = New System.Drawing.Size(185, 471)
         Me.inventoryXtraTabPage.Text = "Inventory"
         '
         'inventoryXtraScrollableControl
@@ -900,12 +1561,12 @@ Partial Class ReportsXtraForm
         Me.inventoryXtraScrollableControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.inventoryXtraScrollableControl.Location = New System.Drawing.Point(0, 0)
         Me.inventoryXtraScrollableControl.Name = "inventoryXtraScrollableControl"
-        Me.inventoryXtraScrollableControl.Size = New System.Drawing.Size(186, 471)
+        Me.inventoryXtraScrollableControl.Size = New System.Drawing.Size(185, 471)
         Me.inventoryXtraScrollableControl.TabIndex = 0
         '
         'UOMCheckEdit
         '
-        Me.UOMCheckEdit.EditValue = true
+        Me.UOMCheckEdit.EditValue = True
         Me.UOMCheckEdit.Location = New System.Drawing.Point(3, 262)
         Me.UOMCheckEdit.MenuManager = Me.reportsPrintBarManager
         Me.UOMCheckEdit.Name = "UOMCheckEdit"
@@ -913,621 +1574,9 @@ Partial Class ReportsXtraForm
         Me.UOMCheckEdit.Size = New System.Drawing.Size(158, 19)
         Me.UOMCheckEdit.TabIndex = 40
         '
-        'reportsPrintBarManager
-        '
-        Me.reportsPrintBarManager.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.PreviewBar1, Me.PreviewBar2, Me.PreviewBar3})
-        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlTop)
-        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlBottom)
-        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlLeft)
-        Me.reportsPrintBarManager.DockControls.Add(Me.barDockControlRight)
-        Me.reportsPrintBarManager.DockManager = Me.reportsDockManager
-        Me.reportsPrintBarManager.Form = Me
-        Me.reportsPrintBarManager.ImageStream = CType(resources.GetObject("reportsPrintBarManager.ImageStream"),DevExpress.Utils.ImageCollectionStreamer)
-        Me.reportsPrintBarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.PrintPreviewStaticItem1, Me.PrintPreviewStaticItem2, Me.PrintPreviewStaticItem3, Me.PrintPreviewBarItem1, Me.PrintPreviewBarItem2, Me.PrintPreviewBarItem3, Me.PrintPreviewBarItem4, Me.PrintPreviewBarItem5, Me.PrintPreviewBarItem6, Me.PrintPreviewBarItem7, Me.PrintPreviewBarItem8, Me.PrintPreviewBarItem9, Me.PrintPreviewBarItem10, Me.PrintPreviewBarItem11, Me.PrintPreviewBarItem12, Me.PrintPreviewBarItem13, Me.PrintPreviewBarItem14, Me.ZoomBarEditItem1, Me.PrintPreviewBarItem15, Me.PrintPreviewBarItem16, Me.PrintPreviewBarItem17, Me.PrintPreviewBarItem18, Me.PrintPreviewBarItem19, Me.PrintPreviewBarItem20, Me.PrintPreviewBarItem21, Me.PrintPreviewBarItem22, Me.PrintPreviewBarItem23, Me.PrintPreviewBarItem24, Me.PrintPreviewBarItem25, Me.PrintPreviewSubItem1, Me.PrintPreviewSubItem2, Me.PrintPreviewSubItem3, Me.PrintPreviewSubItem4, Me.PrintPreviewBarItem26, Me.PrintPreviewBarItem27, Me.BarToolbarsListItem1, Me.PrintPreviewBarCheckItem1, Me.PrintPreviewBarCheckItem2, Me.PrintPreviewBarCheckItem3, Me.PrintPreviewBarCheckItem4, Me.PrintPreviewBarCheckItem5, Me.PrintPreviewBarCheckItem6, Me.PrintPreviewBarCheckItem7, Me.PrintPreviewBarCheckItem8, Me.PrintPreviewBarCheckItem9, Me.PrintPreviewBarCheckItem10, Me.PrintPreviewBarCheckItem11, Me.PrintPreviewBarCheckItem12, Me.PrintPreviewBarCheckItem13, Me.PrintPreviewBarCheckItem14, Me.PrintPreviewBarCheckItem15})
-        Me.reportsPrintBarManager.MainMenu = Me.PreviewBar3
-        Me.reportsPrintBarManager.MaxItemId = 51
-        Me.reportsPrintBarManager.PreviewBar = Me.PreviewBar1
-        Me.reportsPrintBarManager.PrintControl = Me.reportsPrintControl
-        Me.reportsPrintBarManager.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.PrintPreviewRepositoryItemComboBox1})
-        Me.reportsPrintBarManager.StatusBar = Me.PreviewBar2
-        '
-        'PreviewBar1
-        '
-        Me.PreviewBar1.BarName = "Toolbar"
-        Me.PreviewBar1.DockCol = 0
-        Me.PreviewBar1.DockRow = 1
-        Me.PreviewBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.PreviewBar1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem3), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem4, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem5, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem6), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem7, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem10), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem11), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem12, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem13), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem14, true), New DevExpress.XtraBars.LinkPersistInfo(Me.ZoomBarEditItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem15), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem16, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem17), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem18), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem19), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem20, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem21), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem22), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem23, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem24), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem25, true)})
-        Me.PreviewBar1.Text = "Toolbar"
-        '
-        'PrintPreviewBarItem1
-        '
-        Me.PrintPreviewBarItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem1.Caption = "Document Map"
-        Me.PrintPreviewBarItem1.Command = DevExpress.XtraPrinting.PrintingSystemCommand.DocumentMap
-        Me.PrintPreviewBarItem1.Enabled = false
-        Me.PrintPreviewBarItem1.Hint = "Document Map"
-        Me.PrintPreviewBarItem1.Id = 3
-        Me.PrintPreviewBarItem1.ImageIndex = 19
-        Me.PrintPreviewBarItem1.Name = "PrintPreviewBarItem1"
-        '
-        'PrintPreviewBarItem2
-        '
-        Me.PrintPreviewBarItem2.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem2.Caption = "Parameters"
-        Me.PrintPreviewBarItem2.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Parameters
-        Me.PrintPreviewBarItem2.Enabled = false
-        Me.PrintPreviewBarItem2.Hint = "Parameters"
-        Me.PrintPreviewBarItem2.Id = 4
-        Me.PrintPreviewBarItem2.ImageIndex = 22
-        Me.PrintPreviewBarItem2.Name = "PrintPreviewBarItem2"
-        '
-        'PrintPreviewBarItem3
-        '
-        Me.PrintPreviewBarItem3.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem3.Caption = "Search"
-        Me.PrintPreviewBarItem3.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Find
-        Me.PrintPreviewBarItem3.Enabled = false
-        Me.PrintPreviewBarItem3.Hint = "Search"
-        Me.PrintPreviewBarItem3.Id = 5
-        Me.PrintPreviewBarItem3.ImageIndex = 20
-        Me.PrintPreviewBarItem3.Name = "PrintPreviewBarItem3"
-        '
-        'PrintPreviewBarItem4
-        '
-        Me.PrintPreviewBarItem4.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem4.Caption = "Customize"
-        Me.PrintPreviewBarItem4.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Customize
-        Me.PrintPreviewBarItem4.Enabled = false
-        Me.PrintPreviewBarItem4.Hint = "Customize"
-        Me.PrintPreviewBarItem4.Id = 6
-        Me.PrintPreviewBarItem4.ImageIndex = 14
-        Me.PrintPreviewBarItem4.Name = "PrintPreviewBarItem4"
-        '
-        'PrintPreviewBarItem5
-        '
-        Me.PrintPreviewBarItem5.Caption = "Open"
-        Me.PrintPreviewBarItem5.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Open
-        Me.PrintPreviewBarItem5.Enabled = false
-        Me.PrintPreviewBarItem5.Hint = "Open a document"
-        Me.PrintPreviewBarItem5.Id = 7
-        Me.PrintPreviewBarItem5.ImageIndex = 23
-        Me.PrintPreviewBarItem5.Name = "PrintPreviewBarItem5"
-        '
-        'PrintPreviewBarItem6
-        '
-        Me.PrintPreviewBarItem6.Caption = "Save"
-        Me.PrintPreviewBarItem6.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Save
-        Me.PrintPreviewBarItem6.Enabled = false
-        Me.PrintPreviewBarItem6.Hint = "Save the document"
-        Me.PrintPreviewBarItem6.Id = 8
-        Me.PrintPreviewBarItem6.ImageIndex = 24
-        Me.PrintPreviewBarItem6.Name = "PrintPreviewBarItem6"
-        '
-        'PrintPreviewBarItem7
-        '
-        Me.PrintPreviewBarItem7.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem7.Caption = "&Print..."
-        Me.PrintPreviewBarItem7.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Print
-        Me.PrintPreviewBarItem7.Enabled = false
-        Me.PrintPreviewBarItem7.Hint = "Print"
-        Me.PrintPreviewBarItem7.Id = 9
-        Me.PrintPreviewBarItem7.ImageIndex = 0
-        Me.PrintPreviewBarItem7.Name = "PrintPreviewBarItem7"
-        '
-        'PrintPreviewBarItem8
-        '
-        Me.PrintPreviewBarItem8.Caption = "P&rint"
-        Me.PrintPreviewBarItem8.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PrintDirect
-        Me.PrintPreviewBarItem8.Enabled = false
-        Me.PrintPreviewBarItem8.Hint = "Quick Print"
-        Me.PrintPreviewBarItem8.Id = 10
-        Me.PrintPreviewBarItem8.ImageIndex = 1
-        Me.PrintPreviewBarItem8.Name = "PrintPreviewBarItem8"
-        '
-        'PrintPreviewBarItem9
-        '
-        Me.PrintPreviewBarItem9.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem9.Caption = "Page Set&up..."
-        Me.PrintPreviewBarItem9.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageSetup
-        Me.PrintPreviewBarItem9.Enabled = false
-        Me.PrintPreviewBarItem9.Hint = "Page Setup"
-        Me.PrintPreviewBarItem9.Id = 11
-        Me.PrintPreviewBarItem9.ImageIndex = 2
-        Me.PrintPreviewBarItem9.Name = "PrintPreviewBarItem9"
-        '
-        'PrintPreviewBarItem10
-        '
-        Me.PrintPreviewBarItem10.Caption = "Header And Footer"
-        Me.PrintPreviewBarItem10.Command = DevExpress.XtraPrinting.PrintingSystemCommand.EditPageHF
-        Me.PrintPreviewBarItem10.Enabled = false
-        Me.PrintPreviewBarItem10.Hint = "Header And Footer"
-        Me.PrintPreviewBarItem10.Id = 12
-        Me.PrintPreviewBarItem10.ImageIndex = 15
-        Me.PrintPreviewBarItem10.Name = "PrintPreviewBarItem10"
-        '
-        'PrintPreviewBarItem11
-        '
-        Me.PrintPreviewBarItem11.ActAsDropDown = true
-        Me.PrintPreviewBarItem11.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.PrintPreviewBarItem11.Caption = "Scale"
-        Me.PrintPreviewBarItem11.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Scale
-        Me.PrintPreviewBarItem11.Enabled = false
-        Me.PrintPreviewBarItem11.Hint = "Scale"
-        Me.PrintPreviewBarItem11.Id = 13
-        Me.PrintPreviewBarItem11.ImageIndex = 25
-        Me.PrintPreviewBarItem11.Name = "PrintPreviewBarItem11"
-        '
-        'PrintPreviewBarItem12
-        '
-        Me.PrintPreviewBarItem12.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem12.Caption = "Hand Tool"
-        Me.PrintPreviewBarItem12.Command = DevExpress.XtraPrinting.PrintingSystemCommand.HandTool
-        Me.PrintPreviewBarItem12.Enabled = false
-        Me.PrintPreviewBarItem12.Hint = "Hand Tool"
-        Me.PrintPreviewBarItem12.Id = 14
-        Me.PrintPreviewBarItem12.ImageIndex = 16
-        Me.PrintPreviewBarItem12.Name = "PrintPreviewBarItem12"
-        '
-        'PrintPreviewBarItem13
-        '
-        Me.PrintPreviewBarItem13.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem13.Caption = "Magnifier"
-        Me.PrintPreviewBarItem13.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Magnifier
-        Me.PrintPreviewBarItem13.Enabled = false
-        Me.PrintPreviewBarItem13.Hint = "Magnifier"
-        Me.PrintPreviewBarItem13.Id = 15
-        Me.PrintPreviewBarItem13.ImageIndex = 3
-        Me.PrintPreviewBarItem13.Name = "PrintPreviewBarItem13"
-        '
-        'PrintPreviewBarItem14
-        '
-        Me.PrintPreviewBarItem14.Caption = "Zoom Out"
-        Me.PrintPreviewBarItem14.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ZoomOut
-        Me.PrintPreviewBarItem14.Enabled = false
-        Me.PrintPreviewBarItem14.Hint = "Zoom Out"
-        Me.PrintPreviewBarItem14.Id = 16
-        Me.PrintPreviewBarItem14.ImageIndex = 5
-        Me.PrintPreviewBarItem14.Name = "PrintPreviewBarItem14"
-        '
-        'ZoomBarEditItem1
-        '
-        Me.ZoomBarEditItem1.Caption = "Zoom"
-        Me.ZoomBarEditItem1.Edit = Me.PrintPreviewRepositoryItemComboBox1
-        Me.ZoomBarEditItem1.EditValue = "100%"
-        Me.ZoomBarEditItem1.EditWidth = 70
-        Me.ZoomBarEditItem1.Enabled = false
-        Me.ZoomBarEditItem1.Hint = "Zoom"
-        Me.ZoomBarEditItem1.Id = 17
-        Me.ZoomBarEditItem1.Name = "ZoomBarEditItem1"
-        '
-        'PrintPreviewRepositoryItemComboBox1
-        '
-        Me.PrintPreviewRepositoryItemComboBox1.AutoComplete = false
-        Me.PrintPreviewRepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.PrintPreviewRepositoryItemComboBox1.DropDownRows = 11
-        Me.PrintPreviewRepositoryItemComboBox1.Name = "PrintPreviewRepositoryItemComboBox1"
-        '
-        'PrintPreviewBarItem15
-        '
-        Me.PrintPreviewBarItem15.Caption = "Zoom In"
-        Me.PrintPreviewBarItem15.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ZoomIn
-        Me.PrintPreviewBarItem15.Enabled = false
-        Me.PrintPreviewBarItem15.Hint = "Zoom In"
-        Me.PrintPreviewBarItem15.Id = 18
-        Me.PrintPreviewBarItem15.ImageIndex = 4
-        Me.PrintPreviewBarItem15.Name = "PrintPreviewBarItem15"
-        '
-        'PrintPreviewBarItem16
-        '
-        Me.PrintPreviewBarItem16.Caption = "First Page"
-        Me.PrintPreviewBarItem16.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowFirstPage
-        Me.PrintPreviewBarItem16.Enabled = false
-        Me.PrintPreviewBarItem16.Hint = "First Page"
-        Me.PrintPreviewBarItem16.Id = 19
-        Me.PrintPreviewBarItem16.ImageIndex = 7
-        Me.PrintPreviewBarItem16.Name = "PrintPreviewBarItem16"
-        '
-        'PrintPreviewBarItem17
-        '
-        Me.PrintPreviewBarItem17.Caption = "Previous Page"
-        Me.PrintPreviewBarItem17.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowPrevPage
-        Me.PrintPreviewBarItem17.Enabled = false
-        Me.PrintPreviewBarItem17.Hint = "Previous Page"
-        Me.PrintPreviewBarItem17.Id = 20
-        Me.PrintPreviewBarItem17.ImageIndex = 8
-        Me.PrintPreviewBarItem17.Name = "PrintPreviewBarItem17"
-        '
-        'PrintPreviewBarItem18
-        '
-        Me.PrintPreviewBarItem18.Caption = "Next Page"
-        Me.PrintPreviewBarItem18.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowNextPage
-        Me.PrintPreviewBarItem18.Enabled = false
-        Me.PrintPreviewBarItem18.Hint = "Next Page"
-        Me.PrintPreviewBarItem18.Id = 21
-        Me.PrintPreviewBarItem18.ImageIndex = 9
-        Me.PrintPreviewBarItem18.Name = "PrintPreviewBarItem18"
-        '
-        'PrintPreviewBarItem19
-        '
-        Me.PrintPreviewBarItem19.Caption = "Last Page"
-        Me.PrintPreviewBarItem19.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowLastPage
-        Me.PrintPreviewBarItem19.Enabled = false
-        Me.PrintPreviewBarItem19.Hint = "Last Page"
-        Me.PrintPreviewBarItem19.Id = 22
-        Me.PrintPreviewBarItem19.ImageIndex = 10
-        Me.PrintPreviewBarItem19.Name = "PrintPreviewBarItem19"
-        '
-        'PrintPreviewBarItem20
-        '
-        Me.PrintPreviewBarItem20.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.PrintPreviewBarItem20.Caption = "Multiple Pages"
-        Me.PrintPreviewBarItem20.Command = DevExpress.XtraPrinting.PrintingSystemCommand.MultiplePages
-        Me.PrintPreviewBarItem20.Enabled = false
-        Me.PrintPreviewBarItem20.Hint = "Multiple Pages"
-        Me.PrintPreviewBarItem20.Id = 23
-        Me.PrintPreviewBarItem20.ImageIndex = 11
-        Me.PrintPreviewBarItem20.Name = "PrintPreviewBarItem20"
-        '
-        'PrintPreviewBarItem21
-        '
-        Me.PrintPreviewBarItem21.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.PrintPreviewBarItem21.Caption = "&Color..."
-        Me.PrintPreviewBarItem21.Command = DevExpress.XtraPrinting.PrintingSystemCommand.FillBackground
-        Me.PrintPreviewBarItem21.Enabled = false
-        Me.PrintPreviewBarItem21.Hint = "Background"
-        Me.PrintPreviewBarItem21.Id = 24
-        Me.PrintPreviewBarItem21.ImageIndex = 12
-        Me.PrintPreviewBarItem21.Name = "PrintPreviewBarItem21"
-        '
-        'PrintPreviewBarItem22
-        '
-        Me.PrintPreviewBarItem22.Caption = "&Watermark..."
-        Me.PrintPreviewBarItem22.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Watermark
-        Me.PrintPreviewBarItem22.Enabled = false
-        Me.PrintPreviewBarItem22.Hint = "Watermark"
-        Me.PrintPreviewBarItem22.Id = 25
-        Me.PrintPreviewBarItem22.ImageIndex = 21
-        Me.PrintPreviewBarItem22.Name = "PrintPreviewBarItem22"
-        '
-        'PrintPreviewBarItem23
-        '
-        Me.PrintPreviewBarItem23.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.PrintPreviewBarItem23.Caption = "Export Document..."
-        Me.PrintPreviewBarItem23.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportFile
-        Me.PrintPreviewBarItem23.Enabled = false
-        Me.PrintPreviewBarItem23.Hint = "Export Document..."
-        Me.PrintPreviewBarItem23.Id = 26
-        Me.PrintPreviewBarItem23.ImageIndex = 18
-        Me.PrintPreviewBarItem23.Name = "PrintPreviewBarItem23"
-        '
-        'PrintPreviewBarItem24
-        '
-        Me.PrintPreviewBarItem24.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown
-        Me.PrintPreviewBarItem24.Caption = "Send via E-Mail..."
-        Me.PrintPreviewBarItem24.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendFile
-        Me.PrintPreviewBarItem24.Enabled = false
-        Me.PrintPreviewBarItem24.Hint = "Send via E-Mail..."
-        Me.PrintPreviewBarItem24.Id = 27
-        Me.PrintPreviewBarItem24.ImageIndex = 17
-        Me.PrintPreviewBarItem24.Name = "PrintPreviewBarItem24"
-        '
-        'PrintPreviewBarItem25
-        '
-        Me.PrintPreviewBarItem25.Caption = "E&xit"
-        Me.PrintPreviewBarItem25.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ClosePreview
-        Me.PrintPreviewBarItem25.Enabled = false
-        Me.PrintPreviewBarItem25.Hint = "Close Preview"
-        Me.PrintPreviewBarItem25.Id = 28
-        Me.PrintPreviewBarItem25.ImageIndex = 13
-        Me.PrintPreviewBarItem25.Name = "PrintPreviewBarItem25"
-        '
-        'PreviewBar2
-        '
-        Me.PreviewBar2.BarName = "Status Bar"
-        Me.PreviewBar2.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom
-        Me.PreviewBar2.DockCol = 0
-        Me.PreviewBar2.DockRow = 0
-        Me.PreviewBar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.PreviewBar2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewStaticItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewStaticItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewStaticItem3)})
-        Me.PreviewBar2.OptionsBar.AllowQuickCustomization = false
-        Me.PreviewBar2.OptionsBar.DrawDragBorder = false
-        Me.PreviewBar2.OptionsBar.UseWholeRow = true
-        Me.PreviewBar2.Text = "Status Bar"
-        '
-        'PrintPreviewStaticItem1
-        '
-        Me.PrintPreviewStaticItem1.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
-        Me.PrintPreviewStaticItem1.Caption = "Current Page: none"
-        Me.PrintPreviewStaticItem1.Id = 0
-        Me.PrintPreviewStaticItem1.Name = "PrintPreviewStaticItem1"
-        Me.PrintPreviewStaticItem1.Size = New System.Drawing.Size(200, 0)
-        Me.PrintPreviewStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near
-        Me.PrintPreviewStaticItem1.Type = "CurrentPageNo"
-        '
-        'PrintPreviewStaticItem2
-        '
-        Me.PrintPreviewStaticItem2.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
-        Me.PrintPreviewStaticItem2.Caption = "Total Pages: 0"
-        Me.PrintPreviewStaticItem2.Id = 1
-        Me.PrintPreviewStaticItem2.Name = "PrintPreviewStaticItem2"
-        Me.PrintPreviewStaticItem2.Size = New System.Drawing.Size(200, 0)
-        Me.PrintPreviewStaticItem2.TextAlignment = System.Drawing.StringAlignment.Near
-        Me.PrintPreviewStaticItem2.Type = "TotalPageNo"
-        '
-        'PrintPreviewStaticItem3
-        '
-        Me.PrintPreviewStaticItem3.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring
-        Me.PrintPreviewStaticItem3.Caption = "100%"
-        Me.PrintPreviewStaticItem3.Id = 2
-        Me.PrintPreviewStaticItem3.Name = "PrintPreviewStaticItem3"
-        Me.PrintPreviewStaticItem3.Size = New System.Drawing.Size(200, 0)
-        Me.PrintPreviewStaticItem3.TextAlignment = System.Drawing.StringAlignment.Near
-        Me.PrintPreviewStaticItem3.Type = "ZoomFactor"
-        '
-        'PreviewBar3
-        '
-        Me.PreviewBar3.BarName = "Main Menu"
-        Me.PreviewBar3.DockCol = 0
-        Me.PreviewBar3.DockRow = 0
-        Me.PreviewBar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.PreviewBar3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem1), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem3)})
-        Me.PreviewBar3.OptionsBar.MultiLine = true
-        Me.PreviewBar3.OptionsBar.UseWholeRow = true
-        Me.PreviewBar3.Text = "Main Menu"
-        '
-        'PrintPreviewSubItem1
-        '
-        Me.PrintPreviewSubItem1.Caption = "&File"
-        Me.PrintPreviewSubItem1.Command = DevExpress.XtraPrinting.PrintingSystemCommand.File
-        Me.PrintPreviewSubItem1.Id = 29
-        Me.PrintPreviewSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem7), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem8), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem23, true), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem24), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem25, true)})
-        Me.PrintPreviewSubItem1.Name = "PrintPreviewSubItem1"
-        '
-        'PrintPreviewSubItem2
-        '
-        Me.PrintPreviewSubItem2.Caption = "&View"
-        Me.PrintPreviewSubItem2.Command = DevExpress.XtraPrinting.PrintingSystemCommand.View
-        Me.PrintPreviewSubItem2.Id = 30
-        Me.PrintPreviewSubItem2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewSubItem4, true), New DevExpress.XtraBars.LinkPersistInfo(Me.BarToolbarsListItem1, true)})
-        Me.PrintPreviewSubItem2.Name = "PrintPreviewSubItem2"
-        '
-        'PrintPreviewSubItem4
-        '
-        Me.PrintPreviewSubItem4.Caption = "&Page Layout"
-        Me.PrintPreviewSubItem4.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageLayout
-        Me.PrintPreviewSubItem4.Id = 32
-        Me.PrintPreviewSubItem4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem26), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem27)})
-        Me.PrintPreviewSubItem4.Name = "PrintPreviewSubItem4"
-        '
-        'PrintPreviewBarItem26
-        '
-        Me.PrintPreviewBarItem26.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem26.Caption = "&Facing"
-        Me.PrintPreviewBarItem26.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutFacing
-        Me.PrintPreviewBarItem26.Enabled = false
-        Me.PrintPreviewBarItem26.GroupIndex = 100
-        Me.PrintPreviewBarItem26.Id = 33
-        Me.PrintPreviewBarItem26.Name = "PrintPreviewBarItem26"
-        '
-        'PrintPreviewBarItem27
-        '
-        Me.PrintPreviewBarItem27.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check
-        Me.PrintPreviewBarItem27.Caption = "&Continuous"
-        Me.PrintPreviewBarItem27.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageLayoutContinuous
-        Me.PrintPreviewBarItem27.Enabled = false
-        Me.PrintPreviewBarItem27.GroupIndex = 100
-        Me.PrintPreviewBarItem27.Id = 34
-        Me.PrintPreviewBarItem27.Name = "PrintPreviewBarItem27"
-        '
-        'BarToolbarsListItem1
-        '
-        Me.BarToolbarsListItem1.Caption = "Bars"
-        Me.BarToolbarsListItem1.Id = 35
-        Me.BarToolbarsListItem1.Name = "BarToolbarsListItem1"
-        '
-        'PrintPreviewSubItem3
-        '
-        Me.PrintPreviewSubItem3.Caption = "&Background"
-        Me.PrintPreviewSubItem3.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Background
-        Me.PrintPreviewSubItem3.Id = 31
-        Me.PrintPreviewSubItem3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem21), New DevExpress.XtraBars.LinkPersistInfo(Me.PrintPreviewBarItem22)})
-        Me.PrintPreviewSubItem3.Name = "PrintPreviewSubItem3"
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = false
-        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlTop.Size = New System.Drawing.Size(734, 53)
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = false
-        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 579)
-        Me.barDockControlBottom.Size = New System.Drawing.Size(734, 25)
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = false
-        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 53)
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 526)
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = false
-        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(734, 53)
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 526)
-        '
-        'PrintPreviewBarCheckItem1
-        '
-        Me.PrintPreviewBarCheckItem1.BindableChecked = true
-        Me.PrintPreviewBarCheckItem1.Caption = "PDF File"
-        Me.PrintPreviewBarCheckItem1.Checked = true
-        Me.PrintPreviewBarCheckItem1.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportPdf
-        Me.PrintPreviewBarCheckItem1.Enabled = false
-        Me.PrintPreviewBarCheckItem1.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem1.Hint = "PDF File"
-        Me.PrintPreviewBarCheckItem1.Id = 36
-        Me.PrintPreviewBarCheckItem1.Name = "PrintPreviewBarCheckItem1"
-        '
-        'PrintPreviewBarCheckItem2
-        '
-        Me.PrintPreviewBarCheckItem2.Caption = "HTML File"
-        Me.PrintPreviewBarCheckItem2.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportHtm
-        Me.PrintPreviewBarCheckItem2.Enabled = false
-        Me.PrintPreviewBarCheckItem2.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem2.Hint = "HTML File"
-        Me.PrintPreviewBarCheckItem2.Id = 37
-        Me.PrintPreviewBarCheckItem2.Name = "PrintPreviewBarCheckItem2"
-        '
-        'PrintPreviewBarCheckItem3
-        '
-        Me.PrintPreviewBarCheckItem3.Caption = "MHT File"
-        Me.PrintPreviewBarCheckItem3.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportMht
-        Me.PrintPreviewBarCheckItem3.Enabled = false
-        Me.PrintPreviewBarCheckItem3.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem3.Hint = "MHT File"
-        Me.PrintPreviewBarCheckItem3.Id = 38
-        Me.PrintPreviewBarCheckItem3.Name = "PrintPreviewBarCheckItem3"
-        '
-        'PrintPreviewBarCheckItem4
-        '
-        Me.PrintPreviewBarCheckItem4.Caption = "RTF File"
-        Me.PrintPreviewBarCheckItem4.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportRtf
-        Me.PrintPreviewBarCheckItem4.Enabled = false
-        Me.PrintPreviewBarCheckItem4.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem4.Hint = "RTF File"
-        Me.PrintPreviewBarCheckItem4.Id = 39
-        Me.PrintPreviewBarCheckItem4.Name = "PrintPreviewBarCheckItem4"
-        '
-        'PrintPreviewBarCheckItem5
-        '
-        Me.PrintPreviewBarCheckItem5.Caption = "Excel File"
-        Me.PrintPreviewBarCheckItem5.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportXls
-        Me.PrintPreviewBarCheckItem5.Enabled = false
-        Me.PrintPreviewBarCheckItem5.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem5.Hint = "Excel File"
-        Me.PrintPreviewBarCheckItem5.Id = 40
-        Me.PrintPreviewBarCheckItem5.Name = "PrintPreviewBarCheckItem5"
-        '
-        'PrintPreviewBarCheckItem6
-        '
-        Me.PrintPreviewBarCheckItem6.Caption = "CSV File"
-        Me.PrintPreviewBarCheckItem6.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportCsv
-        Me.PrintPreviewBarCheckItem6.Enabled = false
-        Me.PrintPreviewBarCheckItem6.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem6.Hint = "CSV File"
-        Me.PrintPreviewBarCheckItem6.Id = 41
-        Me.PrintPreviewBarCheckItem6.Name = "PrintPreviewBarCheckItem6"
-        '
-        'PrintPreviewBarCheckItem7
-        '
-        Me.PrintPreviewBarCheckItem7.Caption = "Text File"
-        Me.PrintPreviewBarCheckItem7.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportTxt
-        Me.PrintPreviewBarCheckItem7.Enabled = false
-        Me.PrintPreviewBarCheckItem7.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem7.Hint = "Text File"
-        Me.PrintPreviewBarCheckItem7.Id = 42
-        Me.PrintPreviewBarCheckItem7.Name = "PrintPreviewBarCheckItem7"
-        '
-        'PrintPreviewBarCheckItem8
-        '
-        Me.PrintPreviewBarCheckItem8.Caption = "Image File"
-        Me.PrintPreviewBarCheckItem8.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ExportGraphic
-        Me.PrintPreviewBarCheckItem8.Enabled = false
-        Me.PrintPreviewBarCheckItem8.GroupIndex = 2
-        Me.PrintPreviewBarCheckItem8.Hint = "Image File"
-        Me.PrintPreviewBarCheckItem8.Id = 43
-        Me.PrintPreviewBarCheckItem8.Name = "PrintPreviewBarCheckItem8"
-        '
-        'PrintPreviewBarCheckItem9
-        '
-        Me.PrintPreviewBarCheckItem9.BindableChecked = true
-        Me.PrintPreviewBarCheckItem9.Caption = "PDF File"
-        Me.PrintPreviewBarCheckItem9.Checked = true
-        Me.PrintPreviewBarCheckItem9.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendPdf
-        Me.PrintPreviewBarCheckItem9.Enabled = false
-        Me.PrintPreviewBarCheckItem9.GroupIndex = 1
-        Me.PrintPreviewBarCheckItem9.Hint = "PDF File"
-        Me.PrintPreviewBarCheckItem9.Id = 44
-        Me.PrintPreviewBarCheckItem9.Name = "PrintPreviewBarCheckItem9"
-        '
-        'PrintPreviewBarCheckItem10
-        '
-        Me.PrintPreviewBarCheckItem10.Caption = "MHT File"
-        Me.PrintPreviewBarCheckItem10.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendMht
-        Me.PrintPreviewBarCheckItem10.Enabled = false
-        Me.PrintPreviewBarCheckItem10.GroupIndex = 1
-        Me.PrintPreviewBarCheckItem10.Hint = "MHT File"
-        Me.PrintPreviewBarCheckItem10.Id = 45
-        Me.PrintPreviewBarCheckItem10.Name = "PrintPreviewBarCheckItem10"
-        '
-        'PrintPreviewBarCheckItem11
-        '
-        Me.PrintPreviewBarCheckItem11.Caption = "RTF File"
-        Me.PrintPreviewBarCheckItem11.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendRtf
-        Me.PrintPreviewBarCheckItem11.Enabled = false
-        Me.PrintPreviewBarCheckItem11.GroupIndex = 1
-        Me.PrintPreviewBarCheckItem11.Hint = "RTF File"
-        Me.PrintPreviewBarCheckItem11.Id = 46
-        Me.PrintPreviewBarCheckItem11.Name = "PrintPreviewBarCheckItem11"
-        '
-        'PrintPreviewBarCheckItem12
-        '
-        Me.PrintPreviewBarCheckItem12.Caption = "Excel File"
-        Me.PrintPreviewBarCheckItem12.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendXls
-        Me.PrintPreviewBarCheckItem12.Enabled = false
-        Me.PrintPreviewBarCheckItem12.GroupIndex = 1
-        Me.PrintPreviewBarCheckItem12.Hint = "Excel File"
-        Me.PrintPreviewBarCheckItem12.Id = 47
-        Me.PrintPreviewBarCheckItem12.Name = "PrintPreviewBarCheckItem12"
-        '
-        'PrintPreviewBarCheckItem13
-        '
-        Me.PrintPreviewBarCheckItem13.Caption = "CSV File"
-        Me.PrintPreviewBarCheckItem13.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendCsv
-        Me.PrintPreviewBarCheckItem13.Enabled = false
-        Me.PrintPreviewBarCheckItem13.GroupIndex = 1
-        Me.PrintPreviewBarCheckItem13.Hint = "CSV File"
-        Me.PrintPreviewBarCheckItem13.Id = 48
-        Me.PrintPreviewBarCheckItem13.Name = "PrintPreviewBarCheckItem13"
-        '
-        'PrintPreviewBarCheckItem14
-        '
-        Me.PrintPreviewBarCheckItem14.Caption = "Text File"
-        Me.PrintPreviewBarCheckItem14.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendTxt
-        Me.PrintPreviewBarCheckItem14.Enabled = false
-        Me.PrintPreviewBarCheckItem14.GroupIndex = 1
-        Me.PrintPreviewBarCheckItem14.Hint = "Text File"
-        Me.PrintPreviewBarCheckItem14.Id = 49
-        Me.PrintPreviewBarCheckItem14.Name = "PrintPreviewBarCheckItem14"
-        '
-        'PrintPreviewBarCheckItem15
-        '
-        Me.PrintPreviewBarCheckItem15.Caption = "Image File"
-        Me.PrintPreviewBarCheckItem15.Command = DevExpress.XtraPrinting.PrintingSystemCommand.SendGraphic
-        Me.PrintPreviewBarCheckItem15.Enabled = false
-        Me.PrintPreviewBarCheckItem15.GroupIndex = 1
-        Me.PrintPreviewBarCheckItem15.Hint = "Image File"
-        Me.PrintPreviewBarCheckItem15.Id = 50
-        Me.PrintPreviewBarCheckItem15.Name = "PrintPreviewBarCheckItem15"
-        '
-        'reportsPrintControl
-        '
-        Me.reportsPrintControl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.reportsPrintControl.IsMetric = false
-        Me.reportsPrintControl.Location = New System.Drawing.Point(219, 53)
-        Me.reportsPrintControl.Name = "reportsPrintControl"
-        Me.reportsPrintControl.Size = New System.Drawing.Size(515, 526)
-        Me.reportsPrintControl.TabIndex = 4
-        '
         'RMItemDescriptionCheckEdit
         '
-        Me.RMItemDescriptionCheckEdit.EditValue = true
+        Me.RMItemDescriptionCheckEdit.EditValue = True
         Me.RMItemDescriptionCheckEdit.Location = New System.Drawing.Point(3, 240)
         Me.RMItemDescriptionCheckEdit.Name = "RMItemDescriptionCheckEdit"
         Me.RMItemDescriptionCheckEdit.Properties.Caption = "RM Item Description"
@@ -1536,7 +1585,7 @@ Partial Class ReportsXtraForm
         '
         'RMItemCodeCheckEdit
         '
-        Me.RMItemCodeCheckEdit.EditValue = true
+        Me.RMItemCodeCheckEdit.EditValue = True
         Me.RMItemCodeCheckEdit.Location = New System.Drawing.Point(3, 219)
         Me.RMItemCodeCheckEdit.Name = "RMItemCodeCheckEdit"
         Me.RMItemCodeCheckEdit.Properties.Caption = "RM Item Code"
@@ -1545,7 +1594,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryPalletAvailabilityCheckEdit
         '
-        Me.inventoryPalletAvailabilityCheckEdit.EditValue = true
+        Me.inventoryPalletAvailabilityCheckEdit.EditValue = True
         Me.inventoryPalletAvailabilityCheckEdit.Location = New System.Drawing.Point(3, 201)
         Me.inventoryPalletAvailabilityCheckEdit.Name = "inventoryPalletAvailabilityCheckEdit"
         Me.inventoryPalletAvailabilityCheckEdit.Properties.Caption = "Pallet Availability"
@@ -1554,7 +1603,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryAvailabilityCheckEdit
         '
-        Me.inventoryAvailabilityCheckEdit.EditValue = true
+        Me.inventoryAvailabilityCheckEdit.EditValue = True
         Me.inventoryAvailabilityCheckEdit.Location = New System.Drawing.Point(3, 180)
         Me.inventoryAvailabilityCheckEdit.Name = "inventoryAvailabilityCheckEdit"
         Me.inventoryAvailabilityCheckEdit.Properties.Caption = "Availability"
@@ -1563,7 +1612,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryInventoryByPalletCheckEdit
         '
-        Me.inventoryInventoryByPalletCheckEdit.EditValue = true
+        Me.inventoryInventoryByPalletCheckEdit.EditValue = True
         Me.inventoryInventoryByPalletCheckEdit.Location = New System.Drawing.Point(3, 160)
         Me.inventoryInventoryByPalletCheckEdit.Name = "inventoryInventoryByPalletCheckEdit"
         Me.inventoryInventoryByPalletCheckEdit.Properties.Caption = "Inventory By Pallet"
@@ -1572,7 +1621,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryCurrentInventoryCheckEdit
         '
-        Me.inventoryCurrentInventoryCheckEdit.EditValue = true
+        Me.inventoryCurrentInventoryCheckEdit.EditValue = True
         Me.inventoryCurrentInventoryCheckEdit.Location = New System.Drawing.Point(3, 139)
         Me.inventoryCurrentInventoryCheckEdit.Name = "inventoryCurrentInventoryCheckEdit"
         Me.inventoryCurrentInventoryCheckEdit.Properties.Caption = "Current Inventory"
@@ -1581,7 +1630,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryItemTypeCheckEdit
         '
-        Me.inventoryItemTypeCheckEdit.EditValue = true
+        Me.inventoryItemTypeCheckEdit.EditValue = True
         Me.inventoryItemTypeCheckEdit.Location = New System.Drawing.Point(3, 119)
         Me.inventoryItemTypeCheckEdit.Name = "inventoryItemTypeCheckEdit"
         Me.inventoryItemTypeCheckEdit.Properties.Caption = "Item Type"
@@ -1590,7 +1639,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryAdjustmentReasonCheckEdit
         '
-        Me.inventoryAdjustmentReasonCheckEdit.EditValue = true
+        Me.inventoryAdjustmentReasonCheckEdit.EditValue = True
         Me.inventoryAdjustmentReasonCheckEdit.Location = New System.Drawing.Point(3, 99)
         Me.inventoryAdjustmentReasonCheckEdit.Name = "inventoryAdjustmentReasonCheckEdit"
         Me.inventoryAdjustmentReasonCheckEdit.Properties.Caption = "Adjustment Reason"
@@ -1599,7 +1648,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryAdjustmentCheckEdit
         '
-        Me.inventoryAdjustmentCheckEdit.EditValue = true
+        Me.inventoryAdjustmentCheckEdit.EditValue = True
         Me.inventoryAdjustmentCheckEdit.Location = New System.Drawing.Point(3, 80)
         Me.inventoryAdjustmentCheckEdit.Name = "inventoryAdjustmentCheckEdit"
         Me.inventoryAdjustmentCheckEdit.Properties.Caption = "Adjustment"
@@ -1608,7 +1657,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryCustomerCheckEdit
         '
-        Me.inventoryCustomerCheckEdit.EditValue = true
+        Me.inventoryCustomerCheckEdit.EditValue = True
         Me.inventoryCustomerCheckEdit.Location = New System.Drawing.Point(3, 22)
         Me.inventoryCustomerCheckEdit.Name = "inventoryCustomerCheckEdit"
         Me.inventoryCustomerCheckEdit.Properties.Caption = "Customer Name"
@@ -1617,7 +1666,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryItemCheckEdit
         '
-        Me.inventoryItemCheckEdit.EditValue = true
+        Me.inventoryItemCheckEdit.EditValue = True
         Me.inventoryItemCheckEdit.Location = New System.Drawing.Point(3, 42)
         Me.inventoryItemCheckEdit.Name = "inventoryItemCheckEdit"
         Me.inventoryItemCheckEdit.Properties.Caption = "Item Code"
@@ -1626,7 +1675,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryItemDescriptionCheckEdit
         '
-        Me.inventoryItemDescriptionCheckEdit.EditValue = true
+        Me.inventoryItemDescriptionCheckEdit.EditValue = True
         Me.inventoryItemDescriptionCheckEdit.Location = New System.Drawing.Point(3, 60)
         Me.inventoryItemDescriptionCheckEdit.Name = "inventoryItemDescriptionCheckEdit"
         Me.inventoryItemDescriptionCheckEdit.Properties.Caption = "Item Description"
@@ -1635,7 +1684,7 @@ Partial Class ReportsXtraForm
         '
         'inventoryDateCheckEdit
         '
-        Me.inventoryDateCheckEdit.EditValue = true
+        Me.inventoryDateCheckEdit.EditValue = True
         Me.inventoryDateCheckEdit.Location = New System.Drawing.Point(3, 3)
         Me.inventoryDateCheckEdit.Name = "inventoryDateCheckEdit"
         Me.inventoryDateCheckEdit.Properties.Caption = "Date"
@@ -1646,7 +1695,7 @@ Partial Class ReportsXtraForm
         '
         Me.itemsXtraTabPage.Controls.Add(Me.itemsXtraScrollableControl)
         Me.itemsXtraTabPage.Name = "itemsXtraTabPage"
-        Me.itemsXtraTabPage.Size = New System.Drawing.Size(186, 471)
+        Me.itemsXtraTabPage.Size = New System.Drawing.Size(185, 471)
         Me.itemsXtraTabPage.Text = "Items"
         '
         'itemsXtraScrollableControl
@@ -1667,12 +1716,12 @@ Partial Class ReportsXtraForm
         Me.itemsXtraScrollableControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.itemsXtraScrollableControl.Location = New System.Drawing.Point(0, 0)
         Me.itemsXtraScrollableControl.Name = "itemsXtraScrollableControl"
-        Me.itemsXtraScrollableControl.Size = New System.Drawing.Size(186, 471)
+        Me.itemsXtraScrollableControl.Size = New System.Drawing.Size(185, 471)
         Me.itemsXtraScrollableControl.TabIndex = 0
         '
         'itemUsedInProductionCheckEdit
         '
-        Me.itemUsedInProductionCheckEdit.EditValue = true
+        Me.itemUsedInProductionCheckEdit.EditValue = True
         Me.itemUsedInProductionCheckEdit.Location = New System.Drawing.Point(3, 231)
         Me.itemUsedInProductionCheckEdit.MenuManager = Me.reportsPrintBarManager
         Me.itemUsedInProductionCheckEdit.Name = "itemUsedInProductionCheckEdit"
@@ -1682,7 +1731,7 @@ Partial Class ReportsXtraForm
         '
         'itemsCustomerCheckEdit
         '
-        Me.itemsCustomerCheckEdit.EditValue = true
+        Me.itemsCustomerCheckEdit.EditValue = True
         Me.itemsCustomerCheckEdit.Location = New System.Drawing.Point(3, 3)
         Me.itemsCustomerCheckEdit.Name = "itemsCustomerCheckEdit"
         Me.itemsCustomerCheckEdit.Properties.Caption = "Customer Name"
@@ -1691,7 +1740,7 @@ Partial Class ReportsXtraForm
         '
         'itemsItemCheckEdit
         '
-        Me.itemsItemCheckEdit.EditValue = true
+        Me.itemsItemCheckEdit.EditValue = True
         Me.itemsItemCheckEdit.Location = New System.Drawing.Point(3, 22)
         Me.itemsItemCheckEdit.Name = "itemsItemCheckEdit"
         Me.itemsItemCheckEdit.Properties.Caption = "Item Code"
@@ -1700,7 +1749,7 @@ Partial Class ReportsXtraForm
         '
         'itemsItemDescriptionCheckEdit
         '
-        Me.itemsItemDescriptionCheckEdit.EditValue = true
+        Me.itemsItemDescriptionCheckEdit.EditValue = True
         Me.itemsItemDescriptionCheckEdit.Location = New System.Drawing.Point(3, 41)
         Me.itemsItemDescriptionCheckEdit.Name = "itemsItemDescriptionCheckEdit"
         Me.itemsItemDescriptionCheckEdit.Properties.Caption = "Item Description"
@@ -1709,7 +1758,7 @@ Partial Class ReportsXtraForm
         '
         'itemsItemTypeCheckEdit
         '
-        Me.itemsItemTypeCheckEdit.EditValue = true
+        Me.itemsItemTypeCheckEdit.EditValue = True
         Me.itemsItemTypeCheckEdit.Location = New System.Drawing.Point(3, 60)
         Me.itemsItemTypeCheckEdit.Name = "itemsItemTypeCheckEdit"
         Me.itemsItemTypeCheckEdit.Properties.Caption = "Item Type"
@@ -1718,7 +1767,7 @@ Partial Class ReportsXtraForm
         '
         'itemsUnitsOfMeasureCheckEdit
         '
-        Me.itemsUnitsOfMeasureCheckEdit.EditValue = true
+        Me.itemsUnitsOfMeasureCheckEdit.EditValue = True
         Me.itemsUnitsOfMeasureCheckEdit.Location = New System.Drawing.Point(3, 79)
         Me.itemsUnitsOfMeasureCheckEdit.Name = "itemsUnitsOfMeasureCheckEdit"
         Me.itemsUnitsOfMeasureCheckEdit.Properties.Caption = "Units of Measure"
@@ -1727,7 +1776,7 @@ Partial Class ReportsXtraForm
         '
         'itemsQtyPerUnitCheckEdit
         '
-        Me.itemsQtyPerUnitCheckEdit.EditValue = true
+        Me.itemsQtyPerUnitCheckEdit.EditValue = True
         Me.itemsQtyPerUnitCheckEdit.Location = New System.Drawing.Point(3, 98)
         Me.itemsQtyPerUnitCheckEdit.Name = "itemsQtyPerUnitCheckEdit"
         Me.itemsQtyPerUnitCheckEdit.Properties.Caption = "QTY per Unit"
@@ -1736,7 +1785,7 @@ Partial Class ReportsXtraForm
         '
         'itemsUnitsPerCaseCheckEdit
         '
-        Me.itemsUnitsPerCaseCheckEdit.EditValue = true
+        Me.itemsUnitsPerCaseCheckEdit.EditValue = True
         Me.itemsUnitsPerCaseCheckEdit.Location = New System.Drawing.Point(3, 117)
         Me.itemsUnitsPerCaseCheckEdit.Name = "itemsUnitsPerCaseCheckEdit"
         Me.itemsUnitsPerCaseCheckEdit.Properties.Caption = "Units per Case"
@@ -1745,7 +1794,7 @@ Partial Class ReportsXtraForm
         '
         'itemsAdjustedCheckEdit
         '
-        Me.itemsAdjustedCheckEdit.EditValue = true
+        Me.itemsAdjustedCheckEdit.EditValue = True
         Me.itemsAdjustedCheckEdit.Location = New System.Drawing.Point(3, 212)
         Me.itemsAdjustedCheckEdit.Name = "itemsAdjustedCheckEdit"
         Me.itemsAdjustedCheckEdit.Properties.Caption = "Adjusted"
@@ -1754,7 +1803,7 @@ Partial Class ReportsXtraForm
         '
         'itemsShippedCheckEdit
         '
-        Me.itemsShippedCheckEdit.EditValue = true
+        Me.itemsShippedCheckEdit.EditValue = True
         Me.itemsShippedCheckEdit.Location = New System.Drawing.Point(3, 174)
         Me.itemsShippedCheckEdit.Name = "itemsShippedCheckEdit"
         Me.itemsShippedCheckEdit.Properties.Caption = "Shipped"
@@ -1763,7 +1812,7 @@ Partial Class ReportsXtraForm
         '
         'itemsProducedCheckEdit
         '
-        Me.itemsProducedCheckEdit.EditValue = true
+        Me.itemsProducedCheckEdit.EditValue = True
         Me.itemsProducedCheckEdit.Location = New System.Drawing.Point(3, 155)
         Me.itemsProducedCheckEdit.Name = "itemsProducedCheckEdit"
         Me.itemsProducedCheckEdit.Properties.Caption = "Produced"
@@ -1772,7 +1821,7 @@ Partial Class ReportsXtraForm
         '
         'itemsCasesPerPalletCheckEdit
         '
-        Me.itemsCasesPerPalletCheckEdit.EditValue = true
+        Me.itemsCasesPerPalletCheckEdit.EditValue = True
         Me.itemsCasesPerPalletCheckEdit.Location = New System.Drawing.Point(3, 136)
         Me.itemsCasesPerPalletCheckEdit.Name = "itemsCasesPerPalletCheckEdit"
         Me.itemsCasesPerPalletCheckEdit.Properties.Caption = "Cases per Pallet"
@@ -1781,7 +1830,7 @@ Partial Class ReportsXtraForm
         '
         'itemsReceivedCheckEdit
         '
-        Me.itemsReceivedCheckEdit.EditValue = true
+        Me.itemsReceivedCheckEdit.EditValue = True
         Me.itemsReceivedCheckEdit.Location = New System.Drawing.Point(3, 193)
         Me.itemsReceivedCheckEdit.Name = "itemsReceivedCheckEdit"
         Me.itemsReceivedCheckEdit.Properties.Caption = "Received"
@@ -1792,7 +1841,7 @@ Partial Class ReportsXtraForm
         '
         Me.costingXtraTabPage.Controls.Add(Me.costingXtraScrollableControl)
         Me.costingXtraTabPage.Name = "costingXtraTabPage"
-        Me.costingXtraTabPage.Size = New System.Drawing.Size(186, 471)
+        Me.costingXtraTabPage.Size = New System.Drawing.Size(185, 471)
         Me.costingXtraTabPage.Text = "Costing"
         '
         'costingXtraScrollableControl
@@ -1836,440 +1885,440 @@ Partial Class ReportsXtraForm
         Me.costingXtraScrollableControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.costingXtraScrollableControl.Location = New System.Drawing.Point(0, 0)
         Me.costingXtraScrollableControl.Name = "costingXtraScrollableControl"
-        Me.costingXtraScrollableControl.Size = New System.Drawing.Size(186, 471)
+        Me.costingXtraScrollableControl.Size = New System.Drawing.Size(185, 471)
         Me.costingXtraScrollableControl.TabIndex = 0
         '
         'costingProductionDateCheckEdit
         '
-        Me.costingProductionDateCheckEdit.AutoSize = true
-        Me.costingProductionDateCheckEdit.Checked = true
+        Me.costingProductionDateCheckEdit.AutoSize = True
+        Me.costingProductionDateCheckEdit.Checked = True
         Me.costingProductionDateCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingProductionDateCheckEdit.Location = New System.Drawing.Point(3, 3)
         Me.costingProductionDateCheckEdit.Name = "costingProductionDateCheckEdit"
         Me.costingProductionDateCheckEdit.Size = New System.Drawing.Size(103, 17)
         Me.costingProductionDateCheckEdit.TabIndex = 36
         Me.costingProductionDateCheckEdit.Text = "Production Date"
-        Me.costingProductionDateCheckEdit.UseVisualStyleBackColor = true
+        Me.costingProductionDateCheckEdit.UseVisualStyleBackColor = True
         '
         'costingShiftCheckEdit
         '
-        Me.costingShiftCheckEdit.AutoSize = true
-        Me.costingShiftCheckEdit.Checked = true
+        Me.costingShiftCheckEdit.AutoSize = True
+        Me.costingShiftCheckEdit.Checked = True
         Me.costingShiftCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingShiftCheckEdit.Location = New System.Drawing.Point(3, 26)
         Me.costingShiftCheckEdit.Name = "costingShiftCheckEdit"
         Me.costingShiftCheckEdit.Size = New System.Drawing.Size(48, 17)
         Me.costingShiftCheckEdit.TabIndex = 37
         Me.costingShiftCheckEdit.Text = "Shift"
-        Me.costingShiftCheckEdit.UseVisualStyleBackColor = true
+        Me.costingShiftCheckEdit.UseVisualStyleBackColor = True
         '
         'costingCustomerCheckEdit
         '
-        Me.costingCustomerCheckEdit.AutoSize = true
-        Me.costingCustomerCheckEdit.Checked = true
+        Me.costingCustomerCheckEdit.AutoSize = True
+        Me.costingCustomerCheckEdit.Checked = True
         Me.costingCustomerCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingCustomerCheckEdit.Location = New System.Drawing.Point(3, 49)
         Me.costingCustomerCheckEdit.Name = "costingCustomerCheckEdit"
         Me.costingCustomerCheckEdit.Size = New System.Drawing.Size(102, 17)
         Me.costingCustomerCheckEdit.TabIndex = 38
         Me.costingCustomerCheckEdit.Text = "Customer Name"
-        Me.costingCustomerCheckEdit.UseVisualStyleBackColor = true
+        Me.costingCustomerCheckEdit.UseVisualStyleBackColor = True
         '
         'costingLotCheckEdit
         '
-        Me.costingLotCheckEdit.AutoSize = true
-        Me.costingLotCheckEdit.Checked = true
+        Me.costingLotCheckEdit.AutoSize = True
+        Me.costingLotCheckEdit.Checked = True
         Me.costingLotCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingLotCheckEdit.Location = New System.Drawing.Point(3, 72)
         Me.costingLotCheckEdit.Name = "costingLotCheckEdit"
         Me.costingLotCheckEdit.Size = New System.Drawing.Size(41, 17)
         Me.costingLotCheckEdit.TabIndex = 39
         Me.costingLotCheckEdit.Text = "Lot"
-        Me.costingLotCheckEdit.UseVisualStyleBackColor = true
+        Me.costingLotCheckEdit.UseVisualStyleBackColor = True
         '
         'costingItemCodeCheckEdit
         '
-        Me.costingItemCodeCheckEdit.AutoSize = true
-        Me.costingItemCodeCheckEdit.Checked = true
+        Me.costingItemCodeCheckEdit.AutoSize = True
+        Me.costingItemCodeCheckEdit.Checked = True
         Me.costingItemCodeCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingItemCodeCheckEdit.Location = New System.Drawing.Point(3, 95)
         Me.costingItemCodeCheckEdit.Name = "costingItemCodeCheckEdit"
         Me.costingItemCodeCheckEdit.Size = New System.Drawing.Size(76, 17)
         Me.costingItemCodeCheckEdit.TabIndex = 40
         Me.costingItemCodeCheckEdit.Text = "Item Code"
-        Me.costingItemCodeCheckEdit.UseVisualStyleBackColor = true
+        Me.costingItemCodeCheckEdit.UseVisualStyleBackColor = True
         '
         'costingItemDescriptionCheckEdit
         '
-        Me.costingItemDescriptionCheckEdit.AutoSize = true
-        Me.costingItemDescriptionCheckEdit.Checked = true
+        Me.costingItemDescriptionCheckEdit.AutoSize = True
+        Me.costingItemDescriptionCheckEdit.Checked = True
         Me.costingItemDescriptionCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingItemDescriptionCheckEdit.Location = New System.Drawing.Point(3, 118)
         Me.costingItemDescriptionCheckEdit.Name = "costingItemDescriptionCheckEdit"
         Me.costingItemDescriptionCheckEdit.Size = New System.Drawing.Size(104, 17)
         Me.costingItemDescriptionCheckEdit.TabIndex = 41
         Me.costingItemDescriptionCheckEdit.Text = "Item Description"
-        Me.costingItemDescriptionCheckEdit.UseVisualStyleBackColor = true
+        Me.costingItemDescriptionCheckEdit.UseVisualStyleBackColor = True
         '
         'costingStartTimeCheckEdit
         '
-        Me.costingStartTimeCheckEdit.AutoSize = true
-        Me.costingStartTimeCheckEdit.Checked = true
+        Me.costingStartTimeCheckEdit.AutoSize = True
+        Me.costingStartTimeCheckEdit.Checked = True
         Me.costingStartTimeCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingStartTimeCheckEdit.Location = New System.Drawing.Point(3, 141)
         Me.costingStartTimeCheckEdit.Name = "costingStartTimeCheckEdit"
         Me.costingStartTimeCheckEdit.Size = New System.Drawing.Size(75, 17)
         Me.costingStartTimeCheckEdit.TabIndex = 42
         Me.costingStartTimeCheckEdit.Text = "Start Time"
-        Me.costingStartTimeCheckEdit.UseVisualStyleBackColor = true
+        Me.costingStartTimeCheckEdit.UseVisualStyleBackColor = True
         '
         'costingStopTimeCheckEdit
         '
-        Me.costingStopTimeCheckEdit.AutoSize = true
-        Me.costingStopTimeCheckEdit.Checked = true
+        Me.costingStopTimeCheckEdit.AutoSize = True
+        Me.costingStopTimeCheckEdit.Checked = True
         Me.costingStopTimeCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingStopTimeCheckEdit.Location = New System.Drawing.Point(3, 164)
         Me.costingStopTimeCheckEdit.Name = "costingStopTimeCheckEdit"
         Me.costingStopTimeCheckEdit.Size = New System.Drawing.Size(73, 17)
         Me.costingStopTimeCheckEdit.TabIndex = 43
         Me.costingStopTimeCheckEdit.Text = "Stop Time"
-        Me.costingStopTimeCheckEdit.UseVisualStyleBackColor = true
+        Me.costingStopTimeCheckEdit.UseVisualStyleBackColor = True
         '
         'costingTotalHoursCheckEdit
         '
-        Me.costingTotalHoursCheckEdit.AutoSize = true
-        Me.costingTotalHoursCheckEdit.Checked = true
+        Me.costingTotalHoursCheckEdit.AutoSize = True
+        Me.costingTotalHoursCheckEdit.Checked = True
         Me.costingTotalHoursCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingTotalHoursCheckEdit.Location = New System.Drawing.Point(3, 187)
         Me.costingTotalHoursCheckEdit.Name = "costingTotalHoursCheckEdit"
         Me.costingTotalHoursCheckEdit.Size = New System.Drawing.Size(81, 17)
         Me.costingTotalHoursCheckEdit.TabIndex = 44
         Me.costingTotalHoursCheckEdit.Text = "Total Hours"
-        Me.costingTotalHoursCheckEdit.UseVisualStyleBackColor = true
+        Me.costingTotalHoursCheckEdit.UseVisualStyleBackColor = True
         '
         'costingTotalMinutesCheckEdit
         '
-        Me.costingTotalMinutesCheckEdit.AutoSize = true
-        Me.costingTotalMinutesCheckEdit.Checked = true
+        Me.costingTotalMinutesCheckEdit.AutoSize = True
+        Me.costingTotalMinutesCheckEdit.Checked = True
         Me.costingTotalMinutesCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingTotalMinutesCheckEdit.Location = New System.Drawing.Point(3, 210)
         Me.costingTotalMinutesCheckEdit.Name = "costingTotalMinutesCheckEdit"
         Me.costingTotalMinutesCheckEdit.Size = New System.Drawing.Size(90, 17)
         Me.costingTotalMinutesCheckEdit.TabIndex = 45
         Me.costingTotalMinutesCheckEdit.Text = "Total Minutes"
-        Me.costingTotalMinutesCheckEdit.UseVisualStyleBackColor = true
+        Me.costingTotalMinutesCheckEdit.UseVisualStyleBackColor = True
         '
         'costingQuantityCheckEdit
         '
-        Me.costingQuantityCheckEdit.AutoSize = true
-        Me.costingQuantityCheckEdit.Checked = true
+        Me.costingQuantityCheckEdit.AutoSize = True
+        Me.costingQuantityCheckEdit.Checked = True
         Me.costingQuantityCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingQuantityCheckEdit.Location = New System.Drawing.Point(3, 233)
         Me.costingQuantityCheckEdit.Name = "costingQuantityCheckEdit"
         Me.costingQuantityCheckEdit.Size = New System.Drawing.Size(68, 17)
         Me.costingQuantityCheckEdit.TabIndex = 46
         Me.costingQuantityCheckEdit.Text = "Quantity"
-        Me.costingQuantityCheckEdit.UseVisualStyleBackColor = true
+        Me.costingQuantityCheckEdit.UseVisualStyleBackColor = True
         '
         'costingExpectedCheckEdit
         '
-        Me.costingExpectedCheckEdit.AutoSize = true
-        Me.costingExpectedCheckEdit.Checked = true
+        Me.costingExpectedCheckEdit.AutoSize = True
+        Me.costingExpectedCheckEdit.Checked = True
         Me.costingExpectedCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingExpectedCheckEdit.Location = New System.Drawing.Point(3, 256)
         Me.costingExpectedCheckEdit.Name = "costingExpectedCheckEdit"
         Me.costingExpectedCheckEdit.Size = New System.Drawing.Size(71, 17)
         Me.costingExpectedCheckEdit.TabIndex = 47
         Me.costingExpectedCheckEdit.Text = "Expected"
-        Me.costingExpectedCheckEdit.UseVisualStyleBackColor = true
+        Me.costingExpectedCheckEdit.UseVisualStyleBackColor = True
         '
         'costingDifferenceCheckEdit
         '
-        Me.costingDifferenceCheckEdit.AutoSize = true
-        Me.costingDifferenceCheckEdit.Checked = true
+        Me.costingDifferenceCheckEdit.AutoSize = True
+        Me.costingDifferenceCheckEdit.Checked = True
         Me.costingDifferenceCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingDifferenceCheckEdit.Location = New System.Drawing.Point(3, 279)
         Me.costingDifferenceCheckEdit.Name = "costingDifferenceCheckEdit"
         Me.costingDifferenceCheckEdit.Size = New System.Drawing.Size(76, 17)
         Me.costingDifferenceCheckEdit.TabIndex = 48
         Me.costingDifferenceCheckEdit.Text = "Difference"
-        Me.costingDifferenceCheckEdit.UseVisualStyleBackColor = true
+        Me.costingDifferenceCheckEdit.UseVisualStyleBackColor = True
         '
         'costingMachineLineCheckEdit
         '
-        Me.costingMachineLineCheckEdit.AutoSize = true
-        Me.costingMachineLineCheckEdit.Checked = true
+        Me.costingMachineLineCheckEdit.AutoSize = True
+        Me.costingMachineLineCheckEdit.Checked = True
         Me.costingMachineLineCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingMachineLineCheckEdit.Location = New System.Drawing.Point(3, 302)
         Me.costingMachineLineCheckEdit.Name = "costingMachineLineCheckEdit"
         Me.costingMachineLineCheckEdit.Size = New System.Drawing.Size(87, 17)
         Me.costingMachineLineCheckEdit.TabIndex = 49
         Me.costingMachineLineCheckEdit.Text = "Machine Line"
-        Me.costingMachineLineCheckEdit.UseVisualStyleBackColor = true
+        Me.costingMachineLineCheckEdit.UseVisualStyleBackColor = True
         '
         'costingMachineSpeedCheckEdit
         '
-        Me.costingMachineSpeedCheckEdit.AutoSize = true
-        Me.costingMachineSpeedCheckEdit.Checked = true
+        Me.costingMachineSpeedCheckEdit.AutoSize = True
+        Me.costingMachineSpeedCheckEdit.Checked = True
         Me.costingMachineSpeedCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingMachineSpeedCheckEdit.Location = New System.Drawing.Point(3, 325)
         Me.costingMachineSpeedCheckEdit.Name = "costingMachineSpeedCheckEdit"
         Me.costingMachineSpeedCheckEdit.Size = New System.Drawing.Size(98, 17)
         Me.costingMachineSpeedCheckEdit.TabIndex = 50
         Me.costingMachineSpeedCheckEdit.Text = "Machine Speed"
-        Me.costingMachineSpeedCheckEdit.UseVisualStyleBackColor = true
+        Me.costingMachineSpeedCheckEdit.UseVisualStyleBackColor = True
         '
         'costingActualSpeedCheckEdit
         '
-        Me.costingActualSpeedCheckEdit.AutoSize = true
-        Me.costingActualSpeedCheckEdit.Checked = true
+        Me.costingActualSpeedCheckEdit.AutoSize = True
+        Me.costingActualSpeedCheckEdit.Checked = True
         Me.costingActualSpeedCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingActualSpeedCheckEdit.Location = New System.Drawing.Point(3, 348)
         Me.costingActualSpeedCheckEdit.Name = "costingActualSpeedCheckEdit"
         Me.costingActualSpeedCheckEdit.Size = New System.Drawing.Size(89, 17)
         Me.costingActualSpeedCheckEdit.TabIndex = 51
         Me.costingActualSpeedCheckEdit.Text = "Actual Speed"
-        Me.costingActualSpeedCheckEdit.UseVisualStyleBackColor = true
+        Me.costingActualSpeedCheckEdit.UseVisualStyleBackColor = True
         '
         'costingOperatorsCheckEdit
         '
-        Me.costingOperatorsCheckEdit.AutoSize = true
-        Me.costingOperatorsCheckEdit.Checked = true
+        Me.costingOperatorsCheckEdit.AutoSize = True
+        Me.costingOperatorsCheckEdit.Checked = True
         Me.costingOperatorsCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingOperatorsCheckEdit.Location = New System.Drawing.Point(3, 371)
         Me.costingOperatorsCheckEdit.Name = "costingOperatorsCheckEdit"
         Me.costingOperatorsCheckEdit.Size = New System.Drawing.Size(75, 17)
         Me.costingOperatorsCheckEdit.TabIndex = 52
         Me.costingOperatorsCheckEdit.Text = "Operators"
-        Me.costingOperatorsCheckEdit.UseVisualStyleBackColor = true
+        Me.costingOperatorsCheckEdit.UseVisualStyleBackColor = True
         '
         'costingPackersCheckEdit
         '
-        Me.costingPackersCheckEdit.AutoSize = true
-        Me.costingPackersCheckEdit.Checked = true
+        Me.costingPackersCheckEdit.AutoSize = True
+        Me.costingPackersCheckEdit.Checked = True
         Me.costingPackersCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingPackersCheckEdit.Location = New System.Drawing.Point(3, 394)
         Me.costingPackersCheckEdit.Name = "costingPackersCheckEdit"
         Me.costingPackersCheckEdit.Size = New System.Drawing.Size(63, 17)
         Me.costingPackersCheckEdit.TabIndex = 53
         Me.costingPackersCheckEdit.Text = "Packers"
-        Me.costingPackersCheckEdit.UseVisualStyleBackColor = true
+        Me.costingPackersCheckEdit.UseVisualStyleBackColor = True
         '
         'costingSupersCheckEdit
         '
-        Me.costingSupersCheckEdit.AutoSize = true
-        Me.costingSupersCheckEdit.Checked = true
+        Me.costingSupersCheckEdit.AutoSize = True
+        Me.costingSupersCheckEdit.Checked = True
         Me.costingSupersCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingSupersCheckEdit.Location = New System.Drawing.Point(3, 417)
         Me.costingSupersCheckEdit.Name = "costingSupersCheckEdit"
         Me.costingSupersCheckEdit.Size = New System.Drawing.Size(59, 17)
         Me.costingSupersCheckEdit.TabIndex = 54
         Me.costingSupersCheckEdit.Text = "Supers"
-        Me.costingSupersCheckEdit.UseVisualStyleBackColor = true
+        Me.costingSupersCheckEdit.UseVisualStyleBackColor = True
         '
         'costingPriceCheckEdit
         '
-        Me.costingPriceCheckEdit.AutoSize = true
-        Me.costingPriceCheckEdit.Checked = true
+        Me.costingPriceCheckEdit.AutoSize = True
+        Me.costingPriceCheckEdit.Checked = True
         Me.costingPriceCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingPriceCheckEdit.Location = New System.Drawing.Point(3, 440)
         Me.costingPriceCheckEdit.Name = "costingPriceCheckEdit"
         Me.costingPriceCheckEdit.Size = New System.Drawing.Size(49, 17)
         Me.costingPriceCheckEdit.TabIndex = 56
         Me.costingPriceCheckEdit.Text = "Price"
-        Me.costingPriceCheckEdit.UseVisualStyleBackColor = true
+        Me.costingPriceCheckEdit.UseVisualStyleBackColor = True
         '
         'costingPayrollCheckEdit
         '
-        Me.costingPayrollCheckEdit.AutoSize = true
-        Me.costingPayrollCheckEdit.Checked = true
+        Me.costingPayrollCheckEdit.AutoSize = True
+        Me.costingPayrollCheckEdit.Checked = True
         Me.costingPayrollCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingPayrollCheckEdit.Location = New System.Drawing.Point(112, 3)
         Me.costingPayrollCheckEdit.Name = "costingPayrollCheckEdit"
         Me.costingPayrollCheckEdit.Size = New System.Drawing.Size(58, 17)
         Me.costingPayrollCheckEdit.TabIndex = 55
         Me.costingPayrollCheckEdit.Text = "Payroll"
-        Me.costingPayrollCheckEdit.UseVisualStyleBackColor = true
+        Me.costingPayrollCheckEdit.UseVisualStyleBackColor = True
         '
         'costingRebateCheckEdit
         '
-        Me.costingRebateCheckEdit.AutoSize = true
-        Me.costingRebateCheckEdit.Checked = true
+        Me.costingRebateCheckEdit.AutoSize = True
+        Me.costingRebateCheckEdit.Checked = True
         Me.costingRebateCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingRebateCheckEdit.Location = New System.Drawing.Point(112, 26)
         Me.costingRebateCheckEdit.Name = "costingRebateCheckEdit"
         Me.costingRebateCheckEdit.Size = New System.Drawing.Size(61, 17)
         Me.costingRebateCheckEdit.TabIndex = 57
         Me.costingRebateCheckEdit.Text = "Rebate"
-        Me.costingRebateCheckEdit.UseVisualStyleBackColor = true
+        Me.costingRebateCheckEdit.UseVisualStyleBackColor = True
         '
         'costingFreightCheckEdit
         '
-        Me.costingFreightCheckEdit.AutoSize = true
-        Me.costingFreightCheckEdit.Checked = true
+        Me.costingFreightCheckEdit.AutoSize = True
+        Me.costingFreightCheckEdit.Checked = True
         Me.costingFreightCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingFreightCheckEdit.Location = New System.Drawing.Point(112, 49)
         Me.costingFreightCheckEdit.Name = "costingFreightCheckEdit"
         Me.costingFreightCheckEdit.Size = New System.Drawing.Size(60, 17)
         Me.costingFreightCheckEdit.TabIndex = 65
         Me.costingFreightCheckEdit.Text = "Freight"
-        Me.costingFreightCheckEdit.UseVisualStyleBackColor = true
+        Me.costingFreightCheckEdit.UseVisualStyleBackColor = True
         '
         'costingFilmCheckEdit
         '
-        Me.costingFilmCheckEdit.AutoSize = true
-        Me.costingFilmCheckEdit.Checked = true
+        Me.costingFilmCheckEdit.AutoSize = True
+        Me.costingFilmCheckEdit.Checked = True
         Me.costingFilmCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingFilmCheckEdit.Location = New System.Drawing.Point(112, 72)
         Me.costingFilmCheckEdit.Name = "costingFilmCheckEdit"
         Me.costingFilmCheckEdit.Size = New System.Drawing.Size(44, 17)
         Me.costingFilmCheckEdit.TabIndex = 66
         Me.costingFilmCheckEdit.Text = "Film"
-        Me.costingFilmCheckEdit.UseVisualStyleBackColor = true
+        Me.costingFilmCheckEdit.UseVisualStyleBackColor = True
         '
         'costingBoxesCheckEdit
         '
-        Me.costingBoxesCheckEdit.AutoSize = true
-        Me.costingBoxesCheckEdit.Checked = true
+        Me.costingBoxesCheckEdit.AutoSize = True
+        Me.costingBoxesCheckEdit.Checked = True
         Me.costingBoxesCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingBoxesCheckEdit.Location = New System.Drawing.Point(112, 95)
         Me.costingBoxesCheckEdit.Name = "costingBoxesCheckEdit"
         Me.costingBoxesCheckEdit.Size = New System.Drawing.Size(55, 17)
         Me.costingBoxesCheckEdit.TabIndex = 67
         Me.costingBoxesCheckEdit.Text = "Boxes"
-        Me.costingBoxesCheckEdit.UseVisualStyleBackColor = true
+        Me.costingBoxesCheckEdit.UseVisualStyleBackColor = True
         '
         'costingStretchWrapCheckEdit
         '
-        Me.costingStretchWrapCheckEdit.AutoSize = true
-        Me.costingStretchWrapCheckEdit.Checked = true
+        Me.costingStretchWrapCheckEdit.AutoSize = True
+        Me.costingStretchWrapCheckEdit.Checked = True
         Me.costingStretchWrapCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingStretchWrapCheckEdit.Location = New System.Drawing.Point(112, 118)
         Me.costingStretchWrapCheckEdit.Name = "costingStretchWrapCheckEdit"
         Me.costingStretchWrapCheckEdit.Size = New System.Drawing.Size(90, 17)
         Me.costingStretchWrapCheckEdit.TabIndex = 68
         Me.costingStretchWrapCheckEdit.Text = "Stretch Wrap"
-        Me.costingStretchWrapCheckEdit.UseVisualStyleBackColor = true
+        Me.costingStretchWrapCheckEdit.UseVisualStyleBackColor = True
         '
         'costingPalletsCheckEdit
         '
-        Me.costingPalletsCheckEdit.AutoSize = true
-        Me.costingPalletsCheckEdit.Checked = true
+        Me.costingPalletsCheckEdit.AutoSize = True
+        Me.costingPalletsCheckEdit.Checked = True
         Me.costingPalletsCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingPalletsCheckEdit.Location = New System.Drawing.Point(112, 141)
         Me.costingPalletsCheckEdit.Name = "costingPalletsCheckEdit"
         Me.costingPalletsCheckEdit.Size = New System.Drawing.Size(57, 17)
         Me.costingPalletsCheckEdit.TabIndex = 69
         Me.costingPalletsCheckEdit.Text = "Pallets"
-        Me.costingPalletsCheckEdit.UseVisualStyleBackColor = true
+        Me.costingPalletsCheckEdit.UseVisualStyleBackColor = True
         '
         'costingTotalOtherCheckEdit
         '
-        Me.costingTotalOtherCheckEdit.AutoSize = true
-        Me.costingTotalOtherCheckEdit.Checked = true
+        Me.costingTotalOtherCheckEdit.AutoSize = True
+        Me.costingTotalOtherCheckEdit.Checked = True
         Me.costingTotalOtherCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingTotalOtherCheckEdit.Location = New System.Drawing.Point(112, 164)
         Me.costingTotalOtherCheckEdit.Name = "costingTotalOtherCheckEdit"
         Me.costingTotalOtherCheckEdit.Size = New System.Drawing.Size(81, 17)
         Me.costingTotalOtherCheckEdit.TabIndex = 70
         Me.costingTotalOtherCheckEdit.Text = "Total Other"
-        Me.costingTotalOtherCheckEdit.UseVisualStyleBackColor = true
+        Me.costingTotalOtherCheckEdit.UseVisualStyleBackColor = True
         '
         'costingCostCheckBox
         '
-        Me.costingCostCheckBox.AutoSize = true
-        Me.costingCostCheckBox.Checked = true
+        Me.costingCostCheckBox.AutoSize = True
+        Me.costingCostCheckBox.Checked = True
         Me.costingCostCheckBox.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingCostCheckBox.Location = New System.Drawing.Point(112, 187)
         Me.costingCostCheckBox.Name = "costingCostCheckBox"
         Me.costingCostCheckBox.Size = New System.Drawing.Size(48, 17)
         Me.costingCostCheckBox.TabIndex = 58
         Me.costingCostCheckBox.Text = "Cost"
-        Me.costingCostCheckBox.UseVisualStyleBackColor = true
+        Me.costingCostCheckBox.UseVisualStyleBackColor = True
         '
         'costingProfitCheckEdit
         '
-        Me.costingProfitCheckEdit.AutoSize = true
-        Me.costingProfitCheckEdit.Checked = true
+        Me.costingProfitCheckEdit.AutoSize = True
+        Me.costingProfitCheckEdit.Checked = True
         Me.costingProfitCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingProfitCheckEdit.Location = New System.Drawing.Point(112, 210)
         Me.costingProfitCheckEdit.Name = "costingProfitCheckEdit"
         Me.costingProfitCheckEdit.Size = New System.Drawing.Size(52, 17)
         Me.costingProfitCheckEdit.TabIndex = 59
         Me.costingProfitCheckEdit.Text = "Profit"
-        Me.costingProfitCheckEdit.UseVisualStyleBackColor = true
+        Me.costingProfitCheckEdit.UseVisualStyleBackColor = True
         '
         'costingCostPerPieceCheckEdit
         '
-        Me.costingCostPerPieceCheckEdit.AutoSize = true
-        Me.costingCostPerPieceCheckEdit.Checked = true
+        Me.costingCostPerPieceCheckEdit.AutoSize = True
+        Me.costingCostPerPieceCheckEdit.Checked = True
         Me.costingCostPerPieceCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingCostPerPieceCheckEdit.Location = New System.Drawing.Point(112, 233)
         Me.costingCostPerPieceCheckEdit.Name = "costingCostPerPieceCheckEdit"
         Me.costingCostPerPieceCheckEdit.Size = New System.Drawing.Size(95, 17)
         Me.costingCostPerPieceCheckEdit.TabIndex = 60
         Me.costingCostPerPieceCheckEdit.Text = "Cost Per Piece"
-        Me.costingCostPerPieceCheckEdit.UseVisualStyleBackColor = true
+        Me.costingCostPerPieceCheckEdit.UseVisualStyleBackColor = True
         '
         'costingPacksPerMinuteCheckEdit
         '
-        Me.costingPacksPerMinuteCheckEdit.AutoSize = true
-        Me.costingPacksPerMinuteCheckEdit.Checked = true
+        Me.costingPacksPerMinuteCheckEdit.AutoSize = True
+        Me.costingPacksPerMinuteCheckEdit.Checked = True
         Me.costingPacksPerMinuteCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingPacksPerMinuteCheckEdit.Location = New System.Drawing.Point(112, 256)
         Me.costingPacksPerMinuteCheckEdit.Name = "costingPacksPerMinuteCheckEdit"
         Me.costingPacksPerMinuteCheckEdit.Size = New System.Drawing.Size(107, 17)
         Me.costingPacksPerMinuteCheckEdit.TabIndex = 61
         Me.costingPacksPerMinuteCheckEdit.Text = "Packs Per Minute"
-        Me.costingPacksPerMinuteCheckEdit.UseVisualStyleBackColor = true
+        Me.costingPacksPerMinuteCheckEdit.UseVisualStyleBackColor = True
         '
         'costingSalesVsPayrollCheckEdit
         '
-        Me.costingSalesVsPayrollCheckEdit.AutoSize = true
-        Me.costingSalesVsPayrollCheckEdit.Checked = true
+        Me.costingSalesVsPayrollCheckEdit.AutoSize = True
+        Me.costingSalesVsPayrollCheckEdit.Checked = True
         Me.costingSalesVsPayrollCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingSalesVsPayrollCheckEdit.Location = New System.Drawing.Point(112, 279)
         Me.costingSalesVsPayrollCheckEdit.Name = "costingSalesVsPayrollCheckEdit"
         Me.costingSalesVsPayrollCheckEdit.Size = New System.Drawing.Size(104, 17)
         Me.costingSalesVsPayrollCheckEdit.TabIndex = 62
         Me.costingSalesVsPayrollCheckEdit.Text = "Sales vs. Payroll"
-        Me.costingSalesVsPayrollCheckEdit.UseVisualStyleBackColor = true
+        Me.costingSalesVsPayrollCheckEdit.UseVisualStyleBackColor = True
         '
         'CostingSalesVsCostCheckEdit
         '
-        Me.CostingSalesVsCostCheckEdit.AutoSize = true
-        Me.CostingSalesVsCostCheckEdit.Checked = true
+        Me.CostingSalesVsCostCheckEdit.AutoSize = True
+        Me.CostingSalesVsCostCheckEdit.Checked = True
         Me.CostingSalesVsCostCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CostingSalesVsCostCheckEdit.Location = New System.Drawing.Point(112, 302)
         Me.CostingSalesVsCostCheckEdit.Name = "CostingSalesVsCostCheckEdit"
         Me.CostingSalesVsCostCheckEdit.Size = New System.Drawing.Size(94, 17)
         Me.CostingSalesVsCostCheckEdit.TabIndex = 63
         Me.CostingSalesVsCostCheckEdit.Text = "Sales vs. Cost"
-        Me.CostingSalesVsCostCheckEdit.UseVisualStyleBackColor = true
+        Me.CostingSalesVsCostCheckEdit.UseVisualStyleBackColor = True
         '
         'costingProfitVsSalesCheckEdit
         '
-        Me.costingProfitVsSalesCheckEdit.AutoSize = true
-        Me.costingProfitVsSalesCheckEdit.Checked = true
+        Me.costingProfitVsSalesCheckEdit.AutoSize = True
+        Me.costingProfitVsSalesCheckEdit.Checked = True
         Me.costingProfitVsSalesCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingProfitVsSalesCheckEdit.Location = New System.Drawing.Point(112, 325)
         Me.costingProfitVsSalesCheckEdit.Name = "costingProfitVsSalesCheckEdit"
         Me.costingProfitVsSalesCheckEdit.Size = New System.Drawing.Size(98, 17)
         Me.costingProfitVsSalesCheckEdit.TabIndex = 64
         Me.costingProfitVsSalesCheckEdit.Text = "Profit vs. Sales"
-        Me.costingProfitVsSalesCheckEdit.UseVisualStyleBackColor = true
+        Me.costingProfitVsSalesCheckEdit.UseVisualStyleBackColor = True
         '
         'costingSalesVsProfitCheckEdit
         '
-        Me.costingSalesVsProfitCheckEdit.AutoSize = true
-        Me.costingSalesVsProfitCheckEdit.Checked = true
+        Me.costingSalesVsProfitCheckEdit.AutoSize = True
+        Me.costingSalesVsProfitCheckEdit.Checked = True
         Me.costingSalesVsProfitCheckEdit.CheckState = System.Windows.Forms.CheckState.Checked
         Me.costingSalesVsProfitCheckEdit.Location = New System.Drawing.Point(112, 348)
         Me.costingSalesVsProfitCheckEdit.Name = "costingSalesVsProfitCheckEdit"
         Me.costingSalesVsProfitCheckEdit.Size = New System.Drawing.Size(98, 17)
         Me.costingSalesVsProfitCheckEdit.TabIndex = 71
         Me.costingSalesVsProfitCheckEdit.Text = "Sales vs. Profit"
-        Me.costingSalesVsProfitCheckEdit.UseVisualStyleBackColor = true
+        Me.costingSalesVsProfitCheckEdit.UseVisualStyleBackColor = True
         '
         'productionMachineXtraTabPage
         '
@@ -2306,7 +2355,7 @@ Partial Class ReportsXtraForm
         '
         'pmsTotalSalesCheckEdit
         '
-        Me.pmsTotalSalesCheckEdit.EditValue = true
+        Me.pmsTotalSalesCheckEdit.EditValue = True
         Me.pmsTotalSalesCheckEdit.Location = New System.Drawing.Point(4, 293)
         Me.pmsTotalSalesCheckEdit.Name = "pmsTotalSalesCheckEdit"
         Me.pmsTotalSalesCheckEdit.Properties.Caption = "Total Sales"
@@ -2315,7 +2364,7 @@ Partial Class ReportsXtraForm
         '
         'pmsPriceCheckEdit
         '
-        Me.pmsPriceCheckEdit.EditValue = true
+        Me.pmsPriceCheckEdit.EditValue = True
         Me.pmsPriceCheckEdit.Location = New System.Drawing.Point(4, 275)
         Me.pmsPriceCheckEdit.Name = "pmsPriceCheckEdit"
         Me.pmsPriceCheckEdit.Properties.Caption = "Sales Price per Case"
@@ -2324,7 +2373,7 @@ Partial Class ReportsXtraForm
         '
         'pmsQuantityCheckEdit
         '
-        Me.pmsQuantityCheckEdit.EditValue = true
+        Me.pmsQuantityCheckEdit.EditValue = True
         Me.pmsQuantityCheckEdit.Location = New System.Drawing.Point(4, 20)
         Me.pmsQuantityCheckEdit.Name = "pmsQuantityCheckEdit"
         Me.pmsQuantityCheckEdit.Properties.Caption = "Quantity"
@@ -2333,7 +2382,7 @@ Partial Class ReportsXtraForm
         '
         'pmsProjectedSpeedCheckEdit
         '
-        Me.pmsProjectedSpeedCheckEdit.EditValue = true
+        Me.pmsProjectedSpeedCheckEdit.EditValue = True
         Me.pmsProjectedSpeedCheckEdit.Location = New System.Drawing.Point(4, 37)
         Me.pmsProjectedSpeedCheckEdit.Name = "pmsProjectedSpeedCheckEdit"
         Me.pmsProjectedSpeedCheckEdit.Properties.Caption = "Projected Speed"
@@ -2342,7 +2391,7 @@ Partial Class ReportsXtraForm
         '
         'pmsAverageSpeedCheckEdit
         '
-        Me.pmsAverageSpeedCheckEdit.EditValue = true
+        Me.pmsAverageSpeedCheckEdit.EditValue = True
         Me.pmsAverageSpeedCheckEdit.Location = New System.Drawing.Point(4, 54)
         Me.pmsAverageSpeedCheckEdit.Name = "pmsAverageSpeedCheckEdit"
         Me.pmsAverageSpeedCheckEdit.Properties.Caption = "Average Actual Speed"
@@ -2351,7 +2400,7 @@ Partial Class ReportsXtraForm
         '
         'pmsSpeedVariationVolCheckEdit
         '
-        Me.pmsSpeedVariationVolCheckEdit.EditValue = true
+        Me.pmsSpeedVariationVolCheckEdit.EditValue = True
         Me.pmsSpeedVariationVolCheckEdit.Location = New System.Drawing.Point(4, 71)
         Me.pmsSpeedVariationVolCheckEdit.Name = "pmsSpeedVariationVolCheckEdit"
         Me.pmsSpeedVariationVolCheckEdit.Properties.Caption = "Speed Variation Volume"
@@ -2360,7 +2409,7 @@ Partial Class ReportsXtraForm
         '
         'pmsSpeedVariationPerCheckEdit
         '
-        Me.pmsSpeedVariationPerCheckEdit.EditValue = true
+        Me.pmsSpeedVariationPerCheckEdit.EditValue = True
         Me.pmsSpeedVariationPerCheckEdit.Location = New System.Drawing.Point(4, 88)
         Me.pmsSpeedVariationPerCheckEdit.Name = "pmsSpeedVariationPerCheckEdit"
         Me.pmsSpeedVariationPerCheckEdit.Properties.Caption = "Speed Variation %"
@@ -2369,7 +2418,7 @@ Partial Class ReportsXtraForm
         '
         'pmsProjectedPackersCheckEdit
         '
-        Me.pmsProjectedPackersCheckEdit.EditValue = true
+        Me.pmsProjectedPackersCheckEdit.EditValue = True
         Me.pmsProjectedPackersCheckEdit.Location = New System.Drawing.Point(4, 105)
         Me.pmsProjectedPackersCheckEdit.Name = "pmsProjectedPackersCheckEdit"
         Me.pmsProjectedPackersCheckEdit.Properties.Caption = "Projected Packers"
@@ -2378,7 +2427,7 @@ Partial Class ReportsXtraForm
         '
         'pmsPackersCheckEdit
         '
-        Me.pmsPackersCheckEdit.EditValue = true
+        Me.pmsPackersCheckEdit.EditValue = True
         Me.pmsPackersCheckEdit.Location = New System.Drawing.Point(4, 122)
         Me.pmsPackersCheckEdit.Name = "pmsPackersCheckEdit"
         Me.pmsPackersCheckEdit.Properties.Caption = "Average Actual Packers"
@@ -2387,7 +2436,7 @@ Partial Class ReportsXtraForm
         '
         'pmsPackersVariationVolCheckEdit
         '
-        Me.pmsPackersVariationVolCheckEdit.EditValue = true
+        Me.pmsPackersVariationVolCheckEdit.EditValue = True
         Me.pmsPackersVariationVolCheckEdit.Location = New System.Drawing.Point(4, 139)
         Me.pmsPackersVariationVolCheckEdit.Name = "pmsPackersVariationVolCheckEdit"
         Me.pmsPackersVariationVolCheckEdit.Properties.Caption = "Packers Variation Volume"
@@ -2396,7 +2445,7 @@ Partial Class ReportsXtraForm
         '
         'pmsPackersVariationPerCheckEdit
         '
-        Me.pmsPackersVariationPerCheckEdit.EditValue = true
+        Me.pmsPackersVariationPerCheckEdit.EditValue = True
         Me.pmsPackersVariationPerCheckEdit.Location = New System.Drawing.Point(4, 156)
         Me.pmsPackersVariationPerCheckEdit.Name = "pmsPackersVariationPerCheckEdit"
         Me.pmsPackersVariationPerCheckEdit.Properties.Caption = "Packers Variation %"
@@ -2405,7 +2454,7 @@ Partial Class ReportsXtraForm
         '
         'pmsSalesVsPayrollCheckEdit
         '
-        Me.pmsSalesVsPayrollCheckEdit.EditValue = true
+        Me.pmsSalesVsPayrollCheckEdit.EditValue = True
         Me.pmsSalesVsPayrollCheckEdit.Location = New System.Drawing.Point(4, 258)
         Me.pmsSalesVsPayrollCheckEdit.Name = "pmsSalesVsPayrollCheckEdit"
         Me.pmsSalesVsPayrollCheckEdit.Properties.Caption = "Sales vs Payroll"
@@ -2414,7 +2463,7 @@ Partial Class ReportsXtraForm
         '
         'pmsPricePerPieceCheckEdit
         '
-        Me.pmsPricePerPieceCheckEdit.EditValue = true
+        Me.pmsPricePerPieceCheckEdit.EditValue = True
         Me.pmsPricePerPieceCheckEdit.Location = New System.Drawing.Point(4, 241)
         Me.pmsPricePerPieceCheckEdit.Name = "pmsPricePerPieceCheckEdit"
         Me.pmsPricePerPieceCheckEdit.Properties.Caption = "Sales Price per Piece"
@@ -2423,7 +2472,7 @@ Partial Class ReportsXtraForm
         '
         'pmsCostVariationCheckEdit
         '
-        Me.pmsCostVariationCheckEdit.EditValue = true
+        Me.pmsCostVariationCheckEdit.EditValue = True
         Me.pmsCostVariationCheckEdit.Location = New System.Drawing.Point(4, 207)
         Me.pmsCostVariationCheckEdit.Name = "pmsCostVariationCheckEdit"
         Me.pmsCostVariationCheckEdit.Properties.Caption = "Cost Variation"
@@ -2432,7 +2481,7 @@ Partial Class ReportsXtraForm
         '
         'pmsCostCheckEdit
         '
-        Me.pmsCostCheckEdit.EditValue = true
+        Me.pmsCostCheckEdit.EditValue = True
         Me.pmsCostCheckEdit.Location = New System.Drawing.Point(4, 190)
         Me.pmsCostCheckEdit.Name = "pmsCostCheckEdit"
         Me.pmsCostCheckEdit.Properties.Caption = "Average Actual Cost"
@@ -2441,7 +2490,7 @@ Partial Class ReportsXtraForm
         '
         'pmsProjectedCostCheckEdit
         '
-        Me.pmsProjectedCostCheckEdit.EditValue = true
+        Me.pmsProjectedCostCheckEdit.EditValue = True
         Me.pmsProjectedCostCheckEdit.Location = New System.Drawing.Point(4, 173)
         Me.pmsProjectedCostCheckEdit.Name = "pmsProjectedCostCheckEdit"
         Me.pmsProjectedCostCheckEdit.Properties.Caption = "Projected Cost"
@@ -2450,7 +2499,7 @@ Partial Class ReportsXtraForm
         '
         'pmsCostVariationPerCheckEdit
         '
-        Me.pmsCostVariationPerCheckEdit.EditValue = true
+        Me.pmsCostVariationPerCheckEdit.EditValue = True
         Me.pmsCostVariationPerCheckEdit.Location = New System.Drawing.Point(4, 224)
         Me.pmsCostVariationPerCheckEdit.Name = "pmsCostVariationPerCheckEdit"
         Me.pmsCostVariationPerCheckEdit.Properties.Caption = "Cost Variation %"
@@ -2459,7 +2508,7 @@ Partial Class ReportsXtraForm
         '
         'pmsTotalMinutesCheckEdit
         '
-        Me.pmsTotalMinutesCheckEdit.EditValue = true
+        Me.pmsTotalMinutesCheckEdit.EditValue = True
         Me.pmsTotalMinutesCheckEdit.Location = New System.Drawing.Point(4, 3)
         Me.pmsTotalMinutesCheckEdit.Name = "pmsTotalMinutesCheckEdit"
         Me.pmsTotalMinutesCheckEdit.Properties.Caption = "Total Minutes"
@@ -2487,7 +2536,7 @@ Partial Class ReportsXtraForm
         '
         'ptReceivedCheckEdit
         '
-        Me.ptReceivedCheckEdit.EditValue = true
+        Me.ptReceivedCheckEdit.EditValue = True
         Me.ptReceivedCheckEdit.Location = New System.Drawing.Point(4, 20)
         Me.ptReceivedCheckEdit.Name = "ptReceivedCheckEdit"
         Me.ptReceivedCheckEdit.Properties.Caption = "Received"
@@ -2496,7 +2545,7 @@ Partial Class ReportsXtraForm
         '
         'ptDestinationCheckEdit
         '
-        Me.ptDestinationCheckEdit.EditValue = true
+        Me.ptDestinationCheckEdit.EditValue = True
         Me.ptDestinationCheckEdit.Location = New System.Drawing.Point(4, 37)
         Me.ptDestinationCheckEdit.Name = "ptDestinationCheckEdit"
         Me.ptDestinationCheckEdit.Properties.Caption = "Destination"
@@ -2505,7 +2554,7 @@ Partial Class ReportsXtraForm
         '
         'ptShippedCheckEdit
         '
-        Me.ptShippedCheckEdit.EditValue = true
+        Me.ptShippedCheckEdit.EditValue = True
         Me.ptShippedCheckEdit.Location = New System.Drawing.Point(4, 54)
         Me.ptShippedCheckEdit.Name = "ptShippedCheckEdit"
         Me.ptShippedCheckEdit.Properties.Caption = "Shipped"
@@ -2514,7 +2563,7 @@ Partial Class ReportsXtraForm
         '
         'ptVendorCheckEdit
         '
-        Me.ptVendorCheckEdit.EditValue = true
+        Me.ptVendorCheckEdit.EditValue = True
         Me.ptVendorCheckEdit.Location = New System.Drawing.Point(4, 3)
         Me.ptVendorCheckEdit.Name = "ptVendorCheckEdit"
         Me.ptVendorCheckEdit.Properties.Caption = "Vendor"
@@ -2531,7 +2580,7 @@ Partial Class ReportsXtraForm
         '
         'filterDockPanel
         '
-        Me.filterDockPanel.AutoScroll = true
+        Me.filterDockPanel.AutoScroll = True
         Me.filterDockPanel.Controls.Add(Me.ControlContainer1)
         Me.filterDockPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left
         Me.filterDockPanel.ID = New System.Guid("5c939b8d-89a3-4217-974e-a7b7550ec50b")
@@ -2578,7 +2627,7 @@ Partial Class ReportsXtraForm
         Me.ControlContainer1.Controls.Add(Me.filterRefreshSimpleButton)
         Me.ControlContainer1.Location = New System.Drawing.Point(4, 23)
         Me.ControlContainer1.Name = "ControlContainer1"
-        Me.ControlContainer1.Size = New System.Drawing.Size(192, 499)
+        Me.ControlContainer1.Size = New System.Drawing.Size(191, 499)
         Me.ControlContainer1.TabIndex = 0
         '
         'outOfStockCheckEdit
@@ -2602,24 +2651,24 @@ Partial Class ReportsXtraForm
         '
         'InactiveCustomersCheckEdit
         '
-        Me.InactiveCustomersCheckEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.InactiveCustomersCheckEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.InactiveCustomersCheckEdit.Location = New System.Drawing.Point(64, 165)
         Me.InactiveCustomersCheckEdit.MenuManager = Me.reportsPrintBarManager
         Me.InactiveCustomersCheckEdit.Name = "InactiveCustomersCheckEdit"
         Me.InactiveCustomersCheckEdit.Properties.Caption = "Include Inactive Customers"
-        Me.InactiveCustomersCheckEdit.Size = New System.Drawing.Size(125, 19)
+        Me.InactiveCustomersCheckEdit.Size = New System.Drawing.Size(124, 19)
         Me.InactiveCustomersCheckEdit.TabIndex = 33
         '
         'InactiveItemsCheckEdit
         '
-        Me.InactiveItemsCheckEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.InactiveItemsCheckEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.InactiveItemsCheckEdit.Location = New System.Drawing.Point(62, 431)
         Me.InactiveItemsCheckEdit.MenuManager = Me.reportsPrintBarManager
         Me.InactiveItemsCheckEdit.Name = "InactiveItemsCheckEdit"
         Me.InactiveItemsCheckEdit.Properties.Caption = "Include Inactive Items"
-        Me.InactiveItemsCheckEdit.Size = New System.Drawing.Size(113, 19)
+        Me.InactiveItemsCheckEdit.Size = New System.Drawing.Size(112, 19)
         Me.InactiveItemsCheckEdit.TabIndex = 32
         '
         'LabelControl14
@@ -2640,29 +2689,29 @@ Partial Class ReportsXtraForm
         '
         'itemTypeLookUpEdit
         '
-        Me.itemTypeLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.itemTypeLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.itemTypeLookUpEdit.Location = New System.Drawing.Point(64, 405)
         Me.itemTypeLookUpEdit.Name = "itemTypeLookUpEdit"
         Me.itemTypeLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.itemTypeLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.itemTypeLookUpEdit.Properties.NullText = "[Select A Item Type]"
         Me.itemTypeLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.itemTypeLookUpEdit.Size = New System.Drawing.Size(125, 20)
+        Me.itemTypeLookUpEdit.Size = New System.Drawing.Size(124, 20)
         Me.itemTypeLookUpEdit.TabIndex = 29
         Me.itemTypeLookUpEdit.ToolTip = "Use Ctrl+Del to clear filter"
         '
         'carrierLookUpEdit
         '
-        Me.carrierLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.carrierLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.carrierLookUpEdit.Location = New System.Drawing.Point(64, 351)
         Me.carrierLookUpEdit.Name = "carrierLookUpEdit"
         Me.carrierLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.carrierLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.carrierLookUpEdit.Properties.NullText = "[Select A Carrier]"
         Me.carrierLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.carrierLookUpEdit.Size = New System.Drawing.Size(125, 20)
+        Me.carrierLookUpEdit.Size = New System.Drawing.Size(124, 20)
         Me.carrierLookUpEdit.TabIndex = 27
         Me.carrierLookUpEdit.ToolTip = "Use Ctrl+Del to clear filter"
         '
@@ -2684,27 +2733,27 @@ Partial Class ReportsXtraForm
         '
         'destinationLookUpEdit
         '
-        Me.destinationLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.destinationLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.destinationLookUpEdit.Location = New System.Drawing.Point(64, 324)
         Me.destinationLookUpEdit.Name = "destinationLookUpEdit"
         Me.destinationLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.destinationLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.destinationLookUpEdit.Properties.NullText = "[Select A Destination]"
         Me.destinationLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.destinationLookUpEdit.Size = New System.Drawing.Size(125, 20)
+        Me.destinationLookUpEdit.Size = New System.Drawing.Size(124, 20)
         Me.destinationLookUpEdit.TabIndex = 24
         Me.destinationLookUpEdit.ToolTip = "Use Ctrl+Del to clear filter"
         '
         'deliveryNoteNumberTextEdit
         '
-        Me.deliveryNoteNumberTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.deliveryNoteNumberTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.deliveryNoteNumberTextEdit.Location = New System.Drawing.Point(64, 297)
         Me.deliveryNoteNumberTextEdit.Name = "deliveryNoteNumberTextEdit"
         Me.deliveryNoteNumberTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.deliveryNoteNumberTextEdit.Properties.NullText = "[Enter A Delivery Note #]"
-        Me.deliveryNoteNumberTextEdit.Size = New System.Drawing.Size(125, 20)
+        Me.deliveryNoteNumberTextEdit.Size = New System.Drawing.Size(124, 20)
         Me.deliveryNoteNumberTextEdit.TabIndex = 23
         '
         'LabelControl10
@@ -2717,24 +2766,24 @@ Partial Class ReportsXtraForm
         '
         'poTextEdit
         '
-        Me.poTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.poTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.poTextEdit.Location = New System.Drawing.Point(64, 243)
         Me.poTextEdit.Name = "poTextEdit"
         Me.poTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.poTextEdit.Properties.NullText = "[Enter A PO #]"
-        Me.poTextEdit.Size = New System.Drawing.Size(125, 20)
+        Me.poTextEdit.Size = New System.Drawing.Size(124, 20)
         Me.poTextEdit.TabIndex = 21
         '
         'lotTextEdit
         '
-        Me.lotTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.lotTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lotTextEdit.Location = New System.Drawing.Point(64, 216)
         Me.lotTextEdit.Name = "lotTextEdit"
         Me.lotTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.lotTextEdit.Properties.NullText = "[Enter A Lot #]"
-        Me.lotTextEdit.Size = New System.Drawing.Size(125, 20)
+        Me.lotTextEdit.Size = New System.Drawing.Size(124, 20)
         Me.lotTextEdit.TabIndex = 20
         '
         'LabelControl9
@@ -2747,13 +2796,13 @@ Partial Class ReportsXtraForm
         '
         'bolTextEdit
         '
-        Me.bolTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.bolTextEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.bolTextEdit.Location = New System.Drawing.Point(64, 270)
         Me.bolTextEdit.Name = "bolTextEdit"
         Me.bolTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.bolTextEdit.Properties.NullText = "[Enter A BOL #]"
-        Me.bolTextEdit.Size = New System.Drawing.Size(125, 20)
+        Me.bolTextEdit.Size = New System.Drawing.Size(124, 20)
         Me.bolTextEdit.TabIndex = 18
         '
         'LabelControl8
@@ -2774,61 +2823,61 @@ Partial Class ReportsXtraForm
         '
         'customerLookUpEdit
         '
-        Me.customerLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.customerLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.customerLookUpEdit.Location = New System.Drawing.Point(64, 189)
         Me.customerLookUpEdit.Name = "customerLookUpEdit"
         Me.customerLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.customerLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.customerLookUpEdit.Properties.NullText = "[Select A Customer]"
         Me.customerLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.customerLookUpEdit.Size = New System.Drawing.Size(125, 20)
+        Me.customerLookUpEdit.Size = New System.Drawing.Size(124, 20)
         Me.customerLookUpEdit.TabIndex = 13
         Me.customerLookUpEdit.ToolTip = "Use Ctrl+Del to clear filter"
         '
         'shiftLookUpEdit
         '
-        Me.shiftLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.shiftLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.shiftLookUpEdit.Location = New System.Drawing.Point(64, 139)
         Me.shiftLookUpEdit.Name = "shiftLookUpEdit"
         Me.shiftLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.shiftLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.shiftLookUpEdit.Properties.NullText = "[Select A Shift]"
         Me.shiftLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.shiftLookUpEdit.Size = New System.Drawing.Size(125, 20)
+        Me.shiftLookUpEdit.Size = New System.Drawing.Size(124, 20)
         Me.shiftLookUpEdit.TabIndex = 12
         Me.shiftLookUpEdit.ToolTip = "Use Ctrl+Del to clear filter"
         '
         'machineLookUpEdit
         '
-        Me.machineLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.machineLookUpEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.machineLookUpEdit.Location = New System.Drawing.Point(64, 113)
         Me.machineLookUpEdit.Name = "machineLookUpEdit"
         Me.machineLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.machineLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.machineLookUpEdit.Properties.NullText = "[Select A Machine]"
         Me.machineLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
-        Me.machineLookUpEdit.Size = New System.Drawing.Size(125, 20)
+        Me.machineLookUpEdit.Size = New System.Drawing.Size(124, 20)
         Me.machineLookUpEdit.TabIndex = 11
         Me.machineLookUpEdit.ToolTip = "Use Ctrl+Del to clear filter"
         '
         'itemCheckedListBoxControl
         '
-        Me.itemCheckedListBoxControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.itemCheckedListBoxControl.CheckOnClick = true
+        Me.itemCheckedListBoxControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.itemCheckedListBoxControl.CheckOnClick = True
         Me.itemCheckedListBoxControl.Location = New System.Drawing.Point(64, 472)
         Me.itemCheckedListBoxControl.Name = "itemCheckedListBoxControl"
-        Me.itemCheckedListBoxControl.Size = New System.Drawing.Size(126, 24)
+        Me.itemCheckedListBoxControl.Size = New System.Drawing.Size(125, 24)
         Me.itemCheckedListBoxControl.TabIndex = 4
         '
         'toDateEdit
         '
-        Me.toDateEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.toDateEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.toDateEdit.EditValue = Nothing
         Me.toDateEdit.Location = New System.Drawing.Point(64, 88)
         Me.toDateEdit.Name = "toDateEdit"
@@ -2843,13 +2892,13 @@ Partial Class ReportsXtraForm
         Me.toDateEdit.Properties.MaxValue = New Date(2109, 12, 31, 0, 0, 0, 0)
         Me.toDateEdit.Properties.MinValue = New Date(1980, 1, 1, 0, 0, 0, 0)
         Me.toDateEdit.Properties.NullText = "[Select A To Date]"
-        Me.toDateEdit.Size = New System.Drawing.Size(125, 20)
+        Me.toDateEdit.Size = New System.Drawing.Size(124, 20)
         Me.toDateEdit.TabIndex = 3
         '
         'fromDateEdit
         '
-        Me.fromDateEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.fromDateEdit.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.fromDateEdit.EditValue = Nothing
         Me.fromDateEdit.Location = New System.Drawing.Point(64, 61)
         Me.fromDateEdit.Name = "fromDateEdit"
@@ -2864,73 +2913,44 @@ Partial Class ReportsXtraForm
         Me.fromDateEdit.Properties.MaxValue = New Date(2109, 12, 31, 0, 0, 0, 0)
         Me.fromDateEdit.Properties.MinValue = New Date(1980, 1, 1, 0, 0, 0, 0)
         Me.fromDateEdit.Properties.NullText = "[Select A From Date]"
-        Me.fromDateEdit.Size = New System.Drawing.Size(125, 20)
+        Me.fromDateEdit.Size = New System.Drawing.Size(124, 20)
         Me.fromDateEdit.TabIndex = 2
         '
         'detailSimpleButton
         '
-        Me.detailSimpleButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.detailSimpleButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.detailSimpleButton.Location = New System.Drawing.Point(5, 3)
         Me.detailSimpleButton.Name = "detailSimpleButton"
-        Me.detailSimpleButton.Size = New System.Drawing.Size(184, 23)
+        Me.detailSimpleButton.Size = New System.Drawing.Size(183, 23)
         Me.detailSimpleButton.TabIndex = 1
         Me.detailSimpleButton.Text = "Back To &Detail"
-        Me.detailSimpleButton.Visible = false
+        Me.detailSimpleButton.Visible = False
         '
         'filterRefreshSimpleButton
         '
-        Me.filterRefreshSimpleButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.filterRefreshSimpleButton.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.filterRefreshSimpleButton.Location = New System.Drawing.Point(5, 32)
         Me.filterRefreshSimpleButton.Name = "filterRefreshSimpleButton"
-        Me.filterRefreshSimpleButton.Size = New System.Drawing.Size(184, 23)
+        Me.filterRefreshSimpleButton.Size = New System.Drawing.Size(183, 23)
         Me.filterRefreshSimpleButton.TabIndex = 0
         Me.filterRefreshSimpleButton.Text = "&Refresh Report"
         '
-        'productionProjectedSpeedCheckEdit
+        'transportationLpnCheckEdit
         '
-        Me.productionProjectedSpeedCheckEdit.EditValue = true
-        Me.productionProjectedSpeedCheckEdit.Location = New System.Drawing.Point(4, 311)
-        Me.productionProjectedSpeedCheckEdit.MenuManager = Me.reportsPrintBarManager
-        Me.productionProjectedSpeedCheckEdit.Name = "productionProjectedSpeedCheckEdit"
-        Me.productionProjectedSpeedCheckEdit.Properties.Caption = "Projected Speed"
-        Me.productionProjectedSpeedCheckEdit.Size = New System.Drawing.Size(158, 19)
-        Me.productionProjectedSpeedCheckEdit.TabIndex = 21
-        '
-        'productionProjectedPackersCheckEdit
-        '
-        Me.productionProjectedPackersCheckEdit.EditValue = true
-        Me.productionProjectedPackersCheckEdit.Location = New System.Drawing.Point(4, 329)
-        Me.productionProjectedPackersCheckEdit.MenuManager = Me.reportsPrintBarManager
-        Me.productionProjectedPackersCheckEdit.Name = "productionProjectedPackersCheckEdit"
-        Me.productionProjectedPackersCheckEdit.Properties.Caption = "Projected Packers"
-        Me.productionProjectedPackersCheckEdit.Size = New System.Drawing.Size(158, 19)
-        Me.productionProjectedPackersCheckEdit.TabIndex = 22
-        '
-        'productionUOMCheckEdit
-        '
-        Me.productionUOMCheckEdit.EditValue = true
-        Me.productionUOMCheckEdit.Location = New System.Drawing.Point(4, 347)
-        Me.productionUOMCheckEdit.MenuManager = Me.reportsPrintBarManager
-        Me.productionUOMCheckEdit.Name = "productionUOMCheckEdit"
-        Me.productionUOMCheckEdit.Properties.Caption = "Unit Of Measure"
-        Me.productionUOMCheckEdit.Size = New System.Drawing.Size(158, 19)
-        Me.productionUOMCheckEdit.TabIndex = 23
-        '
-        'productionReasonCodeCheckEdit
-        '
-        Me.productionReasonCodeCheckEdit.EditValue = true
-        Me.productionReasonCodeCheckEdit.Location = New System.Drawing.Point(4, 365)
-        Me.productionReasonCodeCheckEdit.MenuManager = Me.reportsPrintBarManager
-        Me.productionReasonCodeCheckEdit.Name = "productionReasonCodeCheckEdit"
-        Me.productionReasonCodeCheckEdit.Properties.Caption = "Reason Codes"
-        Me.productionReasonCodeCheckEdit.Size = New System.Drawing.Size(158, 19)
-        Me.productionReasonCodeCheckEdit.TabIndex = 24
+        Me.transportationLpnCheckEdit.EditValue = True
+        Me.transportationLpnCheckEdit.Location = New System.Drawing.Point(3, 300)
+        Me.transportationLpnCheckEdit.Name = "transportationLpnCheckEdit"
+        Me.transportationLpnCheckEdit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.transportationLpnCheckEdit.Properties.Appearance.Options.UseBackColor = True
+        Me.transportationLpnCheckEdit.Properties.Caption = "LPN #"
+        Me.transportationLpnCheckEdit.Size = New System.Drawing.Size(158, 19)
+        Me.transportationLpnCheckEdit.TabIndex = 36
         '
         'ReportsXtraForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(734, 604)
         Me.Controls.Add(Me.reportsPrintControl)
@@ -2940,143 +2960,144 @@ Partial Class ReportsXtraForm
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ReportsXtraForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Reports"
-        CType(Me.reportsDockManager,System.ComponentModel.ISupportInitialize).EndInit
-        Me.hideContainerLeft.ResumeLayout(false)
-        Me.columnsDockPanel.ResumeLayout(false)
-        Me.DockPanel1_Container.ResumeLayout(false)
-        CType(Me.reportColumnsXtraTabControl,System.ComponentModel.ISupportInitialize).EndInit
-        Me.reportColumnsXtraTabControl.ResumeLayout(false)
-        Me.productionXtraTabPage.ResumeLayout(false)
-        Me.productionColumnsXtraScrollableControl.ResumeLayout(false)
-        CType(Me.productionPOCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionTotalPayrollCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionShiftCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionCustomerNameCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionLotCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionItemCodeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionStartTimeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionStopTimeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionTotalHoursCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionTotalMinutesCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionActualSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionDifferenceCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionExpectedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionQuantityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionMachineLineCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.transportationXtraTabPage.ResumeLayout(false)
-        Me.transportationXtraScrollableControl.ResumeLayout(false)
-        CType(Me.transportationExpirationDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationVendorCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationBolCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationSealCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationTrailerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationCarrierCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationDestinationCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationDeliveryNoteCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationPOCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationShiftCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationCustomerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationLotCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationItemCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationQuantityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.transportationDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.inventoryXtraTabPage.ResumeLayout(false)
-        Me.inventoryXtraScrollableControl.ResumeLayout(false)
-        CType(Me.UOMCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.reportsPrintBarManager,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PrintPreviewRepositoryItemComboBox1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RMItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RMItemCodeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryPalletAvailabilityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryAvailabilityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryInventoryByPalletCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryCurrentInventoryCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryItemTypeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryAdjustmentReasonCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryAdjustmentCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryCustomerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryItemCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.inventoryDateCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.itemsXtraTabPage.ResumeLayout(false)
-        Me.itemsXtraScrollableControl.ResumeLayout(false)
-        CType(Me.itemUsedInProductionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsCustomerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsItemCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsItemDescriptionCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsItemTypeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsUnitsOfMeasureCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsQtyPerUnitCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsUnitsPerCaseCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsAdjustedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsShippedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsProducedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsCasesPerPalletCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemsReceivedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.costingXtraTabPage.ResumeLayout(false)
-        Me.costingXtraScrollableControl.ResumeLayout(false)
-        Me.costingXtraScrollableControl.PerformLayout
-        Me.productionMachineXtraTabPage.ResumeLayout(false)
-        Me.productionMachineXtraScrollableControl.ResumeLayout(false)
-        CType(Me.pmsTotalSalesCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsPriceCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsQuantityCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsProjectedSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsAverageSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsSpeedVariationVolCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsSpeedVariationPerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsProjectedPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsPackersVariationVolCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsPackersVariationPerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsSalesVsPayrollCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsPricePerPieceCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsCostVariationCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsCostCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsProjectedCostCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsCostVariationPerCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pmsTotalMinutesCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.palletTransactionXtraTabPage.ResumeLayout(false)
-        Me.XtraScrollableControl1.ResumeLayout(false)
-        CType(Me.ptReceivedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ptDestinationCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ptShippedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ptVendorCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.filterDockPanel.ResumeLayout(false)
-        Me.ControlContainer1.ResumeLayout(false)
-        Me.ControlContainer1.PerformLayout
-        CType(Me.outOfStockCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.vendorLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.InactiveCustomersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.InactiveItemsCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemTypeLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.carrierLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.destinationLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.deliveryNoteNumberTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.poTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.lotTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.bolTextEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.customerLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.shiftLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.machineLookUpEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.itemCheckedListBoxControl,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.toDateEdit.Properties.CalendarTimeProperties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.toDateEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.fromDateEdit.Properties.CalendarTimeProperties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.fromDateEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionProjectedSpeedCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionProjectedPackersCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionUOMCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.productionReasonCodeCheckEdit.Properties,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        CType(Me.reportsDockManager, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.hideContainerLeft.ResumeLayout(False)
+        Me.columnsDockPanel.ResumeLayout(False)
+        Me.DockPanel1_Container.ResumeLayout(False)
+        CType(Me.reportColumnsXtraTabControl, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.reportColumnsXtraTabControl.ResumeLayout(False)
+        Me.productionXtraTabPage.ResumeLayout(False)
+        Me.productionColumnsXtraScrollableControl.ResumeLayout(False)
+        CType(Me.productionReasonCodeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.reportsPrintBarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PrintPreviewRepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionUOMCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionProjectedPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionProjectedSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionPOCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionTotalPayrollCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionShiftCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionCustomerNameCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionLotCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionItemCodeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionStartTimeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionStopTimeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionTotalHoursCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionTotalMinutesCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionActualSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionDifferenceCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionExpectedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionQuantityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionMachineLineCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.productionDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.transportationXtraTabPage.ResumeLayout(False)
+        Me.transportationXtraScrollableControl.ResumeLayout(False)
+        CType(Me.transportationExpirationDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationVendorCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationBolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationSealCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationTrailerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationCarrierCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationDestinationCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationDeliveryNoteCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationPOCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationShiftCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationCustomerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationLotCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationItemCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationQuantityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.inventoryXtraTabPage.ResumeLayout(False)
+        Me.inventoryXtraScrollableControl.ResumeLayout(False)
+        CType(Me.UOMCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RMItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RMItemCodeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryPalletAvailabilityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryAvailabilityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryInventoryByPalletCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryCurrentInventoryCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryItemTypeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryAdjustmentReasonCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryAdjustmentCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryCustomerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryItemCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.itemsXtraTabPage.ResumeLayout(False)
+        Me.itemsXtraScrollableControl.ResumeLayout(False)
+        CType(Me.itemUsedInProductionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsCustomerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsItemCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsItemDescriptionCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsItemTypeCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsUnitsOfMeasureCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsQtyPerUnitCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsUnitsPerCaseCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsAdjustedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsShippedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsProducedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsCasesPerPalletCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemsReceivedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.costingXtraTabPage.ResumeLayout(False)
+        Me.costingXtraScrollableControl.ResumeLayout(False)
+        Me.costingXtraScrollableControl.PerformLayout()
+        Me.productionMachineXtraTabPage.ResumeLayout(False)
+        Me.productionMachineXtraScrollableControl.ResumeLayout(False)
+        CType(Me.pmsTotalSalesCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsPriceCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsQuantityCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsProjectedSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsAverageSpeedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsSpeedVariationVolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsSpeedVariationPerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsProjectedPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsPackersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsPackersVariationVolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsPackersVariationPerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsSalesVsPayrollCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsPricePerPieceCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsCostVariationCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsCostCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsProjectedCostCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsCostVariationPerCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmsTotalMinutesCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.palletTransactionXtraTabPage.ResumeLayout(False)
+        Me.XtraScrollableControl1.ResumeLayout(False)
+        CType(Me.ptReceivedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ptDestinationCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ptShippedCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ptVendorCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.filterDockPanel.ResumeLayout(False)
+        Me.ControlContainer1.ResumeLayout(False)
+        Me.ControlContainer1.PerformLayout()
+        CType(Me.outOfStockCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.vendorLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InactiveCustomersCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InactiveItemsCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemTypeLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.carrierLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.destinationLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.deliveryNoteNumberTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.poTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lotTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bolTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.customerLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.shiftLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.machineLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.itemCheckedListBoxControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.toDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.toDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.fromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.fromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.transportationLpnCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
         Me.PerformLayout
 
 End Sub
@@ -3319,4 +3340,5 @@ End Sub
     Friend WithEvents productionProjectedPackersCheckEdit As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents productionUOMCheckEdit As DevExpress.XtraEditors.CheckEdit
     Friend WithEvents productionReasonCodeCheckEdit As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents transportationLpnCheckEdit As DevExpress.XtraEditors.CheckEdit
 End Class

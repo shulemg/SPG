@@ -1828,6 +1828,18 @@ Public Class ReportsXtraForm
                         .itemDescriptionHeaderXrLabel.Visible = False
                         .itemDescriptionDetailXrLabel.Visible = False
                     End If
+                    If Me.transportationLpnCheckEdit.Checked = True Then
+                        .lpnHeadeerXrLabel.Visible = True
+                        .lpnDetailXrLabel.Visible = True
+                        .lpnHeadeerXrLabel.Left = left
+                        .lpnDetailXrLabel.Left = left
+                        .lpnDetailXrLabel.Width += additionalWidth
+                        .lpnHeadeerXrLabel.Width += additionalWidth
+                        left += .lpnDetailXrLabel.Width
+                    Else
+                        .lpnHeadeerXrLabel.Visible = False
+                        .lpnDetailXrLabel.Visible = False
+                    End If
                     If Me.transportationLotCheckEdit.Checked = True Then
                         .lotHeadeerXrLabel.Visible = True
                         .lotDetailXrLabel.Visible = True
@@ -1838,7 +1850,7 @@ Public Class ReportsXtraForm
                         left += .lotDetailXrLabel.Width
                     Else
                         .lotHeadeerXrLabel.Visible = False
-                        .lotDetailXrLabel.Visible = False
+                    .lotDetailXrLabel.Visible = False
                     End If
                     If transportationExpirationDateCheckEdit.Checked = True Then
                         .expirationDateHeaderXrLabel.Visible = True
@@ -3591,6 +3603,7 @@ Public Class ReportsXtraForm
                     .deliveryNoteNumberDetailXrLabel.DataBindings.Add("Text", Nothing, "DeliveryNoteNumber")
                     .destinationDetailXrLabel.DataBindings.Add("Text", Nothing, "ShippingName")
                     .lotDetailXrLabel.DataBindings.Add("Text", Nothing, "ShipDetLot")
+                    .lpnDetailXrLabel.DataBindings.Add("Text", Nothing, "FullLPNNumber")
                     .expirationDateDetailXrLabel.DataBindings.Add("Text", Nothing, "ExpirationDate")
                     .expirationDateDetailXrLabel.DataBindings.Add("Tag", Nothing, "ExpirationDateFormat")
                     .itemCodeDetailXrLabel.DataBindings.Add("Text", Nothing, "ItemCode")

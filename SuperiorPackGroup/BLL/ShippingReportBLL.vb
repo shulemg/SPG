@@ -64,6 +64,7 @@ Public Class ShippingReportBLL
                                                                          New ViewProperty("DeliveryNoteNumber", SortDirection.None, "[ShipDetMainID].[DeliveryNoteNumber]", False, True),
                                                                          New ViewProperty("ShippingName", SortDirection.None, "[ShipDetMainID].[intDestination].[ShippingName]", False, True),
                                                                          New ViewProperty("ShipDetLot", SortDirection.None, "[ShipDetLot]", False, True),
+                                                                         New ViewProperty("FullLPNNumber", SortDirection.None, "[FullLPNNumber]", False, True),
                                                                          New ViewProperty("ItemCode", SortDirection.Ascending, "[ShipDetItemID].[ItemCode]", False, True),
                                                                          New ViewProperty("ItemDescription", SortDirection.None, "[ShipDetItemID].[ItemDescription]", False, True),
                                                                          New ViewProperty("ShipDetDetQty", SortDirection.None, "[ShipDetDetQty]", False, True),

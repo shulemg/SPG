@@ -16,6 +16,7 @@ Public Class ShiftsTimeScaleFixedIntervalCaptionService : Inherits HeaderCaption
         'Return MyBase.GetTimeScaleHeaderCaption(header)
         If TypeOf header.Scale Is ShiftsTimeScaleFixedInterval Then
             Dim assignedPeople As Double = 0
+            If Provider.Storage Is Nothing Then Return ""
             Dim scheduledProduction As AppointmentBaseCollection = Provider.Storage.GetAppointments(header.Interval)
 
             For Each productionSchedule As Appointment In scheduledProduction
