@@ -947,6 +947,7 @@ Public Class InventoryXtraForm
             End If
         ElseIf newQuantity < 0 Then
             Dim totalAssigned As Integer
+            productionDetailsXtraTabControl.TabPages(1).Show()
             If colUnitsProduced.Summary(0).SummaryValue Is Nothing Then
                 totalAssigned = 0
             Else
