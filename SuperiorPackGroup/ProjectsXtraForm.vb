@@ -263,7 +263,8 @@ Public Class ProjectsXtraForm
     Private Sub BindItemLookupEdit()
 
         itemXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CInt(customerLookUpEdit.EditValue), BinaryOperatorType.Equal),
-                                                New BinaryOperator(Items.Fields.Inactive.PropertyName, True, BinaryOperatorType.NotEqual))
+                                                New BinaryOperator(Items.Fields.Inactive.PropertyName, True, BinaryOperatorType.NotEqual),
+                                                New BinaryOperator(Items.Fields.ItemType.PropertyName, "RM", BinaryOperatorType.NotEqual))
         itemXpView.Reload()
 
     End Sub

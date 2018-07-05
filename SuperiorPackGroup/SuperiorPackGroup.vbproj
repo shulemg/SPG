@@ -38,7 +38,7 @@
     <UpdateUrl>\\server1\SPG\SPG Install\</UpdateUrl>
     <ProductName>Superior Pack Group</ProductName>
     <PublisherName>Ektec Soft</PublisherName>
-    <ApplicationRevision>243</ApplicationRevision>
+    <ApplicationRevision>244</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
