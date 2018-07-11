@@ -319,6 +319,12 @@ Public Class InventoryXtraForm
 
         Dim labelText As String = String.Empty
 
+        If CType(itemLookUpEdit.Properties.Tag, Integer?) <> CType(itemLookUpEdit.EditValue, Integer?) Then
+            m_InventoryUOW.Delete(productionProjectDetailXpCollection)
+            m_InventoryUOW.Save(productionProjectDetailXpCollection)
+            productionProjectDetailXpCollection.Reload()
+        End If
+
         If ValidateRecord() Then
             Try
                 If SaveRecord() Then
@@ -486,6 +492,12 @@ Public Class InventoryXtraForm
     Private Sub ShortLPNLabelSimpleButton_Click(sender As Object, e As EventArgs) Handles LPNLabelSimpleButton.Click
 
         Dim labelText As String = String.Empty
+
+        If CType(itemLookUpEdit.Properties.Tag, Integer?) <> CType(itemLookUpEdit.EditValue, Integer?) Then
+            m_InventoryUOW.Delete(productionProjectDetailXpCollection)
+            m_InventoryUOW.Save(productionProjectDetailXpCollection)
+            productionProjectDetailXpCollection.Reload()
+        End If
 
         If ValidateRecord() Then
             Try
