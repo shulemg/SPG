@@ -160,6 +160,7 @@
     <Compile Include="UserPermissions.vb" />
     <Compile Include="UsersCustomer.vb" />
     <Compile Include="Vendor.vb" />
+    <Compile Include="Version.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

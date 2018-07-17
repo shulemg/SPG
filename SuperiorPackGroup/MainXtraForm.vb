@@ -6,6 +6,7 @@ Imports System.Deployment.Application
 
 Public Class MainXtraForm
 
+    Private WithEvents m_timer As New Timer
     Private m_UserPermissions As UserPermissionsBLL
     Protected m_CompanySettings As CompanySettingsBLL
     Private m_AdvancedTabs As String = "NONE"
@@ -16,6 +17,7 @@ Public Class MainXtraForm
     Private m_OperatorsPay As Nullable(Of Single) = Nothing
     Private m_SupersPay As Nullable(Of Single) = Nothing
     Private m_PackersPay As Nullable(Of Single) = Nothing
+    Private m_VersionNumber As Nullable(Of Integer) = Nothing
 
     Private Sub fileExitBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles fileExitBarButtonItem.ItemClick
 
@@ -263,9 +265,14 @@ Public Class MainXtraForm
 
     Private Sub MainXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        m_timer.Interval = CInt(TimeSpan.FromHours(1).TotalMilliseconds)
+        m_timer.Start()
+
         TestConnection()
 
         Try
+            m_VersionNumber = ApplicationDeployment.CurrentDeployment.CurrentVersion.Revision
+
             Text = String.Format("Superior Pack Group (Ver. {0})", ApplicationDeployment.CurrentDeployment.CurrentVersion)
         Catch
         End Try
@@ -273,6 +280,17 @@ Public Class MainXtraForm
         If LoginXtraForm.ShowDialog() <> Windows.Forms.DialogResult.OK Then Application.Exit()
         DisplaySecuredMenuItems()
 
+    End Sub
+
+    Private Sub TimerEventProcessor(myObject As Object,
+                                           ByVal myEventArgs As EventArgs) _
+                                       Handles m_timer.Tick
+        Try
+            If ApplicationDeployment.CurrentDeployment.CurrentVersion.Revision < Session.DefaultSession.GetObjectByKey(Of DXDAL.SPGData.LatestVersion)(1).LatestRevision Then
+                MessageBox.Show("A new version is available please update.", "Please restart", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        Catch
+        End Try
     End Sub
 
     Private Sub TestConnection()
