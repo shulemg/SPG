@@ -151,6 +151,13 @@ Namespace SPGData
             End Get
         End Property
 
+        <Association("Location-InventoryByLot", GetType(LocationInventoryByLot)), Aggregated()>
+        Public ReadOnly Property LocationsInventoryByLot As XPCollection(Of LocationInventoryByLot)
+            Get
+                Return GetCollection(Of LocationInventoryByLot)("LocationsInventoryByLot")
+            End Get
+        End Property
+
         <Association("Location-TransfersFrom", GetType(LocationTransfers)), Aggregated()>
         Public ReadOnly Property LocationTransfersFrom As XPCollection(Of LocationTransfers)
             Get

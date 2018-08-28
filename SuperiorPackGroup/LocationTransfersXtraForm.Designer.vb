@@ -21,6 +21,10 @@ Partial Class LocationTransfersXtraForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LocationTransfersXtraForm))
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.transfersBar = New DevExpress.XtraBars.Bar()
@@ -29,6 +33,7 @@ Partial Class LocationTransfersXtraForm
         Me.deleteBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.cancelBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.saveBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.refreshBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
@@ -82,11 +87,12 @@ Partial Class LocationTransfersXtraForm
         Me.itemXpView = New DevExpress.Xpo.XPView(Me.components)
         Me.fullLpnNumberGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTransferLot = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.LotRepositoryItemLookUpEdit = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.LotXpView = New DevExpress.Xpo.XPView(Me.components)
         Me.colItemExpirationDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTransferQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTransferUnits = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colTransferPallets = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.refreshBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -116,6 +122,8 @@ Partial Class LocationTransfersXtraForm
         CType(Me.deleteRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.itemRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.itemXpView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LotRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LotXpView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BarManager1
@@ -172,6 +180,12 @@ Partial Class LocationTransfersXtraForm
         Me.saveBarButtonItem.Enabled = False
         Me.saveBarButtonItem.Id = 3
         Me.saveBarButtonItem.Name = "saveBarButtonItem"
+        '
+        'refreshBarButtonItem
+        '
+        Me.refreshBarButtonItem.Caption = "Refresh"
+        Me.refreshBarButtonItem.Id = 5
+        Me.refreshBarButtonItem.Name = "refreshBarButtonItem"
         '
         'Bar2
         '
@@ -333,7 +347,7 @@ Partial Class LocationTransfersXtraForm
         Me.unloadedByLookUpEdit.MenuManager = Me.BarManager1
         Me.unloadedByLookUpEdit.Name = "unloadedByLookUpEdit"
         Me.unloadedByLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.unloadedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeID", "Employee ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.unloadedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeID", "Employee ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.unloadedByLookUpEdit.Properties.DataSource = Me.employeesXpView
         Me.unloadedByLookUpEdit.Properties.DisplayMember = "Employee Name"
         Me.unloadedByLookUpEdit.Properties.NullText = "[Select An Employee]"
@@ -360,7 +374,7 @@ Partial Class LocationTransfersXtraForm
         Me.loadedByLookUpEdit.MenuManager = Me.BarManager1
         Me.loadedByLookUpEdit.Name = "loadedByLookUpEdit"
         Me.loadedByLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.loadedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeID", "Employee ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.loadedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeID", "Employee ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.loadedByLookUpEdit.Properties.DataSource = Me.employeesXpView
         Me.loadedByLookUpEdit.Properties.DisplayMember = "Employee Name"
         Me.loadedByLookUpEdit.Properties.NullText = "[Select An Employee]"
@@ -398,7 +412,7 @@ Partial Class LocationTransfersXtraForm
         Me.checkedByLookUpEdit.MenuManager = Me.BarManager1
         Me.checkedByLookUpEdit.Name = "checkedByLookUpEdit"
         Me.checkedByLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.checkedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeID", "Employee ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.checkedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("EmployeeID", "Employee ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.checkedByLookUpEdit.Properties.DataSource = Me.employeesXpView
         Me.checkedByLookUpEdit.Properties.DisplayMember = "Employee Name"
         Me.checkedByLookUpEdit.Properties.NullText = "[Select An Employee]"
@@ -420,7 +434,7 @@ Partial Class LocationTransfersXtraForm
         Me.carrierLookUpEdit.MenuManager = Me.BarManager1
         Me.carrierLookUpEdit.Name = "carrierLookUpEdit"
         Me.carrierLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.carrierLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CarrierID", "Carrier ID", 70, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CarrierName", "Carrier Name", 73, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.carrierLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CarrierID", "Carrier ID", 70, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CarrierName", "Carrier Name", 73, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.carrierLookUpEdit.Properties.DataSource = Me.carrierXpView
         Me.carrierLookUpEdit.Properties.DisplayMember = "CarrierName"
         Me.carrierLookUpEdit.Properties.NullText = "[Select A Carrier]"
@@ -470,7 +484,7 @@ Partial Class LocationTransfersXtraForm
         Me.toLocationLookUpEdit.MenuManager = Me.BarManager1
         Me.toLocationLookUpEdit.Name = "toLocationLookUpEdit"
         Me.toLocationLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.toLocationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.toLocationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.toLocationLookUpEdit.Properties.DataSource = Me.locationsXpView
         Me.toLocationLookUpEdit.Properties.DisplayMember = "LocationCode"
         Me.toLocationLookUpEdit.Properties.NullText = "[Select To Location]"
@@ -506,7 +520,7 @@ Partial Class LocationTransfersXtraForm
         Me.fromLocationLookUpEdit.MenuManager = Me.BarManager1
         Me.fromLocationLookUpEdit.Name = "fromLocationLookUpEdit"
         Me.fromLocationLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.fromLocationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.fromLocationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.fromLocationLookUpEdit.Properties.DataSource = Me.locationsXpView
         Me.fromLocationLookUpEdit.Properties.DisplayMember = "LocationCode"
         Me.fromLocationLookUpEdit.Properties.NullText = "[Select From Location]"
@@ -576,7 +590,7 @@ Partial Class LocationTransfersXtraForm
         Me.transferDetailsGridControl.MainView = Me.transferDetailsGridView
         Me.transferDetailsGridControl.MenuManager = Me.BarManager1
         Me.transferDetailsGridControl.Name = "transferDetailsGridControl"
-        Me.transferDetailsGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.itemRepositoryItemLookUpEdit, Me.deleteRepositoryItemButtonEdit})
+        Me.transferDetailsGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.itemRepositoryItemLookUpEdit, Me.deleteRepositoryItemButtonEdit, Me.LotRepositoryItemLookUpEdit})
         Me.transferDetailsGridControl.Size = New System.Drawing.Size(542, 229)
         Me.transferDetailsGridControl.TabIndex = 0
         Me.transferDetailsGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.transferDetailsGridView})
@@ -606,7 +620,7 @@ Partial Class LocationTransfersXtraForm
         'deleteRepositoryItemButtonEdit
         '
         Me.deleteRepositoryItemButtonEdit.AutoHeight = False
-        Me.deleteRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, False, True, False, EditorButtonImageOptions1)})
+        Me.deleteRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete, "", -1, False, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.deleteRepositoryItemButtonEdit.Name = "deleteRepositoryItemButtonEdit"
         Me.deleteRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
@@ -643,7 +657,7 @@ Partial Class LocationTransfersXtraForm
         '
         Me.itemRepositoryItemLookUpEdit.AutoHeight = False
         Me.itemRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.itemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AvailableQuantity", "Available Quantity", 98, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CasePerPallet", "Cases Per Pallet", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default])})
+        Me.itemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("AvailableQuantity", "Available Quantity", 98, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CasePerPallet", "Cases Per Pallet", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.itemRepositoryItemLookUpEdit.DataSource = Me.itemXpView
         Me.itemRepositoryItemLookUpEdit.DisplayMember = "ItemCode"
         Me.itemRepositoryItemLookUpEdit.Name = "itemRepositoryItemLookUpEdit"
@@ -664,11 +678,31 @@ Partial Class LocationTransfersXtraForm
         '
         'colTransferLot
         '
+        Me.colTransferLot.ColumnEdit = Me.LotRepositoryItemLookUpEdit
         Me.colTransferLot.FieldName = "TransferLot"
         Me.colTransferLot.Name = "colTransferLot"
         Me.colTransferLot.Visible = True
         Me.colTransferLot.VisibleIndex = 3
         Me.colTransferLot.Width = 100
+        '
+        'LotRepositoryItemLookUpEdit
+        '
+        Me.LotRepositoryItemLookUpEdit.AcceptEditorTextAsNewValue = DevExpress.Utils.DefaultBoolean.[True]
+        Me.LotRepositoryItemLookUpEdit.AutoHeight = False
+        Me.LotRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.LotRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Lot", "Lot", 38, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.LotRepositoryItemLookUpEdit.DataSource = Me.LotXpView
+        Me.LotRepositoryItemLookUpEdit.DisplayMember = "Lot"
+        Me.LotRepositoryItemLookUpEdit.Name = "LotRepositoryItemLookUpEdit"
+        Me.LotRepositoryItemLookUpEdit.NullText = ""
+        Me.LotRepositoryItemLookUpEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.LotRepositoryItemLookUpEdit.UseReadOnlyAppearance = False
+        Me.LotRepositoryItemLookUpEdit.ValueMember = "Lot"
+        '
+        'LotXpView
+        '
+        Me.LotXpView.ObjectType = GetType(DXDAL.SPGData.LocationInventoryByLot)
+        Me.LotXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("Lot", DevExpress.Xpo.SortDirection.None, "[LocationInventoryLot]", True, True)})
         '
         'colItemExpirationDate
         '
@@ -706,12 +740,6 @@ Partial Class LocationTransfersXtraForm
         Me.colTransferPallets.Visible = True
         Me.colTransferPallets.VisibleIndex = 7
         Me.colTransferPallets.Width = 104
-        '
-        'refreshBarButtonItem
-        '
-        Me.refreshBarButtonItem.Caption = "Refresh"
-        Me.refreshBarButtonItem.Id = 5
-        Me.refreshBarButtonItem.Name = "refreshBarButtonItem"
         '
         'LocationTransfersXtraForm
         '
@@ -756,6 +784,8 @@ Partial Class LocationTransfersXtraForm
         CType(Me.deleteRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.itemRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.itemXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LotRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LotXpView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -825,4 +855,6 @@ Partial Class LocationTransfersXtraForm
     Friend WithEvents lpnNumberTextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents fullLpnNumberGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents refreshBarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents LotXpView As DevExpress.Xpo.XPView
+    Friend WithEvents LotRepositoryItemLookUpEdit As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit
 End Class

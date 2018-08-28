@@ -295,11 +295,13 @@ Public Class LocationXtraForm
 
         If warehousingCheckEdit.Checked Then
             locationInventoryXpView.Criteria = New BinaryOperator(LocationInventory.Fields.Location.Oid, locationID, BinaryOperatorType.Equal)
+            locationInventoryByLotXpView.Criteria = New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid, locationID, BinaryOperatorType.Equal)
             transfersFromXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(LocationTransferDetails.Fields.Transfer.FromLocation.Oid.PropertyName, locationID, BinaryOperatorType.Equal),
                                                                                     New BinaryOperator(LocationTransferDetails.Fields.Transfer.TransferDate.PropertyName, DateAdd(DateInterval.Year, -1, Today), BinaryOperatorType.GreaterOrEqual))
             transfersToXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(LocationTransferDetails.Fields.Transfer.ToLocation.Oid.PropertyName, locationID, BinaryOperatorType.Equal),
                                                                                     New BinaryOperator(LocationTransferDetails.Fields.Transfer.TransferDate.PropertyName, DateAdd(DateInterval.Year, -1, Today), BinaryOperatorType.GreaterOrEqual))
             locationInventoryXpView.Reload()
+            locationInventoryByLotXpView.Reload()
             transfersFromXpView.Reload()
             transfersToXpView.Reload()
             inventoryXtraTabPage.PageVisible = True
@@ -308,9 +310,11 @@ Public Class LocationXtraForm
             transfersXtraTabPage.PageEnabled = True
         Else
             locationInventoryXpView.Criteria = New BinaryOperator(LocationInventory.Fields.Location.Oid.PropertyName, 0, BinaryOperatorType.Equal)
+            locationInventoryByLotXpView.Criteria = New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, 0, BinaryOperatorType.Equal)
             transfersFromXpView.Criteria = New BinaryOperator(LocationTransferDetails.Fields.Transfer.FromLocation.Oid.PropertyName, 0, BinaryOperatorType.Equal)
             transfersToXpView.Criteria = New BinaryOperator(LocationTransferDetails.Fields.Transfer.ToLocation.Oid.PropertyName, 0, BinaryOperatorType.Equal)
             locationInventoryXpView.Reload()
+            locationInventoryByLotXpView.Reload()
             transfersFromXpView.Reload()
             transfersToXpView.Reload()
             inventoryXtraTabPage.PageVisible = False

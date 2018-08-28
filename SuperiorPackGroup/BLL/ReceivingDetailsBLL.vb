@@ -74,6 +74,16 @@ Public Class ReceivingDetailsBLL
             Throw New ApplicationException("You must provide the amount of quamtity\units received.")
         End If
 
+        Dim item As Items = Session.DefaultSession.GetObjectByKey(Of Items)(itemID.Value, True)
+
+        If item.RequiresLotCodes = True Then
+            If IsNothing(lot) OrElse lot = "" Then
+                Throw New ApplicationException("Item " & item.ItemCode & " requires a lot #" & vbNewLine & "You must provide the lot # received.")
+            ElseIf Not LotCodeValidator.VlidateByItem(item, lot) Then
+                Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
+            End If
+        End If
+
         Dim details As SPG.ReceivingDetailsDataTable = Adapter.GetDetailsByDetailID(detailID.Value)
 
         If details.Count = 0 Then
@@ -124,11 +134,11 @@ Public Class ReceivingDetailsBLL
             Dim items As ItemsBLL = New ItemsBLL
             Dim locationID As Integer = session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid
             If itemChanged = True Then
-                items.UpdateStock(session, originalItem, originalQuantity * -1, False, locationID)
-                items.UpdateStock(session, itemID.Value, units.Value, False, locationID)
+                items.UpdateStock(session, originalItem, originalQuantity * -1, False, locationID, lot)
+                items.UpdateStock(session, itemID.Value, units.Value, False, locationID, lot)
             Else
                 If newQuantity <> 0 Then
-                    items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID)
+                    items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID, lot)
                 End If
             End If
         End If

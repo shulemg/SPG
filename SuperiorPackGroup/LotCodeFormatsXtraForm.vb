@@ -486,7 +486,7 @@ Public Class LotCodeFormatsXtraForm
 
         m_CurrentLotCodeFormat = m_LotCodeSession.GetObjectByKey(of LotCodeFormats)(FormatID, True)
         formatNameTextEdit.EditValue = m_CurrentLotCodeFormat.FormatName
-        formatSectionsSpinEdit.EditValue = m_CurrentLotCodeFormat.Sections 
+        formatSectionsSpinEdit.EditValue = m_CurrentLotCodeFormat.Sections
         formatWarningLabelControl.Visible = m_CurrentLotCodeFormat.FormatSections.Count = m_CurrentLotCodeFormat.Sections
         PrepareNewLotCodeSection(1)
 

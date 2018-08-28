@@ -405,8 +405,8 @@ Public Class LocationTransfersXtraForm
             For Each transferDetail As LocationTransferDetails In transferDetailsXpCollection
                 If transferDetail.Transfer Is Nothing OrElse transferDetail.Transfer.Oid = -1 Then
                     transferDetail.Transfer = m_CurrentTransfer
-                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(fromLocationLookUpEdit.EditValue), transferDetail.TransferQuantity * -1)
-                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(toLocationLookUpEdit.EditValue), transferDetail.TransferQuantity)
+                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(fromLocationLookUpEdit.EditValue), transferDetail.TransferQuantity * -1, transferDetail.TransferLot)
+                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(toLocationLookUpEdit.EditValue), transferDetail.TransferQuantity, transferDetail.TransferLot)
                 Else
                     originalRecord = Session.DefaultSession.GetObjectByKey(Of LocationTransferDetails)(transferDetail.Oid, True)
 
@@ -416,8 +416,8 @@ Public Class LocationTransfersXtraForm
                         newQuantity = transferDetail.TransferQuantity - originalRecord.TransferQuantity
                     End If
 
-                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(fromLocationLookUpEdit.EditValue), newQuantity * -1)
-                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(toLocationLookUpEdit.EditValue), newQuantity)
+                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(fromLocationLookUpEdit.EditValue), newQuantity * -1, transferDetail.TransferLot)
+                    LocationInventoryBLL.UpdateStock(m_TransfersSession, transferDetail.TransferItem.ItemID, CInt(toLocationLookUpEdit.EditValue), newQuantity, transferDetail.TransferLot)
                 End If
                 '   The details are saved together with the header
                 'transferDetail.Save()
@@ -474,12 +474,30 @@ Public Class LocationTransfersXtraForm
 
         Dim totalTransferQuantity As New Dictionary(Of Integer, Double)
         Dim stock As Double
+        Dim lotStock As Double
         Dim transferQuantity As Integer
+        Dim item As Items
+        Dim lot As String
 
         If transferDetailsGridView.GroupCount = 0 Then
             For i As Integer = 0 To transferDetailsGridView.RowCount - 1
                 If transferDetailsGridView.IsValidRowHandle(i) Then
+
+                    lot = CStr(transferDetailsGridView.GetRowCellValue(i, colTransferLot))
+                    item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), True)
+
+                    Try
+                        If Not LotCodeValidator.VlidateByItem(item, lot) Then
+                            Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
+                        End If
+                    Catch ex As ApplicationException
+                        MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                        Return False
+                    End Try
+
                     stock = ItemsBLL.GetQtyOnHandByID(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue))
+
+                    lotStock = ItemsBLL.GetQtyOnHandByIDAndLot(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue), lot)
 
                     If m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(i)) = False AndAlso CType(transferDetailsGridView.GetRow(i), LocationTransferDetails).HasChanges = False Then
                         Continue For
@@ -490,10 +508,16 @@ Public Class LocationTransfersXtraForm
                     End If
 
                     If stock < transferQuantity Then
-                        MessageBox.Show(String.Format("{0} does only have {1} in stock and your shipping {2}.{3}You must enter first the production.",
-                                            transferDetailsGridView.GetRowCellDisplayText(i, transferItemGridColumn).ToString, stock.ToString, _
-                                          transferQuantity.ToString, vbCrLf), "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                        MessageBox.Show($"{item.ItemCode} does only have {stock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
+                                        "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
                         Return False
+                    End If
+
+                    If lotStock < transferQuantity AndAlso item.RequiresLotCodes Then
+                        If MessageBox.Show($"{item.ItemCode} lot# {lot} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}Do you want to proceed with the transfer?",
+                                           "Stock Verification", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> vbYes Then
+                            Return False
+                        End If
                     End If
 
                     If totalTransferQuantity.ContainsKey(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn))) Then
@@ -508,7 +532,20 @@ Public Class LocationTransfersXtraForm
             While transferDetailsGridView.IsValidRowHandle(i)
                 If transferDetailsGridView.GetChildRowHandle(i, 0) > -1 Then
                     For ci As Integer = transferDetailsGridView.GetChildRowHandle(i, 0) To transferDetailsGridView.GetChildRowCount(i) + transferDetailsGridView.GetChildRowHandle(i, 0) - 1
+                        lot = CStr(transferDetailsGridView.GetRowCellValue(ci, colTransferLot))
+                        item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), True)
+
+                        Try
+                            If Not LotCodeValidator.VlidateByItem(item, lot) Then
+                                Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
+                            End If
+                        Catch ex As ApplicationException
+                            MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                            Return False
+                        End Try
+
                         stock = ItemsBLL.GetQtyOnHandByID(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue))
+                        lotStock = ItemsBLL.GetQtyOnHandByIDAndLot(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue), lot)
 
                         If m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(ci)) = False AndAlso CType(transferDetailsGridView.GetRow(ci), LocationTransferDetails).HasChanges = False Then
                             Continue For
@@ -524,6 +561,13 @@ Public Class LocationTransfersXtraForm
                                             transferDetailsGridView.GetRowCellDisplayText(ci, transferItemGridColumn).ToString, stock.ToString, transferQuantity.ToString, vbCrLf), "Stock Verification",
                                         MessageBoxButtons.OK, MessageBoxIcon.Hand)
                             Return False
+                        End If
+
+                        If lotStock < transferQuantity AndAlso item.RequiresLotCodes Then
+                            If MessageBox.Show($"{item.ItemCode} lot# {lot} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}Do you want to proceed with the transfer?",
+                                           "Stock Verification", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> vbYes Then
+                                Return False
+                            End If
                         End If
 
                         If totalTransferQuantity.ContainsKey(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn))) Then
