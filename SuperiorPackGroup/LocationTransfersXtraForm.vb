@@ -487,7 +487,7 @@ Public Class LocationTransfersXtraForm
                     item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), True)
 
                     Try
-                        If Not LotCodeValidator.VlidateByItem(item, lot) Then
+                        If Not LotCodeValidator.ValidateByItem(item, lot, False) Then
                             Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
                         End If
                     Catch ex As ApplicationException
@@ -514,10 +514,9 @@ Public Class LocationTransfersXtraForm
                     End If
 
                     If lotStock < transferQuantity AndAlso item.RequiresLotCodes Then
-                        If MessageBox.Show($"{item.ItemCode} lot# {lot} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}Do you want to proceed with the transfer?",
-                                           "Stock Verification", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> vbYes Then
-                            Return False
-                        End If
+                        MessageBox.Show($"{item.ItemCode} lot# {lot} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
+                                           "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                        Return False
                     End If
 
                     If totalTransferQuantity.ContainsKey(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn))) Then
@@ -536,7 +535,7 @@ Public Class LocationTransfersXtraForm
                         item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), True)
 
                         Try
-                            If Not LotCodeValidator.VlidateByItem(item, lot) Then
+                            If Not LotCodeValidator.ValidateByItem(item, lot, False) Then
                                 Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
                             End If
                         Catch ex As ApplicationException
@@ -564,10 +563,9 @@ Public Class LocationTransfersXtraForm
                         End If
 
                         If lotStock < transferQuantity AndAlso item.RequiresLotCodes Then
-                            If MessageBox.Show($"{item.ItemCode} lot# {lot} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}Do you want to proceed with the transfer?",
-                                           "Stock Verification", MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> vbYes Then
-                                Return False
-                            End If
+                            MessageBox.Show($"{item.ItemCode} lot# {lot} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
+                                           "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                            Return False
                         End If
 
                         If totalTransferQuantity.ContainsKey(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn))) Then

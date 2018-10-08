@@ -3,7 +3,7 @@ Imports DXDAL.SPGData
 
 Public Class LotCodeValidator
 
-    Public Shared Function VlidateByItem(ByVal item As Items, ByVal lot As String) As Boolean
+    Public Shared Function ValidateByItem(ByVal item As Items, ByVal lot As String, ByVal ValidateFormat As Boolean) As Boolean
         Dim sortCollection As SortingCollection = New SortingCollection()
         Dim codeSection As LotCodeFormatSections
         Dim sectionSettings As LotCodeSectionSettings
@@ -13,10 +13,9 @@ Public Class LotCodeValidator
 
         If IsNothing(lot) OrElse lot = "" Then Return False
 
-        If item.DefaultLotCodeFormat Is Nothing Then Return True
+        If Not ValidateFormat Then Return True
 
-        'for now
-        Return True
+        If item.DefaultLotCodeFormat Is Nothing Then Return True
 
         sortCollection.Add(New SortProperty("SectionPosition", DB.SortingDirection.Ascending))
         item.DefaultLotCodeFormat.FormatSections.Sorting = sortCollection

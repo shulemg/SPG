@@ -76,12 +76,8 @@ Public Class ReceivingDetailsBLL
 
         Dim item As Items = Session.DefaultSession.GetObjectByKey(Of Items)(itemID.Value, True)
 
-        If item.RequiresLotCodes = True Then
-            If IsNothing(lot) OrElse lot = "" Then
-                Throw New ApplicationException("Item " & item.ItemCode & " requires a lot #" & vbNewLine & "You must provide the lot # received.")
-            ElseIf Not LotCodeValidator.VlidateByItem(item, lot) Then
-                Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
-            End If
+        If Not LotCodeValidator.ValidateByItem(item, lot, True) Then
+            Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
         End If
 
         Dim details As SPG.ReceivingDetailsDataTable = Adapter.GetDetailsByDetailID(detailID.Value)
