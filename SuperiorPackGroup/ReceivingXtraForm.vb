@@ -6,9 +6,11 @@ Imports DevExpress.Data.Filtering
 Imports DevExpress.XtraReports.UI
 Imports DevExpress.Xpo
 Imports DXDAL.SPGData
+Imports DevExpress.Xpo.DB
 
 Public Class ReceivingXtraForm
 
+    Private m_lastLPN As Integer = 0
     Private m_Receivings As ReceivingsBLL
     Private m_CustomerReceivings As CustomersBLL
     Private m_Shifts As ShiftsBLL
@@ -20,24 +22,24 @@ Public Class ReceivingXtraForm
     Private m_CurrentReceivingID As Nullable(Of Integer)
     Private ReadOnly m_ReceivingSession As Session = New Session(SPGDataLayer) With {.TrackPropertiesModifications = True, .OptimisticLockingReadBehavior = OptimisticLockingReadBehavior.MergeCollisionThrowException}
 
-    Private Sub ReceivingXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub ReceivingXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If Me.receivingSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
 
     End Sub
 
-    Private Sub ReceivingXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub ReceivingXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Me.Cursor = Cursors.WaitCursor
         m_Receivings = New ReceivingsBLL
@@ -56,14 +58,14 @@ Public Class ReceivingXtraForm
         BindReceivingsSearchGrid()
 
         shiftLookUpEdit.Properties.DataSource = m_Shifts.GetShifts
-        Me.shiftLookUpEdit.Properties.Columns.Add(New DevExpress.XtraEditors.Controls.LookUpColumnInfo)
+        Me.shiftLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
         Me.shiftLookUpEdit.Properties.Columns(0).FieldName = "ShiftName"
         Me.shiftLookUpEdit.Properties.Columns(0).Caption = "Shift"
         Me.shiftLookUpEdit.Properties.DisplayMember = "ShiftName"
         Me.shiftLookUpEdit.Properties.ValueMember = "ShiftID"
 
         carrierLookUpEdit.Properties.DataSource = m_Carriers.GetCarrierIDAndNames
-        Me.carrierLookUpEdit.Properties.Columns.Add(New DevExpress.XtraEditors.Controls.LookUpColumnInfo)
+        Me.carrierLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
         Me.carrierLookUpEdit.Properties.Columns(0).FieldName = "CarrierName"
         Me.carrierLookUpEdit.Properties.Columns(0).Caption = "Carrier Name"
         Me.carrierLookUpEdit.Properties.DisplayMember = "CarrierName"
@@ -74,7 +76,10 @@ Public Class ReceivingXtraForm
         Me.itemGridColumn.FieldName = "ReceivDetItemID"
         Me.quantityGridColumn.FieldName = "ReceivDetQty"
         Me.packagesGridColumn.FieldName = "intUnits"
+        Me.QtyPerPalletColumn.FieldName = "ReceivDetQtyPerPallet"
         Me.palletsGridColumn.FieldName = "sngPallets"
+        Me.ReceivDetLPNFromColumn.FieldName = "ReceivDetLPNFrom"
+        Me.ReceivDetLPNToColumn.FieldName = "ReceivDetLPNTo"
         Me.lotGridColumn.FieldName = "ReceivDetLot"
         expirationDateGridColumn.FieldName = "ExpirationDate"
 
@@ -88,7 +93,7 @@ Public Class ReceivingXtraForm
         Me.returnReasonGridColumn.FieldName = "Reason"
         returnExpirationDateGridColumn.FieldName = "ExpirationDate"
 
-        Utilities.MakeFormReadOnly(Me.generalXtraTabPage, True)
+        Utilities.MakeFormReadOnly(generalXtraTabPage, True)
         Me.receivingGridView.OptionsBehavior.Editable = False
         Utilities.MakeGridReadOnly(Me.returnsGridView, True)
         Me.receivingSearchGridControl.Enabled = True
@@ -192,7 +197,7 @@ Public Class ReceivingXtraForm
         End If
         locationLookUpEdit.EditValue = receiving.ReceivingLocation.Oid
 
-         'fill details tab
+        'fill details tab
         BindItemLookupEdit()
 
         BindReceivingGridControl(receivingID)
@@ -204,7 +209,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub BindReceivingGridControl(ByVal receivingID As Nullable(Of Integer))
+    Private Sub BindReceivingGridControl(ByVal receivingID As Integer?)
 
         If receivingID.HasValue = False Then
             receivingID = 0
@@ -219,7 +224,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub BindReturnsGridControl(ByVal receivingID As Nullable(Of Integer))
+    Private Sub BindReturnsGridControl(ByVal receivingID As Integer?)
 
         If receivingID.HasValue = False Then
             receivingID = 0
@@ -238,7 +243,7 @@ Public Class ReceivingXtraForm
 
         Dim customer As Integer? = CType(Me.customerLookUpEdit.EditValue, Integer?)
         If customer.HasValue Then
-            Me.receivingItemXPView.Filter = GroupOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal), _
+            Me.receivingItemXPView.Filter = GroupOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
                                                             New BinaryOperator("CustomerID", CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal),
                                                             New InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ReceivingSession))))
             Me.returnItemXPView.Filter = GroupOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
@@ -250,7 +255,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub receivingGridView_CustomUnboundColumnData(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles receivingGridView.CustomUnboundColumnData
+    Private Sub receivingGridView_CustomUnboundColumnData(ByVal sender As Object, ByVal e As Views.Base.CustomColumnDataEventArgs) Handles receivingGridView.CustomUnboundColumnData
 
         If Not IsDBNull(receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.itemGridColumn)) Then
             e.Value = ItemsBLL.GetDescriptionByItemID(CType(receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.itemGridColumn), Integer?))
@@ -258,7 +263,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub returnsGridView_CustomUnboundColumnData(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles returnsGridView.CustomUnboundColumnData
+    Private Sub returnsGridView_CustomUnboundColumnData(ByVal sender As Object, ByVal e As Views.Base.CustomColumnDataEventArgs) Handles returnsGridView.CustomUnboundColumnData
 
         If Not IsDBNull(returnsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.returnItemGridColumn)) Then
             e.Value = ItemsBLL.GetDescriptionByItemID(CType(returnsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.returnItemGridColumn), Integer?))
@@ -266,18 +271,19 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub receivingGridView_InitNewRow(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles receivingGridView.InitNewRow
+    Private Sub receivingGridView_InitNewRow(ByVal sender As Object, ByVal e As InitNewRowEventArgs) Handles receivingGridView.InitNewRow
 
         With Me.receivingGridView
             .SetRowCellValue(e.RowHandle, Me.receivingIDGridColumn, m_CurrentReceivingID)
             .SetRowCellValue(e.RowHandle, Me.quantityGridColumn, 0)
             .SetRowCellValue(e.RowHandle, Me.packagesGridColumn, 0)
             .SetRowCellValue(e.RowHandle, Me.palletsGridColumn, 0)
+            '.SetRowCellValue(e.RowHandle, Me.ReceivDetLPNFromColumn, GetNextLPN())
         End With
 
     End Sub
 
-    Private Sub returnsGridView_InitNewRow(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles returnsGridView.InitNewRow
+    Private Sub returnsGridView_InitNewRow(ByVal sender As Object, ByVal e As InitNewRowEventArgs) Handles returnsGridView.InitNewRow
 
         With Me.returnsGridView
             .SetRowCellValue(e.RowHandle, Me.ReceiveMainIDGridColumn, m_CurrentReceivingID)
@@ -302,11 +308,11 @@ Public Class ReceivingXtraForm
         End If
 
         Try
-            If m_Receivings.UpdateReceiving(m_CurrentReceivingID.Value, CType(Me.receiveDateEdit.EditValue, Date?), CType(Me.carrierLookUpEdit.EditValue, Integer?), _
-                                            CType(Me.customerLookUpEdit.EditValue, Integer?), Me.bolTextEdit.Text, CType(Me.vendorLookUpEdit.EditValue, Integer?), _
-                                            Utilities.ChangeType(Of Single?)(Me.skitsTextEdit.EditValue), Utilities.ChangeType(Of Single?)(Me.palletsTextEdit.EditValue), Me.poTextEdit.Text, _
+            If m_Receivings.UpdateReceiving(m_CurrentReceivingID.Value, CType(Me.receiveDateEdit.EditValue, Date?), CType(Me.carrierLookUpEdit.EditValue, Integer?),
+                                            CType(Me.customerLookUpEdit.EditValue, Integer?), Me.bolTextEdit.Text, CType(Me.vendorLookUpEdit.EditValue, Integer?),
+                                            Utilities.ChangeType(Of Single?)(Me.skitsTextEdit.EditValue), Utilities.ChangeType(Of Single?)(Me.palletsTextEdit.EditValue), Me.poTextEdit.Text,
                                             CType(Me.shiftLookUpEdit.EditValue, Integer?), trailerTextEdit.Text, sealTextEdit.Text, Convert.ToString(notesMemoEdit.EditValue), CType(unloadedByLookUpEdit.EditValue, Integer?),
-                                            CType(checkedByLookUpEdit.EditValue, Integer?), GetThreeWayYesNoValue(wheelsChockedComboBoxEdit.Text), CType(startTimeEdit.EditValue, DateTime?), CType(finishTimeEdit.EditValue, DateTime?),
+                                            CType(checkedByLookUpEdit.EditValue, Integer?), GetThreeWayYesNoValue(wheelsChockedComboBoxEdit.Text), CType(startTimeEdit.EditValue, Date?), CType(finishTimeEdit.EditValue, Date?),
                                             Utilities.ChangeType(Of Double?)(temperatureSpinEdit.EditValue), CType(physicalConditionLookUpEdit.EditValue, Integer?), CType(loadConditionLookUpEdit.EditValue, Integer?),
                                             GetThreeWayYesNoValue(foreignSubstanceComboBoxEdit.Text), GetThreeWayYesNoValue(insectActivityComboBoxEdit.Text), GetThreeWayYesNoValue(correctPalletsComboBoxEdit.Text),
                                             CType(locationLookUpEdit.EditValue, Integer)) <> True Then
@@ -343,64 +349,85 @@ Public Class ReceivingXtraForm
 
         shouldReturn = False
 
-        Try
-            receivingGridView.CloseEditor()
-            If receivingGridView.GroupCount > 0 Then
-                Dim i As Integer = -1
-                While receivingGridView.IsValidRowHandle(i)
-                    If receivingGridView.GetChildRowHandle(i, 0) > -1 Then
-                        For ci As Integer = receivingGridView.GetChildRowHandle(i, 0) To receivingGridView.GetChildRowCount(i) + receivingGridView.GetChildRowHandle(i, 0) - 1
+        With Me.receivingGridView
+            Try
+                receivingGridView.CloseEditor()
+                If receivingGridView.GroupCount > 0 Then
+                    Dim i As Integer = -1
+                    While receivingGridView.IsValidRowHandle(i)
+                        If receivingGridView.GetChildRowHandle(i, 0) > -1 Then
+                            For ci As Integer = receivingGridView.GetChildRowHandle(i, 0) To receivingGridView.GetChildRowCount(i) + receivingGridView.GetChildRowHandle(i, 0) - 1
+                                Dim lot As String
+
+                                If Not IsDBNull(receivingGridView.GetRowCellValue(ci, lotGridColumn)) Then
+                                    lot = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString
+                                Else
+                                    lot = String.Empty
+                                End If
+
+                                Dim id As Integer? = CType(receivingGridView.GetRowCellValue(ci, idGridColumn), Integer?)
+                                Dim item As Integer? = CType(receivingGridView.GetRowCellValue(ci, itemGridColumn), Integer?)
+                                Dim qty As Integer? = CType(receivingGridView.GetRowCellValue(ci, quantityGridColumn), Integer?)
+                                Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(ci, packagesGridColumn), Integer?)
+                                Dim plts As Single? = CType(receivingGridView.GetRowCellValue(ci, palletsGridColumn), Single?)
+                                Dim qtyperplt As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, QtyPerPalletColumn))
+                                Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
+                                Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
+                                Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn))
+
+                                If lpnfrm Is Nothing OrElse lpnto Is Nothing OrElse Convert.ToInt32(Math.Ceiling(plts.Value)) > ((lpnto.Value - lpnfrm.Value) + 1) Then
+                                    lpnfrm = GetNextLPN(Convert.ToInt32(Math.Ceiling(plts.Value)))
+                                    lpnto = (lpnfrm.Value - 1) + Convert.ToInt32(Math.Ceiling(plts.Value))
+                                End If
+
+                                If m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, plts, qtyperplt, lpnfrm, lpnto, expr) <> True Then
+                                    MessageBox.Show("The receiving details was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    shouldReturn = True : Return False
+                                End If
+                            Next
+                        End If
+                        i -= 1
+                    End While
+                Else
+                    'receivingGridView.SelectAll()
+                    For i As Integer = 0 To receivingGridView.RowCount - 1
+                        If receivingGridView.IsValidRowHandle(i) Then
                             Dim lot As String
 
-                            If Not IsDBNull(receivingGridView.GetRowCellValue(ci, lotGridColumn)) Then
-                                lot = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString
+                            If Not IsDBNull(receivingGridView.GetRowCellValue(i, lotGridColumn)) Then
+                                lot = receivingGridView.GetRowCellValue(i, lotGridColumn).ToString
                             Else
                                 lot = String.Empty
                             End If
 
-                            If m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, CType(receivingGridView.GetRowCellValue(ci, idGridColumn), Integer?), _
-                                                                         m_CurrentReceivingID.Value, _
-                                                                         CType(receivingGridView.GetRowCellValue(ci, itemGridColumn), Integer?), lot, _
-                                                                         CType(receivingGridView.GetRowCellValue(ci, quantityGridColumn), Integer?), _
-                                                                         CType(receivingGridView.GetRowCellValue(ci, packagesGridColumn), Integer?), _
-                                                                         CType(receivingGridView.GetRowCellValue(ci, palletsGridColumn), Single?),
-                                                                         Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn))) <> True Then
+
+                            Dim id As Integer? = CType(receivingGridView.GetRowCellValue(i, idGridColumn), Integer?)
+                                Dim item As Integer? = CType(receivingGridView.GetRowCellValue(i, itemGridColumn), Integer?)
+                                Dim qty As Integer? = CType(receivingGridView.GetRowCellValue(i, quantityGridColumn), Integer?)
+                                Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(i, packagesGridColumn), Integer?)
+                                Dim plts As Single? = CType(receivingGridView.GetRowCellValue(i, palletsGridColumn), Single?)
+                                Dim qtyperplt As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(i, QtyPerPalletColumn))
+                                Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(i, ReceivDetLPNFromColumn))
+                                Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(i, ReceivDetLPNToColumn))
+                            Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(i, expirationDateGridColumn))
+
+                            If lpnfrm Is Nothing OrElse lpnto Is Nothing OrElse Convert.ToInt32(Math.Ceiling(plts.Value)) > ((lpnto.Value - lpnfrm.Value) + 1) Then
+                                lpnfrm = GetNextLPN(Convert.ToInt32(Math.Ceiling(plts.Value)))
+                                lpnto = (lpnfrm.Value - 1) + Convert.ToInt32(Math.Ceiling(plts.Value))
+                            End If
+
+                            If m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, plts, qtyperplt, lpnfrm, lpnto, expr) <> True Then
                                 MessageBox.Show("The receiving details was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                 shouldReturn = True : Return False
                             End If
-                        Next
-                    End If
-                    i -= 1
-                End While
-            Else
-                'receivingGridView.SelectAll()
-                For i As Integer = 0 To receivingGridView.RowCount - 1
-                    If receivingGridView.IsValidRowHandle(i) Then
-                        Dim lot As String
-
-                        If Not IsDBNull(receivingGridView.GetRowCellValue(i, lotGridColumn)) Then
-                            lot = receivingGridView.GetRowCellValue(i, lotGridColumn).ToString
-                        Else
-                            lot = String.Empty
                         End If
-
-                        If m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, CType(receivingGridView.GetRowCellValue(i, idGridColumn), Integer?), _
-                                                                     m_CurrentReceivingID.Value, _
-                                                                     CType(receivingGridView.GetRowCellValue(i, itemGridColumn), Integer?), lot, _
-                                                                     CType(receivingGridView.GetRowCellValue(i, quantityGridColumn), Integer?), _
-                                                                     CType(receivingGridView.GetRowCellValue(i, packagesGridColumn), Integer?), _
-                                                                     CType(receivingGridView.GetRowCellValue(i, palletsGridColumn), Single?),
-                                                                     Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(i, expirationDateGridColumn))) <> True Then
-                            MessageBox.Show("The receiving details was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            shouldReturn = True : Return False
-                        End If
-                    End If
-                Next
-            End If
-        Catch ex As ApplicationException
-            MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            shouldReturn = True : Return False
-        End Try
+                    Next
+                End If
+            Catch ex As ApplicationException
+                MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                shouldReturn = True : Return False
+            End Try
+        End With
 
         Return False
 
@@ -484,8 +511,8 @@ Public Class ReceivingXtraForm
 
     End Function
 
-    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, _
-                                ByVal e As System.EventArgs)
+    Private Sub saveSimpleButton_Click(ByVal sender As Object,
+                                ByVal e As EventArgs)
 
         SaveChanges()
 
@@ -501,13 +528,13 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub skitsTextEdit_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles skitsTextEdit.Validated
+    Private Sub skitsTextEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles skitsTextEdit.Validated
 
         UpdateTotalPallets()
 
     End Sub
 
-    Private Sub receivingGridView_CellValueChanged(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles receivingGridView.CellValueChanged
+    Private Sub receivingGridView_CellValueChanged(ByVal sender As Object, ByVal e As Views.Base.CellValueChangedEventArgs) Handles receivingGridView.CellValueChanged
 
         With Me.receivingGridView
             If IsNothing(.GetFocusedRowCellValue(Me.itemGridColumn)) OrElse IsDBNull(.GetFocusedRowCellValue(Me.itemGridColumn)) Then Exit Sub
@@ -518,6 +545,10 @@ Public Class ReceivingXtraForm
                     End If
                 Case "quantityGridColumn"
                     If Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) > 0 Then
+                        UpdatePallets()
+                    End If
+                Case QtyPerPalletColumn.Name
+                    If Not IsDBNull(.GetFocusedRowCellValue(Me.QtyPerPalletColumn)) AndAlso CType(.GetFocusedRowCellValue(Me.QtyPerPalletColumn), Integer) > 0 AndAlso Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) > 0 Then
                         UpdatePallets()
                     End If
                 Case packagesGridColumn.Name
@@ -531,7 +562,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub returnsGridView_CellValueChanged(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles returnsGridView.CellValueChanged
+    Private Sub returnsGridView_CellValueChanged(ByVal sender As Object, ByVal e As Views.Base.CellValueChangedEventArgs) Handles returnsGridView.CellValueChanged
 
         With Me.returnsGridView
             If IsNothing(.GetFocusedRowCellValue(Me.returnItemGridColumn)) OrElse IsDBNull(.GetFocusedRowCellValue(Me.returnItemGridColumn)) Then Exit Sub
@@ -549,14 +580,14 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub customerLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles customerLookUpEdit.Validated
+    Private Sub customerLookUpEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles customerLookUpEdit.Validated
 
         BindItemLookupEdit()
 
     End Sub
 
-    Private Sub FilterLookUpEditValidated(ByVal sender As System.Object, _
-                                          ByVal e As System.EventArgs)
+    Private Sub FilterLookUpEditValidated(ByVal sender As Object,
+                                          ByVal e As EventArgs)
 
         BindReceivingsSearchGrid()
 
@@ -566,14 +597,16 @@ Public Class ReceivingXtraForm
 
         With Me.receivingGridView
             Dim units As Double
-            Dim pallets As Single
-            units = ItemsBLL.GetCaseQuantity(CType(.GetRowCellValue(.FocusedRowHandle, Me.itemGridColumn), Integer))
+            Dim itemId As Integer
+
+            itemId = CType(.GetRowCellValue(.FocusedRowHandle, Me.itemGridColumn), Integer)
+            units = ItemsBLL.GetCaseQuantity(itemId)
 
             If Convert.ToDouble(.GetFocusedRowCellValue(packagesGridColumn)) < 1 Then
                 If units <> 0 Then
                     .SetFocusedRowCellValue(Me.packagesGridColumn, Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) * units)
                 Else
-                    .SetFocusedRowCellValue(Me.packagesGridColumn, 0)
+                    .SetFocusedRowCellValue(Me.packagesGridColumn, Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)))
                 End If
             End If
 
@@ -581,16 +614,17 @@ Public Class ReceivingXtraForm
             If Convert.ToDouble(.GetFocusedRowCellValue(quantityGridColumn)) = 0 Then
                 If units <> 0 Then
                     .SetFocusedRowCellValue(quantityGridColumn, Math.Ceiling(Convert.ToDouble(.GetFocusedRowCellValue(packagesGridColumn)) / units))
+                Else
+                    .SetFocusedRowCellValue(quantityGridColumn, Math.Ceiling(Convert.ToDouble(.GetFocusedRowCellValue(packagesGridColumn))))
                 End If
             End If
 
-            pallets = m_Items.GetCasesPerPallet(CType(.GetFocusedRowCellValue(Me.itemGridColumn), Integer))
-
-            If pallets <> 0 Then
-                .SetFocusedRowCellValue(Me.palletsGridColumn, Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) / pallets)
-            Else
-                .SetFocusedRowCellValue(Me.palletsGridColumn, 0)
+            If IsDBNull(.GetFocusedRowCellValue(Me.QtyPerPalletColumn)) OrElse CType(.GetFocusedRowCellValue(Me.QtyPerPalletColumn), Integer) = 0 Then
+                .SetFocusedRowCellValue(Me.QtyPerPalletColumn, Math.Max(m_Items.GetCasesPerPallet(itemId), 1))
             End If
+
+            .SetFocusedRowCellValue(Me.palletsGridColumn, Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) / CType(.GetFocusedRowCellValue(Me.QtyPerPalletColumn), Integer))
+
         End With
 
     End Sub
@@ -621,7 +655,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub receivingSearchGridView_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles receivingSearchGridView.Click
+    Private Sub receivingSearchGridView_Click(ByVal sender As Object, ByVal e As EventArgs) Handles receivingSearchGridView.Click
 
         If (Me.receivingSearchGridView.CalcHitInfo(Me.receivingSearchGridControl.PointToClient(Control.MousePosition)).HitTest = GridHitTest.RowCell) Then
             Me.BindReceivingsControls(CType(Me.receivingSearchGridView.GetFocusedRowCellValue(Me.receivingIDSearchGridColumn), Integer))
@@ -677,7 +711,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub editBarButtonItem_ItemClick(ByVal sender As Object, _
+    Private Sub editBarButtonItem_ItemClick(ByVal sender As Object,
                                             ByVal e As DevExpress.XtraBars.ItemClickEventArgs) _
             Handles editBarButtonItem.ItemClick
 
@@ -702,7 +736,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub cancelBarButtonItem_ItemClick(ByVal sender As Object, _
+    Private Sub cancelBarButtonItem_ItemClick(ByVal sender As Object,
                                               ByVal e As DevExpress.XtraBars.ItemClickEventArgs) _
             Handles cancelBarButtonItem.ItemClick
 
@@ -797,12 +831,12 @@ Public Class ReceivingXtraForm
     Private Sub FilterAssignedCustomers()
 
         Me.receivingSearchXPView.Criteria = New InOperator(Receiving.Fields.ReceivCustID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession))
-        Me.customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
+        Me.customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)))
-        Me.receivingItemXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)), _
+        Me.receivingItemXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"RM", "IG"}))
-        Me.returnItemXPView.Criteria = GroupOperator.And(GroupOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)), _
-                                                                          New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal)), _
+        Me.returnItemXPView.Criteria = GroupOperator.And(GroupOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
+                                                                          New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal)),
                                                                   New BinaryOperator(Items.Fields.ItemType.PropertyName, "FG", BinaryOperatorType.Equal))
 
     End Sub
@@ -817,7 +851,7 @@ Public Class ReceivingXtraForm
 
     Private m_TotalPallets As Double = 0
 
-    Private Sub receivingGridView_CustomSummaryCalculate(ByVal sender As System.Object, ByVal e As DevExpress.Data.CustomSummaryEventArgs) Handles receivingGridView.CustomSummaryCalculate
+    Private Sub receivingGridView_CustomSummaryCalculate(ByVal sender As Object, ByVal e As DevExpress.Data.CustomSummaryEventArgs) Handles receivingGridView.CustomSummaryCalculate
 
         Select Case e.SummaryProcess
 
@@ -836,7 +870,7 @@ Public Class ReceivingXtraForm
 
     Private m_TotalReturnedPallets As Double = 0
 
-    Private Sub returnsGridView_CustomSummaryCalculate(ByVal sender As System.Object, ByVal e As DevExpress.Data.CustomSummaryEventArgs) Handles returnsGridView.CustomSummaryCalculate
+    Private Sub returnsGridView_CustomSummaryCalculate(ByVal sender As Object, ByVal e As DevExpress.Data.CustomSummaryEventArgs) Handles returnsGridView.CustomSummaryCalculate
 
         Select Case e.SummaryProcess
 
@@ -853,7 +887,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub deleteReturnRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles deleteReturnRepositoryItemButtonEdit.Click
+    Private Sub deleteReturnRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles deleteReturnRepositoryItemButtonEdit.Click
 
         If MessageBox.Show("Are you sure you want to delete this return.", "Delete Return", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) = Windows.Forms.DialogResult.No Then
             Exit Sub
@@ -874,7 +908,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub delRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles delRepositoryItemButtonEdit.Click
+    Private Sub delRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles delRepositoryItemButtonEdit.Click
 
         If MessageBox.Show("Are you sure you want to delete this receiving detail.", "Delete Receiving Detail", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) = Windows.Forms.DialogResult.No Then
             Exit Sub
@@ -895,7 +929,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub itemRepositoryItemLookUpEdit_Closed(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ClosedEventArgs) Handles itemRepositoryItemLookUpEdit.Closed, returnItemRepositoryItemLookUpEdit.Closed
+    Private Sub itemRepositoryItemLookUpEdit_Closed(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.Controls.ClosedEventArgs) Handles itemRepositoryItemLookUpEdit.Closed, returnItemRepositoryItemLookUpEdit.Closed
 
         BindItemLookupEdit()
 
@@ -909,7 +943,7 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub itemRepositoryItemLookUpEdit_Enter(sender As Object, e As System.EventArgs) Handles itemRepositoryItemLookUpEdit.Enter, returnItemRepositoryItemLookUpEdit.Enter
+    Private Sub itemRepositoryItemLookUpEdit_Enter(sender As Object, e As EventArgs) Handles itemRepositoryItemLookUpEdit.Enter, returnItemRepositoryItemLookUpEdit.Enter
 
         receivingItemXPView.Filter = GroupOperator.And(receivingItemXPView.Filter, New BinaryOperator("Inactive", False))
         returnItemXPView.Filter = GroupOperator.And(returnItemXPView.Filter, New BinaryOperator("Inactive", False))
@@ -1050,5 +1084,52 @@ Public Class ReceivingXtraForm
         locationXpView.Session = m_ReceivingSession
 
     End Sub
+
+    Private Function GetNextLPN(LPNcount As Integer) As Integer
+        Dim nextLPN As Integer = 0
+        Dim customer As Customers = Session.DefaultSession.GetObjectByKey(Of Customers)(7)
+
+        customer.Reload()
+        If customer.NextLPNNumber > 0 Then
+            nextLPN = customer.NextLPNNumber
+            customer.NextLPNNumber += LPNcount
+            customer.Save()
+        Else
+            If customer.FirstLPNNumber.HasValue Then
+                nextLPN = customer.FirstLPNNumber.Value
+                customer.NextLPNNumber = nextLPN + LPNcount
+                customer.Save()
+            End If
+        End If
+
+        If nextLPN > customer.LastLPNNumber Then
+            MessageBox.Show("You ran out of LPN numbers, you must provide a different range of numbers before creating a new LPN number")
+            nextLPN = 0
+        End If
+
+        If nextLPN = customer.LastLPNNumber Then
+            MessageBox.Show("You used now your last LPN number, please provide a different range of numbers before creating a new LPN number")
+        End If
+
+        Return nextLPN
+
+        'Dim sort As New SortProperty("ReceivDetLPNTo", SortingDirection.Descending)
+
+        'Dim collection As New XPCollection(GetType(ReceivingDetail), Nothing, sort)
+
+        'collection.TopReturnedObjects = 1
+
+        'If collection.Count > 0 AndAlso CType(collection(0), ReceivingDetail).ReceivDetLPNTo > 1000 Then ' SQL Server is queried at this point
+
+        '    Dim ReceivingDetail As ReceivingDetail = CType(collection(0), ReceivingDetail)
+        '    Return Math.Max(m_lastLPN, ReceivingDetail.ReceivDetLPNTo.Value) + 1
+
+        'Else
+
+        '    Return 1001
+
+        'End If
+
+    End Function
 
 End Class

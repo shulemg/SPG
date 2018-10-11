@@ -79,13 +79,23 @@ Namespace SPGData
             End Set
         End Property
 
-        Dim fFullLpnNumber As String
-        Public Property FullLpnNumber As String
+        Dim fFullLpnNumber As Integer?
+        Public Property FullLpnNumber As Integer?
             Get
                 Return fFullLpnNumber
             End Get
+            Set(value As Integer?)
+                SetPropertyValue(Of Integer?)("FullLpnNumber", fFullLpnNumber, value)
+            End Set
+        End Property
+
+        Dim fNote As String
+        Public Property Note As String
+            Get
+                Return fNote
+            End Get
             Set(value As String)
-                SetPropertyValue(Of String)("FullLpnNumber", fFullLpnNumber, value)
+                SetPropertyValue(Of String)("Note", fNote, value)
             End Set
         End Property
 
@@ -152,6 +162,11 @@ Namespace SPGData
             Public ReadOnly Property FullLpnNumber() As OperandProperty
                 Get
                     Return New OperandProperty(GetNestedName("FullLpnNumber"))
+                End Get
+            End Property
+            Public ReadOnly Property Note() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("Note"))
                 End Get
             End Property
         End Class

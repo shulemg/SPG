@@ -38,6 +38,16 @@ Namespace SPGData
             End Set
         End Property
 
+        Private fLPNNumber As Integer?
+        Public Property LPNNumber As Integer?
+            Get
+                Return fLPNNumber
+            End Get
+            Set(value As Integer?)
+                SetPropertyValue(Of Integer?)("LPNNumber", fLPNNumber, value)
+            End Set
+        End Property
+
         Dim fQuantityOnHand As Single
         Public Property QuantityOnHand As Single
             Get
@@ -86,6 +96,11 @@ Namespace SPGData
             Public ReadOnly Property LocationInventoryLot() As OperandProperty
                 Get
                     Return New OperandProperty(GetNestedName("LocationInventoryLot"))
+                End Get
+            End Property
+            Public ReadOnly Property LPNNumber() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("LPNNumber"))
                 End Get
             End Property
             Public ReadOnly Property QuantityOnHand() As OperandProperty

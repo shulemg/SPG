@@ -9,7 +9,7 @@ Public Class LotCodeValidator
         Dim sectionSettings As LotCodeSectionSettings
         Dim sectionValue As String, sectionValueNum As Integer, valuePosition As Integer = 0
 
-        If Not item.RequiresLotCodes Then Return True
+        If Not If(item.RequiresLotCodes, False) Then Return True
 
         If IsNothing(lot) OrElse lot = "" Then Return False
 

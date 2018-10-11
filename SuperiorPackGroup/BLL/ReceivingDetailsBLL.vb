@@ -62,9 +62,9 @@ Public Class ReceivingDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateReceivingDetails(ByVal session As Session, ByVal detailID As Nullable(Of Integer), ByVal receivingID As Integer, ByVal itemID As Nullable(Of Integer), _
-            ByVal lot As String, ByVal quantity As Nullable(Of Integer), ByVal units As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), ByVal expirationDate As Date?) As Boolean
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
+    Public Function UpdateReceivingDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal receivingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?,
+             ByVal units As Integer?, ByVal pallets As Single?, ByVal QtyPerPallet As Integer?, ByVal LPNFrom As Integer?, ByVal LPNTo As Integer?, ByVal expirationDate As Date?) As Boolean
 
         If Not itemID.HasValue Then
             Throw New ApplicationException("You must provide receiving item.")
@@ -84,7 +84,7 @@ Public Class ReceivingDetailsBLL
 
         If details.Count = 0 Then
             'It is a new Detail
-            Return Me.InsertDetails(session, receivingID, itemID, lot, quantity, units, pallets, expirationDate)
+            Return Me.InsertDetails(session, receivingID, itemID, lot, quantity, units, pallets, QtyPerPallet, LPNFrom, LPNTo, expirationDate)
         End If
 
         Dim receivingDetail As SPG.ReceivingDetailsRow = details(0)
@@ -93,6 +93,9 @@ Public Class ReceivingDetailsBLL
 
         Dim originalRecord As Object() = Nothing
         originalRecord = receivingDetail.ItemArray
+
+        Dim originalDetail As SPG.ReceivingDetailsRow
+        originalDetail = receivingDetail
 
         originalItem = receivingDetail.ReceivDetItemID
         If originalItem <> itemID.Value Then
@@ -114,6 +117,21 @@ Public Class ReceivingDetailsBLL
         Else
             receivingDetail.sngPallets = pallets.Value
         End If
+        If Not QtyPerPallet.HasValue Then
+            receivingDetail.SetReceivDetQtyPerPalletNull()
+        Else
+            receivingDetail.ReceivDetQtyPerPallet = QtyPerPallet.Value
+        End If
+        If Not LPNFrom.HasValue Then
+            receivingDetail.SetReceivDetLPNFromNull()
+        Else
+            receivingDetail.ReceivDetLPNFrom = LPNFrom.Value
+        End If
+        If Not LPNTo.HasValue Then
+            receivingDetail.SetReceivDetLPNToNull()
+        Else
+            receivingDetail.ReceivDetLPNTo = LPNTo.Value
+        End If
         If expirationDate.HasValue Then
             receivingDetail.ExpirationDate = expirationDate.Value
         Else
@@ -127,11 +145,30 @@ Public Class ReceivingDetailsBLL
         Dim rowsAffected As Integer = Adapter.Update(receivingDetail)
 
         If rowsAffected = 1 Then
+            Dim LPN As Integer
+            Dim transferredQty As Integer
             Dim items As ItemsBLL = New ItemsBLL
             Dim locationID As Integer = session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid
             If itemChanged = True Then
-                items.UpdateStock(session, originalItem, originalQuantity * -1, False, locationID, lot)
-                items.UpdateStock(session, itemID.Value, units.Value, False, locationID, lot)
+                If originalDetail.ReceivDetQtyPerPallet > 0 AndAlso originalDetail.ReceivDetLPNFrom > 0 AndAlso originalDetail.ReceivDetLPNTo > 0 AndAlso originalDetail.sngPallets > 0 AndAlso originalDetail.ReceivDetLot.Length > 0 Then
+                    transferredQty = 0
+                    LPN = If(LPNFrom, 0)
+                    For i As Integer = 1 To CInt(Math.Ceiling(If(pallets, 1)))
+                        items.UpdateStock(session, originalItem, Nothing, Convert.ToSingle(If((transferredQty + originalDetail.ReceivDetQtyPerPallet) > quantity, quantity - transferredQty, originalDetail.ReceivDetQtyPerPallet) * -1), False, locationID, lot, LPN)
+                        LPN = If(LPNFrom, 0) + i
+                        transferredQty += originalDetail.ReceivDetQtyPerPallet
+                    Next
+                Else
+                    items.UpdateStock(session, originalItem, originalQuantity * -1, False, locationID)
+                End If
+
+                transferredQty = 0
+                LPN = If(LPNFrom, 0)
+                For i As Integer = 1 To CInt(Math.Ceiling(If(pallets, 1)))
+                    items.UpdateStock(session, itemID.Value, If(transferredQty + If(QtyPerPallet, 0) > quantity.Value, quantity.Value - transferredQty, QtyPerPallet.Value), False, locationID, lot, LPN)
+                    LPN = If(LPNFrom, 0) + i
+                    transferredQty += If(QtyPerPallet, 0)
+                Next
             Else
                 If newQuantity <> 0 Then
                     items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID, lot)
@@ -143,9 +180,9 @@ Public Class ReceivingDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertDetails(ByVal session As Session, ByVal receivingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer), _
-            ByVal units As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), ByVal expirationDate As Date?) As Boolean
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
+    Public Function InsertDetails(ByVal session As Session, ByVal receivingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer),
+            ByVal units As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), ByVal QtyPerPallet As Integer?, ByVal LPNFrom As Integer?, ByVal LPNTo As Integer?, ByVal expirationDate As Date?) As Boolean
 
         Dim details As SPG.ReceivingDetailsDataTable = New SPG.ReceivingDetailsDataTable
         Dim receivingDetail As SPG.ReceivingDetailsRow = details.NewReceivingDetailsRow()
@@ -164,6 +201,22 @@ Public Class ReceivingDetailsBLL
         Else
             receivingDetail.sngPallets = pallets.Value
         End If
+        If Not QtyPerPallet.HasValue Then
+            receivingDetail.SetReceivDetQtyPerPalletNull()
+        Else
+            receivingDetail.ReceivDetQtyPerPallet = QtyPerPallet.Value
+        End If
+        If Not LPNFrom.HasValue Then
+            receivingDetail.SetReceivDetLPNFromNull()
+        Else
+            receivingDetail.ReceivDetLPNFrom = LPNFrom.Value
+        End If
+        If Not LPNTo.HasValue Then
+            receivingDetail.SetReceivDetLPNToNull()
+        Else
+            receivingDetail.ReceivDetLPNTo = LPNTo.Value
+        End If
+
         If expirationDate.HasValue Then
             receivingDetail.ExpirationDate = expirationDate.Value
         Else
@@ -172,9 +225,18 @@ Public Class ReceivingDetailsBLL
         details.AddReceivingDetailsRow(receivingDetail)
         Dim rowsAffected As Integer = Adapter.Update(details)
 
+        Dim LPN As Integer
+        Dim transferredQty As Integer
+        Dim items As ItemsBLL = New ItemsBLL
+
         If rowsAffected = 1 Then
-            Dim items As ItemsBLL = New ItemsBLL
-            items.UpdateStock(session, itemID.Value, units.Value, False, session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid)
+            transferredQty = 0
+            LPN = If(LPNFrom, 0)
+            For i As Integer = 1 To CInt(Math.Ceiling(If(pallets, 1)))
+                items.UpdateStock(session, itemID.Value, If(transferredQty + If(QtyPerPallet, 0) > quantity.Value, quantity.Value - transferredQty, QtyPerPallet.Value), False, session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid, lot, LPN)
+                LPN = If(LPNFrom, 0) + i
+                transferredQty += If(QtyPerPallet, 0)
+            Next
         End If
 
         Return rowsAffected = 1
@@ -186,23 +248,41 @@ Public Class ReceivingDetailsBLL
 
         Dim details As SPG.ReceivingDetailsDataTable = Adapter.GetDetailsByDetailID(detailID)
         Dim rowsAffected As Integer = 0
-        Dim itemID, quantity, locationID As Integer
+        Dim itemID, quantity, locationID, transferredQty, lpn As Integer
+        Dim qtyperplt, lpnfrom, lpnto As Integer?
+        Dim pallets As Single?
+        Dim lot As String
 
         If details.Count = 1 Then
             Dim receivingDetail As SPG.ReceivingDetailsRow = CType(details.Rows(0), SPG.ReceivingDetailsRow)
             itemID = receivingDetail.ReceivDetItemID
             quantity = receivingDetail.intUnits
             locationID = session.GetObjectByKey(Of Receiving)(receivingDetail.ReceivMainID).ReceivingLocation.Oid
+            pallets = receivingDetail.sngPallets
+            qtyperplt = receivingDetail.ReceivDetQtyPerPallet
+            lpnfrom = receivingDetail.ReceivDetLPNFrom
+            lpnto = receivingDetail.ReceivDetLPNTo
+            lot = receivingDetail.ReceivDetLot
             rowsAffected = Adapter.Delete(detailID, receivingDetail.ts)
         End If
 
         If rowsAffected = 1 Then
             Dim items As ItemsBLL = New ItemsBLL
-            items.UpdateStock(session, itemID, quantity * -1, False, locationID)
+            If qtyperplt.HasValue AndAlso lpnfrom.HasValue AndAlso lpnto.HasValue AndAlso pallets.HasValue AndAlso lot?.Length > 0 Then
+                transferredQty = 0
+                lpn = If(lpnfrom, 0)
+                For i As Integer = 1 To CInt(Math.Ceiling(If(pallets, 1)))
+                    items.UpdateStock(session, itemID, If(transferredQty + If(qtyperplt, 0) > quantity, quantity - transferredQty, qtyperplt.Value) * -1, False, locationID, lot, lpn)
+                    lpn = If(lpnfrom, 0) + i
+                    transferredQty += If(qtyperplt, 0)
+                Next
+            Else
+                items.UpdateStock(session, itemID, quantity * -1, False, locationID)
+            End If
         End If
 
-        'Return true if precisely one row was deleted, otherwise return false.
-        Return rowsAffected = 1
+            'Return true if precisely one row was deleted, otherwise return false.
+            Return rowsAffected = 1
 
     End Function
 

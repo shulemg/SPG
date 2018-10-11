@@ -673,6 +673,7 @@ Partial Class LocationTransfersXtraForm
         Me.fullLpnNumberGridColumn.Caption = "LPN Number"
         Me.fullLpnNumberGridColumn.FieldName = "FullLpnNumber"
         Me.fullLpnNumberGridColumn.Name = "fullLpnNumberGridColumn"
+        Me.fullLpnNumberGridColumn.UnboundType = DevExpress.Data.UnboundColumnType.[Integer]
         Me.fullLpnNumberGridColumn.Visible = True
         Me.fullLpnNumberGridColumn.VisibleIndex = 2
         '

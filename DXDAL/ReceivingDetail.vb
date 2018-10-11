@@ -46,6 +46,33 @@ Namespace SPGData
                 SetPropertyValue(Of String)("ReceivDetLot", fReceivDetLot, value)
             End Set
         End Property
+        Dim fReceivDetQtyPerPallet As Integer?
+        Public Property ReceivDetQtyPerPallet() As Integer?
+            Get
+                Return fReceivDetQtyPerPallet
+            End Get
+            Set(ByVal value As Integer?)
+                SetPropertyValue(Of Integer?)("ReceivDetQtyPerPallet", fReceivDetQtyPerPallet, value)
+            End Set
+        End Property
+        Dim fReceivDetLPNFrom As Integer?
+        Public Property ReceivDetLPNFrom() As Integer?
+            Get
+                Return fReceivDetLPNFrom
+            End Get
+            Set(ByVal value As Integer?)
+                SetPropertyValue(Of Integer?)("ReceivDetLPNFrom", fReceivDetLPNFrom, value)
+            End Set
+        End Property
+        Dim fReceivDetLPNTo As Integer?
+        Public Property ReceivDetLPNTo() As Integer?
+            Get
+                Return fReceivDetLPNTo
+            End Get
+            Set(ByVal value As Integer?)
+                SetPropertyValue(Of Integer?)("ReceivDetLPNTo", fReceivDetLPNTo, value)
+            End Set
+        End Property
         Dim fReceivDetQty As Integer
         Public Property ReceivDetQty() As Integer
             Get
@@ -82,6 +109,7 @@ Namespace SPGData
                 SetPropertyValue(Of Date)("ExpirationDate", fExpirationDate, value)
             End Set
         End Property
+
         Public Sub New(ByVal session As Session)
             MyBase.New(session)
         End Sub
@@ -122,17 +150,32 @@ Public Shadows Class FieldsClass
                 Return New DevExpress.Data.Filtering.OperandProperty(GetNestedName("ReceivDetLot"))
             End Get
         End Property
-        Public ReadOnly Property ReceivDetQty() As OperandProperty
-            Get
-                Return New OperandProperty(GetNestedName("ReceivDetQty"))
-            End Get
-        End Property
-        Public ReadOnly Property intUnits() As OperandProperty
-            Get
-                Return New OperandProperty(GetNestedName("intUnits"))
-            End Get
-        End Property
-        Public ReadOnly Property sngPallets() As OperandProperty
+            Public ReadOnly Property ReceivDetQtyPerPallet() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("ReceivDetQtyPerPallet"))
+                End Get
+            End Property
+            Public ReadOnly Property ReceivDetLPNFrom() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("ReceivDetLPNFrom"))
+                End Get
+            End Property
+            Public ReadOnly Property ReceivDetLPNTo() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("ReceivDetLPNTo"))
+                End Get
+            End Property
+            Public ReadOnly Property ReceivDetQty() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("ReceivDetQty"))
+                End Get
+            End Property
+            Public ReadOnly Property intUnits() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("intUnits"))
+                End Get
+            End Property
+            Public ReadOnly Property sngPallets() As OperandProperty
             Get
                 Return New OperandProperty(GetNestedName("sngPallets"))
             End Get

@@ -104,7 +104,10 @@ Partial Class ReceivingXtraForm
         Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.quantityGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.packagesGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.QtyPerPalletColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.palletsGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ReceivDetLPNFromColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ReceivDetLPNToColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.delGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.delRepositoryItemButtonEdit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.returnsXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
@@ -267,7 +270,7 @@ Partial Class ReceivingXtraForm
         Me.locationLookUpEdit.MenuManager = Me.BarManager1
         Me.locationLookUpEdit.Name = "locationLookUpEdit"
         Me.locationLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.locationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.locationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.locationLookUpEdit.Properties.DataSource = Me.locationXpView
         Me.locationLookUpEdit.Properties.DisplayMember = "LocationCode"
         Me.locationLookUpEdit.Properties.NullText = "[Select A Location]"
@@ -362,6 +365,7 @@ Partial Class ReceivingXtraForm
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Size = New System.Drawing.Size(797, 49)
         '
         'barDockControlBottom
@@ -369,6 +373,7 @@ Partial Class ReceivingXtraForm
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 491)
+        Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(797, 23)
         '
         'barDockControlLeft
@@ -376,6 +381,7 @@ Partial Class ReceivingXtraForm
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Manager = Me.BarManager1
         Me.barDockControlLeft.Size = New System.Drawing.Size(0, 442)
         '
         'barDockControlRight
@@ -383,6 +389,7 @@ Partial Class ReceivingXtraForm
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(797, 49)
+        Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 442)
         '
         'locationXpView
@@ -486,7 +493,7 @@ Partial Class ReceivingXtraForm
         Me.loadConditionLookUpEdit.Name = "loadConditionLookUpEdit"
         Me.loadConditionLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.loadConditionLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.loadConditionLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Condition", "Condition", 55, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.loadConditionLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Condition", "Condition", 55, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.loadConditionLookUpEdit.Properties.DataSource = Me.shipmentConditionXpView
         Me.loadConditionLookUpEdit.Properties.DisplayMember = "Condition"
         Me.loadConditionLookUpEdit.Properties.NullText = "[Select Condition]"
@@ -506,7 +513,7 @@ Partial Class ReceivingXtraForm
         Me.physicalConditionLookUpEdit.Name = "physicalConditionLookUpEdit"
         Me.physicalConditionLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.physicalConditionLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.physicalConditionLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Condition", "Condition", 55, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.physicalConditionLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Condition", "Condition", 55, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.physicalConditionLookUpEdit.Properties.DataSource = Me.shipmentConditionXpView
         Me.physicalConditionLookUpEdit.Properties.DisplayMember = "Condition"
         Me.physicalConditionLookUpEdit.Properties.NullText = "[Select Condition]"
@@ -596,7 +603,7 @@ Partial Class ReceivingXtraForm
         Me.checkedByLookUpEdit.Name = "checkedByLookUpEdit"
         Me.checkedByLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.checkedByLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.checkedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.checkedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.checkedByLookUpEdit.Properties.DataSource = Me.employeeXpView
         Me.checkedByLookUpEdit.Properties.DisplayMember = "Employee Name"
         Me.checkedByLookUpEdit.Properties.NullText = "[Select Employee Name]"
@@ -632,7 +639,7 @@ Partial Class ReceivingXtraForm
         Me.unloadedByLookUpEdit.Name = "unloadedByLookUpEdit"
         Me.unloadedByLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
         Me.unloadedByLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.unloadedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.unloadedByLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("recordID", "record ID", 68, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Employee Name", "Employee Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.unloadedByLookUpEdit.Properties.DataSource = Me.employeeXpView
         Me.unloadedByLookUpEdit.Properties.DisplayMember = "Employee Name"
         Me.unloadedByLookUpEdit.Properties.NullText = "[Select Employee Name]"
@@ -672,14 +679,13 @@ Partial Class ReceivingXtraForm
         Me.notesMemoEdit.Name = "notesMemoEdit"
         Me.notesMemoEdit.Size = New System.Drawing.Size(352, 96)
         Me.notesMemoEdit.TabIndex = 23
-        Me.notesMemoEdit.UseOptimizedRendering = True
         '
         'customerLookUpEdit
         '
         Me.customerLookUpEdit.Location = New System.Drawing.Point(134, 14)
         Me.customerLookUpEdit.Name = "customerLookUpEdit"
         Me.customerLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.customerLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Inactive", "Inactive", 49, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near)})
+        Me.customerLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Inactive", "Inactive", 49, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.customerLookUpEdit.Properties.DataSource = Me.customersXPView
         Me.customerLookUpEdit.Properties.DisplayMember = "CustomerName"
         Me.customerLookUpEdit.Properties.NullText = "[Select A Customer]"
@@ -878,7 +884,7 @@ Partial Class ReceivingXtraForm
         '
         'receivingGridView
         '
-        Me.receivingGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.idGridColumn, Me.receivingIDGridColumn, Me.itemGridColumn, Me.descriptionGridColumn, Me.lotGridColumn, Me.expirationDateGridColumn, Me.quantityGridColumn, Me.packagesGridColumn, Me.palletsGridColumn, Me.delGridColumn})
+        Me.receivingGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.idGridColumn, Me.receivingIDGridColumn, Me.itemGridColumn, Me.descriptionGridColumn, Me.lotGridColumn, Me.expirationDateGridColumn, Me.quantityGridColumn, Me.packagesGridColumn, Me.QtyPerPalletColumn, Me.palletsGridColumn, Me.ReceivDetLPNFromColumn, Me.ReceivDetLPNToColumn, Me.delGridColumn})
         Me.receivingGridView.GridControl = Me.receivingGridControl
         Me.receivingGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ReceivDetQty", Me.quantityGridColumn, "{0:#,##0.######}")})
         Me.receivingGridView.Name = "receivingGridView"
@@ -908,7 +914,7 @@ Partial Class ReceivingXtraForm
         '
         Me.itemRepositoryItemLookUpEdit.AutoHeight = False
         Me.itemRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.itemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far)})
+        Me.itemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.itemRepositoryItemLookUpEdit.DataSource = Me.receivingItemXPView
         Me.itemRepositoryItemLookUpEdit.DisplayMember = "ItemCode"
         Me.itemRepositoryItemLookUpEdit.ImmediatePopup = True
@@ -978,6 +984,13 @@ Partial Class ReceivingXtraForm
         Me.packagesGridColumn.VisibleIndex = 6
         Me.packagesGridColumn.Width = 73
         '
+        'QtyPerPalletColumn
+        '
+        Me.QtyPerPalletColumn.Caption = "Qty Per Pallet"
+        Me.QtyPerPalletColumn.Name = "QtyPerPalletColumn"
+        Me.QtyPerPalletColumn.Visible = True
+        Me.QtyPerPalletColumn.VisibleIndex = 8
+        '
         'palletsGridColumn
         '
         Me.palletsGridColumn.Caption = "Pallets"
@@ -986,6 +999,22 @@ Partial Class ReceivingXtraForm
         Me.palletsGridColumn.Visible = True
         Me.palletsGridColumn.VisibleIndex = 7
         Me.palletsGridColumn.Width = 73
+        '
+        'ReceivDetLPNFromColumn
+        '
+        Me.ReceivDetLPNFromColumn.Caption = "LPN - From"
+        Me.ReceivDetLPNFromColumn.Name = "ReceivDetLPNFromColumn"
+        Me.ReceivDetLPNFromColumn.OptionsColumn.ReadOnly = True
+        Me.ReceivDetLPNFromColumn.Visible = True
+        Me.ReceivDetLPNFromColumn.VisibleIndex = 9
+        '
+        'ReceivDetLPNToColumn
+        '
+        Me.ReceivDetLPNToColumn.Caption = "LPN - To"
+        Me.ReceivDetLPNToColumn.Name = "ReceivDetLPNToColumn"
+        Me.ReceivDetLPNToColumn.OptionsColumn.ReadOnly = True
+        Me.ReceivDetLPNToColumn.Visible = True
+        Me.ReceivDetLPNToColumn.VisibleIndex = 10
         '
         'delGridColumn
         '
@@ -1053,7 +1082,7 @@ Partial Class ReceivingXtraForm
         '
         Me.returnItemRepositoryItemLookUpEdit.AutoHeight = False
         Me.returnItemRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.returnItemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far)})
+        Me.returnItemRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.returnItemRepositoryItemLookUpEdit.DataSource = Me.returnItemXPView
         Me.returnItemRepositoryItemLookUpEdit.DisplayMember = "ItemCode"
         Me.returnItemRepositoryItemLookUpEdit.ImmediatePopup = True
@@ -1319,6 +1348,7 @@ Partial Class ReceivingXtraForm
         CType(Me.receivingDateRepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.customerFilterRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents receivingsXtraTabControl As DevExpress.XtraTab.XtraTabControl
@@ -1436,4 +1466,7 @@ Partial Class ReceivingXtraForm
     Friend WithEvents locationLookUpEdit As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LabelControl24 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents locationXpView As DevExpress.Xpo.XPView
+    Friend WithEvents ReceivDetLPNFromColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ReceivDetLPNToColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents QtyPerPalletColumn As DevExpress.XtraGrid.Columns.GridColumn
 End Class

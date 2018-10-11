@@ -73,6 +73,10 @@ Partial Class LocationXtraForm
         Me.colItemCode = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colItemDescription = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.inventoryByLotXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.inventoryByLotGridControl = New DevExpress.XtraGrid.GridControl()
+        Me.locationInventoryByLotXpView = New DevExpress.Xpo.XPView(Me.components)
+        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.transfersXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.SplitContainerControl2 = New DevExpress.XtraEditors.SplitContainerControl()
         Me.transfersToGroupControl = New DevExpress.XtraEditors.GroupControl()
@@ -161,14 +165,11 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnExpirationDateFormat = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.inventoryByLotXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
-        Me.inventoryByLotGridControl = New DevExpress.XtraGrid.GridControl()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.locationInventoryByLotXpView = New DevExpress.Xpo.XPView(Me.components)
-        Me.Lot = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemCode1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemDescription1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLot = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLPNNumber = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colQuantity1 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -199,6 +200,10 @@ Partial Class LocationXtraForm
         CType(Me.inventoryGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.locationInventoryXpView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.inventoryGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.inventoryByLotXtraTabPage.SuspendLayout()
+        CType(Me.inventoryByLotGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.locationInventoryByLotXpView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.transfersXtraTabPage.SuspendLayout()
         CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl2.SuspendLayout()
@@ -232,10 +237,6 @@ Partial Class LocationXtraForm
         CType(Me.shippingReturnsGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.shippingReturnsXpView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.shippingReturnsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.inventoryByLotXtraTabPage.SuspendLayout()
-        CType(Me.inventoryByLotGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.locationInventoryByLotXpView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BarManager1
@@ -700,6 +701,39 @@ Partial Class LocationXtraForm
         Me.colQuantity.OptionsColumn.ReadOnly = True
         Me.colQuantity.Visible = True
         Me.colQuantity.VisibleIndex = 2
+        '
+        'inventoryByLotXtraTabPage
+        '
+        Me.inventoryByLotXtraTabPage.Controls.Add(Me.inventoryByLotGridControl)
+        Me.inventoryByLotXtraTabPage.Name = "inventoryByLotXtraTabPage"
+        Me.inventoryByLotXtraTabPage.Size = New System.Drawing.Size(563, 461)
+        Me.inventoryByLotXtraTabPage.Text = "Inventory-Lot"
+        '
+        'inventoryByLotGridControl
+        '
+        Me.inventoryByLotGridControl.DataSource = Me.locationInventoryByLotXpView
+        Me.inventoryByLotGridControl.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.inventoryByLotGridControl.Location = New System.Drawing.Point(0, 0)
+        Me.inventoryByLotGridControl.MainView = Me.GridView1
+        Me.inventoryByLotGridControl.MenuManager = Me.BarManager1
+        Me.inventoryByLotGridControl.Name = "inventoryByLotGridControl"
+        Me.inventoryByLotGridControl.Size = New System.Drawing.Size(563, 461)
+        Me.inventoryByLotGridControl.TabIndex = 1
+        Me.inventoryByLotGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        '
+        'locationInventoryByLotXpView
+        '
+        Me.locationInventoryByLotXpView.CriteriaString = "[Location] Is Null"
+        Me.locationInventoryByLotXpView.ObjectType = GetType(DXDAL.SPGData.LocationInventoryByLot)
+        Me.locationInventoryByLotXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[LocationInventoryItem.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ItemDescription", DevExpress.Xpo.SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("Lot", DevExpress.Xpo.SortDirection.None, "[LocationInventoryLot]", False, True), New DevExpress.Xpo.ViewProperty("LPNNumber", DevExpress.Xpo.SortDirection.None, "[LPNNumber]", False, True), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[QuantityOnHand]", False, True)})
+        '
+        'GridView1
+        '
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemCode1, Me.colItemDescription1, Me.colLot, Me.colLPNNumber, Me.colQuantity1})
+        Me.GridView1.GridControl = Me.inventoryByLotGridControl
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.OptionsBehavior.Editable = False
+        Me.GridView1.OptionsView.ShowAutoFilterRow = True
         '
         'transfersXtraTabPage
         '
@@ -1458,70 +1492,40 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDateFormat.FieldName = "ShippingReturnExpirationDateFormat"
         Me.colShippingReturnExpirationDateFormat.Name = "colShippingReturnExpirationDateFormat"
         '
-        'inventoryByLotXtraTabPage
+        'colItemCode1
         '
-        Me.inventoryByLotXtraTabPage.Controls.Add(Me.inventoryByLotGridControl)
-        Me.inventoryByLotXtraTabPage.Name = "inventoryByLotXtraTabPage"
-        Me.inventoryByLotXtraTabPage.Size = New System.Drawing.Size(563, 461)
-        Me.inventoryByLotXtraTabPage.Text = "Inventory-Lot"
+        Me.colItemCode1.FieldName = "ItemCode"
+        Me.colItemCode1.Name = "colItemCode1"
+        Me.colItemCode1.Visible = True
+        Me.colItemCode1.VisibleIndex = 0
         '
-        'inventoryByLotGridControl
+        'colItemDescription1
         '
-        Me.inventoryByLotGridControl.DataSource = Me.locationInventoryByLotXpView
-        Me.inventoryByLotGridControl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.inventoryByLotGridControl.Location = New System.Drawing.Point(0, 0)
-        Me.inventoryByLotGridControl.MainView = Me.GridView1
-        Me.inventoryByLotGridControl.MenuManager = Me.BarManager1
-        Me.inventoryByLotGridControl.Name = "inventoryByLotGridControl"
-        Me.inventoryByLotGridControl.Size = New System.Drawing.Size(563, 461)
-        Me.inventoryByLotGridControl.TabIndex = 1
-        Me.inventoryByLotGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.colItemDescription1.FieldName = "ItemDescription"
+        Me.colItemDescription1.Name = "colItemDescription1"
+        Me.colItemDescription1.Visible = True
+        Me.colItemDescription1.VisibleIndex = 1
         '
-        'GridView1
+        'colLot
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.Lot, Me.GridColumn1, Me.GridColumn2, Me.GridColumn3})
-        Me.GridView1.GridControl = Me.inventoryByLotGridControl
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsBehavior.Editable = False
-        Me.GridView1.OptionsView.ShowAutoFilterRow = True
+        Me.colLot.FieldName = "Lot"
+        Me.colLot.Name = "colLot"
+        Me.colLot.Visible = True
+        Me.colLot.VisibleIndex = 2
         '
-        'GridColumn1
+        'colLPNNumber
         '
-        Me.GridColumn1.FieldName = "ItemCode"
-        Me.GridColumn1.Name = "GridColumn1"
-        Me.GridColumn1.OptionsColumn.ReadOnly = True
-        Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 0
+        Me.colLPNNumber.FieldName = "LPNNumber"
+        Me.colLPNNumber.Name = "colLPNNumber"
+        Me.colLPNNumber.Visible = True
+        Me.colLPNNumber.VisibleIndex = 3
         '
-        'GridColumn2
+        'colQuantity1
         '
-        Me.GridColumn2.FieldName = "ItemDescription"
-        Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.OptionsColumn.ReadOnly = True
-        Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 1
-        '
-        'GridColumn3
-        '
-        Me.GridColumn3.FieldName = "Quantity"
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.OptionsColumn.ReadOnly = True
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 3
-        '
-        'locationInventoryByLotXpView
-        '
-        Me.locationInventoryByLotXpView.CriteriaString = "[Location] Is Null"
-        Me.locationInventoryByLotXpView.ObjectType = GetType(DXDAL.SPGData.LocationInventoryByLot)
-        Me.locationInventoryByLotXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[LocationInventoryItem.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ItemDescription", DevExpress.Xpo.SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("Lot", DevExpress.Xpo.SortDirection.None, "[LocationInventoryLot]", False, True), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[QuantityOnHand]", False, True)})
-        '
-        'Lot
-        '
-        Me.Lot.Caption = "Lot"
-        Me.Lot.FieldName = "Lot"
-        Me.Lot.Name = "Lot"
-        Me.Lot.Visible = True
-        Me.Lot.VisibleIndex = 2
+        Me.colQuantity1.FieldName = "Quantity"
+        Me.colQuantity1.Name = "colQuantity1"
+        Me.colQuantity1.Visible = True
+        Me.colQuantity1.VisibleIndex = 4
         '
         'LocationXtraForm
         '
@@ -1568,6 +1572,10 @@ Partial Class LocationXtraForm
         CType(Me.inventoryGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.locationInventoryXpView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.inventoryGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.inventoryByLotXtraTabPage.ResumeLayout(False)
+        CType(Me.inventoryByLotGridControl, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.locationInventoryByLotXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.transfersXtraTabPage.ResumeLayout(False)
         CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainerControl2.ResumeLayout(False)
@@ -1601,10 +1609,6 @@ Partial Class LocationXtraForm
         CType(Me.shippingReturnsGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.shippingReturnsXpView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.shippingReturnsGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.inventoryByLotXtraTabPage.ResumeLayout(False)
-        CType(Me.inventoryByLotGridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.locationInventoryByLotXpView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1753,8 +1757,9 @@ Partial Class LocationXtraForm
     Friend WithEvents inventoryByLotGridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents locationInventoryByLotXpView As DevExpress.Xpo.XPView
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents Lot As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemCode1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colItemDescription1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLot As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLPNNumber As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colQuantity1 As DevExpress.XtraGrid.Columns.GridColumn
 End Class
