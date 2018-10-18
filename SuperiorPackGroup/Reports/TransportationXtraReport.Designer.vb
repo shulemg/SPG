@@ -21,6 +21,7 @@ Partial Public Class TransportationXtraReport
     Private Sub InitializeComponent()
         Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
+        Me.lpnDetailXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.expirationDateDetailXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.carrierDetailXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.trailerDetailXrLabel = New DevExpress.XtraReports.UI.XRLabel()
@@ -39,6 +40,7 @@ Partial Public Class TransportationXtraReport
         Me.dateDetailXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.PageHeader = New DevExpress.XtraReports.UI.PageHeaderBand()
         Me.headerXrPanel = New DevExpress.XtraReports.UI.XRPanel()
+        Me.lpnHeadeerXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.expirationDateHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.sealHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.trailerHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
@@ -70,8 +72,6 @@ Partial Public Class TransportationXtraReport
         Me.quantityFooterXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.TopMarginBand1 = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMarginBand1 = New DevExpress.XtraReports.UI.BottomMarginBand()
-        Me.lpnDetailXrLabel = New DevExpress.XtraReports.UI.XRLabel()
-        Me.lpnHeadeerXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
@@ -82,6 +82,19 @@ Partial Public Class TransportationXtraReport
         Me.Detail.Name = "Detail"
         Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
         Me.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        '
+        'lpnDetailXrLabel
+        '
+        Me.lpnDetailXrLabel.CanGrow = False
+        Me.lpnDetailXrLabel.EvenStyleName = "detailEvenXrControlStyle"
+        Me.lpnDetailXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(614.0!, 0!)
+        Me.lpnDetailXrLabel.Name = "lpnDetailXrLabel"
+        Me.lpnDetailXrLabel.OddStyleName = "detailOddXrControlStyle"
+        Me.lpnDetailXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lpnDetailXrLabel.SizeF = New System.Drawing.SizeF(54.04169!, 30.0!)
+        Me.lpnDetailXrLabel.Text = "lpnDetailXrLabel"
+        Me.lpnDetailXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        Me.lpnDetailXrLabel.Visible = False
         '
         'expirationDateDetailXrLabel
         '
@@ -300,6 +313,20 @@ Partial Public Class TransportationXtraReport
         Me.headerXrPanel.Name = "headerXrPanel"
         Me.headerXrPanel.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
         Me.headerXrPanel.SizeF = New System.Drawing.SizeF(1050.0!, 50.0!)
+        '
+        'lpnHeadeerXrLabel
+        '
+        Me.lpnHeadeerXrLabel.CanGrow = False
+        Me.lpnHeadeerXrLabel.Font = New System.Drawing.Font("Tahoma", 7.5!, System.Drawing.FontStyle.Bold)
+        Me.lpnHeadeerXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(614.0!, 0!)
+        Me.lpnHeadeerXrLabel.Name = "lpnHeadeerXrLabel"
+        Me.lpnHeadeerXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lpnHeadeerXrLabel.SizeF = New System.Drawing.SizeF(54.04163!, 50.0!)
+        Me.lpnHeadeerXrLabel.StyleName = "headerXrControlStyle"
+        Me.lpnHeadeerXrLabel.StylePriority.UseFont = False
+        Me.lpnHeadeerXrLabel.Text = "LPN"
+        Me.lpnHeadeerXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+        Me.lpnHeadeerXrLabel.Visible = False
         '
         'expirationDateHeaderXrLabel
         '
@@ -653,31 +680,6 @@ Partial Public Class TransportationXtraReport
         '
         Me.BottomMarginBand1.HeightF = 50.0!
         Me.BottomMarginBand1.Name = "BottomMarginBand1"
-        '
-        'lpnDetailXrLabel
-        '
-        Me.lpnDetailXrLabel.CanGrow = False
-        Me.lpnDetailXrLabel.EvenStyleName = "detailEvenXrControlStyle"
-        Me.lpnDetailXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(614.0!, 0!)
-        Me.lpnDetailXrLabel.Name = "lpnDetailXrLabel"
-        Me.lpnDetailXrLabel.OddStyleName = "detailOddXrControlStyle"
-        Me.lpnDetailXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lpnDetailXrLabel.SizeF = New System.Drawing.SizeF(54.04169!, 30.0!)
-        Me.lpnDetailXrLabel.Text = "lpnDetailXrLabel"
-        Me.lpnDetailXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
-        '
-        'lpnHeadeerXrLabel
-        '
-        Me.lpnHeadeerXrLabel.CanGrow = False
-        Me.lpnHeadeerXrLabel.Font = New System.Drawing.Font("Tahoma", 7.5!, System.Drawing.FontStyle.Bold)
-        Me.lpnHeadeerXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(614.0!, 0!)
-        Me.lpnHeadeerXrLabel.Name = "lpnHeadeerXrLabel"
-        Me.lpnHeadeerXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lpnHeadeerXrLabel.SizeF = New System.Drawing.SizeF(54.04163!, 50.0!)
-        Me.lpnHeadeerXrLabel.StyleName = "headerXrControlStyle"
-        Me.lpnHeadeerXrLabel.StylePriority.UseFont = False
-        Me.lpnHeadeerXrLabel.Text = "LPN"
-        Me.lpnHeadeerXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
         '
         'TransportationXtraReport
         '

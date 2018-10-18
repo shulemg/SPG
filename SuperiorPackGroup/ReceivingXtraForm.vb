@@ -1085,6 +1085,10 @@ Public Class ReceivingXtraForm
 
     End Sub
 
+    Private Sub printLpn()
+
+    End Sub
+
     Private Function GetNextLPN(LPNcount As Integer) As Integer
         Dim nextLPN As Integer = 0
         Dim customer As Customers = Session.DefaultSession.GetObjectByKey(Of Customers)(7)

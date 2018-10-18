@@ -77,6 +77,11 @@ Partial Class LocationXtraForm
         Me.inventoryByLotGridControl = New DevExpress.XtraGrid.GridControl()
         Me.locationInventoryByLotXpView = New DevExpress.Xpo.XPView(Me.components)
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colItemCode1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colItemDescription1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLot = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLPNNumber = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colQuantity1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.transfersXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.SplitContainerControl2 = New DevExpress.XtraEditors.SplitContainerControl()
         Me.transfersToGroupControl = New DevExpress.XtraEditors.GroupControl()
@@ -165,11 +170,7 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnExpirationDateFormat = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colItemCode1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colItemDescription1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLot = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLPNNumber = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colQuantity1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colExpirationDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -725,15 +726,50 @@ Partial Class LocationXtraForm
         '
         Me.locationInventoryByLotXpView.CriteriaString = "[Location] Is Null"
         Me.locationInventoryByLotXpView.ObjectType = GetType(DXDAL.SPGData.LocationInventoryByLot)
-        Me.locationInventoryByLotXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[LocationInventoryItem.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ItemDescription", DevExpress.Xpo.SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("Lot", DevExpress.Xpo.SortDirection.None, "[LocationInventoryLot]", False, True), New DevExpress.Xpo.ViewProperty("LPNNumber", DevExpress.Xpo.SortDirection.None, "[LPNNumber]", False, True), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[QuantityOnHand]", False, True)})
+        Me.locationInventoryByLotXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[LocationInventoryItem.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ItemDescription", DevExpress.Xpo.SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("ExpirationDate", DevExpress.Xpo.SortDirection.None, "[ExpirationDate]", False, True), New DevExpress.Xpo.ViewProperty("Lot", DevExpress.Xpo.SortDirection.None, "[LocationInventoryLot]", False, True), New DevExpress.Xpo.ViewProperty("LPNNumber", DevExpress.Xpo.SortDirection.None, "[LPNNumber]", False, True), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[QuantityOnHand]", False, True)})
         '
         'GridView1
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemCode1, Me.colItemDescription1, Me.colLot, Me.colLPNNumber, Me.colQuantity1})
+        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemCode1, Me.colItemDescription1, Me.colExpirationDate1, Me.colLot, Me.colLPNNumber, Me.colQuantity1})
         Me.GridView1.GridControl = Me.inventoryByLotGridControl
         Me.GridView1.Name = "GridView1"
         Me.GridView1.OptionsBehavior.Editable = False
         Me.GridView1.OptionsView.ShowAutoFilterRow = True
+        '
+        'colItemCode1
+        '
+        Me.colItemCode1.FieldName = "ItemCode"
+        Me.colItemCode1.Name = "colItemCode1"
+        Me.colItemCode1.Visible = True
+        Me.colItemCode1.VisibleIndex = 0
+        '
+        'colItemDescription1
+        '
+        Me.colItemDescription1.FieldName = "ItemDescription"
+        Me.colItemDescription1.Name = "colItemDescription1"
+        Me.colItemDescription1.Visible = True
+        Me.colItemDescription1.VisibleIndex = 1
+        '
+        'colLot
+        '
+        Me.colLot.FieldName = "Lot"
+        Me.colLot.Name = "colLot"
+        Me.colLot.Visible = True
+        Me.colLot.VisibleIndex = 2
+        '
+        'colLPNNumber
+        '
+        Me.colLPNNumber.FieldName = "LPNNumber"
+        Me.colLPNNumber.Name = "colLPNNumber"
+        Me.colLPNNumber.Visible = True
+        Me.colLPNNumber.VisibleIndex = 3
+        '
+        'colQuantity1
+        '
+        Me.colQuantity1.FieldName = "Quantity"
+        Me.colQuantity1.Name = "colQuantity1"
+        Me.colQuantity1.Visible = True
+        Me.colQuantity1.VisibleIndex = 5
         '
         'transfersXtraTabPage
         '
@@ -1492,40 +1528,12 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDateFormat.FieldName = "ShippingReturnExpirationDateFormat"
         Me.colShippingReturnExpirationDateFormat.Name = "colShippingReturnExpirationDateFormat"
         '
-        'colItemCode1
+        'colExpirationDate1
         '
-        Me.colItemCode1.FieldName = "ItemCode"
-        Me.colItemCode1.Name = "colItemCode1"
-        Me.colItemCode1.Visible = True
-        Me.colItemCode1.VisibleIndex = 0
-        '
-        'colItemDescription1
-        '
-        Me.colItemDescription1.FieldName = "ItemDescription"
-        Me.colItemDescription1.Name = "colItemDescription1"
-        Me.colItemDescription1.Visible = True
-        Me.colItemDescription1.VisibleIndex = 1
-        '
-        'colLot
-        '
-        Me.colLot.FieldName = "Lot"
-        Me.colLot.Name = "colLot"
-        Me.colLot.Visible = True
-        Me.colLot.VisibleIndex = 2
-        '
-        'colLPNNumber
-        '
-        Me.colLPNNumber.FieldName = "LPNNumber"
-        Me.colLPNNumber.Name = "colLPNNumber"
-        Me.colLPNNumber.Visible = True
-        Me.colLPNNumber.VisibleIndex = 3
-        '
-        'colQuantity1
-        '
-        Me.colQuantity1.FieldName = "Quantity"
-        Me.colQuantity1.Name = "colQuantity1"
-        Me.colQuantity1.Visible = True
-        Me.colQuantity1.VisibleIndex = 4
+        Me.colExpirationDate1.FieldName = "ExpirationDate"
+        Me.colExpirationDate1.Name = "colExpirationDate1"
+        Me.colExpirationDate1.Visible = True
+        Me.colExpirationDate1.VisibleIndex = 4
         '
         'LocationXtraForm
         '
@@ -1762,4 +1770,5 @@ Partial Class LocationXtraForm
     Friend WithEvents colLot As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLPNNumber As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colQuantity1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colExpirationDate1 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

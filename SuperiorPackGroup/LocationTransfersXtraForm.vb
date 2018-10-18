@@ -176,7 +176,7 @@ Public Class LocationTransfersXtraForm
         LocationTransferDetails.AutoSaveOnEndEdit = False
 
         Utilities.MakeFormReadOnly(dataEntrySplitContainerControl.Panel1, True)
-        lpnNumberTextEdit.Properties.ReadOnly = True
+        'lpnNumberTextEdit.Properties.ReadOnly = True
 
         Cursor = Cursors.Default
 
@@ -224,8 +224,38 @@ Public Class LocationTransfersXtraForm
     End Sub
 
     Private Sub transferDetailsGridView_ValidateRow(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs) Handles transferDetailsGridView.ValidateRow
+        Dim item As Items
+        Dim lot As String
+        Dim LPNNumber As Integer
+
+        item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn)), True)
+        lot = CStr(transferDetailsGridView.GetFocusedRowCellValue(colTransferLot))
+
+        Try
+            LPNNumber = CInt(transferDetailsGridView.GetFocusedRowCellValue(fullLpnNumberGridColumn))
+        Catch
+            If item.RequiresLotCodes Then
+                MessageBox.Show("LPN Number is invalid", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                e.Valid = False
+                m_CanSaveDetails = False
+                Exit Sub
+            End If
+        End Try
+
+        Try
+            If Not LotCodeValidator.ValidateByItem(item, lot, False) Then
+                Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
+            End If
+        Catch ex As ApplicationException
+            MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+            e.Valid = False
+            m_CanSaveDetails = False
+            Exit Sub
+        End Try
 
         Dim stock As Double = CDbl(CType(itemRepositoryItemLookUpEdit.GetDataSourceRowByKeyValue(transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn)), ViewRecord)(2))   'QuantityOnHand
+        Dim lotStock As Double = ItemsBLL.GetQtyOnHandByIDAndLot(m_TransfersSession, item.ItemID, CInt(fromLocationLookUpEdit.EditValue), lot, LPNNumber)
+
         Dim transferingQuantity As Double
         If CInt(transferDetailsGridView.GetRowCellValue(e.RowHandle, colOid)) < 1 Then
             transferingQuantity = CDbl(transferDetailsGridView.GetRowCellValue(e.RowHandle, colTransferQuantity))
@@ -237,6 +267,10 @@ Public Class LocationTransfersXtraForm
         If stock < transferingQuantity Then
             MessageBox.Show(String.Format("{0} does only have {1} in stock and your transfering {2}.", transferDetailsGridView.GetRowCellDisplayText(e.RowHandle, transferItemGridColumn).ToString,
                                           stock.ToString, transferingQuantity.ToString), "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+            e.Valid = False
+            m_CanSaveDetails = False
+        ElseIf lotStock < transferingQuantity AndAlso item.RequiresLotCodes Then
+            MessageBox.Show($"{item.ItemCode} lot# {lot} LPN# {LPNNumber} does only have {lotStock} in stock and your transfering {transferingQuantity}.", "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
             e.Valid = False
             m_CanSaveDetails = False
         Else
@@ -622,5 +656,35 @@ Public Class LocationTransfersXtraForm
         transferDetailsXpCollection.Reload()
         itemXpView.Reload()
 
+    End Sub
+
+    Private Sub lpnNumberTextEdit_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles lpnNumberTextEdit.Validating
+        If fromLocationLookUpEdit.EditValue IsNot Nothing AndAlso Len(lpnNumberTextEdit.Text) > 0 Then
+            Dim LocationID As Integer = CInt(fromLocationLookUpEdit.EditValue)
+
+            Try
+                Dim LPN As Integer = Integer.Parse(lpnNumberTextEdit.Text.Replace(CustomersBLL.GetLPNPrefix(7), ""))
+
+                For i As Integer = 0 To transferDetailsGridView.RowCount - 1
+                    If transferDetailsGridView.GetDataRow(i) IsNot Nothing AndAlso transferDetailsGridView.GetDataRow(i)("FullLpnNumber").Equals(LPN) Then
+                        MessageBox.Show("This LPN is already entered.")
+                        lpnNumberTextEdit.EditValue = Nothing
+                        Exit Sub
+                    End If
+                Next
+
+                Dim record As LocationInventoryByLot = m_TransfersSession.FindObject(Of LocationInventoryByLot)(New GroupOperator(New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPN, BinaryOperatorType.Equal) And
+                                                                                                  New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, LocationID, BinaryOperatorType.Equal)))
+                transferDetailsGridView.AddNewRow()
+                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, transferItemGridColumn, record.LocationInventoryItem.ItemID)
+                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferUnits, record.QuantityOnHand)
+                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferLot, record.LocationInventoryLot)
+                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colItemExpirationDate, record.ExpirationDate)
+                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, fullLpnNumberGridColumn, LPN)
+                transferDetailsGridView.UpdateCurrentRow()
+            Catch
+            End Try
+            lpnNumberTextEdit.EditValue = Nothing
+        End If
     End Sub
 End Class

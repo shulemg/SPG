@@ -57,6 +57,18 @@ Namespace SPGData
                 SetPropertyValue(Of Single)("QuantityOnHand", fQuantityOnHand, value)
             End Set
         End Property
+        Private fExpirationDate As Date?
+        Public Property ExpirationDate As Date?
+            Get
+                Return fExpirationDate
+            End Get
+            Set(value As Date?)
+                If value < #1/1/1990# Then
+                    value = Nothing
+                End If
+                SetPropertyValue(Of Date?)("ExpirationDate", fExpirationDate, value)
+            End Set
+        End Property
 
         Public Sub New()
             MyBase.New()
@@ -106,6 +118,11 @@ Namespace SPGData
             Public ReadOnly Property QuantityOnHand() As OperandProperty
                 Get
                     Return New OperandProperty(GetNestedName("QuantityOnHand"))
+                End Get
+            End Property
+            Public ReadOnly Property ExpirationDate() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("ExpirationDate"))
                 End Get
             End Property
         End Class

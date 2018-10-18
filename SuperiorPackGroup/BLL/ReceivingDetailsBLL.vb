@@ -94,8 +94,8 @@ Public Class ReceivingDetailsBLL
         Dim originalRecord As Object() = Nothing
         originalRecord = receivingDetail.ItemArray
 
-        Dim originalDetail As SPG.ReceivingDetailsRow
-        originalDetail = receivingDetail
+        Dim originalDetail As SPG.ReceivingDetailsRow = details.NewReceivingDetailsRow()
+        originalDetail.ItemArray = CType(originalRecord.Clone(), Object())
 
         originalItem = receivingDetail.ReceivDetItemID
         If originalItem <> itemID.Value Then
@@ -149,7 +149,7 @@ Public Class ReceivingDetailsBLL
             Dim transferredQty As Integer
             Dim items As ItemsBLL = New ItemsBLL
             Dim locationID As Integer = session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid
-            If itemChanged = True Then
+            If itemChanged = True OrElse newQuantity <> 0 OrElse originalDetail.ReceivDetQtyPerPallet <> QtyPerPallet OrElse originalDetail.sngPallets <> pallets Then
                 If originalDetail.ReceivDetQtyPerPallet > 0 AndAlso originalDetail.ReceivDetLPNFrom > 0 AndAlso originalDetail.ReceivDetLPNTo > 0 AndAlso originalDetail.sngPallets > 0 AndAlso originalDetail.ReceivDetLot.Length > 0 Then
                     transferredQty = 0
                     LPN = If(LPNFrom, 0)
@@ -165,14 +165,14 @@ Public Class ReceivingDetailsBLL
                 transferredQty = 0
                 LPN = If(LPNFrom, 0)
                 For i As Integer = 1 To CInt(Math.Ceiling(If(pallets, 1)))
-                    items.UpdateStock(session, itemID.Value, If(transferredQty + If(QtyPerPallet, 0) > quantity.Value, quantity.Value - transferredQty, QtyPerPallet.Value), False, locationID, lot, LPN)
+                    items.UpdateStock(session, itemID.Value, If(transferredQty + If(QtyPerPallet, 0) > quantity.Value, quantity.Value - transferredQty, QtyPerPallet.Value), False, locationID, lot, LPN, expirationDate)
                     LPN = If(LPNFrom, 0) + i
                     transferredQty += If(QtyPerPallet, 0)
                 Next
             Else
-                If newQuantity <> 0 Then
-                    items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID, lot)
-                End If
+                'If newQuantity <> 0 Then
+                '    items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID, lot)
+                'End If
             End If
         End If
 
@@ -233,7 +233,7 @@ Public Class ReceivingDetailsBLL
             transferredQty = 0
             LPN = If(LPNFrom, 0)
             For i As Integer = 1 To CInt(Math.Ceiling(If(pallets, 1)))
-                items.UpdateStock(session, itemID.Value, If(transferredQty + If(QtyPerPallet, 0) > quantity.Value, quantity.Value - transferredQty, QtyPerPallet.Value), False, session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid, lot, LPN)
+                items.UpdateStock(session, itemID.Value, If(transferredQty + If(QtyPerPallet, 0) > quantity.Value, quantity.Value - transferredQty, QtyPerPallet.Value), False, session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid, lot, LPN, expirationDate)
                 LPN = If(LPNFrom, 0) + i
                 transferredQty += If(QtyPerPallet, 0)
             Next

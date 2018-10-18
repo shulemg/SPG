@@ -703,7 +703,7 @@ Public Class ItemsBLL
 
     End Function
 
-    Public Sub UpdateStock(ByVal session As Session, ByVal itemID As Integer, ByVal inventoryID As Integer?, ByVal quantity As Single, ByVal updateBOM As Boolean, ByVal locationID As Integer, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing)
+    Public Sub UpdateStock(ByVal session As Session, ByVal itemID As Integer, ByVal inventoryID As Integer?, ByVal quantity As Single, ByVal updateBOM As Boolean, ByVal locationID As Integer, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing, Optional ByVal ExpirationDate As Date? = Nothing)
 
         Dim scrapfactor As Double
         'To do update the stock for the item and bom's associated with it
@@ -761,7 +761,7 @@ Public Class ItemsBLL
             End If
         End If
 
-        LocationInventoryBLL.UpdateStock(session, itemID, locationID, quantity, lot, LPNNumber)
+        LocationInventoryBLL.UpdateStock(session, itemID, locationID, quantity, lot, LPNNumber, ExpirationDate)
 
         'Dim item As SPG.ItemsRow = CType(GetItemBYId(itemID).Rows(0), SPG.ItemsRow)
         'item.s ngQuantityOnHand += quantity
@@ -769,9 +769,9 @@ Public Class ItemsBLL
 
     End Sub
 
-    Public Sub UpdateStock(ByVal session As Session, ByVal itemID As Integer, ByVal quantity As Single, ByVal updateBOM As Boolean, ByVal locationID As Integer, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing)
+    Public Sub UpdateStock(ByVal session As Session, ByVal itemID As Integer, ByVal quantity As Single, ByVal updateBOM As Boolean, ByVal locationID As Integer, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing, Optional ByVal ExpirationDate As Date? = Nothing)
 
-        UpdateStock(session, itemID, Nothing, quantity, updateBOM, locationID, lot, LPNNumber)
+        UpdateStock(session, itemID, Nothing, quantity, updateBOM, locationID, lot, LPNNumber, ExpirationDate)
 
     End Sub
 

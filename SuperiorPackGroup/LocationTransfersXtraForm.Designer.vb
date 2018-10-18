@@ -566,9 +566,13 @@ Partial Class LocationTransfersXtraForm
         '
         'lpnNumberTextEdit
         '
+        Me.lpnNumberTextEdit.EditValue = ""
         Me.lpnNumberTextEdit.Location = New System.Drawing.Point(248, 6)
         Me.lpnNumberTextEdit.MenuManager = Me.BarManager1
         Me.lpnNumberTextEdit.Name = "lpnNumberTextEdit"
+        Me.lpnNumberTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
+        Me.lpnNumberTextEdit.Properties.MaxLength = 15
+        Me.lpnNumberTextEdit.Properties.ValidateOnEnterKey = True
         Me.lpnNumberTextEdit.Size = New System.Drawing.Size(134, 20)
         Me.lpnNumberTextEdit.TabIndex = 2
         '

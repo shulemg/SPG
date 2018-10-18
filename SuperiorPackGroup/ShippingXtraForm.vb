@@ -1089,7 +1089,7 @@ Public Class ShippingXtraForm
 
     Private Sub shippingGridView_ValidateRow(sender As Object, e As DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs) Handles shippingGridView.ValidateRow
 
-        Dim stock As Double = ItemsBLL.GetQtyOnHandByID(m_ShippingSession, CInt(shippingGridView.GetRowCellValue(e.RowHandle, itemGridColumn)), CInt(locationLookUpEdit.EditValue))
+        Dim stock As Double = ItemsBLL.GetQtyOnHandByID(m_ShippingSession, CInt(shippingGridView.GetRowCellValue(e.RowHandle, itemGridColumn)), CInt(locationLookUpEdit.EditValue)) ', "1111", 44)
         Dim shippingQuantity As Object
         If CInt(shippingGridView.GetRowCellValue(e.RowHandle, idGridColumn)) < 1 Then
             shippingQuantity = CInt(shippingGridView.GetRowCellValue(e.RowHandle, quantityGridColumn))

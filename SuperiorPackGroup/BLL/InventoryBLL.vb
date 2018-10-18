@@ -1,10 +1,11 @@
 Imports SuperiorPackGroup.SPGTableAdapters
 Imports System.Text
 Imports DevExpress.Xpo
-imports DevExpress.Data.Filtering
+Imports DevExpress.Data.Filtering
 Imports DXDAL.SPGData
+Imports System.Collections.ObjectModel
 
-<System.ComponentModel.DataObject()> _
+<System.ComponentModel.DataObject()>
 Public Class InventoryBLL
 
     Private m_InventoryTableAdapter As InventoryTableAdapter = Nothing
@@ -22,8 +23,8 @@ Public Class InventoryBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetInventoryView(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customer As Nullable(Of Integer), _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
+    Public Function GetInventoryView(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customer As Nullable(Of Integer),
             ByVal item As Nullable(Of Integer), ByVal Lot As String) As SPG.InventoryDataTable
 
         Return Adapter.GetInventoryView(fromDate, toDate, customer, item, Lot)
@@ -122,7 +123,7 @@ Public Class InventoryBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
     Public Function UpdateInventory(ByVal session As Session, ByVal inventoryID As Integer, ByVal inventoryDate As Date, ByVal item As Integer, ByVal quantity As Integer, ByVal pallets As Nullable(Of Single), ByVal po As String, ByVal lot As String, ByVal shift As Integer?,
                                     ByVal pallet As Integer?, ByVal expirationDate As Date?, ByVal locationID As Integer, ByVal note As String) As Inventory
 
@@ -213,7 +214,7 @@ Public Class InventoryBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
     Public Function InsertInventory(ByVal session As Session, ByVal inventoryID As Integer, ByVal inventoryDate As Nullable(Of Date), ByVal item As Nullable(Of Integer), ByVal quantity As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), ByVal po As String,
                                     ByVal lot As String, ByVal shift As Integer?, ByVal pallet As Integer?, ByVal expirationDate As Date?, ByVal locationID As Integer, ByVal note As String) As Inventory
 
@@ -277,14 +278,14 @@ Public Class InventoryBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
     Public Function GetInventoryByID(ByVal inventoryID As Integer) As SPG.InventoryDataTable
 
         Return Adapter.GetInventoryByID(inventoryID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
     Public Function GetInventoryByItemID(ByVal itemID As Integer) As SPG.InventoryDataTable
 
         Return Adapter.GetInventoryByItemID(itemID)
@@ -321,7 +322,7 @@ Public Class InventoryBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)>
     Public Shared Function DeleteInventory(ByVal session As Session, ByVal id As Integer) As Boolean
 
         'Dim inventory As SPG.InventoryDataTable = Adapter.GetInventoryByID(id)
@@ -446,17 +447,29 @@ Public Class InventoryBLL
 
     End Function
 
-    Public Shared Function GetLPNInventoryRecords(ByVal session As Session, ByVal fullLPNNumber As String, ByVal customerID As Integer) As XPCollection(Of Inventory)
+    Public Shared Function GetLPNInventoryRecords(ByVal session As Session, ByVal fullLPNNumber As String, ByVal customerID As Integer) As ICollection(Of Inventory)
 
         'Dim LPNNumber As Integer = Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(customerID), ""))
 
-        Dim result As XPCollection(Of Inventory) = New XPCollection(Of Inventory)(session,
+        Dim result As ICollection(Of Inventory) = New Collection(Of Inventory)
+        result = New XPCollection(Of Inventory)(session,
                                                                                   New BinaryOperator(Inventory.Fields.InventoryItemID.ItemCustomerID.CustomerID.PropertyName, customerID, BinaryOperatorType.Equal) And
                                                                                   New BinaryOperator("FullLPNNumber", fullLPNNumber, BinaryOperatorType.Equal))
 
         If result.Count = 0 Then
+            'If customerID = 7 Then
+            '    Dim locationInventorys As XPCollection(Of LocationInventoryByLot) = New XPCollection(Of LocationInventoryByLot)(session,
+            '                                                          New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber.PropertyName, Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(customerID), "")), BinaryOperatorType.Equal))
+            '    If locationInventorys.Count < 1 Then Return result
+            '    Dim locationInventory As LocationInventoryByLot = locationInventorys(0)
+            '    Dim convertToInventory As Inventory = New Inventory(session) With {.InventoryItemID = locationInventory.LocationInventoryItem, .InventoryQuantity = CInt(locationInventory.QuantityOnHand),
+            '                                                                .Lot = locationInventory.LocationInventoryLot, .FullLPNNumber = fullLPNNumber, .ExpirationDate = locationInventory.ExpirationDate}
+            '    result = New Collection(Of Inventory)
+            '    result.Add(convertToInventory)
+            'Else
             result = New XPCollection(Of Inventory)(session, New BinaryOperator(Inventory.Fields.InventoryItemID.ItemCustomerID.CustomerID.PropertyName, customerID, BinaryOperatorType.Equal) And
-                                                                  New BinaryOperator("LPNNumber", Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(customerID), "")), BinaryOperatorType.Equal))
+                                                                      New BinaryOperator("LPNNumber", Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(customerID), "")), BinaryOperatorType.Equal))
+            'End If
         End If
 
         Return result

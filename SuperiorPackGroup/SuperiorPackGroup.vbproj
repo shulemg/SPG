@@ -80,6 +80,7 @@
     </Reference>
     <Reference Include="DevExpress.Data.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 17.2\Components\Bin\Framework\DevExpress.Data.v17.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -122,6 +123,7 @@
     </Reference>
     <Reference Include="DevExpress.Xpo.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 17.2\Components\Bin\Framework\DevExpress.Xpo.v17.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -135,8 +137,10 @@
     <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.XtraGauges.v17.2.Core, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 17.2\Components\Bin\Framework\DevExpress.XtraGrid.v17.2.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraLayout.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -161,6 +165,7 @@
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v17.2.Core, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 17.2\Components\Bin\Framework\DevExpress.XtraScheduler.v17.2.Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v17.2.Extensions, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -178,6 +183,7 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
@@ -185,6 +191,9 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -920,16 +929,6 @@
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="DevExpress.CodeParser.v17.2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="DevExpress.Data.v17.2">
       <Visible>False</Visible>
       <Group>
       </Group>

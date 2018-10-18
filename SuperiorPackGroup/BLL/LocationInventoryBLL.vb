@@ -4,7 +4,7 @@ Imports DevExpress.Data.Filtering
 
 Public Class LocationInventoryBLL
 
-    Public Shared Sub UpdateStock(ByVal session As Session, ByVal ItemID As Integer, ByVal LocationID As Integer, ByVal Quantity As Single, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing)
+    Public Shared Sub UpdateStock(ByVal session As Session, ByVal ItemID As Integer, ByVal LocationID As Integer, ByVal Quantity As Single, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing, Optional ByVal ExpirationDate As Date? = Nothing)
 
         Dim inventory As LocationInventory = session.FindObject(Of LocationInventory)(New BinaryOperator(LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, ItemID, BinaryOperatorType.Equal) And
                                                                                                      New BinaryOperator(LocationInventory.Fields.Location.Oid.PropertyName, LocationID, BinaryOperatorType.Equal))
@@ -28,12 +28,17 @@ Public Class LocationInventoryBLL
                                                                                                      New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, If(LPNNumber, 0), BinaryOperatorType.Equal))
 
         If inventoryByLot Is Nothing Then
-            inventoryByLot = New LocationInventoryByLot(session)
-            inventoryByLot.LocationInventoryItem = session.GetObjectByKey(Of Items)(ItemID)
-            inventoryByLot.Location = session.GetObjectByKey(Of Locations)(LocationID)
-            inventoryByLot.LocationInventoryLot = lot
-            inventoryByLot.LPNNumber = LPNNumber
-            inventoryByLot.QuantityOnHand = Quantity
+            If Quantity >= 0 Then
+                inventoryByLot = New LocationInventoryByLot(session)
+                inventoryByLot.LocationInventoryItem = session.GetObjectByKey(Of Items)(ItemID)
+                inventoryByLot.Location = session.GetObjectByKey(Of Locations)(LocationID)
+                inventoryByLot.LocationInventoryLot = lot
+                inventoryByLot.LPNNumber = LPNNumber
+                inventoryByLot.QuantityOnHand = Quantity
+                If ExpirationDate IsNot Nothing Then inventoryByLot.ExpirationDate = ExpirationDate
+            Else
+                Exit Sub
+            End If
         Else
             inventoryByLot.QuantityOnHand += Quantity
         End If

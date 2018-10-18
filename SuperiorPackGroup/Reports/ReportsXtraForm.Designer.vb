@@ -119,6 +119,7 @@ Partial Class ReportsXtraForm
         Me.productionDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.transportationXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.transportationXtraScrollableControl = New DevExpress.XtraEditors.XtraScrollableControl()
+        Me.transportationLpnCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.transportationExpirationDateCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.transportationVendorCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.transportationBolCheckEdit = New DevExpress.XtraEditors.CheckEdit()
@@ -260,7 +261,6 @@ Partial Class ReportsXtraForm
         Me.fromDateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.detailSimpleButton = New DevExpress.XtraEditors.SimpleButton()
         Me.filterRefreshSimpleButton = New DevExpress.XtraEditors.SimpleButton()
-        Me.transportationLpnCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         CType(Me.reportsDockManager, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.hideContainerLeft.SuspendLayout()
         Me.columnsDockPanel.SuspendLayout()
@@ -295,6 +295,7 @@ Partial Class ReportsXtraForm
         CType(Me.productionDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.transportationXtraTabPage.SuspendLayout()
         Me.transportationXtraScrollableControl.SuspendLayout()
+        CType(Me.transportationLpnCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.transportationExpirationDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.transportationVendorCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.transportationBolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -391,7 +392,6 @@ Partial Class ReportsXtraForm
         CType(Me.toDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.fromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.fromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.transportationLpnCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelControl2
@@ -1389,6 +1389,17 @@ Partial Class ReportsXtraForm
         Me.transportationXtraScrollableControl.Size = New System.Drawing.Size(185, 471)
         Me.transportationXtraScrollableControl.TabIndex = 2
         '
+        'transportationLpnCheckEdit
+        '
+        Me.transportationLpnCheckEdit.EditValue = True
+        Me.transportationLpnCheckEdit.Location = New System.Drawing.Point(3, 300)
+        Me.transportationLpnCheckEdit.Name = "transportationLpnCheckEdit"
+        Me.transportationLpnCheckEdit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.transportationLpnCheckEdit.Properties.Appearance.Options.UseBackColor = True
+        Me.transportationLpnCheckEdit.Properties.Caption = "LPN #"
+        Me.transportationLpnCheckEdit.Size = New System.Drawing.Size(158, 19)
+        Me.transportationLpnCheckEdit.TabIndex = 36
+        '
         'transportationExpirationDateCheckEdit
         '
         Me.transportationExpirationDateCheckEdit.EditValue = True
@@ -2324,7 +2335,7 @@ Partial Class ReportsXtraForm
         '
         Me.productionMachineXtraTabPage.Controls.Add(Me.productionMachineXtraScrollableControl)
         Me.productionMachineXtraTabPage.Name = "productionMachineXtraTabPage"
-        Me.productionMachineXtraTabPage.Size = New System.Drawing.Size(186, 471)
+        Me.productionMachineXtraTabPage.Size = New System.Drawing.Size(185, 471)
         Me.productionMachineXtraTabPage.Text = "Production Machine"
         '
         'productionMachineXtraScrollableControl
@@ -2350,7 +2361,7 @@ Partial Class ReportsXtraForm
         Me.productionMachineXtraScrollableControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.productionMachineXtraScrollableControl.Location = New System.Drawing.Point(0, 0)
         Me.productionMachineXtraScrollableControl.Name = "productionMachineXtraScrollableControl"
-        Me.productionMachineXtraScrollableControl.Size = New System.Drawing.Size(186, 471)
+        Me.productionMachineXtraScrollableControl.Size = New System.Drawing.Size(185, 471)
         Me.productionMachineXtraScrollableControl.TabIndex = 2
         '
         'pmsTotalSalesCheckEdit
@@ -2519,7 +2530,7 @@ Partial Class ReportsXtraForm
         '
         Me.palletTransactionXtraTabPage.Controls.Add(Me.XtraScrollableControl1)
         Me.palletTransactionXtraTabPage.Name = "palletTransactionXtraTabPage"
-        Me.palletTransactionXtraTabPage.Size = New System.Drawing.Size(186, 471)
+        Me.palletTransactionXtraTabPage.Size = New System.Drawing.Size(185, 471)
         Me.palletTransactionXtraTabPage.Text = "Pallet Transaction"
         '
         'XtraScrollableControl1
@@ -2531,7 +2542,7 @@ Partial Class ReportsXtraForm
         Me.XtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.XtraScrollableControl1.Location = New System.Drawing.Point(0, 0)
         Me.XtraScrollableControl1.Name = "XtraScrollableControl1"
-        Me.XtraScrollableControl1.Size = New System.Drawing.Size(186, 471)
+        Me.XtraScrollableControl1.Size = New System.Drawing.Size(185, 471)
         Me.XtraScrollableControl1.TabIndex = 3
         '
         'ptReceivedCheckEdit
@@ -2937,17 +2948,6 @@ Partial Class ReportsXtraForm
         Me.filterRefreshSimpleButton.TabIndex = 0
         Me.filterRefreshSimpleButton.Text = "&Refresh Report"
         '
-        'transportationLpnCheckEdit
-        '
-        Me.transportationLpnCheckEdit.EditValue = True
-        Me.transportationLpnCheckEdit.Location = New System.Drawing.Point(3, 300)
-        Me.transportationLpnCheckEdit.Name = "transportationLpnCheckEdit"
-        Me.transportationLpnCheckEdit.Properties.Appearance.BackColor = System.Drawing.Color.Transparent
-        Me.transportationLpnCheckEdit.Properties.Appearance.Options.UseBackColor = True
-        Me.transportationLpnCheckEdit.Properties.Caption = "LPN #"
-        Me.transportationLpnCheckEdit.Size = New System.Drawing.Size(158, 19)
-        Me.transportationLpnCheckEdit.TabIndex = 36
-        '
         'ReportsXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2998,6 +2998,7 @@ Partial Class ReportsXtraForm
         CType(Me.productionDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.transportationXtraTabPage.ResumeLayout(False)
         Me.transportationXtraScrollableControl.ResumeLayout(False)
+        CType(Me.transportationLpnCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.transportationExpirationDateCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.transportationVendorCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.transportationBolCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3096,7 +3097,6 @@ Partial Class ReportsXtraForm
         CType(Me.toDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.fromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.fromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.transportationLpnCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout
 

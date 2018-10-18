@@ -986,7 +986,7 @@ Partial Class ReceivingXtraForm
         '
         'QtyPerPalletColumn
         '
-        Me.QtyPerPalletColumn.Caption = "Qty Per Pallet"
+        Me.QtyPerPalletColumn.Caption = "Units Per Pallet"
         Me.QtyPerPalletColumn.Name = "QtyPerPalletColumn"
         Me.QtyPerPalletColumn.Visible = True
         Me.QtyPerPalletColumn.VisibleIndex = 8
