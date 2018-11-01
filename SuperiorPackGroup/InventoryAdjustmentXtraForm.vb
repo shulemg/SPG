@@ -23,6 +23,8 @@ Public Class InventoryAdjustmentXtraForm
             originalQtyTextEdit.EditValue = ItemsBLL.GetQtyOnHandByID(Session.DefaultSession, CType(itemLookUpEdit.EditValue, Integer), CType(locationLookUpEdit.EditValue, Integer))
         End If
 
+        FilterLpns()
+
     End Sub
 
     Private Sub locationLookupEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles locationLookUpEdit.Validated
@@ -53,6 +55,7 @@ Public Class InventoryAdjustmentXtraForm
                 Me.customerLookUpEdit.EditValue = .GetRowCellValue(rowHandle, Me.customerIDGridColumn)
                 Me.reasonMemoExEdit.EditValue = .GetRowCellValue(rowHandle, Me.reasonGridColumn)
                 locationLookUpEdit.EditValue = .GetRowCellValue(rowHandle, locationGridColumn)
+                FilterLpns()
             End If
         End With
 
@@ -132,6 +135,8 @@ Public Class InventoryAdjustmentXtraForm
 
         SetDefaultViewFilter()
         FillAdjustmentView()
+
+        FilterLpns()
 
         Me.Cursor = Cursors.Default
 
@@ -243,9 +248,10 @@ Public Class InventoryAdjustmentXtraForm
             End If
         End If
 
-        If m_Adjustment.UpdateInventoryAdjustment(CType(Me.saveSimpleButton.Tag, Integer), Me.adjustmentDateEdit.DateTime, CType(Me.customerLookUpEdit.EditValue, Integer), _
-                                                  CType(Me.itemLookUpEdit.EditValue, Integer), CType(Me.originalQtyTextEdit.EditValue, Single), _
-                                                  CType(Me.newQtyTextEdit.EditValue, Single), Convert.ToString(Me.reasonMemoExEdit.EditValue), CType(locationLookUpEdit.EditValue, Integer)) <> True Then
+        If m_Adjustment.UpdateInventoryAdjustment(CType(Me.saveSimpleButton.Tag, Integer), Me.adjustmentDateEdit.DateTime, CType(Me.customerLookUpEdit.EditValue, Integer),
+                                                  CType(Me.itemLookUpEdit.EditValue, Integer), CType(Me.originalQtyTextEdit.EditValue, Single),
+                                                  CType(Me.newQtyTextEdit.EditValue, Single), Convert.ToString(Me.reasonMemoExEdit.EditValue), CType(lpnLookUpEdit.EditValue, Integer),
+                                                  originalLotTextEdit.Text, newLotTextEdit.Text, Utilities.ChangeType(Of Integer?)(lpnLookUpEdit.EditValue)) <> True Then
             MessageBox.Show("The adjustment record was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
@@ -345,13 +351,34 @@ Public Class InventoryAdjustmentXtraForm
     Private Sub FilterAssignedCustomers()
 
         Me.inventoryXPView.Filter = New InOperator("CustomerID", UsersCustomerBLL.GetAssignedCustomerIDs(XpoDefault.Session))
-        Me.customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
+        Me.customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(XpoDefault.Session)))
-        Me.customersFilterXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
+        Me.customersFilterXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
                                                             New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(XpoDefault.Session)))
         Me.itemsFilterXPView.Criteria = New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(XpoDefault.Session))
         Me.itemsXPView.Criteria = GroupOperator.And(New BinaryOperator(Items.Fields.Inactive.PropertyName, False), New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(XpoDefault.Session)))
 
     End Sub
 
+    Private Sub FilterLpns()
+
+        Dim lpnViewCriteria As New CriteriaOperatorCollection
+
+        If CType(Me.locationLookUpEdit.EditValue, Date?).HasValue Then
+            lpnViewCriteria.Add(New BinaryOperator(InventoryAdjustment.Fields.AdjustmentDate.PropertyName, CType(Me.fromFilterDateEdit.EditValue, Date), BinaryOperatorType.GreaterOrEqual))
+        End If
+        If CType(Me.customerFilterLookUpEdit.EditValue, Integer?).HasValue Then
+            lpnViewCriteria.Add(New BinaryOperator(InventoryAdjustment.Fields.AdjustmentItem.ItemCustomerID.CustomerID.PropertyName, CType(Me.customerFilterLookUpEdit.EditValue, Integer), BinaryOperatorType.Equal))
+        End If
+        If CType(Me.itemFilterLookUpEdit.EditValue, Integer?).HasValue Then
+            lpnViewCriteria.Add(New BinaryOperator(InventoryAdjustment.Fields.AdjustmentItem.ItemID.PropertyName, CType(Me.itemFilterLookUpEdit.EditValue, Integer), BinaryOperatorType.Equal))
+        End If
+
+        Me.lpnXpView.Criteria = GroupOperator.And(lpnViewCriteria)
+
+    End Sub
+
+    Private Sub recordGroupControl_Paint(sender As Object, e As PaintEventArgs) Handles recordGroupControl.Paint
+
+    End Sub
 End Class

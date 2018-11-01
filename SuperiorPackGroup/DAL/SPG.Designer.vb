@@ -125,6 +125,8 @@ Partial Public Class SPG
     
     Private relationFK_tblShipMain_Shift As Global.System.Data.DataRelation
     
+    Private relationFK_tblInventoryAdjustment_Customer As Global.System.Data.DataRelation
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -803,6 +805,7 @@ Partial Public Class SPG
         Me.relationFK_tblReceivMain_intShiftID = Me.Relations("FK_tblReceivMain_intShiftID")
         Me.relationFK_tblShipMain_intDestination = Me.Relations("FK_tblShipMain_intDestination")
         Me.relationFK_tblShipMain_Shift = Me.Relations("FK_tblShipMain_Shift")
+        Me.relationFK_tblInventoryAdjustment_Customer = Me.Relations("FK_tblInventoryAdjustment_Customer")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -919,6 +922,8 @@ Partial Public Class SPG
         Me.Relations.Add(Me.relationFK_tblShipMain_intDestination)
         Me.relationFK_tblShipMain_Shift = New Global.System.Data.DataRelation("FK_tblShipMain_Shift", New Global.System.Data.DataColumn() {Me.tableShifts.ShiftIDColumn}, New Global.System.Data.DataColumn() {Me.tableShippings.ShiftColumn}, false)
         Me.Relations.Add(Me.relationFK_tblShipMain_Shift)
+        Me.relationFK_tblInventoryAdjustment_Customer = New Global.System.Data.DataRelation("FK_tblInventoryAdjustment_Customer", New Global.System.Data.DataColumn() {Me.tableCustomers.CustomerIDColumn}, New Global.System.Data.DataColumn() {Me.tableInventoryAdjustment.CustomerColumn}, false)
+        Me.Relations.Add(Me.relationFK_tblInventoryAdjustment_Customer)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10198,6 +10203,12 @@ Partial Public Class SPG
         
         Private columndtmEnteredOn As Global.System.Data.DataColumn
         
+        Private columnOriginalLot As Global.System.Data.DataColumn
+        
+        Private columnNewLot As Global.System.Data.DataColumn
+        
+        Private columnLPN As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -10314,6 +10325,30 @@ Partial Public Class SPG
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property OriginalLotColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOriginalLot
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NewLotColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNewLot
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property LPNColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLPN
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -10350,9 +10385,12 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddInventoryAdjustmentRow(ByVal AdjustmentDate As Date, ByVal Customer As Integer, ByVal parentItemsRowByFK_tblInventoryAdjustment_Item As ItemsRow, ByVal OriginalQuantity As Single, ByVal NewCount As Single, ByVal Reason As String, ByVal rv() As Byte, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Date) As InventoryAdjustmentRow
+        Public Overloads Function AddInventoryAdjustmentRow(ByVal AdjustmentDate As Date, ByVal parentCustomersRowByFK_tblInventoryAdjustment_Customer As CustomersRow, ByVal parentItemsRowByFK_tblInventoryAdjustment_Item As ItemsRow, ByVal OriginalQuantity As Single, ByVal NewCount As Single, ByVal Reason As String, ByVal rv() As Byte, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Date, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer) As InventoryAdjustmentRow
             Dim rowInventoryAdjustmentRow As InventoryAdjustmentRow = CType(Me.NewRow,InventoryAdjustmentRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, AdjustmentDate, Customer, Nothing, OriginalQuantity, NewCount, Reason, rv, strEnteredBy, dtmEnteredOn}
+            Dim columnValuesArray() As Object = New Object() {Nothing, AdjustmentDate, Nothing, Nothing, OriginalQuantity, NewCount, Reason, rv, strEnteredBy, dtmEnteredOn, OriginalLot, NewLot, LPN}
+            If (Not (parentCustomersRowByFK_tblInventoryAdjustment_Customer) Is Nothing) Then
+                columnValuesArray(2) = parentCustomersRowByFK_tblInventoryAdjustment_Customer(0)
+            End If
             If (Not (parentItemsRowByFK_tblInventoryAdjustment_Item) Is Nothing) Then
                 columnValuesArray(3) = parentItemsRowByFK_tblInventoryAdjustment_Item(0)
             End If
@@ -10394,6 +10432,9 @@ Partial Public Class SPG
             Me.columnrv = MyBase.Columns("rv")
             Me.columnstrEnteredBy = MyBase.Columns("strEnteredBy")
             Me.columndtmEnteredOn = MyBase.Columns("dtmEnteredOn")
+            Me.columnOriginalLot = MyBase.Columns("OriginalLot")
+            Me.columnNewLot = MyBase.Columns("NewLot")
+            Me.columnLPN = MyBase.Columns("LPN")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10419,6 +10460,12 @@ Partial Public Class SPG
             MyBase.Columns.Add(Me.columnstrEnteredBy)
             Me.columndtmEnteredOn = New Global.System.Data.DataColumn("dtmEnteredOn", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndtmEnteredOn)
+            Me.columnOriginalLot = New Global.System.Data.DataColumn("OriginalLot", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOriginalLot)
+            Me.columnNewLot = New Global.System.Data.DataColumn("NewLot", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNewLot)
+            Me.columnLPN = New Global.System.Data.DataColumn("LPN", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLPN)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnAdjustmentID}, true))
             Me.columnAdjustmentID.AutoIncrement = true
             Me.columnAdjustmentID.AutoIncrementSeed = -1
@@ -11942,6 +11989,16 @@ Partial Public Class SPG
                 Return New ShippingsRow(-1) {}
             Else
                 Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_tblShipMain_tblCustomers")),ShippingsRow())
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function GetInventoryAdjustmentRows() As InventoryAdjustmentRow()
+            If (Me.Table.ChildRelations("FK_tblInventoryAdjustment_Customer") Is Nothing) Then
+                Return New InventoryAdjustmentRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_tblInventoryAdjustment_Customer")),InventoryAdjustmentRow())
             End If
         End Function
     End Class
@@ -19244,12 +19301,68 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property OriginalLot() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableInventoryAdjustment.OriginalLotColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OriginalLot' in table 'InventoryAdjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableInventoryAdjustment.OriginalLotColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property NewLot() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableInventoryAdjustment.NewLotColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'NewLot' in table 'InventoryAdjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableInventoryAdjustment.NewLotColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property LPN() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableInventoryAdjustment.LPNColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LPN' in table 'InventoryAdjustment' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableInventoryAdjustment.LPNColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property ItemsRow() As ItemsRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_tblInventoryAdjustment_Item")),ItemsRow)
             End Get
             Set
                 Me.SetParentRow(value, Me.Table.ParentRelations("FK_tblInventoryAdjustment_Item"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property CustomersRow() As CustomersRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_tblInventoryAdjustment_Customer")),CustomersRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_tblInventoryAdjustment_Customer"))
             End Set
         End Property
         
@@ -19359,6 +19472,42 @@ Partial Public Class SPG
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetdtmEnteredOnNull()
             Me(Me.tableInventoryAdjustment.dtmEnteredOnColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsOriginalLotNull() As Boolean
+            Return Me.IsNull(Me.tableInventoryAdjustment.OriginalLotColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetOriginalLotNull()
+            Me(Me.tableInventoryAdjustment.OriginalLotColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsNewLotNull() As Boolean
+            Return Me.IsNull(Me.tableInventoryAdjustment.NewLotColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetNewLotNull()
+            Me(Me.tableInventoryAdjustment.NewLotColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsLPNNull() As Boolean
+            Return Me.IsNull(Me.tableInventoryAdjustment.LPNColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetLPNNull()
+            Me(Me.tableInventoryAdjustment.LPNColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -32667,6 +32816,9 @@ Namespace SPGTableAdapters
             tableMapping.ColumnMappings.Add("rv", "rv")
             tableMapping.ColumnMappings.Add("strEnteredBy", "strEnteredBy")
             tableMapping.ColumnMappings.Add("dtmEnteredOn", "dtmEnteredOn")
+            tableMapping.ColumnMappings.Add("OriginalLot", "OriginalLot")
+            tableMapping.ColumnMappings.Add("NewLot", "NewLot")
+            tableMapping.ColumnMappings.Add("LPN", "LPN")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -32678,11 +32830,12 @@ Namespace SPGTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [tblInventoryAdjustment] ([AdjustmentDate], [Customer], [Item], [Orig"& _ 
-                "inalQuantity], [NewCount], [Reason], [strEnteredBy], [dtmEnteredOn]) VALUES (@Ad"& _ 
-                "justmentDate, @Customer, @Item, @OriginalQuantity, @NewCount, @Reason, @strEnter"& _ 
-                "edBy, @dtmEnteredOn);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT AdjustmentID, AdjustmentDate, Customer, Item, Orig"& _ 
-                "inalQuantity, NewCount, Reason, rv, strEnteredBy, dtmEnteredOn FROM tblInventory"& _ 
-                "Adjustment WHERE (AdjustmentID = SCOPE_IDENTITY())"
+                "inalQuantity], [NewCount], [Reason], [strEnteredBy], [dtmEnteredOn], [OriginalLo"& _ 
+                "t], [NewLot], [LPN]) VALUES (@AdjustmentDate, @Customer, @Item, @OriginalQuantit"& _ 
+                "y, @NewCount, @Reason, @strEnteredBy, @dtmEnteredOn, @OriginalLot, @NewLot, @LPN"& _ 
+                ");"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT AdjustmentID, AdjustmentDate, Customer, Item, OriginalQuantity, NewCo"& _ 
+                "unt, Reason, rv, strEnteredBy, dtmEnteredOn, OriginalLot, NewLot, LPN FROM tblIn"& _ 
+                "ventoryAdjustment WHERE (AdjustmentID = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AdjustmentDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AdjustmentDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Customer", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Customer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32692,15 +32845,19 @@ Namespace SPGTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Reason", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@strEnteredBy", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "strEnteredBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@dtmEnteredOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "dtmEnteredOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OriginalLot", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OriginalLot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NewLot", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NewLot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LPN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LPN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [tblInventoryAdjustment] SET [AdjustmentDate] = @AdjustmentDate, [Customer"& _ 
                 "] = @Customer, [Item] = @Item, [OriginalQuantity] = @OriginalQuantity, [NewCount"& _ 
                 "] = @NewCount, [Reason] = @Reason, [strEnteredBy] = @strEnteredBy, [dtmEnteredOn"& _ 
-                "] = @dtmEnteredOn WHERE (([AdjustmentID] = @Original_AdjustmentID) AND ([rv] = @"& _ 
-                "Original_rv));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT AdjustmentID, AdjustmentDate, Customer, Item, OriginalQua"& _ 
-                "ntity, NewCount, Reason, rv, strEnteredBy, dtmEnteredOn FROM tblInventoryAdjustm"& _ 
-                "ent WHERE (AdjustmentID = @AdjustmentID)"
+                "] = @dtmEnteredOn, [OriginalLot] = @OriginalLot, [NewLot] = @NewLot, [LPN] = @LP"& _ 
+                "N WHERE (([AdjustmentID] = @Original_AdjustmentID) AND ([rv] = @Original_rv));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "SELECT AdjustmentID, AdjustmentDate, Customer, Item, OriginalQuantity, NewCount,"& _ 
+                " Reason, rv, strEnteredBy, dtmEnteredOn, OriginalLot, NewLot, LPN FROM tblInvent"& _ 
+                "oryAdjustment WHERE (AdjustmentID = @AdjustmentID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AdjustmentDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AdjustmentDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Customer", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Customer", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32710,6 +32867,9 @@ Namespace SPGTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Reason", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@strEnteredBy", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "strEnteredBy", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@dtmEnteredOn", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "dtmEnteredOn", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OriginalLot", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OriginalLot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@NewLot", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "NewLot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LPN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LPN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_AdjustmentID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AdjustmentID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_rv", Global.System.Data.SqlDbType.Timestamp, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "rv", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AdjustmentID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "AdjustmentID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32729,16 +32889,16 @@ Namespace SPGTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        AdjustmentID, AdjustmentDate, Customer, Item, OriginalQuantity, New"& _ 
-                "Count, Reason, rv, strEnteredBy, dtmEnteredOn"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tblInventoryAdjus"& _ 
-                "tment"
+                "Count, Reason, rv, strEnteredBy, dtmEnteredOn, OriginalLot, NewLot, LPN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM   "& _ 
+                "         tblInventoryAdjustment"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT AdjustmentDate, AdjustmentID, Customer, Item, NewCount, OriginalQuantity, "& _ 
-                "Reason, dtmEnteredOn, rv, strEnteredBy FROM tblInventoryAdjustment WHERE (Adjust"& _ 
-                "mentDate >= ISNULL(@FromDate, AdjustmentDate)) AND (AdjustmentDate <= ISNULL(@To"& _ 
-                "Date, AdjustmentDate)) AND (Customer = ISNULL(@Customer, Customer)) AND (Item = "& _ 
-                "ISNULL(@Item, Item))"
+            Me._commandCollection(1).CommandText = "SELECT AdjustmentDate, AdjustmentID, Customer, Item, LPN, NewCount, NewLot, Origi"& _ 
+                "nalLot, OriginalQuantity, Reason, dtmEnteredOn, rv, strEnteredBy FROM tblInvento"& _ 
+                "ryAdjustment WHERE (AdjustmentDate >= ISNULL(@FromDate, AdjustmentDate)) AND (Ad"& _ 
+                "justmentDate <= ISNULL(@ToDate, AdjustmentDate)) AND (Customer = ISNULL(@Custome"& _ 
+                "r, Customer)) AND (Item = ISNULL(@Item, Item))"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FromDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "AdjustmentDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ToDate", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "AdjustmentDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -32746,9 +32906,9 @@ Namespace SPGTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Item", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Item", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT AdjustmentDate, AdjustmentID, Customer, Item, NewCount, OriginalQuantity, "& _ 
-                "Reason, dtmEnteredOn, rv, strEnteredBy FROM tblInventoryAdjustment WHERE (Adjust"& _ 
-                "mentID = @AdjustmentID)"
+            Me._commandCollection(2).CommandText = "SELECT AdjustmentDate, AdjustmentID, Customer, Item, LPN, NewCount, NewLot, Origi"& _ 
+                "nalLot, OriginalQuantity, Reason, dtmEnteredOn, rv, strEnteredBy FROM tblInvento"& _ 
+                "ryAdjustment WHERE (AdjustmentID = @AdjustmentID)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AdjustmentID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "AdjustmentID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -32925,7 +33085,7 @@ Namespace SPGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal AdjustmentDate As Global.System.Nullable(Of Date), ByVal Customer As Global.System.Nullable(Of Integer), ByVal Item As Global.System.Nullable(Of Integer), ByVal OriginalQuantity As Global.System.Nullable(Of Single), ByVal NewCount As Global.System.Nullable(Of Single), ByVal Reason As String, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Insert(ByVal AdjustmentDate As Global.System.Nullable(Of Date), ByVal Customer As Global.System.Nullable(Of Integer), ByVal Item As Global.System.Nullable(Of Integer), ByVal OriginalQuantity As Global.System.Nullable(Of Single), ByVal NewCount As Global.System.Nullable(Of Single), ByVal Reason As String, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Global.System.Nullable(Of Date), ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Global.System.Nullable(Of Integer)) As Integer
             If (AdjustmentDate.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(AdjustmentDate.Value,Date)
             Else
@@ -32966,6 +33126,21 @@ Namespace SPGTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
+            If (OriginalLot Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(OriginalLot,String)
+            End If
+            If (NewLot Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(NewLot,String)
+            End If
+            If (LPN.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(LPN.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -32985,7 +33160,7 @@ Namespace SPGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal AdjustmentDate As Global.System.Nullable(Of Date), ByVal Customer As Global.System.Nullable(Of Integer), ByVal Item As Global.System.Nullable(Of Integer), ByVal OriginalQuantity As Global.System.Nullable(Of Single), ByVal NewCount As Global.System.Nullable(Of Single), ByVal Reason As String, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Global.System.Nullable(Of Date), ByVal Original_AdjustmentID As Integer, ByVal Original_rv() As Byte, ByVal AdjustmentID As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal AdjustmentDate As Global.System.Nullable(Of Date), ByVal Customer As Global.System.Nullable(Of Integer), ByVal Item As Global.System.Nullable(Of Integer), ByVal OriginalQuantity As Global.System.Nullable(Of Single), ByVal NewCount As Global.System.Nullable(Of Single), ByVal Reason As String, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Global.System.Nullable(Of Date), ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Global.System.Nullable(Of Integer), ByVal Original_AdjustmentID As Integer, ByVal Original_rv() As Byte, ByVal AdjustmentID As Integer) As Integer
             If (AdjustmentDate.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(AdjustmentDate.Value,Date)
             Else
@@ -33026,13 +33201,28 @@ Namespace SPGTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_AdjustmentID,Integer)
+            If (OriginalLot Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(OriginalLot,String)
+            End If
+            If (NewLot Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(NewLot,String)
+            End If
+            If (LPN.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(LPN.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_AdjustmentID,Integer)
             If (Original_rv Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_rv")
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_rv,Byte())
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_rv,Byte())
             End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(AdjustmentID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(AdjustmentID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -33052,8 +33242,8 @@ Namespace SPGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal AdjustmentDate As Global.System.Nullable(Of Date), ByVal Customer As Global.System.Nullable(Of Integer), ByVal Item As Global.System.Nullable(Of Integer), ByVal OriginalQuantity As Global.System.Nullable(Of Single), ByVal NewCount As Global.System.Nullable(Of Single), ByVal Reason As String, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Global.System.Nullable(Of Date), ByVal Original_AdjustmentID As Integer, ByVal Original_rv() As Byte) As Integer
-            Return Me.Update(AdjustmentDate, Customer, Item, OriginalQuantity, NewCount, Reason, strEnteredBy, dtmEnteredOn, Original_AdjustmentID, Original_rv, Original_AdjustmentID)
+        Public Overloads Overridable Function Update(ByVal AdjustmentDate As Global.System.Nullable(Of Date), ByVal Customer As Global.System.Nullable(Of Integer), ByVal Item As Global.System.Nullable(Of Integer), ByVal OriginalQuantity As Global.System.Nullable(Of Single), ByVal NewCount As Global.System.Nullable(Of Single), ByVal Reason As String, ByVal strEnteredBy As String, ByVal dtmEnteredOn As Global.System.Nullable(Of Date), ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Global.System.Nullable(Of Integer), ByVal Original_AdjustmentID As Integer, ByVal Original_rv() As Byte) As Integer
+            Return Me.Update(AdjustmentDate, Customer, Item, OriginalQuantity, NewCount, Reason, strEnteredBy, dtmEnteredOn, OriginalLot, NewLot, LPN, Original_AdjustmentID, Original_rv, Original_AdjustmentID)
         End Function
     End Class
     

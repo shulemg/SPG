@@ -105,7 +105,7 @@ Public Class InventoryAdjustmentBLL
     End Sub
 
     Private Sub SetInventoryAdjustmentFields(ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single, ByVal reason As String,
-                                             ByVal locationID As Integer, ByVal adjustment As InventoryAdjustment)
+                                             ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?, ByVal adjustment As InventoryAdjustment)
 
         SetField(InventoryAdjustment.Fields.AdjustmentDate.PropertyName, adjustment.AdjustmentDate, CDate(Format(adjustmentDate, "D")), adjustment)
         SetField(InventoryAdjustment.Fields.Customer.PropertyName, adjustment.Customer, Session.DefaultSession.GetObjectByKey(Of Customers)(customer), adjustment)
@@ -113,13 +113,16 @@ Public Class InventoryAdjustmentBLL
         SetField(InventoryAdjustment.Fields.OriginalQuantity.PropertyName, adjustment.OriginalQuantity, originalQuantity, adjustment)
         SetField(InventoryAdjustment.Fields.NewCount.PropertyName, adjustment.NewCount, newQuantity, adjustment)
         SetField(InventoryAdjustment.Fields.Reason.PropertyName, adjustment.Reason, reason, adjustment)
+        SetField(InventoryAdjustment.Fields.OriginalLot.PropertyName, adjustment.OriginalLot, OriginalLot, adjustment)
+        SetField(InventoryAdjustment.Fields.NewLot.PropertyName, adjustment.NewLot, NewLot, adjustment)
+        SetField(InventoryAdjustment.Fields.LPN.PropertyName, adjustment.LPN, LPN, adjustment)
         SetField(InventoryAdjustment.Fields.InventoryLocation.PropertyName, adjustment.InventoryLocation, Session.DefaultSession.GetObjectByKey(Of Locations)(locationID), adjustment)
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
     Public Function UpdateInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single, ByVal reason As String,
-                                              ByVal locationID As Integer) As Boolean
+                                              ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?) As Boolean
 
         'Dim adjustments As SPG.InventoryAdjustmentDataTable = Adapter.GetInventoryAdjustmentByID(adjustmentID)
 
@@ -131,12 +134,13 @@ Public Class InventoryAdjustmentBLL
             'It is a new Production Record
             change = New Change() With {.PropertyName = InventoryAdjustment.Fields.AdjustmentID.PropertyName, .PrevValue = "<NULL>", .NewValue = adjustmentID.ToString}
             changes.Add(change)
-            Return InsertInventoryAdjustment(adjustmentID, adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID)
+            Return InsertInventoryAdjustment(adjustmentID, adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, OriginalLot, NewLot, LPN)
         End If
 
         'Dim adjustment As SPG.InventoryAdjustmentRow = adjustments(0)
         Dim originalItem As Integer = adjustment.AdjustmentItem.ItemID
         Dim originalNewQuantity, newNewQuantity As Single
+        Dim originalNewLot, newNewLot As String
         Dim itemChanged As Boolean
 
         'Dim originalRecord As Object() = adjustment.ItemArray
@@ -151,6 +155,7 @@ Public Class InventoryAdjustmentBLL
         'adjustment.ItemID = item
         Dim originalOriginalQuantity As Single = adjustment.OriginalQuantity
         originalNewQuantity = adjustment.NewCount
+        originalNewLot = adjustment.NewLot
         newNewQuantity = newQuantity - originalNewQuantity
         'adjustment.OriginalQuantity = originalQuantity
         'adjustment.NewCount = newQuantity
@@ -158,7 +163,7 @@ Public Class InventoryAdjustmentBLL
 
         change = New Change() With {.PropertyName = InventoryAdjustment.Fields.AdjustmentID.PropertyName, .PrevValue = adjustment.AdjustmentID.ToString, .NewValue = adjustment.AdjustmentID.ToString}
         changes.Add(change)
-        SetInventoryAdjustmentFields(adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, adjustment)
+        SetInventoryAdjustmentFields(adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, OriginalLot, NewLot, LPN, adjustment)
 
         Try
             adjustment.Save()
@@ -191,9 +196,9 @@ Public Class InventoryAdjustmentBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
     Public Function InsertInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single, ByVal reason As String,
-                                              ByVal locationID As Integer) As Boolean
+                                              ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?) As Boolean
 
         'Dim adjustments As SPG.InventoryAdjustmentDataTable = New SPG.InventoryAdjustmentDataTable
         'Dim adjustment As SPG.InventoryAdjustmentRow = adjustments.NewInventoryAdjustmentRow()
@@ -209,7 +214,7 @@ Public Class InventoryAdjustmentBLL
         'adjustment.NewCount = newQuantity
         'adjustment.Reason = reason
 
-        SetInventoryAdjustmentFields(adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, adjustment)
+        SetInventoryAdjustmentFields(adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, OriginalLot, NewLot, LPN, adjustment)
         adjustment.strEnteredBy = My.Settings.UserName
         adjustment.dtmEnteredOn = Now
 
@@ -245,7 +250,9 @@ Public Class InventoryAdjustmentBLL
         'Dim adjustments As SPG.InventoryAdjustmentDataTable = Adapter.GetInventoryAdjustmentByID(id)
         'Dim rowsAffected As Integer = 0
         Dim item, locationID As Integer
+        Dim LPN As Integer?
         Dim quantity As Single
+        Dim lot As String
 
         'If adjustments.Count = 1 Then
         '    Dim adjustment As SPG.InventoryAdjustmentRow = CType(adjustments.Rows(0), SPG.InventoryAdjustmentRow)
@@ -258,6 +265,8 @@ Public Class InventoryAdjustmentBLL
         item = adjustment.AdjustmentItem.ItemID
         quantity = adjustment.OriginalQuantity - adjustment.NewCount
         locationID = adjustment.InventoryLocation.Oid
+        LPN = adjustment.LPN
+        lot = adjustment.NewLot
         'rowsAffected = Adapter.Delete(id, adjustment.rv)
         'End If
 
@@ -280,6 +289,9 @@ Public Class InventoryAdjustmentBLL
                                                                  New ViewProperty("AdjustmentDate", SortDirection.Ascending, InventoryAdjustment.Fields.AdjustmentDate, False, True),
                                                                  New ViewProperty("OriginalQuantity", SortDirection.None, InventoryAdjustment.Fields.OriginalQuantity, False, True),
                                                                  New ViewProperty("NewCount", SortDirection.None, InventoryAdjustment.Fields.NewCount, False, True),
+                                                                 New ViewProperty("OriginalLot", SortDirection.None, InventoryAdjustment.Fields.OriginalLot, False, True),
+                                                                 New ViewProperty("NewLot", SortDirection.None, InventoryAdjustment.Fields.NewLot, False, True),
+                                                                 New ViewProperty("LPN", SortDirection.None, InventoryAdjustment.Fields.LPN, False, True),
                                                                  New ViewProperty("AdjustmentQuantity", SortDirection.None, InventoryAdjustment.Fields.NewCount - InventoryAdjustment.Fields.OriginalQuantity, False, True),
                                                                  New ViewProperty("Reason", SortDirection.None, InventoryAdjustment.Fields.Reason, False, True)})
 

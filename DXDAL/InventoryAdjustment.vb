@@ -32,17 +32,17 @@ Namespace SPGData
                 Return fCustomer
             End Get
             Set(ByVal value As customers)
-                SetPropertyValue(Of customers)("Customer", fCustomer, value)
+                SetPropertyValue("Customer", fCustomer, value)
             End Set
         End Property
         Dim fItem As Items
-        <Persistent("Item")> _
+        <Persistent("Item")>
         Public Property AdjustmentItem() As Items
             Get
                 Return fItem
             End Get
             Set(ByVal value As Items)
-                SetPropertyValue(Of Items)("AdjustmentItem", fItem, value)
+                SetPropertyValue("AdjustmentItem", fItem, value)
             End Set
         End Property
         Dim fOriginalQuantity As Single
@@ -51,7 +51,7 @@ Namespace SPGData
                 Return fOriginalQuantity
             End Get
             Set(ByVal value As Single)
-                SetPropertyValue(Of Single)("OriginalQuantity", fOriginalQuantity, value)
+                SetPropertyValue("OriginalQuantity", fOriginalQuantity, value)
             End Set
         End Property
         Dim fNewCount As Single
@@ -60,27 +60,54 @@ Namespace SPGData
                 Return fNewCount
             End Get
             Set(ByVal value As Single)
-                SetPropertyValue(Of Single)("NewCount", fNewCount, value)
+                SetPropertyValue("NewCount", fNewCount, value)
+            End Set
+        End Property
+        Dim fOriginalLot As String
+        Public Property OriginalLot() As String
+            Get
+                Return fOriginalLot
+            End Get
+            Set(ByVal value As String)
+                SetPropertyValue("OriginalLot", fOriginalLot, value)
+            End Set
+        End Property
+        Dim fNewLot As String
+        Public Property NewLot() As String
+            Get
+                Return fNewLot
+            End Get
+            Set(ByVal value As String)
+                SetPropertyValue("NewLot", fNewLot, value)
+            End Set
+        End Property
+        Dim fLPN As Integer?
+        Public Property LPN() As Integer?
+            Get
+                Return fLPN
+            End Get
+            Set(ByVal value As Integer?)
+                SetPropertyValue("LPN", fLPN, value)
             End Set
         End Property
         Dim fReason As String
-        <Size(150)> _
+        <Size(150)>
         Public Property Reason() As String
             Get
                 Return fReason
             End Get
             Set(ByVal value As String)
-                SetPropertyValue(Of String)("Reason", fReason, value)
+                SetPropertyValue("Reason", fReason, value)
             End Set
         End Property
         Dim fstrEnteredBy As String
-        <Size(50)> _
+        <Size(50)>
         Public Property strEnteredBy() As String
             Get
                 Return fstrEnteredBy
             End Get
             Set(ByVal value As String)
-                SetPropertyValue(Of String)("strEnteredBy", fstrEnteredBy, value)
+                SetPropertyValue("strEnteredBy", fstrEnteredBy, value)
             End Set
         End Property
         Dim fdtmEnteredOn As DateTime
@@ -98,7 +125,7 @@ Namespace SPGData
                 Return fInventoryLocation
             End Get
             Set(value As Locations)
-                SetPropertyValue(Of Locations)("InventoryLocation", fInventoryLocation, value)
+                SetPropertyValue("InventoryLocation", fInventoryLocation, value)
             End Set
         End Property
         Public Sub New(ByVal session As Session)
@@ -112,7 +139,7 @@ Namespace SPGData
         End Sub
 #Region "XPO nested fields class - don't edit manually"
         Public Shadows Class FieldsClass
-            Inherits DevExpress.Xpo.PersistentBase.FieldsClass
+            Inherits PersistentBase.FieldsClass
             Public Sub New()
                 MyBase.New()
             End Sub
@@ -147,6 +174,21 @@ Namespace SPGData
             Public ReadOnly Property NewCount() As OperandProperty
                 Get
                     Return New OperandProperty(GetNestedName("NewCount"))
+                End Get
+            End Property
+            Public ReadOnly Property OriginalLot() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("OriginalLot"))
+                End Get
+            End Property
+            Public ReadOnly Property NewLot() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("NewLot"))
+                End Get
+            End Property
+            Public ReadOnly Property LPN() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("LPN"))
                 End Get
             End Property
             Public ReadOnly Property Reason() As OperandProperty

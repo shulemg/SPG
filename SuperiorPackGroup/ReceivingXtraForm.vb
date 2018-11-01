@@ -6,11 +6,9 @@ Imports DevExpress.Data.Filtering
 Imports DevExpress.XtraReports.UI
 Imports DevExpress.Xpo
 Imports DXDAL.SPGData
-Imports DevExpress.Xpo.DB
 
 Public Class ReceivingXtraForm
 
-    Private m_lastLPN As Integer = 0
     Private m_Receivings As ReceivingsBLL
     Private m_CustomerReceivings As CustomersBLL
     Private m_Shifts As ShiftsBLL
@@ -19,7 +17,7 @@ Public Class ReceivingXtraForm
     Private m_ReturnDetails As ReturnDetailsBLL
     Private m_Items As ItemsBLL
     Private m_UserPermissions As UserPermissionsBLL
-    Private m_CurrentReceivingID As Nullable(Of Integer)
+    Private m_CurrentReceivingID As Integer?
     Private ReadOnly m_ReceivingSession As Session = New Session(SPGDataLayer) With {.TrackPropertiesModifications = True, .OptimisticLockingReadBehavior = OptimisticLockingReadBehavior.MergeCollisionThrowException}
 
     Private Sub ReceivingXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
@@ -243,10 +241,10 @@ Public Class ReceivingXtraForm
 
         Dim customer As Integer? = CType(Me.customerLookUpEdit.EditValue, Integer?)
         If customer.HasValue Then
-            Me.receivingItemXPView.Filter = GroupOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
+            Me.receivingItemXPView.Filter = CriteriaOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
                                                             New BinaryOperator("CustomerID", CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal),
                                                             New InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ReceivingSession))))
-            Me.returnItemXPView.Filter = GroupOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
+            Me.returnItemXPView.Filter = CriteriaOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
                                                           New InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ReceivingSession))))
         Else
             Me.receivingItemXPView.Filter = Nothing
@@ -300,8 +298,10 @@ Public Class ReceivingXtraForm
 
         'Required to get back to current receiving when entering a new receiving.
         Dim selectedID As Integer = -1
+        Dim newReceiving As Boolean = False
 
         If m_CurrentReceivingID.HasValue = False OrElse m_CurrentReceivingID = -1 Then
+            newReceiving = True
             m_CurrentReceivingID = ReceivingsBLL.GetNewReceivingID()
         Else
             selectedID = receivingSearchGridView.FocusedRowHandle
@@ -336,6 +336,10 @@ Public Class ReceivingXtraForm
             Return lResult1
         End If
 
+        If newReceiving Then
+            printLpn(True)
+        End If
+
         BindReceivingsSearchGrid()
         BindReceivingsControls(m_CurrentReceivingID.Value)
         If selectedID <> -1 Then
@@ -357,30 +361,7 @@ Public Class ReceivingXtraForm
                     While receivingGridView.IsValidRowHandle(i)
                         If receivingGridView.GetChildRowHandle(i, 0) > -1 Then
                             For ci As Integer = receivingGridView.GetChildRowHandle(i, 0) To receivingGridView.GetChildRowCount(i) + receivingGridView.GetChildRowHandle(i, 0) - 1
-                                Dim lot As String
-
-                                If Not IsDBNull(receivingGridView.GetRowCellValue(ci, lotGridColumn)) Then
-                                    lot = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString
-                                Else
-                                    lot = String.Empty
-                                End If
-
-                                Dim id As Integer? = CType(receivingGridView.GetRowCellValue(ci, idGridColumn), Integer?)
-                                Dim item As Integer? = CType(receivingGridView.GetRowCellValue(ci, itemGridColumn), Integer?)
-                                Dim qty As Integer? = CType(receivingGridView.GetRowCellValue(ci, quantityGridColumn), Integer?)
-                                Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(ci, packagesGridColumn), Integer?)
-                                Dim plts As Single? = CType(receivingGridView.GetRowCellValue(ci, palletsGridColumn), Single?)
-                                Dim qtyperplt As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, QtyPerPalletColumn))
-                                Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
-                                Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
-                                Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn))
-
-                                If lpnfrm Is Nothing OrElse lpnto Is Nothing OrElse Convert.ToInt32(Math.Ceiling(plts.Value)) > ((lpnto.Value - lpnfrm.Value) + 1) Then
-                                    lpnfrm = GetNextLPN(Convert.ToInt32(Math.Ceiling(plts.Value)))
-                                    lpnto = (lpnfrm.Value - 1) + Convert.ToInt32(Math.Ceiling(plts.Value))
-                                End If
-
-                                If m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, plts, qtyperplt, lpnfrm, lpnto, expr) <> True Then
+                                If SaveShippingDetail(ci) <> True Then
                                     MessageBox.Show("The receiving details was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                     shouldReturn = True : Return False
                                 End If
@@ -390,36 +371,10 @@ Public Class ReceivingXtraForm
                     End While
                 Else
                     'receivingGridView.SelectAll()
-                    For i As Integer = 0 To receivingGridView.RowCount - 1
-                        If receivingGridView.IsValidRowHandle(i) Then
-                            Dim lot As String
-
-                            If Not IsDBNull(receivingGridView.GetRowCellValue(i, lotGridColumn)) Then
-                                lot = receivingGridView.GetRowCellValue(i, lotGridColumn).ToString
-                            Else
-                                lot = String.Empty
-                            End If
-
-
-                            Dim id As Integer? = CType(receivingGridView.GetRowCellValue(i, idGridColumn), Integer?)
-                                Dim item As Integer? = CType(receivingGridView.GetRowCellValue(i, itemGridColumn), Integer?)
-                                Dim qty As Integer? = CType(receivingGridView.GetRowCellValue(i, quantityGridColumn), Integer?)
-                                Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(i, packagesGridColumn), Integer?)
-                                Dim plts As Single? = CType(receivingGridView.GetRowCellValue(i, palletsGridColumn), Single?)
-                                Dim qtyperplt As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(i, QtyPerPalletColumn))
-                                Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(i, ReceivDetLPNFromColumn))
-                                Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(i, ReceivDetLPNToColumn))
-                            Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(i, expirationDateGridColumn))
-
-                            If lpnfrm Is Nothing OrElse lpnto Is Nothing OrElse Convert.ToInt32(Math.Ceiling(plts.Value)) > ((lpnto.Value - lpnfrm.Value) + 1) Then
-                                lpnfrm = GetNextLPN(Convert.ToInt32(Math.Ceiling(plts.Value)))
-                                lpnto = (lpnfrm.Value - 1) + Convert.ToInt32(Math.Ceiling(plts.Value))
-                            End If
-
-                            If m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, plts, qtyperplt, lpnfrm, lpnto, expr) <> True Then
-                                MessageBox.Show("The receiving details was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                shouldReturn = True : Return False
-                            End If
+                    For ci As Integer = 0 To receivingGridView.RowCount - 1
+                        If SaveShippingDetail(ci) <> True Then
+                            MessageBox.Show("The receiving details was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            shouldReturn = True : Return False
                         End If
                     Next
                 End If
@@ -432,7 +387,33 @@ Public Class ReceivingXtraForm
         Return False
 
     End Function
+    Private Function SaveShippingDetail(ByRef ci As Integer) As Boolean
+        If receivingGridView.IsValidRowHandle(ci) Then
+            Dim lot As String
 
+            If Not IsDBNull(receivingGridView.GetRowCellValue(ci, lotGridColumn)) Then
+                lot = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString
+            Else
+                lot = String.Empty
+            End If
+
+
+            Dim id As Integer? = CType(receivingGridView.GetRowCellValue(ci, idGridColumn), Integer?)
+            Dim item As Integer? = CType(receivingGridView.GetRowCellValue(ci, itemGridColumn), Integer?)
+            Dim qty As Integer? = CType(receivingGridView.GetRowCellValue(ci, quantityGridColumn), Integer?)
+            Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(ci, packagesGridColumn), Integer?)
+            Dim plts As Single? = CType(receivingGridView.GetRowCellValue(ci, palletsGridColumn), Single?)
+            Dim qtyperplt As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, QtyPerPalletColumn))
+            Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
+            Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
+            Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn))
+
+            Return m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, plts, qtyperplt, lpnfrm, lpnto, expr)
+        Else
+            Return True
+        End If
+
+    End Function
     Private Function SaveShippingReturns(ByRef shouldReturn As Boolean) As Boolean
 
         shouldReturn = False
@@ -831,11 +812,11 @@ Public Class ReceivingXtraForm
     Private Sub FilterAssignedCustomers()
 
         Me.receivingSearchXPView.Criteria = New InOperator(Receiving.Fields.ReceivCustID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession))
-        Me.customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
+        Me.customersXPView.Criteria = CriteriaOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)))
-        Me.receivingItemXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
+        Me.receivingItemXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"RM", "IG"}))
-        Me.returnItemXPView.Criteria = GroupOperator.And(GroupOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
+        Me.returnItemXPView.Criteria = CriteriaOperator.And(CriteriaOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
                                                                           New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal)),
                                                                   New BinaryOperator(Items.Fields.ItemType.PropertyName, "FG", BinaryOperatorType.Equal))
 
@@ -928,6 +909,9 @@ Public Class ReceivingXtraForm
         End Try
 
     End Sub
+    Private Sub AddLotRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles AddLotRepositoryItemButtonEdit.Click
+
+    End Sub
 
     Private Sub itemRepositoryItemLookUpEdit_Closed(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.Controls.ClosedEventArgs) Handles itemRepositoryItemLookUpEdit.Closed, returnItemRepositoryItemLookUpEdit.Closed
 
@@ -945,8 +929,8 @@ Public Class ReceivingXtraForm
 
     Private Sub itemRepositoryItemLookUpEdit_Enter(sender As Object, e As EventArgs) Handles itemRepositoryItemLookUpEdit.Enter, returnItemRepositoryItemLookUpEdit.Enter
 
-        receivingItemXPView.Filter = GroupOperator.And(receivingItemXPView.Filter, New BinaryOperator("Inactive", False))
-        returnItemXPView.Filter = GroupOperator.And(returnItemXPView.Filter, New BinaryOperator("Inactive", False))
+        receivingItemXPView.Filter = CriteriaOperator.And(receivingItemXPView.Filter, New BinaryOperator("Inactive", False))
+        returnItemXPView.Filter = CriteriaOperator.And(returnItemXPView.Filter, New BinaryOperator("Inactive", False))
 
     End Sub
 
@@ -1085,55 +1069,79 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub printLpn()
+    Private Sub printLpn(all As Boolean)
+        Dim digits As Integer = Len(CustomersBLL.GetCustomer(7, m_ReceivingSession).LastLPNNumber.ToString)
+        Dim lpnXPview As XPView
+        Dim critaria As New CriteriaOperatorCollection
+        lpnXPview = New XPView(m_ReceivingSession, GetType(LocationInventoryByLot))
 
+        If all Then
+            If receivingGridView.GroupCount > 0 Then
+                Dim i As Integer = -1
+                While receivingGridView.IsValidRowHandle(i)
+                    If receivingGridView.GetChildRowHandle(i, 0) > -1 Then
+                        For ci As Integer = receivingGridView.GetChildRowHandle(i, 0) To receivingGridView.GetChildRowCount(i) + receivingGridView.GetChildRowHandle(i, 0) - 1
+                            Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
+                            Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
+                            If lpnfrm.HasValue AndAlso lpnto.HasValue Then
+                                critaria.Add(New BetweenOperator("LPNNumber", lpnfrm.Value, lpnto.Value))
+                            End If
+                        Next
+                    End If
+                    i -= 1
+                End While
+            Else
+                For ci As Integer = 0 To receivingGridView.RowCount - 1
+                    Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
+                    Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
+                    If lpnfrm.HasValue AndAlso lpnto.HasValue Then
+                        critaria.Add(New BetweenOperator("LPNNumber", lpnfrm.Value, lpnto.Value))
+                    End If
+                Next
+            End If
+        Else
+            Dim selectedRowHandles As Integer() = receivingGridView.GetSelectedRows()
+            If selectedRowHandles.Length = 0 Then
+                MsgBox("Nothing is selected")
+                Exit Sub
+            End If
+            For i As Integer = 0 To selectedRowHandles.Length - 1
+                Dim ci As Integer = selectedRowHandles(i)
+                If (ci >= 0) Then
+                    Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
+                    Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
+                    If lpnfrm.HasValue AndAlso lpnto.HasValue Then
+                        critaria.Add(New BetweenOperator("LPNNumber", lpnfrm.Value, lpnto.Value))
+                    End If
+                End If
+            Next
+        End If
+
+        lpnXPview.Criteria = CriteriaOperator.Or(critaria)
+
+        lpnXPview.Properties.AddRange(New ViewProperty() {New ViewProperty("Item", SortDirection.None, "[LocationInventoryItem.ItemCode]", False, True),
+                                      New ViewProperty("ItemDesc", SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True),
+                                      New ViewProperty("Qty", SortDirection.None, "[QuantityOnHand]", False, True),
+                                      New ViewProperty("Expr", SortDirection.None, "[ExpirationDate]", False, True),
+                                      New ViewProperty("Lot", SortDirection.None, "[LocationInventoryLot]", False, True),
+                                                                New ViewProperty("LPN", SortDirection.Ascending, "[LPNNumber]", False, True)})
+
+        Dim labels As LPNLabelsXtraReport = New LPNLabelsXtraReport
+        With labels
+            .DataSource = lpnXPview
+            .itemCodeXrLabel.DataBindings.Add("Text", lpnXPview, "Item")
+            .itemDescXrLabel.DataBindings.Add("Text", lpnXPview, "ItemDesc")
+            .exprXrLabel.DataBindings.Add("Text", lpnXPview, "Expr", "{0:MM/dd/yyyy}")
+            .qtyXrLabel.DataBindings.Add("Text", lpnXPview, "Qty")
+            .lotXrLabel.DataBindings.Add("Text", lpnXPview, "Lot")
+            .LPNXrBarCode.DataBindings.Add("Text", lpnXPview, "LPN", "SPG{0:D" & digits & "}")
+            .ReprintXrLabel.Visible = Not all
+            .CreateDocument()
+            .ShowPreviewDialog()
+        End With
     End Sub
 
-    Private Function GetNextLPN(LPNcount As Integer) As Integer
-        Dim nextLPN As Integer = 0
-        Dim customer As Customers = Session.DefaultSession.GetObjectByKey(Of Customers)(7)
-
-        customer.Reload()
-        If customer.NextLPNNumber > 0 Then
-            nextLPN = customer.NextLPNNumber
-            customer.NextLPNNumber += LPNcount
-            customer.Save()
-        Else
-            If customer.FirstLPNNumber.HasValue Then
-                nextLPN = customer.FirstLPNNumber.Value
-                customer.NextLPNNumber = nextLPN + LPNcount
-                customer.Save()
-            End If
-        End If
-
-        If nextLPN > customer.LastLPNNumber Then
-            MessageBox.Show("You ran out of LPN numbers, you must provide a different range of numbers before creating a new LPN number")
-            nextLPN = 0
-        End If
-
-        If nextLPN = customer.LastLPNNumber Then
-            MessageBox.Show("You used now your last LPN number, please provide a different range of numbers before creating a new LPN number")
-        End If
-
-        Return nextLPN
-
-        'Dim sort As New SortProperty("ReceivDetLPNTo", SortingDirection.Descending)
-
-        'Dim collection As New XPCollection(GetType(ReceivingDetail), Nothing, sort)
-
-        'collection.TopReturnedObjects = 1
-
-        'If collection.Count > 0 AndAlso CType(collection(0), ReceivingDetail).ReceivDetLPNTo > 1000 Then ' SQL Server is queried at this point
-
-        '    Dim ReceivingDetail As ReceivingDetail = CType(collection(0), ReceivingDetail)
-        '    Return Math.Max(m_lastLPN, ReceivingDetail.ReceivDetLPNTo.Value) + 1
-
-        'Else
-
-        '    Return 1001
-
-        'End If
-
-    End Function
-
+    Private Sub LpnLabelsBarButtonItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles LpnLabelsBarButtonItem.ItemClick
+        printLpn(False)
+    End Sub
 End Class

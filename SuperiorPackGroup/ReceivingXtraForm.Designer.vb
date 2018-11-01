@@ -31,6 +31,7 @@ Partial Class ReceivingXtraForm
         Me.cancelBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.saveBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.receivingListBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.LpnLabelsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.refreshBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.Bar2 = New DevExpress.XtraBars.Bar()
         Me.Bar3 = New DevExpress.XtraBars.Bar()
@@ -110,6 +111,9 @@ Partial Class ReceivingXtraForm
         Me.ReceivDetLPNToColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.delGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.delRepositoryItemButtonEdit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.AddLotRepositoryItemButtonEdit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.AddedLotGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.AddedLotCheckEdit = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
         Me.returnsXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.returnsGridControl = New DevExpress.XtraGrid.GridControl()
         Me.returnsGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -139,6 +143,9 @@ Partial Class ReceivingXtraForm
         Me.receivingDateRepositoryItemDateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.receivingIDSearchGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.customerFilterRepositoryItemLookUpEdit = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
+        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.receivingsXtraTabControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.receivingsXtraTabControl.SuspendLayout()
         Me.generalXtraTabPage.SuspendLayout()
@@ -181,6 +188,8 @@ Partial Class ReceivingXtraForm
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.delRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AddLotRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AddedLotCheckEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.returnsXtraTabPage.SuspendLayout()
         CType(Me.returnsGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.returnsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -286,9 +295,9 @@ Partial Class ReceivingXtraForm
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.addBarButtonItem, Me.editBarButtonItem, Me.cancelBarButtonItem, Me.saveBarButtonItem, Me.receivingListBarButtonItem, Me.refreshBarButtonItem})
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.addBarButtonItem, Me.editBarButtonItem, Me.cancelBarButtonItem, Me.saveBarButtonItem, Me.receivingListBarButtonItem, Me.refreshBarButtonItem, Me.LpnLabelsBarButtonItem})
         Me.BarManager1.MainMenu = Me.Bar2
-        Me.BarManager1.MaxItemId = 6
+        Me.BarManager1.MaxItemId = 7
         Me.BarManager1.StatusBar = Me.Bar3
         '
         'receivingBar
@@ -297,7 +306,7 @@ Partial Class ReceivingXtraForm
         Me.receivingBar.DockCol = 0
         Me.receivingBar.DockRow = 1
         Me.receivingBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.receivingBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.addBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.editBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.cancelBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.saveBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.receivingListBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.refreshBarButtonItem, True)})
+        Me.receivingBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.addBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.editBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.cancelBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.saveBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.receivingListBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.LpnLabelsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.refreshBarButtonItem, True)})
         Me.receivingBar.OptionsBar.UseWholeRow = True
         Me.receivingBar.Text = "Tools"
         '
@@ -330,6 +339,12 @@ Partial Class ReceivingXtraForm
         Me.receivingListBarButtonItem.Caption = "Print &Receiving List"
         Me.receivingListBarButtonItem.Id = 4
         Me.receivingListBarButtonItem.Name = "receivingListBarButtonItem"
+        '
+        'LpnLabelsBarButtonItem
+        '
+        Me.LpnLabelsBarButtonItem.Caption = "Print LPN"
+        Me.LpnLabelsBarButtonItem.Id = 6
+        Me.LpnLabelsBarButtonItem.Name = "LpnLabelsBarButtonItem"
         '
         'refreshBarButtonItem
         '
@@ -877,18 +892,19 @@ Partial Class ReceivingXtraForm
         Me.receivingGridControl.Location = New System.Drawing.Point(0, 0)
         Me.receivingGridControl.MainView = Me.receivingGridView
         Me.receivingGridControl.Name = "receivingGridControl"
-        Me.receivingGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.itemRepositoryItemLookUpEdit, Me.delRepositoryItemButtonEdit, Me.RepositoryItemDateEdit1})
+        Me.receivingGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.itemRepositoryItemLookUpEdit, Me.delRepositoryItemButtonEdit, Me.RepositoryItemDateEdit1, Me.AddLotRepositoryItemButtonEdit, Me.AddedLotCheckEdit})
         Me.receivingGridControl.Size = New System.Drawing.Size(536, 414)
         Me.receivingGridControl.TabIndex = 0
         Me.receivingGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.receivingGridView})
         '
         'receivingGridView
         '
-        Me.receivingGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.idGridColumn, Me.receivingIDGridColumn, Me.itemGridColumn, Me.descriptionGridColumn, Me.lotGridColumn, Me.expirationDateGridColumn, Me.quantityGridColumn, Me.packagesGridColumn, Me.QtyPerPalletColumn, Me.palletsGridColumn, Me.ReceivDetLPNFromColumn, Me.ReceivDetLPNToColumn, Me.delGridColumn})
+        Me.receivingGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.idGridColumn, Me.receivingIDGridColumn, Me.itemGridColumn, Me.descriptionGridColumn, Me.lotGridColumn, Me.expirationDateGridColumn, Me.quantityGridColumn, Me.packagesGridColumn, Me.QtyPerPalletColumn, Me.palletsGridColumn, Me.ReceivDetLPNFromColumn, Me.ReceivDetLPNToColumn, Me.delGridColumn, Me.AddedLotGridColumn})
         Me.receivingGridView.GridControl = Me.receivingGridControl
         Me.receivingGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ReceivDetQty", Me.quantityGridColumn, "{0:#,##0.######}")})
         Me.receivingGridView.Name = "receivingGridView"
         Me.receivingGridView.OptionsSelection.MultiSelect = True
+        Me.receivingGridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect
         Me.receivingGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom
         '
         'idGridColumn
@@ -1032,6 +1048,26 @@ Partial Class ReceivingXtraForm
         Me.delRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)})
         Me.delRepositoryItemButtonEdit.Name = "delRepositoryItemButtonEdit"
         Me.delRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'AddLotRepositoryItemButtonEdit
+        '
+        Me.AddLotRepositoryItemButtonEdit.AutoHeight = False
+        Me.AddLotRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)})
+        Me.AddLotRepositoryItemButtonEdit.Name = "AddLotRepositoryItemButtonEdit"
+        Me.AddLotRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
+        'AddedLotGridColumn
+        '
+        Me.AddedLotGridColumn.Caption = "GridColumn3"
+        Me.AddedLotGridColumn.ColumnEdit = Me.AddedLotCheckEdit
+        Me.AddedLotGridColumn.Name = "AddedLotGridColumn"
+        '
+        'AddedLotCheckEdit
+        '
+        Me.AddedLotCheckEdit.AutoHeight = False
+        Me.AddedLotCheckEdit.Name = "AddedLotCheckEdit"
+        Me.AddedLotCheckEdit.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked
+        Me.AddedLotCheckEdit.ValueGrayed = False
         '
         'returnsXtraTabPage
         '
@@ -1273,6 +1309,32 @@ Partial Class ReceivingXtraForm
         Me.customerFilterRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.customerFilterRepositoryItemLookUpEdit.Name = "customerFilterRepositoryItemLookUpEdit"
         '
+        'BarButtonItem1
+        '
+        Me.BarButtonItem1.Caption = "Print &Receiving List"
+        Me.BarButtonItem1.Id = 4
+        Me.BarButtonItem1.Name = "BarButtonItem1"
+        '
+        'GridColumn1
+        '
+        Me.GridColumn1.ColumnEdit = Me.delRepositoryItemButtonEdit
+        Me.GridColumn1.MaxWidth = 30
+        Me.GridColumn1.MinWidth = 25
+        Me.GridColumn1.Name = "GridColumn1"
+        Me.GridColumn1.Visible = True
+        Me.GridColumn1.VisibleIndex = 0
+        Me.GridColumn1.Width = 25
+        '
+        'GridColumn2
+        '
+        Me.GridColumn2.ColumnEdit = Me.delRepositoryItemButtonEdit
+        Me.GridColumn2.MaxWidth = 30
+        Me.GridColumn2.MinWidth = 25
+        Me.GridColumn2.Name = "GridColumn2"
+        Me.GridColumn2.Visible = True
+        Me.GridColumn2.VisibleIndex = 0
+        Me.GridColumn2.Width = 25
+        '
         'ReceivingXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1330,6 +1392,8 @@ Partial Class ReceivingXtraForm
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.delRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AddLotRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AddedLotCheckEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.returnsXtraTabPage.ResumeLayout(False)
         CType(Me.returnsGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.returnsGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1469,4 +1533,11 @@ Partial Class ReceivingXtraForm
     Friend WithEvents ReceivDetLPNFromColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ReceivDetLPNToColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents QtyPerPalletColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LpnLabelsBarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents AddLotRepositoryItemButtonEdit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents AddedLotGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents AddedLotCheckEdit As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

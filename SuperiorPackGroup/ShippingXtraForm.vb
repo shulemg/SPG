@@ -704,7 +704,7 @@ Public Class ShippingXtraForm
         Me.sealTextEdit.Text = String.Empty
         Me.destinationLookUpEdit.EditValue = Nothing
         Me.destinationMemoEdit.Text = ""
-        Me.noteMemoEdit.Text = $"{vbNewLine}{vbNewLine}IDEAL REFER TEMPERATURE IS{vbNewLine}65°F - 75°F CANDY{vbNewLine}55°F - 60°F CHOCOLATE"
+        Me.noteMemoEdit.Text = $"{vbNewLine}{vbNewLine}IDEAL REFER TEMPERATURE IS{vbNewLine}65ï¿½F - 75ï¿½F CANDY{vbNewLine}55ï¿½F - 60ï¿½F CHOCOLATE"
         Me.deliveryNoteNumberTextEdit.EditValue = String.Empty
         Me.totalGrossWeightTextEdit.EditValue = 0
         Me.customerShipperCheckEdit.Checked = False

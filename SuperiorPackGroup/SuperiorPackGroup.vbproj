@@ -82,6 +82,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 17.2\Components\Bin\Framework\DevExpress.Data.v17.2.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.DataAccess.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.ExpressApp.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -430,6 +431,12 @@
     <Compile Include="ReasonCodesXtraForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reports\LPNLabelsXtraReport.Designer.vb">
+      <DependentUpon>LPNLabelsXtraReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\LPNLabelsXtraReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\ProductionScheduleXtraSchedulerReport.Designer.vb">
       <DependentUpon>ProductionScheduleXtraSchedulerReport.vb</DependentUpon>
     </Compile>
@@ -686,6 +693,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReasonCodesXtraForm.resx">
       <DependentUpon>ReasonCodesXtraForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\LPNLabelsXtraReport.resx">
+      <DependentUpon>LPNLabelsXtraReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ProductionScheduleXtraSchedulerReport.resx">
       <DependentUpon>ProductionScheduleXtraSchedulerReport.vb</DependentUpon>

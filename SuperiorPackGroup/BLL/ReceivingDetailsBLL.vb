@@ -3,7 +3,7 @@ Imports System.Text
 Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()>
 Public Class ReceivingDetailsBLL
 
     Private m_ReceivingDetailsTableAdapter As ReceivingDetailsTableAdapter = Nothing
@@ -19,7 +19,7 @@ Public Class ReceivingDetailsBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Function GetReceivingDetailsByItemID(ByVal itemID As Integer) As SPG.ReceivingDetailsDataTable
 
         Return Adapter.GetReceivingDetailsByItemID(itemID)
@@ -37,8 +37,8 @@ Public Class ReceivingDetailsBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf CStr(ModifiedRecord.Item(i)) <> CStr(originalRecord(i)) Then
@@ -55,14 +55,14 @@ Public Class ReceivingDetailsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Function GetDetailsByReceivingID(ByVal receivingID As Integer) As SPG.ReceivingDetailsDataTable
 
         Return Adapter.GetDetailsByReceivingID(receivingID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)>
     Public Function UpdateReceivingDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal receivingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?,
              ByVal units As Integer?, ByVal pallets As Single?, ByVal QtyPerPallet As Integer?, ByVal LPNFrom As Integer?, ByVal LPNTo As Integer?, ByVal expirationDate As Date?) As Boolean
 
@@ -72,6 +72,13 @@ Public Class ReceivingDetailsBLL
 
         If Not quantity.HasValue OrElse Not units.HasValue Then
             Throw New ApplicationException("You must provide the amount of quamtity\units received.")
+        End If
+
+        If LPNFrom Is Nothing OrElse LPNTo Is Nothing Then
+            LPNFrom = GetNextLPN(Convert.ToInt32(Math.Ceiling(pallets.Value)))
+            LPNTo = (LPNFrom.Value - 1) + Convert.ToInt32(Math.Ceiling(pallets.Value))
+        ElseIf LPNTo - LPNFrom + 1 < CInt(Math.Ceiling(If(pallets, 1))) Then
+            Throw New ApplicationException("You cant add more pallets on this line please add it on a new line.")
         End If
 
         Dim item As Items = Session.DefaultSession.GetObjectByKey(Of Items)(itemID.Value, True)
@@ -159,12 +166,16 @@ Public Class ReceivingDetailsBLL
                         transferredQty += originalDetail.ReceivDetQtyPerPallet
                     Next
                 Else
-                    items.UpdateStock(session, originalItem, originalQuantity * -1, False, locationID)
+                        items.UpdateStock(session, originalItem, originalQuantity * -1, False, locationID)
                 End If
 
                 transferredQty = 0
                 LPN = If(LPNFrom, 0)
                 For i As Integer = 1 To CInt(Math.Ceiling(If(pallets, 1)))
+                    'If LPN > LPNTo.Value Then
+                    '    UpdateReceivingDetails(session, -1, receivingID, itemID, lot, quantity - transferredQty, units - transferredQty, pallets - i + 1, QtyPerPallet, Nothing, Nothing, expirationDate)
+                    '    Exit For
+                    'End If
                     items.UpdateStock(session, itemID.Value, If(transferredQty + If(QtyPerPallet, 0) > quantity.Value, quantity.Value - transferredQty, QtyPerPallet.Value), False, locationID, lot, LPN, expirationDate)
                     LPN = If(LPNFrom, 0) + i
                     transferredQty += If(QtyPerPallet, 0)
@@ -180,9 +191,9 @@ Public Class ReceivingDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
-    Public Function InsertDetails(ByVal session As Session, ByVal receivingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer),
-            ByVal units As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), ByVal QtyPerPallet As Integer?, ByVal LPNFrom As Integer?, ByVal LPNTo As Integer?, ByVal expirationDate As Date?) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)>
+    Public Function InsertDetails(ByVal session As Session, ByVal receivingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?,
+            ByVal units As Integer?, ByVal pallets As Single?, ByVal QtyPerPallet As Integer?, ByVal LPNFrom As Integer?, ByVal LPNTo As Integer?, ByVal expirationDate As Date?) As Boolean
 
         Dim details As SPG.ReceivingDetailsDataTable = New SPG.ReceivingDetailsDataTable
         Dim receivingDetail As SPG.ReceivingDetailsRow = details.NewReceivingDetailsRow()
@@ -243,7 +254,7 @@ Public Class ReceivingDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)>
     Public Function DeleteReceivingDetail(ByVal session As Session, ByVal detailID As Integer) As Boolean
 
         Dim details As SPG.ReceivingDetailsDataTable = Adapter.GetDetailsByDetailID(detailID)
@@ -281,8 +292,38 @@ Public Class ReceivingDetailsBLL
             End If
         End If
 
-            'Return true if precisely one row was deleted, otherwise return false.
-            Return rowsAffected = 1
+        'Return true if precisely one row was deleted, otherwise return false.
+        Return rowsAffected = 1
+
+    End Function
+
+    Private Function GetNextLPN(LPNcount As Integer) As Integer
+        Dim nextLPN As Integer = 0
+        Dim customer As Customers = Session.DefaultSession.GetObjectByKey(Of Customers)(7)
+
+        customer.Reload()
+        If customer.NextLPNNumber > 0 Then
+            nextLPN = customer.NextLPNNumber
+            customer.NextLPNNumber += LPNcount
+            customer.Save()
+        Else
+            If customer.FirstLPNNumber.HasValue Then
+                nextLPN = customer.FirstLPNNumber.Value
+                customer.NextLPNNumber = nextLPN + LPNcount
+                customer.Save()
+            End If
+        End If
+
+        If nextLPN > customer.LastLPNNumber Then
+            MessageBox.Show("You ran out of LPN numbers, you must provide a different range of numbers before creating a new LPN number")
+            nextLPN = 0
+        End If
+
+        If nextLPN = customer.LastLPNNumber Then
+            MessageBox.Show("You used now your last LPN number, please provide a different range of numbers before creating a new LPN number")
+        End If
+
+        Return nextLPN
 
     End Function
 
