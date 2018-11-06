@@ -3234,17 +3234,11 @@ Partial Public Class SPG
         
         Private columnintUnits As Global.System.Data.DataColumn
         
-        Private columnsngPallets As Global.System.Data.DataColumn
-        
         Private columnts As Global.System.Data.DataColumn
         
         Private columnExpirationDate As Global.System.Data.DataColumn
         
-        Private columnReceivDetQtyPerPallet As Global.System.Data.DataColumn
-        
-        Private columnReceivDetLPNFrom As Global.System.Data.DataColumn
-        
-        Private columnReceivDetLPNTo As Global.System.Data.DataColumn
+        Private columnReceivDetLPN As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
@@ -3331,14 +3325,6 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property sngPalletsColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnsngPallets
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property tsColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnts
@@ -3355,25 +3341,9 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property ReceivDetQtyPerPalletColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ReceivDetLPNColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnReceivDetQtyPerPallet
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property ReceivDetLPNFromColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnReceivDetLPNFrom
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property ReceivDetLPNToColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnReceivDetLPNTo
+                Return Me.columnReceivDetLPN
             End Get
         End Property
         
@@ -3414,9 +3384,9 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddReceivingDetailsRow(ByVal parentReceivingsRowByFK_tblReceivDet_tblReceivMain As ReceivingsRow, ByVal parentItemsRowByFK_tblItems_tblReceivDet As ItemsRow, ByVal ReceivDetLot As String, ByVal ReceivDetQty As Integer, ByVal intUnits As Integer, ByVal sngPallets As Single, ByVal ts() As Byte, ByVal ExpirationDate As Date, ByVal ReceivDetQtyPerPallet As Integer, ByVal ReceivDetLPNFrom As Integer, ByVal ReceivDetLPNTo As Integer) As ReceivingDetailsRow
+        Public Overloads Function AddReceivingDetailsRow(ByVal parentReceivingsRowByFK_tblReceivDet_tblReceivMain As ReceivingsRow, ByVal parentItemsRowByFK_tblItems_tblReceivDet As ItemsRow, ByVal ReceivDetLot As String, ByVal ReceivDetQty As Integer, ByVal intUnits As Integer, ByVal ts() As Byte, ByVal ExpirationDate As Date, ByVal ReceivDetLPN As Integer) As ReceivingDetailsRow
             Dim rowReceivingDetailsRow As ReceivingDetailsRow = CType(Me.NewRow,ReceivingDetailsRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Nothing, Nothing, ReceivDetLot, ReceivDetQty, intUnits, sngPallets, ts, ExpirationDate, ReceivDetQtyPerPallet, ReceivDetLPNFrom, ReceivDetLPNTo}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Nothing, Nothing, ReceivDetLot, ReceivDetQty, intUnits, ts, ExpirationDate, ReceivDetLPN}
             If (Not (parentReceivingsRowByFK_tblReceivDet_tblReceivMain) Is Nothing) Then
                 columnValuesArray(1) = parentReceivingsRowByFK_tblReceivDet_tblReceivMain(0)
             End If
@@ -3457,12 +3427,9 @@ Partial Public Class SPG
             Me.columnReceivDetLot = MyBase.Columns("ReceivDetLot")
             Me.columnReceivDetQty = MyBase.Columns("ReceivDetQty")
             Me.columnintUnits = MyBase.Columns("intUnits")
-            Me.columnsngPallets = MyBase.Columns("sngPallets")
             Me.columnts = MyBase.Columns("ts")
             Me.columnExpirationDate = MyBase.Columns("ExpirationDate")
-            Me.columnReceivDetQtyPerPallet = MyBase.Columns("ReceivDetQtyPerPallet")
-            Me.columnReceivDetLPNFrom = MyBase.Columns("ReceivDetLPNFrom")
-            Me.columnReceivDetLPNTo = MyBase.Columns("ReceivDetLPNTo")
+            Me.columnReceivDetLPN = MyBase.Columns("ReceivDetLPN")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3480,18 +3447,12 @@ Partial Public Class SPG
             MyBase.Columns.Add(Me.columnReceivDetQty)
             Me.columnintUnits = New Global.System.Data.DataColumn("intUnits", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnintUnits)
-            Me.columnsngPallets = New Global.System.Data.DataColumn("sngPallets", GetType(Single), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnsngPallets)
             Me.columnts = New Global.System.Data.DataColumn("ts", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnts)
             Me.columnExpirationDate = New Global.System.Data.DataColumn("ExpirationDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnExpirationDate)
-            Me.columnReceivDetQtyPerPallet = New Global.System.Data.DataColumn("ReceivDetQtyPerPallet", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnReceivDetQtyPerPallet)
-            Me.columnReceivDetLPNFrom = New Global.System.Data.DataColumn("ReceivDetLPNFrom", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnReceivDetLPNFrom)
-            Me.columnReceivDetLPNTo = New Global.System.Data.DataColumn("ReceivDetLPNTo", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnReceivDetLPNTo)
+            Me.columnReceivDetLPN = New Global.System.Data.DataColumn("ReceivDetLPN", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnReceivDetLPN)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnReceivDetID}, true))
             Me.columnReceivDetID.AutoIncrement = true
             Me.columnReceivDetID.AutoIncrementSeed = -1
@@ -13351,21 +13312,6 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property sngPallets() As Single
-            Get
-                Try 
-                    Return CType(Me(Me.tableReceivingDetails.sngPalletsColumn),Single)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'sngPallets' in table 'ReceivingDetails' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableReceivingDetails.sngPalletsColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property ts() As Byte()
             Get
                 Try 
@@ -13396,47 +13342,16 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property ReceivDetQtyPerPallet() As Integer
+        Public Property ReceivDetLPN() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableReceivingDetails.ReceivDetQtyPerPalletColumn),Integer)
+                    Return CType(Me(Me.tableReceivingDetails.ReceivDetLPNColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ReceivDetQtyPerPallet' in table 'ReceivingDetails' is DBNul"& _ 
-                            "l.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ReceivDetLPN' in table 'ReceivingDetails' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableReceivingDetails.ReceivDetQtyPerPalletColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property ReceivDetLPNFrom() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableReceivingDetails.ReceivDetLPNFromColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ReceivDetLPNFrom' in table 'ReceivingDetails' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableReceivingDetails.ReceivDetLPNFromColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property ReceivDetLPNTo() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableReceivingDetails.ReceivDetLPNToColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ReceivDetLPNTo' in table 'ReceivingDetails' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableReceivingDetails.ReceivDetLPNToColumn) = value
+                Me(Me.tableReceivingDetails.ReceivDetLPNColumn) = value
             End Set
         End Property
         
@@ -13524,18 +13439,6 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IssngPalletsNull() As Boolean
-            Return Me.IsNull(Me.tableReceivingDetails.sngPalletsColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetsngPalletsNull()
-            Me(Me.tableReceivingDetails.sngPalletsColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IstsNull() As Boolean
             Return Me.IsNull(Me.tableReceivingDetails.tsColumn)
         End Function
@@ -13560,38 +13463,14 @@ Partial Public Class SPG
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsReceivDetQtyPerPalletNull() As Boolean
-            Return Me.IsNull(Me.tableReceivingDetails.ReceivDetQtyPerPalletColumn)
+        Public Function IsReceivDetLPNNull() As Boolean
+            Return Me.IsNull(Me.tableReceivingDetails.ReceivDetLPNColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetReceivDetQtyPerPalletNull()
-            Me(Me.tableReceivingDetails.ReceivDetQtyPerPalletColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsReceivDetLPNFromNull() As Boolean
-            Return Me.IsNull(Me.tableReceivingDetails.ReceivDetLPNFromColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetReceivDetLPNFromNull()
-            Me(Me.tableReceivingDetails.ReceivDetLPNFromColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsReceivDetLPNToNull() As Boolean
-            Return Me.IsNull(Me.tableReceivingDetails.ReceivDetLPNToColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetReceivDetLPNToNull()
-            Me(Me.tableReceivingDetails.ReceivDetLPNToColumn) = Global.System.Convert.DBNull
+        Public Sub SetReceivDetLPNNull()
+            Me(Me.tableReceivingDetails.ReceivDetLPNColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -23620,12 +23499,10 @@ Namespace SPGTableAdapters
             tableMapping.ColumnMappings.Add("ReceivDetLot", "ReceivDetLot")
             tableMapping.ColumnMappings.Add("ReceivDetQty", "ReceivDetQty")
             tableMapping.ColumnMappings.Add("intUnits", "intUnits")
-            tableMapping.ColumnMappings.Add("sngPallets", "sngPallets")
             tableMapping.ColumnMappings.Add("ts", "ts")
             tableMapping.ColumnMappings.Add("ExpirationDate", "ExpirationDate")
-            tableMapping.ColumnMappings.Add("ReceivDetQtyPerPallet", "ReceivDetQtyPerPallet")
-            tableMapping.ColumnMappings.Add("ReceivDetLPNFrom", "ReceivDetLPNFrom")
-            tableMapping.ColumnMappings.Add("ReceivDetLPNTo", "ReceivDetLPNTo")
+            tableMapping.ColumnMappings.Add("ReceivDetLPNFrom", "ReceivDetLPN")
+            tableMapping.ColumnMappings.Add("ReceivDetLPN", "ReceivDetLPN")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -23637,46 +23514,36 @@ Namespace SPGTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [tblReceivDet] ([ReceivMainID], [ReceivDetItemID], [ReceivDetLot], [R"& _ 
-                "eceivDetQty], [intUnits], [sngPallets], [ExpirationDate], [ReceivDetQtyPerPallet"& _ 
-                "], [ReceivDetLPNTo], [ReceivDetLPNFrom]) VALUES (@ReceivMainID, @ReceivDetItemID"& _ 
-                ", @ReceivDetLot, @ReceivDetQty, @intUnits, @sngPallets, @ExpirationDate, @Receiv"& _ 
-                "DetQtyPerPallet, @ReceivDetLPNTo, @ReceivDetLPNFrom);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ReceivDetID, Recei"& _ 
-                "vMainID, ReceivDetItemID, ReceivDetLot, ReceivDetQty, intUnits, sngPallets, ts, "& _ 
-                "ExpirationDate, ReceivDetQtyPerPallet, ReceivDetLPNTo, ReceivDetLPNFrom FROM tbl"& _ 
-                "ReceivDet WHERE (ReceivDetID = SCOPE_IDENTITY())"
+                "eceivDetQty], [intUnits], [ExpirationDate], [ReceivDetLPN]) VALUES (@ReceivMainI"& _ 
+                "D, @ReceivDetItemID, @ReceivDetLot, @ReceivDetQty, @intUnits, @ExpirationDate, @"& _ 
+                "ReceivDetLPN);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ReceivDetID, ReceivMainID, ReceivDetItemID, ReceivDetLot,"& _ 
+                " ReceivDetQty, intUnits, ts, ExpirationDate, ReceivDetLPN FROM tblReceivDet WHER"& _ 
+                "E (ReceivDetID = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivMainID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivMainID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetItemID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetItemID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLot", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetQty", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetQty", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@intUnits", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "intUnits", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sngPallets", Global.System.Data.SqlDbType.Real, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "sngPallets", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExpirationDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExpirationDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetQtyPerPallet", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetQtyPerPallet", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLPNTo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLPNTo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLPNFrom", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLPNFrom", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLPN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLPN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [tblReceivDet] SET [ReceivMainID] = @ReceivMainID, [ReceivDetItemID] = @Re"& _ 
                 "ceivDetItemID, [ReceivDetLot] = @ReceivDetLot, [ReceivDetQty] = @ReceivDetQty, ["& _ 
-                "intUnits] = @intUnits, [sngPallets] = @sngPallets, [ExpirationDate] = @Expiratio"& _ 
-                "nDate, [ReceivDetQtyPerPallet] = @ReceivDetQtyPerPallet, [ReceivDetLPNTo] = @Rec"& _ 
-                "eivDetLPNTo, [ReceivDetLPNFrom] = @ReceivDetLPNFrom WHERE (([ReceivDetID] = @Ori"& _ 
-                "ginal_ReceivDetID) AND ([ts] = @Original_ts));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ReceivDetID, ReceivMainID"& _ 
-                ", ReceivDetItemID, ReceivDetLot, ReceivDetQty, intUnits, sngPallets, ts, Expirat"& _ 
-                "ionDate, ReceivDetQtyPerPallet, ReceivDetLPNTo, ReceivDetLPNFrom FROM tblReceivD"& _ 
-                "et WHERE (ReceivDetID = @ReceivDetID)"
+                "intUnits] = @intUnits, [ExpirationDate] = @ExpirationDate, [ReceivDetLPN] = @Rec"& _ 
+                "eivDetLPN WHERE (([ReceivDetID] = @Original_ReceivDetID) AND ([ts] = @Original_t"& _ 
+                "s));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ReceivDetID, ReceivMainID, ReceivDetItemID, ReceivDetLot, ReceivDet"& _ 
+                "Qty, intUnits, ts, ExpirationDate, ReceivDetLPN FROM tblReceivDet WHERE (ReceivD"& _ 
+                "etID = @ReceivDetID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivMainID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivMainID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetItemID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetItemID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLot", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLot", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetQty", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetQty", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@intUnits", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "intUnits", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@sngPallets", Global.System.Data.SqlDbType.Real, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "sngPallets", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExpirationDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExpirationDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetQtyPerPallet", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetQtyPerPallet", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLPNTo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLPNTo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLPNFrom", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLPNFrom", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetLPN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetLPN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ReceivDetID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ts", Global.System.Data.SqlDbType.Timestamp, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ts", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivDetID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -23696,21 +23563,20 @@ Namespace SPGTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ReceivDetID, ReceivMainID, ReceivDetItemID, ReceivDetLot, ReceivDet"& _ 
-                "Qty, intUnits, sngPallets, ts, ExpirationDate, ReceivDetQtyPerPallet, ReceivDetL"& _ 
-                "PNTo, ReceivDetLPNFrom"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tblReceivDet"
+                "Qty, intUnits, ts, ExpirationDate, ReceivDetLPN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tblReceivDet"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ExpirationDate, ReceivDetID, ReceivDetItemID, ReceivDetLPNFrom, ReceivDetL"& _ 
-                "PNTo, ReceivDetLot, ReceivDetQty, ReceivDetQtyPerPallet, ReceivMainID, intUnits,"& _ 
-                " sngPallets, ts FROM tblReceivDet WHERE (ReceivDetID = @DetailID)"
+            Me._commandCollection(1).CommandText = "SELECT ExpirationDate, ReceivDetID, ReceivDetItemID, ReceivDetLPN, ReceivDetLot, "& _ 
+                "ReceivDetQty, ReceivMainID, intUnits, ts FROM tblReceivDet WHERE (ReceivDetID = "& _ 
+                "@DetailID)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DetailID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivDetID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT ExpirationDate, ReceivDetID, ReceivDetItemID, ReceivDetLPNFrom, ReceivDetL"& _ 
-                "PNTo, ReceivDetLot, ReceivDetQty, ReceivDetQtyPerPallet, ReceivMainID, intUnits,"& _ 
-                " sngPallets, ts FROM tblReceivDet WHERE (ReceivMainID = @ReceivingID)"
+            Me._commandCollection(2).CommandText = "SELECT ExpirationDate, ReceivDetID, ReceivDetItemID, ReceivDetLPN, ReceivDetLot, "& _ 
+                "ReceivDetQty, ReceivMainID, intUnits, ts FROM tblReceivDet WHERE (ReceivMainID ="& _ 
+                " @ReceivingID)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivingID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ReceivMainID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
@@ -23838,7 +23704,7 @@ Namespace SPGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ReceivMainID As Global.System.Nullable(Of Integer), ByVal ReceivDetItemID As Global.System.Nullable(Of Integer), ByVal ReceivDetLot As String, ByVal ReceivDetQty As Global.System.Nullable(Of Integer), ByVal intUnits As Global.System.Nullable(Of Integer), ByVal sngPallets As Global.System.Nullable(Of Single), ByVal ExpirationDate As Global.System.Nullable(Of Date), ByVal ReceivDetQtyPerPallet As Global.System.Nullable(Of Integer), ByVal ReceivDetLPNTo As Global.System.Nullable(Of Integer), ByVal ReceivDetLPNFrom As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert(ByVal ReceivMainID As Global.System.Nullable(Of Integer), ByVal ReceivDetItemID As Global.System.Nullable(Of Integer), ByVal ReceivDetLot As String, ByVal ReceivDetQty As Global.System.Nullable(Of Integer), ByVal intUnits As Global.System.Nullable(Of Integer), ByVal ExpirationDate As Global.System.Nullable(Of Date), ByVal ReceivDetLPN As Integer) As Integer
             If (ReceivMainID.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(ReceivMainID.Value,Integer)
             Else
@@ -23864,31 +23730,12 @@ Namespace SPGTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (sngPallets.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(sngPallets.Value,Single)
+            If (ExpirationDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(ExpirationDate.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (ExpirationDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(ExpirationDate.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (ReceivDetQtyPerPallet.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(ReceivDetQtyPerPallet.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (ReceivDetLPNTo.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(ReceivDetLPNTo.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (ReceivDetLPNFrom.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(ReceivDetLPNFrom.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.InsertCommand.Parameters(6).Value = CType(ReceivDetLPN,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -23908,7 +23755,7 @@ Namespace SPGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ReceivMainID As Global.System.Nullable(Of Integer), ByVal ReceivDetItemID As Global.System.Nullable(Of Integer), ByVal ReceivDetLot As String, ByVal ReceivDetQty As Global.System.Nullable(Of Integer), ByVal intUnits As Global.System.Nullable(Of Integer), ByVal sngPallets As Global.System.Nullable(Of Single), ByVal ExpirationDate As Global.System.Nullable(Of Date), ByVal ReceivDetQtyPerPallet As Global.System.Nullable(Of Integer), ByVal ReceivDetLPNTo As Global.System.Nullable(Of Integer), ByVal ReceivDetLPNFrom As Global.System.Nullable(Of Integer), ByVal Original_ReceivDetID As Integer, ByVal Original_ts() As Byte, ByVal ReceivDetID As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal ReceivMainID As Global.System.Nullable(Of Integer), ByVal ReceivDetItemID As Global.System.Nullable(Of Integer), ByVal ReceivDetLot As String, ByVal ReceivDetQty As Global.System.Nullable(Of Integer), ByVal intUnits As Global.System.Nullable(Of Integer), ByVal ExpirationDate As Global.System.Nullable(Of Date), ByVal ReceivDetLPN As Integer, ByVal Original_ReceivDetID As Integer, ByVal Original_ts() As Byte, ByVal ReceivDetID As Integer) As Integer
             If (ReceivMainID.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(ReceivMainID.Value,Integer)
             Else
@@ -23934,38 +23781,19 @@ Namespace SPGTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (sngPallets.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(sngPallets.Value,Single)
+            If (ExpirationDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(ExpirationDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (ExpirationDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(ExpirationDate.Value,Date)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (ReceivDetQtyPerPallet.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(ReceivDetQtyPerPallet.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            If (ReceivDetLPNTo.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(ReceivDetLPNTo.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (ReceivDetLPNFrom.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(ReceivDetLPNFrom.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_ReceivDetID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(ReceivDetLPN,Integer)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_ReceivDetID,Integer)
             If (Original_ts Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ts")
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ts,Byte())
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_ts,Byte())
             End If
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(ReceivDetID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(ReceivDetID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -23985,8 +23813,8 @@ Namespace SPGTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ReceivMainID As Global.System.Nullable(Of Integer), ByVal ReceivDetItemID As Global.System.Nullable(Of Integer), ByVal ReceivDetLot As String, ByVal ReceivDetQty As Global.System.Nullable(Of Integer), ByVal intUnits As Global.System.Nullable(Of Integer), ByVal sngPallets As Global.System.Nullable(Of Single), ByVal ExpirationDate As Global.System.Nullable(Of Date), ByVal ReceivDetQtyPerPallet As Global.System.Nullable(Of Integer), ByVal ReceivDetLPNTo As Global.System.Nullable(Of Integer), ByVal ReceivDetLPNFrom As Global.System.Nullable(Of Integer), ByVal Original_ReceivDetID As Integer, ByVal Original_ts() As Byte) As Integer
-            Return Me.Update(ReceivMainID, ReceivDetItemID, ReceivDetLot, ReceivDetQty, intUnits, sngPallets, ExpirationDate, ReceivDetQtyPerPallet, ReceivDetLPNTo, ReceivDetLPNFrom, Original_ReceivDetID, Original_ts, Original_ReceivDetID)
+        Public Overloads Overridable Function Update(ByVal ReceivMainID As Global.System.Nullable(Of Integer), ByVal ReceivDetItemID As Global.System.Nullable(Of Integer), ByVal ReceivDetLot As String, ByVal ReceivDetQty As Global.System.Nullable(Of Integer), ByVal intUnits As Global.System.Nullable(Of Integer), ByVal ExpirationDate As Global.System.Nullable(Of Date), ByVal ReceivDetLPN As Integer, ByVal Original_ReceivDetID As Integer, ByVal Original_ts() As Byte) As Integer
+            Return Me.Update(ReceivMainID, ReceivDetItemID, ReceivDetLot, ReceivDetQty, intUnits, ExpirationDate, ReceivDetLPN, Original_ReceivDetID, Original_ts, Original_ReceivDetID)
         End Function
     End Class
     

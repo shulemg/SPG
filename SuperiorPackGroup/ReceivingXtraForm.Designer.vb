@@ -92,28 +92,44 @@ Partial Class ReceivingXtraForm
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.detailsXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.BulkEntryGroupControl = New DevExpress.XtraEditors.GroupControl()
+        Me.AddToPalletButton = New DevExpress.XtraEditors.SimpleButton()
+        Me.AddEntryButton = New DevExpress.XtraEditors.SimpleButton()
+        Me.QtyPerPltTextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.UnitsPerPltTextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.QtyTextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.UnitsTextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.LotTextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.ItemDescTextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ExpirationDateEdit = New DevExpress.XtraEditors.DateEdit()
+        Me.ItemLookUpEdit = New DevExpress.XtraEditors.LookUpEdit()
+        Me.receivingItemXPView = New DevExpress.Xpo.XPView(Me.components)
         Me.receivingGridControl = New DevExpress.XtraGrid.GridControl()
         Me.receivingGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.idGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingIDGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.itemGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.itemRepositoryItemLookUpEdit = New DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit()
-        Me.receivingItemXPView = New DevExpress.Xpo.XPView(Me.components)
         Me.descriptionGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.lotGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.expirationDateGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.quantityGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.packagesGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.QtyPerPalletColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.palletsGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ReceivDetLPNFromColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.ReceivDetLPNToColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ReceivDetLPNColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.delGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.delRepositoryItemButtonEdit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
-        Me.AddLotRepositoryItemButtonEdit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.AddedLotGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.AddedLotCheckEdit = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.AddLotRepositoryItemButtonEdit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
         Me.returnsXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.returnsGridControl = New DevExpress.XtraGrid.GridControl()
         Me.returnsGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -181,15 +197,26 @@ Partial Class ReceivingXtraForm
         CType(Me.bolTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.poTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.detailsXtraTabPage.SuspendLayout()
+        CType(Me.BulkEntryGroupControl, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BulkEntryGroupControl.SuspendLayout()
+        CType(Me.QtyPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UnitsPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.QtyTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UnitsTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LotTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemDescTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ExpirationDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ExpirationDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ItemLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.receivingItemXPView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.receivingGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.receivingGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.itemRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.receivingItemXPView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.delRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AddLotRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AddedLotCheckEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AddLotRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.returnsXtraTabPage.SuspendLayout()
         CType(Me.returnsGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.returnsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -215,7 +242,7 @@ Partial Class ReceivingXtraForm
         Me.receivingsXtraTabControl.Location = New System.Drawing.Point(0, 0)
         Me.receivingsXtraTabControl.Name = "receivingsXtraTabControl"
         Me.receivingsXtraTabControl.SelectedTabPage = Me.generalXtraTabPage
-        Me.receivingsXtraTabControl.Size = New System.Drawing.Size(542, 442)
+        Me.receivingsXtraTabControl.Size = New System.Drawing.Size(1133, 488)
         Me.receivingsXtraTabControl.TabIndex = 4
         Me.receivingsXtraTabControl.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.generalXtraTabPage, Me.detailsXtraTabPage, Me.returnsXtraTabPage})
         '
@@ -270,7 +297,7 @@ Partial Class ReceivingXtraForm
         Me.generalXtraTabPage.Controls.Add(Me.LabelControl3)
         Me.generalXtraTabPage.Controls.Add(Me.LabelControl2)
         Me.generalXtraTabPage.Name = "generalXtraTabPage"
-        Me.generalXtraTabPage.Size = New System.Drawing.Size(536, 414)
+        Me.generalXtraTabPage.Size = New System.Drawing.Size(1127, 460)
         Me.generalXtraTabPage.Text = "General Info"
         '
         'locationLookUpEdit
@@ -381,15 +408,15 @@ Partial Class ReceivingXtraForm
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(797, 49)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1388, 49)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 491)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 537)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(797, 23)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1388, 23)
         '
         'barDockControlLeft
         '
@@ -397,15 +424,15 @@ Partial Class ReceivingXtraForm
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 442)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 488)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(797, 49)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1388, 49)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 442)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 488)
         '
         'locationXpView
         '
@@ -881,31 +908,268 @@ Partial Class ReceivingXtraForm
         '
         'detailsXtraTabPage
         '
+        Me.detailsXtraTabPage.Controls.Add(Me.BulkEntryGroupControl)
         Me.detailsXtraTabPage.Controls.Add(Me.receivingGridControl)
         Me.detailsXtraTabPage.Name = "detailsXtraTabPage"
-        Me.detailsXtraTabPage.Size = New System.Drawing.Size(536, 414)
+        Me.detailsXtraTabPage.Size = New System.Drawing.Size(1127, 460)
         Me.detailsXtraTabPage.Text = "Receiving Details"
+        '
+        'BulkEntryGroupControl
+        '
+        Me.BulkEntryGroupControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BulkEntryGroupControl.AutoSize = True
+        Me.BulkEntryGroupControl.Controls.Add(Me.AddToPalletButton)
+        Me.BulkEntryGroupControl.Controls.Add(Me.AddEntryButton)
+        Me.BulkEntryGroupControl.Controls.Add(Me.QtyPerPltTextEdit)
+        Me.BulkEntryGroupControl.Controls.Add(Me.UnitsPerPltTextEdit)
+        Me.BulkEntryGroupControl.Controls.Add(Me.QtyTextEdit)
+        Me.BulkEntryGroupControl.Controls.Add(Me.UnitsTextEdit)
+        Me.BulkEntryGroupControl.Controls.Add(Me.LotTextEdit)
+        Me.BulkEntryGroupControl.Controls.Add(Me.ItemDescTextEdit)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label8)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label7)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label6)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label5)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label4)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label3)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label2)
+        Me.BulkEntryGroupControl.Controls.Add(Me.Label1)
+        Me.BulkEntryGroupControl.Controls.Add(Me.ExpirationDateEdit)
+        Me.BulkEntryGroupControl.Controls.Add(Me.ItemLookUpEdit)
+        Me.BulkEntryGroupControl.Location = New System.Drawing.Point(0, 3)
+        Me.BulkEntryGroupControl.Name = "BulkEntryGroupControl"
+        Me.BulkEntryGroupControl.ShowCaption = False
+        Me.BulkEntryGroupControl.Size = New System.Drawing.Size(1129, 49)
+        Me.BulkEntryGroupControl.TabIndex = 26
+        Me.BulkEntryGroupControl.Text = "GroupControl1"
+        '
+        'AddToPalletButton
+        '
+        Me.AddToPalletButton.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.AddToPalletButton.Location = New System.Drawing.Point(1045, 19)
+        Me.AddToPalletButton.Name = "AddToPalletButton"
+        Me.AddToPalletButton.Size = New System.Drawing.Size(75, 23)
+        Me.AddToPalletButton.TabIndex = 45
+        Me.AddToPalletButton.Text = "Add to Pallet"
+        '
+        'AddEntryButton
+        '
+        Me.AddEntryButton.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.AddEntryButton.Location = New System.Drawing.Point(964, 19)
+        Me.AddEntryButton.Name = "AddEntryButton"
+        Me.AddEntryButton.Size = New System.Drawing.Size(75, 23)
+        Me.AddEntryButton.TabIndex = 44
+        Me.AddEntryButton.Text = "Add Pallets"
+        '
+        'QtyPerPltTextEdit
+        '
+        Me.QtyPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.QtyPerPltTextEdit.EditValue = 0R
+        Me.QtyPerPltTextEdit.Location = New System.Drawing.Point(877, 21)
+        Me.QtyPerPltTextEdit.MenuManager = Me.BarManager1
+        Me.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit"
+        Me.QtyPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.QtyPerPltTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.QtyPerPltTextEdit.Size = New System.Drawing.Size(67, 20)
+        Me.QtyPerPltTextEdit.TabIndex = 43
+        Me.QtyPerPltTextEdit.Tag = "0"
+        '
+        'UnitsPerPltTextEdit
+        '
+        Me.UnitsPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.UnitsPerPltTextEdit.EditValue = 0R
+        Me.UnitsPerPltTextEdit.Location = New System.Drawing.Point(804, 21)
+        Me.UnitsPerPltTextEdit.MenuManager = Me.BarManager1
+        Me.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit"
+        Me.UnitsPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.UnitsPerPltTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.UnitsPerPltTextEdit.Size = New System.Drawing.Size(67, 20)
+        Me.UnitsPerPltTextEdit.TabIndex = 42
+        Me.UnitsPerPltTextEdit.Tag = "0"
+        '
+        'QtyTextEdit
+        '
+        Me.QtyTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.QtyTextEdit.EditValue = 0R
+        Me.QtyTextEdit.Location = New System.Drawing.Point(697, 21)
+        Me.QtyTextEdit.MenuManager = Me.BarManager1
+        Me.QtyTextEdit.Name = "QtyTextEdit"
+        Me.QtyTextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.QtyTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.QtyTextEdit.Size = New System.Drawing.Size(100, 20)
+        Me.QtyTextEdit.TabIndex = 41
+        Me.QtyTextEdit.Tag = "0"
+        '
+        'UnitsTextEdit
+        '
+        Me.UnitsTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.UnitsTextEdit.EditValue = 0R
+        Me.UnitsTextEdit.Location = New System.Drawing.Point(590, 21)
+        Me.UnitsTextEdit.MenuManager = Me.BarManager1
+        Me.UnitsTextEdit.Name = "UnitsTextEdit"
+        Me.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.UnitsTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.UnitsTextEdit.Size = New System.Drawing.Size(100, 20)
+        Me.UnitsTextEdit.TabIndex = 40
+        Me.UnitsTextEdit.Tag = "0"
+        '
+        'LotTextEdit
+        '
+        Me.LotTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.LotTextEdit.Location = New System.Drawing.Point(377, 21)
+        Me.LotTextEdit.MenuManager = Me.BarManager1
+        Me.LotTextEdit.Name = "LotTextEdit"
+        Me.LotTextEdit.Size = New System.Drawing.Size(100, 20)
+        Me.LotTextEdit.TabIndex = 39
+        '
+        'ItemDescTextEdit
+        '
+        Me.ItemDescTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.ItemDescTextEdit.Location = New System.Drawing.Point(195, 21)
+        Me.ItemDescTextEdit.MenuManager = Me.BarManager1
+        Me.ItemDescTextEdit.Name = "ItemDescTextEdit"
+        Me.ItemDescTextEdit.Size = New System.Drawing.Size(176, 20)
+        Me.ItemDescTextEdit.TabIndex = 38
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(877, 3)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(61, 13)
+        Me.Label8.TabIndex = 37
+        Me.Label8.Text = "Qty - Pallet"
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(804, 3)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(67, 13)
+        Me.Label7.TabIndex = 36
+        Me.Label7.Text = "Units - Pallet"
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(697, 3)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(96, 13)
+        Me.Label6.TabIndex = 35
+        Me.Label6.Text = "Quantity Received"
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(590, 3)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
+        Me.Label5.TabIndex = 34
+        Me.Label5.Text = "Units Received"
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(483, 3)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(81, 13)
+        Me.Label4.TabIndex = 33
+        Me.Label4.Text = "Expiration Date"
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(376, 3)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(33, 13)
+        Me.Label3.TabIndex = 32
+        Me.Label3.Text = "Lot #"
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(192, 3)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(85, 13)
+        Me.Label2.TabIndex = 31
+        Me.Label2.Text = "Item Description"
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(31, 3)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.TabIndex = 30
+        Me.Label1.Text = "Item Number"
+        '
+        'ExpirationDateEdit
+        '
+        Me.ExpirationDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.ExpirationDateEdit.EditValue = Nothing
+        Me.ExpirationDateEdit.Location = New System.Drawing.Point(483, 21)
+        Me.ExpirationDateEdit.MenuManager = Me.BarManager1
+        Me.ExpirationDateEdit.Name = "ExpirationDateEdit"
+        Me.ExpirationDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ExpirationDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ExpirationDateEdit.Size = New System.Drawing.Size(100, 20)
+        Me.ExpirationDateEdit.TabIndex = 27
+        Me.ExpirationDateEdit.Tag = ""
+        '
+        'ItemLookUpEdit
+        '
+        Me.ItemLookUpEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.ItemLookUpEdit.Location = New System.Drawing.Point(34, 21)
+        Me.ItemLookUpEdit.MenuManager = Me.BarManager1
+        Me.ItemLookUpEdit.Name = "ItemLookUpEdit"
+        Me.ItemLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ItemLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 59, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCustomerID", "Item Customer ID", 95, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
+        Me.ItemLookUpEdit.Properties.DataSource = Me.receivingItemXPView
+        Me.ItemLookUpEdit.Properties.DisplayMember = "ItemCode"
+        Me.ItemLookUpEdit.Properties.NullText = ""
+        Me.ItemLookUpEdit.Properties.NullValuePrompt = "[Select A Item]"
+        Me.ItemLookUpEdit.Properties.NullValuePromptShowForEmptyValue = True
+        Me.ItemLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.ItemLookUpEdit.Properties.ValueMember = "ItemID"
+        Me.ItemLookUpEdit.Size = New System.Drawing.Size(155, 20)
+        Me.ItemLookUpEdit.TabIndex = 26
+        '
+        'receivingItemXPView
+        '
+        Me.receivingItemXPView.CriteriaString = "[ItemType] = 'RM' Or [ItemType] = 'IG'"
+        Me.receivingItemXPView.ObjectType = GetType(DXDAL.SPGData.Items)
+        Me.receivingItemXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.None, "[ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID.CustomerID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", False, True), New DevExpress.Xpo.ViewProperty("Inactive", DevExpress.Xpo.SortDirection.None, "[Inactive]", False, True)})
         '
         'receivingGridControl
         '
-        Me.receivingGridControl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.receivingGridControl.Location = New System.Drawing.Point(0, 0)
+        Me.receivingGridControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.receivingGridControl.Location = New System.Drawing.Point(-1, 55)
         Me.receivingGridControl.MainView = Me.receivingGridView
         Me.receivingGridControl.Name = "receivingGridControl"
         Me.receivingGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.itemRepositoryItemLookUpEdit, Me.delRepositoryItemButtonEdit, Me.RepositoryItemDateEdit1, Me.AddLotRepositoryItemButtonEdit, Me.AddedLotCheckEdit})
-        Me.receivingGridControl.Size = New System.Drawing.Size(536, 414)
+        Me.receivingGridControl.Size = New System.Drawing.Size(1127, 417)
         Me.receivingGridControl.TabIndex = 0
         Me.receivingGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.receivingGridView})
         '
         'receivingGridView
         '
-        Me.receivingGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.idGridColumn, Me.receivingIDGridColumn, Me.itemGridColumn, Me.descriptionGridColumn, Me.lotGridColumn, Me.expirationDateGridColumn, Me.quantityGridColumn, Me.packagesGridColumn, Me.QtyPerPalletColumn, Me.palletsGridColumn, Me.ReceivDetLPNFromColumn, Me.ReceivDetLPNToColumn, Me.delGridColumn, Me.AddedLotGridColumn})
+        Me.receivingGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.idGridColumn, Me.receivingIDGridColumn, Me.itemGridColumn, Me.descriptionGridColumn, Me.lotGridColumn, Me.expirationDateGridColumn, Me.quantityGridColumn, Me.packagesGridColumn, Me.ReceivDetLPNColumn, Me.delGridColumn, Me.AddedLotGridColumn})
         Me.receivingGridView.GridControl = Me.receivingGridControl
         Me.receivingGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ReceivDetQty", Me.quantityGridColumn, "{0:#,##0.######}")})
         Me.receivingGridView.Name = "receivingGridView"
         Me.receivingGridView.OptionsSelection.MultiSelect = True
         Me.receivingGridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect
-        Me.receivingGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom
         '
         'idGridColumn
         '
@@ -940,12 +1204,6 @@ Partial Class ReceivingXtraForm
         Me.itemRepositoryItemLookUpEdit.NullValuePromptShowForEmptyValue = True
         Me.itemRepositoryItemLookUpEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.itemRepositoryItemLookUpEdit.ValueMember = "ItemID"
-        '
-        'receivingItemXPView
-        '
-        Me.receivingItemXPView.CriteriaString = "[ItemType] = 'RM' Or [ItemType] = 'IG'"
-        Me.receivingItemXPView.ObjectType = GetType(DXDAL.SPGData.Items)
-        Me.receivingItemXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.None, "[ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID.CustomerID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", False, True), New DevExpress.Xpo.ViewProperty("Inactive", DevExpress.Xpo.SortDirection.None, "[Inactive]", False, True)})
         '
         'descriptionGridColumn
         '
@@ -986,51 +1244,28 @@ Partial Class ReceivingXtraForm
         '
         'quantityGridColumn
         '
-        Me.quantityGridColumn.Caption = "Units Received"
+        Me.quantityGridColumn.Caption = "Quantity"
         Me.quantityGridColumn.Name = "quantityGridColumn"
         Me.quantityGridColumn.Visible = True
-        Me.quantityGridColumn.VisibleIndex = 5
+        Me.quantityGridColumn.VisibleIndex = 6
         Me.quantityGridColumn.Width = 73
         '
         'packagesGridColumn
         '
-        Me.packagesGridColumn.Caption = "Quantity"
+        Me.packagesGridColumn.Caption = "Units Received"
         Me.packagesGridColumn.Name = "packagesGridColumn"
         Me.packagesGridColumn.Visible = True
-        Me.packagesGridColumn.VisibleIndex = 6
+        Me.packagesGridColumn.VisibleIndex = 5
         Me.packagesGridColumn.Width = 73
         '
-        'QtyPerPalletColumn
+        'ReceivDetLPNColumn
         '
-        Me.QtyPerPalletColumn.Caption = "Units Per Pallet"
-        Me.QtyPerPalletColumn.Name = "QtyPerPalletColumn"
-        Me.QtyPerPalletColumn.Visible = True
-        Me.QtyPerPalletColumn.VisibleIndex = 8
-        '
-        'palletsGridColumn
-        '
-        Me.palletsGridColumn.Caption = "Pallets"
-        Me.palletsGridColumn.Name = "palletsGridColumn"
-        Me.palletsGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)})
-        Me.palletsGridColumn.Visible = True
-        Me.palletsGridColumn.VisibleIndex = 7
-        Me.palletsGridColumn.Width = 73
-        '
-        'ReceivDetLPNFromColumn
-        '
-        Me.ReceivDetLPNFromColumn.Caption = "LPN - From"
-        Me.ReceivDetLPNFromColumn.Name = "ReceivDetLPNFromColumn"
-        Me.ReceivDetLPNFromColumn.OptionsColumn.ReadOnly = True
-        Me.ReceivDetLPNFromColumn.Visible = True
-        Me.ReceivDetLPNFromColumn.VisibleIndex = 9
-        '
-        'ReceivDetLPNToColumn
-        '
-        Me.ReceivDetLPNToColumn.Caption = "LPN - To"
-        Me.ReceivDetLPNToColumn.Name = "ReceivDetLPNToColumn"
-        Me.ReceivDetLPNToColumn.OptionsColumn.ReadOnly = True
-        Me.ReceivDetLPNToColumn.Visible = True
-        Me.ReceivDetLPNToColumn.VisibleIndex = 10
+        Me.ReceivDetLPNColumn.Caption = "LPN"
+        Me.ReceivDetLPNColumn.FieldName = "ReceivDetLPNColumn"
+        Me.ReceivDetLPNColumn.Name = "ReceivDetLPNColumn"
+        Me.ReceivDetLPNColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom, "ReceivDetLPN", "")})
+        Me.ReceivDetLPNColumn.Visible = True
+        Me.ReceivDetLPNColumn.VisibleIndex = 7
         '
         'delGridColumn
         '
@@ -1049,13 +1284,6 @@ Partial Class ReceivingXtraForm
         Me.delRepositoryItemButtonEdit.Name = "delRepositoryItemButtonEdit"
         Me.delRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
-        'AddLotRepositoryItemButtonEdit
-        '
-        Me.AddLotRepositoryItemButtonEdit.AutoHeight = False
-        Me.AddLotRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)})
-        Me.AddLotRepositoryItemButtonEdit.Name = "AddLotRepositoryItemButtonEdit"
-        Me.AddLotRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
-        '
         'AddedLotGridColumn
         '
         Me.AddedLotGridColumn.Caption = "GridColumn3"
@@ -1069,11 +1297,18 @@ Partial Class ReceivingXtraForm
         Me.AddedLotCheckEdit.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked
         Me.AddedLotCheckEdit.ValueGrayed = False
         '
+        'AddLotRepositoryItemButtonEdit
+        '
+        Me.AddLotRepositoryItemButtonEdit.AutoHeight = False
+        Me.AddLotRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)})
+        Me.AddLotRepositoryItemButtonEdit.Name = "AddLotRepositoryItemButtonEdit"
+        Me.AddLotRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
+        '
         'returnsXtraTabPage
         '
         Me.returnsXtraTabPage.Controls.Add(Me.returnsGridControl)
         Me.returnsXtraTabPage.Name = "returnsXtraTabPage"
-        Me.returnsXtraTabPage.Size = New System.Drawing.Size(536, 414)
+        Me.returnsXtraTabPage.Size = New System.Drawing.Size(1127, 460)
         Me.returnsXtraTabPage.Text = "Return Details"
         '
         'returnsGridControl
@@ -1083,7 +1318,7 @@ Partial Class ReceivingXtraForm
         Me.returnsGridControl.MainView = Me.returnsGridView
         Me.returnsGridControl.Name = "returnsGridControl"
         Me.returnsGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.returnItemRepositoryItemLookUpEdit, Me.returnReasonRepositoryItemMemoExEdit, Me.deleteReturnRepositoryItemButtonEdit, Me.RepositoryItemDateEdit2})
-        Me.returnsGridControl.Size = New System.Drawing.Size(536, 414)
+        Me.returnsGridControl.Size = New System.Drawing.Size(1127, 460)
         Me.returnsGridControl.TabIndex = 0
         Me.returnsGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.returnsGridView})
         '
@@ -1233,7 +1468,7 @@ Partial Class ReceivingXtraForm
         Me.SplitContainerControl1.Panel1.Text = "Panel1"
         Me.SplitContainerControl1.Panel2.Controls.Add(Me.receivingsXtraTabControl)
         Me.SplitContainerControl1.Panel2.Text = "Panel2"
-        Me.SplitContainerControl1.Size = New System.Drawing.Size(797, 442)
+        Me.SplitContainerControl1.Size = New System.Drawing.Size(1388, 488)
         Me.SplitContainerControl1.SplitterPosition = 200
         Me.SplitContainerControl1.TabIndex = 9
         Me.SplitContainerControl1.Text = "SplitContainerControl1"
@@ -1246,7 +1481,7 @@ Partial Class ReceivingXtraForm
         Me.receivingSearchGridControl.MainView = Me.receivingSearchGridView
         Me.receivingSearchGridControl.Name = "receivingSearchGridControl"
         Me.receivingSearchGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.customerFilterRepositoryItemLookUpEdit, Me.receivingDateRepositoryItemDateEdit})
-        Me.receivingSearchGridControl.Size = New System.Drawing.Size(250, 442)
+        Me.receivingSearchGridControl.Size = New System.Drawing.Size(250, 488)
         Me.receivingSearchGridControl.TabIndex = 0
         Me.receivingSearchGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.receivingSearchGridView})
         '
@@ -1339,7 +1574,7 @@ Partial Class ReceivingXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(797, 514)
+        Me.ClientSize = New System.Drawing.Size(1388, 560)
         Me.Controls.Add(Me.SplitContainerControl1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
@@ -1385,15 +1620,28 @@ Partial Class ReceivingXtraForm
         CType(Me.bolTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.poTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.detailsXtraTabPage.ResumeLayout(False)
+        Me.detailsXtraTabPage.PerformLayout()
+        CType(Me.BulkEntryGroupControl, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BulkEntryGroupControl.ResumeLayout(False)
+        Me.BulkEntryGroupControl.PerformLayout()
+        CType(Me.QtyPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UnitsPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.QtyTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UnitsTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LotTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemDescTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExpirationDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExpirationDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ItemLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.receivingItemXPView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.receivingGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.receivingGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.itemRepositoryItemLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.receivingItemXPView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.delRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AddLotRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AddedLotCheckEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AddLotRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.returnsXtraTabPage.ResumeLayout(False)
         CType(Me.returnsGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.returnsGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1448,7 +1696,6 @@ Partial Class ReceivingXtraForm
     Friend WithEvents descriptionGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents quantityGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents packagesGridColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents palletsGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents lotGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
     Friend WithEvents receivingBar As DevExpress.XtraBars.Bar
@@ -1530,9 +1777,7 @@ Partial Class ReceivingXtraForm
     Friend WithEvents locationLookUpEdit As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LabelControl24 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents locationXpView As DevExpress.Xpo.XPView
-    Friend WithEvents ReceivDetLPNFromColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents ReceivDetLPNToColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents QtyPerPalletColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ReceivDetLPNColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LpnLabelsBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents AddLotRepositoryItemButtonEdit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
@@ -1540,4 +1785,23 @@ Partial Class ReceivingXtraForm
     Friend WithEvents AddedLotCheckEdit As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents BulkEntryGroupControl As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents QtyPerPltTextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents UnitsPerPltTextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents QtyTextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents UnitsTextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LotTextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents ItemDescTextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ExpirationDateEdit As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents ItemLookUpEdit As DevExpress.XtraEditors.LookUpEdit
+    Friend WithEvents AddEntryButton As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents AddToPalletButton As DevExpress.XtraEditors.SimpleButton
 End Class

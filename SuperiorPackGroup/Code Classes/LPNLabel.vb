@@ -46,6 +46,12 @@ Public Class LPNLabel
         Return nextLPN
 
     End Function
+    Public Shared Function GetNextLPNNumber(customerId As Integer) As Integer
+        Dim customer As Customers = Session.DefaultSession.GetObjectByKey(Of Customers)(customerId)
+        Return GetNextLPNNumber(customer)
+    End Function
+
+
 
     Private Shared Sub CreateLargeLPNLabel(ByVal session As Session, ByVal horizontalAdjustment As Byte, ByVal verticalAdjustment As Byte, ByVal inventoryRecord As Inventory, ByVal lpnBaseNumber As Integer, ByVal printCopies As Byte,
                                            ByVal largeCode As String, ByVal lpnNumber As String)

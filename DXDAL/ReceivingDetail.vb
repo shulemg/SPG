@@ -24,7 +24,7 @@ Namespace SPGData
                 Return fReceivMainID
             End Get
             Set(ByVal value As Receiving)
-                SetPropertyValue(Of Receiving)("ReceivMainID", fReceivMainID, value)
+                SetPropertyValue("ReceivMainID", fReceivMainID, value)
             End Set
         End Property
         Dim fReceivDetItemID As Items
@@ -33,44 +33,26 @@ Namespace SPGData
                 Return fReceivDetItemID
             End Get
             Set(ByVal value As Items)
-                SetPropertyValue(Of Items)("ReceivDetItemID", fReceivDetItemID, value)
+                SetPropertyValue("ReceivDetItemID", fReceivDetItemID, value)
             End Set
         End Property
         Dim fReceivDetLot As String
-        <Size(150)> _
+        <Size(150)>
         Public Property ReceivDetLot() As String
             Get
                 Return fReceivDetLot
             End Get
             Set(ByVal value As String)
-                SetPropertyValue(Of String)("ReceivDetLot", fReceivDetLot, value)
+                SetPropertyValue("ReceivDetLot", fReceivDetLot, value)
             End Set
         End Property
-        Dim fReceivDetQtyPerPallet As Integer?
-        Public Property ReceivDetQtyPerPallet() As Integer?
+        Dim fReceivDetLPN As Integer?
+        Public Property ReceivDetLPN() As Integer?
             Get
-                Return fReceivDetQtyPerPallet
+                Return fReceivDetLPN
             End Get
             Set(ByVal value As Integer?)
-                SetPropertyValue(Of Integer?)("ReceivDetQtyPerPallet", fReceivDetQtyPerPallet, value)
-            End Set
-        End Property
-        Dim fReceivDetLPNFrom As Integer?
-        Public Property ReceivDetLPNFrom() As Integer?
-            Get
-                Return fReceivDetLPNFrom
-            End Get
-            Set(ByVal value As Integer?)
-                SetPropertyValue(Of Integer?)("ReceivDetLPNFrom", fReceivDetLPNFrom, value)
-            End Set
-        End Property
-        Dim fReceivDetLPNTo As Integer?
-        Public Property ReceivDetLPNTo() As Integer?
-            Get
-                Return fReceivDetLPNTo
-            End Get
-            Set(ByVal value As Integer?)
-                SetPropertyValue(Of Integer?)("ReceivDetLPNTo", fReceivDetLPNTo, value)
+                SetPropertyValue("ReceivDetLPN", fReceivDetLPN, value)
             End Set
         End Property
         Dim fReceivDetQty As Integer
@@ -91,22 +73,13 @@ Namespace SPGData
                 SetPropertyValue(Of Integer)("intUnits", fintUnits, value)
             End Set
         End Property
-        Dim fsngPallets As Single
-        Public Property sngPallets() As Single
-            Get
-                Return fsngPallets
-            End Get
-            Set(ByVal value As Single)
-                SetPropertyValue(Of Single)("sngPallets", fsngPallets, value)
-            End Set
-        End Property
-        Dim fExpirationDate As Date
-        Public Property ExpirationDate() As Date
+        Dim fExpirationDate As Date?
+        Public Property ExpirationDate() As Date?
             Get
                 Return fExpirationDate
             End Get
-            Set(value As Date)
-                SetPropertyValue(Of Date)("ExpirationDate", fExpirationDate, value)
+            Set(value As Date?)
+                SetPropertyValue(Of Date?)("ExpirationDate", fExpirationDate, value)
             End Set
         End Property
 
@@ -121,48 +94,38 @@ Namespace SPGData
         End Sub
 #Region "XPO nested fields class - don't edit manually"
         'Created/Updated: Joel-PC\Joel on JOEL-PC at 1/27/2013 4:56 PM
-Public Shadows Class FieldsClass
-        Inherits XPLiteObject.FieldsClass
-        Public Sub New()
-            MyBase.New()
-        End Sub
-        Public Sub New(ByVal propertyName As String)
-            MyBase.New(propertyName)
-        End Sub
-        Public ReadOnly Property ReceivDetID() As OperandProperty
-            Get
-                Return New OperandProperty(GetNestedName("ReceivDetID"))
-            End Get
-        End Property
-        Public ReadOnly Property ReceivMainID() As DXDAL.SPGData.Receiving.FieldsClass
-            Get
-                Return New DXDAL.SPGData.Receiving.FieldsClass(GetNestedName("ReceivMainID"))
-            End Get
-        End Property
-        Public ReadOnly Property ReceivDetItemID() As DXDAL.SPGData.Items.FieldsClass
-            Get
-                Return New DXDAL.SPGData.Items.FieldsClass(GetNestedName("ReceivDetItemID"))
-            End Get
-        End Property
-        Public Const ReceivDetLotFieldName As String = "ReceivDetLot"
-        Public ReadOnly Property ReceivDetLot() As DevExpress.Data.Filtering.OperandProperty
-            Get
-                Return New DevExpress.Data.Filtering.OperandProperty(GetNestedName("ReceivDetLot"))
-            End Get
-        End Property
-            Public ReadOnly Property ReceivDetQtyPerPallet() As OperandProperty
+        Public Shadows Class FieldsClass
+            Inherits PersistentBase.FieldsClass
+            Public Sub New()
+                MyBase.New()
+            End Sub
+            Public Sub New(ByVal propertyName As String)
+                MyBase.New(propertyName)
+            End Sub
+            Public ReadOnly Property ReceivDetID() As OperandProperty
                 Get
-                    Return New OperandProperty(GetNestedName("ReceivDetQtyPerPallet"))
+                    Return New OperandProperty(GetNestedName("ReceivDetID"))
                 End Get
             End Property
-            Public ReadOnly Property ReceivDetLPNFrom() As OperandProperty
+            Public ReadOnly Property ReceivMainID() As Receiving.FieldsClass
                 Get
-                    Return New OperandProperty(GetNestedName("ReceivDetLPNFrom"))
+                    Return New Receiving.FieldsClass(GetNestedName("ReceivMainID"))
                 End Get
             End Property
-            Public ReadOnly Property ReceivDetLPNTo() As OperandProperty
+            Public ReadOnly Property ReceivDetItemID() As Items.FieldsClass
                 Get
-                    Return New OperandProperty(GetNestedName("ReceivDetLPNTo"))
+                    Return New Items.FieldsClass(GetNestedName("ReceivDetItemID"))
+                End Get
+            End Property
+            Public Const ReceivDetLotFieldName As String = "ReceivDetLot"
+            Public ReadOnly Property ReceivDetLot() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("ReceivDetLot"))
+                End Get
+            End Property
+            Public ReadOnly Property ReceivDetLPN() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("ReceivDetLPN"))
                 End Get
             End Property
             Public ReadOnly Property ReceivDetQty() As OperandProperty
@@ -174,11 +137,6 @@ Public Shadows Class FieldsClass
                 Get
                     Return New OperandProperty(GetNestedName("intUnits"))
                 End Get
-            End Property
-            Public ReadOnly Property sngPallets() As OperandProperty
-            Get
-                Return New OperandProperty(GetNestedName("sngPallets"))
-            End Get
             End Property
             Public Const ExpirationDateFieldName As String = "ExpirationDate"
             Public ReadOnly Property ExpirationDate() As OperandProperty

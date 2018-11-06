@@ -9,6 +9,7 @@ Imports DXDAL.SPGData
 
 Public Class ReceivingXtraForm
 
+    Private m_lastLPN As Integer
     Private m_Receivings As ReceivingsBLL
     Private m_CustomerReceivings As CustomersBLL
     Private m_Shifts As ShiftsBLL
@@ -74,10 +75,7 @@ Public Class ReceivingXtraForm
         Me.itemGridColumn.FieldName = "ReceivDetItemID"
         Me.quantityGridColumn.FieldName = "ReceivDetQty"
         Me.packagesGridColumn.FieldName = "intUnits"
-        Me.QtyPerPalletColumn.FieldName = "ReceivDetQtyPerPallet"
-        Me.palletsGridColumn.FieldName = "sngPallets"
-        Me.ReceivDetLPNFromColumn.FieldName = "ReceivDetLPNFrom"
-        Me.ReceivDetLPNToColumn.FieldName = "ReceivDetLPNTo"
+        Me.ReceivDetLPNColumn.FieldName = "ReceivDetLPN"
         Me.lotGridColumn.FieldName = "ReceivDetLot"
         expirationDateGridColumn.FieldName = "ExpirationDate"
 
@@ -93,6 +91,7 @@ Public Class ReceivingXtraForm
 
         Utilities.MakeFormReadOnly(generalXtraTabPage, True)
         Me.receivingGridView.OptionsBehavior.Editable = False
+        Me.BulkEntryGroupControl.Enabled = False
         Utilities.MakeGridReadOnly(Me.returnsGridView, True)
         Me.receivingSearchGridControl.Enabled = True
 
@@ -216,6 +215,7 @@ Public Class ReceivingXtraForm
         Dim customer As Integer? = CType(Me.customerLookUpEdit.EditValue, Integer?)
         If customer.HasValue Then
             expirationDateGridColumn.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(customer.Value)
+            ExpirationDateEdit.Properties.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(customer.Value)
         End If
 
         Me.receivingGridControl.DataSource = m_ReceivingDetails.GetDetailsByReceivingID(receivingID.Value)
@@ -275,7 +275,7 @@ Public Class ReceivingXtraForm
             .SetRowCellValue(e.RowHandle, Me.receivingIDGridColumn, m_CurrentReceivingID)
             .SetRowCellValue(e.RowHandle, Me.quantityGridColumn, 0)
             .SetRowCellValue(e.RowHandle, Me.packagesGridColumn, 0)
-            .SetRowCellValue(e.RowHandle, Me.palletsGridColumn, 0)
+            '.SetRowCellValue(e.RowHandle, Me.palletsGridColumn, 0)
             '.SetRowCellValue(e.RowHandle, Me.ReceivDetLPNFromColumn, GetNextLPN())
         End With
 
@@ -402,13 +402,10 @@ Public Class ReceivingXtraForm
             Dim item As Integer? = CType(receivingGridView.GetRowCellValue(ci, itemGridColumn), Integer?)
             Dim qty As Integer? = CType(receivingGridView.GetRowCellValue(ci, quantityGridColumn), Integer?)
             Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(ci, packagesGridColumn), Integer?)
-            Dim plts As Single? = CType(receivingGridView.GetRowCellValue(ci, palletsGridColumn), Single?)
-            Dim qtyperplt As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, QtyPerPalletColumn))
-            Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
-            Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
+            Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
             Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn))
 
-            Return m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, plts, qtyperplt, lpnfrm, lpnto, expr)
+            Return m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, lpn, expr)
         Else
             Return True
         End If
@@ -504,7 +501,7 @@ Public Class ReceivingXtraForm
         'Make sure the summary is updated before calculating the total pallets
         Me.receivingGridView.UpdateTotalSummary()
         Me.returnsGridView.UpdateTotalSummary()
-        Me.palletsTextEdit.Text = Format(Convert.ToDouble(palletsGridColumn.SummaryItem.SummaryValue) + Convert.ToDouble(returnPalletsGridColumn.SummaryItem.SummaryValue) +
+        Me.palletsTextEdit.Text = Format(Convert.ToInt32(ReceivDetLPNColumn.SummaryItem.SummaryValue) + Convert.ToDouble(returnPalletsGridColumn.SummaryItem.SummaryValue) +
                                          Math.Ceiling(Convert.ToDouble(Me.skitsTextEdit.EditValue)), "f2")
 
     End Sub
@@ -512,34 +509,6 @@ Public Class ReceivingXtraForm
     Private Sub skitsTextEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles skitsTextEdit.Validated
 
         UpdateTotalPallets()
-
-    End Sub
-
-    Private Sub receivingGridView_CellValueChanged(ByVal sender As Object, ByVal e As Views.Base.CellValueChangedEventArgs) Handles receivingGridView.CellValueChanged
-
-        With Me.receivingGridView
-            If IsNothing(.GetFocusedRowCellValue(Me.itemGridColumn)) OrElse IsDBNull(.GetFocusedRowCellValue(Me.itemGridColumn)) Then Exit Sub
-            Select Case e.Column.Name
-                Case "itemGridColumn"
-                    If Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) > 0 Then
-                        UpdatePallets()
-                    End If
-                Case "quantityGridColumn"
-                    If Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) > 0 Then
-                        UpdatePallets()
-                    End If
-                Case QtyPerPalletColumn.Name
-                    If Not IsDBNull(.GetFocusedRowCellValue(Me.QtyPerPalletColumn)) AndAlso CType(.GetFocusedRowCellValue(Me.QtyPerPalletColumn), Integer) > 0 AndAlso Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) > 0 Then
-                        UpdatePallets()
-                    End If
-                Case packagesGridColumn.Name
-                    If Convert.ToDouble(.GetFocusedRowCellValue(Me.packagesGridColumn)) > 0 Then
-                        UpdatePallets()
-                    End If
-                Case "palletsGridColumn"
-                    UpdateTotalPallets()
-            End Select
-        End With
 
     End Sub
 
@@ -571,42 +540,6 @@ Public Class ReceivingXtraForm
                                           ByVal e As EventArgs)
 
         BindReceivingsSearchGrid()
-
-    End Sub
-
-    Public Sub UpdatePallets()
-
-        With Me.receivingGridView
-            Dim units As Double
-            Dim itemId As Integer
-
-            itemId = CType(.GetRowCellValue(.FocusedRowHandle, Me.itemGridColumn), Integer)
-            units = ItemsBLL.GetCaseQuantity(itemId)
-
-            If Convert.ToDouble(.GetFocusedRowCellValue(packagesGridColumn)) < 1 Then
-                If units <> 0 Then
-                    .SetFocusedRowCellValue(Me.packagesGridColumn, Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) * units)
-                Else
-                    .SetFocusedRowCellValue(Me.packagesGridColumn, Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)))
-                End If
-            End If
-
-            'calculate the quantity
-            If Convert.ToDouble(.GetFocusedRowCellValue(quantityGridColumn)) = 0 Then
-                If units <> 0 Then
-                    .SetFocusedRowCellValue(quantityGridColumn, Math.Ceiling(Convert.ToDouble(.GetFocusedRowCellValue(packagesGridColumn)) / units))
-                Else
-                    .SetFocusedRowCellValue(quantityGridColumn, Math.Ceiling(Convert.ToDouble(.GetFocusedRowCellValue(packagesGridColumn))))
-                End If
-            End If
-
-            If IsDBNull(.GetFocusedRowCellValue(Me.QtyPerPalletColumn)) OrElse CType(.GetFocusedRowCellValue(Me.QtyPerPalletColumn), Integer) = 0 Then
-                .SetFocusedRowCellValue(Me.QtyPerPalletColumn, Math.Max(m_Items.GetCasesPerPallet(itemId), 1))
-            End If
-
-            .SetFocusedRowCellValue(Me.palletsGridColumn, Convert.ToDouble(.GetFocusedRowCellValue(Me.quantityGridColumn)) / CType(.GetFocusedRowCellValue(Me.QtyPerPalletColumn), Integer))
-
-        End With
 
     End Sub
 
@@ -679,6 +612,7 @@ Public Class ReceivingXtraForm
 
         Utilities.MakeFormReadOnly(Me.generalXtraTabPage, False)
         Me.palletsTextEdit.Properties.ReadOnly = True
+        Me.BulkEntryGroupControl.Enabled = True
         Me.receivingGridView.OptionsBehavior.Editable = True
         Utilities.MakeGridReadOnly(Me.returnsGridView, False)
         Me.receivingSearchGridControl.Enabled = False
@@ -704,6 +638,7 @@ Public Class ReceivingXtraForm
         Utilities.MakeFormReadOnly(Me.generalXtraTabPage, False)
         Me.palletsTextEdit.Properties.ReadOnly = True
         'locationLookUpEdit.Properties.ReadOnly = True
+        Me.BulkEntryGroupControl.Enabled = True
         Me.receivingGridView.OptionsBehavior.Editable = True
         Utilities.MakeGridReadOnly(Me.returnsGridView, False)
         Me.receivingSearchGridControl.Enabled = False
@@ -725,6 +660,7 @@ Public Class ReceivingXtraForm
 
         CheckPermissions()
 
+        Me.BulkEntryGroupControl.Enabled = False
         Utilities.MakeFormReadOnly(Me.generalXtraTabPage, True)
         Me.receivingGridView.OptionsBehavior.Editable = False
         Utilities.MakeGridReadOnly(Me.returnsGridView, True)
@@ -742,6 +678,7 @@ Public Class ReceivingXtraForm
 
             CheckPermissions()
 
+            Me.BulkEntryGroupControl.Enabled = False
             Utilities.MakeFormReadOnly(Me.generalXtraTabPage, True)
             Me.receivingGridView.OptionsBehavior.Editable = False
             Utilities.MakeGridReadOnly(Me.returnsGridView, True)
@@ -842,8 +779,24 @@ Public Class ReceivingXtraForm
             Case DevExpress.Data.CustomSummaryProcess.Start
                 m_TotalPallets = 0
 
-            Case DevExpress.Data.CustomSummaryProcess.Calculate
-                m_TotalPallets += Math.Ceiling(Convert.ToDouble(receivingGridView.GetRowCellValue(e.RowHandle, palletsGridColumn)))
+                Try
+                    Dim dataRowCount As Integer = receivingGridView.RowCount
+                    Dim vecchioval As List(Of String) = New List(Of String)
+
+                    For i As Integer = 0 To dataRowCount - 1
+                        Dim cellValue As Object = receivingGridView.GetRowCellValue(i, ReceivDetLPNColumn)
+                        Dim newValue As String = Convert.ToString(cellValue)
+
+                        If Not vecchioval.Contains(newValue) Then
+                            m_TotalPallets += 1
+                            vecchioval.Add(newValue)
+                        End If
+                    Next
+
+                Finally
+                End Try
+                'Case DevExpress.Data.CustomSummaryProcess.Calculate
+                '    m_TotalPallets += Math.Ceiling(Convert.ToDouble(receivingGridView.GetRowCellValue(e.RowHandle, palletsGridColumn)))
 
         End Select
 
@@ -1081,10 +1034,12 @@ Public Class ReceivingXtraForm
                 While receivingGridView.IsValidRowHandle(i)
                     If receivingGridView.GetChildRowHandle(i, 0) > -1 Then
                         For ci As Integer = receivingGridView.GetChildRowHandle(i, 0) To receivingGridView.GetChildRowCount(i) + receivingGridView.GetChildRowHandle(i, 0) - 1
-                            Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
-                            Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
-                            If lpnfrm.HasValue AndAlso lpnto.HasValue Then
-                                critaria.Add(New BetweenOperator("LPNNumber", lpnfrm.Value, lpnto.Value))
+                            Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
+                            Dim lot As String = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString()
+                            If lpn.HasValue AndAlso lot.Length > 0 Then
+                                critaria.Add(New GroupOperator(GroupOperatorType.And,
+                                    New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
+                                    New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
                             End If
                         Next
                     End If
@@ -1092,10 +1047,12 @@ Public Class ReceivingXtraForm
                 End While
             Else
                 For ci As Integer = 0 To receivingGridView.RowCount - 1
-                    Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
-                    Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
-                    If lpnfrm.HasValue AndAlso lpnto.HasValue Then
-                        critaria.Add(New BetweenOperator("LPNNumber", lpnfrm.Value, lpnto.Value))
+                    Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
+                    Dim lot As String = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString()
+                    If lpn.HasValue AndAlso lot.Length > 0 Then
+                        critaria.Add(New GroupOperator(GroupOperatorType.And,
+                            New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
+                            New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
                     End If
                 Next
             End If
@@ -1108,10 +1065,12 @@ Public Class ReceivingXtraForm
             For i As Integer = 0 To selectedRowHandles.Length - 1
                 Dim ci As Integer = selectedRowHandles(i)
                 If (ci >= 0) Then
-                    Dim lpnfrm As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNFromColumn))
-                    Dim lpnto As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNToColumn))
-                    If lpnfrm.HasValue AndAlso lpnto.HasValue Then
-                        critaria.Add(New BetweenOperator("LPNNumber", lpnfrm.Value, lpnto.Value))
+                    Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
+                    Dim lot As String = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString()
+                    If lpn.HasValue AndAlso lot.Length > 0 Then
+                        critaria.Add(New GroupOperator(GroupOperatorType.And,
+                            New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
+                            New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
                     End If
                 End If
             Next
@@ -1144,4 +1103,118 @@ Public Class ReceivingXtraForm
     Private Sub LpnLabelsBarButtonItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles LpnLabelsBarButtonItem.ItemClick
         printLpn(False)
     End Sub
+
+    Private Sub AddToPalletButton_Click(sender As Object, e As EventArgs) Handles AddToPalletButton.Click
+        AddLpns(True)
+    End Sub
+
+    Private Sub AddEntryButton_Click(sender As Object, e As EventArgs) Handles AddEntryButton.Click
+        AddLpns()
+    End Sub
+
+    Private Sub ItemLookUpEdit_Validated(sender As Object, e As EventArgs) Handles ItemLookUpEdit.Validated
+        UpdateQtyPerPallets(True)
+        If Not IsDBNull(ItemLookUpEdit.EditValue) Then
+            ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID(CType(ItemLookUpEdit.EditValue, Integer?))
+        End If
+        BulkEntryChanged()
+    End Sub
+
+    Private Sub UnitsTextEdit_Validated(sender As Object, e As EventArgs) Handles UnitsTextEdit.Validated
+        UpdateQtyPerPallets()
+        BulkEntryChanged()
+    End Sub
+    Private Sub LotTextEdit_Validated(sender As Object, e As EventArgs) Handles LotTextEdit.Validated
+        BulkEntryChanged()
+    End Sub
+    Private Sub QtyTextEdit_Validated(sender As Object, e As EventArgs) Handles QtyTextEdit.Validated
+        'UpdateQtyPerPallets()
+        BulkEntryChanged()
+    End Sub
+
+    Private Sub UnitsPerPltTextEdit_Validated(sender As Object, e As EventArgs) Handles UnitsPerPltTextEdit.Validated
+        BulkEntryChanged()
+    End Sub
+
+    Private Sub QtyPerPltTextEdit_Validated(sender As Object, e As EventArgs) Handles QtyPerPltTextEdit.Validated
+        BulkEntryChanged()
+    End Sub
+    Private Sub BulkEntryChanged()
+        On Error GoTo Err
+        If CInt(UnitsTextEdit.Text) > 0 AndAlso CInt(UnitsPerPltTextEdit.Text) > 0 AndAlso ((CInt(QtyTextEdit.Text) > 0 AndAlso CInt(QtyPerPltTextEdit.Text) > 0) OrElse CInt(QtyTextEdit.Text) = 0) AndAlso
+            LotCodeValidator.ValidateByItemID(CInt(ItemLookUpEdit.EditValue), LotTextEdit.Text, True) Then
+            AddEntryButton.Enabled = True
+            AddToPalletButton.Enabled = CInt(UnitsTextEdit.Text) <= CInt(UnitsPerPltTextEdit.Text) AndAlso CInt(QtyTextEdit.Text) <= CInt(QtyPerPltTextEdit.Text)
+        Else
+Err:
+            AddEntryButton.Enabled = False
+            AddToPalletButton.Enabled = False
+        End If
+
+    End Sub
+    Private Sub AddLpns(Optional toLastLPN As Boolean = False)
+        Dim addedQty, addedUnits, qty, units, qtyPerPlt, UnitPerPlt As Double
+
+        qty = Convert.ToDouble(QtyTextEdit.Text)
+        units = Convert.ToDouble(UnitsTextEdit.Text)
+        qtyPerPlt = Convert.ToDouble(QtyPerPltTextEdit.Text)
+        UnitPerPlt = Convert.ToDouble(UnitsPerPltTextEdit.Text)
+
+        With receivingGridView
+            Do Until addedUnits >= units
+                If Not toLastLPN Then
+                    m_lastLPN = LPNLabel.GetNextLPNNumber(7)
+                End If
+
+                .AddNewRow()
+                Dim rowHandle As Integer = .GetRowHandle(.DataRowCount)
+                If .IsNewItemRow(rowHandle) Then
+                    .SetRowCellValue(rowHandle, itemGridColumn, ItemLookUpEdit.EditValue)
+                    .SetRowCellValue(rowHandle, descriptionGridColumn, ItemDescTextEdit.Text)
+                    .SetRowCellValue(rowHandle, lotGridColumn, LotTextEdit.Text)
+                    .SetRowCellValue(rowHandle, expirationDateGridColumn, ExpirationDateEdit.EditValue)
+                    .SetRowCellValue(rowHandle, packagesGridColumn, Math.Min(UnitPerPlt, units - addedUnits))
+                    .SetRowCellValue(rowHandle, quantityGridColumn, Math.Max(Math.Min(qtyPerPlt, qty - addedQty), 0))
+                    .SetRowCellValue(rowHandle, ReceivDetLPNColumn, m_lastLPN)
+                End If
+
+                addedQty += qtyPerPlt
+                addedUnits += UnitPerPlt
+            Loop
+        End With
+
+        For Each control As Control In BulkEntryGroupControl.Controls
+            If TypeOf control Is TextEdit Then
+                TryCast(control, TextEdit).Text = If(control.Tag Is Nothing, Nothing, control.Tag.ToString())
+            End If
+        Next
+
+        BulkEntryChanged()
+
+    End Sub
+    Public Sub UpdateQtyPerPallets(Optional itemChaneged As Boolean = False)
+
+        Dim CasesPerPallet As Double
+        Dim QuantityPerUnit As Double
+        Dim itemId As Integer
+
+        itemId = CType(ItemLookUpEdit.EditValue, Integer)
+        QuantityPerUnit = ItemsBLL.GetCaseQuantity(itemId)
+        CasesPerPallet = m_Items.GetCasesPerPallet(itemId)
+
+        'calculate the quantity
+        If Convert.ToDouble(UnitsTextEdit.Text) = 0 AndAlso QuantityPerUnit > 0 Then
+            UnitsTextEdit.EditValue = Math.Ceiling(Convert.ToDouble(QtyTextEdit.Text) / QuantityPerUnit)
+        End If
+        If Convert.ToDouble(QtyTextEdit.Text) = 0 AndAlso QuantityPerUnit > 0 Then
+            QtyTextEdit.EditValue = Convert.ToDouble(UnitsTextEdit.Text) * QuantityPerUnit
+        End If
+
+        If itemChaneged Then
+            UnitsPerPltTextEdit.EditValue = CasesPerPallet
+            QtyPerPltTextEdit.EditValue = (CasesPerPallet * QuantityPerUnit)
+        End If
+
+    End Sub
+
 End Class

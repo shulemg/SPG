@@ -43,5 +43,16 @@ Public Class LotCodeValidator
 
         Return True
     End Function
+    Public Shared Function ValidateByItemID(ByVal itemId As Integer, ByVal lot As String, ByVal ValidateFormat As Boolean) As Boolean
+        Dim item As Items
+        item = Session.DefaultSession.GetObjectByKey(Of Items)(itemId)
+
+        If item Is Nothing Then Return False
+
+        Return ValidateByItem(item, lot, ValidateFormat)
+
+    End Function
+
+
 
 End Class
