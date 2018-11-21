@@ -4,6 +4,8 @@ Imports DevExpress.Data.Filtering
 Imports DevExpress.XtraPrinting
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports System.Windows.Forms
+Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class LocationXtraForm
 
@@ -157,6 +159,9 @@ Public Class LocationXtraForm
             Case inventoryXtraTabPage.Name
                 pcl.Component = inventoryGridControl
                 m_GridReportTitle = "Inventory At " & m_CurrentLocation.LocationCode
+            Case inventoryByLotXtraTabPage.Name
+                pcl.Component = inventoryByLotGridControl
+                m_GridReportTitle = "Inventory By LPN - Lot At " & m_CurrentLocation.LocationCode
             Case transfersXtraTabPage.Name
                 pcl.Component = transfersFromGridControl
                 m_GridReportTitle = "Transfers From/To " & m_CurrentLocation.LocationCode
@@ -295,7 +300,8 @@ Public Class LocationXtraForm
 
         If warehousingCheckEdit.Checked Then
             locationInventoryXpView.Criteria = New BinaryOperator(LocationInventory.Fields.Location.Oid, locationID, BinaryOperatorType.Equal)
-            locationInventoryByLotXpView.Criteria = New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid, locationID, BinaryOperatorType.Equal)
+            locationInventoryByLotXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid, locationID, BinaryOperatorType.Equal),
+                                                                      New BinaryOperator(LocationInventoryByLot.Fields.QuantityOnHand, 0, BinaryOperatorType.NotEqual))
             transfersFromXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(LocationTransferDetails.Fields.Transfer.FromLocation.Oid.PropertyName, locationID, BinaryOperatorType.Equal),
                                                                                     New BinaryOperator(LocationTransferDetails.Fields.Transfer.TransferDate.PropertyName, DateAdd(DateInterval.Year, -1, Today), BinaryOperatorType.GreaterOrEqual))
             transfersToXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(LocationTransferDetails.Fields.Transfer.ToLocation.Oid.PropertyName, locationID, BinaryOperatorType.Equal),
@@ -491,9 +497,68 @@ Public Class LocationXtraForm
 
     End Function
 
+    Private Sub PrintLpnSimpleButton_Click(sender As Object, e As EventArgs) Handles PrintLpnSimpleButton.Click
+        Dim digits As Integer = Len(CustomersBLL.GetCustomer(7, m_LocationSession).LastLPNNumber.ToString)
+        Dim lpnXPview As XPView
+        Dim critaria As New CriteriaOperatorCollection
+        lpnXPview = New XPView(m_LocationSession, GetType(LocationInventoryByLot))
 
 
+        If inventoryByLotGridView.GroupCount > 0 Then
+            Dim i As Integer = -1
+            While inventoryByLotGridView.IsValidRowHandle(i)
+                If inventoryByLotGridView.GetChildRowHandle(i, 0) > -1 Then
+                    For ci As Integer = inventoryByLotGridView.GetChildRowHandle(i, 0) To inventoryByLotGridView.GetChildRowCount(i) + inventoryByLotGridView.GetChildRowHandle(i, 0) - 1
+                        If inventoryByLotGridView.IsRowVisible(ci) = RowVisibleState.Visible Then
+                            Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(inventoryByLotGridView.GetRowCellValue(ci, colLPNNumber))
+                        Dim lot As String = inventoryByLotGridView.GetRowCellValue(ci, colLot).ToString()
+                            If lpn.HasValue AndAlso lot.Length > 0 Then
+                                critaria.Add(New GroupOperator(GroupOperatorType.And,
+                                        New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
+                                        New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
+                            End If
+                        End If
+                    Next
+                End If
+                i -= 1
+            End While
+        Else
+            For ci As Integer = 0 To inventoryByLotGridView.RowCount - 1
+                If inventoryByLotGridView.IsRowVisible(ci) = RowVisibleState.Visible Then
+                    Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(inventoryByLotGridView.GetRowCellValue(ci, colLPNNumber))
+                    Dim lot As String = inventoryByLotGridView.GetRowCellValue(ci, colLot).ToString()
+                    If lpn.HasValue AndAlso lot.Length > 0 Then
+                        critaria.Add(New GroupOperator(GroupOperatorType.And,
+                                New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
+                                New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
+                    End If
+                End If
+            Next
+        End If
 
+        lpnXPview.Criteria = CriteriaOperator.Or(critaria)
 
+        lpnXPview.Properties.AddRange(New ViewProperty() {New ViewProperty("Item", SortDirection.None, "[LocationInventoryItem.ItemCode]", False, True),
+                                      New ViewProperty("ItemDesc", SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True),
+                                      New ViewProperty("Qty", SortDirection.None, "[QuantityOnHand]", False, True),
+                                      New ViewProperty("Expr", SortDirection.None, "[ExpirationDate]", False, True),
+                                      New ViewProperty("Lot", SortDirection.None, "[LocationInventoryLot]", False, True),
+                                                                New ViewProperty("LPN", SortDirection.Ascending, "[LPNNumber]", False, True)})
 
+        Dim labels As LPNLabelsXtraReport = New LPNLabelsXtraReport
+        With labels
+            .DataSource = lpnXPview
+            .lpnGroupHeader.GroupFields.Add(New GroupField("LPN", XRColumnSortOrder.Ascending))
+            .itemCodeXrLabel.DataBindings.Add("Text", lpnXPview, "Item")
+            .itemDescXrLabel.DataBindings.Add("Text", lpnXPview, "ItemDesc")
+            .exprXrLabel.DataBindings.Add("Text", lpnXPview, "Expr", "{0:MM/dd/yyyy}")
+            .qtyXrLabel.DataBindings.Add("Text", lpnXPview, "Qty")
+            .lotXrLabel.DataBindings.Add("Text", lpnXPview, "Lot")
+            .LPNXrBarCode.DataBindings.Add("Text", lpnXPview, "LPN", "SPG{0:D" & digits & "}")
+            .SumQtyXrLabel.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "sumSum([Qty])"))
+            .ReprintXrLabel.Visible = True
+            .CreateDocument()
+            .ShowPreviewDialog()
+        End With
+    End Sub
 End Class

@@ -1248,13 +1248,12 @@ ORDER BY tblItems.ItemCode</CommandText>
               <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetReceivingList" GetMethodModifier="Public" GetMethodName="GetReceivingList" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetReceivingList" UserSourceName="GetReceivingList">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        tblReceivMain.ReceivDate, tblReceivMain.ReceivBOL, tblCustomers.CustomerName, tblCustomers.Address, ISNULL(tblCustomers.City, '') + ' ' + ISNULL(tblCustomers.State, '') 
-                         + ' ' + ISNULL(tblCustomers.ZipCode, '') AS Address2, tblReceivMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, tblCarriers.CarrierName, tblReceivMain.strTrailer, tblReceivMain.strSeal, 
-                         tblReceivDet.ReceivDetQty, tblReceivDet.sngPallets, tblReceivDet.ReceivDetQty / tblItems.intUnitsPerCase * tblItems.CaseGrossWeight AS Weight, 'General' AS ShippingType, tblReceivMain.sngSkits, 
-                         tblReceivMain.sngTotalPallets, '' AS Note, tblReceivDet.ReceivDetLot, tblReceivDet.ExpirationDate, tblCustomers.ExpirationDateFormat, tblReceivMain.Temparature, tblReceivMain.CorrectPallets, 
-                         tblReceivMain.InsectActivity, tblReceivMain.ForeignSubstance, tblReceivMain.WheelsChocked, tblReceivMain.FinishTime, tblReceivMain.StartTime, 
-                         Employees_1.LastName + ', ' + Employees_1.FirstName AS UnloadedBy, Employees.LastName + ', ' + Employees.FirstName AS CheckedBy, ShipmentConditions.ShipmentCondition AS LoadCondition, 
-                         ShipmentConditions_1.ShipmentCondition AS PhysicalCondition, Vendor.VendorName, tblReceivDet.intUnits
+                    <CommandText>SELECT        tblReceivMain.ReceivDate, tblReceivMain.ReceivBOL, tblCustomers.CustomerName, tblCustomers.Address, ISNULL(tblCustomers.City, '') + ' ' + ISNULL(tblCustomers.State, '') + ' ' + ISNULL(tblCustomers.ZipCode, '') 
+                         AS Address2, tblReceivMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, tblCarriers.CarrierName, tblReceivMain.strTrailer, tblReceivMain.strSeal, SUM(tblReceivDet.ReceivDetQty) AS ReceivDetQty, 
+                         COUNT(tblReceivDet.ReceivDetLPN) AS sngPallets, SUM(tblReceivDet.intUnits * tblItems.CaseGrossWeight) AS Weight, 'General' AS ShippingType, tblReceivMain.sngSkits, tblReceivMain.sngTotalPallets, '' AS Note, 
+                         tblReceivDet.ReceivDetLot, tblReceivDet.ExpirationDate, tblCustomers.ExpirationDateFormat, tblReceivMain.Temparature, tblReceivMain.CorrectPallets, tblReceivMain.InsectActivity, tblReceivMain.ForeignSubstance, 
+                         tblReceivMain.WheelsChocked, tblReceivMain.FinishTime, tblReceivMain.StartTime, Employees_1.LastName + ', ' + Employees_1.FirstName AS UnloadedBy, Employees.LastName + ', ' + Employees.FirstName AS CheckedBy, 
+                         ShipmentConditions.ShipmentCondition AS LoadCondition, ShipmentConditions_1.ShipmentCondition AS PhysicalCondition, Vendor.VendorName, SUM(tblReceivDet.intUnits) AS intUnits
 FROM            tblReceivMain INNER JOIN
                          tblReceivDet ON tblReceivMain.ReceivID = tblReceivDet.ReceivMainID INNER JOIN
                          tblCustomers ON tblReceivMain.ReceivCustID = tblCustomers.CustomerID INNER JOIN
@@ -1266,15 +1265,19 @@ FROM            tblReceivMain INNER JOIN
                          ShipmentConditions ON tblReceivMain.LoadCondition = ShipmentConditions.OID LEFT OUTER JOIN
                          ShipmentConditions AS ShipmentConditions_1 ON tblReceivMain.PhysicalCondition = ShipmentConditions_1.OID
 WHERE        (tblReceivMain.ReceivID = @ReceivingID)
+GROUP BY tblReceivMain.ReceivDate, tblReceivMain.ReceivBOL, tblCustomers.CustomerName, tblCustomers.Address, tblCustomers.City, tblCustomers.State, tblCustomers.ZipCode, tblReceivMain.strPO, tblItems.ItemCode, 
+                         tblItems.ItemDescription, tblCarriers.CarrierName, tblReceivMain.strTrailer, tblReceivMain.strSeal, tblReceivMain.sngSkits, tblReceivMain.sngTotalPallets, tblReceivDet.ReceivDetLot, tblReceivDet.ExpirationDate, 
+                         tblCustomers.ExpirationDateFormat, tblReceivMain.Temparature, tblReceivMain.CorrectPallets, tblReceivMain.InsectActivity, tblReceivMain.ForeignSubstance, tblReceivMain.WheelsChocked, tblReceivMain.FinishTime, 
+                         tblReceivMain.StartTime, Employees_1.LastName, Employees_1.FirstName, Employees.LastName, Employees.FirstName, ShipmentConditions.ShipmentCondition, ShipmentConditions_1.ShipmentCondition, 
+                         Vendor.VendorName
 UNION ALL
-SELECT        tblReceivMain_1.ReceivDate, tblReceivMain_1.ReceivBOL, tblCustomers_1.CustomerName, tblCustomers_1.Address, ISNULL(tblCustomers_1.City, '') + ' ' + ISNULL(tblCustomers_1.State, 
-                         '') + ' ' + ISNULL(tblCustomers_1.ZipCode, '') AS Address2, tblReceivMain_1.strPO, tblItems_1.ItemCode, tblItems_1.ItemDescription, 
-                         tblCarriers_1.CarrierName, tblReceivMain_1.strTrailer, tblReceivMain_1.strSeal, tblReturnDet.ReturnDetQty, tblReturnDet.sngPallets,  
-                         tblReturnDet.ReturnDetQty / tblItems_1.intUnitsPerCase * tblItems_1.CaseGrossWeight + tblReturnDet.sngPallets * 40 AS Weight, 'Returns' AS ShippingType,  
-                         tblReceivMain_1.sngSkits, tblReceivMain_1.sngTotalPallets, tblReturnDet.Reason,  tblReturnDet.ReturnDetLot, tblReturnDet.ExpirationDate, 
-                         tblCustomers_1.ExpirationDateFormat, tblReceivMain_1.Temparature, tblReceivMain_1.CorrectPallets, tblReceivMain_1.InsectActivity, tblReceivMain_1.ForeignSubstance, tblReceivMain_1.WheelsChocked, 
-                         tblReceivMain_1.FinishTime, tblReceivMain_1.StartTime, Employees_3.LastName + ', ' + Employees_3.FirstName AS LoadedBy, Employees_2.LastName + ', ' + Employees_2.FirstName AS CheckedBy, 
-                         ShipmentConditions_2.ShipmentCondition AS LoadCondition, ShipmentConditions_3.ShipmentCondition AS PhysicalCondition, Vendor_1.VendorName, tblReturnDet.intUnits
+SELECT        tblReceivMain_1.ReceivDate, tblReceivMain_1.ReceivBOL, tblCustomers_1.CustomerName, tblCustomers_1.Address, ISNULL(tblCustomers_1.City, '') + ' ' + ISNULL(tblCustomers_1.State, '') 
+                         + ' ' + ISNULL(tblCustomers_1.ZipCode, '') AS Address2, tblReceivMain_1.strPO, tblItems_1.ItemCode, tblItems_1.ItemDescription, tblCarriers_1.CarrierName, tblReceivMain_1.strTrailer, tblReceivMain_1.strSeal, 
+                         tblReturnDet.ReturnDetQty, tblReturnDet.sngPallets, tblReturnDet.ReturnDetQty / tblItems_1.intUnitsPerCase * tblItems_1.CaseGrossWeight + tblReturnDet.sngPallets * 40 AS Weight, 'Returns' AS ShippingType, 
+                         tblReceivMain_1.sngSkits, tblReceivMain_1.sngTotalPallets, tblReturnDet.Reason, tblReturnDet.ReturnDetLot, tblReturnDet.ExpirationDate, tblCustomers_1.ExpirationDateFormat, tblReceivMain_1.Temparature, 
+                         tblReceivMain_1.CorrectPallets, tblReceivMain_1.InsectActivity, tblReceivMain_1.ForeignSubstance, tblReceivMain_1.WheelsChocked, tblReceivMain_1.FinishTime, tblReceivMain_1.StartTime, 
+                         Employees_3.LastName + ', ' + Employees_3.FirstName AS LoadedBy, Employees_2.LastName + ', ' + Employees_2.FirstName AS CheckedBy, ShipmentConditions_2.ShipmentCondition AS LoadCondition, 
+                         ShipmentConditions_3.ShipmentCondition AS PhysicalCondition, Vendor_1.VendorName, tblReturnDet.intUnits
 FROM            tblReceivMain AS tblReceivMain_1 INNER JOIN
                          tblReturnDet ON tblReceivMain_1.ReceivID = tblReturnDet.ReceiveMainID INNER JOIN
                          tblCustomers AS tblCustomers_1 ON tblReceivMain_1.ReceivCustID = tblCustomers_1.CustomerID INNER JOIN

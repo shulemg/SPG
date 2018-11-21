@@ -76,9 +76,10 @@ Partial Class LocationXtraForm
         Me.inventoryByLotXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.inventoryByLotGridControl = New DevExpress.XtraGrid.GridControl()
         Me.locationInventoryByLotXpView = New DevExpress.Xpo.XPView(Me.components)
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.inventoryByLotGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colItemCode1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colItemDescription1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colExpirationDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLot = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLPNNumber = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colQuantity1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -170,7 +171,7 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnExpirationDateFormat = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colExpirationDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.PrintLpnSimpleButton = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -204,7 +205,7 @@ Partial Class LocationXtraForm
         Me.inventoryByLotXtraTabPage.SuspendLayout()
         CType(Me.inventoryByLotGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.locationInventoryByLotXpView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.inventoryByLotGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.transfersXtraTabPage.SuspendLayout()
         CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl2.SuspendLayout()
@@ -298,7 +299,6 @@ Partial Class LocationXtraForm
         'printGridBarButtonItem
         '
         Me.printGridBarButtonItem.Caption = "&Print Grid"
-        Me.printGridBarButtonItem.Enabled = False
         Me.printGridBarButtonItem.Id = 5
         Me.printGridBarButtonItem.Name = "printGridBarButtonItem"
         '
@@ -705,6 +705,7 @@ Partial Class LocationXtraForm
         '
         'inventoryByLotXtraTabPage
         '
+        Me.inventoryByLotXtraTabPage.Controls.Add(Me.PrintLpnSimpleButton)
         Me.inventoryByLotXtraTabPage.Controls.Add(Me.inventoryByLotGridControl)
         Me.inventoryByLotXtraTabPage.Name = "inventoryByLotXtraTabPage"
         Me.inventoryByLotXtraTabPage.Size = New System.Drawing.Size(563, 461)
@@ -715,12 +716,12 @@ Partial Class LocationXtraForm
         Me.inventoryByLotGridControl.DataSource = Me.locationInventoryByLotXpView
         Me.inventoryByLotGridControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.inventoryByLotGridControl.Location = New System.Drawing.Point(0, 0)
-        Me.inventoryByLotGridControl.MainView = Me.GridView1
+        Me.inventoryByLotGridControl.MainView = Me.inventoryByLotGridView
         Me.inventoryByLotGridControl.MenuManager = Me.BarManager1
         Me.inventoryByLotGridControl.Name = "inventoryByLotGridControl"
         Me.inventoryByLotGridControl.Size = New System.Drawing.Size(563, 461)
         Me.inventoryByLotGridControl.TabIndex = 1
-        Me.inventoryByLotGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
+        Me.inventoryByLotGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.inventoryByLotGridView})
         '
         'locationInventoryByLotXpView
         '
@@ -728,13 +729,15 @@ Partial Class LocationXtraForm
         Me.locationInventoryByLotXpView.ObjectType = GetType(DXDAL.SPGData.LocationInventoryByLot)
         Me.locationInventoryByLotXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.Ascending, "[LocationInventoryItem.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ItemDescription", DevExpress.Xpo.SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("ExpirationDate", DevExpress.Xpo.SortDirection.None, "[ExpirationDate]", False, True), New DevExpress.Xpo.ViewProperty("Lot", DevExpress.Xpo.SortDirection.None, "[LocationInventoryLot]", False, True), New DevExpress.Xpo.ViewProperty("LPNNumber", DevExpress.Xpo.SortDirection.None, "[LPNNumber]", False, True), New DevExpress.Xpo.ViewProperty("Quantity", DevExpress.Xpo.SortDirection.None, "[QuantityOnHand]", False, True)})
         '
-        'GridView1
+        'inventoryByLotGridView
         '
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemCode1, Me.colItemDescription1, Me.colExpirationDate1, Me.colLot, Me.colLPNNumber, Me.colQuantity1})
-        Me.GridView1.GridControl = Me.inventoryByLotGridControl
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.OptionsBehavior.Editable = False
-        Me.GridView1.OptionsView.ShowAutoFilterRow = True
+        Me.inventoryByLotGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colItemCode1, Me.colItemDescription1, Me.colExpirationDate1, Me.colLot, Me.colLPNNumber, Me.colQuantity1})
+        Me.inventoryByLotGridView.GridControl = Me.inventoryByLotGridControl
+        Me.inventoryByLotGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", Me.colQuantity1, "TOTAL        {0:#,##0.##}")})
+        Me.inventoryByLotGridView.Name = "inventoryByLotGridView"
+        Me.inventoryByLotGridView.OptionsBehavior.Editable = False
+        Me.inventoryByLotGridView.OptionsView.ShowAutoFilterRow = True
+        Me.inventoryByLotGridView.OptionsView.ShowFooter = True
         '
         'colItemCode1
         '
@@ -749,6 +752,13 @@ Partial Class LocationXtraForm
         Me.colItemDescription1.Name = "colItemDescription1"
         Me.colItemDescription1.Visible = True
         Me.colItemDescription1.VisibleIndex = 1
+        '
+        'colExpirationDate1
+        '
+        Me.colExpirationDate1.FieldName = "ExpirationDate"
+        Me.colExpirationDate1.Name = "colExpirationDate1"
+        Me.colExpirationDate1.Visible = True
+        Me.colExpirationDate1.VisibleIndex = 4
         '
         'colLot
         '
@@ -768,6 +778,7 @@ Partial Class LocationXtraForm
         '
         Me.colQuantity1.FieldName = "Quantity"
         Me.colQuantity1.Name = "colQuantity1"
+        Me.colQuantity1.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", "TOTAL        {0:#,##0.##}")})
         Me.colQuantity1.Visible = True
         Me.colQuantity1.VisibleIndex = 5
         '
@@ -1528,12 +1539,14 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDateFormat.FieldName = "ShippingReturnExpirationDateFormat"
         Me.colShippingReturnExpirationDateFormat.Name = "colShippingReturnExpirationDateFormat"
         '
-        'colExpirationDate1
+        'PrintLpnSimpleButton
         '
-        Me.colExpirationDate1.FieldName = "ExpirationDate"
-        Me.colExpirationDate1.Name = "colExpirationDate1"
-        Me.colExpirationDate1.Visible = True
-        Me.colExpirationDate1.VisibleIndex = 4
+        Me.PrintLpnSimpleButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PrintLpnSimpleButton.Location = New System.Drawing.Point(481, 3)
+        Me.PrintLpnSimpleButton.Name = "PrintLpnSimpleButton"
+        Me.PrintLpnSimpleButton.Size = New System.Drawing.Size(75, 23)
+        Me.PrintLpnSimpleButton.TabIndex = 2
+        Me.PrintLpnSimpleButton.Text = "Print LPN`s"
         '
         'LocationXtraForm
         '
@@ -1583,7 +1596,7 @@ Partial Class LocationXtraForm
         Me.inventoryByLotXtraTabPage.ResumeLayout(False)
         CType(Me.inventoryByLotGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.locationInventoryByLotXpView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.inventoryByLotGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.transfersXtraTabPage.ResumeLayout(False)
         CType(Me.SplitContainerControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainerControl2.ResumeLayout(False)
@@ -1764,11 +1777,12 @@ Partial Class LocationXtraForm
     Friend WithEvents inventoryByLotXtraTabPage As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents inventoryByLotGridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents locationInventoryByLotXpView As DevExpress.Xpo.XPView
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents inventoryByLotGridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colItemCode1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colItemDescription1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLot As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLPNNumber As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colQuantity1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colExpirationDate1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents PrintLpnSimpleButton As DevExpress.XtraEditors.SimpleButton
 End Class

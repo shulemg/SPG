@@ -104,7 +104,7 @@ Public Class InventoryAdjustmentBLL
 
     End Sub
 
-    Private Sub SetInventoryAdjustmentFields(ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single, ByVal reason As String,
+    Private Sub SetInventoryAdjustmentFields(ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single?, ByVal reason As String,
                                              ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?, ByVal adjustment As InventoryAdjustment)
 
         SetField(InventoryAdjustment.Fields.AdjustmentDate.PropertyName, adjustment.AdjustmentDate, CDate(Format(adjustmentDate, "D")), adjustment)
@@ -121,8 +121,8 @@ Public Class InventoryAdjustmentBLL
     End Sub
 
     <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
-    Public Function UpdateInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single, ByVal reason As String,
-                                              ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?) As Boolean
+    Public Function UpdateInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single?, ByVal reason As String,
+                                              ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?, ByVal Expr As Date?) As Boolean
 
         'Dim adjustments As SPG.InventoryAdjustmentDataTable = Adapter.GetInventoryAdjustmentByID(adjustmentID)
 
@@ -134,14 +134,17 @@ Public Class InventoryAdjustmentBLL
             'It is a new Production Record
             change = New Change() With {.PropertyName = InventoryAdjustment.Fields.AdjustmentID.PropertyName, .PrevValue = "<NULL>", .NewValue = adjustmentID.ToString}
             changes.Add(change)
-            Return InsertInventoryAdjustment(adjustmentID, adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, OriginalLot, NewLot, LPN)
+            Return InsertInventoryAdjustment(adjustmentID, adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, OriginalLot, NewLot, LPN, Expr)
         End If
 
         'Dim adjustment As SPG.InventoryAdjustmentRow = adjustments(0)
         Dim originalItem As Integer = adjustment.AdjustmentItem.ItemID
-        Dim originalNewQuantity, newNewQuantity As Single
+        Dim originalNewQuantity, newNewQuantity As Single?
         Dim originalNewLot, newNewLot As String
+        Dim originalOldLot, newOldLot As String
         Dim itemChanged As Boolean
+        Dim originalLPN As Integer?
+        Dim originalLocation As Integer
 
         'Dim originalRecord As Object() = adjustment.ItemArray
 
@@ -156,7 +159,10 @@ Public Class InventoryAdjustmentBLL
         Dim originalOriginalQuantity As Single = adjustment.OriginalQuantity
         originalNewQuantity = adjustment.NewCount
         originalNewLot = adjustment.NewLot
-        newNewQuantity = newQuantity - originalNewQuantity
+        originalOldLot = adjustment.OriginalLot
+        originalLPN = adjustment.LPN
+        originalLocation = adjustment.InventoryLocation.Oid
+        newNewQuantity = If(newQuantity, 0) - originalNewQuantity
         'adjustment.OriginalQuantity = originalQuantity
         'adjustment.NewCount = newQuantity
         'adjustment.Reason = reason
@@ -181,14 +187,26 @@ Public Class InventoryAdjustmentBLL
 
         'If rowsAffected = 1 Then
         Dim items As ItemsBLL = New ItemsBLL
-        If itemChanged = True Then
-            items.UpdateStock(Session.DefaultSession, originalItem, (originalNewQuantity - originalOriginalQuantity) * -1, False, locationID)
-            items.UpdateStock(Session.DefaultSession, item, newQuantity - originalQuantity, False, locationID)
+        If originalNewLot <> "" Then
+            items.UpdateStock(Session.DefaultSession, originalItem, originalOriginalQuantity, False, originalLocation, originalOldLot, originalLocation)
+            items.UpdateStock(Session.DefaultSession, originalItem, originalOriginalQuantity * -1, False, originalLocation, originalNewLot, originalLPN)
         Else
-            If newNewQuantity <> 0 Then    'there was a change in the quantity
-                items.UpdateStock(Session.DefaultSession, item, newNewQuantity, False, locationID)
-            End If
+            items.UpdateStock(Session.DefaultSession, originalItem, (If(originalNewQuantity, 0) - originalOriginalQuantity) * -1, False, originalLocation, OriginalLot, originalLPN)
         End If
+        If NewLot <> "" Then
+            items.UpdateStock(Session.DefaultSession, item, originalQuantity * -1, False, locationID, OriginalLot, LPN, Expr)
+            items.UpdateStock(Session.DefaultSession, item, originalQuantity, False, locationID, NewLot, LPN, Expr)
+        Else
+            items.UpdateStock(Session.DefaultSession, item, If(newQuantity, 0) - originalQuantity, False, locationID, OriginalLot, LPN, Expr)
+        End If
+        'If itemChanged = True Then
+        '    items.UpdateStock(Session.DefaultSession, originalItem, (If(originalNewQuantity, 0) - originalOriginalQuantity) * -1, False, locationID)
+        '    items.UpdateStock(Session.DefaultSession, item, If(newQuantity, 0) - originalQuantity, False, locationID)
+        'Else
+        '    If newNewQuantity <> 0 Then    'there was a change in the quantity
+        '        items.UpdateStock(Session.DefaultSession, item, If(newNewQuantity, 0), False, locationID)
+        '    End If
+        'End If
         'End If
 
         'Return rowsAffected = 1
@@ -197,8 +215,8 @@ Public Class InventoryAdjustmentBLL
     End Function
 
     <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
-    Public Function InsertInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single, ByVal reason As String,
-                                              ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?) As Boolean
+    Public Function InsertInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single?, ByVal reason As String,
+                                              ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?, ByVal Expr As Date?) As Boolean
 
         'Dim adjustments As SPG.InventoryAdjustmentDataTable = New SPG.InventoryAdjustmentDataTable
         'Dim adjustment As SPG.InventoryAdjustmentRow = adjustments.NewInventoryAdjustmentRow()
@@ -229,7 +247,12 @@ Public Class InventoryAdjustmentBLL
 
         'If rowsAffected = 1 Then
         Dim items As ItemsBLL = New ItemsBLL
-        items.UpdateStock(Session.DefaultSession, item, newQuantity - originalQuantity, False, locationID)
+        If NewLot <> "" Then
+            items.UpdateStock(Session.DefaultSession, item, originalQuantity * -1, False, locationID, OriginalLot, LPN, Expr)
+            items.UpdateStock(Session.DefaultSession, item, originalQuantity, False, locationID, NewLot, LPN, Expr)
+        Else
+            items.UpdateStock(Session.DefaultSession, item, If(newQuantity, 0) - originalQuantity, False, locationID, OriginalLot, LPN, Expr)
+        End If
         'End If
 
         'Return rowsAffected = 1
@@ -252,7 +275,8 @@ Public Class InventoryAdjustmentBLL
         Dim item, locationID As Integer
         Dim LPN As Integer?
         Dim quantity As Single
-        Dim lot As String
+        Dim oldlot As String
+        Dim newlot As String
 
         'If adjustments.Count = 1 Then
         '    Dim adjustment As SPG.InventoryAdjustmentRow = CType(adjustments.Rows(0), SPG.InventoryAdjustmentRow)
@@ -263,17 +287,23 @@ Public Class InventoryAdjustmentBLL
             Return False
         End If
         item = adjustment.AdjustmentItem.ItemID
-        quantity = adjustment.OriginalQuantity - adjustment.NewCount
+        quantity = adjustment.OriginalQuantity - If(adjustment.NewCount, 0)
         locationID = adjustment.InventoryLocation.Oid
         LPN = adjustment.LPN
-        lot = adjustment.NewLot
+        newlot = adjustment.NewLot
+        oldlot = adjustment.OriginalLot
         'rowsAffected = Adapter.Delete(id, adjustment.rv)
         'End If
 
         Try
             adjustment.Delete()
             Dim items As ItemsBLL = New ItemsBLL
-            items.UpdateStock(Session.DefaultSession, item, quantity, False, locationID)
+            If NewLot <> "" Then
+                items.UpdateStock(Session.DefaultSession, item, quantity * -1, False, locationID, newlot, LPN)
+                items.UpdateStock(Session.DefaultSession, item, quantity, False, locationID, oldlot, LPN)
+            Else
+                items.UpdateStock(Session.DefaultSession, item, quantity, False, locationID, oldlot, LPN)
+            End If
             Return True
         Catch ex As Exception
             Return False

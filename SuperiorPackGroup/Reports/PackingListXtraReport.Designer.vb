@@ -110,6 +110,7 @@ Partial Public Class PackingListXtraReport
         Me.itemGroupHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
         Me.PageFooter = New DevExpress.XtraReports.UI.PageFooterBand()
         Me.packingListpageinfo = New DevExpress.XtraReports.UI.XRPageInfo()
+        Me.lotGroupHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
@@ -1101,7 +1102,7 @@ Partial Public Class PackingListXtraReport
         Me.returnsGroupHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel21})
         Me.returnsGroupHeader.HeightF = 25.0!
         Me.returnsGroupHeader.KeepTogether = True
-        Me.returnsGroupHeader.Level = 1
+        Me.returnsGroupHeader.Level = 2
         Me.returnsGroupHeader.Name = "returnsGroupHeader"
         '
         'XrLabel21
@@ -1153,10 +1154,10 @@ Partial Public Class PackingListXtraReport
         '
         'XrPageInfo1
         '
-        Me.XrPageInfo1.Format = "Page {0} of {1}"
         Me.XrPageInfo1.LocationFloat = New DevExpress.Utils.PointFloat(670.0!, 9.999974!)
         Me.XrPageInfo1.Name = "XrPageInfo1"
         Me.XrPageInfo1.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+        Me.XrPageInfo1.TextFormatString = "Page {0} of {1}"
         '
         'itemsGroupFooter
         '
@@ -1164,6 +1165,7 @@ Partial Public Class PackingListXtraReport
         Me.itemsGroupFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.itemTotalWeightXrLabel, Me.itemTotalPalletsXrLabel, Me.groupItemDescriptionXrLabel, Me.groupItemCodeXrLabel, Me.itemTotalQuantityXrLabel, Me.groupItemLabel})
         Me.itemsGroupFooter.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Bold)
         Me.itemsGroupFooter.HeightF = 25.0!
+        Me.itemsGroupFooter.Level = 1
         Me.itemsGroupFooter.Name = "itemsGroupFooter"
         Me.itemsGroupFooter.StylePriority.UseBackColor = False
         Me.itemsGroupFooter.StylePriority.UseFont = False
@@ -1283,6 +1285,7 @@ Partial Public Class PackingListXtraReport
         'itemGroupHeader
         '
         Me.itemGroupHeader.HeightF = 0!
+        Me.itemGroupHeader.Level = 1
         Me.itemGroupHeader.Name = "itemGroupHeader"
         '
         'PageFooter
@@ -1293,18 +1296,24 @@ Partial Public Class PackingListXtraReport
         '
         'packingListpageinfo
         '
-        Me.packingListpageinfo.Format = "Page {0} of {1}"
         Me.packingListpageinfo.LocationFloat = New DevExpress.Utils.PointFloat(670.0!, 0!)
         Me.packingListpageinfo.Name = "packingListpageinfo"
         Me.packingListpageinfo.SizeF = New System.Drawing.SizeF(100.0!, 23.0!)
+        Me.packingListpageinfo.TextFormatString = "Page {0} of {1}"
         Me.packingListpageinfo.Visible = False
+        '
+        'lotGroupHeader
+        '
+        Me.lotGroupHeader.Expanded = False
+        Me.lotGroupHeader.HeightF = 0!
+        Me.lotGroupHeader.Name = "lotGroupHeader"
         '
         'PackingListXtraReport
         '
-        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.ReportHeader, Me.ReportFooter, Me.returnsGroupHeader, Me.TopMarginBand1, Me.BottomMarginBand1, Me.itemsGroupFooter, Me.itemGroupHeader, Me.PageFooter})
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.ReportHeader, Me.ReportFooter, Me.returnsGroupHeader, Me.TopMarginBand1, Me.BottomMarginBand1, Me.itemsGroupFooter, Me.itemGroupHeader, Me.PageFooter, Me.lotGroupHeader})
         Me.CrossBandControls.AddRange(New DevExpress.XtraReports.UI.XRCrossBandControl() {Me.XrCrossBandLine1XRCrossBandLine2, Me.XrCrossBandLine1XRCrossBandLine5})
         Me.Margins = New System.Drawing.Printing.Margins(36, 35, 50, 50)
-        Me.Version = "17.1"
+        Me.Version = "17.2"
         CType(Me, System.ComponentModel.ISupportInitialize).EndInit()
 
     End Sub
@@ -1395,4 +1404,5 @@ Partial Public Class PackingListXtraReport
     Friend WithEvents groupItemDescriptionXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents groupItemLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents locationId As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lotGroupHeader As DevExpress.XtraReports.UI.GroupHeaderBand
 End Class

@@ -673,15 +673,16 @@ Public Class LocationTransfersXtraForm
                     End If
                 Next
 
-                Dim record As LocationInventoryByLot = m_TransfersSession.FindObject(Of LocationInventoryByLot)(New GroupOperator(New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPN, BinaryOperatorType.Equal) And
+                For Each record As LocationInventoryByLot In New XPCollection(Of LocationInventoryByLot)(m_TransfersSession, New GroupOperator(New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPN, BinaryOperatorType.Equal) And
                                                                                                   New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, LocationID, BinaryOperatorType.Equal)))
-                transferDetailsGridView.AddNewRow()
-                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, transferItemGridColumn, record.LocationInventoryItem.ItemID)
-                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferUnits, record.QuantityOnHand)
-                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferLot, record.LocationInventoryLot)
-                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colItemExpirationDate, record.ExpirationDate)
-                transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, fullLpnNumberGridColumn, LPN)
-                transferDetailsGridView.UpdateCurrentRow()
+                    transferDetailsGridView.AddNewRow()
+                    transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, transferItemGridColumn, record.LocationInventoryItem.ItemID)
+                    transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferUnits, record.QuantityOnHand)
+                    transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferLot, record.LocationInventoryLot)
+                    transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colItemExpirationDate, record.ExpirationDate)
+                    transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, fullLpnNumberGridColumn, LPN)
+                    transferDetailsGridView.UpdateCurrentRow()
+                Next
             Catch
             End Try
             lpnNumberTextEdit.EditValue = Nothing

@@ -921,6 +921,7 @@ Public Class ReceivingXtraForm
             .sealXrLabel.DataBindings.Add("Text", Nothing, "strSeal")
             .returnsGroupHeader.GroupFields.Add(New GroupField("ShippingType", XRColumnSortOrder.Ascending))
             .itemGroupHeader.GroupFields.Add(New GroupField("ItemCode", XRColumnSortOrder.Ascending))
+            .lotGroupHeader.GroupFields.Add(New GroupField("ReceivDetLot", XRColumnSortOrder.Ascending))
             .qtyLabelXrLabel.Text = "UNITS"
             .qtyXrLabel.DataBindings.Add("Text", Nothing, "ReceivDetQty")
             .itemCodeXrLabel.DataBindings.Add("Text", Nothing, "ItemCode")
@@ -1088,12 +1089,14 @@ Public Class ReceivingXtraForm
         Dim labels As LPNLabelsXtraReport = New LPNLabelsXtraReport
         With labels
             .DataSource = lpnXPview
+            .lpnGroupHeader.GroupFields.Add(New GroupField("LPN", XRColumnSortOrder.Ascending))
             .itemCodeXrLabel.DataBindings.Add("Text", lpnXPview, "Item")
             .itemDescXrLabel.DataBindings.Add("Text", lpnXPview, "ItemDesc")
             .exprXrLabel.DataBindings.Add("Text", lpnXPview, "Expr", "{0:MM/dd/yyyy}")
             .qtyXrLabel.DataBindings.Add("Text", lpnXPview, "Qty")
             .lotXrLabel.DataBindings.Add("Text", lpnXPview, "Lot")
             .LPNXrBarCode.DataBindings.Add("Text", lpnXPview, "LPN", "SPG{0:D" & digits & "}")
+            .SumQtyXrLabel.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "sumSum([Qty])"))
             .ReprintXrLabel.Visible = Not all
             .CreateDocument()
             .ShowPreviewDialog()

@@ -20,7 +20,7 @@ Public Class LocationInventoryBLL
 
         inventory.Save()
 
-        If IsNothing(lot) OrElse lot = "" Then Return
+        If (IsNothing(lot) OrElse lot = "") AndAlso (IsNothing(LPNNumber) OrElse LPNNumber = 0) Then Return
 
         Dim inventoryByLot As LocationInventoryByLot = session.FindObject(Of LocationInventoryByLot)(New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemID.PropertyName, ItemID, BinaryOperatorType.Equal) And
                                                                                                      New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, LocationID, BinaryOperatorType.Equal) And

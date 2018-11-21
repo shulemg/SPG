@@ -20,124 +20,145 @@ Partial Public Class LPNLabelsXtraReport
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim Code128Generator1 As DevExpress.XtraPrinting.BarCode.Code128Generator = New DevExpress.XtraPrinting.BarCode.Code128Generator()
+        Dim XrSummary1 As DevExpress.XtraReports.UI.XRSummary = New DevExpress.XtraReports.UI.XRSummary()
         Me.Detail = New DevExpress.XtraReports.UI.DetailBand()
-        Me.tsXrLabel = New DevExpress.XtraReports.UI.XRLabel()
-        Me.exprHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.exprXrLabel = New DevExpress.XtraReports.UI.XRLabel()
-        Me.lotHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.lotXrLabel = New DevExpress.XtraReports.UI.XRLabel()
-        Me.qtyHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.qtyXrLabel = New DevExpress.XtraReports.UI.XRLabel()
+        Me.exprHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
+        Me.lotHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
+        Me.qtyHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.itemDescXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.itemCodeXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.itemHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
+        Me.tsXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.lpnHeaderXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.LPNXrBarCode = New DevExpress.XtraReports.UI.XRBarCode()
-        Me.XrLine3 = New DevExpress.XtraReports.UI.XRLine()
-        Me.XrLine2 = New DevExpress.XtraReports.UI.XRLine()
-        Me.XrLine1 = New DevExpress.XtraReports.UI.XRLine()
         Me.ReprintXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         Me.TopMargin = New DevExpress.XtraReports.UI.TopMarginBand()
         Me.BottomMargin = New DevExpress.XtraReports.UI.BottomMarginBand()
+        Me.lpnGroupHeader = New DevExpress.XtraReports.UI.GroupHeaderBand()
+        Me.lpnGroupFooter = New DevExpress.XtraReports.UI.GroupFooterBand()
+        Me.XrLabel2 = New DevExpress.XtraReports.UI.XRLabel()
+        Me.SumQtyXrLabel = New DevExpress.XtraReports.UI.XRLabel()
         CType(Me, System.ComponentModel.ISupportInitialize).BeginInit()
         '
         'Detail
         '
-        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.tsXrLabel, Me.exprHeaderXrLabel, Me.exprXrLabel, Me.lotHeaderXrLabel, Me.lotXrLabel, Me.qtyHeaderXrLabel, Me.qtyXrLabel, Me.itemDescXrLabel, Me.itemCodeXrLabel, Me.itemHeaderXrLabel, Me.lpnHeaderXrLabel, Me.LPNXrBarCode, Me.XrLine3, Me.XrLine2, Me.XrLine1, Me.ReprintXrLabel})
-        Me.Detail.HeightF = 400.0!
+        Me.Detail.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.exprXrLabel, Me.lotXrLabel, Me.qtyXrLabel})
+        Me.Detail.HeightF = 25.08342!
+        Me.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount
         Me.Detail.Name = "Detail"
         Me.Detail.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.Detail.StylePriority.UseTextAlignment = False
         Me.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
-        '
-        'tsXrLabel
-        '
-        Me.tsXrLabel.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Now()")})
-        Me.tsXrLabel.Font = New System.Drawing.Font("Tahoma", 9.0!)
-        Me.tsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(453.125!, 299.9583!)
-        Me.tsXrLabel.Name = "tsXrLabel"
-        Me.tsXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.tsXrLabel.SizeF = New System.Drawing.SizeF(300.0!, 23.74994!)
-        Me.tsXrLabel.StylePriority.UseFont = False
-        Me.tsXrLabel.StylePriority.UseTextAlignment = False
-        Me.tsXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
-        '
-        'exprHeaderXrLabel
-        '
-        Me.exprHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.exprHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 202.4999!)
-        Me.exprHeaderXrLabel.Name = "exprHeaderXrLabel"
-        Me.exprHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.exprHeaderXrLabel.SizeF = New System.Drawing.SizeF(202.0832!, 13.0!)
-        Me.exprHeaderXrLabel.StylePriority.UseFont = False
-        Me.exprHeaderXrLabel.Text = "EXPIRATION DATE"
         '
         'exprXrLabel
         '
-        Me.exprXrLabel.Font = New System.Drawing.Font("Tahoma", 22.0!, System.Drawing.FontStyle.Bold)
-        Me.exprXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 215.4999!)
+        Me.exprXrLabel.BorderColor = System.Drawing.Color.Gray
+        Me.exprXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.exprXrLabel.CanGrow = False
+        Me.exprXrLabel.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.exprXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 0!)
         Me.exprXrLabel.Name = "exprXrLabel"
         Me.exprXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.exprXrLabel.SizeF = New System.Drawing.SizeF(202.0832!, 84.45839!)
+        Me.exprXrLabel.SizeF = New System.Drawing.SizeF(202.0832!, 25.08342!)
+        Me.exprXrLabel.StylePriority.UseBorderColor = False
+        Me.exprXrLabel.StylePriority.UseBorders = False
         Me.exprXrLabel.StylePriority.UseFont = False
         Me.exprXrLabel.Text = "12/31/2022"
         '
-        'lotHeaderXrLabel
-        '
-        Me.lotHeaderXrLabel.BorderColor = System.Drawing.Color.DimGray
-        Me.lotHeaderXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
-        Me.lotHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.lotHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(201.0417!, 202.4999!)
-        Me.lotHeaderXrLabel.Name = "lotHeaderXrLabel"
-        Me.lotHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lotHeaderXrLabel.SizeF = New System.Drawing.SizeF(348.9583!, 13.0!)
-        Me.lotHeaderXrLabel.StylePriority.UseBorderColor = False
-        Me.lotHeaderXrLabel.StylePriority.UseBorders = False
-        Me.lotHeaderXrLabel.StylePriority.UseFont = False
-        Me.lotHeaderXrLabel.Text = "LOT CODE"
-        '
         'lotXrLabel
         '
-        Me.lotXrLabel.BorderColor = System.Drawing.Color.DimGray
-        Me.lotXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Right), DevExpress.XtraPrinting.BorderSide)
-        Me.lotXrLabel.Font = New System.Drawing.Font("Tahoma", 22.0!, System.Drawing.FontStyle.Bold)
-        Me.lotXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(201.0417!, 215.4999!)
+        Me.lotXrLabel.BorderColor = System.Drawing.Color.Gray
+        Me.lotXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.lotXrLabel.CanGrow = False
+        Me.lotXrLabel.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.lotXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(201.0418!, 0!)
         Me.lotXrLabel.Name = "lotXrLabel"
         Me.lotXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lotXrLabel.SizeF = New System.Drawing.SizeF(348.9583!, 84.45839!)
+        Me.lotXrLabel.SizeF = New System.Drawing.SizeF(348.9583!, 25.08342!)
         Me.lotXrLabel.StylePriority.UseBorderColor = False
         Me.lotXrLabel.StylePriority.UseBorders = False
         Me.lotXrLabel.StylePriority.UseFont = False
         Me.lotXrLabel.Text = "SP283782053 SP254 20"
         '
-        'qtyHeaderXrLabel
-        '
-        Me.qtyHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.qtyHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(48.95833!, 202.4999!)
-        Me.qtyHeaderXrLabel.Name = "qtyHeaderXrLabel"
-        Me.qtyHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.qtyHeaderXrLabel.SizeF = New System.Drawing.SizeF(152.0834!, 13.0!)
-        Me.qtyHeaderXrLabel.StylePriority.UseFont = False
-        Me.qtyHeaderXrLabel.Text = "QUANTITY"
-        '
         'qtyXrLabel
         '
-        Me.qtyXrLabel.Font = New System.Drawing.Font("Tahoma", 24.0!, System.Drawing.FontStyle.Bold)
-        Me.qtyXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(48.95833!, 215.4999!)
+        Me.qtyXrLabel.BorderColor = System.Drawing.Color.Gray
+        Me.qtyXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.qtyXrLabel.CanGrow = False
+        Me.qtyXrLabel.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.qtyXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(47.91663!, 0!)
         Me.qtyXrLabel.Name = "qtyXrLabel"
         Me.qtyXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.qtyXrLabel.SizeF = New System.Drawing.SizeF(152.0834!, 84.45839!)
+        Me.qtyXrLabel.SizeF = New System.Drawing.SizeF(153.1252!, 25.08342!)
+        Me.qtyXrLabel.StylePriority.UseBorderColor = False
+        Me.qtyXrLabel.StylePriority.UseBorders = False
         Me.qtyXrLabel.StylePriority.UseFont = False
         Me.qtyXrLabel.Text = "80"
         '
+        'exprHeaderXrLabel
+        '
+        Me.exprHeaderXrLabel.BorderColor = System.Drawing.Color.Black
+        Me.exprHeaderXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Top
+        Me.exprHeaderXrLabel.CanGrow = False
+        Me.exprHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.exprHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(550.0001!, 194.1249!)
+        Me.exprHeaderXrLabel.Name = "exprHeaderXrLabel"
+        Me.exprHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.exprHeaderXrLabel.SizeF = New System.Drawing.SizeF(202.0832!, 25.08342!)
+        Me.exprHeaderXrLabel.StylePriority.UseBorderColor = False
+        Me.exprHeaderXrLabel.StylePriority.UseBorders = False
+        Me.exprHeaderXrLabel.StylePriority.UseFont = False
+        Me.exprHeaderXrLabel.StylePriority.UseTextAlignment = False
+        Me.exprHeaderXrLabel.Text = "Expiration Date"
+        Me.exprHeaderXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'lotHeaderXrLabel
+        '
+        Me.lotHeaderXrLabel.BorderColor = System.Drawing.Color.Black
+        Me.lotHeaderXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Top
+        Me.lotHeaderXrLabel.CanGrow = False
+        Me.lotHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.lotHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(201.0418!, 194.1249!)
+        Me.lotHeaderXrLabel.Name = "lotHeaderXrLabel"
+        Me.lotHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.lotHeaderXrLabel.SizeF = New System.Drawing.SizeF(348.9583!, 25.08342!)
+        Me.lotHeaderXrLabel.StylePriority.UseBorderColor = False
+        Me.lotHeaderXrLabel.StylePriority.UseBorders = False
+        Me.lotHeaderXrLabel.StylePriority.UseFont = False
+        Me.lotHeaderXrLabel.StylePriority.UseTextAlignment = False
+        Me.lotHeaderXrLabel.Text = "Lot#"
+        Me.lotHeaderXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'qtyHeaderXrLabel
+        '
+        Me.qtyHeaderXrLabel.BorderColor = System.Drawing.Color.Black
+        Me.qtyHeaderXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Top
+        Me.qtyHeaderXrLabel.CanGrow = False
+        Me.qtyHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.qtyHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(47.91662!, 194.1249!)
+        Me.qtyHeaderXrLabel.Name = "qtyHeaderXrLabel"
+        Me.qtyHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.qtyHeaderXrLabel.SizeF = New System.Drawing.SizeF(153.1252!, 25.0834!)
+        Me.qtyHeaderXrLabel.StylePriority.UseBorderColor = False
+        Me.qtyHeaderXrLabel.StylePriority.UseBorders = False
+        Me.qtyHeaderXrLabel.StylePriority.UseFont = False
+        Me.qtyHeaderXrLabel.StylePriority.UseTextAlignment = False
+        Me.qtyHeaderXrLabel.Text = "Quantity"
+        Me.qtyHeaderXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
         'itemDescXrLabel
         '
-        Me.itemDescXrLabel.BorderColor = System.Drawing.Color.DimGray
-        Me.itemDescXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Left
-        Me.itemDescXrLabel.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
-        Me.itemDescXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(348.9584!, 152.2083!)
+        Me.itemDescXrLabel.BorderColor = System.Drawing.Color.DarkGray
+        Me.itemDescXrLabel.Borders = CType((DevExpress.XtraPrinting.BorderSide.Left Or DevExpress.XtraPrinting.BorderSide.Top), DevExpress.XtraPrinting.BorderSide)
+        Me.itemDescXrLabel.CanGrow = False
+        Me.itemDescXrLabel.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.itemDescXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(307.2917!, 144.5416!)
         Me.itemDescXrLabel.Name = "itemDescXrLabel"
         Me.itemDescXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.itemDescXrLabel.SizeF = New System.Drawing.SizeF(403.1249!, 47.16663!)
+        Me.itemDescXrLabel.SizeF = New System.Drawing.SizeF(444.7916!, 49.58331!)
         Me.itemDescXrLabel.StylePriority.UseBorderColor = False
         Me.itemDescXrLabel.StylePriority.UseBorders = False
         Me.itemDescXrLabel.StylePriority.UseFont = False
@@ -145,28 +166,52 @@ Partial Public Class LPNLabelsXtraReport
         '
         'itemCodeXrLabel
         '
-        Me.itemCodeXrLabel.Font = New System.Drawing.Font("Tahoma", 20.0!, System.Drawing.FontStyle.Bold)
-        Me.itemCodeXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(48.95833!, 165.2084!)
+        Me.itemCodeXrLabel.BorderColor = System.Drawing.Color.Gray
+        Me.itemCodeXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.itemCodeXrLabel.CanGrow = False
+        Me.itemCodeXrLabel.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.itemCodeXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(47.91663!, 169.3333!)
         Me.itemCodeXrLabel.Name = "itemCodeXrLabel"
         Me.itemCodeXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.itemCodeXrLabel.SizeF = New System.Drawing.SizeF(300.0!, 34.16664!)
+        Me.itemCodeXrLabel.SizeF = New System.Drawing.SizeF(259.3751!, 24.79165!)
+        Me.itemCodeXrLabel.StylePriority.UseBorderColor = False
+        Me.itemCodeXrLabel.StylePriority.UseBorders = False
         Me.itemCodeXrLabel.StylePriority.UseFont = False
         Me.itemCodeXrLabel.Text = "1234567890123456"
         '
         'itemHeaderXrLabel
         '
-        Me.itemHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.itemHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(48.95833!, 152.2083!)
+        Me.itemHeaderXrLabel.BorderColor = System.Drawing.Color.Gray
+        Me.itemHeaderXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.Top
+        Me.itemHeaderXrLabel.CanGrow = False
+        Me.itemHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.itemHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(47.91663!, 144.5416!)
         Me.itemHeaderXrLabel.Name = "itemHeaderXrLabel"
         Me.itemHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.itemHeaderXrLabel.SizeF = New System.Drawing.SizeF(203.125!, 13.0!)
+        Me.itemHeaderXrLabel.SizeF = New System.Drawing.SizeF(259.3751!, 24.79166!)
+        Me.itemHeaderXrLabel.StylePriority.UseBorderColor = False
+        Me.itemHeaderXrLabel.StylePriority.UseBorders = False
         Me.itemHeaderXrLabel.StylePriority.UseFont = False
-        Me.itemHeaderXrLabel.Text = "MATERIAL NUMBER - DESCRIPTION"
+        Me.itemHeaderXrLabel.StylePriority.UseTextAlignment = False
+        Me.itemHeaderXrLabel.Text = "Item Number - Description"
+        Me.itemHeaderXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'tsXrLabel
+        '
+        Me.tsXrLabel.ExpressionBindings.AddRange(New DevExpress.XtraReports.UI.ExpressionBinding() {New DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Now()")})
+        Me.tsXrLabel.Font = New System.Drawing.Font("Tahoma", 9.0!)
+        Me.tsXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(453.1251!, 18.41682!)
+        Me.tsXrLabel.Name = "tsXrLabel"
+        Me.tsXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.tsXrLabel.SizeF = New System.Drawing.SizeF(300.0!, 23.74994!)
+        Me.tsXrLabel.StylePriority.UseFont = False
+        Me.tsXrLabel.StylePriority.UseTextAlignment = False
+        Me.tsXrLabel.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight
         '
         'lpnHeaderXrLabel
         '
         Me.lpnHeaderXrLabel.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.lpnHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(300.0!, 35.0!)
+        Me.lpnHeaderXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(298.9583!, 20.83333!)
         Me.lpnHeaderXrLabel.Name = "lpnHeaderXrLabel"
         Me.lpnHeaderXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
         Me.lpnHeaderXrLabel.SizeF = New System.Drawing.SizeF(203.125!, 13.0!)
@@ -177,10 +222,10 @@ Partial Public Class LPNLabelsXtraReport
         '
         Me.LPNXrBarCode.AnchorHorizontal = CType((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left Or DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right), DevExpress.XtraReports.UI.HorizontalAnchorStyles)
         Me.LPNXrBarCode.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.LPNXrBarCode.LocationFloat = New DevExpress.Utils.PointFloat(300.0!, 50.0!)
+        Me.LPNXrBarCode.LocationFloat = New DevExpress.Utils.PointFloat(300.0001!, 33.83334!)
         Me.LPNXrBarCode.Name = "LPNXrBarCode"
         Me.LPNXrBarCode.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 2, 100.0!)
-        Me.LPNXrBarCode.SizeF = New System.Drawing.SizeF(453.125!, 96.91664!)
+        Me.LPNXrBarCode.SizeF = New System.Drawing.SizeF(453.125!, 105.375!)
         Me.LPNXrBarCode.StylePriority.UseFont = False
         Me.LPNXrBarCode.StylePriority.UsePadding = False
         Me.LPNXrBarCode.StylePriority.UseTextAlignment = False
@@ -188,36 +233,18 @@ Partial Public Class LPNLabelsXtraReport
         Me.LPNXrBarCode.Text = "PIM480252"
         Me.LPNXrBarCode.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
         '
-        'XrLine3
-        '
-        Me.XrLine3.LocationFloat = New DevExpress.Utils.PointFloat(50.0!, 297.7916!)
-        Me.XrLine3.Name = "XrLine3"
-        Me.XrLine3.SizeF = New System.Drawing.SizeF(703.125!, 2.166687!)
-        '
-        'XrLine2
-        '
-        Me.XrLine2.LocationFloat = New DevExpress.Utils.PointFloat(48.95833!, 199.3749!)
-        Me.XrLine2.Name = "XrLine2"
-        Me.XrLine2.SizeF = New System.Drawing.SizeF(703.125!, 2.166687!)
-        '
-        'XrLine1
-        '
-        Me.XrLine1.LocationFloat = New DevExpress.Utils.PointFloat(50.0!, 150.0!)
-        Me.XrLine1.Name = "XrLine1"
-        Me.XrLine1.SizeF = New System.Drawing.SizeF(703.125!, 2.083336!)
-        '
         'ReprintXrLabel
         '
         Me.ReprintXrLabel.AnchorHorizontal = CType((DevExpress.XtraReports.UI.HorizontalAnchorStyles.Left Or DevExpress.XtraReports.UI.HorizontalAnchorStyles.Right), DevExpress.XtraReports.UI.HorizontalAnchorStyles)
         Me.ReprintXrLabel.AnchorVertical = CType((DevExpress.XtraReports.UI.VerticalAnchorStyles.Top Or DevExpress.XtraReports.UI.VerticalAnchorStyles.Bottom), DevExpress.XtraReports.UI.VerticalAnchorStyles)
-        Me.ReprintXrLabel.Angle = 15.0!
+        Me.ReprintXrLabel.Angle = 10.0!
         Me.ReprintXrLabel.CanGrow = False
         Me.ReprintXrLabel.Font = New System.Drawing.Font("Calibri", 48.0!, System.Drawing.FontStyle.Bold)
         Me.ReprintXrLabel.ForeColor = System.Drawing.Color.Red
-        Me.ReprintXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0!, 0!)
+        Me.ReprintXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(0.00006357829!, 20.83333!)
         Me.ReprintXrLabel.Name = "ReprintXrLabel"
         Me.ReprintXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.ReprintXrLabel.SizeF = New System.Drawing.SizeF(300.0!, 146.9166!)
+        Me.ReprintXrLabel.SizeF = New System.Drawing.SizeF(288.5417!, 118.375!)
         Me.ReprintXrLabel.StylePriority.UseFont = False
         Me.ReprintXrLabel.StylePriority.UseForeColor = False
         Me.ReprintXrLabel.StylePriority.UseTextAlignment = False
@@ -226,22 +253,80 @@ Partial Public Class LPNLabelsXtraReport
         '
         'TopMargin
         '
+        Me.TopMargin.BorderColor = System.Drawing.Color.Transparent
         Me.TopMargin.HeightF = 0!
         Me.TopMargin.Name = "TopMargin"
         Me.TopMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.TopMargin.StylePriority.UseBorderColor = False
         Me.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        Me.TopMargin.Visible = False
         '
         'BottomMargin
         '
-        Me.BottomMargin.HeightF = 1.0!
+        Me.BottomMargin.HeightF = 0.958252!
         Me.BottomMargin.Name = "BottomMargin"
         Me.BottomMargin.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
         Me.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft
+        Me.BottomMargin.Visible = False
+        '
+        'lpnGroupHeader
+        '
+        Me.lpnGroupHeader.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.exprHeaderXrLabel, Me.lotHeaderXrLabel, Me.qtyHeaderXrLabel, Me.itemDescXrLabel, Me.itemHeaderXrLabel, Me.itemCodeXrLabel, Me.LPNXrBarCode, Me.lpnHeaderXrLabel, Me.ReprintXrLabel})
+        Me.lpnGroupHeader.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WholePage
+        Me.lpnGroupHeader.HeightF = 219.2083!
+        Me.lpnGroupHeader.Name = "lpnGroupHeader"
+        Me.lpnGroupHeader.Padding = New DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100.0!)
+        Me.lpnGroupHeader.StylePriority.UsePadding = False
+        '
+        'lpnGroupFooter
+        '
+        Me.lpnGroupFooter.Controls.AddRange(New DevExpress.XtraReports.UI.XRControl() {Me.XrLabel2, Me.SumQtyXrLabel, Me.tsXrLabel})
+        Me.lpnGroupFooter.HeightF = 47.91667!
+        Me.lpnGroupFooter.KeepTogether = True
+        Me.lpnGroupFooter.Name = "lpnGroupFooter"
+        Me.lpnGroupFooter.PageBreak = DevExpress.XtraReports.UI.PageBreak.AfterBand
+        Me.lpnGroupFooter.PrintAtBottom = True
+        '
+        'XrLabel2
+        '
+        Me.XrLabel2.BorderColor = System.Drawing.Color.Gray
+        Me.XrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.XrLabel2.CanGrow = False
+        Me.XrLabel2.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.XrLabel2.LocationFloat = New DevExpress.Utils.PointFloat(47.91663!, 2.083333!)
+        Me.XrLabel2.Name = "XrLabel2"
+        Me.XrLabel2.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.XrLabel2.SizeF = New System.Drawing.SizeF(153.1252!, 15.0!)
+        Me.XrLabel2.StylePriority.UseBorderColor = False
+        Me.XrLabel2.StylePriority.UseBorders = False
+        Me.XrLabel2.StylePriority.UseFont = False
+        Me.XrLabel2.StylePriority.UseTextAlignment = False
+        Me.XrLabel2.Text = "Total Quantity"
+        Me.XrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
+        '
+        'SumQtyXrLabel
+        '
+        Me.SumQtyXrLabel.BorderColor = System.Drawing.Color.Gray
+        Me.SumQtyXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
+        Me.SumQtyXrLabel.CanGrow = False
+        Me.SumQtyXrLabel.Font = New System.Drawing.Font("Tahoma", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.SumQtyXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(47.91662!, 17.08333!)
+        Me.SumQtyXrLabel.Name = "SumQtyXrLabel"
+        Me.SumQtyXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
+        Me.SumQtyXrLabel.SizeF = New System.Drawing.SizeF(153.1252!, 25.08342!)
+        Me.SumQtyXrLabel.StylePriority.UseBorderColor = False
+        Me.SumQtyXrLabel.StylePriority.UseBorders = False
+        Me.SumQtyXrLabel.StylePriority.UseFont = False
+        XrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group
+        Me.SumQtyXrLabel.Summary = XrSummary1
+        Me.SumQtyXrLabel.Text = "80"
         '
         'LPNLabelsXtraReport
         '
-        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin})
+        Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.lpnGroupHeader, Me.lpnGroupFooter})
+        Me.BorderColor = System.Drawing.Color.Transparent
         Me.Font = New System.Drawing.Font("Tw Cen MT Condensed", 72.0!)
+        Me.HorizontalContentSplitting = DevExpress.XtraPrinting.HorizontalContentSplitting.Smart
         Me.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 1)
         Me.PageHeight = 400
         Me.PageWidth = 800
@@ -253,9 +338,6 @@ Partial Public Class LPNLabelsXtraReport
     Friend WithEvents Detail As DevExpress.XtraReports.UI.DetailBand
     Friend WithEvents TopMargin As DevExpress.XtraReports.UI.TopMarginBand
     Friend WithEvents BottomMargin As DevExpress.XtraReports.UI.BottomMarginBand
-    Friend WithEvents XrLine3 As DevExpress.XtraReports.UI.XRLine
-    Friend WithEvents XrLine2 As DevExpress.XtraReports.UI.XRLine
-    Friend WithEvents XrLine1 As DevExpress.XtraReports.UI.XRLine
     Friend WithEvents exprHeaderXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents exprXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents lotHeaderXrLabel As DevExpress.XtraReports.UI.XRLabel
@@ -269,4 +351,8 @@ Partial Public Class LPNLabelsXtraReport
     Friend WithEvents LPNXrBarCode As DevExpress.XtraReports.UI.XRBarCode
     Friend WithEvents tsXrLabel As DevExpress.XtraReports.UI.XRLabel
     Friend WithEvents ReprintXrLabel As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents lpnGroupHeader As DevExpress.XtraReports.UI.GroupHeaderBand
+    Friend WithEvents lpnGroupFooter As DevExpress.XtraReports.UI.GroupFooterBand
+    Friend WithEvents XrLabel2 As DevExpress.XtraReports.UI.XRLabel
+    Friend WithEvents SumQtyXrLabel As DevExpress.XtraReports.UI.XRLabel
 End Class

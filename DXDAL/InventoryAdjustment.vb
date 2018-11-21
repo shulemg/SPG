@@ -54,12 +54,12 @@ Namespace SPGData
                 SetPropertyValue("OriginalQuantity", fOriginalQuantity, value)
             End Set
         End Property
-        Dim fNewCount As Single
-        Public Property NewCount() As Single
+        Dim fNewCount As Single?
+        Public Property NewCount() As Single?
             Get
                 Return fNewCount
             End Get
-            Set(ByVal value As Single)
+            Set(ByVal value As Single?)
                 SetPropertyValue("NewCount", fNewCount, value)
             End Set
         End Property

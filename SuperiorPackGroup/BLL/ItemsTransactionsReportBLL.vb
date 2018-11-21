@@ -154,7 +154,7 @@ Public Class ItemsTransactionsReportBLL
                                                                                                               New BinaryOperator(InventoryAdjustment.Fields.AdjustmentItem, item, BinaryOperatorType.Equal))
             For Each adjustment As InventoryAdjustment In AdjustedList
                 With adjustment
-                    m_ItemsTransactionList.Add(New ItemTransaction(.AdjustmentDate, .AdjustmentItem.ItemCode, .AdjustmentItem.ItemDescription, ItemTransactionType.Adjusted, .NewCount - .OriginalQuantity))
+                    m_ItemsTransactionList.Add(New ItemTransaction(.AdjustmentDate, .AdjustmentItem.ItemCode, .AdjustmentItem.ItemDescription, ItemTransactionType.Adjusted, If(.NewCount, 0) - .OriginalQuantity))
                 End With
             Next
         End Using
