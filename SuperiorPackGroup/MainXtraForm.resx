@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="listsCustomerBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="listsCustomerBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABJBJREFUSEvtkmtM01cYh/nizBKXkBljzGwys9BkGmfisiy4TJG5GRlsICoS7EQL
@@ -147,7 +147,7 @@
         YII=
 </value>
   </data>
-  <data name="listsItemBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="listsItemBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABWFJREFUSEvNVWtQlGUUPixXqQVXSC4iwgooyMCyiwl4QVlQQTTFe2mZTYmTSTOK
@@ -176,7 +176,7 @@
         I8sVYaT/vw+A3wEhzrzWwTomOgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="listsItemPoolBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="listsItemPoolBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABIBJREFUSEvtlHtMk1cYh7tlGUzGcAysJd0FUhHGRQW8oJBqccJA40QtzkYFtNWo
@@ -201,7 +201,7 @@
         2JIr8oqhI7pQNPO7k6ECaQnbNP2WNwWD8Tcwn7CD7IHnvwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="listsAddressesBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="listsAddressesBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABSVJREFUSEvllGtMU3cYhysSF9HM27JJZsZUdGPO4UB0ilJQswnswm2AG3KTMWci
@@ -229,7 +229,7 @@
         12qSn1/lzwaH8xe6SXiGBkvBkQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="activitesRecieveBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="activitesRecieveBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABWRJREFUSEvtk3lMk3cYx72miYtuIWbLtjiVophlYyYeO2Jm3OKysSnbOmEqmmwc
@@ -258,7 +258,7 @@
         /oX8F9TWSp9zp6tW/Qk4542sXv/UMQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="activitiesProductionBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="activitiesProductionBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABVZJREFUSEvtlGtMk1cAhsVN41w2XZYtI7q4mS3ZMJnRTDOdLlM3s2li1KkRJYJO
@@ -287,7 +287,7 @@
         JaSRzAOpMoYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="listsInventoryBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="listsInventoryBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABClJREFUSEvtlHtQVGUYxo8WslwCC2JQlChZZyFJEqGZDGwwRZwYaChioplGaIRA
@@ -311,7 +311,7 @@
         DYmNUMABWQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="activitesShipBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="activitesShipBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAA/1JREFUSEvllHtQVGUYxj/BxVVkZZcFZLCdpIglDYI1YRQQlrTyCgW5uoySGRAE
@@ -334,7 +334,7 @@
         Cmd7MaNyXagVQk8EhPwFPIpCwuxT3poAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="inventoryAdjustmentBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="inventoryAdjustmentBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABTxJREFUSEvdk2lQU1cYhjN2dAp1qWOnm0pB0hboUBfcbZFRiwVKB0dLLbKGQAEF
@@ -362,7 +362,7 @@
         uLt7CtzcmHxXV4bA2dlN4OTkwnd0dBY4ODjNnqD/MDTa34Zve4z6BqolAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="mainToolbarCustomersBarLargeButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolbarCustomersBarLargeButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAB1tJREFUWEftlXlQU3cCx3Hb2e1OtXWtu+20bi091FpFJIi2HqtUHbTWQQVBkRux
@@ -399,7 +399,7 @@
         hJNLM+XdoZ0JL6WZhN2mmYbk0YzYsu3WvLwN1OVveIMaNDT+DZkOQ/X2x+cEAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="mainToolbarItemBarLargeButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolbarItemBarLargeButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAACK1JREFUWEftV3tUjekaf/beXehCFwppq6hGdD2UW4YamSJNRheJOpk1M8eJ45g5
@@ -442,7 +442,7 @@
         9WCou4NEU3z553rlBfAfY3afD7zfDMsAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="mainToolBarItemPoolBarLargeButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolBarItemPoolBarLargeButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABxJJREFUWEftlmlYU1cax6OjVERREQqBEtl0wBZKjTWyKCOyCbWDihvooLUGkAdx
@@ -478,7 +478,7 @@
         uUznqAKma1SRCft0yTuKaW95yx+ERvsvghKthXNtSEcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="mainToolbarProductionBarLargeButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolbarProductionBarLargeButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAACMxJREFUWEftlX1Q0/cdxy2dttrpetvOW/q0urVTp2t32s7V+lCq9eF01Ot8osNe
@@ -522,7 +522,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="mainToolbarInventoryBarLargeButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolbarInventoryBarLargeButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABmdJREFUWEftlgtUjGkYx78wWYSUy6aLJITdwrjbim7OyW1jW5E9rsW6LkuIrIjU
@@ -555,7 +555,7 @@
         2jvKUYV+fHkvZnvP8LCWx7mNfZnc45qfPvhn/Q9FUb8BW9V1GTJQrAMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="mainToolbarShipBarLargeButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolbarShipBarLargeButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAABf1JREFUWEftlndQVFcUxp+EBSJKcXHBAiKugqAEXDGEiIgUA5aIKGUxREN8YxQL
@@ -587,7 +587,7 @@
         RU5ErkJggg==
 </value>
   </data>
-  <data name="mainToolbarReceiveBarLargeButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolbarReceiveBarLargeButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAACMBJREFUWEftl3lQk2cexxVsa23ddbt2dqe7ay1gXGUWma1dpaNbWW9bWFxQR9aT
@@ -689,7 +689,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
-  <data name="mainToolbarInventoryAdjustmentBarButtonItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="mainToolbarInventoryAdjustmentBarButtonItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAACCxJREFUWEftVXlU01caTV0OODp0XCgoOCBVK3UZHXfRuoGKAkGsWMVlVFArOgMR
@@ -730,4 +730,7 @@
         vw4olH8Bpj4FQRF2+BkAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="DefaultLookAndFeel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>162, 17</value>
+  </metadata>
 </root>

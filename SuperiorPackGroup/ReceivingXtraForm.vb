@@ -9,6 +9,7 @@ Imports DXDAL.SPGData
 
 Public Class ReceivingXtraForm
 
+    Private m_TempId As New Dictionary(Of Integer, Integer)
     Private m_lastLPN As Integer
     Private m_Receivings As ReceivingsBLL
     Private m_CustomerReceivings As CustomersBLL
@@ -98,6 +99,7 @@ Public Class ReceivingXtraForm
         cancelBarButtonItem.Enabled = False
         saveBarButtonItem.Enabled = False
         refreshBarButtonItem.Enabled = False
+        Me.SaveContinueSimpleButton.Enabled = False
 
         Me.Cursor = Cursors.Default
 
@@ -255,7 +257,7 @@ Public Class ReceivingXtraForm
 
     Private Sub receivingGridView_CustomUnboundColumnData(ByVal sender As Object, ByVal e As Views.Base.CustomColumnDataEventArgs) Handles receivingGridView.CustomUnboundColumnData
 
-        If Not IsDBNull(receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.itemGridColumn)) Then
+        If Not IsDBNull(receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.itemGridColumn)) AndAlso e.Column.Name = descriptionGridColumn.Name Then
             e.Value = ItemsBLL.GetDescriptionByItemID(CType(receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.itemGridColumn), Integer?))
         End If
 
@@ -336,9 +338,9 @@ Public Class ReceivingXtraForm
             Return lResult1
         End If
 
-        If newReceiving Then
-            printLpn(True)
-        End If
+        'If newReceiving Then
+        '    printLpn(True)
+        'End If
 
         BindReceivingsSearchGrid()
         BindReceivingsControls(m_CurrentReceivingID.Value)
@@ -398,14 +400,21 @@ Public Class ReceivingXtraForm
             End If
 
 
-            Dim id As Integer? = CType(receivingGridView.GetRowCellValue(ci, idGridColumn), Integer?)
+            Dim id As Integer = CType(receivingGridView.GetRowCellValue(ci, idGridColumn), Integer)
             Dim item As Integer? = CType(receivingGridView.GetRowCellValue(ci, itemGridColumn), Integer?)
             Dim qty As Integer? = CType(receivingGridView.GetRowCellValue(ci, quantityGridColumn), Integer?)
             Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(ci, packagesGridColumn), Integer?)
             Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
             Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn))
 
-            Return m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, id, m_CurrentReceivingID.Value, item, lot, qty, pckg, lpn, expr)
+            Dim tempId As Integer = m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, If(id < 0 AndAlso m_TempId.ContainsKey(id), m_TempId.Item(id), id), m_CurrentReceivingID.Value, item, lot, qty, pckg, lpn, expr)
+
+            If tempId > 0 Then
+                If Not m_TempId.ContainsKey(id) AndAlso id < 0 Then m_TempId.Add(id, tempId)
+                Return True
+            Else
+                Return False
+            End If
         Else
             Return True
         End If
@@ -612,12 +621,14 @@ Public Class ReceivingXtraForm
 
         Utilities.MakeFormReadOnly(Me.generalXtraTabPage, False)
         Me.palletsTextEdit.Properties.ReadOnly = True
-        Me.BulkEntryGroupControl.Enabled = True
+        Me.BulkEntryGroupControl.Enabled = False
         Me.receivingGridView.OptionsBehavior.Editable = True
         Utilities.MakeGridReadOnly(Me.returnsGridView, False)
         Me.receivingSearchGridControl.Enabled = False
         CheckPermissions()
 
+        Me.UnitQtyLockCheckEdit.Checked = True
+        Me.SaveContinueSimpleButton.Enabled = True
         Me.cancelBarButtonItem.Enabled = True
         Me.saveBarButtonItem.Enabled = True
         Me.editBarButtonItem.Enabled = False
@@ -644,6 +655,7 @@ Public Class ReceivingXtraForm
         Me.receivingSearchGridControl.Enabled = False
         CheckPermissions()
 
+        Me.UnitQtyLockCheckEdit.Checked = True
         Me.cancelBarButtonItem.Enabled = True
         Me.saveBarButtonItem.Enabled = True
         Me.editBarButtonItem.Enabled = False
@@ -666,6 +678,9 @@ Public Class ReceivingXtraForm
         Utilities.MakeGridReadOnly(Me.returnsGridView, True)
         Me.receivingSearchGridControl.Enabled = True
 
+        m_TempId.Clear()
+
+        Me.SaveContinueSimpleButton.Enabled = False
         cancelBarButtonItem.Enabled = False
         saveBarButtonItem.Enabled = False
         refreshBarButtonItem.Enabled = True
@@ -683,6 +698,8 @@ Public Class ReceivingXtraForm
             Me.receivingGridView.OptionsBehavior.Editable = False
             Utilities.MakeGridReadOnly(Me.returnsGridView, True)
             Me.receivingSearchGridControl.Enabled = True
+
+            m_TempId.Clear()
 
             cancelBarButtonItem.Enabled = False
             saveBarButtonItem.Enabled = False
@@ -760,6 +777,18 @@ Public Class ReceivingXtraForm
     End Sub
 
     Private Sub CancelChanges()
+
+
+        If m_TempId.Count > 0 Then
+            MsgBox($"{m_TempId.Count} Added Pallets was already received, If you want to remove it go back and edit.")
+        End If
+
+        For Each control As Control In BulkEntryGroupControl.Controls
+            If TypeOf control Is TextEdit Then
+                TryCast(control, TextEdit).Text = If(control.Tag Is Nothing, Nothing, control.Tag.ToString())
+                If control.Name = "ItemLookUpEdit" Then TryCast(control, TextEdit).EditValue = Nothing
+            End If
+        Next
 
         If Me.m_CurrentReceivingID IsNot Nothing Then
             BindReceivingsControls(m_CurrentReceivingID.Value)
@@ -844,15 +873,20 @@ Public Class ReceivingXtraForm
 
     Private Sub delRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles delRepositoryItemButtonEdit.Click
 
-        If MessageBox.Show("Are you sure you want to delete this receiving detail.", "Delete Receiving Detail", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) = Windows.Forms.DialogResult.No Then
+        If MessageBox.Show("Are you sure you want to delete this LPN, this can`t be undone.", "Delete Receiving Detail", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) = Windows.Forms.DialogResult.No Then
             Exit Sub
         End If
 
         Try
             Dim lReceivingDetailID As Integer = CInt(Me.receivingGridView.GetRowCellValue(Me.receivingGridView.FocusedRowHandle, Me.idGridColumn))
+
+            If m_TempId.ContainsKey(lReceivingDetailID) Then lReceivingDetailID = m_TempId.Item(lReceivingDetailID)
+
             If lReceivingDetailID <= -1 Then
                 Me.receivingGridView.DeleteRow(Me.receivingGridView.FocusedRowHandle)
             ElseIf m_ReceivingDetails.DeleteReceivingDetail(m_ReceivingSession, lReceivingDetailID) = True Then
+                If m_TempId.ContainsKey(lReceivingDetailID) Then m_TempId.Remove(lReceivingDetailID)
+
                 BindReceivingGridControl(m_CurrentReceivingID)
             Else
                 MessageBox.Show("The receiving detail was not deleted.")
@@ -1023,42 +1057,30 @@ Public Class ReceivingXtraForm
 
     End Sub
 
-    Private Sub printLpn(all As Boolean)
+    Private Sub printLpn(reprint As Boolean)
         Dim digits As Integer = Len(CustomersBLL.GetCustomer(7, m_ReceivingSession).LastLPNNumber.ToString)
         Dim lpnXPview As XPView
         Dim critaria As New CriteriaOperatorCollection
         lpnXPview = New XPView(m_ReceivingSession, GetType(LocationInventoryByLot))
 
-        If all Then
-            If receivingGridView.GroupCount > 0 Then
-                Dim i As Integer = -1
-                While receivingGridView.IsValidRowHandle(i)
-                    If receivingGridView.GetChildRowHandle(i, 0) > -1 Then
-                        For ci As Integer = receivingGridView.GetChildRowHandle(i, 0) To receivingGridView.GetChildRowCount(i) + receivingGridView.GetChildRowHandle(i, 0) - 1
-                            Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
-                            Dim lot As String = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString()
-                            If lpn.HasValue AndAlso lot.Length > 0 Then
-                                critaria.Add(New GroupOperator(GroupOperatorType.And,
-                                    New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
-                                    New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
-                            End If
-                        Next
-                    End If
-                    i -= 1
-                End While
-            Else
-                For ci As Integer = 0 To receivingGridView.RowCount - 1
-                    Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
-                    Dim lot As String = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString()
-                    If lpn.HasValue AndAlso lot.Length > 0 Then
-                        critaria.Add(New GroupOperator(GroupOperatorType.And,
-                            New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
-                            New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
-                    End If
-                Next
-            End If
-        Else
-            Dim selectedRowHandles As Integer() = receivingGridView.GetSelectedRows()
+        'If all Then
+        '    If receivingGridView.GroupCount > 0 Then
+        '        Dim i As Integer = -1
+        '        While receivingGridView.IsValidRowHandle(i)
+        '            If receivingGridView.GetChildRowHandle(i, 0) > -1 Then
+        '                For ci As Integer = receivingGridView.GetChildRowHandle(i, 0) To receivingGridView.GetChildRowCount(i) + receivingGridView.GetChildRowHandle(i, 0) - 1
+        '                    addToCritaria(critaria, ci)
+        '                Next
+        '            End If
+        '            i -= 1
+        '        End While
+        '    Else
+        '        For ci As Integer = 0 To receivingGridView.RowCount - 1
+        '            addToCritaria(critaria, ci)
+        '        Next
+        '    End If
+        'Else
+        Dim selectedRowHandles As Integer() = receivingGridView.GetSelectedRows()
             If selectedRowHandles.Length = 0 Then
                 MsgBox("Nothing is selected")
                 Exit Sub
@@ -1066,18 +1088,12 @@ Public Class ReceivingXtraForm
             For i As Integer = 0 To selectedRowHandles.Length - 1
                 Dim ci As Integer = selectedRowHandles(i)
                 If (ci >= 0) Then
-                    Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
-                    Dim lot As String = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString()
-                    If lpn.HasValue AndAlso lot.Length > 0 Then
-                        critaria.Add(New GroupOperator(GroupOperatorType.And,
-                            New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
-                            New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
-                    End If
+                    addToCritaria(critaria, ci)
                 End If
             Next
-        End If
+        'End If
 
-        lpnXPview.Criteria = CriteriaOperator.Or(critaria)
+        lpnXPview.Criteria = CriteriaOperator.And(CriteriaOperator.Or(critaria), New BinaryOperator("QuantityOnHand", 0, BinaryOperatorType.Greater))
 
         lpnXPview.Properties.AddRange(New ViewProperty() {New ViewProperty("Item", SortDirection.None, "[LocationInventoryItem.ItemCode]", False, True),
                                       New ViewProperty("ItemDesc", SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True),
@@ -1090,6 +1106,7 @@ Public Class ReceivingXtraForm
         With labels
             .DataSource = lpnXPview
             .lpnGroupHeader.GroupFields.Add(New GroupField("LPN", XRColumnSortOrder.Ascending))
+            .lpnGroupHeader.GroupFields.Add(New GroupField("Item", XRColumnSortOrder.Ascending))
             .itemCodeXrLabel.DataBindings.Add("Text", lpnXPview, "Item")
             .itemDescXrLabel.DataBindings.Add("Text", lpnXPview, "ItemDesc")
             .exprXrLabel.DataBindings.Add("Text", lpnXPview, "Expr", "{0:MM/dd/yyyy}")
@@ -1097,14 +1114,27 @@ Public Class ReceivingXtraForm
             .lotXrLabel.DataBindings.Add("Text", lpnXPview, "Lot")
             .LPNXrBarCode.DataBindings.Add("Text", lpnXPview, "LPN", "SPG{0:D" & digits & "}")
             .SumQtyXrLabel.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "sumSum([Qty])"))
-            .ReprintXrLabel.Visible = Not all
+            .ReprintXrLabel.Visible = reprint
             .CreateDocument()
             .ShowPreviewDialog()
         End With
     End Sub
 
+    Private Sub addToCritaria(critaria As CriteriaOperatorCollection, ci As Integer)
+        Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
+        'Dim lot As String = receivingGridView.GetRowCellValue(ci, lotGridColumn).ToString()
+        'If lpn.HasValue AndAlso lot.Length > 0 Then
+        '    critaria.Add(New GroupOperator(GroupOperatorType.And,
+        '        New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal),
+        '        New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
+        'Else
+        If lpn.HasValue Then
+                critaria.Add(New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal))
+            End If
+    End Sub
+
     Private Sub LpnLabelsBarButtonItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles LpnLabelsBarButtonItem.ItemClick
-        printLpn(False)
+        printLpn(True)
     End Sub
 
     Private Sub AddToPalletButton_Click(sender As Object, e As EventArgs) Handles AddToPalletButton.Click
@@ -1116,7 +1146,7 @@ Public Class ReceivingXtraForm
     End Sub
 
     Private Sub ItemLookUpEdit_Validated(sender As Object, e As EventArgs) Handles ItemLookUpEdit.Validated
-        UpdateQtyPerPallets(True)
+        UpdateQtyPerPallets("Item")
         If Not IsDBNull(ItemLookUpEdit.EditValue) Then
             ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID(CType(ItemLookUpEdit.EditValue, Integer?))
         End If
@@ -1124,22 +1154,24 @@ Public Class ReceivingXtraForm
     End Sub
 
     Private Sub UnitsTextEdit_Validated(sender As Object, e As EventArgs) Handles UnitsTextEdit.Validated
-        UpdateQtyPerPallets()
+        UpdateQtyPerPallets("Units")
         BulkEntryChanged()
     End Sub
     Private Sub LotTextEdit_Validated(sender As Object, e As EventArgs) Handles LotTextEdit.Validated
         BulkEntryChanged()
     End Sub
     Private Sub QtyTextEdit_Validated(sender As Object, e As EventArgs) Handles QtyTextEdit.Validated
-        'UpdateQtyPerPallets()
+        UpdateQtyPerPallets("Qty")
         BulkEntryChanged()
     End Sub
 
     Private Sub UnitsPerPltTextEdit_Validated(sender As Object, e As EventArgs) Handles UnitsPerPltTextEdit.Validated
+        UpdateQtyPerPallets("UnitsPerPlt")
         BulkEntryChanged()
     End Sub
 
     Private Sub QtyPerPltTextEdit_Validated(sender As Object, e As EventArgs) Handles QtyPerPltTextEdit.Validated
+        UpdateQtyPerPallets("QtyPerPlt")
         BulkEntryChanged()
     End Sub
     Private Sub BulkEntryChanged()
@@ -1155,8 +1187,44 @@ Err:
         End If
 
     End Sub
+    Public Sub UpdateQtyPerPallets(Changed As String)
+
+        Dim CasesPerPallet As Double
+        Dim QuantityPerUnit As Double
+        Dim itemId As Integer
+
+        itemId = CType(ItemLookUpEdit.EditValue, Integer)
+        QuantityPerUnit = ItemsBLL.GetCaseQuantity(itemId)
+        CasesPerPallet = m_Items.GetCasesPerPallet(itemId)
+
+        If Changed <> "Item" AndAlso Not UnitQtyLockCheckEdit.Checked AndAlso Convert.ToInt32(QtyPerPltTextEdit.Text) > 0 AndAlso Convert.ToInt32(UnitsPerPltTextEdit.Text) > 0 Then
+            QuantityPerUnit = Convert.ToInt32(QtyPerPltTextEdit.Text) / Convert.ToInt32(UnitsPerPltTextEdit.Text)
+        End If
+
+
+        'calculate the quantity
+        If Changed = "Qty" AndAlso QuantityPerUnit > 0 Then
+            UnitsTextEdit.EditValue = Math.Ceiling(Convert.ToDouble(QtyTextEdit.Text) / QuantityPerUnit)
+        End If
+        If Changed = "Units" AndAlso QuantityPerUnit > 0 Then
+            QtyTextEdit.EditValue = Convert.ToDouble(UnitsTextEdit.Text) * QuantityPerUnit
+        End If
+        If Changed = "UnitsPerPlt" AndAlso QuantityPerUnit > 0 AndAlso UnitQtyLockCheckEdit.Checked Then
+            QtyPerPltTextEdit.EditValue = Convert.ToDouble(UnitsPerPltTextEdit.Text) * QuantityPerUnit
+        End If
+        If Changed = "QtyPerPlt" AndAlso QuantityPerUnit > 0 AndAlso UnitQtyLockCheckEdit.Checked Then
+            UnitsPerPltTextEdit.EditValue = Convert.ToDouble(QtyPerPltTextEdit.Text) / QuantityPerUnit
+        End If
+
+        If Changed = "Item" Then
+            UnitsPerPltTextEdit.EditValue = CasesPerPallet
+            QtyPerPltTextEdit.EditValue = (CasesPerPallet * QuantityPerUnit)
+        End If
+
+    End Sub
     Private Sub AddLpns(Optional toLastLPN As Boolean = False)
         Dim addedQty, addedUnits, qty, units, qtyPerPlt, UnitPerPlt As Double
+        Dim beginRow As Integer? = Nothing ' = receivingGridView.GetRowHandle(receivingGridView.DataRowCount)
 
         qty = Convert.ToDouble(QtyTextEdit.Text)
         units = Convert.ToDouble(UnitsTextEdit.Text)
@@ -1164,7 +1232,7 @@ Err:
         UnitPerPlt = Convert.ToDouble(UnitsPerPltTextEdit.Text)
 
         With receivingGridView
-            Do Until addedUnits >= units
+            Do Until addedQty >= qty
                 If Not toLastLPN Then
                     m_lastLPN = LPNLabel.GetNextLPNNumber(7)
                 End If
@@ -1175,49 +1243,53 @@ Err:
                     .SetRowCellValue(rowHandle, itemGridColumn, ItemLookUpEdit.EditValue)
                     .SetRowCellValue(rowHandle, descriptionGridColumn, ItemDescTextEdit.Text)
                     .SetRowCellValue(rowHandle, lotGridColumn, LotTextEdit.Text)
-                    .SetRowCellValue(rowHandle, expirationDateGridColumn, ExpirationDateEdit.EditValue)
+                    If If(ExpirationDateEdit.EditValue, "").ToString() <> "" Then .SetRowCellValue(rowHandle, expirationDateGridColumn, ExpirationDateEdit.EditValue)
                     .SetRowCellValue(rowHandle, packagesGridColumn, Math.Min(UnitPerPlt, units - addedUnits))
                     .SetRowCellValue(rowHandle, quantityGridColumn, Math.Max(Math.Min(qtyPerPlt, qty - addedQty), 0))
                     .SetRowCellValue(rowHandle, ReceivDetLPNColumn, m_lastLPN)
                 End If
+                .UpdateCurrentRow()
+
+                If SaveShippingDetail(.FocusedRowHandle) <> True Then
+                    MessageBox.Show("The receiving details was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+
+                If beginRow Is Nothing Then
+                    beginRow = .FocusedRowHandle
+                End If
+                '.SelectRow(.FocusedRowHandle)
 
                 addedQty += qtyPerPlt
                 addedUnits += UnitPerPlt
             Loop
+            If addedUnits < units Then
+                MessageBox.Show($"{units - addedUnits} units was not added.", "Units/Qty mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End With
+
+        If beginRow.HasValue Then
+            receivingGridView.SelectRows(beginRow.Value, receivingGridView.FocusedRowHandle)
+            printLpn(False)
+        End If
 
         For Each control As Control In BulkEntryGroupControl.Controls
             If TypeOf control Is TextEdit Then
                 TryCast(control, TextEdit).Text = If(control.Tag Is Nothing, Nothing, control.Tag.ToString())
+                If control.Name = "ItemLookUpEdit" Then TryCast(control, TextEdit).EditValue = Nothing
             End If
         Next
+
+        Me.UnitQtyLockCheckEdit.Checked = True
 
         BulkEntryChanged()
 
     End Sub
-    Public Sub UpdateQtyPerPallets(Optional itemChaneged As Boolean = False)
 
-        Dim CasesPerPallet As Double
-        Dim QuantityPerUnit As Double
-        Dim itemId As Integer
-
-        itemId = CType(ItemLookUpEdit.EditValue, Integer)
-        QuantityPerUnit = ItemsBLL.GetCaseQuantity(itemId)
-        CasesPerPallet = m_Items.GetCasesPerPallet(itemId)
-
-        'calculate the quantity
-        If Convert.ToDouble(UnitsTextEdit.Text) = 0 AndAlso QuantityPerUnit > 0 Then
-            UnitsTextEdit.EditValue = Math.Ceiling(Convert.ToDouble(QtyTextEdit.Text) / QuantityPerUnit)
+    Private Sub SaveContinueSimpleButton_Click(sender As Object, e As EventArgs) Handles SaveContinueSimpleButton.Click
+        If SaveChanges() Then
+            Me.SaveContinueSimpleButton.Enabled = False
+            Me.BulkEntryGroupControl.Enabled = True
+            Me.receivingsXtraTabControl.SelectedTabPage = Me.detailsXtraTabPage
         End If
-        If Convert.ToDouble(QtyTextEdit.Text) = 0 AndAlso QuantityPerUnit > 0 Then
-            QtyTextEdit.EditValue = Convert.ToDouble(UnitsTextEdit.Text) * QuantityPerUnit
-        End If
-
-        If itemChaneged Then
-            UnitsPerPltTextEdit.EditValue = CasesPerPallet
-            QtyPerPltTextEdit.EditValue = (CasesPerPallet * QuantityPerUnit)
-        End If
-
     End Sub
-
 End Class

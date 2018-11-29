@@ -8,7 +8,7 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SuperiorPackGroup")> 
+<Assembly: AssemblyTitle("SuperiorPackGroup - Test")>
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Ektec Soft")> 
 <Assembly: AssemblyProduct("SuperiorPackGroup")> 

@@ -460,9 +460,10 @@ Public Class InventoryAdjustmentXtraForm
         Dim digits As Integer = Len(CustomersBLL.GetCustomer(7, Session.DefaultSession).LastLPNNumber.ToString)
         Dim lpnXPview As XPView
         Dim critaria As New CriteriaOperatorCollection
-        lpnXPview = New XPView(Session.DefaultSession, GetType(LocationInventoryByLot))
 
-        lpnXPview.Criteria = New BinaryOperator("LPNNumber", Utilities.ChangeType(Of Integer?)(Me.lpnLookUpEdit.EditValue), BinaryOperatorType.Equal)
+        lpnXPview = New XPView(Session.DefaultSession, GetType(LocationInventoryByLot))
+        lpnXPview.Criteria = CriteriaOperator.And(New BinaryOperator("LPNNumber", Utilities.ChangeType(Of Integer?)(Me.lpnLookUpEdit.EditValue), BinaryOperatorType.Equal),
+            New BinaryOperator("QuantityOnHand", 0, BinaryOperatorType.Greater))
 
         lpnXPview.Properties.AddRange(New ViewProperty() {New ViewProperty("Item", SortDirection.None, "[LocationInventoryItem.ItemCode]", False, True),
                                       New ViewProperty("ItemDesc", SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True),

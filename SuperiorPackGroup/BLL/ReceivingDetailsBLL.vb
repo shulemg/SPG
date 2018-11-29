@@ -64,7 +64,7 @@ Public Class ReceivingDetailsBLL
     End Function
 
     Public Function UpdateReceivingDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal receivingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?,
-             ByVal units As Integer?, ByVal LPN As Integer?, ByVal expirationDate As Date?) As Boolean
+             ByVal units As Integer?, ByVal LPN As Integer?, ByVal expirationDate As Date?) As Integer
 
         If Not itemID.HasValue Then
             Throw New ApplicationException("You must provide receiving item.")
@@ -119,17 +119,17 @@ Public Class ReceivingDetailsBLL
         If Not detail.Equals(originalDetail) Then
             Dim items As ItemsBLL = New ItemsBLL
             Dim locationID As Integer = session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid
-            items.UpdateStock(session, originalDetail.ReceivDetItemID.ItemID, Nothing, originalDetail.intUnits * -1, False, locationID, lot, LPN)
+            items.UpdateStock(session, originalDetail.ReceivDetItemID.ItemID, Nothing, originalDetail.ReceivDetQty * -1, False, locationID, lot, LPN)
 
-            items.UpdateStock(session, itemID.Value, units.Value, False, locationID, lot, LPN, expirationDate)
+            items.UpdateStock(session, itemID.Value, quantity.Value, False, locationID, lot, LPN, expirationDate)
         End If
 
-        Return True
+        Return detail.ReceivDetID
 
     End Function
 
     Public Function InsertDetails(ByVal session As Session, ByVal receivingID As Integer, ByVal item As Items, ByVal lot As String, ByVal quantity As Integer?,
-             ByVal units As Integer?, ByVal LPN As Integer?, ByVal expirationDate As Date?) As Boolean
+             ByVal units As Integer?, ByVal LPN As Integer?, ByVal expirationDate As Date?) As Integer
 
         Dim detail As ReceivingDetail = New ReceivingDetail(session)
 
@@ -147,9 +147,9 @@ Public Class ReceivingDetailsBLL
         Dim items As ItemsBLL = New ItemsBLL
         Dim locationID As Integer = session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid
 
-        items.UpdateStock(session, item.ItemID, units.Value, False, locationID, lot, LPN, expirationDate)
+        items.UpdateStock(session, item.ItemID, quantity.Value, False, locationID, lot, LPN, expirationDate)
 
-        Return True
+        Return detail.ReceivDetID
 
     End Function
 
@@ -165,14 +165,14 @@ Public Class ReceivingDetailsBLL
             itemID = detail.ReceivDetItemID.ItemID
             units = detail.intUnits
             quantity = detail.ReceivDetQty
-            locationID = session.GetObjectByKey(Of Receiving)(detail.ReceivMainID).ReceivingLocation.Oid
+            locationID = session.GetObjectByKey(Of Receiving)(detail.ReceivMainID.ReceivID).ReceivingLocation.Oid
             lpn = detail.ReceivDetLPN
             lot = detail.ReceivDetLot
             session.Delete(detail)
         End If
 
         Dim items As ItemsBLL = New ItemsBLL
-        items.UpdateStock(session, itemID, units * -1, False, locationID, lot, lpn)
+        items.UpdateStock(session, itemID, quantity * -1, False, locationID, lot, lpn)
 
         Return True
 

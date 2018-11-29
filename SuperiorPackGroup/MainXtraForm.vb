@@ -13,19 +13,19 @@ Public Class MainXtraForm
     Private m_FinancialTabs As String = "NONE"
     Private m_GeneralReports As String = "NONE"
     Private m_FinancialReports As String = "NONE"
-    Private m_MinPerHour As Nullable(Of Integer) = Nothing
-    Private m_OperatorsPay As Nullable(Of Single) = Nothing
-    Private m_SupersPay As Nullable(Of Single) = Nothing
-    Private m_PackersPay As Nullable(Of Single) = Nothing
-    Private m_VersionNumber As Nullable(Of Integer) = Nothing
+    Private m_MinPerHour As Integer? = Nothing
+    Private m_OperatorsPay As Single? = Nothing
+    Private m_SupersPay As Single? = Nothing
+    Private m_PackersPay As Single? = Nothing
+    Private m_VersionNumber As Integer? = Nothing
 
-    Private Sub fileExitBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles fileExitBarButtonItem.ItemClick
+    Private Sub fileExitBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles fileExitBarButtonItem.ItemClick
 
         Application.Exit()
 
     End Sub
 
-    Private Sub listsCustomerBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listsCustomerBarButtonItem.ItemClick, mainToolbarCustomersBarLargeButtonItem.ItemClick
+    Private Sub listsCustomerBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listsCustomerBarButtonItem.ItemClick, mainToolbarCustomersBarLargeButtonItem.ItemClick
 
         With CustomersXtraForm
             .MdiParent = Me
@@ -38,7 +38,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub listsItemBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listsItemBarButtonItem.ItemClick, mainToolbarItemBarLargeButtonItem.ItemClick
+    Private Sub listsItemBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listsItemBarButtonItem.ItemClick, mainToolbarItemBarLargeButtonItem.ItemClick
 
         With ItemsXtraForm
             .MdiParent = Me
@@ -52,7 +52,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub listsMachineBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listsMachineBarButtonItem.ItemClick
+    Private Sub listsMachineBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listsMachineBarButtonItem.ItemClick
 
         With MachineLinesXtraForm
             .MdiParent = Me
@@ -65,7 +65,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub listsShiftsBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listsShiftsBarButtonItem.ItemClick
+    Private Sub listsShiftsBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listsShiftsBarButtonItem.ItemClick
 
         With ShiftsXtraForm
             .MdiParent = Me
@@ -78,7 +78,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub listsCarriersBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listsCarriersBarButtonItem.ItemClick
+    Private Sub listsCarriersBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listsCarriersBarButtonItem.ItemClick
 
         With CarriersXtraForm
             .MdiParent = Me
@@ -91,7 +91,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub activitesRecieveBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles activitesRecieveBarButtonItem.ItemClick, mainToolbarReceiveBarLargeButtonItem.ItemClick
+    Private Sub activitesRecieveBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles activitesRecieveBarButtonItem.ItemClick, mainToolbarReceiveBarLargeButtonItem.ItemClick
 
         With ReceivingXtraForm
             .MdiParent = Me
@@ -100,11 +100,12 @@ Public Class MainXtraForm
             End If
             .Show()
             .Activate()
+            '.WindowState = FormWindowState.Maximized
         End With
 
     End Sub
 
-    Private Sub activitiesProductionBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles activitiesProductionBarButtonItem.ItemClick, mainToolbarProductionBarLargeButtonItem.ItemClick
+    Private Sub activitiesProductionBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles activitiesProductionBarButtonItem.ItemClick, mainToolbarProductionBarLargeButtonItem.ItemClick
 
         With ProductionXtraForm
             .MdiParent = Me
@@ -117,7 +118,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub activitesShipBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles activitesShipBarButtonItem.ItemClick, mainToolbarShipBarLargeButtonItem.ItemClick
+    Private Sub activitesShipBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles activitesShipBarButtonItem.ItemClick, mainToolbarShipBarLargeButtonItem.ItemClick
 
         With ShippingXtraForm
             .MdiParent = Me
@@ -130,7 +131,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub productionDetailBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles productionDetailBarButtonItem.ItemClick
+    Private Sub productionDetailBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles productionDetailBarButtonItem.ItemClick
 
         Dim reportForm As ReportsXtraForm = New ReportsXtraForm()
 
@@ -209,7 +210,7 @@ Public Class MainXtraForm
     '
     '    End Sub
 
-    Private Sub toolsOptionsBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles toolsOptionsBarButtonItem.ItemClick
+    Private Sub toolsOptionsBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles toolsOptionsBarButtonItem.ItemClick
 
         With SettingsXtraForm
             .FinancialTabs = Me.FinancialTabs
@@ -218,7 +219,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub toolsSecurityBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles toolsSecurityBarButtonItem.ItemClick
+    Private Sub toolsSecurityBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles toolsSecurityBarButtonItem.ItemClick
 
         With SecurityXtraForm
             .MdiParent = Me
@@ -231,25 +232,25 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub windowCascadeBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles windowCascadeBarButtonItem.ItemClick
+    Private Sub windowCascadeBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles windowCascadeBarButtonItem.ItemClick
 
         Me.LayoutMdi(MdiLayout.Cascade)
 
     End Sub
 
-    Private Sub windowVerticalBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles windowVerticalBarButtonItem.ItemClick
+    Private Sub windowVerticalBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles windowVerticalBarButtonItem.ItemClick
 
         Me.LayoutMdi(MdiLayout.TileVertical)
 
     End Sub
 
-    Private Sub windowHorizontalBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles windowHorizontalBarButtonItem.ItemClick
+    Private Sub windowHorizontalBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles windowHorizontalBarButtonItem.ItemClick
 
         Me.LayoutMdi(MdiLayout.TileHorizontal)
 
     End Sub
 
-    Private Sub windowCloseBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles windowCloseBarButtonItem.ItemClick
+    Private Sub windowCloseBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles windowCloseBarButtonItem.ItemClick
 
         For Each childForm As XtraForm In Me.MdiChildren
             childForm.Close()
@@ -257,13 +258,13 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub windowArrangeBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles windowArrangeBarButtonItem.ItemClick
+    Private Sub windowArrangeBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles windowArrangeBarButtonItem.ItemClick
 
         Me.LayoutMdi(MdiLayout.ArrangeIcons)
 
     End Sub
 
-    Private Sub MainXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub MainXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
         m_timer.Interval = CInt(TimeSpan.FromHours(1).TotalMilliseconds)
         m_timer.Start()
@@ -273,7 +274,7 @@ Public Class MainXtraForm
         Try
             m_VersionNumber = ApplicationDeployment.CurrentDeployment.CurrentVersion.Revision
 
-            Text = String.Format("Superior Pack Group (Ver. {0})", ApplicationDeployment.CurrentDeployment.CurrentVersion)
+            Text = String.Format("Superior Pack Group - Test (Ver. {0})", ApplicationDeployment.CurrentDeployment.CurrentVersion)
         Catch
         End Try
 
@@ -454,7 +455,7 @@ Public Class MainXtraForm
 
     End Property
 
-    Private Sub databaseBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles databaseBarButtonItem.ItemClick
+    Private Sub databaseBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles databaseBarButtonItem.ItemClick
 
         With DatabaseSelectionXtraForm
             .ShowDialog()
@@ -462,7 +463,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub listsAddressesBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listsAddressesBarButtonItem.ItemClick, mainToolbarAddressesBarLargeButtonItem.ItemClick
+    Private Sub listsAddressesBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listsAddressesBarButtonItem.ItemClick, mainToolbarAddressesBarLargeButtonItem.ItemClick
 
         With ShippingAddressesXtraForm
             .MdiParent = Me
@@ -475,7 +476,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub listsInventoryBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listsInventoryBarButtonItem.ItemClick, mainToolbarInventoryBarLargeButtonItem.ItemClick
+    Private Sub listsInventoryBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listsInventoryBarButtonItem.ItemClick, mainToolbarInventoryBarLargeButtonItem.ItemClick
 
         With InventoryXtraForm
             .MdiParent = Me
@@ -488,7 +489,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub inventoryAdjustmentBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles inventoryAdjustmentBarButtonItem.ItemClick, _
+    Private Sub inventoryAdjustmentBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles inventoryAdjustmentBarButtonItem.ItemClick,
                                                                                                                                             mainToolbarInventoryAdjustmentBarLargeButtonItem.ItemClick
 
         With InventoryAdjustmentXtraForm
@@ -502,7 +503,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub reportsBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles reportsBarButtonItem.ItemClick
+    Private Sub reportsBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles reportsBarButtonItem.ItemClick
 
         With QuickReportsXtraForm
             .MdiParent = Me
@@ -513,7 +514,7 @@ Public Class MainXtraForm
 
     End Sub
 
-    Private Sub listVendorsBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles listVendorsBarButtonItem.ItemClick
+    Private Sub listVendorsBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As ItemClickEventArgs) Handles listVendorsBarButtonItem.ItemClick
 
         With VendorsXtraForm
             .MdiParent = Me

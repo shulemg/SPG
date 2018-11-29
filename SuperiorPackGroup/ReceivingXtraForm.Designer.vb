@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ReceivingXtraForm
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,12 +17,13 @@ Partial Class ReceivingXtraForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReceivingXtraForm))
         Me.receivingsXtraTabControl = New DevExpress.XtraTab.XtraTabControl()
         Me.generalXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.SaveContinueSimpleButton = New DevExpress.XtraEditors.SimpleButton()
         Me.locationLookUpEdit = New DevExpress.XtraEditors.LookUpEdit()
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.receivingBar = New DevExpress.XtraBars.Bar()
@@ -93,6 +94,8 @@ Partial Class ReceivingXtraForm
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.detailsXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.BulkEntryGroupControl = New DevExpress.XtraEditors.GroupControl()
+        Me.LabelControl25 = New DevExpress.XtraEditors.LabelControl()
+        Me.UnitQtyLockCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.AddToPalletButton = New DevExpress.XtraEditors.SimpleButton()
         Me.AddEntryButton = New DevExpress.XtraEditors.SimpleButton()
         Me.QtyPerPltTextEdit = New DevExpress.XtraEditors.TextEdit()
@@ -162,6 +165,7 @@ Partial Class ReceivingXtraForm
         Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.FinishedProductAvailabilityReportTableAdapter1 = New SuperiorPackGroup.SPGReportsTableAdapters.FinishedProductAvailabilityReportTableAdapter()
         CType(Me.receivingsXtraTabControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.receivingsXtraTabControl.SuspendLayout()
         Me.generalXtraTabPage.SuspendLayout()
@@ -199,6 +203,7 @@ Partial Class ReceivingXtraForm
         Me.detailsXtraTabPage.SuspendLayout()
         CType(Me.BulkEntryGroupControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BulkEntryGroupControl.SuspendLayout()
+        CType(Me.UnitQtyLockCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QtyPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UnitsPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QtyTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -248,6 +253,7 @@ Partial Class ReceivingXtraForm
         '
         'generalXtraTabPage
         '
+        Me.generalXtraTabPage.Controls.Add(Me.SaveContinueSimpleButton)
         Me.generalXtraTabPage.Controls.Add(Me.locationLookUpEdit)
         Me.generalXtraTabPage.Controls.Add(Me.LabelControl24)
         Me.generalXtraTabPage.Controls.Add(Me.correctPalletsComboBoxEdit)
@@ -299,6 +305,14 @@ Partial Class ReceivingXtraForm
         Me.generalXtraTabPage.Name = "generalXtraTabPage"
         Me.generalXtraTabPage.Size = New System.Drawing.Size(1127, 460)
         Me.generalXtraTabPage.Text = "General Info"
+        '
+        'SaveContinueSimpleButton
+        '
+        Me.SaveContinueSimpleButton.Location = New System.Drawing.Point(357, 420)
+        Me.SaveContinueSimpleButton.Name = "SaveContinueSimpleButton"
+        Me.SaveContinueSimpleButton.Size = New System.Drawing.Size(128, 23)
+        Me.SaveContinueSimpleButton.TabIndex = 52
+        Me.SaveContinueSimpleButton.Text = "Save && Continue"
         '
         'locationLookUpEdit
         '
@@ -919,6 +933,8 @@ Partial Class ReceivingXtraForm
         Me.BulkEntryGroupControl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BulkEntryGroupControl.AutoSize = True
+        Me.BulkEntryGroupControl.Controls.Add(Me.LabelControl25)
+        Me.BulkEntryGroupControl.Controls.Add(Me.UnitQtyLockCheckEdit)
         Me.BulkEntryGroupControl.Controls.Add(Me.AddToPalletButton)
         Me.BulkEntryGroupControl.Controls.Add(Me.AddEntryButton)
         Me.BulkEntryGroupControl.Controls.Add(Me.QtyPerPltTextEdit)
@@ -940,103 +956,127 @@ Partial Class ReceivingXtraForm
         Me.BulkEntryGroupControl.Location = New System.Drawing.Point(0, 3)
         Me.BulkEntryGroupControl.Name = "BulkEntryGroupControl"
         Me.BulkEntryGroupControl.ShowCaption = False
-        Me.BulkEntryGroupControl.Size = New System.Drawing.Size(1129, 49)
+        Me.BulkEntryGroupControl.Size = New System.Drawing.Size(1126, 49)
         Me.BulkEntryGroupControl.TabIndex = 26
         Me.BulkEntryGroupControl.Text = "GroupControl1"
+        '
+        'LabelControl25
+        '
+        Me.LabelControl25.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.LabelControl25.Location = New System.Drawing.Point(843, 2)
+        Me.LabelControl25.Name = "LabelControl25"
+        Me.LabelControl25.Size = New System.Drawing.Size(32, 13)
+        Me.LabelControl25.TabIndex = 40
+        Me.LabelControl25.Text = "-- 🔒 --"
+        '
+        'UnitQtyLockCheckEdit
+        '
+        Me.UnitQtyLockCheckEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.UnitQtyLockCheckEdit.EditValue = True
+        Me.UnitQtyLockCheckEdit.Location = New System.Drawing.Point(852, 21)
+        Me.UnitQtyLockCheckEdit.MenuManager = Me.BarManager1
+        Me.UnitQtyLockCheckEdit.Name = "UnitQtyLockCheckEdit"
+        Me.UnitQtyLockCheckEdit.Properties.Caption = "CheckEdit1"
+        Me.UnitQtyLockCheckEdit.Properties.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked
+        Me.UnitQtyLockCheckEdit.Properties.ValueGrayed = False
+        Me.UnitQtyLockCheckEdit.Size = New System.Drawing.Size(16, 19)
+        Me.UnitQtyLockCheckEdit.TabIndex = 32
+        Me.UnitQtyLockCheckEdit.Tag = "True"
         '
         'AddToPalletButton
         '
         Me.AddToPalletButton.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.AddToPalletButton.Location = New System.Drawing.Point(1045, 19)
+        Me.AddToPalletButton.Location = New System.Drawing.Point(1044, 19)
         Me.AddToPalletButton.Name = "AddToPalletButton"
         Me.AddToPalletButton.Size = New System.Drawing.Size(75, 23)
-        Me.AddToPalletButton.TabIndex = 45
+        Me.AddToPalletButton.TabIndex = 35
         Me.AddToPalletButton.Text = "Add to Pallet"
         '
         'AddEntryButton
         '
         Me.AddEntryButton.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.AddEntryButton.Location = New System.Drawing.Point(964, 19)
+        Me.AddEntryButton.Location = New System.Drawing.Point(963, 19)
         Me.AddEntryButton.Name = "AddEntryButton"
         Me.AddEntryButton.Size = New System.Drawing.Size(75, 23)
-        Me.AddEntryButton.TabIndex = 44
+        Me.AddEntryButton.TabIndex = 34
         Me.AddEntryButton.Text = "Add Pallets"
         '
         'QtyPerPltTextEdit
         '
         Me.QtyPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.QtyPerPltTextEdit.EditValue = 0R
-        Me.QtyPerPltTextEdit.Location = New System.Drawing.Point(877, 21)
+        Me.QtyPerPltTextEdit.Location = New System.Drawing.Point(874, 21)
         Me.QtyPerPltTextEdit.MenuManager = Me.BarManager1
         Me.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit"
         Me.QtyPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = True
         Me.QtyPerPltTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.QtyPerPltTextEdit.Size = New System.Drawing.Size(67, 20)
-        Me.QtyPerPltTextEdit.TabIndex = 43
+        Me.QtyPerPltTextEdit.TabIndex = 33
         Me.QtyPerPltTextEdit.Tag = "0"
         '
         'UnitsPerPltTextEdit
         '
         Me.UnitsPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.UnitsPerPltTextEdit.EditValue = 0R
-        Me.UnitsPerPltTextEdit.Location = New System.Drawing.Point(804, 21)
+        Me.UnitsPerPltTextEdit.Location = New System.Drawing.Point(779, 21)
         Me.UnitsPerPltTextEdit.MenuManager = Me.BarManager1
         Me.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit"
         Me.UnitsPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = True
         Me.UnitsPerPltTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.UnitsPerPltTextEdit.Size = New System.Drawing.Size(67, 20)
-        Me.UnitsPerPltTextEdit.TabIndex = 42
+        Me.UnitsPerPltTextEdit.TabIndex = 31
         Me.UnitsPerPltTextEdit.Tag = "0"
         '
         'QtyTextEdit
         '
         Me.QtyTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.QtyTextEdit.EditValue = 0R
-        Me.QtyTextEdit.Location = New System.Drawing.Point(697, 21)
+        Me.QtyTextEdit.Location = New System.Drawing.Point(673, 20)
         Me.QtyTextEdit.MenuManager = Me.BarManager1
         Me.QtyTextEdit.Name = "QtyTextEdit"
         Me.QtyTextEdit.Properties.Appearance.Options.UseTextOptions = True
         Me.QtyTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.QtyTextEdit.Size = New System.Drawing.Size(100, 20)
-        Me.QtyTextEdit.TabIndex = 41
+        Me.QtyTextEdit.TabIndex = 30
         Me.QtyTextEdit.Tag = "0"
         '
         'UnitsTextEdit
         '
         Me.UnitsTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.UnitsTextEdit.EditValue = 0R
-        Me.UnitsTextEdit.Location = New System.Drawing.Point(590, 21)
+        Me.UnitsTextEdit.Location = New System.Drawing.Point(567, 20)
         Me.UnitsTextEdit.MenuManager = Me.BarManager1
         Me.UnitsTextEdit.Name = "UnitsTextEdit"
         Me.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = True
         Me.UnitsTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.UnitsTextEdit.Size = New System.Drawing.Size(100, 20)
-        Me.UnitsTextEdit.TabIndex = 40
+        Me.UnitsTextEdit.TabIndex = 29
         Me.UnitsTextEdit.Tag = "0"
         '
         'LotTextEdit
         '
         Me.LotTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LotTextEdit.Location = New System.Drawing.Point(377, 21)
+        Me.LotTextEdit.Location = New System.Drawing.Point(351, 21)
         Me.LotTextEdit.MenuManager = Me.BarManager1
         Me.LotTextEdit.Name = "LotTextEdit"
         Me.LotTextEdit.Size = New System.Drawing.Size(100, 20)
-        Me.LotTextEdit.TabIndex = 39
+        Me.LotTextEdit.TabIndex = 27
         '
         'ItemDescTextEdit
         '
         Me.ItemDescTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.ItemDescTextEdit.Location = New System.Drawing.Point(195, 21)
+        Me.ItemDescTextEdit.Location = New System.Drawing.Point(169, 21)
         Me.ItemDescTextEdit.MenuManager = Me.BarManager1
         Me.ItemDescTextEdit.Name = "ItemDescTextEdit"
         Me.ItemDescTextEdit.Size = New System.Drawing.Size(176, 20)
         Me.ItemDescTextEdit.TabIndex = 38
+        Me.ItemDescTextEdit.TabStop = False
         '
         'Label8
         '
         Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(877, 3)
+        Me.Label8.Location = New System.Drawing.Point(879, 3)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(61, 13)
         Me.Label8.TabIndex = 37
@@ -1046,7 +1086,7 @@ Partial Class ReceivingXtraForm
         '
         Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(804, 3)
+        Me.Label7.Location = New System.Drawing.Point(776, 3)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(67, 13)
         Me.Label7.TabIndex = 36
@@ -1056,7 +1096,7 @@ Partial Class ReceivingXtraForm
         '
         Me.Label6.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(697, 3)
+        Me.Label6.Location = New System.Drawing.Point(670, 3)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(96, 13)
         Me.Label6.TabIndex = 35
@@ -1066,7 +1106,7 @@ Partial Class ReceivingXtraForm
         '
         Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(590, 3)
+        Me.Label5.Location = New System.Drawing.Point(564, 3)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(78, 13)
         Me.Label5.TabIndex = 34
@@ -1076,7 +1116,7 @@ Partial Class ReceivingXtraForm
         '
         Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(483, 3)
+        Me.Label4.Location = New System.Drawing.Point(454, 3)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(81, 13)
         Me.Label4.TabIndex = 33
@@ -1086,7 +1126,7 @@ Partial Class ReceivingXtraForm
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(376, 3)
+        Me.Label3.Location = New System.Drawing.Point(348, 3)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(33, 13)
         Me.Label3.TabIndex = 32
@@ -1096,7 +1136,7 @@ Partial Class ReceivingXtraForm
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(192, 3)
+        Me.Label2.Location = New System.Drawing.Point(166, 3)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 13)
         Me.Label2.TabIndex = 31
@@ -1106,7 +1146,7 @@ Partial Class ReceivingXtraForm
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(31, 3)
+        Me.Label1.Location = New System.Drawing.Point(5, 3)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(69, 13)
         Me.Label1.TabIndex = 30
@@ -1116,19 +1156,20 @@ Partial Class ReceivingXtraForm
         '
         Me.ExpirationDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ExpirationDateEdit.EditValue = Nothing
-        Me.ExpirationDateEdit.Location = New System.Drawing.Point(483, 21)
+        Me.ExpirationDateEdit.Location = New System.Drawing.Point(457, 20)
         Me.ExpirationDateEdit.MenuManager = Me.BarManager1
         Me.ExpirationDateEdit.Name = "ExpirationDateEdit"
         Me.ExpirationDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ExpirationDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ExpirationDateEdit.Properties.MinValue = New Date(1800, 1, 1, 0, 0, 0, 0)
         Me.ExpirationDateEdit.Size = New System.Drawing.Size(100, 20)
-        Me.ExpirationDateEdit.TabIndex = 27
+        Me.ExpirationDateEdit.TabIndex = 28
         Me.ExpirationDateEdit.Tag = ""
         '
         'ItemLookUpEdit
         '
         Me.ItemLookUpEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.ItemLookUpEdit.Location = New System.Drawing.Point(34, 21)
+        Me.ItemLookUpEdit.Location = New System.Drawing.Point(8, 21)
         Me.ItemLookUpEdit.MenuManager = Me.BarManager1
         Me.ItemLookUpEdit.Name = "ItemLookUpEdit"
         Me.ItemLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -1145,7 +1186,7 @@ Partial Class ReceivingXtraForm
         '
         'receivingItemXPView
         '
-        Me.receivingItemXPView.CriteriaString = "[ItemType] = 'RM' Or [ItemType] = 'IG'"
+        Me.receivingItemXPView.CriteriaString = "[Inactive] = False And ([ItemType] = 'RM' Or [ItemType] = 'IG')"
         Me.receivingItemXPView.ObjectType = GetType(DXDAL.SPGData.Items)
         Me.receivingItemXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.None, "[ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID.CustomerID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", False, True), New DevExpress.Xpo.ViewProperty("Inactive", DevExpress.Xpo.SortDirection.None, "[Inactive]", False, True)})
         '
@@ -1158,7 +1199,7 @@ Partial Class ReceivingXtraForm
         Me.receivingGridControl.MainView = Me.receivingGridView
         Me.receivingGridControl.Name = "receivingGridControl"
         Me.receivingGridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.itemRepositoryItemLookUpEdit, Me.delRepositoryItemButtonEdit, Me.RepositoryItemDateEdit1, Me.AddLotRepositoryItemButtonEdit, Me.AddedLotCheckEdit})
-        Me.receivingGridControl.Size = New System.Drawing.Size(1127, 417)
+        Me.receivingGridControl.Size = New System.Drawing.Size(1124, 420)
         Me.receivingGridControl.TabIndex = 0
         Me.receivingGridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.receivingGridView})
         '
@@ -1240,6 +1281,7 @@ Partial Class ReceivingXtraForm
         Me.RepositoryItemDateEdit1.AutoHeight = False
         Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.RepositoryItemDateEdit1.MinValue = New Date(1800, 1, 1, 0, 0, 0, 0)
         Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
         '
         'quantityGridColumn
@@ -1570,6 +1612,10 @@ Partial Class ReceivingXtraForm
         Me.GridColumn2.VisibleIndex = 0
         Me.GridColumn2.Width = 25
         '
+        'FinishedProductAvailabilityReportTableAdapter1
+        '
+        Me.FinishedProductAvailabilityReportTableAdapter1.ClearBeforeFill = True
+        '
         'ReceivingXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1624,6 +1670,7 @@ Partial Class ReceivingXtraForm
         CType(Me.BulkEntryGroupControl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BulkEntryGroupControl.ResumeLayout(False)
         Me.BulkEntryGroupControl.PerformLayout()
+        CType(Me.UnitQtyLockCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QtyPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UnitsPerPltTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.QtyTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1804,4 +1851,8 @@ Partial Class ReceivingXtraForm
     Friend WithEvents ItemLookUpEdit As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents AddEntryButton As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents AddToPalletButton As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents SaveContinueSimpleButton As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents UnitQtyLockCheckEdit As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents LabelControl25 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents FinishedProductAvailabilityReportTableAdapter1 As SPGReportsTableAdapters.FinishedProductAvailabilityReportTableAdapter
 End Class

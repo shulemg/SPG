@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>SuperiorPackGroup.My.MyApplication</StartupObject>
     <RootNamespace>SuperiorPackGroup</RootNamespace>
-    <AssemblyName>SuperiorPackGroup</AssemblyName>
+    <AssemblyName>SuperiorPackGroup - Test</AssemblyName>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>Resources\logolg.ico</ApplicationIcon>
     <ManifestCertificateThumbprint>733F8010F78C43DD80C3BE320C2C17CC6F814FA1</ManifestCertificateThumbprint>
@@ -25,7 +25,7 @@
     <OptionStrict>On</OptionStrict>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>F:\Shimon Lebovits\Desktop\SPG\SPG Install\</PublishUrl>
+    <PublishUrl>F:\Shimon Lebovits\Desktop\SPG\SPG Test Install\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -35,10 +35,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\server1\SPG\SPG Install\</UpdateUrl>
-    <ProductName>Superior Pack Group</ProductName>
-    <PublisherName>Ektec Soft</PublisherName>
-    <ApplicationRevision>248</ApplicationRevision>
+    <UpdateUrl>\\server1\SPG\SPG Test Install\</UpdateUrl>
+    <ProductName>Superior Pack Group - Test</ProductName>
+    <PublisherName>PC Ware Business Solutions</PublisherName>
+    <ApplicationRevision>260</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -50,7 +50,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SuperiorPackGroup.xml</DocumentationFile>
+    <DocumentationFile>SuperiorPackGroup - Test.xml</DocumentationFile>
     <NoWarn>42353,42354,42355</NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -63,7 +63,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SuperiorPackGroup.xml</DocumentationFile>
+    <DocumentationFile>SuperiorPackGroup - Test.xml</DocumentationFile>
     <NoWarn>42353,42354,42355</NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -72,6 +72,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v17.2.Core, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>

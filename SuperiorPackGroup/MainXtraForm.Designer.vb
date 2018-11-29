@@ -1,9 +1,9 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainXtraForm
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -73,6 +73,7 @@ Partial Class MainXtraForm
         Me.listsEmployeesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.listsShipmentConditionsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.lotCodeFormatsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.reasonCodesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.mainMenuActivitiesBarSubItem = New DevExpress.XtraBars.BarSubItem()
         Me.activitesRecieveBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.activitiesProductionBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
@@ -126,9 +127,9 @@ Partial Class MainXtraForm
         Me.mainToolbarProjectsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.mainToolbarScheduleBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
-        Me.reasonCodesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        CType(Me.mainBarManager,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.DefaultLookAndFeel1 = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
+        CType(Me.mainBarManager, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'mainBarManager
         '
@@ -149,19 +150,19 @@ Partial Class MainXtraForm
         Me.mainMenuBar.DockRow = 0
         Me.mainMenuBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
         Me.mainMenuBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.mainMenuFileBarSubItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainMenuListsBarSubItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainMenuActivitiesBarSubItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainMenuReportsBarSubItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainMenuToolsBarSubItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainMenuWindowBarSubItem), New DevExpress.XtraBars.LinkPersistInfo(Me.helpBarSubItem)})
-        Me.mainMenuBar.OptionsBar.AllowQuickCustomization = false
-        Me.mainMenuBar.OptionsBar.DisableClose = true
-        Me.mainMenuBar.OptionsBar.DisableCustomization = true
-        Me.mainMenuBar.OptionsBar.DrawDragBorder = false
-        Me.mainMenuBar.OptionsBar.MultiLine = true
-        Me.mainMenuBar.OptionsBar.UseWholeRow = true
+        Me.mainMenuBar.OptionsBar.AllowQuickCustomization = False
+        Me.mainMenuBar.OptionsBar.DisableClose = True
+        Me.mainMenuBar.OptionsBar.DisableCustomization = True
+        Me.mainMenuBar.OptionsBar.DrawDragBorder = False
+        Me.mainMenuBar.OptionsBar.MultiLine = True
+        Me.mainMenuBar.OptionsBar.UseWholeRow = True
         Me.mainMenuBar.Text = "Main Menu"
         '
         'mainMenuFileBarSubItem
         '
         Me.mainMenuFileBarSubItem.Caption = "&File"
         Me.mainMenuFileBarSubItem.Id = 8
-        Me.mainMenuFileBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.databaseBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.fileExitBarButtonItem, true)})
+        Me.mainMenuFileBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.databaseBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.fileExitBarButtonItem, True)})
         Me.mainMenuFileBarSubItem.Name = "mainMenuFileBarSubItem"
         '
         'databaseBarButtonItem
@@ -180,42 +181,42 @@ Partial Class MainXtraForm
         '
         Me.mainMenuListsBarSubItem.Caption = "&Lists"
         Me.mainMenuListsBarSubItem.Id = 1
-        Me.mainMenuListsBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.listsCustomerBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemPoolBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listLocationsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsAddressesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsMachineBarButtonItem, true), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShiftsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsCarriersBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listVendorsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsEmployeesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShipmentConditionsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.lotCodeFormatsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.reasonCodesBarButtonItem)})
+        Me.mainMenuListsBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.listsCustomerBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemPoolBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listLocationsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsAddressesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsMachineBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShiftsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsCarriersBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listVendorsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsEmployeesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShipmentConditionsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.lotCodeFormatsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.reasonCodesBarButtonItem)})
         Me.mainMenuListsBarSubItem.Name = "mainMenuListsBarSubItem"
         '
         'listsCustomerBarButtonItem
         '
         Me.listsCustomerBarButtonItem.Caption = "&Customer Manager"
-        Me.listsCustomerBarButtonItem.Glyph = CType(resources.GetObject("listsCustomerBarButtonItem.Glyph"),System.Drawing.Image)
         Me.listsCustomerBarButtonItem.Id = 12
+        Me.listsCustomerBarButtonItem.ImageOptions.Image = CType(resources.GetObject("listsCustomerBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.listsCustomerBarButtonItem.Name = "listsCustomerBarButtonItem"
         '
         'listsItemBarButtonItem
         '
         Me.listsItemBarButtonItem.Caption = "&Item Manager"
-        Me.listsItemBarButtonItem.Glyph = CType(resources.GetObject("listsItemBarButtonItem.Glyph"),System.Drawing.Image)
         Me.listsItemBarButtonItem.Id = 13
+        Me.listsItemBarButtonItem.ImageOptions.Image = CType(resources.GetObject("listsItemBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.listsItemBarButtonItem.Name = "listsItemBarButtonItem"
         '
         'listsItemPoolBarButtonItem
         '
         Me.listsItemPoolBarButtonItem.Caption = "Item &Pool Manager"
-        Me.listsItemPoolBarButtonItem.Glyph = CType(resources.GetObject("listsItemPoolBarButtonItem.Glyph"),System.Drawing.Image)
         Me.listsItemPoolBarButtonItem.Id = 58
+        Me.listsItemPoolBarButtonItem.ImageOptions.Image = CType(resources.GetObject("listsItemPoolBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.listsItemPoolBarButtonItem.Name = "listsItemPoolBarButtonItem"
         '
         'listLocationsBarButtonItem
         '
         Me.listLocationsBarButtonItem.Caption = "&Locations"
-        Me.listLocationsBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.WarehouseLocation_24
         Me.listLocationsBarButtonItem.Id = 62
+        Me.listLocationsBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.WarehouseLocation_24
         Me.listLocationsBarButtonItem.Name = "listLocationsBarButtonItem"
         '
         'listsAddressesBarButtonItem
         '
         Me.listsAddressesBarButtonItem.Caption = "Shipping &Destinations"
-        Me.listsAddressesBarButtonItem.Glyph = CType(resources.GetObject("listsAddressesBarButtonItem.Glyph"),System.Drawing.Image)
         Me.listsAddressesBarButtonItem.Id = 47
+        Me.listsAddressesBarButtonItem.ImageOptions.Image = CType(resources.GetObject("listsAddressesBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.listsAddressesBarButtonItem.Name = "listsAddressesBarButtonItem"
         '
         'listsMachineBarButtonItem
@@ -260,6 +261,12 @@ Partial Class MainXtraForm
         Me.lotCodeFormatsBarButtonItem.Id = 74
         Me.lotCodeFormatsBarButtonItem.Name = "lotCodeFormatsBarButtonItem"
         '
+        'reasonCodesBarButtonItem
+        '
+        Me.reasonCodesBarButtonItem.Caption = "Reason Codes"
+        Me.reasonCodesBarButtonItem.Id = 75
+        Me.reasonCodesBarButtonItem.Name = "reasonCodesBarButtonItem"
+        '
         'mainMenuActivitiesBarSubItem
         '
         Me.mainMenuActivitiesBarSubItem.Caption = "&Activities"
@@ -270,58 +277,58 @@ Partial Class MainXtraForm
         'activitesRecieveBarButtonItem
         '
         Me.activitesRecieveBarButtonItem.Caption = "&Receive Raw Material"
-        Me.activitesRecieveBarButtonItem.Glyph = CType(resources.GetObject("activitesRecieveBarButtonItem.Glyph"),System.Drawing.Image)
         Me.activitesRecieveBarButtonItem.Id = 18
+        Me.activitesRecieveBarButtonItem.ImageOptions.Image = CType(resources.GetObject("activitesRecieveBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.activitesRecieveBarButtonItem.Name = "activitesRecieveBarButtonItem"
         '
         'activitiesProductionBarButtonItem
         '
         Me.activitiesProductionBarButtonItem.Caption = "Production &Cost"
-        Me.activitiesProductionBarButtonItem.Glyph = CType(resources.GetObject("activitiesProductionBarButtonItem.Glyph"),System.Drawing.Image)
         Me.activitiesProductionBarButtonItem.Id = 19
+        Me.activitiesProductionBarButtonItem.ImageOptions.Image = CType(resources.GetObject("activitiesProductionBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.activitiesProductionBarButtonItem.Name = "activitiesProductionBarButtonItem"
         '
         'listsInventoryBarButtonItem
         '
         Me.listsInventoryBarButtonItem.Caption = "&Production Entries"
-        Me.listsInventoryBarButtonItem.Glyph = CType(resources.GetObject("listsInventoryBarButtonItem.Glyph"),System.Drawing.Image)
         Me.listsInventoryBarButtonItem.Id = 49
+        Me.listsInventoryBarButtonItem.ImageOptions.Image = CType(resources.GetObject("listsInventoryBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.listsInventoryBarButtonItem.Name = "listsInventoryBarButtonItem"
         '
         'activitesShipBarButtonItem
         '
         Me.activitesShipBarButtonItem.Caption = "&Ship Finished Goods"
-        Me.activitesShipBarButtonItem.Glyph = CType(resources.GetObject("activitesShipBarButtonItem.Glyph"),System.Drawing.Image)
         Me.activitesShipBarButtonItem.Id = 20
+        Me.activitesShipBarButtonItem.ImageOptions.Image = CType(resources.GetObject("activitesShipBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.activitesShipBarButtonItem.Name = "activitesShipBarButtonItem"
         '
         'inventoryAdjustmentBarButtonItem
         '
         Me.inventoryAdjustmentBarButtonItem.Caption = "&Inventory Adjustment"
-        Me.inventoryAdjustmentBarButtonItem.Glyph = CType(resources.GetObject("inventoryAdjustmentBarButtonItem.Glyph"),System.Drawing.Image)
         Me.inventoryAdjustmentBarButtonItem.Id = 52
+        Me.inventoryAdjustmentBarButtonItem.ImageOptions.Image = CType(resources.GetObject("inventoryAdjustmentBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.inventoryAdjustmentBarButtonItem.Name = "inventoryAdjustmentBarButtonItem"
         '
         'activitiesLocationTransferBarButtonItem
         '
         Me.activitiesLocationTransferBarButtonItem.Caption = "&Location Transfer"
-        Me.activitiesLocationTransferBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.UpdateInventoryWarehouse24
         Me.activitiesLocationTransferBarButtonItem.Id = 64
+        Me.activitiesLocationTransferBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.UpdateInventoryWarehouse24
         Me.activitiesLocationTransferBarButtonItem.Name = "activitiesLocationTransferBarButtonItem"
         '
         'activitiesProjectsBarButtonItem
         '
         Me.activitiesProjectsBarButtonItem.Caption = "Pro&jects"
-        Me.activitiesProjectsBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.Project24
         Me.activitiesProjectsBarButtonItem.Id = 67
+        Me.activitiesProjectsBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.Project24
         Me.activitiesProjectsBarButtonItem.Name = "activitiesProjectsBarButtonItem"
         '
         'activitiesScheduleBarButtonItem
         '
         Me.activitiesScheduleBarButtonItem.Caption = "Sche&dule"
-        Me.activitiesScheduleBarButtonItem.Enabled = false
-        Me.activitiesScheduleBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.Schedule24
+        Me.activitiesScheduleBarButtonItem.Enabled = False
         Me.activitiesScheduleBarButtonItem.Id = 68
+        Me.activitiesScheduleBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.Schedule24
         Me.activitiesScheduleBarButtonItem.Name = "activitiesScheduleBarButtonItem"
         '
         'mainMenuReportsBarSubItem
@@ -392,7 +399,7 @@ Partial Class MainXtraForm
         '
         Me.mainMenuWindowBarSubItem.Caption = "&Window"
         Me.mainMenuWindowBarSubItem.Id = 5
-        Me.mainMenuWindowBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.windowCascadeBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowVerticalBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowHorizontalBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowArrangeBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowCloseBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.BarMdiChildrenListItem1, true)})
+        Me.mainMenuWindowBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.windowCascadeBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowVerticalBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowHorizontalBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowArrangeBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.windowCloseBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.BarMdiChildrenListItem1, True)})
         Me.mainMenuWindowBarSubItem.Name = "mainMenuWindowBarSubItem"
         '
         'windowCascadeBarButtonItem
@@ -443,16 +450,16 @@ Partial Class MainXtraForm
         Me.mainToolBar.DockCol = 0
         Me.mainToolBar.DockRow = 1
         Me.mainToolBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.mainToolBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarCustomersBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarItemBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolBarItemPoolBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarProductionBarLargeButtonItem, true), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarInventoryBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarShipBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarReceiveBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarInventoryAdjustmentBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarLocationsBarLargeButtonItem, true), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarLocationTransferBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarProjectsBarLargeButtonItem, true), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarScheduleBarLargeButtonItem)})
-        Me.mainToolBar.OptionsBar.AllowQuickCustomization = false
-        Me.mainToolBar.OptionsBar.MultiLine = true
+        Me.mainToolBar.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarCustomersBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarItemBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolBarItemPoolBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarProductionBarLargeButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarInventoryBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarShipBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarReceiveBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarInventoryAdjustmentBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarLocationsBarLargeButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarLocationTransferBarLargeButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarProjectsBarLargeButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.mainToolbarScheduleBarLargeButtonItem)})
+        Me.mainToolBar.OptionsBar.AllowQuickCustomization = False
+        Me.mainToolBar.OptionsBar.MultiLine = True
         Me.mainToolBar.Text = "Main Toolbar"
         '
         'mainToolbarCustomersBarLargeButtonItem
         '
         Me.mainToolbarCustomersBarLargeButtonItem.Caption = "&Customers"
-        Me.mainToolbarCustomersBarLargeButtonItem.Glyph = CType(resources.GetObject("mainToolbarCustomersBarLargeButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolbarCustomersBarLargeButtonItem.Id = 38
+        Me.mainToolbarCustomersBarLargeButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolbarCustomersBarLargeButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolbarCustomersBarLargeButtonItem.Name = "mainToolbarCustomersBarLargeButtonItem"
         Me.mainToolbarCustomersBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem1.Text = "Customer Manager"
@@ -462,8 +469,8 @@ Partial Class MainXtraForm
         'mainToolbarItemBarLargeButtonItem
         '
         Me.mainToolbarItemBarLargeButtonItem.Caption = "&Item"
-        Me.mainToolbarItemBarLargeButtonItem.Glyph = CType(resources.GetObject("mainToolbarItemBarLargeButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolbarItemBarLargeButtonItem.Id = 39
+        Me.mainToolbarItemBarLargeButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolbarItemBarLargeButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolbarItemBarLargeButtonItem.Name = "mainToolbarItemBarLargeButtonItem"
         Me.mainToolbarItemBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipItem1.Text = "Item Manager"
@@ -473,8 +480,8 @@ Partial Class MainXtraForm
         'mainToolBarItemPoolBarLargeButtonItem
         '
         Me.mainToolBarItemPoolBarLargeButtonItem.Caption = "Item &Pool"
-        Me.mainToolBarItemPoolBarLargeButtonItem.Glyph = CType(resources.GetObject("mainToolBarItemPoolBarLargeButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolBarItemPoolBarLargeButtonItem.Id = 60
+        Me.mainToolBarItemPoolBarLargeButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolBarItemPoolBarLargeButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolBarItemPoolBarLargeButtonItem.Name = "mainToolBarItemPoolBarLargeButtonItem"
         Me.mainToolBarItemPoolBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipItem2.Text = "Item Pool Manager"
@@ -484,8 +491,8 @@ Partial Class MainXtraForm
         'mainToolbarProductionBarLargeButtonItem
         '
         Me.mainToolbarProductionBarLargeButtonItem.Caption = "&Production"
-        Me.mainToolbarProductionBarLargeButtonItem.Glyph = CType(resources.GetObject("mainToolbarProductionBarLargeButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolbarProductionBarLargeButtonItem.Id = 40
+        Me.mainToolbarProductionBarLargeButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolbarProductionBarLargeButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolbarProductionBarLargeButtonItem.Name = "mainToolbarProductionBarLargeButtonItem"
         Me.mainToolbarProductionBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem2.Text = "Production Cost"
@@ -495,8 +502,8 @@ Partial Class MainXtraForm
         'mainToolbarInventoryBarLargeButtonItem
         '
         Me.mainToolbarInventoryBarLargeButtonItem.Caption = "In&ventory"
-        Me.mainToolbarInventoryBarLargeButtonItem.Glyph = CType(resources.GetObject("mainToolbarInventoryBarLargeButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolbarInventoryBarLargeButtonItem.Id = 50
+        Me.mainToolbarInventoryBarLargeButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolbarInventoryBarLargeButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolbarInventoryBarLargeButtonItem.Name = "mainToolbarInventoryBarLargeButtonItem"
         Me.mainToolbarInventoryBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem3.Text = "Production Entries"
@@ -506,8 +513,8 @@ Partial Class MainXtraForm
         'mainToolbarShipBarLargeButtonItem
         '
         Me.mainToolbarShipBarLargeButtonItem.Caption = "&Ship"
-        Me.mainToolbarShipBarLargeButtonItem.Glyph = CType(resources.GetObject("mainToolbarShipBarLargeButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolbarShipBarLargeButtonItem.Id = 42
+        Me.mainToolbarShipBarLargeButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolbarShipBarLargeButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolbarShipBarLargeButtonItem.Name = "mainToolbarShipBarLargeButtonItem"
         Me.mainToolbarShipBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem4.Text = "Ship Finished Goods"
@@ -517,8 +524,8 @@ Partial Class MainXtraForm
         'mainToolbarReceiveBarLargeButtonItem
         '
         Me.mainToolbarReceiveBarLargeButtonItem.Caption = "&Receive"
-        Me.mainToolbarReceiveBarLargeButtonItem.Glyph = CType(resources.GetObject("mainToolbarReceiveBarLargeButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolbarReceiveBarLargeButtonItem.Id = 43
+        Me.mainToolbarReceiveBarLargeButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolbarReceiveBarLargeButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolbarReceiveBarLargeButtonItem.Name = "mainToolbarReceiveBarLargeButtonItem"
         Me.mainToolbarReceiveBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem5.Text = "Receive Raw Material"
@@ -527,9 +534,9 @@ Partial Class MainXtraForm
         '
         'mainToolbarInventoryAdjustmentBarLargeButtonItem
         '
-        Me.mainToolbarInventoryAdjustmentBarLargeButtonItem.Caption = "  Inventory"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Adjustment"
-        Me.mainToolbarInventoryAdjustmentBarLargeButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.InventoryAdjustment32
+        Me.mainToolbarInventoryAdjustmentBarLargeButtonItem.Caption = "  Inventory" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Adjustment"
         Me.mainToolbarInventoryAdjustmentBarLargeButtonItem.Id = 69
+        Me.mainToolbarInventoryAdjustmentBarLargeButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.InventoryAdjustment32
         Me.mainToolbarInventoryAdjustmentBarLargeButtonItem.Name = "mainToolbarInventoryAdjustmentBarLargeButtonItem"
         Me.mainToolbarInventoryAdjustmentBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem6.Text = "Inventory Adjustment"
@@ -539,8 +546,8 @@ Partial Class MainXtraForm
         'mainToolbarLocationsBarLargeButtonItem
         '
         Me.mainToolbarLocationsBarLargeButtonItem.Caption = "Locations"
-        Me.mainToolbarLocationsBarLargeButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.WarehouseLocation_32
         Me.mainToolbarLocationsBarLargeButtonItem.Id = 70
+        Me.mainToolbarLocationsBarLargeButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.WarehouseLocation_32
         Me.mainToolbarLocationsBarLargeButtonItem.Name = "mainToolbarLocationsBarLargeButtonItem"
         Me.mainToolbarLocationsBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem7.Text = "Locations"
@@ -549,9 +556,9 @@ Partial Class MainXtraForm
         '
         'mainToolbarLocationTransferBarLargeButtonItem
         '
-        Me.mainToolbarLocationTransferBarLargeButtonItem.Caption = "Location "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"Transfer"
-        Me.mainToolbarLocationTransferBarLargeButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.UpdateInventoryWarehouse32
+        Me.mainToolbarLocationTransferBarLargeButtonItem.Caption = "Location " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Transfer"
         Me.mainToolbarLocationTransferBarLargeButtonItem.Id = 71
+        Me.mainToolbarLocationTransferBarLargeButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.UpdateInventoryWarehouse32
         Me.mainToolbarLocationTransferBarLargeButtonItem.Name = "mainToolbarLocationTransferBarLargeButtonItem"
         Me.mainToolbarLocationTransferBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem8.Text = "Location Transfer"
@@ -561,8 +568,8 @@ Partial Class MainXtraForm
         'mainToolbarProjectsBarLargeButtonItem
         '
         Me.mainToolbarProjectsBarLargeButtonItem.Caption = "Projects"
-        Me.mainToolbarProjectsBarLargeButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.Project32
         Me.mainToolbarProjectsBarLargeButtonItem.Id = 72
+        Me.mainToolbarProjectsBarLargeButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.Project32
         Me.mainToolbarProjectsBarLargeButtonItem.Name = "mainToolbarProjectsBarLargeButtonItem"
         Me.mainToolbarProjectsBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem9.Text = "Projects"
@@ -572,38 +579,42 @@ Partial Class MainXtraForm
         'mainToolbarScheduleBarLargeButtonItem
         '
         Me.mainToolbarScheduleBarLargeButtonItem.Caption = "Schedule"
-        Me.mainToolbarScheduleBarLargeButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.Schedule32
         Me.mainToolbarScheduleBarLargeButtonItem.Id = 73
+        Me.mainToolbarScheduleBarLargeButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.Schedule32
         Me.mainToolbarScheduleBarLargeButtonItem.Name = "mainToolbarScheduleBarLargeButtonItem"
         Me.mainToolbarScheduleBarLargeButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         '
         'barDockControlTop
         '
-        Me.barDockControlTop.CausesValidation = false
+        Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlTop.Size = New System.Drawing.Size(947, 102)
+        Me.barDockControlTop.Manager = Me.mainBarManager
+        Me.barDockControlTop.Size = New System.Drawing.Size(947, 101)
         '
         'barDockControlBottom
         '
-        Me.barDockControlBottom.CausesValidation = false
+        Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 264)
+        Me.barDockControlBottom.Manager = Me.mainBarManager
         Me.barDockControlBottom.Size = New System.Drawing.Size(947, 0)
         '
         'barDockControlLeft
         '
-        Me.barDockControlLeft.CausesValidation = false
+        Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 102)
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 162)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 101)
+        Me.barDockControlLeft.Manager = Me.mainBarManager
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 163)
         '
         'barDockControlRight
         '
-        Me.barDockControlRight.CausesValidation = false
+        Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(947, 102)
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 162)
+        Me.barDockControlRight.Location = New System.Drawing.Point(947, 101)
+        Me.barDockControlRight.Manager = Me.mainBarManager
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 163)
         '
         'productionDetailBarButtonItem
         '
@@ -630,8 +641,8 @@ Partial Class MainXtraForm
         'mainToolbarInventoryAdjustmentBarButtonItem
         '
         Me.mainToolbarInventoryAdjustmentBarButtonItem.Caption = "Inventory Adjustment"
-        Me.mainToolbarInventoryAdjustmentBarButtonItem.Glyph = CType(resources.GetObject("mainToolbarInventoryAdjustmentBarButtonItem.Glyph"),System.Drawing.Image)
         Me.mainToolbarInventoryAdjustmentBarButtonItem.Id = 54
+        Me.mainToolbarInventoryAdjustmentBarButtonItem.ImageOptions.Image = CType(resources.GetObject("mainToolbarInventoryAdjustmentBarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.mainToolbarInventoryAdjustmentBarButtonItem.Name = "mainToolbarInventoryAdjustmentBarButtonItem"
         Me.mainToolbarInventoryAdjustmentBarButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         ToolTipTitleItem11.Text = "Inventory Adjustment"
@@ -641,8 +652,8 @@ Partial Class MainXtraForm
         'mainToolbarLocationsBarButtonItem
         '
         Me.mainToolbarLocationsBarButtonItem.Caption = "Locations"
-        Me.mainToolbarLocationsBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.WarehouseLocation_32
         Me.mainToolbarLocationsBarButtonItem.Id = 61
+        Me.mainToolbarLocationsBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.WarehouseLocation_32
         Me.mainToolbarLocationsBarButtonItem.Name = "mainToolbarLocationsBarButtonItem"
         ToolTipTitleItem12.Text = "Locations"
         SuperToolTip14.Items.Add(ToolTipTitleItem12)
@@ -651,8 +662,8 @@ Partial Class MainXtraForm
         'mainToolbarLocationTransferBarButtonItem
         '
         Me.mainToolbarLocationTransferBarButtonItem.Caption = "Location Transfer"
-        Me.mainToolbarLocationTransferBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.UpdateInventoryWarehouse32
         Me.mainToolbarLocationTransferBarButtonItem.Id = 63
+        Me.mainToolbarLocationTransferBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.UpdateInventoryWarehouse32
         Me.mainToolbarLocationTransferBarButtonItem.Name = "mainToolbarLocationTransferBarButtonItem"
         ToolTipTitleItem13.Text = "Location Transfer"
         SuperToolTip15.Items.Add(ToolTipTitleItem13)
@@ -661,8 +672,8 @@ Partial Class MainXtraForm
         'mainToolbarProjectsBarButtonItem
         '
         Me.mainToolbarProjectsBarButtonItem.Caption = "Projects"
-        Me.mainToolbarProjectsBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.Project32
         Me.mainToolbarProjectsBarButtonItem.Id = 65
+        Me.mainToolbarProjectsBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.Project32
         Me.mainToolbarProjectsBarButtonItem.Name = "mainToolbarProjectsBarButtonItem"
         ToolTipTitleItem14.Text = "Projects"
         SuperToolTip16.Items.Add(ToolTipTitleItem14)
@@ -671,9 +682,9 @@ Partial Class MainXtraForm
         'mainToolbarScheduleBarButtonItem
         '
         Me.mainToolbarScheduleBarButtonItem.Caption = "Schedule"
-        Me.mainToolbarScheduleBarButtonItem.Enabled = false
-        Me.mainToolbarScheduleBarButtonItem.Glyph = Global.SuperiorPackGroup.My.Resources.Resources.Schedule32
+        Me.mainToolbarScheduleBarButtonItem.Enabled = False
         Me.mainToolbarScheduleBarButtonItem.Id = 66
+        Me.mainToolbarScheduleBarButtonItem.ImageOptions.Image = Global.SuperiorPackGroup.My.Resources.Resources.Schedule32
         Me.mainToolbarScheduleBarButtonItem.Name = "mainToolbarScheduleBarButtonItem"
         ToolTipTitleItem15.Text = "Schedule"
         SuperToolTip17.Items.Add(ToolTipTitleItem15)
@@ -684,31 +695,29 @@ Partial Class MainXtraForm
         Me.BarSubItem1.Id = -1
         Me.BarSubItem1.Name = "BarSubItem1"
         '
-        'reasonCodesBarButtonItem
+        'DefaultLookAndFeel1
         '
-        Me.reasonCodesBarButtonItem.Caption = "Reason Codes"
-        Me.reasonCodesBarButtonItem.Id = 75
-        Me.reasonCodesBarButtonItem.Name = "reasonCodesBarButtonItem"
+        Me.DefaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Dark"
         '
         'MainXtraForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(947, 264)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
-        Me.IsMdiContainer = true
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IsMdiContainer = True
         Me.Name = "MainXtraForm"
-        Me.Text = "Superior Pack Group"
+        Me.Text = "Superior Pack Group - Test"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.mainBarManager,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        CType(Me.mainBarManager, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents mainBarManager As DevExpress.XtraBars.BarManager
     Friend WithEvents mainMenuBar As DevExpress.XtraBars.Bar
     Friend WithEvents mainToolBar As DevExpress.XtraBars.Bar
@@ -781,4 +790,5 @@ End Sub
     Friend WithEvents mainToolbarScheduleBarLargeButtonItem As DevExpress.XtraBars.BarLargeButtonItem
     Friend WithEvents lotCodeFormatsBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents reasonCodesBarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents DefaultLookAndFeel1 As DevExpress.LookAndFeel.DefaultLookAndFeel
 End Class
