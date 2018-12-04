@@ -1116,7 +1116,11 @@ Public Class ReceivingXtraForm
             .SumQtyXrLabel.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text", "sumSum([Qty])"))
             .ReprintXrLabel.Visible = reprint
             .CreateDocument()
-            .ShowPreviewDialog()
+            If reprint Then
+                .ShowPreviewDialog()
+            Else
+                .Print()
+            End If
         End With
     End Sub
 

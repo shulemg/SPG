@@ -1186,7 +1186,7 @@ Partial Class ReceivingXtraForm
         '
         'receivingItemXPView
         '
-        Me.receivingItemXPView.CriteriaString = "[Inactive] = False And ([ItemType] = 'RM' Or [ItemType] = 'IG')"
+        Me.receivingItemXPView.CriteriaString = "[Inactive] = False"
         Me.receivingItemXPView.ObjectType = GetType(DXDAL.SPGData.Items)
         Me.receivingItemXPView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ItemID", DevExpress.Xpo.SortDirection.None, "[ItemID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCode", DevExpress.Xpo.SortDirection.None, "[ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("CustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID.CustomerID]", False, True), New DevExpress.Xpo.ViewProperty("ItemCustomerID", DevExpress.Xpo.SortDirection.None, "[ItemCustomerID]", False, True), New DevExpress.Xpo.ViewProperty("Inactive", DevExpress.Xpo.SortDirection.None, "[Inactive]", False, True)})
         '
@@ -1350,6 +1350,7 @@ Partial Class ReceivingXtraForm
         '
         Me.returnsXtraTabPage.Controls.Add(Me.returnsGridControl)
         Me.returnsXtraTabPage.Name = "returnsXtraTabPage"
+        Me.returnsXtraTabPage.PageVisible = False
         Me.returnsXtraTabPage.Size = New System.Drawing.Size(1127, 460)
         Me.returnsXtraTabPage.Text = "Return Details"
         '

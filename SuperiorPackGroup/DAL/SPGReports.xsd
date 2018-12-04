@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ProductionEntriesReportTableAdapter" GeneratorDataComponentClassName="ProductionEntriesReportTableAdapter" Name="ProductionEntriesReport" UserDataComponentName="ProductionEntriesReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetProductionEntriesReport" GetMethodModifier="Public" GetMethodName="GetProductionEntriesReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetProductionEntriesReport" UserSourceName="GetProductionEntriesReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetProductionEntriesReport" GetMethodModifier="Public" GetMethodName="GetProductionEntriesReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetProductionEntriesReport" UserSourceName="GetProductionEntriesReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblInventory.InventoryDate, tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, tblInventory.Lot, tblInventory.PO, 
@@ -47,7 +47,7 @@ WHERE        (tblInventory.InventoryDate &gt;= ISNULL(@FromDate, tblInventory.In
               <Mapping SourceColumn="Shift" DataSetColumn="Shift" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetProductionEntriesReportByItem" GeneratorSourceName="FillProductionEntriesReportByItem" GetMethodModifier="Public" GetMethodName="GetProductionEntriesReportByItem" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetProductionEntriesReportByItem" UserSourceName="GetProductionEntriesReportByItem">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetProductionEntriesReportByItem" GeneratorSourceName="FillProductionEntriesReportByItem" GetMethodModifier="Public" GetMethodName="GetProductionEntriesReportByItem" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetProductionEntriesReportByItem" UserSourceName="GetProductionEntriesReportByItem">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblInventory.InventoryDate, tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, tblInventory.Lot, tblInventory.PO, 
@@ -78,7 +78,7 @@ WHERE        (tblInventory.InventoryDate &gt;= ISNULL(@FromDate, tblInventory.In
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ShippingReportTableAdapter" GeneratorDataComponentClassName="ShippingReportTableAdapter" Name="ShippingReport" UserDataComponentName="ShippingReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetShippingReport" GetMethodModifier="Public" GetMethodName="GetShippingReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShippingReport" UserSourceName="GetShippingReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetShippingReport" GetMethodModifier="Public" GetMethodName="GetShippingReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShippingReport" UserSourceName="GetShippingReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblShipMain.ShipMainDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblShipMain.ShipMainBOL, tblShipMain.strPO, tblShipMain.DeliveryNoteNumber, 
@@ -136,7 +136,7 @@ WHERE        (COALESCE (tblShipMain.Shift, 0) = ISNULL(@ShiftID, COALESCE (tblSh
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetShippingReportByItemID" GeneratorSourceName="FillShippingReportByItemID" GetMethodModifier="Public" GetMethodName="GetShippingReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetShippingReportByItemID" UserSourceName="GetShippingReportByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetShippingReportByItemID" GeneratorSourceName="FillShippingReportByItemID" GetMethodModifier="Public" GetMethodName="GetShippingReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetShippingReportByItemID" UserSourceName="GetShippingReportByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblShipMain.ShipMainDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblShipMain.ShipMainBOL, tblShipMain.strPO, tblShipMain.DeliveryNoteNumber, 
@@ -181,7 +181,7 @@ WHERE        (COALESCE (tblShipMain.ShipMainDate, '1/1/2009') &gt;= ISNULL(@From
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ShippingReturnsReportTableAdapter" GeneratorDataComponentClassName="ShippingReturnsReportTableAdapter" Name="ShippingReturnsReport" UserDataComponentName="ShippingReturnsReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetShippingReturnsReport" GetMethodModifier="Public" GetMethodName="GetShippingReturnsReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShippingReturnsReport" UserSourceName="GetShippingReturnsReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetShippingReturnsReport" GetMethodModifier="Public" GetMethodName="GetShippingReturnsReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetShippingReturnsReport" UserSourceName="GetShippingReturnsReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblShipMain.ShipMainDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblShipMain.ShipMainBOL, tblShipMain.strPO, tblShipMain.DeliveryNoteNumber, 
@@ -237,7 +237,7 @@ WHERE        (COALESCE (tblShipMain.ShipMainDate, '1/1/2009') &gt;= ISNULL(@From
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetShippingReturnsReportByItemID" GeneratorSourceName="FillShippingReturnsReportByItemID" GetMethodModifier="Public" GetMethodName="GetShippingReturnsReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetShippingReturnsReportByItemID" UserSourceName="GetShippingReturnsReportByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetShippingReturnsReportByItemID" GeneratorSourceName="FillShippingReturnsReportByItemID" GetMethodModifier="Public" GetMethodName="GetShippingReturnsReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetShippingReturnsReportByItemID" UserSourceName="GetShippingReturnsReportByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblShipMain.ShipMainDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblShipMain.ShipMainBOL, tblShipMain.strPO, tblShipMain.DeliveryNoteNumber, 
@@ -280,7 +280,7 @@ WHERE        (COALESCE (tblShipMain.ShipMainDate, '1/1/2009') &gt;= ISNULL(@From
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReceivingReportTableAdapter" GeneratorDataComponentClassName="ReceivingReportTableAdapter" Name="ReceivingReport" UserDataComponentName="ReceivingReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetReceivingReport" GetMethodModifier="Public" GetMethodName="GetReceivingReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetReceivingReport" UserSourceName="GetReceivingReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetReceivingReport" GetMethodModifier="Public" GetMethodName="GetReceivingReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetReceivingReport" UserSourceName="GetReceivingReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblReceivMain.ReceivDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblReceivMain.ReceivBOL, tblReceivMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, tblReceivDet.ReceivDetLot, 
@@ -334,7 +334,7 @@ WHERE        (tblReceivMain.ReceivDate &gt;= ISNULL(@FromDate, tblReceivMain.Rec
               <Mapping SourceColumn="intUnits" DataSetColumn="intUnits" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetReceivingReportByItemID" GeneratorSourceName="FillReceivingReportByItemID" GetMethodModifier="Public" GetMethodName="GetReceivingReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetReceivingReportByItemID" UserSourceName="GetReceivingReportByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetReceivingReportByItemID" GeneratorSourceName="FillReceivingReportByItemID" GetMethodModifier="Public" GetMethodName="GetReceivingReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetReceivingReportByItemID" UserSourceName="GetReceivingReportByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblReceivMain.ReceivDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblReceivMain.ReceivBOL, tblReceivMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, tblReceivDet.ReceivDetLot, 
@@ -374,7 +374,7 @@ WHERE        (tblReceivMain.ReceivDate &gt;= ISNULL(@FromDate, tblReceivMain.Rec
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReceivingReturnsReportTableAdapter" GeneratorDataComponentClassName="ReceivingReturnsReportTableAdapter" Name="ReceivingReturnsReport" UserDataComponentName="ReceivingReturnsReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetReceivingReturnsReport" GetMethodModifier="Public" GetMethodName="GetReceivingReturnsReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetReceivingReturnsReport" UserSourceName="GetReceivingReturnsReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetReceivingReturnsReport" GetMethodModifier="Public" GetMethodName="GetReceivingReturnsReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetReceivingReturnsReport" UserSourceName="GetReceivingReturnsReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblReceivMain.ReceivDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblReceivMain.ReceivBOL, tblReceivMain.strPO, tblItems.ItemCode, 
@@ -427,7 +427,7 @@ WHERE        (tblReceivMain.ReceivDate &gt;= ISNULL(@FromDate, tblReceivMain.Rec
               <Mapping SourceColumn="VendorName" DataSetColumn="VendorName" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetReceivingReturnsReportByItemID" GeneratorSourceName="FillReceivingReturnsReportByItemID" GetMethodModifier="Public" GetMethodName="GetReceivingReturnsReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetReceivingReturnsReportByItemID" UserSourceName="GetReceivingReturnsReportByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetReceivingReturnsReportByItemID" GeneratorSourceName="FillReceivingReturnsReportByItemID" GetMethodModifier="Public" GetMethodName="GetReceivingReturnsReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetReceivingReturnsReportByItemID" UserSourceName="GetReceivingReturnsReportByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblReceivMain.ReceivDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblReceivMain.ReceivBOL, tblReceivMain.strPO, tblItems.ItemCode, 
@@ -467,7 +467,7 @@ WHERE        (tblReceivMain.ReceivDate &gt;= ISNULL(@FromDate, tblReceivMain.Rec
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InventoryAdjustmentReportTableAdapter" GeneratorDataComponentClassName="InventoryAdjustmentReportTableAdapter" Name="InventoryAdjustmentReport" UserDataComponentName="InventoryAdjustmentReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetInventoryAdjustmentReport" GetMethodModifier="Public" GetMethodName="GetInventoryAdjustmentReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetInventoryAdjustmentReport" UserSourceName="GetInventoryAdjustmentReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetInventoryAdjustmentReport" GetMethodModifier="Public" GetMethodName="GetInventoryAdjustmentReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetInventoryAdjustmentReport" UserSourceName="GetInventoryAdjustmentReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblInventoryAdjustment.AdjustmentDate, tblCustomers.CustomerName, tblItems.ItemCode, 
@@ -499,7 +499,7 @@ WHERE        (tblInventoryAdjustment.AdjustmentDate &gt;= ISNULL(@FromDate, tblI
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetInventoryAdjustmentReportByItemID" GeneratorSourceName="FillInventoryAdjustmentReportByItemID" GetMethodModifier="Public" GetMethodName="GetInventoryAdjustmentReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetInventoryAdjustmentReportByItemID" UserSourceName="GetInventoryAdjustmentReportByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetInventoryAdjustmentReportByItemID" GeneratorSourceName="FillInventoryAdjustmentReportByItemID" GetMethodModifier="Public" GetMethodName="GetInventoryAdjustmentReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetInventoryAdjustmentReportByItemID" UserSourceName="GetInventoryAdjustmentReportByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblInventoryAdjustment.AdjustmentDate, tblCustomers.CustomerName, tblItems.ItemCode, 
@@ -527,7 +527,7 @@ WHERE        (tblInventoryAdjustment.AdjustmentDate &gt;= ISNULL(@FromDate, tblI
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PhysicalInventoryWorksheetTableAdapter" GeneratorDataComponentClassName="PhysicalInventoryWorksheetTableAdapter" Name="PhysicalInventoryWorksheet" UserDataComponentName="PhysicalInventoryWorksheetTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetPhysicalInventoryWorksheet" GetMethodModifier="Public" GetMethodName="GetPhysicalInventoryWorksheet" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetPhysicalInventoryWorksheet" UserSourceName="GetPhysicalInventoryWorksheet">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetPhysicalInventoryWorksheet" GetMethodModifier="Public" GetMethodName="GetPhysicalInventoryWorksheet" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetPhysicalInventoryWorksheet" UserSourceName="GetPhysicalInventoryWorksheet">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -555,7 +555,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetPhysicalInventoryWorksheetByItemID" GeneratorSourceName="FillPhysicalInventoryWorksheetByItemID" GetMethodModifier="Public" GetMethodName="GetPhysicalInventoryWorksheetByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPhysicalInventoryWorksheetByItemID" UserSourceName="GetPhysicalInventoryWorksheetByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetPhysicalInventoryWorksheetByItemID" GeneratorSourceName="FillPhysicalInventoryWorksheetByItemID" GetMethodModifier="Public" GetMethodName="GetPhysicalInventoryWorksheetByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPhysicalInventoryWorksheetByItemID" UserSourceName="GetPhysicalInventoryWorksheetByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -580,7 +580,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CurrentInventoryReportTableAdapter" GeneratorDataComponentClassName="CurrentInventoryReportTableAdapter" Name="CurrentInventoryReport" UserDataComponentName="CurrentInventoryReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetCurrentInventoryReport" GetMethodModifier="Public" GetMethodName="GetCurrentInventoryReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetCurrentInventoryReport" UserSourceName="GetCurrentInventoryReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetCurrentInventoryReport" GetMethodModifier="Public" GetMethodName="GetCurrentInventoryReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetCurrentInventoryReport" UserSourceName="GetCurrentInventoryReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -614,7 +614,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetCurrentInventoryReportByItemID" GeneratorSourceName="FillCurrentInventoryReportByItemID" GetMethodModifier="Public" GetMethodName="GetCurrentInventoryReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetCurrentInventoryReportByItemID" UserSourceName="GetCurrentInventoryReportByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetCurrentInventoryReportByItemID" GeneratorSourceName="FillCurrentInventoryReportByItemID" GetMethodModifier="Public" GetMethodName="GetCurrentInventoryReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetCurrentInventoryReportByItemID" UserSourceName="GetCurrentInventoryReportByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -643,7 +643,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FinishedProductAvailabilityReportTableAdapter" GeneratorDataComponentClassName="FinishedProductAvailabilityReportTableAdapter" Name="FinishedProductAvailabilityReport" UserDataComponentName="FinishedProductAvailabilityReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetFinishedProductAvailabilityReport" GetMethodModifier="Public" GetMethodName="GetFinishedProductAvailabilityReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetFinishedProductAvailabilityReport" UserSourceName="GetFinishedProductAvailabilityReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetFinishedProductAvailabilityReport" GetMethodModifier="Public" GetMethodName="GetFinishedProductAvailabilityReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetFinishedProductAvailabilityReport" UserSourceName="GetFinishedProductAvailabilityReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -688,7 +688,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetFinishedProductAvailabilityByItem" GeneratorSourceName="FillFinishedProductAvailabilityByItem" GetMethodModifier="Public" GetMethodName="GetFinishedProductAvailabilityByItem" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetFinishedProductAvailabilityByItem" UserSourceName="GetFinishedProductAvailabilityByItem">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetFinishedProductAvailabilityByItem" GeneratorSourceName="FillFinishedProductAvailabilityByItem" GetMethodModifier="Public" GetMethodName="GetFinishedProductAvailabilityByItem" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetFinishedProductAvailabilityByItem" UserSourceName="GetFinishedProductAvailabilityByItem">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -727,7 +727,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemsListTableAdapter" GeneratorDataComponentClassName="ItemsListTableAdapter" Name="ItemsList" UserDataComponentName="ItemsListTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetItemsList" GetMethodModifier="Public" GetMethodName="GetItemsList" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetItemsList" UserSourceName="GetItemsList">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetItemsList" GetMethodModifier="Public" GetMethodName="GetItemsList" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetItemsList" UserSourceName="GetItemsList">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -755,7 +755,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetItemsListByItemID" GeneratorSourceName="FillItemsListByItemID" GetMethodModifier="Public" GetMethodName="GetItemsListByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetItemsListByItemID" UserSourceName="GetItemsListByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetItemsListByItemID" GeneratorSourceName="FillItemsListByItemID" GetMethodModifier="Public" GetMethodName="GetItemsListByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetItemsListByItemID" UserSourceName="GetItemsListByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -780,7 +780,7 @@ WHERE        (tblItems.ItemCustomerID = ISNULL(@CustomerID, tblItems.ItemCustome
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ItemsTransactionsReportTableAdapter" GeneratorDataComponentClassName="ItemsTransactionsReportTableAdapter" Name="ItemsTransactionsReport" UserDataComponentName="ItemsTransactionsReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetItemsTransactionsReport" GetMethodModifier="Public" GetMethodName="GetItemsTransactionsReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetItemsTransactionsReport" UserSourceName="GetItemsTransactionsReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetItemsTransactionsReport" GetMethodModifier="Public" GetMethodName="GetItemsTransactionsReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetItemsTransactionsReport" UserSourceName="GetItemsTransactionsReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, 
@@ -833,7 +833,7 @@ GROUP BY tblItems.ItemCode, tblCustomers.CustomerName,
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetItemsTransactionsReportByItemID" GeneratorSourceName="FillItemsTransactionsReportByItemID" GetMethodModifier="Public" GetMethodName="GetItemsTransactionsReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetItemsTransactionsReportByItemID" UserSourceName="GetItemsTransactionsReportByItemID">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetItemsTransactionsReportByItemID" GeneratorSourceName="FillItemsTransactionsReportByItemID" GetMethodModifier="Public" GetMethodName="GetItemsTransactionsReportByItemID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetItemsTransactionsReportByItemID" UserSourceName="GetItemsTransactionsReportByItemID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, 
@@ -879,7 +879,7 @@ GROUP BY tblItems.ItemCode, tblCustomers.CustomerName,
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PalletControlReportTableAdapter" GeneratorDataComponentClassName="PalletControlReportTableAdapter" Name="PalletControlReport" UserDataComponentName="PalletControlReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="SELECT tblCustomers.CustomerName, ISNULL(tblReceivMain.sngTotalPallets, 0) AS Pallets, tblCustomers.CustomerID FROM tblCustomers LEFT OUTER JOIN tblReceivMain ON tblCustomers.CustomerID = tblReceivMain.ReceivCustID UNION SELECT tblCustomers_1.CustomerName, ISNULL(tblShipMain.sngTotalPallets, 0) * - 1 AS Expr1, tblCustomers_1.CustomerID FROM tblCustomers AS tblCustomers_1 LEFT OUTER JOIN tblShipMain ON tblCustomers_1.CustomerID = tblShipMain.ShipMainCustID" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetPalletControlReport" GetMethodModifier="Public" GetMethodName="GetPalletControlReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetPalletControlReport" UserSourceName="GetPalletControlReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetPalletControlReport" GetMethodModifier="Public" GetMethodName="GetPalletControlReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetPalletControlReport" UserSourceName="GetPalletControlReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        CustomerName, SUM(Pallets) AS PalletQTY, CustomerID
@@ -905,7 +905,7 @@ GROUP BY CustomerName, CustomerID</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AuditTrailReportTableAdapter" GeneratorDataComponentClassName="AuditTrailReportTableAdapter" Name="AuditTrailReport" UserDataComponentName="AuditTrailReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAuditTrailReport" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetAuditTrailReport" GeneratorSourceName="FillAuditTrailReport" GetMethodModifier="Public" GetMethodName="GetAuditTrailReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAuditTrailReport" UserSourceName="FillAuditTrailReport">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillAuditTrailReport" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetAuditTrailReport" GeneratorSourceName="FillAuditTrailReport" GetMethodModifier="Public" GetMethodName="GetAuditTrailReport" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetAuditTrailReport" UserSourceName="FillAuditTrailReport">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblUsers.strUserName, tblAuditTrail.RecordID, tblAuditTrail.RecordType, tblAuditTrail.RecordChanges, tblAuditTrail.ChangeDate
@@ -931,7 +931,7 @@ WHERE        (tblAuditTrail.ChangeDate &gt;= ISNULL(@FromDate, tblAuditTrail.Cha
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PalletTicketTableAdapter" GeneratorDataComponentClassName="PalletTicketTableAdapter" Name="PalletTicket" UserDataComponentName="PalletTicketTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillPalletTicket" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetPalletTicket" GeneratorSourceName="FillPalletTicket" GetMethodModifier="Public" GetMethodName="GetPalletTicket" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPalletTicket" UserSourceName="FillPalletTicket">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillPalletTicket" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetPalletTicket" GeneratorSourceName="FillPalletTicket" GetMethodModifier="Public" GetMethodName="GetPalletTicket" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPalletTicket" UserSourceName="FillPalletTicket">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCustomers.CustomerName, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -958,7 +958,7 @@ WHERE        (tblItems.ItemID = @ItemID)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BOLReportTableAdapter" GeneratorDataComponentClassName="BOLReportTableAdapter" Name="BOLReport" UserDataComponentName="BOLReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetBOL" GetMethodModifier="Public" GetMethodName="GetBOL" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetBOL" UserSourceName="GetBOL">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetBOL" GetMethodModifier="Public" GetMethodName="GetBOL" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetBOL" UserSourceName="GetBOL">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblShipMain.ShipMainDate, tblShipMain.ShipMainBOL, tblShipMain.Shipper, tblCustomers.CustomerName, tblCustomers.Address, ISNULL(tblCustomers.City, '') 
@@ -1032,7 +1032,7 @@ ORDER BY tblItems.ItemCode</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CostingReportsTableAdapter" GeneratorDataComponentClassName="CostingReportsTableAdapter" Name="CostingReports" UserDataComponentName="CostingReportsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetCostingReports" GetMethodModifier="Public" GetMethodName="GetCostingReports" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetCostingReports" UserSourceName="GetCostingReports">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetCostingReports" GetMethodModifier="Public" GetMethodName="GetCostingReports" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetCostingReports" UserSourceName="GetCostingReports">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblProdMain.ProdMainDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblProdMain.ProdMainLot, tblItems.ItemCode, tblItems.ItemDescription, tblProdMain.ProdMainTimeStart, 
@@ -1102,7 +1102,7 @@ ORDER BY tblProdMain.ProdMainDate</CommandText>
               <Mapping SourceColumn="ProdMainID" DataSetColumn="ProdMainID" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetCostingReportsByItems" GeneratorSourceName="FillCostingReportsByItems" GetMethodModifier="Public" GetMethodName="GetCostingReportsByItems" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetCostingReportsByItems" UserSourceName="GetCostingReportsByItems">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetCostingReportsByItems" GeneratorSourceName="FillCostingReportsByItems" GetMethodModifier="Public" GetMethodName="GetCostingReportsByItems" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetCostingReportsByItems" UserSourceName="GetCostingReportsByItems">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblProdMain.ProdMainDate, tblShifts.ShiftName, tblCustomers.CustomerName, tblProdMain.ProdMainLot, tblItems.ItemCode, tblItems.ItemDescription, 
@@ -1147,7 +1147,7 @@ ORDER BY tblProdMain.ProdMainDate</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PackingListReportTableAdapter" GeneratorDataComponentClassName="PackingListReportTableAdapter" Name="PackingListReport" UserDataComponentName="PackingListReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetPackingList" GetMethodModifier="Public" GetMethodName="GetPackingList" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetPackingList" UserSourceName="GetPackingList">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetPackingList" GetMethodModifier="Public" GetMethodName="GetPackingList" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetPackingList" UserSourceName="GetPackingList">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblShipMain.ShipMainDate, tblShipMain.ShipMainBOL, tblShipMain.Shipper, tblCustomers.CustomerName, tblCustomers.Address, ISNULL(tblCustomers.City, '') + ' ' + ISNULL(tblCustomers.State, '') 
@@ -1245,12 +1245,12 @@ ORDER BY tblItems.ItemCode</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReceivingListReportTableAdapter" GeneratorDataComponentClassName="ReceivingListReportTableAdapter" Name="ReceivingListReport" UserDataComponentName="ReceivingListReportTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetReceivingList" GetMethodModifier="Public" GetMethodName="GetReceivingList" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetReceivingList" UserSourceName="GetReceivingList">
+              <DbSource ConnectionRef="SPGDataDefaultConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetReceivingList" GetMethodModifier="Public" GetMethodName="GetReceivingList" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetReceivingList" UserSourceName="GetReceivingList">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblReceivMain.ReceivDate, tblReceivMain.ReceivBOL, tblCustomers.CustomerName, tblCustomers.Address, ISNULL(tblCustomers.City, '') + ' ' + ISNULL(tblCustomers.State, '') + ' ' + ISNULL(tblCustomers.ZipCode, '') 
                          AS Address2, tblReceivMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, tblCarriers.CarrierName, tblReceivMain.strTrailer, tblReceivMain.strSeal, SUM(tblReceivDet.ReceivDetQty) AS ReceivDetQty, 
-                         COUNT(tblReceivDet.ReceivDetLPN) AS sngPallets, SUM(tblReceivDet.intUnits * tblItems.CaseGrossWeight) AS Weight, 'General' AS ShippingType, tblReceivMain.sngSkits, tblReceivMain.sngTotalPallets, '' AS Note, 
+                         COUNT(tblReceivDet.ReceivDetLPN) AS sngPallets, SUM(tblReceivDet.intUnits * tblItems.CaseGrossWeight) AS Weight,case when tblItems.ItemType = 'FG' then 'Returns' else 'General' end AS ShippingType, tblReceivMain.sngSkits, tblReceivMain.sngTotalPallets, '' AS Note, 
                          tblReceivDet.ReceivDetLot, tblReceivDet.ExpirationDate, tblCustomers.ExpirationDateFormat, tblReceivMain.Temparature, tblReceivMain.CorrectPallets, tblReceivMain.InsectActivity, tblReceivMain.ForeignSubstance, 
                          tblReceivMain.WheelsChocked, tblReceivMain.FinishTime, tblReceivMain.StartTime, Employees_1.LastName + ', ' + Employees_1.FirstName AS UnloadedBy, Employees.LastName + ', ' + Employees.FirstName AS CheckedBy, 
                          ShipmentConditions.ShipmentCondition AS LoadCondition, ShipmentConditions_1.ShipmentCondition AS PhysicalCondition, Vendor.VendorName, SUM(tblReceivDet.intUnits) AS intUnits
@@ -1269,7 +1269,7 @@ GROUP BY tblReceivMain.ReceivDate, tblReceivMain.ReceivBOL, tblCustomers.Custome
                          tblItems.ItemDescription, tblCarriers.CarrierName, tblReceivMain.strTrailer, tblReceivMain.strSeal, tblReceivMain.sngSkits, tblReceivMain.sngTotalPallets, tblReceivDet.ReceivDetLot, tblReceivDet.ExpirationDate, 
                          tblCustomers.ExpirationDateFormat, tblReceivMain.Temparature, tblReceivMain.CorrectPallets, tblReceivMain.InsectActivity, tblReceivMain.ForeignSubstance, tblReceivMain.WheelsChocked, tblReceivMain.FinishTime, 
                          tblReceivMain.StartTime, Employees_1.LastName, Employees_1.FirstName, Employees.LastName, Employees.FirstName, ShipmentConditions.ShipmentCondition, ShipmentConditions_1.ShipmentCondition, 
-                         Vendor.VendorName
+                         Vendor.VendorName,tblItems.ItemType
 UNION ALL
 SELECT        tblReceivMain_1.ReceivDate, tblReceivMain_1.ReceivBOL, tblCustomers_1.CustomerName, tblCustomers_1.Address, ISNULL(tblCustomers_1.City, '') + ' ' + ISNULL(tblCustomers_1.State, '') 
                          + ' ' + ISNULL(tblCustomers_1.ZipCode, '') AS Address2, tblReceivMain_1.strPO, tblItems_1.ItemCode, tblItems_1.ItemDescription, tblCarriers_1.CarrierName, tblReceivMain_1.strTrailer, tblReceivMain_1.strSeal, 
@@ -2260,7 +2260,7 @@ ORDER BY tblItems.ItemCode</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PackingListReport" msprop:Generator_TableClassName="PackingListReportDataTable" msprop:Generator_TableVarName="tablePackingListReport" msprop:Generator_RowChangedName="PackingListReportRowChanged" msprop:Generator_TablePropName="PackingListReport" msprop:Generator_RowDeletingName="PackingListReportRowDeleting" msprop:Generator_RowChangingName="PackingListReportRowChanging" msprop:Generator_RowEvHandlerName="PackingListReportRowChangeEventHandler" msprop:Generator_RowDeletedName="PackingListReportRowDeleted" msprop:Generator_RowClassName="PackingListReportRow" msprop:Generator_UserTableName="PackingListReport" msprop:Generator_RowEvArgName="PackingListReportRowChangeEvent">
+        <xs:element name="PackingListReport" msprop:Generator_TableClassName="PackingListReportDataTable" msprop:Generator_TableVarName="tablePackingListReport" msprop:Generator_TablePropName="PackingListReport" msprop:Generator_RowDeletingName="PackingListReportRowDeleting" msprop:Generator_RowChangingName="PackingListReportRowChanging" msprop:Generator_RowEvHandlerName="PackingListReportRowChangeEventHandler" msprop:Generator_RowDeletedName="PackingListReportRowDeleted" msprop:Generator_UserTableName="PackingListReport" msprop:Generator_RowChangedName="PackingListReportRowChanged" msprop:Generator_RowEvArgName="PackingListReportRowChangeEvent" msprop:Generator_RowClassName="PackingListReportRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ShipMainDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnShipMainDate" msprop:Generator_ColumnPropNameInRow="ShipMainDate" msprop:Generator_ColumnPropNameInTable="ShipMainDateColumn" msprop:Generator_UserColumnName="ShipMainDate" type="xs:dateTime" minOccurs="0" />
@@ -2445,7 +2445,7 @@ ORDER BY tblItems.ItemCode</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ReceivingListReport" msprop:Generator_TableClassName="ReceivingListReportDataTable" msprop:Generator_TableVarName="tableReceivingListReport" msprop:Generator_RowChangedName="ReceivingListReportRowChanged" msprop:Generator_TablePropName="ReceivingListReport" msprop:Generator_RowDeletingName="ReceivingListReportRowDeleting" msprop:Generator_RowChangingName="ReceivingListReportRowChanging" msprop:Generator_RowEvHandlerName="ReceivingListReportRowChangeEventHandler" msprop:Generator_RowDeletedName="ReceivingListReportRowDeleted" msprop:Generator_RowClassName="ReceivingListReportRow" msprop:Generator_UserTableName="ReceivingListReport" msprop:Generator_RowEvArgName="ReceivingListReportRowChangeEvent">
+        <xs:element name="ReceivingListReport" msprop:Generator_TableClassName="ReceivingListReportDataTable" msprop:Generator_TableVarName="tableReceivingListReport" msprop:Generator_TablePropName="ReceivingListReport" msprop:Generator_RowDeletingName="ReceivingListReportRowDeleting" msprop:Generator_RowChangingName="ReceivingListReportRowChanging" msprop:Generator_RowEvHandlerName="ReceivingListReportRowChangeEventHandler" msprop:Generator_RowDeletedName="ReceivingListReportRowDeleted" msprop:Generator_UserTableName="ReceivingListReport" msprop:Generator_RowChangedName="ReceivingListReportRowChanged" msprop:Generator_RowEvArgName="ReceivingListReportRowChangeEvent" msprop:Generator_RowClassName="ReceivingListReportRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ReceivDate" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnReceivDate" msprop:Generator_ColumnPropNameInRow="ReceivDate" msprop:Generator_ColumnPropNameInTable="ReceivDateColumn" msprop:Generator_UserColumnName="ReceivDate" type="xs:dateTime" minOccurs="0" />
