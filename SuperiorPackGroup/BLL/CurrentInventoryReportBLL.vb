@@ -4,7 +4,7 @@ Imports DevExpress.Data.Filtering
 
 Public Class CurrentInventoryReportBLL
 
-    Public Shared Function GetCurrentInventoryReport(ByVal customerID As Nullable(Of Integer), ByVal itemType As String, ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?, ByVal outOfStockItems As Boolean?,
+    Public Shared Function GetCurrentInventoryReport(ByVal customerID As Integer?, ByVal itemType As String, ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?, ByVal outOfStockItems As Boolean?,
                                                      ByVal onlyAssignedCustomers As Boolean, ByVal locationID As Integer?) As XPView
 
         Dim CurrentInventoryReportXPView As New XPView(Session.DefaultSession, GetType(LocationInventory))
@@ -36,7 +36,7 @@ Public Class CurrentInventoryReportBLL
         End If
 
         Try
-            CurrentInventoryReportXPView.Criteria = GroupOperator.And(theCriteria)
+            CurrentInventoryReportXPView.Criteria = CriteriaOperator.And(theCriteria)
             CurrentInventoryReportXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("CustomerName", SortDirection.Ascending, LocationInventory.Fields.LocationInventoryItem.ItemCustomerID.CustomerName.PropertyName, False, True),
                                                                                  New ViewProperty("ItemCode", SortDirection.Ascending, LocationInventory.Fields.LocationInventoryItem.ItemCode.PropertyName, False, True),
                                                                                  New ViewProperty("ItemDescription", SortDirection.None, LocationInventory.Fields.LocationInventoryItem.ItemDescription.PropertyName, False, True),

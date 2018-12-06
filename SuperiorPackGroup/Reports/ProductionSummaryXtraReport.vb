@@ -10,13 +10,13 @@ Public Class ProductionSummaryXtraReport
     Private m_MinPerHour As Integer = 50
     Private m_CurrentProduction As Production
 
-    Private Sub ProductionSummaryXtraReport_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles MyBase.BeforePrint
+    Private Sub ProductionSummaryXtraReport_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles MyBase.BeforePrint
 
         'm_MinPerHour = My.Forms.MainXtraForm.MinPerHOur
 
     End Sub
 
-    Private Sub totalMinutes_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalMinutes.BeforePrint
+    Private Sub totalMinutes_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalMinutes.BeforePrint
 
         Dim hours As Integer = CInt(totalHours.Summary.GetResult.ToString.Substring(0, totalHours.Summary.GetResult.ToString.IndexOf(":"))) * 60
         Dim minutes As Integer = CInt(totalHours.Summary.GetResult.ToString.Substring(totalHours.Summary.GetResult.ToString.IndexOf(":") + 1)) + hours
@@ -24,7 +24,7 @@ Public Class ProductionSummaryXtraReport
 
     End Sub
 
-    Private Sub averageActualSpeed_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles averageActualSpeed.BeforePrint
+    Private Sub averageActualSpeed_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles averageActualSpeed.BeforePrint
 
         Dim hours As Integer = CInt(totalHours.Summary.GetResult.ToString.Substring(0, totalHours.Summary.GetResult.ToString.IndexOf(":"))) * 60
         Dim minutes As Integer = CInt(totalHours.Summary.GetResult.ToString.Substring(totalHours.Summary.GetResult.ToString.IndexOf(":") + 1)) + hours
@@ -32,7 +32,7 @@ Public Class ProductionSummaryXtraReport
 
     End Sub
 
-    Private Sub totalPacksPerMin_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalPacksPerMin.BeforePrint
+    Private Sub totalPacksPerMin_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalPacksPerMin.BeforePrint
 
         Dim hours As Integer = CInt(totalHours.Summary.GetResult.ToString.Substring(0, totalHours.Summary.GetResult.ToString.IndexOf(":"))) * 60
         Dim minutes As Double = ((CInt(totalHours.Summary.GetResult.ToString.Substring(totalHours.Summary.GetResult.ToString.IndexOf(":") + 1)) + hours) / 60) * m_MinPerHour
@@ -40,26 +40,26 @@ Public Class ProductionSummaryXtraReport
 
     End Sub
 
-    Private Sub totalMinutesLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalMinutesLabel.BeforePrint
+    Private Sub totalMinutesLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalMinutesLabel.BeforePrint
 
         totalMinutesLabel.Text = String.Format("Total Minutes ({0}/Hour)", m_MinPerHour)
 
     End Sub
 
-    Private Sub totalHours_SummaryGetResult(ByVal sender As System.Object, ByVal e As DevExpress.XtraReports.UI.SummaryGetResultEventArgs) Handles totalHours.SummaryGetResult
+    Private Sub totalHours_SummaryGetResult(ByVal sender As System.Object, ByVal e As XtraReports.UI.SummaryGetResultEventArgs) Handles totalHours.SummaryGetResult
 
-        e.Result = String.Format("{0}:{1}", Strings.Format(m_Minutes \ 60, "##############0"), Strings.Format((m_Minutes Mod 60) \ 1, "00"))
+        e.Result = String.Format("{0}:{1}", Format(m_Minutes \ 60, "##############0"), Format((m_Minutes Mod 60) \ 1, "00"))
         e.Handled = True
 
     End Sub
 
-    Private Sub totalHours_SummaryReset(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles totalHours.SummaryReset
+    Private Sub totalHours_SummaryReset(ByVal sender As System.Object, ByVal e As EventArgs) Handles totalHours.SummaryReset
 
         m_Minutes = 0
 
     End Sub
 
-    Private Sub totalHours_SummaryRowChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles totalHours.SummaryRowChanged
+    Private Sub totalHours_SummaryRowChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles totalHours.SummaryRowChanged
 
         m_Minutes += CInt(DateDiff(DateInterval.Minute, Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStop"))) - _
                         (BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(GetCurrentColumnValue("ProdMainDate")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), _
@@ -67,7 +67,7 @@ Public Class ProductionSummaryXtraReport
 
     End Sub
 
-    Private Sub Detail_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
+    Private Sub Detail_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
 
         m_TimeDiffStartToStop = DateDiff(DateInterval.Minute, Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStop")))
         m_BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(GetCurrentColumnValue("ProdMainDate")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), _

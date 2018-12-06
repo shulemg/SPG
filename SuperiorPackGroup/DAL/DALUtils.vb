@@ -31,7 +31,7 @@ Public Class DALUtils
             End If
             Session.DefaultSession.ConnectionString = connectionString
             Session.DefaultSession.AutoCreateOption = DB.AutoCreateOption.SchemaOnly
-            Session.DefaultSession.UpdateSchema(System.Reflection.Assembly.GetAssembly(GetType(LatestVersion)))
+            Session.DefaultSession.UpdateSchema(Reflection.Assembly.GetAssembly(GetType(LatestVersion)))
             SPGDataLayer = XpoDefault.GetDataLayer(connectionString, DB.AutoCreateOption.SchemaOnly)
             Return True
         Catch ex As Exception

@@ -158,7 +158,7 @@ Public Class ProjectSchedulingXtraForm
 
     End Sub
 
-    Private Sub openInItemsManager_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles openInItemsManager.Click
+    Private Sub openInItemsManager_Click(ByVal sender As Object, ByVal e As EventArgs) Handles openInItemsManager.Click
 
         With ItemsXtraForm
             .MdiParent = Me.MdiParent

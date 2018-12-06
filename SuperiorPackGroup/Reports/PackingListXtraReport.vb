@@ -3,7 +3,7 @@ Imports DXDAL
 
 Public Class PackingListXtraReport
 
-    Private Sub fromXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles fromXrLabel.BeforePrint
+    Private Sub fromXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Printing.PrintEventArgs) Handles fromXrLabel.BeforePrint
 
         If reportTitleXrLabel.Text = "Receiving List" Then
             fromXrLabel.Text = String.Format("{0}{1}{2}{1}{3}", GetCurrentColumnValue("CustomerName").ToString, vbCrLf, GetCurrentColumnValue("Address").ToString,
@@ -27,7 +27,7 @@ Public Class PackingListXtraReport
         End If
     End Sub
 
-    Private Sub toXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles toXrLabel.BeforePrint
+    Private Sub toXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Printing.PrintEventArgs) Handles toXrLabel.BeforePrint
 
         Try
             If reportTitleXrLabel.Text = "Receiving List" Then
@@ -46,7 +46,7 @@ Public Class PackingListXtraReport
 
     End Sub
 
-    Private Sub returnsGroupHeader_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles returnsGroupHeader.BeforePrint
+    Private Sub returnsGroupHeader_BeforePrint(ByVal sender As Object, ByVal e As Printing.PrintEventArgs) Handles returnsGroupHeader.BeforePrint
 
         Try
             If GetCurrentColumnValue("ShippingType").ToString = "General" Then
@@ -60,13 +60,13 @@ Public Class PackingListXtraReport
 
     End Sub
 
-    Private Sub totalPalletWeightXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalPalletWeightXrLabel.BeforePrint
+    Private Sub totalPalletWeightXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Printing.PrintEventArgs) Handles totalPalletWeightXrLabel.BeforePrint
 
         totalPalletWeightXrLabel.Text = (CDbl(GetCurrentColumnValue("sngTotalPallets")) * 40).ToString
 
     End Sub
 
-    Private Sub itemDescriptionXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemDescriptionXrLabel.BeforePrint
+    Private Sub itemDescriptionXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Printing.PrintEventArgs) Handles itemDescriptionXrLabel.BeforePrint
 
         Try
             itemDescriptionXrLabel.Text = CStr(GetCurrentColumnValue("ItemDescription")) & vbCrLf & CStr(GetCurrentColumnValue("Note"))
@@ -76,7 +76,7 @@ Public Class PackingListXtraReport
 
     End Sub
 
-    Private Sub totalWeightXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalWeightXrLabel.BeforePrint
+    Private Sub totalWeightXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Printing.PrintEventArgs) Handles totalWeightXrLabel.BeforePrint
 
         If reportTitleXrLabel.Text = "Receiving List" Then
             totalWeightXrLabel.Text = (CDbl(itemTotalWeightXrLabel.Summary.GetResult) + CDbl(GetCurrentColumnValue("sngTotalPallets")) * 40).ToString("n1")

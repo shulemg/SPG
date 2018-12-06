@@ -1,6 +1,6 @@
 Public Class ProductSpecificationsXtraReport
 
-    Private Sub itemBomsXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemBomsXrLabel.BeforePrint
+    Private Sub itemBomsXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Printing.PrintEventArgs) Handles itemBomsXrLabel.BeforePrint
 
     End Sub
 

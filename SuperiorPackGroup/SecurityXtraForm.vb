@@ -12,24 +12,24 @@ Public Class SecurityXtraForm
     Private m_UserPermissions As UserPermissionsBLL
     Private m_CustomersUOW As UnitOfWork
 
-    Private Sub SecurityXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub SecurityXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If Me.usersListBoxControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
 
     End Sub
 
-    Private Sub SecurityXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub SecurityXtraForm_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
 
         m_Users = New UsersBLL
         m_UserPermissions = New UserPermissionsBLL
@@ -63,7 +63,7 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub usersListBoxControl_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles usersListBoxControl.SelectedValueChanged
+    Private Sub usersListBoxControl_SelectedValueChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles usersListBoxControl.SelectedValueChanged
 
         If Me.usersListBoxControl.SelectedIndex <> -1 Then
             BindSecurityControls(Me.usersListBoxControl.SelectedValue.ToString)
@@ -295,7 +295,7 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub PermissionsRepositoryItemComboBox_EditValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles permissionsRepositoryItemComboBox.EditValueChanged
+    Private Sub PermissionsRepositoryItemComboBox_EditValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles permissionsRepositoryItemComboBox.EditValueChanged
 
         Me.userPermissionsGridView.PostEditor()
 
@@ -330,13 +330,13 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub customersGridView_InitNewRow(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles customersGridView.InitNewRow
+    Private Sub customersGridView_InitNewRow(ByVal sender As System.Object, ByVal e As InitNewRowEventArgs) Handles customersGridView.InitNewRow
 
         Me.customersGridView.SetFocusedRowCellValue("User!Key", usersListBoxControl.SelectedValue.ToString)
 
     End Sub
 
-    Private Sub customersXPCollection_ResolveSession(ByVal sender As System.Object, ByVal e As DevExpress.Xpo.ResolveSessionEventArgs) Handles customersXPCollection.ResolveSession
+    Private Sub customersXPCollection_ResolveSession(ByVal sender As System.Object, ByVal e As ResolveSessionEventArgs) Handles customersXPCollection.ResolveSession
 
         e.Session = m_CustomersUOW
 

@@ -124,7 +124,7 @@ Public Class ItemPoolXtraForm
 
     Private Sub ItemPoolXtraForm_Activated(sender As Object, e As EventArgs) Handles Me.Activated
 
-        ItemPoolDetails.AutoSaveOnEndEdit = False
+        XPBaseObject.AutoSaveOnEndEdit = False
 
     End Sub
 
@@ -132,19 +132,19 @@ Public Class ItemPoolXtraForm
 
         If poolSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
 
         If e.Cancel = False Then
-            ItemPoolDetails.AutoSaveOnEndEdit = True
+            XPBaseObject.AutoSaveOnEndEdit = True
             m_ItemPoolSession.PurgeDeletedObjects()
         End If
 
@@ -190,7 +190,7 @@ Public Class ItemPoolXtraForm
 
     End Sub
 
-    Private Sub poolDetailsGridView_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles poolDetailsGridView.CustomUnboundColumnData
+    Private Sub poolDetailsGridView_CustomUnboundColumnData(sender As Object, e As Views.Base.CustomColumnDataEventArgs) Handles poolDetailsGridView.CustomUnboundColumnData
 
         If Not IsDBNull(poolDetailsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, itemGridColumn)) AndAlso poolDetailsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, itemGridColumn) IsNot Nothing _
                AndAlso Not IsDBNull(poolDetailsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, itemQtyOnHandGridColumn)) Then
@@ -201,7 +201,7 @@ Public Class ItemPoolXtraForm
 
     End Sub
 
-    Private Sub poolDetailsGridView_InitNewRow(sender As Object, e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles poolDetailsGridView.InitNewRow
+    Private Sub poolDetailsGridView_InitNewRow(sender As Object, e As InitNewRowEventArgs) Handles poolDetailsGridView.InitNewRow
 
         poolDetailsGridView.SetRowCellValue(e.RowHandle, colPoolID, m_CurrentPoolID.Oid)
         poolDetailsGridView.SetRowCellValue(e.RowHandle, colItemPoolRatio, 1)

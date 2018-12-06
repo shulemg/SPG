@@ -18,25 +18,24 @@ Public Class ItemsXtraForm
     Protected m_MachineLines As MachinesLinesBLL
     Protected m_ShippingDetail As ShippingDetailsBLL
     Protected m_Inventory As InventoryBLL
-    Protected m_ReceivingDetails As ReceivingDetailsBLL
     Protected m_BOM As BOMBLL
     Private m_UserPermissions As UserPermissionsBLL
     Protected m_UOMs As ArrayList
     Private m_GridReportTitle As String
-    Private m_CurrentItemID As Nullable(Of Integer)
+    Private m_CurrentItemID As Integer?
     Private m_ItemsSession As Session
 
     Private Sub ItemsXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If itemsSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
@@ -51,7 +50,6 @@ Public Class ItemsXtraForm
         m_MachineLines = New MachinesLinesBLL
         m_ShippingDetail = New ShippingDetailsBLL
         m_Inventory = New InventoryBLL
-        m_ReceivingDetails = New ReceivingDetailsBLL
         m_UserPermissions = New UserPermissionsBLL
 
         m_ItemsSession = New Session(SPGDataLayer) With {.TrackPropertiesModifications = True, .OptimisticLockingReadBehavior = OptimisticLockingReadBehavior.MergeCollisionThrowException}
@@ -67,9 +65,9 @@ Public Class ItemsXtraForm
         Next i
 
         BindItemsSearch()
-        PoolBom.AutoSaveOnEndEdit = False
+        XPBaseObject.AutoSaveOnEndEdit = False
 
-        Dim customerNameColumn As DevExpress.XtraEditors.Controls.LookUpColumnInfo = New DevExpress.XtraEditors.Controls.LookUpColumnInfo() With {.Caption = "Customer Name", .FieldName = "CustomerName"}
+        Dim customerNameColumn As Controls.LookUpColumnInfo = New Controls.LookUpColumnInfo() With {.Caption = "Customer Name", .FieldName = "CustomerName"}
         Dim customerNameAndIDs As DataTable = m_CustomerItems.GetCustomerNameAndIDS(False)
 
         customerFilterLookUpEdit.Properties.DataSource = customerNameAndIDs
@@ -102,7 +100,7 @@ Public Class ItemsXtraForm
         'Me.defaultMachineLookUpEdit.Properties.DisplayMember = "MachineLineName"
         'Me.defaultMachineLookUpEdit.Properties.ValueMember = "MachineLineID"
 
-        Me.RMRepositoryItemLookUpEdit.Columns.Add(New DevExpress.XtraEditors.Controls.LookUpColumnInfo)
+        Me.RMRepositoryItemLookUpEdit.Columns.Add(New Controls.LookUpColumnInfo)
         Me.RMRepositoryItemLookUpEdit.Columns(0).FieldName = "ItemCode"
         Me.RMRepositoryItemLookUpEdit.Columns(0).Caption = "Raw Material"
         Me.RMRepositoryItemLookUpEdit.DisplayMember = "ItemCode"
@@ -130,19 +128,21 @@ Public Class ItemsXtraForm
         productionExpirationDateGridColumn.FieldName = "ExpirationDate"
         Me.productionPOGridColumn.FieldName = "PO"
 
-        Me.receivingDetailIDGridColumn.FieldName = "ReceivDetID"
-        Me.receivingIDGridColumn.FieldName = "ReceivMainID"
-        Me.receivingLotGridColumn.FieldName = "ReceivDetLot"
+        Me.receivingDetailIDGridColumn.FieldName = "ReceiveDetID"
+        Me.receivingIDGridColumn.FieldName = "ReceiveMainID"
+        Me.receivingLpnGridColumn.FieldName = "ReceiveDetLPN"
+        Me.receivingLotGridColumn.FieldName = "ReceiveDetLot"
         receivingExpirationDateGridColumn.FieldName = "ExpirationDate"
-        Me.receivingQuantityGridColumn.FieldName = "intUnits"
-        Me.receivingBOLGridColumn.FieldName = "ReceivBOL"
-        Me.receivingDateGridColumn.FieldName = "ReceivDate"
+        Me.receivingQuantityGridColumn.FieldName = "ReceiveDetQty"
+        Me.receivingBOLGridColumn.FieldName = "ReceiveBOL"
+        Me.receivingDateGridColumn.FieldName = "ReceiveDate"
 
-        receivingReturnIDGridColumn.FieldName = "ReturnDetID"
+        receivingReturnIDGridColumn.FieldName = "ReceiveDetID"
         returnReceivingIDGridColumn.FieldName = "ReceiveMainID"
-        receivingReturnLotGridColumn.FieldName = "ReturnDetLot"
+        receivingReturnLpnGridColumn.FieldName = "ReceiveDetLPN"
+        receivingReturnLotGridColumn.FieldName = "ReceiveDetLot"
         receivingReturnExpirationDateGridColumn.FieldName = "ExpirationDate"
-        receivingReturnQuantityGridColumn.FieldName = "ReturnDetQty"
+        receivingReturnQuantityGridColumn.FieldName = "ReceiveDetQty"
         receivingReturnBolGridColumn.FieldName = "ReceiveBOL"
         receivingReturnDateGridColumn.FieldName = "ReceiveDate"
 
@@ -276,8 +276,8 @@ Public Class ItemsXtraForm
 
         Me.productionGridControl.DataSource = m_Inventory.GetInventoryByItemID(itemID)
 
-        Me.receivingsGridControl.DataSource = m_ReceivingDetails.GetReceivingDetailsByItemID(itemID)
-        receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetREceivingReturnDetailsByItemID(itemID)
+        Me.receivingsGridControl.DataSource = ReceivingDetailsBLL.GetReceivingDetailsByItemID(itemID)
+        Me.receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetReceivingReturnDetailsByItemID(itemID)
 
         adjustmentGridControl.DataSource = InventoryAdjustmentBLL.GetAdjustmentsByItemID(itemID)
 
@@ -329,7 +329,7 @@ Public Class ItemsXtraForm
 
     End Sub
 
-    Private Sub BindBomGridControls(ByVal itemID As Nullable(Of Integer))
+    Private Sub BindBomGridControls(ByVal itemID As Integer?)
 
         If itemID.HasValue = False Then
             itemID = 0
@@ -345,7 +345,7 @@ Public Class ItemsXtraForm
 
     End Sub
 
-    Private Sub BOMGridView_InitNewRow(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs) Handles BOMGridView.InitNewRow
+    Private Sub BOMGridView_InitNewRow(ByVal sender As Object, ByVal e As InitNewRowEventArgs) Handles BOMGridView.InitNewRow
 
         Me.BOMGridView.SetRowCellValue(e.RowHandle, Me.FGItemCodeGridColumn, m_CurrentItemID)
         Me.BOMGridView.SetRowCellValue(e.RowHandle, Me.RMQuantityGridColumn, 0)
@@ -353,7 +353,7 @@ Public Class ItemsXtraForm
 
     End Sub
 
-    Private Sub BOMGridView_CustomUnboundColumnData(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles BOMGridView.CustomUnboundColumnData
+    Private Sub BOMGridView_CustomUnboundColumnData(ByVal sender As Object, ByVal e As Views.Base.CustomColumnDataEventArgs) Handles BOMGridView.CustomUnboundColumnData
 
         If Not IsDBNull(BOMGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.RMItemCodeGridColumn)) Then
             e.Value = ItemsBLL.GetDescriptionByItemID(CType(BOMGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.RMItemCodeGridColumn), Integer?))
@@ -538,7 +538,7 @@ Public Class ItemsXtraForm
 
     End Sub
 
-    Private Sub availabilityGridView_CustomUnboundColumnData(ByVal sender As Object, ByVal e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles availabilityGridView.CustomUnboundColumnData
+    Private Sub availabilityGridView_CustomUnboundColumnData(ByVal sender As Object, ByVal e As Views.Base.CustomColumnDataEventArgs) Handles availabilityGridView.CustomUnboundColumnData
 
         If Not IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.availabilityItemIDGridColumn)) AndAlso availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.availabilityItemIDGridColumn) IsNot Nothing _
                 AndAlso Not IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, Me.quantityOnHandGridColumn)) Then
@@ -657,7 +657,7 @@ Public Class ItemsXtraForm
 
     Private Sub uomLookUpEdit_ProcessNewValue(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.Controls.ProcessNewValueEventArgs) Handles uomLookUpEdit.ProcessNewValue
 
-        Dim edit As DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit = CType(sender, LookUpEdit).Properties
+        Dim edit As Repository.RepositoryItemLookUpEdit = CType(sender, LookUpEdit).Properties
         If e.DisplayValue.ToString = edit.NullText OrElse e.DisplayValue.ToString = String.Empty Then
             Exit Sub
         End If
@@ -805,8 +805,8 @@ Public Class ItemsXtraForm
 
         Me.productionGridControl.DataSource = m_Inventory.GetInventoryByItemID(m_CurrentItemID.Value)
 
-        Me.receivingsGridControl.DataSource = m_ReceivingDetails.GetReceivingDetailsByItemID(m_CurrentItemID.Value)
-        receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetREceivingReturnDetailsByItemID(m_CurrentItemID.Value)
+        Me.receivingsGridControl.DataSource = ReceivingDetailsBLL.GetReceivingDetailsByItemID(m_CurrentItemID.Value)
+        Me.receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetReceivingReturnDetailsByItemID(m_CurrentItemID.Value)
 
         adjustmentGridControl.DataSource = InventoryAdjustmentBLL.GetAdjustmentsByItemID(m_CurrentItemID.Value)
 
@@ -1122,7 +1122,7 @@ Public Class ItemsXtraForm
 
     'End Sub
 
-    Private Sub adjustmentGridView_RowCellStyle(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs) Handles adjustmentGridView.RowCellStyle
+    Private Sub adjustmentGridView_RowCellStyle(ByVal sender As System.Object, ByVal e As RowCellStyleEventArgs) Handles adjustmentGridView.RowCellStyle
 
         If e.Column.Name = adjustmentQuantityGridColumn.Name Then
             If IsDBNull(adjustmentGridView.GetRowCellValue(e.RowHandle, adjustmentQuantityGridColumn)) OrElse CType(adjustmentGridView.GetRowCellValue(e.RowHandle, adjustmentQuantityGridColumn), Integer) >= 0 Then

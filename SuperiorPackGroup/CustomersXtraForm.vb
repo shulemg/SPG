@@ -12,27 +12,27 @@ Public Class CustomersXtraForm
     Protected m_Production As ProductionBLL
     Protected m_Shippings As ShippingsBLL
     Protected m_UserPermissions As UserPermissionsBLL
-    Private m_CurrentCustomer As Nullable(Of Integer)
+    Private m_CurrentCustomer As Integer?
     Private m_CustomersSession As Session
 
-    Private Sub CustomersXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub CustomersXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If Me.customerSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
 
     End Sub
 
-    Private Sub CustomersXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub CustomersXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Me.Cursor = Cursors.WaitCursor
         m_Customer = New CustomersBLL
@@ -254,7 +254,7 @@ Public Class CustomersXtraForm
 
     End Sub
 
-    Private Sub customerSearchGridView_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles customerSearchGridView.Click
+    Private Sub customerSearchGridView_Click(ByVal sender As Object, ByVal e As EventArgs) Handles customerSearchGridView.Click
 
         If (Me.customerSearchGridView.CalcHitInfo(Me.customerSearchGridControl.PointToClient(Control.MousePosition)).HitTest = GridHitTest.RowCell) Then
             Me.BindCustomersControls(CType(Me.customerSearchGridView.GetFocusedRowCellValue(Me.customerIDGridColumn), Integer))
@@ -438,7 +438,7 @@ Public Class CustomersXtraForm
 
     End Sub
 
-    Private Sub inactiveSearchCheckEdit_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles inactiveSearchCheckEdit.CheckedChanged
+    Private Sub inactiveSearchCheckEdit_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles inactiveSearchCheckEdit.CheckedChanged
 
         BindCustomerSearch()
 
@@ -455,7 +455,7 @@ Public Class CustomersXtraForm
 
     End Sub
 
-    Private Sub addOneWaySimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles addOneWaySimpleButton.Click
+    Private Sub addOneWaySimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles addOneWaySimpleButton.Click
 
         If RelatedCustomerBLL.AddRelatedCustomer(CustomersBLL.GetCustomer(m_CurrentCustomer.Value, m_CustomersSession), CustomersBLL.GetCustomer(CInt(relatedCustomerLookUpEdit.EditValue), m_CustomersSession), False) = False Then
             MessageBox.Show("There was a problem while adding the related customer")
@@ -465,7 +465,7 @@ Public Class CustomersXtraForm
 
     End Sub
 
-    Private Sub addBothWaysSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles addBothWaysSimpleButton.Click
+    Private Sub addBothWaysSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles addBothWaysSimpleButton.Click
 
         If RelatedCustomerBLL.AddRelatedCustomer(CustomersBLL.GetCustomer(m_CurrentCustomer.Value, m_CustomersSession), CustomersBLL.GetCustomer(CInt(relatedCustomerLookUpEdit.EditValue), m_CustomersSession), True) = False Then
             MessageBox.Show("There was a problem while adding the related customer")
@@ -475,7 +475,7 @@ Public Class CustomersXtraForm
 
     End Sub
 
-    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles deleteRepositoryItemButtonEdit.Click
+    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As Object, ByVal e As EventArgs) Handles deleteRepositoryItemButtonEdit.Click
 
         If MessageBox.Show("Are you sure you want to delete this relationshiP?", "Delete Related Customer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
             Exit Sub

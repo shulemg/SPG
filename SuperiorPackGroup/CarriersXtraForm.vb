@@ -3,26 +3,26 @@ Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Public Class CarriersXtraForm
 
     Private m_Carriers As CarriersBLL
-    Private m_CurrentCarrierID As Nullable(Of Integer)
+    Private m_CurrentCarrierID As Integer?
 
-    Private Sub CarriersXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub CarriersXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If Me.carriersSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
 
     End Sub
 
-    Private Sub CarriersXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub CarriersXtraForm_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
 
         Me.Cursor = Cursors.WaitCursor
         m_Carriers = New CarriersBLL
@@ -88,13 +88,13 @@ Public Class CarriersXtraForm
 
     End Function
 
-    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs)
 
         SaveChanges()
 
     End Sub
 
-    Private Sub carrierListBoxControl_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub carrierListBoxControl_SelectedValueChanged(ByVal sender As System.Object, ByVal e As EventArgs)
 
         'If Me.carrierListBoxControl.SelectedIndex <> -1 Then
         '    BindCarrierControls(CType(Me.carrierListBoxControl.SelectedValue, Integer))
@@ -122,7 +122,7 @@ Public Class CarriersXtraForm
 
     End Sub
 
-    Private Sub addSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub addSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs)
 
         m_CurrentCarrierID = Nothing
         Me.nameTextEdit.Text = String.Empty
@@ -139,7 +139,7 @@ Public Class CarriersXtraForm
 
     End Sub
 
-    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs)
 
         'If Me.carrierListBoxControl.SelectedIndex <> -1 Then
         '    BindCarrierControls(CType(Me.carrierListBoxControl.SelectedValue, Integer))
@@ -147,7 +147,7 @@ Public Class CarriersXtraForm
 
     End Sub
 
-    Private Sub carriersSearchGridView_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles carriersSearchGridView.Click
+    Private Sub carriersSearchGridView_Click(ByVal sender As Object, ByVal e As EventArgs) Handles carriersSearchGridView.Click
 
         If (Me.carriersSearchGridView.CalcHitInfo(Me.carriersSearchGridControl.PointToClient(Control.MousePosition)).HitTest = GridHitTest.RowCell) Then
             Me.BindCarrierControls(CType(Me.carriersSearchGridView.GetFocusedRowCellValue(Me.carrierIDGridColumn), Integer))

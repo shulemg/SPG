@@ -41,7 +41,7 @@ Public Class ProductionMachineXtraReport
     Private m_MachinePackers As Double = 0
     Private m_CurrentProduction As Production
 
-    Private Sub machineGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineGroupHeader.BeforePrint
+    Private Sub machineGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineGroupHeader.BeforePrint
 
         m_MachineMinutes = 0
         m_MachineHours = 0
@@ -53,7 +53,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemGroupHeader.BeforePrint
+    Private Sub itemGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemGroupHeader.BeforePrint
 
         m_ItemMinutes = 0
         m_ItemHours = 0
@@ -65,7 +65,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub customerGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles customerGroupHeader.BeforePrint
+    Private Sub customerGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles customerGroupHeader.BeforePrint
 
         m_CustomerQuantity = 0
         m_CustomerProjectedQuantity = 0
@@ -76,7 +76,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub Detail_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
+    Private Sub Detail_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
 
         m_CurrentProduction = Xpo.XpoDefault.Session.GetObjectByKey(Of Production)(CInt(GetCurrentColumnValue("ProductionID")))
 
@@ -170,7 +170,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub ProductionMachineXtraReport_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles MyBase.BeforePrint
+    Private Sub ProductionMachineXtraReport_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles MyBase.BeforePrint
 
        ' m_MinPerHour = If(MainXtraForm.MinPerHOur <> 0, MainXtraForm.MinPerHOur, 50)
         'Customer enters packers pay based on all breaks included
@@ -178,7 +178,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub machineTotalMinutesXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineTotalMinutesXRLabel.BeforePrint
+    Private Sub machineTotalMinutesXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineTotalMinutesXRLabel.BeforePrint
 
         machineTotalMinutesXRLabel.Text = Format(m_MachineMinutes, "#.##")
         m_ItemMinutes += m_MachineMinutes
@@ -186,27 +186,27 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemMinutesXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemMinutesXrLabel.BeforePrint
+    Private Sub itemMinutesXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemMinutesXrLabel.BeforePrint
 
         itemMinutesXrLabel.Text = Format(m_ItemMinutes, "#.##")
 
     End Sub
 
-    Private Sub machineAverageSpeedXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineAverageSpeedXRLabel.BeforePrint
+    Private Sub machineAverageSpeedXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineAverageSpeedXRLabel.BeforePrint
 
         m_MachineAverageSpeed = CDbl(machineQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")) / m_MachineMinutes
         machineAverageSpeedXRLabel.Text = Format(m_MachineAverageSpeed, "#,##0.00")
 
     End Sub
 
-    Private Sub itemAverageSpeedXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemAverageSpeedXrLabel.BeforePrint
+    Private Sub itemAverageSpeedXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemAverageSpeedXrLabel.BeforePrint
 
         m_ItemAverageSpeed = CDbl(itemQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")) / m_ItemMinutes
         itemAverageSpeedXrLabel.Text = Format(m_ItemAverageSpeed, "#,##0.00")
 
     End Sub
 
-    Private Sub machineSpeedVariationVolumeXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineSpeedVariationVolumeXrLabel.BeforePrint
+    Private Sub machineSpeedVariationVolumeXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineSpeedVariationVolumeXrLabel.BeforePrint
 
         If m_MachineStandard > 0 Then
             machineSpeedVariationVolumeXrLabel.Text = Format(m_MachineAverageSpeed - m_MachineStandard, "#,##0.00")
@@ -216,7 +216,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemSpeedVariationXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemSpeedVariationXrLabel.BeforePrint
+    Private Sub itemSpeedVariationXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemSpeedVariationXrLabel.BeforePrint
 
         If m_MachineStandard > 0 Then
              itemSpeedVariationXrLabel.Text = Format(m_ItemAverageSpeed - m_MachineStandard, "#,##0.00")
@@ -226,7 +226,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemSpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemSpeedVariationPercentageXrLabel.BeforePrint
+    Private Sub itemSpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemSpeedVariationPercentageXrLabel.BeforePrint
 
         m_ItemAverageSpeed = CDbl(itemQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")) / m_ItemMinutes
         Dim speedVariation As Double
@@ -255,7 +255,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub machineSpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineSpeedVariationPercentageXrLabel.BeforePrint
+    Private Sub machineSpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineSpeedVariationPercentageXrLabel.BeforePrint
 
         Dim speedVariation As Double
         If m_MachineStandard > 0 Then
@@ -271,20 +271,20 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub customerSpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles customerSpeedVariationPercentageXrLabel.BeforePrint
+    Private Sub customerSpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles customerSpeedVariationPercentageXrLabel.BeforePrint
 
         customerSpeedVariationPercentageXrLabel.Text = Format((m_CustomerQuantity - m_CustomerProjectedQuantity) / m_CustomerProjectedQuantity, "%0.00")
 
     End Sub
 
 
-    Private Sub companySpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles reportSpeedVariationPercentageXrLabel.BeforePrint
+    Private Sub companySpeedVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles reportSpeedVariationPercentageXrLabel.BeforePrint
 
         reportSpeedVariationPercentageXrLabel.Text = Format((m_CompanyQuantity - m_CompanyProjectedQuantity) / m_CompanyProjectedQuantity, "%0.00")
 
     End Sub
 
-    Private Sub machineAverageActualPackersXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineAverageActualPackersXrLabel.BeforePrint
+    Private Sub machineAverageActualPackersXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineAverageActualPackersXrLabel.BeforePrint
 
         m_ItemPayroll += m_MachinePayroll
         m_MachineAveragePackers = (m_MachinePayroll / m_PackersPay) / m_MachineHours
@@ -292,7 +292,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub machinePackersVariationVolumeXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machinePackersVariationVolumeXrLabel.BeforePrint
+    Private Sub machinePackersVariationVolumeXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machinePackersVariationVolumeXrLabel.BeforePrint
 
         If m_MachinePackers = 0 Then
             machinePackersVariationVolumeXrLabel.Text = Format(m_MachineAveragePackers - CDbl(GetCurrentColumnValue("ProjectedPackers")), "#,##0.00")
@@ -302,7 +302,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub machinePackersVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machinePackersVariationPercentageXrLabel.BeforePrint
+    Private Sub machinePackersVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machinePackersVariationPercentageXrLabel.BeforePrint
 
         Dim packersVariation As Double
         If m_MachinePackers = 0 Then
@@ -317,14 +317,14 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemAverageActualPackersXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemAverageActualPackersXrLabel.BeforePrint
+    Private Sub itemAverageActualPackersXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemAverageActualPackersXrLabel.BeforePrint
 
         m_ItemAveragePackers = (m_ItemPayroll / m_PackersPay) / m_ItemHours
         itemAverageActualPackersXrLabel.Text = Format(m_ItemAveragePackers, "#,##0.00")
 
     End Sub
 
-    Private Sub itemPackersVariationVolumeXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemPackersVariationVolumeXrLabel.BeforePrint
+    Private Sub itemPackersVariationVolumeXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemPackersVariationVolumeXrLabel.BeforePrint
 
         If m_MachinePackers = 0 Then
             itemPackersVariationVolumeXrLabel.Text = Format(m_ItemAveragePackers - CDbl(GetCurrentColumnValue("ProjectedPackers")), "#,##0.00")
@@ -334,7 +334,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemPackersVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemPackersVariationPercentageXrLabel.BeforePrint
+    Private Sub itemPackersVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemPackersVariationPercentageXrLabel.BeforePrint
 
         m_ItemAveragePackers = (m_ItemPayroll / m_PackersPay) / m_ItemHours
         Dim packersVariation As Double
@@ -358,19 +358,19 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub customerPackersVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles customerPackersVariationPercentageXrLabel.BeforePrint
+    Private Sub customerPackersVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles customerPackersVariationPercentageXrLabel.BeforePrint
 
         customerPackersVariationPercentageXrLabel.Text = Format((m_CustomerPackersCost - m_CustomerProjectedPackersCost) / m_CustomerProjectedPackersCost, "%0.00")
 
     End Sub
 
-    Private Sub reportPackersVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles reportPackersVariationPercentageXrLabel.BeforePrint
+    Private Sub reportPackersVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles reportPackersVariationPercentageXrLabel.BeforePrint
 
         reportPackersVariationPercentageXrLabel.Text = Format((m_CompanyPackersCost - m_CompanyProjectedPackersCost) / m_CompanyProjectedPackersCost, "%0.00")
 
     End Sub
 
-    Private Sub machineProjectedCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineProjectedCostXrLabel.BeforePrint
+    Private Sub machineProjectedCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineProjectedCostXrLabel.BeforePrint
 
         'm_MachineProjectedCost = CDbl(IIf(IsDBNull(GetCurrentColumnValue("ProjectedPackers")), 0, GetCurrentColumnValue("ProjectedPackers"))) * m_IntervalHours * m_PackersPay / _
         '                            (CDbl(machineQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")))
@@ -398,20 +398,20 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub machineAverageCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineAverageCostXrLabel.BeforePrint
+    Private Sub machineAverageCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineAverageCostXrLabel.BeforePrint
 
         m_MachineAverageCost = m_MachinePayroll / (CDbl(machineQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")))
         machineAverageCostXrLabel.Text = Format(m_MachineAverageCost * -1, "$#,##0.0000")
 
     End Sub
 
-    Private Sub machineCostVariationXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineCostVariationXrLabel.BeforePrint
+    Private Sub machineCostVariationXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineCostVariationXrLabel.BeforePrint
 
         machineCostVariationXrLabel.Text = Format(m_MachineAverageCost - m_MachineProjectedCost, "$#,##0.0000")
 
     End Sub
 
-    Private Sub machineCostVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineCostVariationPercentageXrLabel.BeforePrint
+    Private Sub machineCostVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineCostVariationPercentageXrLabel.BeforePrint
 
         Dim costVariation As Double = (m_MachineAverageCost - m_MachineProjectedCost) / m_MachineProjectedCost
         If Double.IsNaN(costVariation) Or Double.IsInfinity(costVariation) Then
@@ -421,7 +421,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemProjectedCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemProjectedCostXrLabel.BeforePrint
+    Private Sub itemProjectedCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemProjectedCostXrLabel.BeforePrint
 
         'm_ItemProjectedCost = CDbl(IIf(IsDBNull(GetCurrentColumnValue("ProjectedPackers")), 0, GetCurrentColumnValue("ProjectedPackers"))) * m_IntervalHours * m_PackersPay / _
         '                            (CDbl(itemQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")))
@@ -448,14 +448,14 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemAverageCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemAverageCostXrLabel.BeforePrint
+    Private Sub itemAverageCostXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemAverageCostXrLabel.BeforePrint
 
         m_ItemAverageCost = m_ItemPayroll / (CDbl(itemQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")))
         itemAverageCostXrLabel.Text = Format(m_ItemAverageCost * -1, "$#,##0.0000")
 
     End Sub
 
-    Private Sub itemCostVariationXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemCostVariationXrLabel.BeforePrint
+    Private Sub itemCostVariationXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemCostVariationXrLabel.BeforePrint
 
         If Double.IsNaN(m_ItemProjectedCost) Or Double.IsInfinity(m_ItemProjectedCost) Then
             m_ItemProjectedCost = 0
@@ -464,7 +464,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub itemCostVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemCostVariationPercentageXrLabel.BeforePrint
+    Private Sub itemCostVariationPercentageXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemCostVariationPercentageXrLabel.BeforePrint
 
         m_ItemAverageCost = m_ItemPayroll / (CDbl(itemQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")))
         If m_MachineStandard > 0 Then
@@ -491,25 +491,25 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub customerCostVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles customerCostVariationPercentageXrLabel.BeforePrint
+    Private Sub customerCostVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles customerCostVariationPercentageXrLabel.BeforePrint
 
         customerCostVariationPercentageXrLabel.Text = Format((m_CustomerCost - m_CustomerProjectedCost) / m_CustomerProjectedCost, "%0.00")
 
     End Sub
 
-    Private Sub reportCostVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles reportCostVariationPercentageXrLabel.BeforePrint
+    Private Sub reportCostVariationPercentageXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles reportCostVariationPercentageXrLabel.BeforePrint
 
         reportCostVariationPercentageXrLabel.Text = Format((m_CompanyCost - m_CompanyProjectedCost) / m_CompanyProjectedCost, "%0.00")
 
     End Sub
 
-    Private Sub machineSalesVsPayrollXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles machineSalesVsPayrollXrLabel.BeforePrint
+    Private Sub machineSalesVsPayrollXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles machineSalesVsPayrollXrLabel.BeforePrint
 
         machineSalesVsPayrollXrLabel.Text = Format(CDbl(GetCurrentColumnValue("pricePerPieceCalculatedField")) / m_MachineAverageCost, "#,##0.00")
 
     End Sub
 
-    Private Sub itemSalesVsPayrollXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemSalesVsPayrollXrLabel.BeforePrint
+    Private Sub itemSalesVsPayrollXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles itemSalesVsPayrollXrLabel.BeforePrint
 
         m_ItemAverageCost = m_ItemPayroll / (CDbl(itemQuantityXrLabel.Summary.GetResult()) * CDbl(GetCurrentColumnValue("QtyPerUnit")))
         Dim salesVsPayroll As Double = CDbl(GetCurrentColumnValue("pricePerPieceCalculatedField")) / m_ItemAverageCost
@@ -520,7 +520,7 @@ Public Class ProductionMachineXtraReport
 
     End Sub
 
-    Private Sub ReportHeader_BeforePrint(sender As System.Object, e As System.Drawing.Printing.PrintEventArgs) Handles ReportHeader.BeforePrint
+    Private Sub ReportHeader_BeforePrint(sender As System.Object, e As Drawing.Printing.PrintEventArgs) Handles ReportHeader.BeforePrint
 
         m_CompanyQuantity = 0
         m_CompanyProjectedQuantity = 0

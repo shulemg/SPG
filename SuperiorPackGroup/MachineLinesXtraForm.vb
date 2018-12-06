@@ -10,7 +10,7 @@ Public Class MachineLinesXtraForm
 
     End Sub
 
-    Private Sub MachineLinesXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub MachineLinesXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         m_MachineLines = New MachinesLinesBLL
 
@@ -21,7 +21,7 @@ Public Class MachineLinesXtraForm
 
     End Sub
 
-    Private Sub deleteSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles deleteSimpleButton.Click
+    Private Sub deleteSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles deleteSimpleButton.Click
 
         If machineLineGridView.SelectedRowsCount > 0 Then
             If MessageBox.Show("Are you sure you want to delete this record/s?", "Delete Record", MessageBoxButtons.YesNo, _
@@ -43,7 +43,7 @@ Public Class MachineLinesXtraForm
 
     End Sub
 
-    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles saveSimpleButton.Click
+    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles saveSimpleButton.Click
 
         Try
             machineLineGridView.SelectAll()

@@ -1,7 +1,7 @@
 Imports System.Text
 Public Class BillOfLadingXtraReport
 
-    Private Sub fromXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles fromXrLabel.BeforePrint
+    Private Sub fromXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Printing.PrintEventArgs) Handles fromXrLabel.BeforePrint
 
         Dim str As StringBuilder = New StringBuilder(String.Empty)
         If Convert.ToBoolean(Me.GetCurrentColumnValue("Shipper")) Then
@@ -20,7 +20,7 @@ Public Class BillOfLadingXtraReport
 
     End Sub
 
-    Private Sub toXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles toXrLabel.BeforePrint
+    Private Sub toXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Printing.PrintEventArgs) Handles toXrLabel.BeforePrint
 
         Try
             toXrLabel.Text = String.Format("{0}{1}{2}{1}{3}", Me.GetCurrentColumnValue("ShippingName").ToString, vbCrLf, Me.GetCurrentColumnValue("ShippingAddress").ToString, _
@@ -31,7 +31,7 @@ Public Class BillOfLadingXtraReport
 
     End Sub
 
-    Private Sub returnsGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles returnsGroupHeader.BeforePrint
+    Private Sub returnsGroupHeader_BeforePrint(ByVal sender As System.Object, ByVal e As Printing.PrintEventArgs) Handles returnsGroupHeader.BeforePrint
 
         Try
             If Me.GetCurrentColumnValue("ShippingType").ToString = "General" Then
@@ -45,13 +45,13 @@ Public Class BillOfLadingXtraReport
 
     End Sub
 
-    Private Sub totalPalletWeightXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalPalletWeightXrLabel.BeforePrint
+    Private Sub totalPalletWeightXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Printing.PrintEventArgs) Handles totalPalletWeightXrLabel.BeforePrint
 
         totalPalletWeightXrLabel.Text = (CDbl(GetCurrentColumnValue("sngTotalPallets")) * 65).ToString
 
     End Sub
 
-    Private Sub itemDescriptionXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles itemDescriptionXrLabel.BeforePrint
+    Private Sub itemDescriptionXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Printing.PrintEventArgs) Handles itemDescriptionXrLabel.BeforePrint
 
         Try
             itemDescriptionXrLabel.Text = CStr(GetCurrentColumnValue("ItemDescription")) & vbCrLf & CStr(GetCurrentColumnValue("Note"))

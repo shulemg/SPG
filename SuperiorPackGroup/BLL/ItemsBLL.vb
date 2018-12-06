@@ -5,7 +5,7 @@ Imports DXDAL.SPGData
 Imports DevExpress.Xpo
 Imports DevExpress.Data.Filtering
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ItemsBLL
 
     Private changes As New List(Of Change)()
@@ -46,9 +46,9 @@ Public Class ItemsBLL
 
         If items.Count = 1 Then
             If New ProductionBLL().GetProductionByItemID(itemID).Count <> 0 OrElse New InventoryBLL().GetInventoryView(Nothing, Nothing, Nothing, itemID, Nothing).Count <> 0 _
-                    OrElse New ReceivingDetailsBLL().GetReceivingDetailsByItemID(itemID).Count <> 0 OrElse New ShippingDetailsBLL().GetShippingDetailsByItemID(itemID).Count <> 0 _
-                    OrElse New ReturnDetailsBLL().GetReturnDetailsByItemID(itemID).Count <> 0 OrElse New ShippingReturnDetailsBLL().GetShippingReturnDetailsByItemID(itemID).Count <> 0 Then
-                If MessageBox.Show("You can't delete this item because there are production, inventory, Receiving's, or Shipping's assigned to it. Do you want ot mark it as inactive?", "Delete Item", MessageBoxButtons.YesNo, _
+                    OrElse ReceivingDetailsBLL.GetReceivingDetailsByItemID(itemID).Count <> 0 OrElse New ShippingDetailsBLL().GetShippingDetailsByItemID(itemID).Count <> 0 _
+                    OrElse ReturnDetailsBLL.GetReceivingReturnDetailsByItemID(itemID).Count <> 0 OrElse New ShippingReturnDetailsBLL().GetShippingReturnDetailsByItemID(itemID).Count <> 0 Then
+                If MessageBox.Show("You can't delete this item because there are production, inventory, Receiving's, or Shipping's assigned to it. Do you want ot mark it as inactive?", "Delete Item", MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1) = DialogResult.Yes Then
                     Adapter.InactivateItem(itemID)
                     Return True
@@ -83,7 +83,7 @@ Public Class ItemsBLL
     ''' <param name="localLocation">The location we're looking for</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetAvailabilityByItemID(ByVal itemID As Integer, ByVal localLocation As Integer) As SPG.ItemsDataTable
 
         Return Adapter.GetAvailabilityByItemID(itemID, localLocation)
@@ -140,7 +140,7 @@ Public Class ItemsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetCaseGrossWeight(ByVal itemID As Integer) As Double
 
         Dim weight As Double? = Adapter.GetCaseGrossWeight(itemID)
@@ -176,8 +176,8 @@ Public Class ItemsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Shared Function GetDescriptionByItemID(ByVal itemID As Nullable(Of Integer)) As String
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Shared Function GetDescriptionByItemID(ByVal itemID As Integer?) As String
 
         If Not itemID.HasValue Then
             Return Nothing
@@ -192,7 +192,7 @@ Public Class ItemsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetItemBYId(ByVal itemID As Integer) As SPG.ItemsDataTable
 
         Return Adapter.GetItemByID(itemID)
@@ -211,8 +211,8 @@ Public Class ItemsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Shared Function GetItemCodeAndIDsByTypesAndCustomerID(ByVal customerID As Nullable(Of Integer), ByVal types As String, ByVal universal As Boolean, ByVal DXSession As Session) As XPView
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Shared Function GetItemCodeAndIDsByTypesAndCustomerID(ByVal customerID As Integer?, ByVal types As String, ByVal universal As Boolean, ByVal DXSession As Session) As XPView
 
         Dim ItemCodesXPView As New XPView(Session.DefaultSession, GetType(Items))
         ItemCodesXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ItemID", SortDirection.None, "[ItemID]", False, True),
@@ -222,7 +222,7 @@ Public Class ItemsBLL
         If universal = True Then
             Dim universalCustomer As Integer = CompanySettingsBLL.GetUniversalCustomer
             If customerID.HasValue Then
-                ItemCodesXPView.Criteria = GroupOperator.And(GroupOperator.Or(New BinaryOperator(Items.Fields.ItemCustomerID.PropertyName, customerID.Value, BinaryOperatorType.Equal),
+                ItemCodesXPView.Criteria = CriteriaOperator.And(CriteriaOperator.Or(New BinaryOperator(Items.Fields.ItemCustomerID.PropertyName, customerID.Value, BinaryOperatorType.Equal),
                                                                             New BinaryOperator(Items.Fields.ItemCustomerID.PropertyName, universalCustomer, BinaryOperatorType.Equal),
                                                                             New InOperator(Items.Fields.ItemCustomerID.PropertyName, CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customerID.Value, DXSession)))),
                                                                         New InOperator(Items.Fields.ItemType.PropertyName, types.Split("|"c)))
@@ -231,7 +231,7 @@ Public Class ItemsBLL
             End If
         Else
             If customerID.HasValue Then
-                ItemCodesXPView.Criteria = GroupOperator.And(New BinaryOperator(Items.Fields.ItemCustomerID.PropertyName, customerID.Value, BinaryOperatorType.Equal),
+                ItemCodesXPView.Criteria = CriteriaOperator.And(New BinaryOperator(Items.Fields.ItemCustomerID.PropertyName, customerID.Value, BinaryOperatorType.Equal),
                                                            New InOperator(Items.Fields.ItemType.PropertyName, types.Split("|"c)))
             Else
                 ItemCodesXPView.Criteria = New InOperator(Items.Fields.ItemType.PropertyName, types.Split("|"c))
@@ -242,7 +242,7 @@ Public Class ItemsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetItemsByCustomerID(ByVal customerID As Integer) As SPG.ItemsDataTable
 
         Return Adapter.GetItemsByCustomerID(customerID)
@@ -349,7 +349,7 @@ Public Class ItemsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Shared Function GetQtyOnHandByID(ByVal session As Session, ByVal itemID As Integer?, ByVal locationID As Integer, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing) As Single
 
         If itemID.HasValue = False Then
@@ -380,7 +380,7 @@ Public Class ItemsBLL
         End Try
 
     End Function
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Shared Function GetQtyOnHandByIDAndLot(ByVal session As Session, ByVal itemID As Integer?, ByVal locationID As Integer, ByVal lot As String, ByVal LPNNumber As Integer?) As Single
 
         If itemID.HasValue = False OrElse IsNothing(lot) OrElse lot = "" Then
@@ -450,7 +450,7 @@ Public Class ItemsBLL
 
     End Function
 
-    Public Shared Function GetUOMByItemID(ByVal itemID As Nullable(Of Integer)) As String
+    Public Shared Function GetUOMByItemID(ByVal itemID As Integer?) As String
 
         If Not itemID.HasValue Then
             Return Nothing
@@ -465,13 +465,13 @@ Public Class ItemsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Private Function InsertProduct(ByVal itemID As Integer, ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Nullable(Of Integer), ByVal itemDefaultMachine As Nullable(Of Integer),
-                                   ByVal itemProdStandard As Nullable(Of Double), ByVal dblPrice As Nullable(Of Double), ByVal sngRebate As Nullable(Of Single), ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Nullable(Of Double),
-                                   ByVal dblFreight As Nullable(Of Double), ByVal dblFilm As Nullable(Of Double), ByVal dblBoxes As Nullable(Of Double), ByVal dblPallets As Nullable(Of Double), ByVal dblStretchWrap As Nullable(Of Double),
-                                   ByVal dblOther1 As Nullable(Of Double), ByVal dblOther2 As Nullable(Of Double), ByVal dblOther3 As Nullable(Of Double), ByVal dblOther4 As Nullable(Of Double), ByVal dblOther5 As Nullable(Of Double),
-                                   ByVal intUnitsPerCase As Nullable(Of Double), ByVal intUnitsPerPallet As Nullable(Of Integer), ByVal intCasesPerPallet As Nullable(Of Integer), ByVal sngQtyOnHand As Nullable(Of Single),
-                                   ByVal CaseGrossWeight As Nullable(Of Double), ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String,
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Private Function InsertProduct(ByVal itemID As Integer, ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Integer?, ByVal itemDefaultMachine As Integer?,
+                                   ByVal itemProdStandard As Double?, ByVal dblPrice As Double?, ByVal sngRebate As Single?, ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Double?,
+                                   ByVal dblFreight As Double?, ByVal dblFilm As Double?, ByVal dblBoxes As Double?, ByVal dblPallets As Double?, ByVal dblStretchWrap As Double?,
+                                   ByVal dblOther1 As Double?, ByVal dblOther2 As Double?, ByVal dblOther3 As Double?, ByVal dblOther4 As Double?, ByVal dblOther5 As Double?,
+                                   ByVal intUnitsPerCase As Double?, ByVal intUnitsPerPallet As Integer?, ByVal intCasesPerPallet As Integer?, ByVal sngQtyOnHand As Single?,
+                                   ByVal CaseGrossWeight As Double?, ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String,
                                    ByVal LayersPerPallet As String, ByVal ShelfLife As String, ByVal Instructions As String, ByVal PalletPattern As String, ByVal inactive As Boolean, ByVal packers As Double?, ByVal upc As String,
                                    ByVal bagsPerCase As Integer?, ByVal RequiresLotCode As Boolean?, ByVal RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, byval MinutesPerShift As Double?,
                                    ByVal dxSession As Session) As Boolean
@@ -513,12 +513,12 @@ Public Class ItemsBLL
 
     End Sub
 
-    Private Sub SetProductFields(ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Nullable(Of Integer), ByVal itemDefaultMachine As Nullable(Of Integer),
-                                 ByVal itemProdStandard As Nullable(Of Double), ByVal dblPrice As Nullable(Of Double), ByVal sngRebate As Nullable(Of Single), ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Nullable(Of Double),
-                                 ByVal dblFreight As Nullable(Of Double), ByVal dblFilm As Nullable(Of Double), ByVal dblBoxes As Nullable(Of Double), ByVal dblStretchWrap As Nullable(Of Double), ByVal dblPallets As Nullable(Of Double),
-                                 ByVal dblOther1 As Nullable(Of Double), ByVal dblOther2 As Nullable(Of Double), ByVal dblOther3 As Nullable(Of Double), ByVal dblOther4 As Nullable(Of Double), ByVal dblOther5 As Nullable(Of Double),
-                                 ByVal intUnitsPerCase As Nullable(Of Double), ByVal intUnitsPerPallet As Nullable(Of Integer), ByVal intCasesPerPallet As Nullable(Of Integer), ByVal sngQtyOnHand As Nullable(Of Single),
-                                 ByVal CaseGrossWeight As Nullable(Of Double), ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String,
+    Private Sub SetProductFields(ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Integer?, ByVal itemDefaultMachine As Integer?,
+                                 ByVal itemProdStandard As Double?, ByVal dblPrice As Double?, ByVal sngRebate As Single?, ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Double?,
+                                 ByVal dblFreight As Double?, ByVal dblFilm As Double?, ByVal dblBoxes As Double?, ByVal dblStretchWrap As Double?, ByVal dblPallets As Double?,
+                                 ByVal dblOther1 As Double?, ByVal dblOther2 As Double?, ByVal dblOther3 As Double?, ByVal dblOther4 As Double?, ByVal dblOther5 As Double?,
+                                 ByVal intUnitsPerCase As Double?, ByVal intUnitsPerPallet As Integer?, ByVal intCasesPerPallet As Integer?, ByVal sngQtyOnHand As Single?,
+                                 ByVal CaseGrossWeight As Double?, ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String,
                                  ByVal LayersPerPallet As String, ByVal ShelfLife As String, ByVal Instructions As String, ByVal PalletPattern As String, ByVal inactive As Boolean, ByVal packers As Double?, ByVal upc As String,
                                  ByVal bagsPerCase As Integer?, ByVal RequiresLotCode As Boolean?, ByVal RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, ByVal MinutesPerShift As Double?, 
                                  ByVal product As Items, ByVal dxSession As Session)
@@ -615,13 +615,13 @@ Public Class ItemsBLL
     End Sub
 
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateProduct(ByVal itemID As Integer, ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Nullable(Of Integer), ByVal itemDefaultMachine As Nullable(Of Integer),
-                                  ByVal itemProdStandard As Nullable(Of Double), ByVal dblPrice As Nullable(Of Double), ByVal sngRebate As Nullable(Of Single), ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Nullable(Of Double),
-                                  ByVal dblFreight As Nullable(Of Double), ByVal dblFilm As Nullable(Of Double), ByVal dblBoxes As Nullable(Of Double), ByVal dblStretchWrap As Nullable(Of Double), ByVal dblPallets As Nullable(Of Double),
-                                  ByVal dblOther1 As Nullable(Of Double), ByVal dblOther2 As Nullable(Of Double), ByVal dblOther3 As Nullable(Of Double), ByVal dblOther4 As Nullable(Of Double), ByVal dblOther5 As Nullable(Of Double),
-                                  ByVal intUnitsPerCase As Nullable(Of Double), ByVal intUnitsPerPallet As Nullable(Of Integer), ByVal intCasesPerPallet As Nullable(Of Integer), ByVal sngQtyOnHand As Nullable(Of Single),
-                                  ByVal CaseGrossWeight As Nullable(Of Double), ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String, 
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateProduct(ByVal itemID As Integer, ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Integer?, ByVal itemDefaultMachine As Integer?,
+                                  ByVal itemProdStandard As Double?, ByVal dblPrice As Double?, ByVal sngRebate As Single?, ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Double?,
+                                  ByVal dblFreight As Double?, ByVal dblFilm As Double?, ByVal dblBoxes As Double?, ByVal dblStretchWrap As Double?, ByVal dblPallets As Double?,
+                                  ByVal dblOther1 As Double?, ByVal dblOther2 As Double?, ByVal dblOther3 As Double?, ByVal dblOther4 As Double?, ByVal dblOther5 As Double?,
+                                  ByVal intUnitsPerCase As Double?, ByVal intUnitsPerPallet As Integer?, ByVal intCasesPerPallet As Integer?, ByVal sngQtyOnHand As Single?,
+                                  ByVal CaseGrossWeight As Double?, ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String, 
                                   ByVal LayersPerPallet As String, ByVal ShelfLife As String, ByVal Instructions As String, ByVal PalletPattern As String, ByVal inactive As Boolean, ByVal packers As Double?, ByVal upc As String, 
                                   ByVal bagsPerCase As Integer?, byval RequiresLotCode As Boolean?, byval RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, ByVal MinutesPerSift As Double?,
                                   ByVal dxSession As Session) As Boolean

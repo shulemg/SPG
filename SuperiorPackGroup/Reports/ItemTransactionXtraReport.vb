@@ -6,7 +6,7 @@ Public Class ItemTransactionXtraReport
 
     End Sub
 
-    Private Sub ItemTransactionXtraReport_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles Me.BeforePrint
+    Private Sub ItemTransactionXtraReport_BeforePrint(ByVal sender As Object, ByVal e As Printing.PrintEventArgs) Handles Me.BeforePrint
 
         If Me.DataSource IsNot Nothing Then
             Me.openingBalanceParameter.Value = CType(Me.DataSource, ItemTransactionsList).OpeningBalance

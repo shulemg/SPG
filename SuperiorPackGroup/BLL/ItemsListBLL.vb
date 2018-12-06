@@ -14,7 +14,7 @@ Public Class ItemsListBLL
         End Get
     End Property
 
-    Public Function GetItemsList(ByVal customerID As Nullable(Of Integer), ByVal itemType As String, ByVal items As String, ByVal inactiveItems As Boolean?, _
+    Public Function GetItemsList(ByVal customerID As Integer?, ByVal itemType As String, ByVal items As String, ByVal inactiveItems As Boolean?, _
                                  ByVal inactiveCustomers As Boolean?) As SPGReports.ItemsListDataTable
 
         If inactiveCustomers.Value = True Then

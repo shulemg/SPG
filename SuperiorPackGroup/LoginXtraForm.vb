@@ -6,7 +6,7 @@ Public Class LoginXtraForm
     Private m_Wrong As Integer = 0
     Protected m_Users As UsersBLL
 
-    Private Sub okSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles okSimpleButton.Click
+    Private Sub okSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles okSimpleButton.Click
 
         Try
             m_Users = New UsersBLL
@@ -29,7 +29,7 @@ Public Class LoginXtraForm
             Else
                 My.Settings.UserName = userNameTextEdit.Text
                 My.Settings.UserSecurityLevel = securityLevel
-                Me.DialogResult = Windows.Forms.DialogResult.OK
+                Me.DialogResult = DialogResult.OK
                 Me.Close()
             End If
         Catch ex As Exception
@@ -38,7 +38,7 @@ Public Class LoginXtraForm
 
     End Sub
 
-    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cancelSimpleButton.Click
+    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles cancelSimpleButton.Click
 
         Me.Close()
 

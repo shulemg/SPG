@@ -3,7 +3,7 @@ Imports System.Text
 Imports DXDAL.SPGData
 Imports DevExpress.Xpo
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ShiftsBLL
 
     Private m_ShiftsTableAdapter As ShiftsTableAdapter = Nothing
@@ -30,8 +30,8 @@ Public Class ShiftsBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -48,15 +48,15 @@ Public Class ShiftsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetShifts() As SPG.ShiftsDataTable
 
         Return Adapter.GetShifts()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateShift(ByVal id As Nullable(Of Integer), ByVal name As String) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateShift(ByVal id As Integer?, ByVal name As String) As Boolean
 
         Dim shifts As SPG.ShiftsDataTable = Adapter.GetShiftByID(id.Value)
 
@@ -86,7 +86,7 @@ Public Class ShiftsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
     Public Function InsertShift(ByVal name As String) As Boolean
 
         Dim shifts As SPG.ShiftsDataTable = New SPG.ShiftsDataTable
@@ -105,7 +105,7 @@ Public Class ShiftsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteShift(ByVal id As Integer) As Boolean
 
         Dim shifts As SPG.ShiftsDataTable = Adapter.GetShiftByID(id)

@@ -4,7 +4,7 @@ Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 Imports DevExpress.Data.Filtering
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class BOMBLL
 
     Private m_BOMTableAdapter As BOMTableAdapter = Nothing
@@ -31,8 +31,8 @@ Public Class BOMBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -49,7 +49,7 @@ Public Class BOMBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetBOMBYFGItemID(ByVal itemID As Integer) As SPG.BOMDataTable
 
         Return Adapter.GetBOMByFGItemID(itemID)
@@ -77,16 +77,16 @@ Public Class BOMBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetBOMBYBomID(ByVal bomID As Integer) As SPG.BOMDataTable
 
         Return Adapter.GetBomByBomID(bomID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateBOM(ByVal bomID As Nullable(Of Integer), ByVal bomRawMatID As Nullable(Of Integer), ByVal bomFiniGoodID As Nullable(Of Integer), _
-            ByVal bomQuantity As Nullable(Of Single), ByVal scrapFactor As Nullable(Of Double)) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateBOM(ByVal bomID As Integer?, ByVal bomRawMatID As Integer?, ByVal bomFiniGoodID As Integer?, _
+            ByVal bomQuantity As Single?, ByVal scrapFactor As Double?) As Boolean
 
         Dim boms As SPG.BOMDataTable = Adapter.GetBomByBomID(bomID.Value)
 
@@ -132,9 +132,9 @@ Public Class BOMBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertBOM(ByVal bomRawMatID As Nullable(Of Integer), ByVal bomFiniGoodID As Nullable(Of Integer), _
-            ByVal bomQuantity As Nullable(Of Single), ByVal scrapFactor As Nullable(Of Double)) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertBOM(ByVal bomRawMatID As Integer?, ByVal bomFiniGoodID As Integer?, _
+            ByVal bomQuantity As Single?, ByVal scrapFactor As Double?) As Boolean
 
         Dim boms As SPG.BOMDataTable = New SPG.BOMDataTable
         Dim bom As SPG.BOMRow = boms.NewBOMRow()

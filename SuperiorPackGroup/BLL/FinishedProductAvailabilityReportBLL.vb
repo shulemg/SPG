@@ -14,7 +14,7 @@ Public Class FinishedProductAvailabilityReportBLL
         End Get
     End Property
 
-    Public Function GetFinishedProductAvailabilityReport(ByVal customerID As Nullable(Of Integer), ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?, _
+    Public Function GetFinishedProductAvailabilityReport(ByVal customerID As Integer?, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?, _
                                                          ByVal items As String) As SPGReports.FinishedProductAvailabilityReportDataTable
 
         If inactiveCustomers.Value = True Then

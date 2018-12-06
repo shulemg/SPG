@@ -17,7 +17,7 @@ Public Class ProductionEntriesReportBLL
         End Get
     End Property
 
-    Public Function GetProductionEntriesReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customerID As Nullable(Of Integer), ByVal lot As String, ByVal po As String, _
+    Public Function GetProductionEntriesReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customerID As Integer?, ByVal lot As String, ByVal po As String, _
                                                ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?, ByVal shift As Integer?) As SPGReports.ProductionEntriesReportDataTable
 
         If inactiveCustomers.Value = True Then

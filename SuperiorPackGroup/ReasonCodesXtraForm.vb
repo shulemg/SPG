@@ -41,11 +41,11 @@ Public Class ReasonCodesXtraForm
             Select Case permission.PermissionLevel
                 Case "FULL", "Full"
                     reassonCodesGridView.OptionsBehavior.Editable = True
-                    reassonCodesGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom
+                    reassonCodesGridView.OptionsView.NewItemRowPosition = XtraGrid.Views.Grid.NewItemRowPosition.Bottom
                     Me.deleteSimpleButton.Visible = True
                 Case "ADD", "Add"
                     reassonCodesGridView.OptionsBehavior.Editable = True
-                    reassonCodesGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom
+                    reassonCodesGridView.OptionsView.NewItemRowPosition = XtraGrid.Views.Grid.NewItemRowPosition.Bottom
                     Me.deleteSimpleButton.Visible = False
                 Case "NONE", "None", "VIEW ASSIGNED", "EDIT ASSIGNED"
                     MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand)
@@ -53,11 +53,11 @@ Public Class ReasonCodesXtraForm
                     Return False
                 Case "VIEW", "View"
                     reassonCodesGridView.OptionsBehavior.Editable = False
-                    reassonCodesGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+                    reassonCodesGridView.OptionsView.NewItemRowPosition = XtraGrid.Views.Grid.NewItemRowPosition.None
                     Me.deleteSimpleButton.Visible = False
                 Case "EDIT", "Edit"
                     reassonCodesGridView.OptionsBehavior.Editable = True
-                    reassonCodesGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None
+                    reassonCodesGridView.OptionsView.NewItemRowPosition = XtraGrid.Views.Grid.NewItemRowPosition.None
                     Me.deleteSimpleButton.Visible = False
                 Case Else
                     MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand)

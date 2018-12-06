@@ -1,7 +1,7 @@
 Imports SuperiorPackGroup.SPGTableAdapters
 Imports System.Text
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ShippingAddressBLL
 
     Private m_ShippingAddressesTableAdapter As ShippingAddressesTableAdapter = Nothing
@@ -28,8 +28,8 @@ Public Class ShippingAddressBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -46,21 +46,21 @@ Public Class ShippingAddressBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetAddressNameAndIDS() As SPG.ShippingAddressesDataTable
 
         Return Adapter.GetAddressNameAndIDs()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetAddressInfoByID(ByVal addressID As Integer) As SPG.ShippingAddressesDataTable
 
         Return Adapter.GetAddressInfoByID(addressID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetAddressByID(ByVal addressID As Integer) As SPG.ShippingAddressesDataTable
 
         Return Adapter.GetAddressByID(addressID)
@@ -113,7 +113,7 @@ Public Class ShippingAddressBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
     Public Function UpdateAddress(ByVal addressID As Integer, ByVal shippingName As String, ByVal contactFirstName As String, ByVal contactLastName As String, _
         ByVal shippingAddress As String, ByVal shippingCity As String, ByVal shippingState As String, ByVal shippingPostal As String, _
         ByVal shippingPhone As String, ByVal shippingEmail As String, ByVal shippingFax As String, ByVal shippingNote As String) As Boolean
@@ -164,7 +164,7 @@ Public Class ShippingAddressBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
     Public Function InsertAddress(ByVal addressID As Integer, ByVal shippingName As String, ByVal contactFirstName As String, ByVal contactLastName As String, _
             ByVal shippingAddress As String, ByVal shippingCity As String, ByVal shippingState As String, ByVal shippingPostal As String, _
             ByVal shippingPhone As String, ByVal shippingEmail As String, ByVal shippingFax As String, ByVal shippingNote As String) As Boolean

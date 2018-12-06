@@ -14,7 +14,7 @@ Public Class AuditTrailReportBLL
         End Get
     End Property
 
-    Public Function GetAuditTrailReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date)) As SPGReports.AuditTrailReportDataTable
+    Public Function GetAuditTrailReport(ByVal fromDate As Date?, ByVal toDate As Date?) As SPGReports.AuditTrailReportDataTable
 
         Return Adapter.GetAuditTrailReport(fromDate, toDate)
 

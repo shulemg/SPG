@@ -26,9 +26,9 @@ Public Class VendorsXtraForm
 
     End Sub
 
-    Private Sub VendorsXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub VendorsXtraForm_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
 
-        Vendor.AutoSaveOnEndEdit = True
+        DevExpress.Xpo.XPBaseObject.AutoSaveOnEndEdit = True
         CheckPermissions()
 
     End Sub

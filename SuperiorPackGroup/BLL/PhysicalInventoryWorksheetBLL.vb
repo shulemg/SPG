@@ -14,7 +14,7 @@ Public Class PhysicalInventoryWorksheetBLL
         End Get
     End Property
 
-    Public Function GetPhysicalInventoryWorksheet(ByVal customerID As Nullable(Of Integer), ByVal itemType As String, ByVal items As String, ByVal inactiveItems As Boolean?, _
+    Public Function GetPhysicalInventoryWorksheet(ByVal customerID As Integer?, ByVal itemType As String, ByVal items As String, ByVal inactiveItems As Boolean?, _
                                                   ByVal inactiveCustomers As Boolean?) As SPGReports.PhysicalInventoryWorksheetDataTable
 
         If inactiveCustomers.Value = True Then

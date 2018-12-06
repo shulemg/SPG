@@ -201,9 +201,9 @@ Public Class LotCodeFormatsXtraForm
 
         If lotCodeFormatSectionsGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case System.Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
-                Case System.Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If saveFormatSimpleButton.Enabled Then
                         if SaveLotCodeFormat() = False Then 
                             e.Cancel =True
@@ -213,7 +213,7 @@ Public Class LotCodeFormatsXtraForm
                             e.Cancel = True
                         End If
                     End If
-                Case System.Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     If cancelFormatChangesSimpleButton.Enabled Then
                         CancelFormatChanges()
                     Else

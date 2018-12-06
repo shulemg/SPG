@@ -31,7 +31,7 @@ Public Class CostingXtraReport
     Private m_MachinePackers As Double = 0
     Private m_CurrentProduction As Production
 
-    Private Sub totalMinutesDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalMinutesDetailXrLabel.BeforePrint
+    Private Sub totalMinutesDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalMinutesDetailXrLabel.BeforePrint
 
         Dim minOnJob As Integer = 0
         Try
@@ -45,7 +45,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub actualSpeedDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles actualSpeedDetailXrLabel.BeforePrint
+    Private Sub actualSpeedDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles actualSpeedDetailXrLabel.BeforePrint
 
         Try
             actualSpeedDetailXrLabel.Text = Format(CDbl(GetCurrentColumnValue("ActualSpeed")) / CType((m_IntervalHoursMinusBreak * m_MinPerHour), Integer), "0.00")
@@ -55,7 +55,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub CostingXtraReport_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles Me.BeforePrint
+    Private Sub CostingXtraReport_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles Me.BeforePrint
 
         m_MinPerHour = MainXtraForm.MinPerHOur
         m_PackersPay = MainXtraForm.PackersPay
@@ -64,7 +64,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub payrollDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles payrollDetailXrLabel.BeforePrint
+    Private Sub payrollDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles payrollDetailXrLabel.BeforePrint
 
         Try
             m_TotalPayrolltotal += m_CurrentPayrollTotal * -1
@@ -75,7 +75,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub costDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles costDetailXrLabel.BeforePrint
+    Private Sub costDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles costDetailXrLabel.BeforePrint
 
         Try
             costDetailXrLabel.Text = Format(m_CurrentCost, "$#,##0.00")
@@ -86,7 +86,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub profitDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles profitDetailXrLabel.BeforePrint
+    Private Sub profitDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles profitDetailXrLabel.BeforePrint
 
         Try
             Dim currentAbsoluteCost As Double = Math.Abs(m_CurrentCost)
@@ -99,7 +99,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub costPerPieceDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles costPerPieceDetailXrLabel.BeforePrint
+    Private Sub costPerPieceDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles costPerPieceDetailXrLabel.BeforePrint
 
         Try
             costPerPieceDetailXrLabel.Text = Format(Math.Abs(m_CurrentCost / m_CurrentQuantity * -1), "$#,##0.00")
@@ -111,14 +111,14 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub packsPerMinuteDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles packsPerMinuteDetailXrLabel.BeforePrint
+    Private Sub packsPerMinuteDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles packsPerMinuteDetailXrLabel.BeforePrint
 
         Dim interval As Integer = CInt(m_IntervalHoursMinusBreak * m_MinPerHour)
         packsPerMinuteDetailXrLabel.Text = Format(m_CurrentQuantity / interval, "0.00")
 
     End Sub
 
-    Private Sub salesVsPayrollDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles salesVsPayrollDetailXrLabel.BeforePrint
+    Private Sub salesVsPayrollDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles salesVsPayrollDetailXrLabel.BeforePrint
 
         Try
             salesVsPayrollDetailXrLabel.Text = Format(m_CurrentPayrollTotal / m_CurrentTotalPrice, "$#,##0.00")
@@ -128,7 +128,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub salesVsCostDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles salesVsCostDetailXrLabel.BeforePrint
+    Private Sub salesVsCostDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles salesVsCostDetailXrLabel.BeforePrint
 
         Try
             salesVsCostDetailXrLabel.Text = Format(Math.Abs(m_CurrentCost) / m_CurrentTotalPrice, "$#,##0.00")
@@ -138,7 +138,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub profitVsSalesDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles profitVsSalesDetailXrLabel.BeforePrint
+    Private Sub profitVsSalesDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles profitVsSalesDetailXrLabel.BeforePrint
 
         Try
             profitVsSalesDetailXrLabel.Text = Format(m_CurrentTotalPrice / (m_CurrentTotalPrice - Math.Abs(m_CurrentCost)), "$#,##0.00")
@@ -148,31 +148,31 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub totalMinutesFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalMinutesFooterXRLabel.BeforePrint
+    Private Sub totalMinutesFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalMinutesFooterXRLabel.BeforePrint
 
         Me.totalMinutesFooterXRLabel.Text = CStr(m_Totalminutestotal)
 
     End Sub
 
-    Private Sub payrollFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles payrollFooterXrLabel.BeforePrint
+    Private Sub payrollFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles payrollFooterXrLabel.BeforePrint
 
         payrollFooterXrLabel.Text = Format(m_TotalPayrolltotal, "$#,##0.00")
 
     End Sub
 
-    Private Sub costFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles costFooterXrLabel.BeforePrint
+    Private Sub costFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles costFooterXrLabel.BeforePrint
 
         costFooterXrLabel.Text = Format(m_TotalCosttotal, "$#,##0.00")
 
     End Sub
 
-    Private Sub profitFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles profitFooterXrLabel.BeforePrint
+    Private Sub profitFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles profitFooterXrLabel.BeforePrint
 
         profitFooterXrLabel.Text = Format(m_TotalProfitTotal, "$#,##0.00")
 
     End Sub
 
-    Private Sub costPerPieceFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles costPerPieceFooterXrLabel.BeforePrint
+    Private Sub costPerPieceFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles costPerPieceFooterXrLabel.BeforePrint
 
         Try
             costPerPieceFooterXrLabel.Text = Format((Math.Abs(m_TotalCosttotal) / m_TotalQtyProducedTotal) * -1, "$#,##0.00")
@@ -182,7 +182,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub packsPerMinuteFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles packsPerMinuteFooterXrLabel.BeforePrint
+    Private Sub packsPerMinuteFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles packsPerMinuteFooterXrLabel.BeforePrint
 
         Try
             packsPerMinuteFooterXrLabel.Text = Format(m_TotalQtyProducedTotal / m_Totalminutestotal, "0.00")
@@ -192,7 +192,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub salesVsPayrollFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles salesVsPayrollFooterXrLabel.BeforePrint
+    Private Sub salesVsPayrollFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles salesVsPayrollFooterXrLabel.BeforePrint
 
         Try
             salesVsPayrollFooterXrLabel.Text = Format(m_TotalPayrolltotal / m_TotalPriceTotal, "$#,##0.00")
@@ -203,7 +203,7 @@ Public Class CostingXtraReport
     End Sub
 
 
-    Private Sub salesVsCostFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles salesVsCostFooterXrLabel.BeforePrint
+    Private Sub salesVsCostFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles salesVsCostFooterXrLabel.BeforePrint
 
         Try
             salesVsCostFooterXrLabel.Text = Format(m_TotalCosttotal / m_TotalPriceTotal, "$#,##0.00")
@@ -213,7 +213,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub profitVsSalesFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles profitVsSalesFooterXrLabel.BeforePrint
+    Private Sub profitVsSalesFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles profitVsSalesFooterXrLabel.BeforePrint
 
         Try
             profitVsSalesFooterXrLabel.Text = Format(m_TotalPriceTotal / m_TotalProfitTotal, "$#,##0.00")
@@ -223,7 +223,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub totalOtherDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalOtherDetailXrLabel.BeforePrint
+    Private Sub totalOtherDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalOtherDetailXrLabel.BeforePrint
 
         Dim totalOtherAmount As Double = 0
 
@@ -238,13 +238,13 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub totalOtherFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalOtherFooterXrLabel.BeforePrint
+    Private Sub totalOtherFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalOtherFooterXrLabel.BeforePrint
 
         totalOtherFooterXrLabel.Text = Format(m_TotalOtherAmountTotal, "$#,##0.00")
 
     End Sub
 
-    Private Sub salesVsProfitDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles salesVsProfitDetailXrLabel.BeforePrint
+    Private Sub salesVsProfitDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles salesVsProfitDetailXrLabel.BeforePrint
 
         Try
             salesVsProfitDetailXrLabel.Text = Format((m_CurrentTotalPrice - Math.Abs(m_CurrentCost)) / m_CurrentTotalPrice, "$#,##0.00")
@@ -254,7 +254,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub salesVsProfitFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles salesVsProfitFooterXrLabel.BeforePrint
+    Private Sub salesVsProfitFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles salesVsProfitFooterXrLabel.BeforePrint
 
         Try
             salesVsProfitFooterXrLabel.Text = Format(m_TotalProfitTotal / m_TotalPriceTotal, "$#,##0.00")
@@ -264,7 +264,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub differenceFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles differenceFooterXRLabel.BeforePrint
+    Private Sub differenceFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles differenceFooterXRLabel.BeforePrint
 
         Try
             differenceFooterXRLabel.Text = Format(m_TotalExpected - CDbl(Me.quantityFooterXRLabel.Summary.GetResult), "#,#")
@@ -274,7 +274,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub actualSpeedFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles actualSpeedFooterXRLabel.BeforePrint
+    Private Sub actualSpeedFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles actualSpeedFooterXRLabel.BeforePrint
 
         Try
             actualSpeedFooterXRLabel.Text = Format(CDbl(Me.actualSpeedSummary.Summary.GetResult) / m_Totalminutestotal, "0.00")
@@ -284,7 +284,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub Detail_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
+    Private Sub Detail_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
 
         m_TimeDiffStartToStop = DateDiff(DateInterval.Minute, Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStop")))
         m_BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(GetCurrentColumnValue("ProdMainDate")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), _
@@ -342,25 +342,25 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub totalHoursDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalHoursDetailXrLabel.BeforePrint
+    Private Sub totalHoursDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalHoursDetailXrLabel.BeforePrint
 
         totalHoursDetailXrLabel.Text = String.Format("{0}:{1}", Format((m_TimeDiffStartToStop - m_BreakMinutes) \ 60, "0"), Format(((m_TimeDiffStartToStop - m_BreakMinutes) Mod 60) \ 1, "00"))
 
     End Sub
 
-    Private Sub totalMinutesHeaderXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalMinutesHeaderXRLabel.BeforePrint
+    Private Sub totalMinutesHeaderXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalMinutesHeaderXRLabel.BeforePrint
 
        ' totalMinutesHeaderXRLabel.Text = String.Format("Total Minutes ({0}/Hour)", m_MinPerHour)
 
     End Sub
 
-    Private Sub totalHoursFooterXRLabel_SummaryReset(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles totalHoursFooterXRLabel.SummaryReset
+    Private Sub totalHoursFooterXRLabel_SummaryReset(ByVal sender As System.Object, ByVal e As EventArgs) Handles totalHoursFooterXRLabel.SummaryReset
 
         m_Minutes = 0
 
     End Sub
 
-    Private Sub totalHoursFooterXRLabel_SummaryRowChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles totalHoursFooterXRLabel.SummaryRowChanged
+    Private Sub totalHoursFooterXRLabel_SummaryRowChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles totalHoursFooterXRLabel.SummaryRowChanged
 
         'This runs before Detail_BeforePrint
         m_Minutes += CInt(DateDiff(DateInterval.Minute, Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStop"))) - _
@@ -369,14 +369,14 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub totalHoursFooterXRLabel_SummaryGetResult(ByVal sender As System.Object, ByVal e As DevExpress.XtraReports.UI.SummaryGetResultEventArgs) Handles totalHoursFooterXRLabel.SummaryGetResult
+    Private Sub totalHoursFooterXRLabel_SummaryGetResult(ByVal sender As System.Object, ByVal e As XtraReports.UI.SummaryGetResultEventArgs) Handles totalHoursFooterXRLabel.SummaryGetResult
 
-        e.Result = String.Format("{0}:{1}", Strings.Format(m_Minutes \ 60, "##############0"), Strings.Format((m_Minutes Mod 60) \ 1, "00"))
+        e.Result = String.Format("{0}:{1}", Format(m_Minutes \ 60, "##############0"), Format((m_Minutes Mod 60) \ 1, "00"))
         e.Handled = True
 
     End Sub
 
-    Private Sub expectedDetailXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles expectedDetailXrLabel.BeforePrint
+    Private Sub expectedDetailXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles expectedDetailXrLabel.BeforePrint
 
         '= m_IntervalHoursMinusBreak * Convert.ToDouble(GetCurrentColumnValue("ExpectedProduction"))
         If m_MachineStandard = 0 Then
@@ -390,13 +390,13 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub differenceDetailXrLabel_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles differenceDetailXrLabel.BeforePrint
+    Private Sub differenceDetailXrLabel_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles differenceDetailXrLabel.BeforePrint
 
         differenceDetailXrLabel.Text = Format(m_CurrentQuantity - m_Expected, "#,#")
 
     End Sub
 
-    Private Sub ReportHeader_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles ReportHeader.BeforePrint
+    Private Sub ReportHeader_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles ReportHeader.BeforePrint
 
         m_Totalminutestotal = 0
         m_TotalPayrolltotal = -0.0
@@ -410,7 +410,7 @@ Public Class CostingXtraReport
 
     End Sub
 
-    Private Sub expectedFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles expectedFooterXRLabel.BeforePrint
+    Private Sub expectedFooterXRLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles expectedFooterXRLabel.BeforePrint
 
         expectedFooterXRLabel.Text = Format(m_TotalExpected, "#,#")
 

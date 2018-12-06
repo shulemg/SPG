@@ -4,8 +4,8 @@ Imports DevExpress.Data.Filtering
 
 Public Class ReceivingReportBLL
 
-    Public Shared Function GetReceivingReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal shiftID As Nullable(Of Integer), ByVal customerID As Nullable(Of Integer), ByVal lot As String, _
-                                      ByVal po As String, ByVal BOL As String, ByVal vendor As Integer?, ByVal carrierID As Nullable(Of Integer), ByVal items As String, ByVal inactiveItems As Boolean?, _
+    Public Shared Function GetReceivingReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal shiftID As Integer?, ByVal customerID As Integer?, ByVal lot As String, _
+                                      ByVal po As String, ByVal BOL As String, ByVal vendor As Integer?, ByVal carrierID As Integer?, ByVal items As String, ByVal inactiveItems As Boolean?, _
                                       ByVal onlyAssignedCustomers As Boolean, ByVal inactiveCustomers As Boolean?) As XPView
 
         Dim ReceivingReportXPView As New XPView(Session.DefaultSession, GetType(ReceivingDetail))
@@ -52,7 +52,7 @@ Public Class ReceivingReportBLL
         End If
 
         Try
-            ReceivingReportXPView.Criteria = GroupOperator.And(theCriteria)
+            ReceivingReportXPView.Criteria = CriteriaOperator.And(theCriteria)
             ReceivingReportXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ReceivDate", SortDirection.Ascending, "[ReceivMainID].[ReceivDate]", False, True),
                                                                           New ViewProperty("ShiftName", SortDirection.None, "[ReceivMainID].[intShiftID].[ShiftName]", False, True),
                                                                           New ViewProperty("CustomerName", SortDirection.Ascending, "[ReceivMainID].[ReceivCustID].[CustomerName]", False, True),

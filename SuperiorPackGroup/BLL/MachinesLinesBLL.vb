@@ -3,7 +3,7 @@ Imports System.Text
 Imports DevExpress.xpo 
 Imports DXDAL.SPGData
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class MachinesLinesBLL
 
     Private m_MachineLinesTableAdapter As MachineLinesTableAdapter = Nothing
@@ -19,7 +19,7 @@ Public Class MachinesLinesBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetMachineLines() As SPG.MachineLinesDataTable
 
         Return Adapter.GetMachineLines()
@@ -37,8 +37,8 @@ Public Class MachinesLinesBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -55,8 +55,8 @@ Public Class MachinesLinesBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateMachineLine(ByVal id As Nullable(Of Integer), ByVal name As String) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateMachineLine(ByVal id As Integer?, ByVal name As String) As Boolean
 
         Dim machineLines As SPG.MachineLinesDataTable = Adapter.GetMachineLineByID(id.Value)
 
@@ -86,7 +86,7 @@ Public Class MachinesLinesBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
     Public Function InsertMachineLine(ByVal name As String) As Boolean
 
         Dim machineLines As SPG.MachineLinesDataTable = New SPG.MachineLinesDataTable
@@ -105,7 +105,7 @@ Public Class MachinesLinesBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteMachineLine(ByVal id As Integer) As Boolean
 
         Dim machineLines As SPG.MachineLinesDataTable = Adapter.GetMachineLineByID(id)

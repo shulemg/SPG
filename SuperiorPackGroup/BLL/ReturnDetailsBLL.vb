@@ -4,7 +4,7 @@ Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 Imports DevExpress.Data.Filtering
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ReturnDetailsBLL
 
     Private m_ReturnDetailsTableAdapter As ReturnDetTableAdapter = Nothing
@@ -20,13 +20,6 @@ Public Class ReturnDetailsBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetReturnDetailsByItemID(ByVal itemID As Integer) As SPG.ReturnDetDataTable
-
-        Return Adapter.GetReturnDetByItemID(itemID)
-
-    End Function
-
     Private Sub UpdateAuditTrail(ByVal ModifiedRecord As SPG.ReturnDetRow, ByVal originalRecord As Object())
 
         Dim builder As New StringBuilder(String.Empty)
@@ -38,8 +31,8 @@ Public Class ReturnDetailsBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -56,16 +49,16 @@ Public Class ReturnDetailsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetDetailsByReceivingID(ByVal receivingID As Integer) As SPG.ReturnDetDataTable
 
         Return Adapter.GetReturnDetByReceivingID(receivingID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateReturnDetails(ByVal session As Session, ByVal detailID As Nullable(Of Integer), ByVal receivingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer), _
-                                        ByVal units As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), ByVal reason As String, ByVal expirationDate As Date?) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateReturnDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal receivingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?, _
+                                        ByVal units As Integer?, ByVal pallets As Single?, ByVal reason As String, ByVal expirationDate As Date?) As Boolean
 
         If Not itemID.HasValue Then
             Throw New ApplicationException("You must provide return item.")
@@ -146,9 +139,9 @@ Public Class ReturnDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertDetails(ByVal session As Session, ByVal receivingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer), ByVal units As Nullable(Of Integer), _
-                                  ByVal pallets As Nullable(Of Single), ByVal reason As String, ByVal expirationDate As Date?) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertDetails(ByVal session As Session, ByVal receivingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?, ByVal units As Integer?, _
+                                  ByVal pallets As Single?, ByVal reason As String, ByVal expirationDate As Date?) As Boolean
 
         Dim details As SPG.ReturnDetDataTable = New SPG.ReturnDetDataTable
         Dim returnDetail As SPG.ReturnDetRow = details.NewReturnDetRow()
@@ -194,7 +187,7 @@ Public Class ReturnDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteReturnDetail(ByVal session As Session, ByVal detailID As Integer) As Boolean
 
         Dim details As SPG.ReturnDetDataTable = Adapter.GetReturnDetByID(detailID)
@@ -219,19 +212,21 @@ Public Class ReturnDetailsBLL
 
     End Function
 
-    Public Shared Function GetREceivingReturnDetailsByItemID(ByVal itemID As Integer) As XPView
+    Public Shared Function GetReceivingReturnDetailsByItemID(ByVal itemID As Integer) As XPView
 
-        Dim ReceivingReturnXPView As New XPView(Session.DefaultSession, GetType(ReceivedReturns))
+        Dim ReceivingReturnXPView As New XPView(Session.DefaultSession, GetType(ReceivingDetail))
 
-        ReceivingReturnXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ReturnDetID", SortDirection.None, ReceivedReturns.Fields.ReturnDetID, False, True),
-                                                                      New ViewProperty("ReceiveMainID", SortDirection.Ascending, ReceivedReturns.Fields.ReceiveMainID.ReceivID, False, True),
-                                                                      New ViewProperty("ReturnDetLot", SortDirection.None, ReceivedReturns.Fields.ReturnDetLot, False, True),
-                                                                      New ViewProperty("ExpirationDate", SortDirection.None, ReceivedReturns.Fields.ExpirationDate, False, True),
-                                                                      New ViewProperty("ReturnDetQty", SortDirection.None, ReceivedReturns.Fields.ReturnDetQty, False, True),
-                                                                      New ViewProperty("ReceiveBOL", SortDirection.None, ReceivedReturns.Fields.ReceiveMainID.ReceivBOL, False, True),
-                                                                      New ViewProperty("ReceiveDate", SortDirection.None, ReceivedReturns.Fields.ReceiveMainID.ReceivDate, False, True)})
+        ReceivingReturnXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ReceiveDetID", SortDirection.None, ReceivingDetail.Fields.ReceivDetID, False, True),
+                                                                      New ViewProperty("ReceiveMainID", SortDirection.Ascending, ReceivingDetail.Fields.ReceivMainID.ReceivID, False, True),
+                                                                      New ViewProperty("ReceiveDetLot", SortDirection.None, ReceivingDetail.Fields.ReceivDetLot, False, True),
+                                                                      New ViewProperty("ReceiveDetLPN", SortDirection.None, ReceivingDetail.Fields.ReceivDetLPN, False, True),
+                                                                      New ViewProperty("ExpirationDate", SortDirection.None, ReceivingDetail.Fields.ExpirationDate, False, True),
+                                                                      New ViewProperty("ReceiveDetQty", SortDirection.None, ReceivingDetail.Fields.ReceivDetQty, False, True),
+                                                                      New ViewProperty("ReceiveBOL", SortDirection.None, ReceivingDetail.Fields.ReceivMainID.ReceivBOL, False, True),
+                                                                      New ViewProperty("ReceiveDate", SortDirection.None, ReceivingDetail.Fields.ReceivMainID.ReceivDate, False, True)})
 
-        ReceivingReturnXPView.Criteria = New BinaryOperator(ReceivedReturns.Fields.ReturnDetItemID.ItemID.PropertyName, itemID, BinaryOperatorType.Equal)
+        ReceivingReturnXPView.Criteria = CriteriaOperator.And(New BinaryOperator(ReceivingDetail.Fields.ReceivDetItemID.ItemType.PropertyName, "FG", BinaryOperatorType.Equal),
+                                                                New BinaryOperator(ReceivingDetail.Fields.ReceivDetItemID.ItemID.PropertyName, itemID, BinaryOperatorType.Equal))
 
         Return ReceivingReturnXPView
 

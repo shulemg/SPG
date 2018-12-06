@@ -65,13 +65,13 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cancelSimpleButton.Click
+    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles cancelSimpleButton.Click
 
         PrepareNewRecord()
 
     End Sub
 
-    Private Sub clearSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clearSimpleButton.Click
+    Private Sub clearSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles clearSimpleButton.Click
 
         SetDefaultViewFilter()
         fromFilterDateEdit.EditValue = Nothing
@@ -80,7 +80,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub customerFilterLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles customerFilterLookUpEdit.Validated
+    Private Sub customerFilterLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As EventArgs) Handles customerFilterLookUpEdit.Validated
 
         If CType(customerFilterLookUpEdit.EditValue, String) = customerFilterLookUpEdit.Properties.NullText OrElse String.IsNullOrEmpty(CStr(customerFilterLookUpEdit.EditValue)) Then
             itemsFilterXPView.Filter = Nothing
@@ -90,7 +90,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles deleteRepositoryItemButtonEdit.Click
+    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles deleteRepositoryItemButtonEdit.Click
 
         If MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) _
                 = Windows.Forms.DialogResult.Yes Then
@@ -106,7 +106,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub editSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles editSimpleButton.Click
+    Private Sub editSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles editSimpleButton.Click
 
         With inventoryGridView
             'enters the rowhandle for the editing record in the edit button tag property
@@ -204,7 +204,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub filterSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles filterSimpleButton.Click
+    Private Sub filterSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles filterSimpleButton.Click
 
         If toFilterDateEdit.DateTime.TimeOfDay.TotalMinutes = 0 Then
             toFilterDateEdit.DateTime = DateAdd(DateInterval.Minute, 1439, toFilterDateEdit.DateTime)
@@ -213,7 +213,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub inventoryGridView_CustomColumnDisplayText(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs) Handles inventoryGridView.CustomColumnDisplayText
+    Private Sub inventoryGridView_CustomColumnDisplayText(sender As Object, e As Views.Base.CustomColumnDisplayTextEventArgs) Handles inventoryGridView.CustomColumnDisplayText
 
         If e.Column Is expirationDateGridColumn AndAlso IsDate(e.Value) Then
             e.DisplayText = CDate(e.Value).ToString(inventoryGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, expirationDateFormatGridColumn).ToString)
@@ -221,7 +221,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub InventoryXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub InventoryXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If editSimpleButton.Tag IsNot Nothing Then
             MessageBox.Show("You must first save or cancel the changes")
@@ -242,7 +242,7 @@ Public Class InventoryXtraForm
         End If
     End Sub
 
-    Private Sub InventoryXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub InventoryXtraForm_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
 
         m_timer.Interval = CInt(TimeSpan.FromMinutes(1).TotalMilliseconds)
         m_timer.Start()
@@ -253,7 +253,7 @@ Public Class InventoryXtraForm
 
         m_InventoryUOW = New UnitOfWork(SPGDataLayer) With {.TrackPropertiesModifications = True, .OptimisticLockingReadBehavior = OptimisticLockingReadBehavior.MergeCollisionThrowException}
         'm_InventorySession = New Session(XpoDefault.Session.DataLayer.DataLayer)
-        ProductionProjectDetails.AutoSaveOnEndEdit = True
+        XPBaseObject.AutoSaveOnEndEdit = True
         For i As Integer = 0 To components.Components.Count - 1
             If TypeOf (components.Components(i)) Is XPView Then
                 CType(components.Components(i), XPView).Session = m_InventoryUOW
@@ -294,7 +294,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub itemLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles itemLookUpEdit.Validated
+    Private Sub itemLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As EventArgs) Handles itemLookUpEdit.Validated
 
 
         Dim itemId As Integer? = CType(itemLookUpEdit.EditValue, Integer?)
@@ -386,7 +386,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub poolDetailsGridView_CustomSummaryCalculate(sender As Object, e As DevExpress.Data.CustomSummaryEventArgs) Handles poolDetailsGridView.CustomSummaryCalculate
+    Private Sub poolDetailsGridView_CustomSummaryCalculate(sender As Object, e As CustomSummaryEventArgs) Handles poolDetailsGridView.CustomSummaryCalculate
 
         Dim summaryID As Integer = Convert.ToInt32(CType(e.Item, GridSummaryItem).Tag)
         Dim View As GridView = CType(sender, GridView)
@@ -411,7 +411,7 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub poolDetailsGridView_CustomUnboundColumnData(sender As Object, e As DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs) Handles poolDetailsGridView.CustomUnboundColumnData
+    Private Sub poolDetailsGridView_CustomUnboundColumnData(sender As Object, e As Views.Base.CustomColumnDataEventArgs) Handles poolDetailsGridView.CustomUnboundColumnData
 
         Try
             If e.Column.FieldName = "itemQuantityUsedGridColumn" Then
@@ -455,13 +455,13 @@ Public Class InventoryXtraForm
 
     End Sub
 
-    Private Sub quantityTextEdit_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles quantityTextEdit.Validated
+    Private Sub quantityTextEdit_Validated(ByVal sender As System.Object, ByVal e As EventArgs) Handles quantityTextEdit.Validated
 
         UpdatePallets()
 
     End Sub
 
-    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles saveSimpleButton.Click
+    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles saveSimpleButton.Click
 
         If CType(itemLookUpEdit.Properties.Tag, Integer?) <> CType(itemLookUpEdit.EditValue, Integer?) Then
             m_InventoryUOW.Delete(productionProjectDetailXpCollection)
@@ -609,7 +609,7 @@ Public Class InventoryXtraForm
             inventoryViewCriteria.Add(New BinaryOperator(Inventory.Fields.Pallet.PropertyName, pallet.Value, BinaryOperatorType.Equal))
         End If
 
-        inventoryXPView.Criteria = GroupOperator.And(inventoryViewCriteria)
+        inventoryXPView.Criteria = CriteriaOperator.And(inventoryViewCriteria)
 
         'Me.inventoryGridControl.DataSource = m_Inventory.GetInventoryView(CType(Me.fromFilterDateEdit.EditValue, Date?), CType(Me.toFilterDateEdit.EditValue, Date?), _
         '                                                                  CType(Me.customerFilterLookUpEdit.EditValue, Integer?), CType(Me.itemFilterLookUpEdit.EditValue, Integer?), _
@@ -620,11 +620,11 @@ Public Class InventoryXtraForm
     Private Sub FilterAssignedCustomers()
 
         inventoryXPView.Filter = New InOperator("CustomerID", UsersCustomerBLL.GetAssignedCustomerIDs(m_InventoryUOW))
-        customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
+        customersXPView.Criteria = CriteriaOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)))
-        itemsFilterXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)),
+        itemsFilterXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)),
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"FG", "IG"}))
-        itemsXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)),
+        itemsXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_InventoryUOW)),
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"FG", "IG"}), New BinaryOperator(Items.Fields.Inactive.PropertyName, False))
 
     End Sub

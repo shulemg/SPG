@@ -67,28 +67,28 @@ Public Class CompanySettingsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetCompanySettings() As SPG.CompanySettingsDataTable
 
         Return Adapter.GetCompanySettings()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Shared Function GetUniversalCustomer() As Integer
 
         Return Adapter.GetUniversalCustomer().Value
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Shared Function GetDBVersion() As String
 
         Return Adapter.GetDBVersion()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Shared Function SetDBVersion(ByVal value As String) As Boolean
 
         Return CBool(Adapter.SetDBVersion(value))
@@ -106,9 +106,9 @@ Public Class CompanySettingsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateCompanySettings(ByVal packers As Nullable(Of Single), ByVal operators As Nullable(Of Single), ByVal supers As Nullable(Of Single), ByVal minPerHour As Nullable(Of Short), _
-                                          ByVal universalCustomer As Nullable(Of Integer), ByVal lpnPrinter As String, ByVal LPNMoveRight As Byte, ByVal LPNMoveDown As Byte, ByVal LPNCopies As Byte, ByVal Location As Integer?) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateCompanySettings(ByVal packers As Single?, ByVal operators As Single?, ByVal supers As Single?, ByVal minPerHour As Short?, _
+                                          ByVal universalCustomer As Integer?, ByVal lpnPrinter As String, ByVal LPNMoveRight As Byte, ByVal LPNMoveDown As Byte, ByVal LPNCopies As Byte, ByVal Location As Integer?) As Boolean
 
         Dim settings As CompanySettings = GetSettings()
 

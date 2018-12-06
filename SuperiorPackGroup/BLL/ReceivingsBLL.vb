@@ -3,7 +3,7 @@ Imports System.Text
 Imports DXDAL.SPGData
 Imports DevExpress.Xpo
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ReceivingsBLL
 
     Private m_ReceivingsTableAdapter As ReceivingsTableAdapter = Nothing
@@ -21,7 +21,7 @@ Public Class ReceivingsBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetReceivingsByCustomerID(ByVal customerID As Integer) As SPG.ReceivingsDataTable
 
         Return Adapter.GetReceivingsByCustomerID(customerID)
@@ -45,22 +45,22 @@ Public Class ReceivingsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetIDAndBOLByCustomerAndDate(ByVal customerID As Nullable(Of Integer), ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date)) _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Function GetIDAndBOLByCustomerAndDate(ByVal customerID As Integer?, ByVal fromDate As Date?, ByVal toDate As Date?) _
             As SPG.ReceivingsDataTable
 
         Return Adapter.GetIDAndBOLByCustomerAndDate(customerID, fromDate, toDate)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetReceivings() As SPG.ReceivingsDataTable
 
         Return Adapter.GetReceivings()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetReceivingsByID(ByVal receiveID As Integer) As SPG.ReceivingsDataTable
 
         Return Adapter.GetReceivingsByID(receiveID)
@@ -78,8 +78,8 @@ Public Class ReceivingsBLL
 
     End Sub
 
-    Private Sub SetReceivingFields(ByVal receivDate As Nullable(Of Date), ByVal receivCarrierID As Nullable(Of Integer), ByVal receivCustID As Nullable(Of Integer), ByVal receivBol As String, _
-                                          ByVal strVendor As Integer?, ByVal sngSkits As Nullable(Of Single), ByVal sngTotalPallets As Nullable(Of Single), ByVal strPO As String, ByVal intShiftID As Nullable(Of Integer), _
+    Private Sub SetReceivingFields(ByVal receivDate As Date?, ByVal receivCarrierID As Integer?, ByVal receivCustID As Integer?, ByVal receivBol As String, _
+                                          ByVal strVendor As Integer?, ByVal sngSkits As Single?, ByVal sngTotalPallets As Single?, ByVal strPO As String, ByVal intShiftID As Integer?, _
                                           ByVal strTrailer As String, ByVal strSeal As String, ByVal notes As String, ByVal unloadedBy As Integer?, ByVal checkedBy As Integer?, ByVal wheelsChocked As Integer?,
                                           ByVal startTime As DateTime?, ByVal finishTime As DateTime?, ByVal temparature As Double?, ByVal physicalCondition As Integer?, ByVal loadCondition As Integer?, ByVal foreignSubstance As Integer?,
                                           ByVal insectActivity As Integer?, ByVal correctPallets As Integer?, ByVal locationID As Integer, ByVal receivingRecord As Receiving)
@@ -112,9 +112,9 @@ Public Class ReceivingsBLL
         SetField(Receiving.Fields.ReceivingLocation.PropertyName, receivingRecord.ReceivingLocation, Session.DefaultSession.GetObjectByKey(Of Locations)(locationID), receivingRecord)
 
     End Sub
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateReceiving(ByVal receivID As Integer, ByVal receivDate As Nullable(Of Date), ByVal receivCarrierID As Nullable(Of Integer), ByVal receivCustID As Nullable(Of Integer), ByVal receivBol As String, ByVal strVendor As Integer?,
-                                    ByVal sngSkits As Nullable(Of Single), ByVal sngTotalPallets As Nullable(Of Single), ByVal strPO As String, ByVal intShiftID As Nullable(Of Integer), ByVal strTrailer As String, ByVal strSeal As String,
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateReceiving(ByVal receivID As Integer, ByVal receivDate As Date?, ByVal receivCarrierID As Integer?, ByVal receivCustID As Integer?, ByVal receivBol As String, ByVal strVendor As Integer?,
+                                    ByVal sngSkits As Single?, ByVal sngTotalPallets As Single?, ByVal strPO As String, ByVal intShiftID As Integer?, ByVal strTrailer As String, ByVal strSeal As String,
                                     ByVal notes As String, ByVal unloadedBy As Integer?, ByVal checkedBy As Integer?, ByVal wheelsChocked As Integer?, ByVal startTime As DateTime?, ByVal finishTime As DateTime?, ByVal temparature As Double?,
                                     ByVal physicalCondition As Integer?, ByVal loadCondition As Integer?, ByVal foreignSubstance As Integer?, ByVal insectActivity As Integer?, ByVal correctPallets As Integer?, ByVal locationID As Integer) As Boolean
 
@@ -185,9 +185,9 @@ Public Class ReceivingsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertReceiving(ByVal receivID As Integer, ByVal receivDate As Nullable(Of Date), ByVal receivCarrierID As Nullable(Of Integer), ByVal receivCustID As Nullable(Of Integer), ByVal receivBol As String, ByVal strVendor As Integer?,
-                                    ByVal sngSkits As Nullable(Of Single), ByVal sngTotalPallets As Nullable(Of Single), ByVal strPO As String, ByVal intShiftID As Nullable(Of Integer), ByVal strTrailer As String, ByVal strSeal As String,
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertReceiving(ByVal receivID As Integer, ByVal receivDate As Date?, ByVal receivCarrierID As Integer?, ByVal receivCustID As Integer?, ByVal receivBol As String, ByVal strVendor As Integer?,
+                                    ByVal sngSkits As Single?, ByVal sngTotalPallets As Single?, ByVal strPO As String, ByVal intShiftID As Integer?, ByVal strTrailer As String, ByVal strSeal As String,
                                     ByVal notes As String, ByVal unloadedBy As Integer?, ByVal checkedBy As Integer?, ByVal wheelsChocked As Integer?, ByVal startTime As DateTime?, ByVal finishTime As DateTime?, ByVal temparature As Double?,
                                     ByVal physicalCondition As Integer?, ByVal loadCondition As Integer?, ByVal foreignSubstance As Integer?, ByVal insectActivity As Integer?, ByVal correctPallets As Integer?, ByVal locationID As Integer) As Boolean
 
@@ -238,7 +238,7 @@ Public Class ReceivingsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteReceiving(ByVal receivingID As Integer) As Boolean
 
         Dim receivings As SPG.ReceivingsDataTable = Adapter.GetReceivingsByID(receivingID)

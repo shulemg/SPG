@@ -113,7 +113,7 @@ Public Class LPNLabel
                 LPNBaseNumber = GetNextLPNNumber(inventoryRecord.InventoryItemID.ItemCustomerID)
                 inventoryRecord.LPNNumber = LPNBaseNumber
                 inventoryRecord.FullLPNNumber = inventoryRecord.InventoryItemID.ItemCustomerID.LPNPrefix &
-                        Strings.Right("0000000000" & LPNBaseNumber.ToString, Len(inventoryRecord.InventoryItemID.ItemCustomerID.LastLPNNumber.ToString))
+                        Right("0000000000" & LPNBaseNumber.ToString, Len(inventoryRecord.InventoryItemID.ItemCustomerID.LastLPNNumber.ToString))
                 inventoryRecord.Save()
             End If
 

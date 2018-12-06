@@ -6,7 +6,7 @@ Imports DevExpress.Data.Filtering
 Imports DXDAL.SPGData
 Imports DevExpress.Xpo
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ShippingsBLL
 
     Private m_ShippingsTableAdapter As ShippingsTableAdapter = Nothing
@@ -41,22 +41,22 @@ Public Class ShippingsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetShippingsByCustomerID(ByVal customerID As Integer) As SPG.ShippingsDataTable
 
         Return Adapter.GetShippingsByCustomerID(customerID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetShippings() As SPG.ShippingsDataTable
 
         Return Adapter.GetShippings()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetIDAndBOLByCustomerAndDate(ByVal customerID As Nullable(Of Integer), ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date)) _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Function GetIDAndBOLByCustomerAndDate(ByVal customerID As Integer?, ByVal fromDate As Date?, ByVal toDate As Date?) _
                 As SPG.ShippingsDataTable
 
         Return Adapter.GetIDAndBOLByCustomerAndDate(customerID, fromDate, toDate)
@@ -77,7 +77,7 @@ Public Class ShippingsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetShippingByID(ByVal shippingID As Integer) As SPG.ShippingsDataTable
 
         Return Adapter.GetShippingByID(shippingID)
@@ -95,9 +95,9 @@ Public Class ShippingsBLL
 
     End Sub
 
-    Private Sub SetShippingFields(ByVal shippingDate As Nullable(Of Date), ByVal shippingCarrierID As Nullable(Of Integer), ByVal shippingCustID As Nullable(Of Integer), ByVal shippingBol As Integer, ByVal intDestination As Nullable(Of Integer),
-                                  ByVal strPO As String, ByVal strTrailer As String, ByVal sngSkits As Nullable(Of Single), ByVal sngTotalPallets As Nullable(Of Single), ByVal strSeal As String, ByVal strDeliveryNote As String,
-                                  ByVal DeliveryNoteNumber As String, ByVal TotalGrossWeight As Nullable(Of Double), ByVal Shipper As Nullable(Of Boolean), ByVal Comments As String, ByVal Shift As Nullable(Of Integer), ByVal Freight As Boolean,
+    Private Sub SetShippingFields(ByVal shippingDate As Date?, ByVal shippingCarrierID As Integer?, ByVal shippingCustID As Integer?, ByVal shippingBol As Integer, ByVal intDestination As Integer?,
+                                  ByVal strPO As String, ByVal strTrailer As String, ByVal sngSkits As Single?, ByVal sngTotalPallets As Single?, ByVal strSeal As String, ByVal strDeliveryNote As String,
+                                  ByVal DeliveryNoteNumber As String, ByVal TotalGrossWeight As Double?, ByVal Shipper As Boolean?, ByVal Comments As String, ByVal Shift As Integer?, ByVal Freight As Boolean,
                                   ByVal loadedBy As Integer?, ByVal checkedBy As Integer?, ByVal wheelsChocked As Integer?, ByVal startTime As DateTime?, ByVal finishTime As DateTime?, ByVal temparature As Double?, ByVal physicalCondition As Integer?,
                                   ByVal loadCondition As Integer?, ByVal foreignSubstance As Integer?, ByVal insectActivity As Integer?, ByVal correctPallets As Integer?, ByVal locationID As Integer, ByVal shippingRecord As Shipping)
 
@@ -135,11 +135,11 @@ Public Class ShippingsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateShipping(ByVal shippingID As Integer, ByVal shippingDate As Nullable(Of Date), ByVal shippingCarrierID As Nullable(Of Integer), ByVal shippingCustID As Nullable(Of Integer), _
-                               ByVal shippingBol As Integer?, ByVal intDestination As Nullable(Of Integer), ByVal strPO As String, ByVal strTrailer As String, ByVal sngSkits As Nullable(Of Single), _
-                               ByVal sngTotalPallets As Nullable(Of Single), ByVal strSeal As String, ByVal strDeliveryNote As String, ByVal DeliveryNoteNumber As String, ByVal TotalGrossWeight As Nullable(Of Double), _
-                               ByVal Shipper As Nullable(Of Boolean), ByVal Comments As String, ByVal Shift As Nullable(Of Integer), ByVal Freight As Boolean, ByVal loadedBy As Integer?, ByVal checkedBy As Integer?,
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateShipping(ByVal shippingID As Integer, ByVal shippingDate As Date?, ByVal shippingCarrierID As Integer?, ByVal shippingCustID As Integer?, _
+                               ByVal shippingBol As Integer?, ByVal intDestination As Integer?, ByVal strPO As String, ByVal strTrailer As String, ByVal sngSkits As Single?, _
+                               ByVal sngTotalPallets As Single?, ByVal strSeal As String, ByVal strDeliveryNote As String, ByVal DeliveryNoteNumber As String, ByVal TotalGrossWeight As Double?, _
+                               ByVal Shipper As Boolean?, ByVal Comments As String, ByVal Shift As Integer?, ByVal Freight As Boolean, ByVal loadedBy As Integer?, ByVal checkedBy As Integer?,
                                ByVal wheelsChocked As Integer?, ByVal startTime As DateTime?, ByVal finishTime As DateTime?, ByVal temparature As Double?, ByVal physicalCondition As Integer?, ByVal loadCondition As Integer?,
                                ByVal foreignSubstance As Integer?, ByVal insectActivity As Integer?, ByVal correctPallets As Integer?, ByVal locationID As Integer) As Boolean
 
@@ -193,11 +193,11 @@ Public Class ShippingsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertShipping(ByVal shippingID As Integer, ByVal shippingDate As Nullable(Of Date), ByVal shippingCarrierID As Nullable(Of Integer), ByVal shippingCustID As Nullable(Of Integer), _
-                                   ByVal shippingBol As Integer?, ByVal intDestination As Nullable(Of Integer), ByVal strPO As String, ByVal strTrailer As String, ByVal sngSkits As Nullable(Of Single), _
-                                   ByVal sngTotalPallets As Nullable(Of Single), ByVal strSeal As String, ByVal strDeliveryNote As String, ByVal DeliveryNoteNumber As String, ByVal TotalGrossWeight As Nullable(Of Double), _
-                                   ByVal Shipper As Nullable(Of Boolean), ByVal Comments As String, ByVal Shift As Nullable(Of Integer), ByVal Freight As Boolean, ByVal loadedBy As Integer?, ByVal checkedBy As Integer?, ByVal wheelsChocked As Integer?,
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertShipping(ByVal shippingID As Integer, ByVal shippingDate As Date?, ByVal shippingCarrierID As Integer?, ByVal shippingCustID As Integer?, _
+                                   ByVal shippingBol As Integer?, ByVal intDestination As Integer?, ByVal strPO As String, ByVal strTrailer As String, ByVal sngSkits As Single?, _
+                                   ByVal sngTotalPallets As Single?, ByVal strSeal As String, ByVal strDeliveryNote As String, ByVal DeliveryNoteNumber As String, ByVal TotalGrossWeight As Double?, _
+                                   ByVal Shipper As Boolean?, ByVal Comments As String, ByVal Shift As Integer?, ByVal Freight As Boolean, ByVal loadedBy As Integer?, ByVal checkedBy As Integer?, ByVal wheelsChocked As Integer?,
                                    ByVal startTime As DateTime?, ByVal finishTime As DateTime?, ByVal temparature As Double?, ByVal physicalCondition As Integer?, ByVal loadCondition As Integer?, ByVal foreignSubstance As Integer?,
                                    ByVal insectActivity As Integer?, ByVal correctPallets As Integer?, ByVal locationID As Integer) As Boolean
 
@@ -239,7 +239,7 @@ Public Class ShippingsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteShipping(ByVal shippingID As Integer) As Boolean
 
         Dim shippings As SPG.ShippingsDataTable = Adapter.GetShippingByID(shippingID)
@@ -269,7 +269,7 @@ Public Class ShippingsBLL
     Public Shared Function IsLPNShipped(ByVal fullLPNNumber As String, ByVal customerID As Integer, ByVal DXSession As Session) As Boolean
 
         If Not fullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(customerID)) Then
-            fullLPNNumber = CustomersBLL.GetLPNPrefix(customerID) & Strings.Right("0000000000" & fullLPNNumber, Len(CustomersBLL.GetCustomer(customerID, DXSession).LastLPNNumber.ToString))
+            fullLPNNumber = CustomersBLL.GetLPNPrefix(customerID) & Right("0000000000" & fullLPNNumber, Len(CustomersBLL.GetCustomer(customerID, DXSession).LastLPNNumber.ToString))
         End If
 
         Dim filter As New CriteriaOperatorCollection

@@ -1,7 +1,7 @@
 Imports SuperiorPackGroup.SPGTableAdapters
 Imports System.Text
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class CarriersBLL
 
     Private m_CarriersTableAdapter As CarriersTableAdapter = Nothing
@@ -29,8 +29,8 @@ Public Class CarriersBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -47,21 +47,21 @@ Public Class CarriersBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetCarriers() As SPG.CarriersDataTable
 
         Return Adapter.GetCarriers()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetCarrierIDAndNames() As SPG.CarriersDataTable
 
         Return Adapter.GetCarrierIDAndNames()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetCarrierByID(ByVal carrierID As Integer) As SPG.CarriersDataTable
 
         Return Adapter.GetCarrierByID(carrierID)
@@ -125,7 +125,7 @@ Public Class CarriersBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
     Public Function UpdateCarrier(ByVal id As Integer, ByVal name As String, ByVal contactFirstName As String, ByVal contactLastName As String, _
         ByVal address As String, ByVal city As String, ByVal state As String, ByVal postal As String, ByVal phone As String, ByVal email As String, _
         ByVal fax As String, ByVal note As String) As Boolean
@@ -158,7 +158,7 @@ Public Class CarriersBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
     Public Function InsertCarrier(ByVal id As Integer, ByVal name As String, ByVal contactFirstName As String, ByVal contactLastName As String, ByVal address As String, _
             ByVal city As String, ByVal state As String, ByVal postal As String, ByVal phone As String, ByVal email As String, ByVal fax As String, _
             ByVal note As String) As Boolean
@@ -178,7 +178,7 @@ Public Class CarriersBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteCarrier(ByVal id As Integer) As Boolean
 
         Dim carriers As SPG.CarriersDataTable = Adapter.GetCarrierByID(id)

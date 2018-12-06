@@ -14,8 +14,8 @@ Public Class CostingReportsBLL
         End Get
     End Property
 
-    Public Function GetCostingReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customer As Nullable(Of Integer), ByVal shift As Nullable(Of Integer), _
-                                     ByVal machine As Nullable(Of Integer), ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?) As SPGReports.CostingReportsDataTable
+    Public Function GetCostingReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customer As Integer?, ByVal shift As Integer?, _
+                                     ByVal machine As Integer?, ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?) As SPGReports.CostingReportsDataTable
 
         If inactiveCustomers.Value = True Then
             inactiveCustomers = Nothing

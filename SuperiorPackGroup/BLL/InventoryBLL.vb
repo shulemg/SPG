@@ -5,7 +5,7 @@ Imports DevExpress.Data.Filtering
 Imports DXDAL.SPGData
 Imports System.Collections.ObjectModel
 
-<System.ComponentModel.DataObject()>
+<ComponentModel.DataObject()>
 Public Class InventoryBLL
 
     Private m_InventoryTableAdapter As InventoryTableAdapter = Nothing
@@ -23,9 +23,9 @@ Public Class InventoryBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
-    Public Function GetInventoryView(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customer As Nullable(Of Integer),
-            ByVal item As Nullable(Of Integer), ByVal Lot As String) As SPG.InventoryDataTable
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
+    Public Function GetInventoryView(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customer As Integer?,
+            ByVal item As Integer?, ByVal Lot As String) As SPG.InventoryDataTable
 
         Return Adapter.GetInventoryView(fromDate, toDate, customer, item, Lot)
 
@@ -106,7 +106,7 @@ Public Class InventoryBLL
 
     End Sub
 
-    Private Sub SetInventoryFields(ByVal session As Session, ByVal inventoryDate As Date, ByVal item As Integer, ByVal quantity As Integer, ByVal pallets As Nullable(Of Single), ByVal po As String, ByVal lot As String, ByVal shift As Integer?, ByVal pallet As Integer?,
+    Private Sub SetInventoryFields(ByVal session As Session, ByVal inventoryDate As Date, ByVal item As Integer, ByVal quantity As Integer, ByVal pallets As Single?, ByVal po As String, ByVal lot As String, ByVal shift As Integer?, ByVal pallet As Integer?,
                                    ByVal expirationDate As Date?, ByVal locationID As Integer, ByVal note As String, ByVal production As Inventory)
 
         SetField(Inventory.Fields.InventoryDate.PropertyName, production.InventoryDate, inventoryDate, production)
@@ -123,8 +123,8 @@ Public Class InventoryBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
-    Public Function UpdateInventory(ByVal session As Session, ByVal inventoryID As Integer, ByVal inventoryDate As Date, ByVal item As Integer, ByVal quantity As Integer, ByVal pallets As Nullable(Of Single), ByVal po As String, ByVal lot As String, ByVal shift As Integer?,
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)>
+    Public Function UpdateInventory(ByVal session As Session, ByVal inventoryID As Integer, ByVal inventoryDate As Date, ByVal item As Integer, ByVal quantity As Integer, ByVal pallets As Single?, ByVal po As String, ByVal lot As String, ByVal shift As Integer?,
                                     ByVal pallet As Integer?, ByVal expirationDate As Date?, ByVal locationID As Integer, ByVal note As String) As Inventory
 
         'Dim inventory As SPG.InventoryDataTable = Adapter.GetInventoryByID(inventoryID)
@@ -214,8 +214,8 @@ Public Class InventoryBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
-    Public Function InsertInventory(ByVal session As Session, ByVal inventoryID As Integer, ByVal inventoryDate As Nullable(Of Date), ByVal item As Nullable(Of Integer), ByVal quantity As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), ByVal po As String,
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)>
+    Public Function InsertInventory(ByVal session As Session, ByVal inventoryID As Integer, ByVal inventoryDate As Date?, ByVal item As Integer?, ByVal quantity As Integer?, ByVal pallets As Single?, ByVal po As String,
                                     ByVal lot As String, ByVal shift As Integer?, ByVal pallet As Integer?, ByVal expirationDate As Date?, ByVal locationID As Integer, ByVal note As String) As Inventory
 
         'Dim inventory As SPG.InventoryDataTable = New SPG.InventoryDataTable
@@ -278,14 +278,14 @@ Public Class InventoryBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Function GetInventoryByID(ByVal inventoryID As Integer) As SPG.InventoryDataTable
 
         Return Adapter.GetInventoryByID(inventoryID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Function GetInventoryByItemID(ByVal itemID As Integer) As SPG.InventoryDataTable
 
         Return Adapter.GetInventoryByItemID(itemID)
@@ -322,7 +322,7 @@ Public Class InventoryBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)>
     Public Shared Function DeleteInventory(ByVal session As Session, ByVal id As Integer) As Boolean
 
         'Dim inventory As SPG.InventoryDataTable = Adapter.GetInventoryByID(id)

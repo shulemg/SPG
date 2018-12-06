@@ -3,6 +3,7 @@ Imports System.Text
 Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 Imports DevExpress.Persistent.Base
+Imports DevExpress.Data.Filtering
 
 <ComponentModel.DataObject()>
 Public Class ReceivingDetailsBLL
@@ -21,10 +22,29 @@ Public Class ReceivingDetailsBLL
     End Property
 
     <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
-    Public Function GetReceivingDetailsByItemID(ByVal itemID As Integer) As SPG.ReceivingDetailsDataTable
+    Public Function GetReceivingDetailsByItemIDold(ByVal itemID As Integer) As SPG.ReceivingDetailsDataTable
 
         Return Adapter.GetReceivingDetailsByItemID(itemID)
 
+    End Function
+    Public Shared Function GetReceivingDetailsByItemID(ByVal itemID As Integer) As XPView
+
+
+        Dim ReceivingXPView As New XPView(Session.DefaultSession, GetType(ReceivingDetail))
+
+        ReceivingXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ReceiveDetID", SortDirection.None, ReceivingDetail.Fields.ReceivDetID, False, True),
+                                                                      New ViewProperty("ReceiveMainID", SortDirection.Ascending, ReceivingDetail.Fields.ReceivMainID.ReceivID, False, True),
+                                                                      New ViewProperty("ReceiveDetLot", SortDirection.None, ReceivingDetail.Fields.ReceivDetLot, False, True),
+                                                                      New ViewProperty("ReceiveDetLPN", SortDirection.None, ReceivingDetail.Fields.ReceivDetLPN, False, True),
+                                                                      New ViewProperty("ExpirationDate", SortDirection.None, ReceivingDetail.Fields.ExpirationDate, False, True),
+                                                                      New ViewProperty("ReceiveDetQty", SortDirection.None, ReceivingDetail.Fields.ReceivDetQty, False, True),
+                                                                      New ViewProperty("ReceiveBOL", SortDirection.None, ReceivingDetail.Fields.ReceivMainID.ReceivBOL, False, True),
+                                                                      New ViewProperty("ReceiveDate", SortDirection.None, ReceivingDetail.Fields.ReceivMainID.ReceivDate, False, True)})
+
+        ReceivingXPView.Criteria = CriteriaOperator.And(New BinaryOperator(ReceivingDetail.Fields.ReceivDetItemID.ItemType.PropertyName, "FG", BinaryOperatorType.NotEqual),
+                                                                New BinaryOperator(ReceivingDetail.Fields.ReceivDetItemID.ItemID.PropertyName, itemID, BinaryOperatorType.Equal))
+
+        Return ReceivingXPView
     End Function
 
     Private Sub UpdateAuditTrail(ByVal ModifiedRecord As ReceivingDetail, ByVal originalRecord As ReceivingDetail)

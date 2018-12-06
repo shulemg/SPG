@@ -6,7 +6,7 @@ Imports DevExpress.Xpo
 Imports DevExpress.Xpo.Metadata
 Imports System.Collections.ObjectModel
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class CustomersBLL
 
     Private m_CustomersTableAdapter As CustomersTableAdapter = Nothing
@@ -43,7 +43,7 @@ Public Class CustomersBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetCustomerNameAndIDS(ByVal inactive As Boolean) As SPG.CustomersDataTable
 
         If inactive Then
@@ -54,14 +54,14 @@ Public Class CustomersBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetCustomerByID(ByVal customerID As Integer) As SPG.CustomersDataTable
 
         Return Adapter.GetCustomerByID(customerID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetCustomers() As SPG.CustomersDataTable
 
         Return Adapter.GetCustomers()
@@ -105,7 +105,7 @@ Public Class CustomersBLL
     End Sub
 
     Private Sub SetCustomerFields(ByVal customerName As String, ByVal customerContact As String, ByVal customerPhone As String, ByVal customerEmail As String, ByVal customerFax As String,
-                                         ByVal customerNote As String, ByVal address As String, ByVal city As String, ByVal state As String, ByVal postal As String, ByVal inactive As Nullable(Of Boolean),
+                                         ByVal customerNote As String, ByVal address As String, ByVal city As String, ByVal state As String, ByVal postal As String, ByVal inactive As Boolean?,
                                          ByVal lpnPrefix As String, ByVal firstLPNNumber As Integer?, ByVal lastLPNNumber As Integer?, ByVal plantCode As String, ByVal expirationDateFormat As String, ByVal lotCodeFormat As Integer?,
                                          ByVal customer As Customers, ByVal dxSession As Session)
 
@@ -129,9 +129,9 @@ Public Class CustomersBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)>
     Public Function UpdateCustomer(ByVal customerID As Integer, ByVal customerName As String, ByVal customerContact As String, ByVal customerPhone As String, ByVal customerEmail As String, ByVal customerFax As String,
-                                   ByVal customerNote As String, ByVal address As String, ByVal city As String, ByVal state As String, ByVal postal As String, ByVal inactive As Nullable(Of Boolean),
+                                   ByVal customerNote As String, ByVal address As String, ByVal city As String, ByVal state As String, ByVal postal As String, ByVal inactive As Boolean?,
                                    ByVal lpnPrefix As String, ByVal firstLPNNumber As Integer?, ByVal lastLPNNumber As Integer?, ByVal plantCode As String, ByVal expirationDateFormat As String, ByVal lotCodeFormat As Integer?,
                                    ByVal DXSsession As Session) As Boolean
 
@@ -180,9 +180,9 @@ Public Class CustomersBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)>
     Public Function InsertCustomer(ByVal customerID As Integer, ByVal customerName As String, ByVal customerContact As String, ByVal customerPhone As String, ByVal customerEmail As String, ByVal customerFax As String, ByVal customerNote As String,
-                                   ByVal address As String, ByVal city As String, ByVal state As String, ByVal postal As String, ByVal inactive As Nullable(Of Boolean), ByVal lpnPrefix As String, ByVal firstLPNNumber As Integer?,
+                                   ByVal address As String, ByVal city As String, ByVal state As String, ByVal postal As String, ByVal inactive As Boolean?, ByVal lpnPrefix As String, ByVal firstLPNNumber As Integer?,
                                    ByVal lastLPNNumber As Integer?, ByVal plantCode As String, ByVal expirationDateFormat As String, ByVal lotCodeFormat As Integer?, ByVal dxSession As Session) As Boolean
 
         Dim customer As Customers = New Customers(dxSession) With {.CustomerID = customerID}

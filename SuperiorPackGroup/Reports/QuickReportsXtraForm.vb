@@ -15,7 +15,7 @@ Public Class QuickReportsXtraForm
     Private m_Project As Project
     Private m_ProductionWeek As String
 
-    Private Sub QuickReportsXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub QuickReportsXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Me.reportCodeNameGridColumn.FieldName = "CodeName"
         Me.reportNameGridColumn.FieldName = "Name"
@@ -64,7 +64,7 @@ Public Class QuickReportsXtraForm
 
     End Sub
 
-    Private Sub quickReportsGridView_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles quickReportsGridView.Click
+    Private Sub quickReportsGridView_Click(ByVal sender As Object, ByVal e As EventArgs) Handles quickReportsGridView.Click
 
         If (quickReportsGridView.CalcHitInfo(quickReportsGridControl.PointToClient(Control.MousePosition)).HitTest = GridHitTest.RowCell) Then
             If quickReportsGridView.GetFocusedRowCellValue(Me.reportTypeGridColumn).ToString <> "QuickReport" Then
@@ -1669,7 +1669,7 @@ Public Class QuickReportsXtraForm
 
     Private Sub exportXLSBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles exportXLSBarButtonItem.ItemClick
 
-        inactiveGridColumn.ColumnEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        inactiveGridColumn.ColumnEdit = New Repository.RepositoryItemTextEdit()
         exportSaveFileDialog.Filter = "Microsoft Office Excel Workbook(*.xlsx)|*.xlsx|All Files(*.*)|*.*"
         exportSaveFileDialog.DefaultExt = ".xlsx"
         If Me.exportSaveFileDialog.ShowDialog = Windows.Forms.DialogResult.OK Then
@@ -1751,7 +1751,7 @@ Public Class QuickReportsXtraForm
 
     End Sub
 
-    Private Sub baggingReportPivotGridControl_CustomUnboundFieldData(sender As Object, e As DevExpress.XtraPivotGrid.CustomFieldDataEventArgs) Handles baggingReportPivotGridControl.CustomUnboundFieldData
+    Private Sub baggingReportPivotGridControl_CustomUnboundFieldData(sender As Object, e As CustomFieldDataEventArgs) Handles baggingReportPivotGridControl.CustomUnboundFieldData
 
         If e.Field.UnboundFieldName = "reasons" Then 'reasonsPivotGridField.UnboundFieldName Then
             e.Value = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID")).Reasons
@@ -1778,7 +1778,7 @@ Public Class QuickReportsXtraForm
 
     End Sub
 
-    Private Sub baggingReportPivotGridControl_CustomSummary(sender As Object, e As DevExpress.XtraPivotGrid.PivotGridCustomSummaryEventArgs) Handles baggingReportPivotGridControl.CustomSummary
+    Private Sub baggingReportPivotGridControl_CustomSummary(sender As Object, e As PivotGridCustomSummaryEventArgs) Handles baggingReportPivotGridControl.CustomSummary
         If e.DataField Is reasonsPivotGridField Then
             ' This is a Grand Total cell.
             If ReferenceEquals(e.ColumnField, Nothing) OrElse ReferenceEquals(e.RowField, Nothing) Then

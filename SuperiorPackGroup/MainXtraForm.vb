@@ -278,7 +278,7 @@ Public Class MainXtraForm
         Catch
         End Try
 
-        If LoginXtraForm.ShowDialog() <> Windows.Forms.DialogResult.OK Then Application.Exit()
+        If LoginXtraForm.ShowDialog() <> DialogResult.OK Then Application.Exit()
         DisplaySecuredMenuItems()
 
     End Sub

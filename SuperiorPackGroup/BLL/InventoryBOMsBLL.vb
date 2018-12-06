@@ -4,7 +4,7 @@ Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 Imports DevExpress.Data.Filtering
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class InventoryBOMsBLL
 
     Private m_InventoryBOMsTableAdapter As InventoryBOMsTableAdapter = Nothing
@@ -20,7 +20,7 @@ Public Class InventoryBOMsBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetInventoryBOMsBYInventoryID(ByVal inventoryID As Integer) As SPG.InventoryBOMsDataTable
 
         Return Adapter.GetInventoryBOMByInventoryID(inventoryID)
@@ -33,15 +33,15 @@ Public Class InventoryBOMsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetInventoryBOMsBYID(ByVal InventoryBOMsID As Integer) As SPG.InventoryBOMsDataTable
 
         Return Adapter.GetInventoryBOMByID(InventoryBOMsID)
 
     End Function
 
-    Private Shared Sub SetInventoryBOMFields(ByVal InventoryBOMsRawMatID As Nullable(Of Integer), ByVal InventoryBOMsInventoryID As Nullable(Of Integer), ByVal InventoryBOMsQuantity As Nullable(Of Single), _
-                                             ByVal scrapFactor As Nullable(Of Double), ByVal inventoryBOM As SPG.InventoryBOMsRow)
+    Private Shared Sub SetInventoryBOMFields(ByVal InventoryBOMsRawMatID As Integer?, ByVal InventoryBOMsInventoryID As Integer?, ByVal InventoryBOMsQuantity As Single?, _
+                                             ByVal scrapFactor As Double?, ByVal inventoryBOM As SPG.InventoryBOMsRow)
 
         inventoryBOM.InventoryBOMRawMatID = InventoryBOMsRawMatID.Value
         inventoryBOM.InventoryBOMInventoryID = InventoryBOMsInventoryID.Value
@@ -54,9 +54,9 @@ Public Class InventoryBOMsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateInventoryBOM(ByVal InventoryBOMsID As Nullable(Of Integer), ByVal InventoryBOMsRawMatID As Nullable(Of Integer), ByVal InventoryBOMsInventoryID As Nullable(Of Integer), _
-                                    ByVal InventoryBOMsQuantity As Nullable(Of Single), ByVal scrapFactor As Nullable(Of Double)) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateInventoryBOM(ByVal InventoryBOMsID As Integer?, ByVal InventoryBOMsRawMatID As Integer?, ByVal InventoryBOMsInventoryID As Integer?, _
+                                    ByVal InventoryBOMsQuantity As Single?, ByVal scrapFactor As Double?) As Boolean
 
         Dim inventoryBOMs As SPG.InventoryBOMsDataTable = Adapter.GetInventoryBOMByID(InventoryBOMsID.Value)
 
@@ -90,9 +90,9 @@ Public Class InventoryBOMsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertInventoryBOM(ByVal InventoryBOMsRawMatID As Nullable(Of Integer), ByVal InventoryBOMsInventoryID As Nullable(Of Integer), ByVal InventoryBOMsQuantity As Nullable(Of Single), _
-                                       ByVal scrapFactor As Nullable(Of Double)) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertInventoryBOM(ByVal InventoryBOMsRawMatID As Integer?, ByVal InventoryBOMsInventoryID As Integer?, ByVal InventoryBOMsQuantity As Single?, _
+                                       ByVal scrapFactor As Double?) As Boolean
 
         Dim inventoryBOMs As SPG.InventoryBOMsDataTable = New SPG.InventoryBOMsDataTable
         Dim inventoryBOM As SPG.InventoryBOMsRow = inventoryBOMs.NewInventoryBOMsRow()
@@ -117,8 +117,8 @@ Public Class InventoryBOMsBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then

@@ -28,7 +28,7 @@ Imports DevExpress.Data.Filtering
 Imports DevExpress.XtraEditors
 
 Partial Public Class CustomAppointmentForm
-    Inherits DevExpress.XtraScheduler.UI.AppointmentForm
+    Inherits UI.AppointmentForm
 
     Private _people As Double?
     Private _machineOperator As Double?

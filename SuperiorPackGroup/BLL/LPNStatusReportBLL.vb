@@ -10,11 +10,11 @@ Public Class LPNStatusReportBLL
 
         Try
             If onlyAssigned Then
-                lpnStatusReportView.GroupCriteria = GroupOperator.And(New InOperator(Inventory.Fields.InventoryItemID.ItemCustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomerIDs(XpoDefault.Session)),
+                lpnStatusReportView.GroupCriteria = CriteriaOperator.And(New InOperator(Inventory.Fields.InventoryItemID.ItemCustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomerIDs(XpoDefault.Session)),
                                                                       New BinaryOperator(Inventory.Fields.InventoryDate.PropertyName, CDate("Aug/4/2013"), BinaryOperatorType.GreaterOrEqual),
                                                                       CriteriaOperator.Parse("[FullLPNNumber] Is Not NULL"))
             Else
-                lpnStatusReportView.GroupCriteria = GroupOperator.And(New BinaryOperator(Inventory.Fields.InventoryDate.PropertyName, CDate("Aug/4/2013"), BinaryOperatorType.GreaterOrEqual),
+                lpnStatusReportView.GroupCriteria = CriteriaOperator.And(New BinaryOperator(Inventory.Fields.InventoryDate.PropertyName, CDate("Aug/4/2013"), BinaryOperatorType.GreaterOrEqual),
                                                                       CriteriaOperator.Parse("[FullLPNNumber] Is Not NULL"))
             End If
 

@@ -3,26 +3,26 @@ Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Public Class ShippingAddressesXtraForm
 
     Private m_Address As ShippingAddressBLL
-    Private m_CurrentDestinationID As Nullable(Of Integer)
+    Private m_CurrentDestinationID As Integer?
 
-    Private Sub ShippingAddressesXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub ShippingAddressesXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If Me.destinationsSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
 
     End Sub
 
-    Private Sub ShippingAddressesXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub ShippingAddressesXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Me.Cursor = Cursors.WaitCursor
         m_Address = New ShippingAddressBLL
@@ -49,7 +49,7 @@ Public Class ShippingAddressesXtraForm
 
     End Sub
 
-    Private Sub addressesListBoxControl_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub addressesListBoxControl_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs)
 
         'If Me.addressesListBoxControl.SelectedIndex <> -1 Then
         '    BindAddressControls(CType(Me.addressesListBoxControl.SelectedValue, Integer))
@@ -77,7 +77,7 @@ Public Class ShippingAddressesXtraForm
 
     End Sub
 
-    Private Sub addSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub addSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs)
 
         m_CurrentDestinationID = Nothing
         Me.nameTextEdit.Text = String.Empty
@@ -94,7 +94,7 @@ Public Class ShippingAddressesXtraForm
 
     End Sub
 
-    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs)
 
         'If Me.addressesListBoxControl.SelectedIndex <> -1 Then
         '    BindAddressControls(CType(Me.addressesListBoxControl.SelectedValue, Integer))
@@ -140,14 +140,14 @@ Public Class ShippingAddressesXtraForm
 
     End Function
 
-    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs)
 
         'Required to get back to current customer when entering a new customer.
         SaveChanges()
 
     End Sub
 
-    Private Sub destinationsSearchGridView_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles destinationsSearchGridView.Click
+    Private Sub destinationsSearchGridView_Click(ByVal sender As Object, ByVal e As EventArgs) Handles destinationsSearchGridView.Click
 
         If (Me.destinationsSearchGridView.CalcHitInfo(Me.destinationsSearchGridControl.PointToClient(Control.MousePosition)).HitTest = GridHitTest.RowCell) Then
             Me.BindAddressControls(CType(Me.destinationsSearchGridView.GetFocusedRowCellValue(Me.destinationIDGridColumn), Integer))

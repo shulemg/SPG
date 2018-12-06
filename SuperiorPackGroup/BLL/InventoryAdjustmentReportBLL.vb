@@ -14,7 +14,7 @@ Public Class InventoryAdjustmentReportBLL
         End Get
     End Property
 
-    Public Function GetInventoryAdjustmentReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customerID As Nullable(Of Integer), _
+    Public Function GetInventoryAdjustmentReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customerID As Integer?, _
                                                  ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?) As SPGReports.InventoryAdjustmentReportDataTable
 
         If inactiveCustomers.Value = True Then

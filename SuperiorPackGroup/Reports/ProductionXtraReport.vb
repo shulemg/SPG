@@ -17,7 +17,7 @@ Public Class ProductionXtraReport
     Private m_MachineStandard As Double
     Private m_MachinePackers As Double
 
-    Private Sub totalHoursDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalHoursDetailXrLabel.BeforePrint
+    Private Sub totalHoursDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalHoursDetailXrLabel.BeforePrint
 
         If totalHoursDetailXrLabel.Visible Then
             totalHoursDetailXrLabel.Text = String.Format("{0}:{1}", Format((m_Minutes - m_BreakMinutes) \ 60, "0"), Format(((m_Minutes - m_BreakMinutes) Mod 60) \ 1, "00"))
@@ -25,7 +25,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub totalMinutesDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalMinutesDetailXrLabel.BeforePrint
+    Private Sub totalMinutesDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalMinutesDetailXrLabel.BeforePrint
 
         If totalMinutesDetailXrLabel.Visible Then
             totalMinutesDetailXrLabel.Text = Format(((m_Minutes - m_BreakMinutes) / 60) * m_MinPerHour, "#.##")
@@ -33,7 +33,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub expectedDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles expectedDetailXrLabel.BeforePrint
+    Private Sub expectedDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles expectedDetailXrLabel.BeforePrint
 
         If expectedDetailXrLabel.Visible Then
             '= Convert.ToSingle(((m_Minutes - m_BreakMinutes) / 60)  * Convert.ToSingle(Me.GetCurrentColumnValue("ItemProdStandard")))
@@ -49,7 +49,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub differenceDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles differenceDetailXrLabel.BeforePrint
+    Private Sub differenceDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles differenceDetailXrLabel.BeforePrint
 
         If differenceDetailXrLabel.Visible Then
             Dim difference As Single = Convert.ToSingle(Convert.ToSingle(Me.GetCurrentColumnValue("ProdMainQuantity")) - m_Expected)
@@ -60,7 +60,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub actualSpeedDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles actualSpeedDetailXrLabel.BeforePrint
+    Private Sub actualSpeedDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles actualSpeedDetailXrLabel.BeforePrint
 
         If actualSpeedDetailXrLabel.Visible Then
             Dim actualSpeed As Single
@@ -77,7 +77,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub Detail_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
+    Private Sub Detail_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles Detail.BeforePrint
 
         m_Minutes = DateDiff(DateInterval.Minute, CType(Me.GetCurrentColumnValue("ProdMainTimeStart"), DateTime), CType(Me.GetCurrentColumnValue("ProdMainTimeStop"), DateTime))
         m_BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(GetCurrentColumnValue("ProdMainDate")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), _
@@ -124,7 +124,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub totalPayrollDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalPayrollDetailXrLabel.BeforePrint
+    Private Sub totalPayrollDetailXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalPayrollDetailXrLabel.BeforePrint
 
         If totalPayrollDetailXrLabel.Visible Then
             Dim totalPayroll As Double = Convert.ToDouble(GetCurrentColumnValue("ProdMainPackers")) * (m_Minutes - m_BreakMinutes) / 60 * MainXtraForm.PackersPay
@@ -134,7 +134,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub totalHoursFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalHoursFooterXrLabel.BeforePrint
+    Private Sub totalHoursFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalHoursFooterXrLabel.BeforePrint
 
         If totalHoursFooterXrLabel.Visible Then
             totalHoursFooterXrLabel.Text = String.Format("{0}:{1}", Format(m_TotalMinutes \ 60, "#0"), Format((m_TotalMinutes Mod 60) \ 1, "00"))
@@ -142,7 +142,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub expectedFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles expectedFooterXrLabel.BeforePrint
+    Private Sub expectedFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles expectedFooterXrLabel.BeforePrint
 
         If expectedFooterXrLabel.Visible Then
             expectedFooterXrLabel.Text = Format(m_TotalExpected, "#,#")
@@ -150,7 +150,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub differenceFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles differenceFooterXrLabel.BeforePrint
+    Private Sub differenceFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles differenceFooterXrLabel.BeforePrint
 
         If differenceFooterXrLabel.Visible Then
             differenceFooterXrLabel.Text = Format(m_TotalDifference, "#,#")
@@ -158,7 +158,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub actualSpeedFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles actualSpeedFooterXrLabel.BeforePrint
+    Private Sub actualSpeedFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles actualSpeedFooterXrLabel.BeforePrint
 
         If actualSpeedFooterXrLabel.Visible Then
             actualSpeedFooterXrLabel.Text = Format(m_TotalActualSpeed / m_TotalMinutes, "0.00")
@@ -166,7 +166,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub totalPayrollFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles totalPayrollFooterXrLabel.BeforePrint
+    Private Sub totalPayrollFooterXrLabel_BeforePrint(ByVal sender As System.Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles totalPayrollFooterXrLabel.BeforePrint
 
         If totalPayrollFooterXrLabel.Visible Then
             totalPayrollFooterXrLabel.Text = Format(m_TotalPayroll, "$#,##0.00")
@@ -174,7 +174,7 @@ Public Class ProductionXtraReport
 
     End Sub
 
-    Private Sub ReportHeader_BeforePrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles ReportHeader.BeforePrint
+    Private Sub ReportHeader_BeforePrint(ByVal sender As Object, ByVal e As Drawing.Printing.PrintEventArgs) Handles ReportHeader.BeforePrint
 
         m_Minutes = 0
         m_TotalMinutes = 0

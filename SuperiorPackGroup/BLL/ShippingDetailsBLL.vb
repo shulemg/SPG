@@ -3,7 +3,7 @@ Imports System.Text
 Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ShippingDetailsBLL
 
     Private m_ShippingDetailsTableAdapter As ShippingDetailsTableAdapter = Nothing
@@ -30,8 +30,8 @@ Public Class ShippingDetailsBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -48,23 +48,23 @@ Public Class ShippingDetailsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetShippingDetailsByItemID(ByVal itemId As Integer) As SPG.ShippingDetailsDataTable
 
         Return Adapter.GetShippingDetailsByItemID(itemId)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetDetailsByShippingID(ByVal shippingID As Integer) As SPG.ShippingDetailsDataTable
 
         Return Adapter.GetDetailsByShippingID(shippingID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateShippingDetails(ByVal session As Session, ByVal detailID As Nullable(Of Integer), ByVal shippingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer), _
-                                          ByVal pallets As Nullable(Of Single), ByVal note As String, ByVal expirationDate As Date?, ByVal fullLPNNumber As String) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateShippingDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal shippingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?, _
+                                          ByVal pallets As Single?, ByVal note As String, ByVal expirationDate As Date?, ByVal fullLPNNumber As String) As Boolean
 
         If Not itemID.HasValue Then
             Throw New ApplicationException("You must provide shipping item.")
@@ -146,8 +146,8 @@ Public Class ShippingDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertDetails(ByVal session As Session, ByVal shippingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer), ByVal pallets As Nullable(Of Single), _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertDetails(ByVal session As Session, ByVal shippingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?, ByVal pallets As Single?, _
                                   ByVal note As String, ByVal expirationDate As Date?, ByVal fullLPNNumber As String) As Boolean
 
         Dim details As SPG.ShippingDetailsDataTable = New SPG.ShippingDetailsDataTable
@@ -195,7 +195,7 @@ Public Class ShippingDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteShippingDetail(ByVal session As Session, ByVal detailID As Integer) As Boolean
 
         Dim details As SPG.ShippingDetailsDataTable = Adapter.GetDetailsByDetailID(detailID)

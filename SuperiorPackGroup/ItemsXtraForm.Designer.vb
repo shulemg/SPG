@@ -274,6 +274,8 @@ Partial Class ItemsXtraForm
         Me.itemTypeGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.inactiveSearchCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
+        Me.receivingLpnGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.receivingReturnLpnGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.poolDetailsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.poolBomGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.poolBomXpCollection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -460,7 +462,7 @@ Partial Class ItemsXtraForm
         '
         Me.poolsRepositoryItemLookUpEdit.AutoHeight = False
         Me.poolsRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.poolsRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PoolID", "Pool ID", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PoolCode", "Pool Code", 58, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.poolsRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PoolID", "Pool ID", 57, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("PoolCode", "Pool Code", 58, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.poolsRepositoryItemLookUpEdit.DataSource = Me.itemPoolsXpView
         Me.poolsRepositoryItemLookUpEdit.DisplayMember = "PoolCode"
         Me.poolsRepositoryItemLookUpEdit.Name = "poolsRepositoryItemLookUpEdit"
@@ -713,7 +715,7 @@ Partial Class ItemsXtraForm
         Me.lotCodeFormatLookUpEdit.MenuManager = Me.BarManager1
         Me.lotCodeFormatLookUpEdit.Name = "lotCodeFormatLookUpEdit"
         Me.lotCodeFormatLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.lotCodeFormatLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FormatID", "Format ID", 71, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FormatName", "Format Name", 74, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.lotCodeFormatLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FormatID", "Format ID", 71, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("FormatName", "Format Name", 74, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.lotCodeFormatLookUpEdit.Properties.DataSource = Me.lotCodeFormatsXpView
         Me.lotCodeFormatLookUpEdit.Properties.DisplayMember = "FormatName"
         Me.lotCodeFormatLookUpEdit.Properties.NullText = "[Select Lot Code Format]"
@@ -960,7 +962,7 @@ Partial Class ItemsXtraForm
         Me.defaultMachineLookUpEdit.Location = New System.Drawing.Point(117, 160)
         Me.defaultMachineLookUpEdit.Name = "defaultMachineLookUpEdit"
         Me.defaultMachineLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.defaultMachineLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineID", "Machine Line ID", 98, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineName", "Machine Line", 101, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.defaultMachineLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineID", "Machine Line ID", 98, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineName", "Machine Line", 101, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.defaultMachineLookUpEdit.Properties.DataSource = Me.machineLineXpView
         Me.defaultMachineLookUpEdit.Properties.DisplayMember = "MachineLineName"
         Me.defaultMachineLookUpEdit.Properties.NullText = "[Select a Machine Line]"
@@ -1277,7 +1279,7 @@ Partial Class ItemsXtraForm
         '
         'receivingsGridView
         '
-        Me.receivingsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.receivingDetailIDGridColumn, Me.receivingIDGridColumn, Me.receivingLotGridColumn, Me.receivingQuantityGridColumn, Me.receivingDateGridColumn, Me.receivingBOLGridColumn, Me.receivingExpirationDateGridColumn})
+        Me.receivingsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.receivingDetailIDGridColumn, Me.receivingIDGridColumn, Me.receivingLpnGridColumn, Me.receivingLotGridColumn, Me.receivingQuantityGridColumn, Me.receivingDateGridColumn, Me.receivingBOLGridColumn, Me.receivingExpirationDateGridColumn})
         Me.receivingsGridView.GridControl = Me.receivingsGridControl
         Me.receivingsGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "intUnits", Me.receivingQuantityGridColumn, "{0:#,##0.######}")})
         Me.receivingsGridView.Name = "receivingsGridView"
@@ -1306,7 +1308,7 @@ Partial Class ItemsXtraForm
         Me.receivingLotGridColumn.OptionsColumn.AllowEdit = False
         Me.receivingLotGridColumn.OptionsColumn.ReadOnly = True
         Me.receivingLotGridColumn.Visible = True
-        Me.receivingLotGridColumn.VisibleIndex = 1
+        Me.receivingLotGridColumn.VisibleIndex = 2
         '
         'receivingQuantityGridColumn
         '
@@ -1316,7 +1318,7 @@ Partial Class ItemsXtraForm
         Me.receivingQuantityGridColumn.OptionsColumn.ReadOnly = True
         Me.receivingQuantityGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "TOTAL        {0}")})
         Me.receivingQuantityGridColumn.Visible = True
-        Me.receivingQuantityGridColumn.VisibleIndex = 4
+        Me.receivingQuantityGridColumn.VisibleIndex = 5
         '
         'receivingDateGridColumn
         '
@@ -1334,7 +1336,7 @@ Partial Class ItemsXtraForm
         Me.receivingBOLGridColumn.OptionsColumn.AllowEdit = False
         Me.receivingBOLGridColumn.OptionsColumn.ReadOnly = True
         Me.receivingBOLGridColumn.Visible = True
-        Me.receivingBOLGridColumn.VisibleIndex = 3
+        Me.receivingBOLGridColumn.VisibleIndex = 4
         '
         'receivingExpirationDateGridColumn
         '
@@ -1343,7 +1345,7 @@ Partial Class ItemsXtraForm
         Me.receivingExpirationDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.receivingExpirationDateGridColumn.Name = "receivingExpirationDateGridColumn"
         Me.receivingExpirationDateGridColumn.Visible = True
-        Me.receivingExpirationDateGridColumn.VisibleIndex = 2
+        Me.receivingExpirationDateGridColumn.VisibleIndex = 3
         '
         'bomXtraTabPage
         '
@@ -2101,7 +2103,7 @@ Partial Class ItemsXtraForm
         '
         'receivingReturnGridView
         '
-        Me.receivingReturnGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.receivingReturnIDGridColumn, Me.returnReceivingIDGridColumn, Me.receivingReturnLotGridColumn, Me.receivingReturnQuantityGridColumn, Me.receivingReturnDateGridColumn, Me.receivingReturnBolGridColumn, Me.receivingReturnExpirationDateGridColumn})
+        Me.receivingReturnGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.receivingReturnIDGridColumn, Me.returnReceivingIDGridColumn, Me.receivingReturnLpnGridColumn, Me.receivingReturnLotGridColumn, Me.receivingReturnQuantityGridColumn, Me.receivingReturnDateGridColumn, Me.receivingReturnBolGridColumn, Me.receivingReturnExpirationDateGridColumn})
         Me.receivingReturnGridView.GridControl = Me.receivingReturnGridControl
         Me.receivingReturnGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ReturnDetQty", Me.receivingReturnQuantityGridColumn, "{0:#,##0.######}")})
         Me.receivingReturnGridView.Name = "receivingReturnGridView"
@@ -2130,7 +2132,7 @@ Partial Class ItemsXtraForm
         Me.receivingReturnLotGridColumn.OptionsColumn.AllowEdit = False
         Me.receivingReturnLotGridColumn.OptionsColumn.ReadOnly = True
         Me.receivingReturnLotGridColumn.Visible = True
-        Me.receivingReturnLotGridColumn.VisibleIndex = 1
+        Me.receivingReturnLotGridColumn.VisibleIndex = 2
         '
         'receivingReturnQuantityGridColumn
         '
@@ -2140,7 +2142,7 @@ Partial Class ItemsXtraForm
         Me.receivingReturnQuantityGridColumn.OptionsColumn.ReadOnly = True
         Me.receivingReturnQuantityGridColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "TOTAL        {0}")})
         Me.receivingReturnQuantityGridColumn.Visible = True
-        Me.receivingReturnQuantityGridColumn.VisibleIndex = 4
+        Me.receivingReturnQuantityGridColumn.VisibleIndex = 5
         '
         'receivingReturnDateGridColumn
         '
@@ -2158,7 +2160,7 @@ Partial Class ItemsXtraForm
         Me.receivingReturnBolGridColumn.OptionsColumn.AllowEdit = False
         Me.receivingReturnBolGridColumn.OptionsColumn.ReadOnly = True
         Me.receivingReturnBolGridColumn.Visible = True
-        Me.receivingReturnBolGridColumn.VisibleIndex = 3
+        Me.receivingReturnBolGridColumn.VisibleIndex = 4
         '
         'receivingReturnExpirationDateGridColumn
         '
@@ -2167,7 +2169,7 @@ Partial Class ItemsXtraForm
         Me.receivingReturnExpirationDateGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.receivingReturnExpirationDateGridColumn.Name = "receivingReturnExpirationDateGridColumn"
         Me.receivingReturnExpirationDateGridColumn.Visible = True
-        Me.receivingReturnExpirationDateGridColumn.VisibleIndex = 2
+        Me.receivingReturnExpirationDateGridColumn.VisibleIndex = 3
         '
         'adjustmentXtraTabPage
         '
@@ -2462,7 +2464,7 @@ Partial Class ItemsXtraForm
         '
         Me.machineRepositoryItemLookUpEdit.AutoHeight = False
         Me.machineRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.machineRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineID", "Machine Line ID", 98, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineName", "Machine Line Name", 101, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.machineRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineID", "Machine Line ID", 98, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("MachineLineName", "Machine Line Name", 101, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.machineRepositoryItemLookUpEdit.DataSource = Me.machineLineXpView
         Me.machineRepositoryItemLookUpEdit.DisplayMember = "MachineLineName"
         Me.machineRepositoryItemLookUpEdit.Name = "machineRepositoryItemLookUpEdit"
@@ -2597,6 +2599,24 @@ Partial Class ItemsXtraForm
         Me.inactiveSearchCheckEdit.Properties.Caption = "Include Inactive"
         Me.inactiveSearchCheckEdit.Size = New System.Drawing.Size(250, 19)
         Me.inactiveSearchCheckEdit.TabIndex = 0
+        '
+        'receivingLpnGridColumn
+        '
+        Me.receivingLpnGridColumn.Caption = "LPN"
+        Me.receivingLpnGridColumn.Name = "receivingLpnGridColumn"
+        Me.receivingLpnGridColumn.OptionsColumn.AllowEdit = False
+        Me.receivingLpnGridColumn.OptionsColumn.ReadOnly = True
+        Me.receivingLpnGridColumn.Visible = True
+        Me.receivingLpnGridColumn.VisibleIndex = 1
+        '
+        'receivingReturnLpnGridColumn
+        '
+        Me.receivingReturnLpnGridColumn.Caption = "LPN"
+        Me.receivingReturnLpnGridColumn.Name = "receivingReturnLpnGridColumn"
+        Me.receivingReturnLpnGridColumn.OptionsColumn.AllowEdit = False
+        Me.receivingReturnLpnGridColumn.OptionsColumn.ReadOnly = True
+        Me.receivingReturnLpnGridColumn.Visible = True
+        Me.receivingReturnLpnGridColumn.VisibleIndex = 1
         '
         'ItemsXtraForm
         '
@@ -2979,4 +2999,6 @@ Partial Class ItemsXtraForm
     Friend WithEvents LabelControl38 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents minutesPerShiftTextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
+    Friend WithEvents receivingLpnGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents receivingReturnLpnGridColumn As DevExpress.XtraGrid.Columns.GridColumn
 End Class

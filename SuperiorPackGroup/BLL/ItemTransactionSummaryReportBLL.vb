@@ -31,7 +31,7 @@ Public Class ItemTransactionSummaryReportBLL
                 theCriteria.Add(New InOperator("ItemID", items.Split("|"c)))
             End If
 
-            itemsXPView = New XPView(Session.DefaultSession, GetType(Items)) With {.Criteria = GroupOperator.And(theCriteria)}
+            itemsXPView = New XPView(Session.DefaultSession, GetType(Items)) With {.Criteria = CriteriaOperator.And(theCriteria)}
             itemsXPView.Properties.Add(New ViewProperty("ItemID", SortDirection.None, "ItemID", False, True))
 
             For Each item As ViewRecord In itemsXPView
@@ -72,7 +72,7 @@ Public Class ItemTransactionSummaryReportBLL
         End If
 
         theCriteria.Add(New BinaryOperator("ReceivDetItemID", currentItem, BinaryOperatorType.Equal))
-        total = CType(Session.DefaultSession.Evaluate(GetType(ReceivingDetail), CriteriaOperator.Parse("Sum(intUnits)"), GroupOperator.And(theCriteria)), Double)
+        total = CType(Session.DefaultSession.Evaluate(GetType(ReceivingDetail), CriteriaOperator.Parse("Sum(intUnits)"), CriteriaOperator.And(theCriteria)), Double)
 
         theCriteria.Clear()
 
@@ -83,7 +83,7 @@ Public Class ItemTransactionSummaryReportBLL
             theCriteria.Add(New BinaryOperator("ReceiveMainID.ReceivDate", toDate.Value, BinaryOperatorType.LessOrEqual))
         End If
         theCriteria.Add(New BinaryOperator("ReturnDetItemID", currentItem, BinaryOperatorType.Equal))
-        total += CType(Session.DefaultSession.Evaluate(GetType(ReceivedReturns), CriteriaOperator.Parse("Sum(ReturnDetQty)"), GroupOperator.And(theCriteria)), Double)
+        total += CType(Session.DefaultSession.Evaluate(GetType(ReceivedReturns), CriteriaOperator.Parse("Sum(ReturnDetQty)"), CriteriaOperator.And(theCriteria)), Double)
 
         transactionSummary.Received = total
 
@@ -101,7 +101,7 @@ Public Class ItemTransactionSummaryReportBLL
             theCriteria.Add(New BinaryOperator("ShipDetMainID.ShipMainDate", toDate.Value, BinaryOperatorType.LessOrEqual))
         End If
         theCriteria.Add(New BinaryOperator("ShipDetItemID", currentItem, BinaryOperatorType.Equal))
-        total = CType(Session.DefaultSession.Evaluate(GetType(ShipDet), CriteriaOperator.Parse("Sum(ShipDetDetQty)"), GroupOperator.And(theCriteria)), Double)
+        total = CType(Session.DefaultSession.Evaluate(GetType(ShipDet), CriteriaOperator.Parse("Sum(ShipDetDetQty)"), CriteriaOperator.And(theCriteria)), Double)
 
         theCriteria.Clear()
 
@@ -112,7 +112,7 @@ Public Class ItemTransactionSummaryReportBLL
             theCriteria.Add(New BinaryOperator("ShipMainID.ShipMainDate", toDate.Value, BinaryOperatorType.LessOrEqual))
         End If
         theCriteria.Add(New BinaryOperator("ReturnDetItemID", currentItem, BinaryOperatorType.Equal))
-        total += CType(Session.DefaultSession.Evaluate(GetType(ShippedReturns), CriteriaOperator.Parse("Sum(intUnits)"), GroupOperator.And(theCriteria)), Double)
+        total += CType(Session.DefaultSession.Evaluate(GetType(ShippedReturns), CriteriaOperator.Parse("Sum(intUnits)"), CriteriaOperator.And(theCriteria)), Double)
 
         transactionSummary.Shipped = total
 
@@ -129,7 +129,7 @@ Public Class ItemTransactionSummaryReportBLL
             theCriteria.Add(New BinaryOperator("AdjustmentDate", toDate.Value, BinaryOperatorType.LessOrEqual))
         End If
         theCriteria.Add(New BinaryOperator("AdjustmentItem", currentItem, BinaryOperatorType.Equal))
-        transactionSummary.Adjusted = CType(Session.DefaultSession.Evaluate(GetType(InventoryAdjustment), CriteriaOperator.Parse("Sum(NewCount) - Sum(OriginalQuantity)"), GroupOperator.And(theCriteria)), Double)
+        transactionSummary.Adjusted = CType(Session.DefaultSession.Evaluate(GetType(InventoryAdjustment), CriteriaOperator.Parse("Sum(NewCount) - Sum(OriginalQuantity)"), CriteriaOperator.And(theCriteria)), Double)
 
     End Sub
 
@@ -144,7 +144,7 @@ Public Class ItemTransactionSummaryReportBLL
             theCriteria.Add(New BinaryOperator("InventoryDate", toDate.Value, BinaryOperatorType.LessOrEqual))
         End If
         theCriteria.Add(New BinaryOperator("InventoryItemID", currentItem, BinaryOperatorType.Equal))
-        transactionSummary.Produced = CType(Session.DefaultSession.Evaluate(GetType(Inventory), CriteriaOperator.Parse("Sum(InventoryQuantity)"), GroupOperator.And(theCriteria)), Double)
+        transactionSummary.Produced = CType(Session.DefaultSession.Evaluate(GetType(Inventory), CriteriaOperator.Parse("Sum(InventoryQuantity)"), CriteriaOperator.And(theCriteria)), Double)
 
     End Sub
 
@@ -160,7 +160,7 @@ Public Class ItemTransactionSummaryReportBLL
         End If
         theCriteria.Add(New BinaryOperator("InventoryBOMRawMatID", currentItem, BinaryOperatorType.Equal))
         transactionSummary.UsedInProduction = CType(Session.DefaultSession.Evaluate(GetType(InventoryBOMs), CriteriaOperator.Parse("Sum((InventoryBOMQuantity + InventoryBOMQuantity * (ScrapFactor)) * InventoryBOMInventoryID.InventoryQuantity * -1)"),
-                                                                                    GroupOperator.And(theCriteria)), Double)
+                                                                                    CriteriaOperator.And(theCriteria)), Double)
 
     End Sub
 

@@ -4,7 +4,7 @@ Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 Imports DevExpress.Data.Filtering
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class InventoryAdjustmentBLL
 
     Private m_InventoryAdjustmentTableAdapter As InventoryAdjustmentTableAdapter
@@ -22,9 +22,9 @@ Public Class InventoryAdjustmentBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetAdjustmentView(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customer As Nullable(Of Integer), _
-            ByVal item As Nullable(Of Integer)) As SPG.InventoryAdjustmentDataTable
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Function GetAdjustmentView(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customer As Integer?, _
+            ByVal item As Integer?) As SPG.InventoryAdjustmentDataTable
 
         Return Adapter.GetAdjustmentView(fromDate, toDate, customer, item)
 
@@ -120,7 +120,7 @@ Public Class InventoryAdjustmentBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)>
     Public Function UpdateInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single?, ByVal reason As String,
                                               ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?, ByVal Expr As Date?) As Boolean
 
@@ -214,7 +214,7 @@ Public Class InventoryAdjustmentBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)>
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)>
     Public Function InsertInventoryAdjustment(ByVal adjustmentID As Integer, ByVal adjustmentDate As Date, ByVal customer As Integer, ByVal item As Integer, ByVal originalQuantity As Single, ByVal newQuantity As Single?, ByVal reason As String,
                                               ByVal locationID As Integer, ByVal OriginalLot As String, ByVal NewLot As String, ByVal LPN As Integer?, ByVal Expr As Date?) As Boolean
 
@@ -260,14 +260,14 @@ Public Class InventoryAdjustmentBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetAdjustmentByID(ByVal adjustmentID As Integer) As SPG.InventoryAdjustmentDataTable
 
         Return Adapter.GetInventoryAdjustmentByID(adjustmentID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Shared Function DeleteInventoryAdjustment(ByVal id As Integer) As Boolean
 
         'Dim adjustments As SPG.InventoryAdjustmentDataTable = Adapter.GetInventoryAdjustmentByID(id)

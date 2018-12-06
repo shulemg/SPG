@@ -12,7 +12,7 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
 
-        Private Sub MyApplication_Startup(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
+        Private Sub MyApplication_Startup(ByVal sender As Object, ByVal e As ApplicationServices.StartupEventArgs) Handles Me.Startup
 
             GetDataLayers()
 
@@ -22,10 +22,10 @@ Namespace My
 
             SPGDataLayer = Nothing
 
-            Dim connectionString As String = My.Settings.UserConnectionString
+            Dim connectionString As String = Settings.UserConnectionString
             If DBFunctions.VerifyConnections(connectionString) = False Then
-                If DBFunctions.VerifyConnections(My.Settings.SPGServerName, "SPGData") = True Then
-                    connectionString = MSSqlConnectionProvider.GetConnectionString(My.Settings.SPGServerName, "SPGData")
+                If DBFunctions.VerifyConnections(Settings.SPGServerName, "SPGData") = True Then
+                    connectionString = MSSqlConnectionProvider.GetConnectionString(Settings.SPGServerName, "SPGData")
                     SPGDataLayer = XpoDefault.GetDataLayer(connectionString, AutoCreateOption.SchemaOnly)
                 End If
             Else

@@ -3,7 +3,7 @@ Imports System.Text
 Imports DXDAL.SPGData
 Imports DevExpress.Xpo
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class UsersBLL
 
     Private m_UsersTableAdapter As UsersTableAdapter
@@ -23,7 +23,7 @@ Public Class UsersBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetUserSecurityLevel(ByVal userName As String, ByVal password As String) As String
 
         If String.Compare(password, GetUserPassword(userName), False) <> 0 Then
@@ -34,21 +34,21 @@ Public Class UsersBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, True)> _
     Public Function GetUsers() As SPG.UsersDataTable
 
         Return Adapter.GetUsers()
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetUserPassword(ByVal userName As String) As String
 
         Return Adapter.GetUserPassword(userName)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Shared Function GetUserByName(ByVal session As Session, ByVal userName As String) As Users
 
         Return session.GetObjectByKey(Of Users)(userName)
@@ -78,7 +78,7 @@ Public Class UsersBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
     Public Function UpdateUser(ByVal name As String, ByVal password As String, ByVal confirm As String, ByVal defaultLocation As Locations) As Boolean
 
         If String.IsNullOrEmpty(name) Then
@@ -180,7 +180,7 @@ Public Class UsersBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
     Public Function InsertUser(ByVal name As String, ByVal password As String, ByVal defaultLocation As Locations) As Boolean
 
         Dim change As Change = New Change() With {.PropertyName = Users.Fields.strUserName.PropertyName, .PrevValue = "<NULL>", .NewValue = name}
@@ -219,7 +219,7 @@ Public Class UsersBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteUser(ByVal name As String) As Boolean
 
         Dim users As SPG.UsersDataTable = Adapter.GetUserByName(name)

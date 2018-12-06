@@ -234,7 +234,7 @@ Public Class ReportsXtraForm
         If m_CustomersBLL Is Nothing AndAlso customerLookUpEdit.Enabled = True Then
             m_CustomersBLL = New CustomersBLL
             Me.customerLookUpEdit.Properties.DataSource = m_CustomersBLL.GetCustomerNameAndIDS(Nothing)
-            Me.customerLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+            Me.customerLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
             Me.customerLookUpEdit.Properties.Columns(0).Caption = "Customer Name"
             Me.customerLookUpEdit.Properties.Columns(0).FieldName = "CustomerName"
             Me.customerLookUpEdit.Properties.DisplayMember = "CustomerName"
@@ -244,7 +244,7 @@ Public Class ReportsXtraForm
         If m_ShiftsBLL Is Nothing AndAlso shiftLookUpEdit.Enabled = True Then
             m_ShiftsBLL = New ShiftsBLL
             Me.shiftLookUpEdit.Properties.DataSource = m_ShiftsBLL.GetShifts()
-            Me.shiftLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+            Me.shiftLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
             Me.shiftLookUpEdit.Properties.Columns(0).Caption = "Shift"
             Me.shiftLookUpEdit.Properties.Columns(0).FieldName = "ShiftName"
             Me.shiftLookUpEdit.Properties.DisplayMember = "ShiftName"
@@ -264,7 +264,7 @@ Public Class ReportsXtraForm
         If m_MachinesBLL Is Nothing AndAlso machineLookUpEdit.Enabled = True Then
             m_MachinesBLL = New MachinesLinesBLL
             Me.machineLookUpEdit.Properties.DataSource = m_MachinesBLL.GetMachineLines()
-            Me.machineLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+            Me.machineLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
             Me.machineLookUpEdit.Properties.Columns(0).Caption = "Machine Line"
             Me.machineLookUpEdit.Properties.Columns(0).FieldName = "MachineLineName"
             Me.machineLookUpEdit.Properties.DisplayMember = "MachineLineName"
@@ -274,7 +274,7 @@ Public Class ReportsXtraForm
         If m_Destinations Is Nothing AndAlso destinationLookUpEdit.Enabled = True Then
             m_Destinations = New ShippingAddressBLL
             Me.destinationLookUpEdit.Properties.DataSource = m_Destinations.GetAddressNameAndIDS
-            Me.destinationLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+            Me.destinationLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
             Me.destinationLookUpEdit.Properties.Columns(0).FieldName = "ShippingName"
             Me.destinationLookUpEdit.Properties.Columns(0).Caption = "Destination"
             Me.destinationLookUpEdit.Properties.DisplayMember = "ShippingName"
@@ -284,7 +284,7 @@ Public Class ReportsXtraForm
         If m_Carriers Is Nothing AndAlso carrierLookUpEdit.Enabled = True Then
             m_Carriers = New CarriersBLL
             Me.carrierLookUpEdit.Properties.DataSource = m_Carriers.GetCarrierIDAndNames
-            Me.carrierLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+            Me.carrierLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
             Me.carrierLookUpEdit.Properties.Columns(0).FieldName = "CarrierName"
             Me.carrierLookUpEdit.Properties.Columns(0).Caption = "Carrier Name"
             Me.carrierLookUpEdit.Properties.DisplayMember = "CarrierName"
@@ -4014,7 +4014,7 @@ Public Class ReportsXtraForm
 
     End Sub
 
-    Private Sub filterRefreshSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles filterRefreshSimpleButton.Click
+    Private Sub filterRefreshSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles filterRefreshSimpleButton.Click
 
         If fromDateEdit.DateTime > toDateEdit.DateTime Then
             MessageBox.Show("The from date must be an earlier date than the to date.")
@@ -4191,7 +4191,7 @@ Public Class ReportsXtraForm
 
     End Function
 
-    Private Sub columnsRefreshSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles columnsRefreshSimpleButton.Click
+    Private Sub columnsRefreshSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles columnsRefreshSimpleButton.Click
 
         Me.Cursor = Cursors.WaitCursor
         If m_SelectedReport <> "PalletControlXtraReport" AndAlso m_SelectedReport <> "ItemsTransactionsXtraReport" AndAlso m_SelectedReport <> "PalletTransactionXtraReport" Then
@@ -4221,13 +4221,13 @@ Public Class ReportsXtraForm
         End Set
     End Property
 
-    Private Sub ReportsXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub ReportsXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Me.reportColumnsXtraTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False
 
     End Sub
 
-    Private Sub itemCheckedListBoxControl_ItemCheck(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ItemCheckEventArgs) Handles itemCheckedListBoxControl.ItemCheck
+    Private Sub itemCheckedListBoxControl_ItemCheck(ByVal sender As System.Object, ByVal e As ItemCheckEventArgs) Handles itemCheckedListBoxControl.ItemCheck
 
         If m_Report.Name = "ItemsTransactionsXtraReport" Then
             If e.State = CheckState.Checked Then

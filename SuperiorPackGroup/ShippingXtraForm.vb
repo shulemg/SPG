@@ -20,22 +20,22 @@ Public Class ShippingXtraForm
     Private m_Shifts As ShiftsBLL
     Private m_ShippingReturnDetails As ShippingReturnDetailsBLL
     Private m_UserPermissions As UserPermissionsBLL
-    Private m_CurrentShippingID As Nullable(Of Integer)
+    Private m_CurrentShippingID As Integer?
     Private m_CanSaveDetails As Boolean = True
     Private m_CanSaveReturns As Boolean = True
     Private ReadOnly m_ShippingSession As Session = New Session(SPGDataLayer) With {.TrackPropertiesModifications = True, .OptimisticLockingReadBehavior = OptimisticLockingReadBehavior.MergeCollisionThrowException}
 
-    Private Sub ShippingXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub ShippingXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If shippingSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
@@ -62,21 +62,21 @@ Public Class ShippingXtraForm
         BindShippingSearchGrid()
 
         shiftLookUpEdit.Properties.DataSource = m_Shifts.GetShifts
-        Me.shiftLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+        Me.shiftLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
         Me.shiftLookUpEdit.Properties.Columns(0).FieldName = "ShiftName"
         Me.shiftLookUpEdit.Properties.Columns(0).Caption = "Shift"
         Me.shiftLookUpEdit.Properties.DisplayMember = "ShiftName"
         Me.shiftLookUpEdit.Properties.ValueMember = "ShiftID"
 
         carrierLookUpEdit.Properties.DataSource = m_Carriers.GetCarrierIDAndNames
-        Me.carrierLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+        Me.carrierLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
         Me.carrierLookUpEdit.Properties.Columns(0).FieldName = "CarrierName"
         Me.carrierLookUpEdit.Properties.Columns(0).Caption = "Carrier Name"
         Me.carrierLookUpEdit.Properties.DisplayMember = "CarrierName"
         Me.carrierLookUpEdit.Properties.ValueMember = "CarrierID"
 
         destinationLookUpEdit.Properties.DataSource = m_Destinations.GetAddressNameAndIDS
-        Me.destinationLookUpEdit.Properties.Columns.Add(New Controls.LookUpColumnInfo)
+        Me.destinationLookUpEdit.Properties.Columns.Add(New LookUpColumnInfo)
         Me.destinationLookUpEdit.Properties.Columns(0).FieldName = "ShippingName"
         Me.destinationLookUpEdit.Properties.Columns(0).Caption = "Destination"
         Me.destinationLookUpEdit.Properties.DisplayMember = "ShippingName"
@@ -469,10 +469,10 @@ Public Class ShippingXtraForm
 
         Dim customer As Integer? = CType(Me.customerLookUpEdit.EditValue, Integer?)
         If customer.HasValue Then
-            Me.shippingItemXPView.Filter = GroupOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal), _
+            Me.shippingItemXPView.Filter = CriteriaOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal), _
                                                             New BinaryOperator("CustomerID", CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal),
                                                             New InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ShippingSession))))
-            Me.returnItemXPView.Filter = GroupOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
+            Me.returnItemXPView.Filter = CriteriaOperator.Or(New BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal),
                                                           New InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ShippingSession))))
         Else
             Me.shippingItemXPView.Filter = Nothing
@@ -481,7 +481,7 @@ Public Class ShippingXtraForm
 
     End Sub
 
-    Public Sub BindShippingGridControl(ByVal shippingID As Nullable(Of Integer))
+    Public Sub BindShippingGridControl(ByVal shippingID As Integer?)
 
         If shippingID.HasValue = False Then
             shippingID = 0
@@ -496,7 +496,7 @@ Public Class ShippingXtraForm
 
     End Sub
 
-    Private Sub BindReturnsGridControl(ByVal shippingID As Nullable(Of Integer))
+    Private Sub BindReturnsGridControl(ByVal shippingID As Integer?)
 
         If shippingID.HasValue = False Then
             shippingID = 0
@@ -872,12 +872,12 @@ Public Class ShippingXtraForm
     Private Sub FilterAssignedCustomers()
 
         Me.shippingSearchXPView.Criteria = New InOperator(Shipping.Fields.ShipMainCustID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession))
-        Me.customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
+        Me.customersXPView.Criteria = CriteriaOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)))
-        Me.shippingItemXPView.Criteria = GroupOperator.And(GroupOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)), _
+        Me.shippingItemXPView.Criteria = CriteriaOperator.And(CriteriaOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)), _
                                                                             New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal)), _
                                                            New BinaryOperator(Items.Fields.ItemType.PropertyName, "FG", BinaryOperatorType.Equal))
-        Me.returnItemXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)), _
+        Me.returnItemXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)), _
                                                                   New InOperator(Items.Fields.ItemType.PropertyName, New String() {"RM", "IG"}))
 
     End Sub
@@ -949,8 +949,8 @@ Public Class ShippingXtraForm
             .carrierXrLabel.DataBindings.Add("Text", Nothing, "CarrierName")
             .trailerXrLabel.DataBindings.Add("Text", Nothing, "strTrailer")
             .sealXrLabel.DataBindings.Add("Text", Nothing, "strSeal")
-            .returnsGroupHeader.GroupFields.Add(New DevExpress.XtraReports.UI.GroupField("ShippingType", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending))
-            .itemGroupHeader.GroupFields.Add(New DevExpress.XtraReports.UI.GroupField("ItemCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending))
+            .returnsGroupHeader.GroupFields.Add(New GroupField("ShippingType", XRColumnSortOrder.Ascending))
+            .itemGroupHeader.GroupFields.Add(New GroupField("ItemCode", XRColumnSortOrder.Ascending))
             .qtyXrLabel.DataBindings.Add("Text", Nothing, "ShipDetDetQty")
             .itemCodeXrLabel.DataBindings.Add("Text", Nothing, "ItemCode")
             .itemDescriptionXrLabel.DataBindings.Add("Text", Nothing, "ItemDescription")
@@ -1082,8 +1082,8 @@ Public Class ShippingXtraForm
 
     Private Sub itemRepositoryItemLookUpEdit_Enter(sender As Object, e As EventArgs) Handles itemRepositoryItemLookUpEdit.Enter, returnItemRepositoryItemLookUpEdit.Enter
 
-        shippingItemXPView.Filter = GroupOperator.And(shippingItemXPView.Filter, New BinaryOperator("Inactive", False))
-        returnItemXPView.Filter = GroupOperator.And(returnItemXPView.Filter, New BinaryOperator("Inactive", False))
+        shippingItemXPView.Filter = CriteriaOperator.And(shippingItemXPView.Filter, New BinaryOperator("Inactive", False))
+        returnItemXPView.Filter = CriteriaOperator.And(returnItemXPView.Filter, New BinaryOperator("Inactive", False))
 
     End Sub
 
@@ -1264,8 +1264,8 @@ Public Class ShippingXtraForm
             .carrierXrLabel.DataBindings.Add("Text", Nothing, "CarrierName")
             .trailerXrLabel.DataBindings.Add("Text", Nothing, "strTrailer")
             .sealXrLabel.DataBindings.Add("Text", Nothing, "strSeal")
-            .returnsGroupHeader.GroupFields.Add(New DevExpress.XtraReports.UI.GroupField("ShippingType", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending))
-            .itemGroupHeader.GroupFields.Add(New DevExpress.XtraReports.UI.GroupField("ItemCode", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending))
+            .returnsGroupHeader.GroupFields.Add(New GroupField("ShippingType", XRColumnSortOrder.Ascending))
+            .itemGroupHeader.GroupFields.Add(New GroupField("ItemCode", XRColumnSortOrder.Ascending))
             .qtyXrLabel.DataBindings.Add("Text", Nothing, "ShipDetDetQty")
             .itemCodeXrLabel.DataBindings.Add("Text", Nothing, "ItemCode")
             .itemDescriptionXrLabel.DataBindings.Add("Text", Nothing, "ItemDescription")

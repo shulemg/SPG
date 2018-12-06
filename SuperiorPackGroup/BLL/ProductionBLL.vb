@@ -3,7 +3,7 @@ Imports System.Text
 Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ProductionBLL
 
     Private m_ProductionTableAdapter As ProductionTableAdapter = Nothing
@@ -19,21 +19,21 @@ Public Class ProductionBLL
 
     End Property
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetProductionByCustomerID(ByVal customerID As Integer) As SPG.ProductionDataTable
 
         Return Adapter.GetProductionByCustomerID(customerID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetProductionByMachine(ByVal machineID As Integer) As SPG.ProductionDataTable
 
         Return Adapter.GetProductionByMachine(machineID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetProductionByItemID(ByVal itemID As Integer) As SPG.ProductionDataTable
 
         Return Adapter.GetProductionByItemID(itemID)
@@ -51,8 +51,8 @@ Public Class ProductionBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -69,9 +69,9 @@ Public Class ProductionBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateProduction(ByVal productionID As Integer, ByVal productionDate As Nullable(Of Date), ByVal shift As Nullable(Of Integer), ByVal item As Nullable(Of Integer), ByVal quantity As Nullable(Of Single), _
-                                     ByVal machine As Nullable(Of Integer), ByVal startTime As Nullable(Of Date), ByVal stopTime As Nullable(Of Date), ByVal packers As Nullable(Of Single)) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateProduction(ByVal productionID As Integer, ByVal productionDate As Date?, ByVal shift As Integer?, ByVal item As Integer?, ByVal quantity As Single?, _
+                                     ByVal machine As Integer?, ByVal startTime As Date?, ByVal stopTime As Date?, ByVal packers As Single?) As Boolean
 
         Dim production As SPG.ProductionDataTable = Adapter.GetProductionByID(productionID)
 
@@ -108,9 +108,9 @@ Public Class ProductionBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertProduction(ByVal productionID As Integer, ByVal productiondate As Nullable(Of Date), ByVal shift As Nullable(Of Integer), ByVal item As Nullable(Of Integer), ByVal quantity As Nullable(Of Single), _
-                                     ByVal machine As Nullable(Of Integer), ByVal startTime As Nullable(Of Date), ByVal stopTime As Nullable(Of Date), ByVal packers As Nullable(Of Single)) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertProduction(ByVal productionID As Integer, ByVal productiondate As Date?, ByVal shift As Integer?, ByVal item As Integer?, ByVal quantity As Single?, _
+                                     ByVal machine As Integer?, ByVal startTime As Date?, ByVal stopTime As Date?, ByVal packers As Single?) As Boolean
 
         Dim production As SPG.ProductionDataTable = New SPG.ProductionDataTable
         Dim productionRecord As SPG.ProductionRow = production.NewProductionRow()
@@ -156,24 +156,24 @@ Public Class ProductionBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetProductionView(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customer As Nullable(Of Integer), _
-            ByVal shift As Nullable(Of Integer), ByVal machine As Nullable(Of Integer), ByVal item As Nullable(Of Integer)) As SPG.ProductionDataTable
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Function GetProductionView(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customer As Integer?, _
+            ByVal shift As Integer?, ByVal machine As Integer?, ByVal item As Integer?) As SPG.ProductionDataTable
 
         Return Adapter.GetProductionView(fromDate, toDate, customer, shift, machine, item)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetProductionByShift(ByVal shift As Nullable(Of Integer)) As SPG.ProductionDataTable
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Function GetProductionByShift(ByVal shift As Integer?) As SPG.ProductionDataTable
 
         Return Adapter.GetProductionView(Nothing, Nothing, Nothing, shift, Nothing, Nothing)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetProductionReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customer As Nullable(Of Integer), _
-            ByVal shift As Nullable(Of Integer), ByVal machine As Nullable(Of Integer), ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?) As SPG.ProductionDataTable
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Function GetProductionReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customer As Integer?, _
+            ByVal shift As Integer?, ByVal machine As Integer?, ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?) As SPG.ProductionDataTable
 
         If inactiveCustomers.Value = True Then
             inactiveCustomers = Nothing
@@ -191,7 +191,7 @@ Public Class ProductionBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteProduction(ByVal id As Integer, ByVal mySession As Session) As Boolean
 
         Dim production = mySession.GetObjectByKey(Of Production)(id)
@@ -204,7 +204,7 @@ Public Class ProductionBLL
          
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetProductionByID(ByVal productionID As Integer) As SPG.ProductionDataTable
 
         Return Adapter.GetProductionByID(productionID)

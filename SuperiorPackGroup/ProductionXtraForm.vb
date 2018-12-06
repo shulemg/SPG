@@ -17,13 +17,13 @@ Public Class ProductionXtraForm
     Private m_ProductionSession As Session
     Private m_ReasonsCollection As BindingList(Of ReasonIDs) = New BindingList(Of ReasonIDs)
 
-    Private Sub ProductionXtraForm_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
+    Private Sub ProductionXtraForm_Activated(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Activated
 
         FillDropDowns()
 
     End Sub
 
-    Private Sub ProductionXtraForm_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub ProductionXtraForm_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles Me.FormClosing
 
         If Me.editSimpleButton.Tag IsNot Nothing Then
             MessageBox.Show("You must first save or cancel the changes")
@@ -47,7 +47,7 @@ Public Class ProductionXtraForm
 
     End Sub
 
-    Private Sub ProductionXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub ProductionXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Me.Cursor = Cursors.WaitCursor
 
@@ -116,7 +116,7 @@ Public Class ProductionXtraForm
 
     End Sub
 
-    Private Sub itemLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles itemLookUpEdit.Validated
+    Private Sub itemLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As EventArgs) Handles itemLookUpEdit.Validated
 
         Me.descriptionMemoEdit.Text = ItemsBLL.GetDescriptionByItemID(CType(Me.itemLookUpEdit.EditValue, Integer?))
         uomTextEdit.Text = ItemsBLL.GetUOMByItemID(CType(itemLookUpEdit.EditValue, Integer?))
@@ -151,7 +151,7 @@ Public Class ProductionXtraForm
 
     End Sub
 
-    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles saveSimpleButton.Click
+    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles saveSimpleButton.Click
 
         If ValidateRecord() Then
             If SaveRecord(CType(Me.saveSimpleButton.Tag, Integer?)) Then
@@ -224,7 +224,7 @@ Public Class ProductionXtraForm
 
     End Function
 
-    Public Function SaveRecord(ByVal id As Nullable(Of Integer)) As Boolean
+    Public Function SaveRecord(ByVal id As Integer?) As Boolean
 
         If m_Production.UpdateProduction(CType(Me.saveSimpleButton.Tag, Integer), Me.productionDateEdit.DateTime, CType(Me.shiftLookUpEdit.EditValue, Integer?), CType(Me.itemLookUpEdit.EditValue, Integer?), _
                                          Utilities.ChangeType(Of Single?)(Me.quantityTextEdit.EditValue), CType(Me.machineLookUpEdit.EditValue, Integer?), Me.startTimeEdit.Time, Me.stopTimeEdit.Time, _
@@ -298,11 +298,11 @@ Public Class ProductionXtraForm
             productionViewCriteria.Add(New BinaryOperator(Production.Fields.ProdMainItemID.ItemID.PropertyName, CType(Me.itemFilterLookUpEdit.EditValue, Integer), BinaryOperatorType.Equal))
         End If
 
-        Me.productionXPView.Criteria = GroupOperator.And(productionViewCriteria)
+        Me.productionXPView.Criteria = CriteriaOperator.And(productionViewCriteria)
 
     End Sub
 
-    Private Sub editSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles editSimpleButton.Click
+    Private Sub editSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles editSimpleButton.Click
 
         With Me.productionGridView
             'enters the row handle for the editing record in the edit button tag property
@@ -332,7 +332,7 @@ Public Class ProductionXtraForm
 
     End Sub
 
-    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles deleteRepositoryItemButtonEdit.Click
+    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles deleteRepositoryItemButtonEdit.Click
 
         If MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) _
                 = Windows.Forms.DialogResult.Yes Then
@@ -347,7 +347,7 @@ Public Class ProductionXtraForm
 
     End Sub
 
-    Private Sub customerFilterLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles customerFilterLookUpEdit.Validated
+    Private Sub customerFilterLookUpEdit_Validated(ByVal sender As System.Object, ByVal e As EventArgs) Handles customerFilterLookUpEdit.Validated
 
         If CType(Me.customerFilterLookUpEdit.EditValue, String) = Me.customerFilterLookUpEdit.Properties.NullText OrElse String.IsNullOrEmpty(CStr(Me.customerFilterLookUpEdit.EditValue)) Then
             Me.itemsFilterXPView.Filter = Nothing
@@ -357,7 +357,7 @@ Public Class ProductionXtraForm
 
     End Sub
 
-    Private Sub clearSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clearSimpleButton.Click
+    Private Sub clearSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles clearSimpleButton.Click
 
         SetDefaultViewFilter()
         Me.fromFilterDateEdit.EditValue = Nothing
@@ -366,13 +366,13 @@ Public Class ProductionXtraForm
 
     End Sub
 
-    Private Sub filterSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles filterSimpleButton.Click
+    Private Sub filterSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles filterSimpleButton.Click
 
         FillProductionView()
 
     End Sub
 
-    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cancelSimpleButton.Click
+    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles cancelSimpleButton.Click
 
         PrepareNewRecord()
 
@@ -426,12 +426,12 @@ Public Class ProductionXtraForm
     Private Sub FilterAssignedCustomers()
 
         Me.productionXPView.Filter = New InOperator("CustomerID", UsersCustomerBLL.GetAssignedCustomerIDs(m_ProductionSession))
-        Me.customersXPView.Criteria = GroupOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
+        Me.customersXPView.Criteria = CriteriaOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)))
-        Me.itemsFilterXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), _
+        Me.itemsFilterXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), _
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"FG", "IG"}),
                                                            New BinaryOperator(Items.Fields.Inactive.PropertyName, False, BinaryOperatorType.Equal))
-        Me.itemsXPView.Criteria = GroupOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), _
+        Me.itemsXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), _
                                                            New InOperator(Items.Fields.ItemType.PropertyName, New String() {"FG", "IG"}),
                                                            New BinaryOperator(Items.Fields.Inactive.PropertyName, False, BinaryOperatorType.Equal))
 

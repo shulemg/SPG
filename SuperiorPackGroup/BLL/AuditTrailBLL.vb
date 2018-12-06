@@ -10,11 +10,11 @@ Public Class AuditTrailBLL
     Private Shared m_TrailTableAdapter As AuditTrailTableAdapter = Nothing
     Public Shared ReadOnly Property Adapter() As AuditTrailTableAdapter
         Get
-            If (AuditTrailBLL.m_TrailTableAdapter Is Nothing) Then
-                AuditTrailBLL.m_TrailTableAdapter = New AuditTrailTableAdapter
-                AuditTrailBLL.m_TrailTableAdapter.Connection.ConnectionString = My.Settings.UserConnectionString
+            If (m_TrailTableAdapter Is Nothing) Then
+                m_TrailTableAdapter = New AuditTrailTableAdapter
+                m_TrailTableAdapter.Connection.ConnectionString = My.Settings.UserConnectionString
             End If
-            Return AuditTrailBLL.m_TrailTableAdapter
+            Return m_TrailTableAdapter
         End Get
     End Property
 
@@ -26,9 +26,9 @@ Public Class AuditTrailBLL
         row.RecordID = recordID
         row.RecordType = recordType
         row.RecordChanges = recordChanges
-        row.ChangeDate = DateAndTime.Now
+        row.ChangeDate = Now
         dataTable.AddAuditTrailRow(row)
-        AuditTrailBLL.Adapter.Update(dataTable)
+        Adapter.Update(dataTable)
 
     End Sub
 

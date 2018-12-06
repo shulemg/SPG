@@ -193,19 +193,19 @@ Public Class ProjectsXtraForm
 
         If projectSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = True
             End Select
         End If
 
         If e.Cancel = False Then
-            ProjectDetails.AutoSaveOnEndEdit = True
+            XPBaseObject.AutoSaveOnEndEdit = True
             m_ProjectSession.PurgeDeletedObjects()
         End If
 
@@ -236,7 +236,7 @@ Public Class ProjectsXtraForm
 
         'scheduledWeekDatePeriodEdit.Properties.
 
-        ProjectDetails.AutoSaveOnEndEdit = False
+        XPBaseObject.AutoSaveOnEndEdit = False
 
         Utilities.MakeFormReadOnly(dataEntrySplitContainerControl.Panel1, True)
 

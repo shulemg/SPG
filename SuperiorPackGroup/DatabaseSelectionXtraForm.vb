@@ -7,13 +7,13 @@ Public Class DatabaseSelectionXtraForm
 
     Dim m_Servers As ArrayList = New ArrayList()
 
-    Private Sub DatabaseSelectionXtraForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub DatabaseSelectionXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 
         Me.serversBackgroundWorker.RunWorkerAsync()
 
     End Sub
 
-    Private Sub refreshSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles refreshSimpleButton.Click
+    Private Sub refreshSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles refreshSimpleButton.Click
 
         If Me.serversBackgroundWorker.IsBusy = False Then
             Me.serversBackgroundWorker.RunWorkerAsync()
@@ -27,7 +27,7 @@ Public Class DatabaseSelectionXtraForm
 
     End Sub
 
-    Private Sub logOnRadioGroup_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles logOnRadioGroup.SelectedIndexChanged
+    Private Sub logOnRadioGroup_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles logOnRadioGroup.SelectedIndexChanged
 
         Me.sqlAuthenticationPanelControl.Enabled = (Me.logOnRadioGroup.SelectedIndex = 1)
         FillDatabaseLookupEdit()
@@ -85,7 +85,7 @@ Public Class DatabaseSelectionXtraForm
 
     End Function
 
-    Private Sub testConnectionSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles testConnectionSimpleButton.Click
+    Private Sub testConnectionSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles testConnectionSimpleButton.Click
 
         If Me.dataBaseLookUpEdit.EditValue Is Nothing Then
             MessageBox.Show("Select a database before testing the connection.", "Error Encountered", MessageBoxButtons.OK)
@@ -102,20 +102,20 @@ Public Class DatabaseSelectionXtraForm
 
     End Sub
 
-    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cancelSimpleButton.Click
+    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles cancelSimpleButton.Click
 
         Me.Close()
 
     End Sub
 
-    Private Sub okSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles okSimpleButton.Click
+    Private Sub okSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles okSimpleButton.Click
 
         My.Settings.UserConnectionString = CreateFullConnectionString()
         Me.Close()
 
     End Sub
 
-    Private Sub serverLookUpEdit_ProcessNewValue(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ProcessNewValueEventArgs) Handles serverLookUpEdit.ProcessNewValue
+    Private Sub serverLookUpEdit_ProcessNewValue(ByVal sender As System.Object, ByVal e As Controls.ProcessNewValueEventArgs) Handles serverLookUpEdit.ProcessNewValue
 
         Dim edit As Repository.RepositoryItemLookUpEdit = CType(sender, LookUpEdit).Properties
         If e.DisplayValue.ToString = edit.NullText OrElse e.DisplayValue.ToString = String.Empty Then
@@ -128,13 +128,13 @@ Public Class DatabaseSelectionXtraForm
 
     End Sub
 
-    Private Sub serverLookUpEdit_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles serverLookUpEdit.Leave
+    Private Sub serverLookUpEdit_Leave(ByVal sender As System.Object, ByVal e As EventArgs) Handles serverLookUpEdit.Leave
 
         FillDatabaseLookupEdit()
 
     End Sub
 
-    Private Sub refreshDatabasesSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles refreshDatabasesSimpleButton.Click
+    Private Sub refreshDatabasesSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles refreshDatabasesSimpleButton.Click
 
         Me.Cursor = Cursors.WaitCursor
         FillDatabaseLookupEdit()
@@ -142,13 +142,13 @@ Public Class DatabaseSelectionXtraForm
 
     End Sub
 
-    Private Sub serversBackgroundWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles serversBackgroundWorker.DoWork
+    Private Sub serversBackgroundWorker_DoWork(ByVal sender As System.Object, ByVal e As ComponentModel.DoWorkEventArgs) Handles serversBackgroundWorker.DoWork
 
         m_Servers = DALUtils.GetSQLServers()
 
     End Sub
 
-    Private Sub serversBackgroundWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles serversBackgroundWorker.RunWorkerCompleted
+    Private Sub serversBackgroundWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As ComponentModel.RunWorkerCompletedEventArgs) Handles serversBackgroundWorker.RunWorkerCompleted
 
         FillServerLookUpEdit()
 

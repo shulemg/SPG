@@ -21,7 +21,7 @@ Public Class ItemsTransactionsReportBLL
         End Get
     End Property
 
-    Public Function GetItemsTransactionsReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal customerID As Nullable(Of Integer), ByVal itemType As String,
+    Public Function GetItemsTransactionsReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal customerID As Integer?, ByVal itemType As String,
                                                ByVal items As String, ByVal inactiveItems As Boolean?, ByVal inactiveCustomers As Boolean?) As SPGReports.ItemsTransactionsReportDataTable
 
         If inactiveCustomers.Value = True Then
@@ -40,7 +40,7 @@ Public Class ItemsTransactionsReportBLL
 
     End Function
 
-    Public Function GetItemsTransactionsReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal item As Integer?) As ItemTransactionsList
+    Public Function GetItemsTransactionsReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal item As Integer?) As ItemTransactionsList
 
         If item.HasValue = False OrElse toDate.HasValue = False OrElse fromDate.HasValue = False Then
             Return Nothing

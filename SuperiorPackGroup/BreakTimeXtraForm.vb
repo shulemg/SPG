@@ -1,6 +1,6 @@
 Public Class BreakTimeXtraForm 
 
-    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles deleteRepositoryItemButtonEdit.Click
+    Private Sub deleteRepositoryItemButtonEdit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles deleteRepositoryItemButtonEdit.Click
 
         If MessageBox.Show("Are you sure you want to delete this Break Time?", "Delete Break Time", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) = Windows.Forms.DialogResult.Yes Then
             breakTimeGridView.DeleteRow(breakTimeGridView.FocusedRowHandle)

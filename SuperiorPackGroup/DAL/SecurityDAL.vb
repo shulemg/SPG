@@ -15,7 +15,7 @@ Partial Public Class SecurityDAL
 
     End Property
 
-    Public Function GetSecuritySettingsByUserName(ByVal userName As String) As Data.DataTableReader
+    Public Function GetSecuritySettingsByUserName(ByVal userName As String) As DataTableReader
 
         Return Adapter.GetSecuritySettingsByUserName(userName).CreateDataReader
 

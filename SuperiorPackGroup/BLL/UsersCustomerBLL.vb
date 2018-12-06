@@ -4,7 +4,7 @@ Imports DevExpress.Data.Filtering
 
 Public Class UsersCustomerBLL
 
-    Public Shared Function GetAssignedCustomers(ByVal session As Session) As Collections.Generic.List(Of Customers)
+    Public Shared Function GetAssignedCustomers(ByVal session As Session) As List(Of Customers)
 
         Dim assignedCustomers As New List(Of Customers)
 
@@ -16,7 +16,7 @@ Public Class UsersCustomerBLL
 
     End Function
 
-    Public Shared Function GetAssignedCustomerIDs(ByVal session As Session) As Collections.Generic.List(Of Integer)
+    Public Shared Function GetAssignedCustomerIDs(ByVal session As Session) As List(Of Integer)
 
         Dim assignedCustomers As New List(Of Integer)
 

@@ -134,19 +134,19 @@ Public Class LocationTransfersXtraForm
 
         If transferSearchGridControl.Enabled = False Then
             Select Case MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
+                Case DialogResult.Yes
                     If SaveChanges() = False Then
                         e.Cancel = True
                     End If
-                Case Windows.Forms.DialogResult.Cancel
+                Case DialogResult.Cancel
                     e.Cancel = False
-                Case Windows.Forms.DialogResult.No
+                Case DialogResult.No
                     CancelChanges()
             End Select
         End If
 
         If e.Cancel = False Then
-            LocationTransferDetails.AutoSaveOnEndEdit = True
+            XPBaseObject.AutoSaveOnEndEdit = True
             m_TransfersSession.PurgeDeletedObjects()
         End If
 
@@ -173,7 +173,7 @@ Public Class LocationTransfersXtraForm
         transferDetailsXpCollection.Criteria = New BinaryOperator(LocationTransferDetails.Fields.Transfer.Oid.PropertyName, 0, BinaryOperatorType.Equal)
         transferSearchGridView.OptionsBehavior.Editable = False
 
-        LocationTransferDetails.AutoSaveOnEndEdit = False
+        XPBaseObject.AutoSaveOnEndEdit = False
 
         Utilities.MakeFormReadOnly(dataEntrySplitContainerControl.Panel1, True)
         'lpnNumberTextEdit.Properties.ReadOnly = True

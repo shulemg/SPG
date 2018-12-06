@@ -4,7 +4,7 @@ Imports DevExpress.Xpo
 Imports DXDAL.SPGData
 Imports DevExpress.Data.Filtering
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class ShippingReturnDetailsBLL
 
     Private m_ShippingReturnDetailsTableAdapter As ShippingReturnDetailsTableAdapter = Nothing
@@ -31,8 +31,8 @@ Public Class ShippingReturnDetailsBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -49,23 +49,23 @@ Public Class ShippingReturnDetailsBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetShippingReturnDetailsByItemID(ByVal itemID As Integer) As SPG.ShippingReturnDetailsDataTable
 
         Return Adapter.GetShippingReturnDetailsByItemID(itemID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetShippingReturnDetailsByShippingID(ByVal shippingID As Integer) As SPG.ShippingReturnDetailsDataTable
 
         Return Adapter.GetShippingReturnDetailsByShippingID(shippingID)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateShippingReturnDetails(ByVal session As Session, ByVal detailID As Nullable(Of Integer), ByVal receivingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer), ByVal units As Integer?,
-                                            ByVal pallets As Nullable(Of Single), ByVal reason As String, ByVal expirationDate As Date?) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    Public Function UpdateShippingReturnDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal receivingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?, ByVal units As Integer?,
+                                            ByVal pallets As Single?, ByVal reason As String, ByVal expirationDate As Date?) As Boolean
 
         If Not itemID.HasValue Then
             Throw New ApplicationException("You must provide return item.")
@@ -142,8 +142,8 @@ Public Class ShippingReturnDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertDetails(ByVal session As Session, ByVal shippingID As Integer, ByVal itemID As Nullable(Of Integer), ByVal lot As String, ByVal quantity As Nullable(Of Integer), ByVal units As Integer?, ByVal pallets As Nullable(Of Single), _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    Public Function InsertDetails(ByVal session As Session, ByVal shippingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?, ByVal units As Integer?, ByVal pallets As Single?, _
                                   ByVal reason As String, ByVal expirationDate As Date?) As Boolean
 
         Dim details As SPG.ShippingReturnDetailsDataTable = New SPG.ShippingReturnDetailsDataTable
@@ -186,7 +186,7 @@ Public Class ShippingReturnDetailsBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteReturnDetail(ByVal session As Session, ByVal detailID As Integer) As Boolean
 
         Dim details As SPG.ShippingReturnDetailsDataTable = Adapter.GetShippingReturnDetailByID(detailID)

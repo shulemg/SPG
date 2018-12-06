@@ -5,7 +5,7 @@ Public Class SettingsXtraForm
 
     Private m_Settings As CompanySettingsBLL
 
-    Private Sub SettingsXtraForm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub SettingsXtraForm_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
 
         If Me.FinancialTabs = "NONE" OrElse Me.FinancialTabs = "EDIT ASSIGNED" OrElse Me.FinancialTabs = "VIEW ASSIGNED" Then
             MessageBox.Show("You don't have permission to view this form.", "Access Denied", MessageBoxButtons.OK)
@@ -54,7 +54,7 @@ Public Class SettingsXtraForm
 
     End Sub
 
-    Private Sub payTextEditParseEditValue(ByVal sender As System.Object, ByVal e As DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs) Handles packersTextEdit.ParseEditValue, operatorsTextEdit.ParseEditValue, supersTextEdit.ParseEditValue
+    Private Sub payTextEditParseEditValue(ByVal sender As System.Object, ByVal e As Controls.ConvertEditValueEventArgs) Handles packersTextEdit.ParseEditValue, operatorsTextEdit.ParseEditValue, supersTextEdit.ParseEditValue
 
         If e.Value Is Nothing Then
             e.Value = Double.Parse(e.Value.ToString)
@@ -62,7 +62,7 @@ Public Class SettingsXtraForm
 
     End Sub
 
-    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles saveSimpleButton.Click
+    Private Sub saveSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles saveSimpleButton.Click
 
         Try
             If m_Settings.UpdateCompanySettings(Utilities.ChangeType(Of Single?)(Me.packersTextEdit.EditValue), Utilities.ChangeType(Of Single?)(Me.operatorsTextEdit.EditValue), _
@@ -79,13 +79,13 @@ Public Class SettingsXtraForm
 
     End Sub
 
-    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cancelSimpleButton.Click
+    Private Sub cancelSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles cancelSimpleButton.Click
 
         BindSettingControls()
 
     End Sub
 
-    Private Sub SetUpBreakTimesSimpleButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SetUpBreakTimesSimpleButton.Click
+    Private Sub SetUpBreakTimesSimpleButton_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles SetUpBreakTimesSimpleButton.Click
 
         With BreakTimeXtraForm
             .ShowDialog()

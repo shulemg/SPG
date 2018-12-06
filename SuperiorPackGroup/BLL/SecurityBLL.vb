@@ -2,7 +2,7 @@ Imports System
 Imports SuperiorPackGroup.SPGTableAdapters
 Imports System.Text
 
-<System.ComponentModel.DataObject()> _
+<ComponentModel.DataObject()> _
 Public Class SecurityBLL
 
     Private m_SecurityTableAdapter As SecurityTableAdapter = Nothing
@@ -41,8 +41,8 @@ Public Class SecurityBLL
                     If Not IsDBNull(ModifiedRecord.Item(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, "NULL", ModifiedRecord.Item(i)))
                     End If
-                ElseIf Information.IsDBNull(ModifiedRecord.Item(i)) Then
-                    If Not Information.IsDBNull(originalRecord(i)) Then
+                ElseIf IsDBNull(ModifiedRecord.Item(i)) Then
+                    If Not IsDBNull(originalRecord(i)) Then
                         builder.Append(String.Format("{0}:{1}({2}); ", ModifiedRecord.Table.Columns.Item(i).ColumnName, originalRecord(i), "NULL"))
                     End If
                 ElseIf ModifiedRecord.Item(i) IsNot originalRecord(i) Then
@@ -59,21 +59,21 @@ Public Class SecurityBLL
 
     End Sub
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
     Public Function GetSecuritySettingsByUserName(ByVal userName As String) As SPG.SecurityDataTable
 
         Return Adapter.GetSecuritySettingsByUserName(userName)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetSecuritySettingsByUserNameReader(ByVal userName As String) As Data.DataTableReader
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    Public Function GetSecuritySettingsByUserNameReader(ByVal userName As String) As DataTableReader
 
         Return SecurityDAL.GetSecuritySettingsByUserName(userName)
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
         Public Function UpdateUserPermissions(ByVal name As String, ByVal receivingForm As Boolean, ByVal shippingForm As Boolean, ByVal customersForm As Boolean, _
                 ByVal itmesForm As Boolean, ByVal productionForm As Boolean, ByVal costingReports As Boolean, ByVal productionReports As Boolean, _
                 ByVal advancedTabs As Boolean, ByVal financialTabs As Boolean) As Boolean
@@ -111,7 +111,7 @@ Public Class SecurityBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
     Public Function InsertUserPermissions(ByVal name As String, ByVal receivingForm As Boolean, ByVal shippingForm As Boolean, ByVal customersForm As Boolean, _
                 ByVal itmesForm As Boolean, ByVal productionForm As Boolean, ByVal costingReports As Boolean, ByVal productionReports As Boolean, _
                 ByVal advancedTabs As Boolean, ByVal financialTabs As Boolean) As Boolean
@@ -137,7 +137,7 @@ Public Class SecurityBLL
 
     End Function
 
-    <System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Delete, True)> _
     Public Function DeleteUserPermissions(ByVal name As String) As Boolean
 
         Dim permissions As SPG.SecurityDataTable = Adapter.GetSecuritySettingsByUserName(name)

@@ -4,8 +4,8 @@ Imports DevExpress.Data.Filtering
 
 Public Class ShippingReturnsReportBLL
 
-    Public Shared Function GetShippingReturnsReport(ByVal fromDate As Nullable(Of Date), ByVal toDate As Nullable(Of Date), ByVal shiftID As Nullable(Of Integer), ByVal customerID As Nullable(Of Integer), ByVal lot As String, _
-                                             ByVal BOL As String, ByVal destinationID As Nullable(Of Integer), ByVal carrierID As Nullable(Of Integer), ByVal items As String, ByVal inactiveItems As Boolean?, _
+    Public Shared Function GetShippingReturnsReport(ByVal fromDate As Date?, ByVal toDate As Date?, ByVal shiftID As Integer?, ByVal customerID As Integer?, ByVal lot As String, _
+                                             ByVal BOL As String, ByVal destinationID As Integer?, ByVal carrierID As Integer?, ByVal items As String, ByVal inactiveItems As Boolean?, _
                                              ByVal inactiveCustomers As Boolean?, ByVal onlyAssignedCustomers As Boolean) As XPView
 
         Dim ShippingReturnsReportXPView As New XPView(Session.DefaultSession, GetType(ShippedReturns))
@@ -55,7 +55,7 @@ Public Class ShippingReturnsReportBLL
         End If
 
         Try
-            ShippingReturnsReportXPView.Criteria = GroupOperator.And(theCriteria)
+            ShippingReturnsReportXPView.Criteria = CriteriaOperator.And(theCriteria)
             ShippingReturnsReportXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ShipMainDate", SortDirection.Ascending, "[ShipMainID].[ShipMainDate]", False, True),
                                                                                 New ViewProperty("ShiftName", SortDirection.None, "[ShipMainID].[Shift].[ShiftName]", False, True),
                                                                                 New ViewProperty("CustomerName", SortDirection.Ascending, "[ShipMainID].[ShipMainCustID].[CustomerName]", False, True),
