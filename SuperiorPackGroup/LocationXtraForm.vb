@@ -335,20 +335,20 @@ Public Class LocationXtraForm
             receivingReturnXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(ReceivedReturns.Fields.ReceiveMainID.ReceivingLocation.Oid, locationID, BinaryOperatorType.Equal),
                                                                                         New BinaryOperator(ReceivedReturns.Fields.ReceiveMainID.ReceivDate.PropertyName, DateAdd(DateInterval.Year, -1, Today), BinaryOperatorType.GreaterOrEqual))
             receivingsXpView.Reload()
-            receivingReturnXpView.Reload()
+            'receivingReturnXpView.Reload()
             receivingXtraTabPage.PageEnabled = True
             receivingXtraTabPage.PageVisible = True
-            receivingReturnsXtraTabPage.PageEnabled = True
-            receivingReturnsXtraTabPage.PageVisible = True
+            'receivingReturnsXtraTabPage.PageEnabled = True
+            'receivingReturnsXtraTabPage.PageVisible = True
         Else
             receivingsXpView.Criteria = New BinaryOperator(ReceivingDetail.Fields.ReceivMainID.ReceivingLocation.Oid.PropertyName, 0, BinaryOperatorType.Equal)
             receivingReturnXpView.Criteria = New BinaryOperator(ReceivedReturns.Fields.ReceiveMainID.ReceivingLocation.Oid.PropertyName, 0, BinaryOperatorType.Equal)
             receivingsXpView.Reload()
-            receivingReturnXpView.Reload()
+            'receivingReturnXpView.Reload()
             receivingXtraTabPage.PageEnabled = False
             receivingXtraTabPage.PageVisible = False
-            receivingReturnsXtraTabPage.PageEnabled = False
-            receivingReturnsXtraTabPage.PageVisible = False
+            'receivingReturnsXtraTabPage.PageEnabled = False
+            'receivingReturnsXtraTabPage.PageVisible = False
         End If
 
         If productionCheckEdit.Checked Then

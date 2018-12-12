@@ -74,6 +74,7 @@ Partial Class LocationXtraForm
         Me.colItemDescription = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.inventoryByLotXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.PrintLpnSimpleButton = New DevExpress.XtraEditors.SimpleButton()
         Me.inventoryByLotGridControl = New DevExpress.XtraGrid.GridControl()
         Me.locationInventoryByLotXpView = New DevExpress.Xpo.XPView(Me.components)
         Me.inventoryByLotGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -118,6 +119,7 @@ Partial Class LocationXtraForm
         Me.colReceivingDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colReceivingItemCode = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colReceivingItemDescription = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colReceivingItemType = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colReceivingBOL = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colReceivingLot = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colReceivingItemExpirationDate = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -171,7 +173,6 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnExpirationDateFormat = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.PrintLpnSimpleButton = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -711,6 +712,15 @@ Partial Class LocationXtraForm
         Me.inventoryByLotXtraTabPage.Size = New System.Drawing.Size(563, 461)
         Me.inventoryByLotXtraTabPage.Text = "Inventory-Lot"
         '
+        'PrintLpnSimpleButton
+        '
+        Me.PrintLpnSimpleButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PrintLpnSimpleButton.Location = New System.Drawing.Point(481, 3)
+        Me.PrintLpnSimpleButton.Name = "PrintLpnSimpleButton"
+        Me.PrintLpnSimpleButton.Size = New System.Drawing.Size(75, 23)
+        Me.PrintLpnSimpleButton.TabIndex = 2
+        Me.PrintLpnSimpleButton.Text = "Print LPN`s"
+        '
         'inventoryByLotGridControl
         '
         Me.inventoryByLotGridControl.DataSource = Me.locationInventoryByLotXpView
@@ -1048,11 +1058,11 @@ Partial Class LocationXtraForm
         '
         Me.receivingsXpView.CriteriaString = "[ReceivMainID.ReceivingLocation] Is Null"
         Me.receivingsXpView.ObjectType = GetType(DXDAL.SPGData.ReceivingDetail)
-        Me.receivingsXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ReceivingDate", DevExpress.Xpo.SortDirection.None, "[ReceivMainID.ReceivDate]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingItemCode", DevExpress.Xpo.SortDirection.None, "[ReceivDetItemID.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingItemDescription", DevExpress.Xpo.SortDirection.None, "[ReceivDetItemID.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingBOL", DevExpress.Xpo.SortDirection.None, "[ReceivMainID.ReceivBOL]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingLot", DevExpress.Xpo.SortDirection.None, "[ReceivDetLot]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingItemExpirationDate", DevExpress.Xpo.SortDirection.None, "[ExpirationDate]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingQuantity", DevExpress.Xpo.SortDirection.None, "[ReceivDetQty]", False, True), New DevExpress.Xpo.ViewProperty("receivingExpirationDateFormat", DevExpress.Xpo.SortDirection.None, "[ReceivDetItemID.ItemCustomerID.ExpirationDateFormat]", False, True)})
+        Me.receivingsXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ReceivingDate", DevExpress.Xpo.SortDirection.None, "[ReceivMainID.ReceivDate]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingItemCode", DevExpress.Xpo.SortDirection.None, "[ReceivDetItemID.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingItemDescription", DevExpress.Xpo.SortDirection.None, "[ReceivDetItemID.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingBOL", DevExpress.Xpo.SortDirection.None, "[ReceivMainID.ReceivBOL]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingLot", DevExpress.Xpo.SortDirection.None, "[ReceivDetLot]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingItemExpirationDate", DevExpress.Xpo.SortDirection.None, "[ExpirationDate]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingQuantity", DevExpress.Xpo.SortDirection.None, "[ReceivDetQty]", False, True), New DevExpress.Xpo.ViewProperty("receivingExpirationDateFormat", DevExpress.Xpo.SortDirection.None, "[ReceivDetItemID.ItemCustomerID.ExpirationDateFormat]", False, True), New DevExpress.Xpo.ViewProperty("ReceivingItemType", DevExpress.Xpo.SortDirection.None, "[ReceivDetItemID.ItemType]", False, True)})
         '
         'receivingsGridView
         '
-        Me.receivingsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colReceivingDate, Me.colReceivingItemCode, Me.colReceivingItemDescription, Me.colReceivingBOL, Me.colReceivingLot, Me.colReceivingItemExpirationDate, Me.colReceivingQuantity, Me.colReceivingExpirationDateFormat})
+        Me.receivingsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colReceivingDate, Me.colReceivingItemCode, Me.colReceivingItemDescription, Me.colReceivingItemType, Me.colReceivingBOL, Me.colReceivingLot, Me.colReceivingItemExpirationDate, Me.colReceivingQuantity, Me.colReceivingExpirationDateFormat})
         Me.receivingsGridView.GridControl = Me.receivingsGridControl
         Me.receivingsGridView.Name = "receivingsGridView"
         Me.receivingsGridView.OptionsBehavior.Editable = False
@@ -1085,6 +1095,14 @@ Partial Class LocationXtraForm
         Me.colReceivingItemDescription.Visible = True
         Me.colReceivingItemDescription.VisibleIndex = 2
         '
+        'colReceivingItemType
+        '
+        Me.colReceivingItemType.Caption = "Item Type"
+        Me.colReceivingItemType.FieldName = "ReceivingItemType"
+        Me.colReceivingItemType.Name = "colReceivingItemType"
+        Me.colReceivingItemType.Visible = True
+        Me.colReceivingItemType.VisibleIndex = 3
+        '
         'colReceivingBOL
         '
         Me.colReceivingBOL.Caption = "BOL #"
@@ -1092,7 +1110,7 @@ Partial Class LocationXtraForm
         Me.colReceivingBOL.Name = "colReceivingBOL"
         Me.colReceivingBOL.OptionsColumn.ReadOnly = True
         Me.colReceivingBOL.Visible = True
-        Me.colReceivingBOL.VisibleIndex = 3
+        Me.colReceivingBOL.VisibleIndex = 4
         '
         'colReceivingLot
         '
@@ -1101,7 +1119,7 @@ Partial Class LocationXtraForm
         Me.colReceivingLot.Name = "colReceivingLot"
         Me.colReceivingLot.OptionsColumn.ReadOnly = True
         Me.colReceivingLot.Visible = True
-        Me.colReceivingLot.VisibleIndex = 4
+        Me.colReceivingLot.VisibleIndex = 5
         '
         'colReceivingItemExpirationDate
         '
@@ -1110,7 +1128,7 @@ Partial Class LocationXtraForm
         Me.colReceivingItemExpirationDate.Name = "colReceivingItemExpirationDate"
         Me.colReceivingItemExpirationDate.OptionsColumn.ReadOnly = True
         Me.colReceivingItemExpirationDate.Visible = True
-        Me.colReceivingItemExpirationDate.VisibleIndex = 5
+        Me.colReceivingItemExpirationDate.VisibleIndex = 6
         '
         'colReceivingQuantity
         '
@@ -1119,7 +1137,7 @@ Partial Class LocationXtraForm
         Me.colReceivingQuantity.Name = "colReceivingQuantity"
         Me.colReceivingQuantity.OptionsColumn.ReadOnly = True
         Me.colReceivingQuantity.Visible = True
-        Me.colReceivingQuantity.VisibleIndex = 6
+        Me.colReceivingQuantity.VisibleIndex = 7
         '
         'colReceivingExpirationDateFormat
         '
@@ -1539,15 +1557,6 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDateFormat.FieldName = "ShippingReturnExpirationDateFormat"
         Me.colShippingReturnExpirationDateFormat.Name = "colShippingReturnExpirationDateFormat"
         '
-        'PrintLpnSimpleButton
-        '
-        Me.PrintLpnSimpleButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PrintLpnSimpleButton.Location = New System.Drawing.Point(481, 3)
-        Me.PrintLpnSimpleButton.Name = "PrintLpnSimpleButton"
-        Me.PrintLpnSimpleButton.Size = New System.Drawing.Size(75, 23)
-        Me.PrintLpnSimpleButton.TabIndex = 2
-        Me.PrintLpnSimpleButton.Text = "Print LPN`s"
-        '
         'LocationXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1785,4 +1794,5 @@ Partial Class LocationXtraForm
     Friend WithEvents colQuantity1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colExpirationDate1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents PrintLpnSimpleButton As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents colReceivingItemType As DevExpress.XtraGrid.Columns.GridColumn
 End Class
