@@ -38,7 +38,7 @@
     <UpdateUrl>\\server1\SPG\SPG Test Install\</UpdateUrl>
     <ProductName>Superior Pack Group - Test</ProductName>
     <PublisherName>PC Ware Business Solutions</PublisherName>
-    <ApplicationRevision>261</ApplicationRevision>
+    <ApplicationRevision>265</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

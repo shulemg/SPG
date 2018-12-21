@@ -1180,6 +1180,7 @@ Partial Class ReceivingXtraForm
         Me.ItemLookUpEdit.Properties.NullValuePrompt = "[Select A Item]"
         Me.ItemLookUpEdit.Properties.NullValuePromptShowForEmptyValue = True
         Me.ItemLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.ItemLookUpEdit.Properties.ValidateOnEnterKey = True
         Me.ItemLookUpEdit.Properties.ValueMember = "ItemID"
         Me.ItemLookUpEdit.Size = New System.Drawing.Size(155, 20)
         Me.ItemLookUpEdit.TabIndex = 26

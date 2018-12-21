@@ -350,13 +350,13 @@ Public Class ItemsBLL
     End Function
 
     <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
-    Public Shared Function GetQtyOnHandByID(ByVal session As Session, ByVal itemID As Integer?, ByVal locationID As Integer, Optional ByVal lot As String = "", Optional ByVal LPNNumber As Integer? = Nothing) As Single
+    Public Shared Function GetQtyOnHandByID(ByVal session As Session, ByVal itemID As Integer?, ByVal locationID As Integer, Optional ByVal lot As String = Nothing, Optional ByVal LPNNumber As Integer? = Nothing) As Single
 
         If itemID.HasValue = False Then
             Return 0
         End If
 
-        If Not (IsNothing(lot) OrElse lot = "") Then
+        If Not IsNothing(LPNNumber) Then
             Return GetQtyOnHandByIDAndLot(session, itemID, locationID, lot, LPNNumber)
         End If
 
@@ -383,7 +383,7 @@ Public Class ItemsBLL
     <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Shared Function GetQtyOnHandByIDAndLot(ByVal session As Session, ByVal itemID As Integer?, ByVal locationID As Integer, ByVal lot As String, ByVal LPNNumber As Integer?) As Single
 
-        If itemID.HasValue = False OrElse IsNothing(lot) OrElse lot = "" Then
+        If itemID.HasValue = False OrElse IsNothing(LPNNumber) Then
             Return 0
         End If
 
@@ -392,15 +392,15 @@ Public Class ItemsBLL
         'End If
 
         Try
-            If LPNNumber Is Nothing Then
+            If IsNothing(lot) Then
                 If locationID = 0 Then
                     Return CSng(session.Evaluate(Of LocationInventoryByLot)(New AggregateOperand("", LocationInventoryByLot.Fields.QuantityOnHand.PropertyName, Aggregate.Sum),
                                                                                       New GroupOperator(GroupOperatorType.And, New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemID, itemID.Value, BinaryOperatorType.Equal),
-                                                                                      New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryLot, lot, BinaryOperatorType.Equal))))
+                                                                                      New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPNNumber.Value, BinaryOperatorType.Equal))))
                 Else
                     Dim quantity As LocationInventoryByLot = session.FindObject(Of LocationInventoryByLot)(New GroupOperator(New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemID, itemID.Value, BinaryOperatorType.Equal) And
                                                                                               New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, locationID, BinaryOperatorType.Equal) And
-                                                                                              New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryLot, lot, BinaryOperatorType.Equal)))
+                                                                                              New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPNNumber.Value, BinaryOperatorType.Equal)))
                     'Dim item As Items = Session.DefaultSession.GetObjectByKey(Of Items)(itemID, True)
                     'Return item.s ngQuantityOnHand
                     Return quantity.QuantityOnHand
@@ -410,12 +410,12 @@ Public Class ItemsBLL
                     Return CSng(session.Evaluate(Of LocationInventoryByLot)(New AggregateOperand("", LocationInventoryByLot.Fields.QuantityOnHand.PropertyName, Aggregate.Sum),
                                                                                   New GroupOperator(GroupOperatorType.And, New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemID, itemID.Value, BinaryOperatorType.Equal),
                                                                                   New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryLot, lot, BinaryOperatorType.Equal),
-                                                                                  New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, If(LPNNumber, 0), BinaryOperatorType.Equal))))
+                                                                                  New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPNNumber.Value, BinaryOperatorType.Equal))))
                 Else
                     Dim quantity As LocationInventoryByLot = session.FindObject(Of LocationInventoryByLot)(New GroupOperator(New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemID, itemID.Value, BinaryOperatorType.Equal) And
                                                                                           New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, locationID, BinaryOperatorType.Equal) And
                                                                                           New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryLot, lot, BinaryOperatorType.Equal) And
-                                                                                          New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, If(LPNNumber, 0), BinaryOperatorType.Equal)))
+                                                                                          New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPNNumber.Value, BinaryOperatorType.Equal)))
                     'Dim item As Items = Session.DefaultSession.GetObjectByKey(Of Items)(itemID, True)
                     'Return item.s ngQuantityOnHand
                     Return quantity.QuantityOnHand

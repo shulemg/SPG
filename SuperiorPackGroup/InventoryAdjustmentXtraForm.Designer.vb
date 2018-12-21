@@ -539,17 +539,17 @@ Partial Class InventoryAdjustmentXtraForm
         '
         Me.LabelControl13.Location = New System.Drawing.Point(118, 129)
         Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(47, 13)
+        Me.LabelControl13.Size = New System.Drawing.Size(76, 13)
         Me.LabelControl13.TabIndex = 21
-        Me.LabelControl13.Text = "New Lot#"
+        Me.LabelControl13.Text = "Change to Lot#"
         '
         'LabelControl14
         '
         Me.LabelControl14.Location = New System.Drawing.Point(10, 129)
         Me.LabelControl14.Name = "LabelControl14"
-        Me.LabelControl14.Size = New System.Drawing.Size(62, 13)
+        Me.LabelControl14.Size = New System.Drawing.Size(23, 13)
         Me.LabelControl14.TabIndex = 19
-        Me.LabelControl14.Text = "Original Lot#"
+        Me.LabelControl14.Text = "Lot#"
         '
         'newLotTextEdit
         '
@@ -574,7 +574,7 @@ Partial Class InventoryAdjustmentXtraForm
         Me.lpnLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LPN", "LPN", 28, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 46, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.lpnLookUpEdit.Properties.DataSource = Me.lpnXpView
         Me.lpnLookUpEdit.Properties.DisplayMember = "LPN"
-        Me.lpnLookUpEdit.Properties.NullText = ""
+        Me.lpnLookUpEdit.Properties.NullText = "[Select A LPN]"
         Me.lpnLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.lpnLookUpEdit.Properties.ValueMember = "LPN"
         Me.lpnLookUpEdit.Size = New System.Drawing.Size(214, 20)
@@ -617,9 +617,9 @@ Partial Class InventoryAdjustmentXtraForm
         Me.LabelControl4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LabelControl4.Location = New System.Drawing.Point(442, 47)
         Me.LabelControl4.Name = "LabelControl4"
-        Me.LabelControl4.Size = New System.Drawing.Size(57, 13)
+        Me.LabelControl4.Size = New System.Drawing.Size(18, 13)
         Me.LabelControl4.TabIndex = 6
-        Me.LabelControl4.Text = "Original Qty"
+        Me.LabelControl4.Text = "Qty"
         '
         'newQtyTextEdit
         '
@@ -774,7 +774,7 @@ Partial Class InventoryAdjustmentXtraForm
         Me.originalLotLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "Location ID", 77, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 78, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LPN", "LPN", 28, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemID", "Item ID", 46, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("ItemCode", "Item Code", 60, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("lot", "lot", 100, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Qty", "Qty", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("Expr", "Expr", 20, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.[Default], DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.originalLotLookUpEdit.Properties.DataSource = Me.LotXpView
         Me.originalLotLookUpEdit.Properties.DisplayMember = "lot"
-        Me.originalLotLookUpEdit.Properties.NullText = ""
+        Me.originalLotLookUpEdit.Properties.NullText = "[Select A Lot#]"
         Me.originalLotLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
         Me.originalLotLookUpEdit.Properties.ValueMember = "lot"
         Me.originalLotLookUpEdit.Size = New System.Drawing.Size(100, 20)

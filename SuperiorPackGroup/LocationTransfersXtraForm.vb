@@ -231,16 +231,13 @@ Public Class LocationTransfersXtraForm
         item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn)), True)
         lot = CStr(transferDetailsGridView.GetFocusedRowCellValue(colTransferLot))
 
-        Try
-            LPNNumber = CInt(transferDetailsGridView.GetFocusedRowCellValue(fullLpnNumberGridColumn))
-        Catch
-            If item.RequiresLotCodes Then
-                MessageBox.Show("LPN Number is invalid", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                e.Valid = False
-                m_CanSaveDetails = False
-                Exit Sub
-            End If
-        End Try
+        LPNNumber = CInt(transferDetailsGridView.GetFocusedRowCellValue(fullLpnNumberGridColumn))
+        If LPNNumber = 0 Then
+            MessageBox.Show("LPN Number is invalid", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+            e.Valid = False
+            m_CanSaveDetails = False
+            Exit Sub
+        End If
 
         Try
             If Not LotCodeValidator.ValidateByItem(item, lot, False) Then
@@ -269,7 +266,7 @@ Public Class LocationTransfersXtraForm
                                           stock.ToString, transferingQuantity.ToString), "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
             e.Valid = False
             m_CanSaveDetails = False
-        ElseIf lotStock < transferingQuantity AndAlso item.RequiresLotCodes Then
+        ElseIf lotStock < transferingQuantity Then
             MessageBox.Show($"{item.ItemCode} lot# {lot} LPN# {LPNNumber} does only have {lotStock} in stock and your transfering {transferingQuantity}.", "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
             e.Valid = False
             m_CanSaveDetails = False
@@ -505,68 +502,13 @@ Public Class LocationTransfersXtraForm
     End Sub
 
     Private Function ValidateAvailability() As Boolean
-
         Dim totalTransferQuantity As New Dictionary(Of Integer, Double)
         Dim stock As Double
-        Dim lotStock As Double
-        Dim transferQuantity As Integer
-        Dim item As Items
-        Dim lot As String
-        Dim LPNNumber As Integer
 
         If transferDetailsGridView.GroupCount = 0 Then
             For i As Integer = 0 To transferDetailsGridView.RowCount - 1
                 If transferDetailsGridView.IsValidRowHandle(i) Then
-
-                    lot = CStr(transferDetailsGridView.GetRowCellValue(i, colTransferLot))
-                    item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), True)
-                    Try
-                        LPNNumber = CInt(transferDetailsGridView.GetRowCellValue(i, fullLpnNumberGridColumn))
-                    Catch
-                        If item.RequiresLotCodes Then
-                            MessageBox.Show("LPN Number is invalid", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                            Return False
-                        End If
-                    End Try
-
-                    Try
-                        If Not LotCodeValidator.ValidateByItem(item, lot, False) Then
-                            Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
-                        End If
-                    Catch ex As ApplicationException
-                        MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                        Return False
-                    End Try
-
-                    stock = ItemsBLL.GetQtyOnHandByID(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue))
-
-                    lotStock = ItemsBLL.GetQtyOnHandByIDAndLot(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue), lot, LPNNumber)
-
-                    If m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(i)) = False AndAlso CType(transferDetailsGridView.GetRow(i), LocationTransferDetails).HasChanges = False Then
-                        Continue For
-                    ElseIf m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(i)) = False Then
-                        transferQuantity = CInt(transferDetailsGridView.GetRowCellValue(i, colTransferQuantity)) - Session.DefaultSession.GetObjectByKey(Of LocationTransferDetails)(transferDetailsGridView.GetRowCellValue(i, colOid), True).TransferQuantity
-                    Else
-                        transferQuantity = CInt(transferDetailsGridView.GetRowCellValue(i, colTransferQuantity))
-                    End If
-
-                    If stock < transferQuantity Then
-                        MessageBox.Show($"{item.ItemCode} does only have {stock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
-                                        "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                        Return False
-                    End If
-
-                    If lotStock < transferQuantity AndAlso item.RequiresLotCodes Then
-                        MessageBox.Show($"{item.ItemCode} lot# {lot} LPN# {LPNNumber} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
-                                           "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                        Return False
-                    End If
-
-                    If totalTransferQuantity.ContainsKey(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn))) Then
-                        totalTransferQuantity(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn))) += transferQuantity
-                    Else
-                        totalTransferQuantity.Add(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), transferQuantity)
-                    End If
+                    If ValidateAvailabilityByLine(i, totalTransferQuantity) = False Then Return False
                 End If
             Next i
         Else
@@ -574,58 +516,7 @@ Public Class LocationTransfersXtraForm
             While transferDetailsGridView.IsValidRowHandle(i)
                 If transferDetailsGridView.GetChildRowHandle(i, 0) > -1 Then
                     For ci As Integer = transferDetailsGridView.GetChildRowHandle(i, 0) To transferDetailsGridView.GetChildRowCount(i) + transferDetailsGridView.GetChildRowHandle(i, 0) - 1
-
-                        lot = CStr(transferDetailsGridView.GetRowCellValue(ci, colTransferLot))
-                        item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), True)
-
-                        Try
-                            LPNNumber = CInt(transferDetailsGridView.GetRowCellValue(ci, fullLpnNumberGridColumn))
-                        Catch
-                            If item.RequiresLotCodes Then
-                            MessageBox.Show("LPN Number is invalid", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                            Return False
-                        End If
-                        End Try
-
-                        Try
-                            If Not LotCodeValidator.ValidateByItem(item, lot, False) Then
-                                Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
-                            End If
-                        Catch ex As ApplicationException
-                            MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                            Return False
-                        End Try
-
-                        stock = ItemsBLL.GetQtyOnHandByID(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue))
-                        lotStock = ItemsBLL.GetQtyOnHandByIDAndLot(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue), lot, LPNNumber)
-
-                        If m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(ci)) = False AndAlso CType(transferDetailsGridView.GetRow(ci), LocationTransferDetails).HasChanges = False Then
-                            Continue For
-                        ElseIf m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(ci)) = False Then
-                            transferQuantity = CInt(transferDetailsGridView.GetRowCellValue(ci, colTransferQuantity)) -
-                                                    Session.DefaultSession.GetObjectByKey(Of LocationTransferDetails)(transferDetailsGridView.GetRowCellValue(ci, colOid), True).TransferQuantity
-                        Else
-                            transferQuantity = CInt(transferDetailsGridView.GetRowCellValue(ci, colTransferQuantity))
-                        End If
-
-                        If stock < transferQuantity Then
-                            MessageBox.Show(String.Format("{0} does only have {1} in stock and your shipping {2}.{3}You must enter first the production.",
-                                            transferDetailsGridView.GetRowCellDisplayText(ci, transferItemGridColumn).ToString, stock.ToString, transferQuantity.ToString, vbCrLf), "Stock Verification",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                            Return False
-                        End If
-
-                        If lotStock < transferQuantity AndAlso item.RequiresLotCodes Then
-                            MessageBox.Show($"{item.ItemCode} lot# {lot} LPN# {LPNNumber} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
-                                           "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
-                            Return False
-                        End If
-
-                        If totalTransferQuantity.ContainsKey(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn))) Then
-                            totalTransferQuantity(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn))) += transferQuantity
-                        Else
-                            totalTransferQuantity.Add(CInt(transferDetailsGridView.GetRowCellValue(ci, transferItemGridColumn)), transferQuantity)
-                        End If
+                        If ValidateAvailabilityByLine(ci, totalTransferQuantity) = False Then Return False
                     Next
                 End If
                 i -= 1
@@ -643,6 +534,65 @@ Public Class LocationTransfersXtraForm
 
         Return True
 
+    End Function
+
+    Private Function ValidateAvailabilityByLine(i As Integer, totalTransferQuantity As Dictionary(Of Integer, Double)) As Boolean
+
+        Dim stock As Double
+        Dim lotStock As Double
+        Dim transferQuantity As Integer
+        Dim item As Items
+        Dim lot As String
+        Dim LPNNumber As Integer
+
+        lot = CStr(transferDetailsGridView.GetRowCellValue(i, colTransferLot))
+        item = Session.DefaultSession.GetObjectByKey(Of Items)(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), True)
+        LPNNumber = CInt(transferDetailsGridView.GetRowCellValue(i, fullLpnNumberGridColumn))
+        If LPNNumber = 0 Then
+            MessageBox.Show("LPN Number is invalid", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+            Return False
+        End If
+
+        Try
+                If Not LotCodeValidator.ValidateByItem(item, lot, False) Then
+                    Throw New ApplicationException("Item " & item.ItemCode & " & lot # " & lot & " is invalid" & vbNewLine & "You must provide a valid lot.")
+                End If
+            Catch ex As ApplicationException
+                MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                Return False
+            End Try
+
+            stock = ItemsBLL.GetQtyOnHandByID(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue))
+
+            lotStock = ItemsBLL.GetQtyOnHandByIDAndLot(m_TransfersSession, CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), CInt(fromLocationLookUpEdit.EditValue), lot, LPNNumber)
+
+            If m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(i)) = False AndAlso CType(transferDetailsGridView.GetRow(i), LocationTransferDetails).HasChanges = False Then
+                Return True
+            ElseIf m_TransfersSession.IsNewObject(transferDetailsGridView.GetRow(i)) = False Then
+                transferQuantity = CInt(transferDetailsGridView.GetRowCellValue(i, colTransferQuantity)) - Session.DefaultSession.GetObjectByKey(Of LocationTransferDetails)(transferDetailsGridView.GetRowCellValue(i, colOid), True).TransferQuantity
+            Else
+                transferQuantity = CInt(transferDetailsGridView.GetRowCellValue(i, colTransferQuantity))
+            End If
+
+            If stock < transferQuantity Then
+                MessageBox.Show($"{item.ItemCode} does only have {stock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
+                                        "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                Return False
+            End If
+
+            If lotStock < transferQuantity Then
+                MessageBox.Show($"{item.ItemCode} lot# {lot} LPN# {LPNNumber} does only have {lotStock} in stock and your shipping {transferQuantity}.{vbNewLine}You must enter first the production.",
+                                           "Stock Verification", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                Return False
+            End If
+
+        If totalTransferQuantity.ContainsKey(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn))) Then
+            totalTransferQuantity(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn))) += transferQuantity
+        Else
+            totalTransferQuantity.Add(CInt(transferDetailsGridView.GetRowCellValue(i, transferItemGridColumn)), transferQuantity)
+        End If
+
+        Return True
     End Function
 
     Private Sub refreshBarButtonItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles refreshBarButtonItem.ItemClick
@@ -677,7 +627,7 @@ Public Class LocationTransfersXtraForm
                                                                                                   New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, LocationID, BinaryOperatorType.Equal)))
                     transferDetailsGridView.AddNewRow()
                     transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, transferItemGridColumn, record.LocationInventoryItem.ItemID)
-                    transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferUnits, record.QuantityOnHand)
+                    transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferQuantity, record.QuantityOnHand)
                     transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colTransferLot, record.LocationInventoryLot)
                     transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, colItemExpirationDate, record.ExpirationDate)
                     transferDetailsGridView.SetRowCellValue(transferDetailsGridView.FocusedRowHandle, fullLpnNumberGridColumn, LPN)

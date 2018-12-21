@@ -768,8 +768,7 @@ Public Class ReceivingXtraForm
         Me.receivingSearchXPView.Criteria = New InOperator(Receiving.Fields.ReceivCustID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession))
         Me.customersXPView.Criteria = CriteriaOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False),
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)))
-        Me.receivingItemXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
-                                                           New InOperator(Items.Fields.ItemType.PropertyName, New String() {"RM", "IG"}))
+        Me.receivingItemXPView.Criteria = New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession))
         Me.returnItemXPView.Criteria = CriteriaOperator.And(CriteriaOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)),
                                                                           New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal)),
                                                                   New BinaryOperator(Items.Fields.ItemType.PropertyName, "FG", BinaryOperatorType.Equal))
@@ -957,7 +956,7 @@ Public Class ReceivingXtraForm
             .itemGroupHeader.GroupFields.Add(New GroupField("ItemCode", XRColumnSortOrder.Ascending))
             .lotGroupHeader.GroupFields.Add(New GroupField("ReceivDetLot", XRColumnSortOrder.Ascending))
             .qtyLabelXrLabel.Text = "UNITS"
-            .qtyXrLabel.DataBindings.Add("Text", Nothing, "ReceivDetQty")
+            .qtyXrLabel.DataBindings.Add("Text", Nothing, "intUnits")
             .itemCodeXrLabel.DataBindings.Add("Text", Nothing, "ItemCode")
             .itemDescriptionXrLabel.DataBindings.Add("Text", Nothing, "ItemDescription")
             .palletsXrLabel.DataBindings.Add("Text", Nothing, "sngPallets", "{0:N2}")
@@ -967,7 +966,7 @@ Public Class ReceivingXtraForm
             .weightXrLabel.DataBindings.Add("Text", Nothing, "Weight", "{0:N2}")
             '.totalWeightXrLabel.DataBindings.Add("Text", Nothing, "TotalGrossWeight", "{0:N2}")
             .lpnLabelXrLabel.Text = "QUANTITY"
-            .lpnXrLabel.DataBindings.Add("Text", Nothing, "intUnits")
+            .lpnXrLabel.DataBindings.Add("Text", Nothing, "ReceivDetQty")
             .lotXrLabel.DataBindings.Add("Text", Nothing, "ReceivDetLot")
             .expirationDateXrLabel.DataBindings.Add("Text", Nothing, "ExpirationDate", String.Format("{{0:{0}}}", CustomersBLL.GetExpirationDateFormat(CType(customerLookUpEdit.EditValue, Integer))))
             .itemTotalQuantityXrLabel.DataBindings.Add("Text", Nothing, "intUnits")
@@ -1294,6 +1293,16 @@ Err:
             Me.SaveContinueSimpleButton.Enabled = False
             Me.BulkEntryGroupControl.Enabled = True
             Me.receivingsXtraTabControl.SelectedTabPage = Me.detailsXtraTabPage
+        End If
+    End Sub
+
+    Private Sub ItemLookUpEdit_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ItemLookUpEdit.Validating
+        If Len(ItemLookUpEdit.Text) > 0 Then
+            Dim item As Items
+            item = ItemsBLL.GetItemByUpc(ItemLookUpEdit.Text)
+            If item IsNot Nothing AndAlso item.Inactive = False AndAlso item.ItemCustomerID.CustomerID = CType(Me.customerLookUpEdit.EditValue, Integer?).Value Then
+                ItemLookUpEdit.EditValue = item.ItemID
+            End If
         End If
     End Sub
 End Class

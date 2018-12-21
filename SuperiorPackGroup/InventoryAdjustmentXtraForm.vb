@@ -28,6 +28,8 @@ Public Class InventoryAdjustmentXtraForm
 
         FilterLpns()
 
+        Me.lpnLookUpEdit.EditValue = Nothing
+        Me.originalLotLookUpEdit.EditValue = Nothing
     End Sub
 
     Private Sub locationLookupEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles locationLookUpEdit.Validated
@@ -38,9 +40,12 @@ Public Class InventoryAdjustmentXtraForm
 
     End Sub
     Private Sub lpnLookUpEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles lpnLookUpEdit.Validated
-        Me.originalLotLookUpEdit.Text = ""
+        Me.originalQtyTextEdit.Text = ""
+        Me.originalLotLookUpEdit.EditValue = Nothing
         FilterLots()
-
+        If LotXpView.Count = 1 Then
+            originalLotLookUpEdit.EditValue = LotXpView.Item(0).Item("Lot")
+        End If
     End Sub
     Private Sub originalLotLookUpEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles originalLotLookUpEdit.Validated
 
@@ -89,6 +94,18 @@ Public Class InventoryAdjustmentXtraForm
     End Sub
 
     Private Sub cancelSimpleButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles cancelSimpleButton.Click
+
+        If m_newLpn Then
+            Dim Lpntodelete As LocationInventoryByLot
+            Lpntodelete = Session.DefaultSession.FindObject(Of LocationInventoryByLot)(New GroupOperator(GroupOperatorType.And,
+                                    New BinaryOperator("LPNNumber", Utilities.ChangeType(Of Integer?)(Me.lpnLookUpEdit.EditValue), BinaryOperatorType.Equal),
+                                    New BinaryOperator(LocationInventoryByLot.Fields.QuantityOnHand.PropertyName, 0, BinaryOperatorType.Equal),
+                                    New BinaryOperator("LocationInventoryLot", "", BinaryOperatorType.Equal)))
+            If Lpntodelete IsNot Nothing Then
+                Lpntodelete.Delete()
+                Session.DefaultSession.PurgeDeletedObjects()
+            End If
+        End If
 
         PrepareNewRecord()
 
@@ -257,6 +274,13 @@ Public Class InventoryAdjustmentXtraForm
                 Return False
             End If
         End If
+
+        If Me.originalLotLookUpEdit.EditValue Is Nothing AndAlso Me.lpnLookUpEdit.EditValue IsNot Nothing Then
+            MessageBox.Show("You must select a Lot.")
+            Me.originalLotLookUpEdit.Focus()
+            Return False
+        End If
+
         If Me.newLotTextEdit.Text <> "" AndAlso LotCodeValidator.ValidateByItemID(CInt(itemLookUpEdit.GetColumnValue("ItemID")), newLotTextEdit.Text, True) = False Then
             MessageBox.Show("Lot code invalid.")
             Me.newLotTextEdit.Focus()
@@ -302,17 +326,20 @@ Public Class InventoryAdjustmentXtraForm
         If m_Adjustment.UpdateInventoryAdjustment(CType(Me.saveSimpleButton.Tag, Integer), Me.adjustmentDateEdit.DateTime, CType(Me.customerLookUpEdit.EditValue, Integer),
                                                   CType(Me.itemLookUpEdit.EditValue, Integer), CType(Me.originalQtyTextEdit.EditValue, Single),
                                                   CType(Me.newQtyTextEdit.EditValue, Single), Convert.ToString(Me.reasonMemoExEdit.EditValue), CType(locationLookUpEdit.EditValue, Integer),
-                                                  originalLotLookUpEdit.Text, newLotTextEdit.Text, Utilities.ChangeType(Of Integer?)(lpnLookUpEdit.EditValue),
+                                                  Convert.ToString(originalLotLookUpEdit.EditValue), newLotTextEdit.Text, Utilities.ChangeType(Of Integer?)(lpnLookUpEdit.EditValue),
                                                   Utilities.ChangeType(Of Date?)(originalLotLookUpEdit.GetColumnValue("Expr"))) <> True Then
             MessageBox.Show("The adjustment record was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
-        ElseIf m_newLpn Then
+        ElseIf m_newLpn AndAlso originalLotLookUpEdit.Text <> "" Then
             Dim Lpntodelete As LocationInventoryByLot
             Lpntodelete = Session.DefaultSession.FindObject(Of LocationInventoryByLot)(New GroupOperator(GroupOperatorType.And,
                                     New BinaryOperator("LPNNumber", Utilities.ChangeType(Of Integer?)(Me.lpnLookUpEdit.EditValue), BinaryOperatorType.Equal),
                                     New BinaryOperator(LocationInventoryByLot.Fields.QuantityOnHand.PropertyName, 0, BinaryOperatorType.Equal),
                                     New BinaryOperator("LocationInventoryLot", "", BinaryOperatorType.Equal)))
-            Lpntodelete.Delete()
+            If Lpntodelete IsNot Nothing Then
+                Lpntodelete.Delete()
+                Session.DefaultSession.PurgeDeletedObjects()
+            End If
         End If
 
         printLpn()
@@ -430,7 +457,6 @@ Public Class InventoryAdjustmentXtraForm
             lpnViewCriteria.Add(New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, CType(Me.locationLookUpEdit.EditValue, Integer), BinaryOperatorType.Equal))
 
             Me.lpnXpView.Criteria = CriteriaOperator.And(lpnViewCriteria)
-
         End If
     End Sub
     Private Sub FilterLots()
@@ -446,7 +472,7 @@ Public Class InventoryAdjustmentXtraForm
     End Sub
 
     Private Sub AddLpnSimpleButton_Click(sender As Object, e As EventArgs) Handles AddLpnSimpleButton.Click
-        If CType(Me.itemLookUpEdit.EditValue, Integer?).HasValue AndAlso CType(Me.locationLookUpEdit.EditValue, Integer?).HasValue Then
+        If CType(Me.itemLookUpEdit.EditValue, Integer?).HasValue AndAlso CType(Me.locationLookUpEdit.EditValue, Integer?).HasValue AndAlso Not m_newLpn Then
             Dim lpn As Integer = LPNLabel.GetNextLPNNumber(7)
             Dim items As ItemsBLL = New ItemsBLL
             items.UpdateStock(Session.DefaultSession, CType(Me.itemLookUpEdit.EditValue, Integer), 0, False, CType(Me.locationLookUpEdit.EditValue, Integer), "", lpn)
