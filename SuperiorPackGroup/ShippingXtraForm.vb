@@ -874,9 +874,8 @@ Public Class ShippingXtraForm
         Me.shippingSearchXPView.Criteria = New InOperator(Shipping.Fields.ShipMainCustID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession))
         Me.customersXPView.Criteria = CriteriaOperator.And(New BinaryOperator(Customers.Fields.Inactive.PropertyName, False), _
                                                              New InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)))
-        Me.shippingItemXPView.Criteria = CriteriaOperator.And(CriteriaOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)), _
-                                                                            New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal)), _
-                                                           New BinaryOperator(Items.Fields.ItemType.PropertyName, "FG", BinaryOperatorType.Equal))
+        Me.shippingItemXPView.Criteria = CriteriaOperator.Or(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)),
+                                                                            New BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer, BinaryOperatorType.Equal))
         Me.returnItemXPView.Criteria = CriteriaOperator.And(New InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ShippingSession)), _
                                                                   New InOperator(Items.Fields.ItemType.PropertyName, New String() {"RM", "IG"}))
 
