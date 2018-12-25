@@ -173,6 +173,7 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnQuantity = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colShippingReturnExpirationDateFormat = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colShippingItemType = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerControl1.SuspendLayout()
@@ -1375,11 +1376,11 @@ Partial Class LocationXtraForm
         '
         Me.shippingsXpView.CriteriaString = "[ShipDetMainID.ShippingLocation] Is Null"
         Me.shippingsXpView.ObjectType = GetType(DXDAL.SPGData.ShipDet)
-        Me.shippingsXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ShippingDate", DevExpress.Xpo.SortDirection.None, "[ShipDetMainID.ShipMainDate]", False, True), New DevExpress.Xpo.ViewProperty("ShippingItemCode", DevExpress.Xpo.SortDirection.None, "[ShipDetItemID.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ShippingItemDescription", DevExpress.Xpo.SortDirection.None, "[ShipDetItemID.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("ShippingBOL", DevExpress.Xpo.SortDirection.None, "[ShipDetMainID.ShipMainBOL]", False, True), New DevExpress.Xpo.ViewProperty("ShippingLot", DevExpress.Xpo.SortDirection.None, "[ShipDetLot]", False, True), New DevExpress.Xpo.ViewProperty("ShippingExpirationDate", DevExpress.Xpo.SortDirection.None, "[ExpirationDate]", False, True), New DevExpress.Xpo.ViewProperty("ShippingQuantity", DevExpress.Xpo.SortDirection.None, "[ShipDetDetQty]", False, True), New DevExpress.Xpo.ViewProperty("ShippingExpirationDateFormat", DevExpress.Xpo.SortDirection.None, "[ShipDetItemID.ItemCustomerID.ExpirationDateFormat]", False, True)})
+        Me.shippingsXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ShippingDate", DevExpress.Xpo.SortDirection.None, "[ShipDetMainID.ShipMainDate]", False, True), New DevExpress.Xpo.ViewProperty("ShippingItemCode", DevExpress.Xpo.SortDirection.None, "[ShipDetItemID.ItemCode]", False, True), New DevExpress.Xpo.ViewProperty("ShippingItemDescription", DevExpress.Xpo.SortDirection.None, "[ShipDetItemID.ItemDescription]", False, True), New DevExpress.Xpo.ViewProperty("ShippingBOL", DevExpress.Xpo.SortDirection.None, "[ShipDetMainID.ShipMainBOL]", False, True), New DevExpress.Xpo.ViewProperty("ShippingLot", DevExpress.Xpo.SortDirection.None, "[ShipDetLot]", False, True), New DevExpress.Xpo.ViewProperty("ShippingExpirationDate", DevExpress.Xpo.SortDirection.None, "[ExpirationDate]", False, True), New DevExpress.Xpo.ViewProperty("ShippingQuantity", DevExpress.Xpo.SortDirection.None, "[ShipDetDetQty]", False, True), New DevExpress.Xpo.ViewProperty("ShippingExpirationDateFormat", DevExpress.Xpo.SortDirection.None, "[ShipDetItemID.ItemCustomerID.ExpirationDateFormat]", False, True), New DevExpress.Xpo.ViewProperty("ShipDetItemType", DevExpress.Xpo.SortDirection.None, "[ShipDetItemID.ItemType]", False, True)})
         '
         'shippingsGridView
         '
-        Me.shippingsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colShippingDate, Me.colShippingItemCode, Me.colShippingItemDescription, Me.colShippingBOL, Me.colShippingLot, Me.colShippingExpirationDate, Me.colShippingQuantity, Me.colShippingExpirationDateFormat})
+        Me.shippingsGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colShippingDate, Me.colShippingItemCode, Me.colShippingItemDescription, Me.colShippingBOL, Me.colShippingLot, Me.colShippingExpirationDate, Me.colShippingQuantity, Me.colShippingExpirationDateFormat, Me.colShippingItemType})
         Me.shippingsGridView.GridControl = Me.shippingsGridControl
         Me.shippingsGridView.Name = "shippingsGridView"
         Me.shippingsGridView.OptionsBehavior.Editable = False
@@ -1419,7 +1420,7 @@ Partial Class LocationXtraForm
         Me.colShippingBOL.Name = "colShippingBOL"
         Me.colShippingBOL.OptionsColumn.ReadOnly = True
         Me.colShippingBOL.Visible = True
-        Me.colShippingBOL.VisibleIndex = 3
+        Me.colShippingBOL.VisibleIndex = 4
         '
         'colShippingLot
         '
@@ -1428,7 +1429,7 @@ Partial Class LocationXtraForm
         Me.colShippingLot.Name = "colShippingLot"
         Me.colShippingLot.OptionsColumn.ReadOnly = True
         Me.colShippingLot.Visible = True
-        Me.colShippingLot.VisibleIndex = 4
+        Me.colShippingLot.VisibleIndex = 5
         '
         'colShippingExpirationDate
         '
@@ -1437,7 +1438,7 @@ Partial Class LocationXtraForm
         Me.colShippingExpirationDate.Name = "colShippingExpirationDate"
         Me.colShippingExpirationDate.OptionsColumn.ReadOnly = True
         Me.colShippingExpirationDate.Visible = True
-        Me.colShippingExpirationDate.VisibleIndex = 5
+        Me.colShippingExpirationDate.VisibleIndex = 6
         '
         'colShippingQuantity
         '
@@ -1446,7 +1447,7 @@ Partial Class LocationXtraForm
         Me.colShippingQuantity.Name = "colShippingQuantity"
         Me.colShippingQuantity.OptionsColumn.ReadOnly = True
         Me.colShippingQuantity.Visible = True
-        Me.colShippingQuantity.VisibleIndex = 6
+        Me.colShippingQuantity.VisibleIndex = 7
         '
         'colShippingExpirationDateFormat
         '
@@ -1556,6 +1557,14 @@ Partial Class LocationXtraForm
         Me.colShippingReturnExpirationDateFormat.Caption = "GridColumn1"
         Me.colShippingReturnExpirationDateFormat.FieldName = "ShippingReturnExpirationDateFormat"
         Me.colShippingReturnExpirationDateFormat.Name = "colShippingReturnExpirationDateFormat"
+        '
+        'colShippingItemType
+        '
+        Me.colShippingItemType.Caption = "Item Type"
+        Me.colShippingItemType.FieldName = "ShipDetItemType"
+        Me.colShippingItemType.Name = "colShippingItemType"
+        Me.colShippingItemType.Visible = True
+        Me.colShippingItemType.VisibleIndex = 3
         '
         'LocationXtraForm
         '
@@ -1795,4 +1804,5 @@ Partial Class LocationXtraForm
     Friend WithEvents colExpirationDate1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents PrintLpnSimpleButton As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents colReceivingItemType As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colShippingItemType As DevExpress.XtraGrid.Columns.GridColumn
 End Class

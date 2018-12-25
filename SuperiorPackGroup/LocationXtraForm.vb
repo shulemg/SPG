@@ -370,11 +370,11 @@ Public Class LocationXtraForm
             shippingReturnsXpView.Criteria = New GroupOperator(GroupOperatorType.And, New BinaryOperator(ShippedReturns.Fields.ShipMainID.ShippingLocation.Oid, locationID, BinaryOperatorType.Equal),
                                                                                         New BinaryOperator(ShippedReturns.Fields.ShipMainID.ShipMainDate.PropertyName, DateAdd(DateInterval.Year, -1, Today), BinaryOperatorType.GreaterOrEqual))
             shippingsXpView.Reload()
-            shippingReturnsXpView.Reload()
+            'shippingReturnsXpView.Reload()
             shippingsXtraTabPage.PageEnabled = True
             shippingsXtraTabPage.PageVisible = True
-            shippingReturnsXtraTabPage.PageEnabled = True
-            shippingReturnsXtraTabPage.PageVisible = True
+            'shippingReturnsXtraTabPage.PageEnabled = True
+            'shippingReturnsXtraTabPage.PageVisible = True
         Else
             shippingsXpView.Criteria = New BinaryOperator(ShipDet.Fields.ShipDetMainID.ShippingLocation.Oid.PropertyName, 0, BinaryOperatorType.Equal)
             shippingReturnsXpView.Criteria = New BinaryOperator(ShippedReturns.Fields.ShipMainID.ShippingLocation.Oid.PropertyName, 0, BinaryOperatorType.Equal)

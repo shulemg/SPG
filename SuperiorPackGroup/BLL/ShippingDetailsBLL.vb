@@ -2,8 +2,9 @@ Imports SuperiorPackGroup.SPGTableAdapters
 Imports System.Text
 Imports DevExpress.Xpo
 Imports DXDAL.SPGData
+Imports DevExpress.Data.Filtering
 
-<ComponentModel.DataObject()> _
+<ComponentModel.DataObject()>
 Public Class ShippingDetailsBLL
 
     Private m_ShippingDetailsTableAdapter As ShippingDetailsTableAdapter = Nothing
@@ -48,22 +49,15 @@ Public Class ShippingDetailsBLL
 
     End Sub
 
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
-    Public Function GetShippingDetailsByItemID(ByVal itemId As Integer) As SPG.ShippingDetailsDataTable
-
-        Return Adapter.GetShippingDetailsByItemID(itemId)
-
-    End Function
-
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Function GetDetailsByShippingID(ByVal shippingID As Integer) As SPG.ShippingDetailsDataTable
 
         Return Adapter.GetDetailsByShippingID(shippingID)
 
     End Function
 
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateShippingDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal shippingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?, _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)>
+    Public Function UpdateShippingDetails(ByVal session As Session, ByVal detailID As Integer?, ByVal shippingID As Integer, ByVal itemID As Integer?, ByVal lot As String, ByVal quantity As Integer?,
                                           ByVal pallets As Single?, ByVal note As String, ByVal expirationDate As Date?, ByVal fullLPNNumber As String) As Boolean
 
         If Not itemID.HasValue Then
@@ -140,18 +134,18 @@ Public Class ShippingDetailsBLL
                 items.UpdateStock(session, originalItem, originalQuantity, False, locationID, originalDetail.ShipDetLot, Integer.Parse(originalDetail.FullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(7), "")))
             Else
                 items.UpdateStock(session, originalItem, originalQuantity, False, locationID)
-                End If
-                If fullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
-                    items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, locationID, lot, Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(7), "")))
-                Else
-                    items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, locationID)
-                End If
-                'Else
-                '    If newQuantity <> 0 Then
-                '        items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID)
-                '    End If
-                'End If
             End If
+            If fullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
+                items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, locationID, lot, Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(7), "")))
+            Else
+                items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, locationID)
+            End If
+            'Else
+            '    If newQuantity <> 0 Then
+            '        items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID)
+            '    End If
+            'End If
+        End If
 
         Return rowsAffected = 1
 
@@ -241,5 +235,21 @@ Public Class ShippingDetailsBLL
         Return rowsAffected = 1
 
     End Function
+    Public Shared Function GetShippingDetailsByItemID(ByVal itemID As Integer) As XPView
 
+        Dim ShippingXPView As New XPView(Session.DefaultSession, GetType(ShipDet))
+
+        ShippingXPView.Properties.AddRange(New ViewProperty() {New ViewProperty(ShipDet.Fields.ShipDetDetID.PropertyName, SortDirection.None, ShipDet.Fields.ShipDetDetID, False, True),
+                                                                     New ViewProperty(ShipDet.Fields.ShipDetMainID.ShipMainID.PropertyName, SortDirection.Ascending, ShipDet.Fields.ShipDetMainID.ShipMainID, False, True),
+                                                                     New ViewProperty(ShipDet.Fields.ShipDetLot.PropertyName, SortDirection.None, ShipDet.Fields.ShipDetLot, False, True),
+                                                                     New ViewProperty(ShipDet.Fields.ExpirationDate.PropertyName, SortDirection.None, ShipDet.Fields.ExpirationDate, False, True),
+                                                                     New ViewProperty(ShipDet.Fields.ShipDetDetQty.PropertyName, SortDirection.None, ShipDet.Fields.ShipDetDetQty, False, True),
+                                                                     New ViewProperty("ShipMainBOL", SortDirection.None, ShipDet.Fields.ShipDetMainID.ShipMainBOL, False, True),
+                                                                     New ViewProperty("ShipMainDate", SortDirection.None, ShipDet.Fields.ShipDetMainID.ShipMainDate, False, True)})
+
+        ShippingXPView.Criteria = CriteriaOperator.And(New BinaryOperator(ShipDet.Fields.ShipDetItemID.ItemType.PropertyName, "FG", BinaryOperatorType.Equal),
+                                                            New BinaryOperator(ShipDet.Fields.ShipDetItemID.ItemID.PropertyName, itemID, BinaryOperatorType.Equal))
+        Return ShippingXPView
+
+    End Function
 End Class

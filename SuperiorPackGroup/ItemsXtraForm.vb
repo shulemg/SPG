@@ -271,8 +271,8 @@ Public Class ItemsXtraForm
         productionExpirationDateGridColumn.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(item.ItemCustomerID.CustomerID)
         colItemExpirationDate.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(item.ItemCustomerID.CustomerID)
 
-        Me.shippingGridControl.DataSource = m_ShippingDetail.GetShippingDetailsByItemID(itemID)
-        shippingReturnGridControl.DataSource = ShippingReturnDetailsBLL.GetShippingReturnDetailsViewByItemID(itemID)
+        Me.shippingGridControl.DataSource = ShippingDetailsBLL.GetShippingDetailsByItemID(itemID)
+        Me.shippingReturnGridControl.DataSource = ShippingReturnDetailsBLL.GetShippingReturnDetailsViewByItemID(itemID)
 
         Me.productionGridControl.DataSource = m_Inventory.GetInventoryByItemID(itemID)
 

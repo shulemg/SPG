@@ -213,17 +213,18 @@ Public Class ShippingReturnDetailsBLL
 
     Public Shared Function GetShippingReturnDetailsViewByItemID(ByVal itemID As Integer) As XPView
 
-        Dim ShippingReturnXPView As New XPView(Session.DefaultSession, GetType(ShippedReturns))
+        Dim ShippingReturnXPView As New XPView(Session.DefaultSession, GetType(ShipDet))
 
-        ShippingReturnXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ReturnDetID", SortDirection.None, ShippedReturns.Fields.ReturnDetID, False, True),
-                                                                     New ViewProperty("ShipMainID", SortDirection.Ascending, ShippedReturns.Fields.ShipMainID.ShipMainID, False, True),
-                                                                     New ViewProperty("ReturnDetLot", SortDirection.None, ShippedReturns.Fields.ReturnDetLot, False, True),
-                                                                     New ViewProperty("ExpirationDate", SortDirection.None, ShippedReturns.Fields.ExpirationDate, False, True),
-                                                                     New ViewProperty("intUnits", SortDirection.None, ShippedReturns.Fields.intUnits, False, True),
-                                                                     New ViewProperty("ShipMainBOL", SortDirection.None, ShippedReturns.Fields.ShipMainID.ShipMainBOL, False, True),
-                                                                     New ViewProperty("ShipMainDate", SortDirection.None, ShippedReturns.Fields.ShipMainID.ShipMainDate, False, True)})
+        ShippingReturnXPView.Properties.AddRange(New ViewProperty() {New ViewProperty("ReturnDetID", SortDirection.None, ShipDet.Fields.ShipDetDetID, False, True),
+                                                                     New ViewProperty("ShipMainID", SortDirection.Ascending, ShipDet.Fields.ShipDetMainID.ShipMainID, False, True),
+                                                                     New ViewProperty("ReturnDetLot", SortDirection.None, ShipDet.Fields.ShipDetLot, False, True),
+                                                                     New ViewProperty("ExpirationDate", SortDirection.None, ShipDet.Fields.ExpirationDate, False, True),
+                                                                     New ViewProperty("intUnits", SortDirection.None, ShipDet.Fields.ShipDetDetQty, False, True),
+                                                                     New ViewProperty("ShipMainBOL", SortDirection.None, ShipDet.Fields.ShipDetMainID.ShipMainBOL, False, True),
+                                                                     New ViewProperty("ShipMainDate", SortDirection.None, ShipDet.Fields.ShipDetMainID.ShipMainDate, False, True)})
 
-        ShippingReturnXPView.Criteria = New BinaryOperator(ShippedReturns.Fields.ReturnDetItemID.ItemID.PropertyName, itemID, BinaryOperatorType.Equal)
+        ShippingReturnXPView.Criteria = CriteriaOperator.And(New BinaryOperator(ShipDet.Fields.ShipDetItemID.ItemType.PropertyName, "FG", BinaryOperatorType.NotEqual),
+                                                            New BinaryOperator(ShipDet.Fields.ShipDetItemID.ItemID.PropertyName, itemID, BinaryOperatorType.Equal))
 
         Return ShippingReturnXPView
 

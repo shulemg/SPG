@@ -20938,33 +20938,8 @@ Namespace SPGReportsTableAdapters
                 "ShipMain.ShipMainCarrierID = tblCarriers.CarrierID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
                 "        tblItems ON tblShipDet.ShipDetItemID = tblItems.ItemID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
                 "                    tblShippingAddresses ON tblShipMain.intDestination = tblShip"& _ 
-                "pingAddresses.AddressID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (tblShipMain.ShipMainID = @ShippingID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UN"& _ 
-                "ION ALL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        tblShipMain_1.ShipMainDate, tblShipMain_1.ShipMainBOL, tb"& _ 
-                "lShipMain_1.Shipper, tblCustomers_1.CustomerName, tblCustomers_1.Address, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                     ISNULL(tblCustomers_1.City, '') + ' ' + ISNULL(tblCustomers"& _ 
-                "_1.State, '') + ' ' + ISNULL(tblCustomers_1.ZipCode, '') AS Address2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-                "                 tblShippingAddresses_1.ShippingName, tblShippingAddresses_1.Shi"& _ 
-                "ppingAddress, ISNULL(tblShippingAddresses_1.ShippingCity, '') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
-                "         + ' ' + ISNULL(tblShippingAddresses_1.ShippingState, '') + ' ' + ISNULL"& _ 
-                "(tblShippingAddresses_1.ShippingPostal, '') AS ShippingAddress2, tblShipMain_1.s"& _ 
-                "trPO, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblItems_1.ItemCode, tblItems_1.ItemDescription"& _ 
-                ", tblShipMain_1.DeliveryNoteNumber, tblCarriers_1.CarrierName, tblShipMain_1.str"& _ 
-                "Trailer, tblShipMain_1.strSeal, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipReturnDet.intU"& _ 
-                "nits, tblShipReturnDet.sngPallets, tblShipMain_1.strDeliveryNote, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-                "             tblShipReturnDet.intUnits / tblItems_1.intUnitsPerCase * tblItems_1"& _ 
-                ".CaseGrossWeight + tblShipReturnDet.sngPallets * 40 AS Weight, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
-                "          'Returns' AS ShippingType, tblShipMain_1.Freight, tblShipMain_1.sngSki"& _ 
-                "ts, tblShipMain_1.sngTotalPallets, tblShipReturnDet.Reason, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-                "       tblShipMain_1.TotalGrossWeight"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tblShipMain AS tblShipMai"& _ 
-                "n_1 INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipReturnDet ON tblShipMain_1.ShipM"& _ 
-                "ainID = tblShipReturnDet.ShipMainID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCust"& _ 
-                "omers AS tblCustomers_1 ON tblShipMain_1.ShipMainCustID = tblCustomers_1.Custome"& _ 
-                "rID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCarriers AS tblCarriers_1 ON tblShip"& _ 
-                "Main_1.ShipMainCarrierID = tblCarriers_1.CarrierID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                 "& _ 
-                "        tblItems AS tblItems_1 ON tblShipReturnDet.ReturnDetItemID = tblItems_1."& _ 
-                "ItemID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShippingAddresses AS tblShippingA"& _ 
-                "ddresses_1 ON tblShipMain_1.intDestination = tblShippingAddresses_1.AddressID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"W"& _ 
-                "HERE        (tblShipMain_1.ShipMainID = @ShippingID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY tblItems.ItemCode"& _ 
+                "pingAddresses.AddressID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (tblShipMain.ShipMainID = @ShippingID)"& _
+                Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY tblItems.ItemCode"& _ 
                 ""
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShippingID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -21533,80 +21508,41 @@ Namespace SPGReportsTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        tblShipMain.ShipMainDate, tblShipMain.ShipMainBOL, tblShipMain.Ship"& _ 
-                "per, tblCustomers.CustomerName, tblCustomers.Address, ISNULL(tblCustomers.City, "& _ 
-                "'') + ' ' + ISNULL(tblCustomers.State, '') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         + ' ' + IS"& _ 
-                "NULL(tblCustomers.ZipCode, '') AS Address2, tblShippingAddresses.ShippingName, t"& _ 
-                "blShippingAddresses.ShippingAddress, ISNULL(tblShippingAddresses.ShippingCity, '"& _ 
-                "') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         + ' ' + ISNULL(tblShippingAddresses.ShippingState,"& _ 
-                " '') + ' ' + ISNULL(tblShippingAddresses.ShippingPostal, '') AS ShippingAddress2"& _ 
-                ", tblShipMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-                "             tblShipMain.DeliveryNoteNumber, tblCarriers.CarrierName, tblShipMai"& _ 
-                "n.strTrailer, tblShipMain.strSeal, tblShipDet.ShipDetDetQty, tblShipDet.sngPalle"& _ 
-                "ts, tblShipMain.strDeliveryNote, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipDet.ShipDetDe"& _ 
-                "tQty / tblItems.intUnitsPerCase * tblItems.CaseGrossWeight AS Weight,  case when tblItems.ItemType = 'FG' then 'General' else 'Returns' end "& _ 
-                "AS ShippingType, tblShipMain.Freight, tblShipMain.sngSkits, tblShipMain.sngTotal"& _ 
-                "Pallets, tblShipDet.Note, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipMain.TotalGrossWeigh"& _ 
-                "t, tblShipDet.FullLPNNumber, tblShipDet.ShipDetLot, tblShipDet.ExpirationDate, t"& _ 
-                "blCustomers.ExpirationDateFormat, tblShipMain.Temparature, tblShipMain.CorrectPa"& _ 
-                "llets, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipMain.InsectActivity, tblShipMain.Foreig"& _ 
-                "nSubstance, tblShipMain.WheelsChocked, tblShipMain.FinishTime, tblShipMain.Start"& _ 
-                "Time, Employees_1.LastName + ', ' + Employees_1.FirstName AS LoadedBy, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-                "                  Employees.LastName + ', ' + Employees.FirstName AS CheckedBy, "& _ 
-                "ShipmentConditions.ShipmentCondition AS LoadCondition, ShipmentConditions_1.Ship"& _ 
-                "mentCondition AS PhysicalCondition"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tblShipMain INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                     tblShipDet ON tblShipMain.ShipMainID = tblShipDet.ShipDetMa"& _ 
-                "inID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCustomers ON tblShipMain.ShipMainCu"& _ 
-                "stID = tblCustomers.CustomerID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCarriers "& _ 
-                "ON tblShipMain.ShipMainCarrierID = tblCarriers.CarrierID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
-                "              tblItems ON tblShipDet.ShipDetItemID = tblItems.ItemID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShippingAddresses ON tblShipMain.intDestination = t"& _ 
-                "blShippingAddresses.AddressID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Employee"& _ 
-                "s ON tblShipMain.CheckedBy = Employees.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
-                "     Employees AS Employees_1 ON tblShipMain.LoadedBy = Employees_1.OID LEFT OUT"& _ 
-                "ER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ShipmentConditions ON tblShipMain.LoadConditio"& _ 
-                "n = ShipmentConditions.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ShipmentCon"& _ 
-                "ditions AS ShipmentConditions_1 ON tblShipMain.PhysicalCondition = ShipmentCondi"& _ 
-                "tions_1.OID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (tblShipMain.ShipMainID = @ShippingID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"UNION ALL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SEL"& _ 
-                "ECT        tblShipMain_1.ShipMainDate, tblShipMain_1.ShipMainBOL, tblShipMain_1."& _ 
-                "Shipper, tblCustomers_1.CustomerName, tblCustomers_1.Address, ISNULL(tblCustomer"& _ 
-                "s_1.City, '') + ' ' + ISNULL(tblCustomers_1.State, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ''"& _ 
-                ") + ' ' + ISNULL(tblCustomers_1.ZipCode, '') AS Address2, tblShippingAddresses_1"& _ 
-                ".ShippingName, tblShippingAddresses_1.ShippingAddress, ISNULL(tblShippingAddress"& _ 
-                "es_1.ShippingCity, '') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         + ' ' + ISNULL(tblShippingAddr"& _ 
-                "esses_1.ShippingState, '') + ' ' + ISNULL(tblShippingAddresses_1.ShippingPostal,"& _ 
-                " '') AS ShippingAddress2, tblShipMain_1.strPO, tblItems_1.ItemCode, tblItems_1.I"& _ 
-                "temDescription, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipMain_1.DeliveryNoteNumber, tbl"& _ 
-                "Carriers_1.CarrierName, tblShipMain_1.strTrailer, tblShipMain_1.strSeal, tblShip"& _ 
-                "ReturnDet.intUnits, tblShipReturnDet.sngPallets, tblShipMain_1.strDeliveryNote, "& _ 
-                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipReturnDet.intUnits / tblItems_1.intUnitsPerCas"& _ 
-                "e * tblItems_1.CaseGrossWeight + tblShipReturnDet.sngPallets * 40 AS Weight, 'Re"& _ 
-                "turns' AS ShippingType, tblShipMain_1.Freight, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShi"& _ 
-                "pMain_1.sngSkits, tblShipMain_1.sngTotalPallets, tblShipReturnDet.Reason, tblShi"& _ 
-                "pMain_1.TotalGrossWeight, '' AS FullLPNNumber, tblShipReturnDet.ReturnDetLot, tb"& _ 
-                "lShipReturnDet.ExpirationDate, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCustomers_1.Expirat"& _ 
-                "ionDateFormat, tblShipMain_1.Temparature, tblShipMain_1.CorrectPallets, tblShipM"& _ 
-                "ain_1.InsectActivity, tblShipMain_1.ForeignSubstance, tblShipMain_1.WheelsChocke"& _ 
-                "d, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipMain_1.FinishTime, tblShipMain_1.StartTime,"& _ 
-                " Employees_3.LastName + ', ' + Employees_3.FirstName AS LoadedBy, Employees_2.La"& _ 
-                "stName + ', ' + Employees_2.FirstName AS CheckedBy, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         S"& _ 
-                "hipmentConditions_2.ShipmentCondition AS LoadCondition, ShipmentConditions_3.Shi"& _ 
-                "pmentCondition AS PhysicalCondition"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tblShipMain AS tblShipMain_"& _ 
-                "1 INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShipReturnDet ON tblShipMain_1.ShipMai"& _ 
-                "nID = tblShipReturnDet.ShipMainID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCustom"& _ 
-                "ers AS tblCustomers_1 ON tblShipMain_1.ShipMainCustID = tblCustomers_1.CustomerI"& _ 
-                "D INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCarriers AS tblCarriers_1 ON tblShipMa"& _ 
-                "in_1.ShipMainCarrierID = tblCarriers_1.CarrierID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
-                "      tblItems AS tblItems_1 ON tblShipReturnDet.ReturnDetItemID = tblItems_1.It"& _ 
-                "emID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblShippingAddresses AS tblShippingAdd"& _ 
-                "resses_1 ON tblShipMain_1.intDestination = tblShippingAddresses_1.AddressID LEFT"& _ 
-                " OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Employees AS Employees_2 ON tblShipMain_1."& _ 
-                "CheckedBy = Employees_2.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Employees "& _ 
-                "AS Employees_3 ON tblShipMain_1.LoadedBy = Employees_3.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                     ShipmentConditions AS ShipmentConditions_2 ON tblShipMain_1"& _ 
-                ".LoadCondition = ShipmentConditions_2.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
-                "    ShipmentConditions AS ShipmentConditions_3 ON tblShipMain_1.PhysicalConditio"& _ 
-                "n = ShipmentConditions_3.OID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (tblShipMain_1.ShipMainID = @Shipping"& _ 
-                "ID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY tblItems.ItemCode"
+            Me._commandCollection(0).CommandText = "SELECT        tblShipMain.ShipMainDate, tblShipMain.ShipMainBOL, tblShipMain.Ship" &
+                "per, tblCustomers.CustomerName, tblCustomers.Address, ISNULL(tblCustomers.City, " &
+                "'') + ' ' + ISNULL(tblCustomers.State, '') " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         + ' ' + IS" &
+                "NULL(tblCustomers.ZipCode, '') AS Address2, tblShippingAddresses.ShippingName, t" &
+                "blShippingAddresses.ShippingAddress, ISNULL(tblShippingAddresses.ShippingCity, '" &
+                "') " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         + ' ' + ISNULL(tblShippingAddresses.ShippingState," &
+                " '') + ' ' + ISNULL(tblShippingAddresses.ShippingPostal, '') AS ShippingAddress2" &
+                ", tblShipMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "            " &
+                "             tblShipMain.DeliveryNoteNumber, tblCarriers.CarrierName, tblShipMai" &
+                "n.strTrailer, tblShipMain.strSeal, tblShipDet.ShipDetDetQty, tblShipDet.sngPalle" &
+                "ts, tblShipMain.strDeliveryNote, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         tblShipDet.ShipDetDe" &
+                "tQty / tblItems.intUnitsPerCase * tblItems.CaseGrossWeight AS Weight,  case when tblItems.ItemType = 'FG' then 'General' else 'Returns' end " &
+                "AS ShippingType, tblShipMain.Freight, tblShipMain.sngSkits, tblShipMain.sngTotal" &
+                "Pallets, tblShipDet.Note, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         tblShipMain.TotalGrossWeigh" &
+                "t, tblShipDet.FullLPNNumber, tblShipDet.ShipDetLot, tblShipDet.ExpirationDate, t" &
+                "blCustomers.ExpirationDateFormat, tblShipMain.Temparature, tblShipMain.CorrectPa" &
+                "llets, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         tblShipMain.InsectActivity, tblShipMain.Foreig" &
+                "nSubstance, tblShipMain.WheelsChocked, tblShipMain.FinishTime, tblShipMain.Start" &
+                "Time, Employees_1.LastName + ', ' + Employees_1.FirstName AS LoadedBy, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       " &
+                "                  Employees.LastName + ', ' + Employees.FirstName AS CheckedBy, " &
+                "ShipmentConditions.ShipmentCondition AS LoadCondition, ShipmentConditions_1.Ship" &
+                "mentCondition AS PhysicalCondition" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM            tblShipMain INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "    " &
+                "                     tblShipDet ON tblShipMain.ShipMainID = tblShipDet.ShipDetMa" &
+                "inID INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         tblCustomers ON tblShipMain.ShipMainCu" &
+                "stID = tblCustomers.CustomerID INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         tblCarriers " &
+                "ON tblShipMain.ShipMainCarrierID = tblCarriers.CarrierID INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "           " &
+                "              tblItems ON tblShipDet.ShipDetItemID = tblItems.ItemID INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         tblShippingAddresses ON tblShipMain.intDestination = t" &
+                "blShippingAddresses.AddressID LEFT OUTER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         Employee" &
+                "s ON tblShipMain.CheckedBy = Employees.OID LEFT OUTER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                    " &
+                "     Employees AS Employees_1 ON tblShipMain.LoadedBy = Employees_1.OID LEFT OUT" &
+                "ER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         ShipmentConditions ON tblShipMain.LoadConditio" &
+                "n = ShipmentConditions.OID LEFT OUTER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         ShipmentCon" &
+                "ditions AS ShipmentConditions_1 ON tblShipMain.PhysicalCondition = ShipmentCondi" &
+                "tions_1.OID" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "WHERE        (tblShipMain.ShipMainID = @ShippingID)" &
+                Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "ORDER BY tblItems.ItemCode"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShippingID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -21801,7 +21737,7 @@ Namespace SPGReportsTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        tblReceivMain.ReceivDate, tblReceivMain.ReceivBOL, tblCustomers.Cus"& _ 
+            Me._commandCollection(0).CommandText = "Select        tblReceivMain.ReceivDate, tblReceivMain.ReceivBOL, tblCustomers.Cus"& _ 
                 "tomerName, tblCustomers.Address, ISNULL(tblCustomers.City, '') + ' ' + ISNULL(tb"& _ 
                 "lCustomers.State, '') + ' ' + ISNULL(tblCustomers.ZipCode, '') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
                 "          AS Address2, tblReceivMain.strPO, tblItems.ItemCode, tblItems.ItemDesc"& _ 
@@ -21844,39 +21780,7 @@ Namespace SPGReportsTableAdapters
                 ".StartTime, Employees_1.LastName, Employees_1.FirstName, Employees.LastName, Emp"& _ 
                 "loyees.FirstName, ShipmentConditions.ShipmentCondition, ShipmentConditions_1.Shi"& _ 
                 "pmentCondition, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Vendor.VendorName,tblItems.ItemType"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "UNION ALL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT        tblReceivMain_1.ReceivDate, tblReceivMain_1.ReceivBOL, "& _ 
-                "tblCustomers_1.CustomerName, tblCustomers_1.Address, ISNULL(tblCustomers_1.City,"& _ 
-                " '') + ' ' + ISNULL(tblCustomers_1.State, '') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         + ' ' +"& _ 
-                " ISNULL(tblCustomers_1.ZipCode, '') AS Address2, tblReceivMain_1.strPO, tblItems"& _ 
-                "_1.ItemCode, tblItems_1.ItemDescription, tblCarriers_1.CarrierName, tblReceivMai"& _ 
-                "n_1.strTrailer, tblReceivMain_1.strSeal, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblReturnDet"& _ 
-                ".ReturnDetQty, tblReturnDet.sngPallets, tblReturnDet.ReturnDetQty / tblItems_1.i"& _ 
-                "ntUnitsPerCase * tblItems_1.CaseGrossWeight + tblReturnDet.sngPallets * 40 AS We"& _ 
-                "ight, 'Returns' AS ShippingType, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblReceivMain_1.sngS"& _ 
-                "kits, tblReceivMain_1.sngTotalPallets, tblReturnDet.Reason, tblReturnDet.ReturnD"& _ 
-                "etLot, tblReturnDet.ExpirationDate, tblCustomers_1.ExpirationDateFormat, tblRece"& _ 
-                "ivMain_1.Temparature, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblReceivMain_1.CorrectPallets,"& _ 
-                " tblReceivMain_1.InsectActivity, tblReceivMain_1.ForeignSubstance, tblReceivMain"& _ 
-                "_1.WheelsChocked, tblReceivMain_1.FinishTime, tblReceivMain_1.StartTime, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-                "                    Employees_3.LastName + ', ' + Employees_3.FirstName AS Loade"& _ 
-                "dBy, Employees_2.LastName + ', ' + Employees_2.FirstName AS CheckedBy, ShipmentC"& _ 
-                "onditions_2.ShipmentCondition AS LoadCondition, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Shipm"& _ 
-                "entConditions_3.ShipmentCondition AS PhysicalCondition, Vendor_1.VendorName, tbl"& _ 
-                "ReturnDet.intUnits"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            tblReceivMain AS tblReceivMain_1 INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblReturnDet ON tblReceivMain_1.ReceivID = tblReturnDe"& _ 
-                "t.ReceiveMainID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblCustomers AS tblCustomer"& _ 
-                "s_1 ON tblReceivMain_1.ReceivCustID = tblCustomers_1.CustomerID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-                "                     tblCarriers AS tblCarriers_1 ON tblReceivMain_1.ReceivCarri"& _ 
-                "erID = tblCarriers_1.CarrierID INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         tblItems AS "& _ 
-                "tblItems_1 ON tblReturnDet.ReturnDetItemID = tblItems_1.ItemID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "                         Vendor AS Vendor_1 ON tblReceivMain_1.strVendor = Vendo"& _ 
-                "r_1.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Employees AS Employees_2 ON tb"& _ 
-                "lReceivMain_1.CheckedBy = Employees_2.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
-                "    Employees AS Employees_3 ON tblReceivMain_1.UnloadedBy = Employees_3.OID LEF"& _ 
-                "T OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         ShipmentConditions AS ShipmentConditions_"& _ 
-                "2 ON tblReceivMain_1.LoadCondition = ShipmentConditions_2.OID LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        ShipmentConditions AS ShipmentConditions_3 ON tblReceivM"& _ 
-                "ain_1.PhysicalCondition = ShipmentConditions_3.OID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (tblReceivMain_"& _ 
-                "1.ReceivID = @ReceivingID)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY tblItems.ItemCode"
+                "ORDER BY tblItems.ItemCode"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ReceivingID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
