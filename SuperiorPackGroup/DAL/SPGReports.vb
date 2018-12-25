@@ -14,3 +14,8 @@ Namespace SPGReportsTableAdapters
     Partial Public Class CostingReportsTableAdapter
     End Class
 End Namespace
+
+Namespace SPGReportsTableAdapters
+    Partial Public Class BOLReportTableAdapter
+    End Class
+End Namespace

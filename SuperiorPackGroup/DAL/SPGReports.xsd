@@ -966,7 +966,7 @@ WHERE        (tblItems.ItemID = @ItemID)</CommandText>
                          tblShippingAddresses.ShippingAddress, ISNULL(tblShippingAddresses.ShippingCity, '') + ' ' + ISNULL(tblShippingAddresses.ShippingState, '') 
                          + ' ' + ISNULL(tblShippingAddresses.ShippingPostal, '') AS ShippingAddress2, tblShipMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, 
                          tblShipMain.DeliveryNoteNumber, tblCarriers.CarrierName, tblShipMain.strTrailer, tblShipMain.strSeal, tblShipDet.ShipDetDetQty, tblShipDet.sngPallets, 
-                         tblShipMain.strDeliveryNote, tblShipDet.ShipDetDetQty / tblItems.intUnitsPerCase * tblItems.CaseGrossWeight AS Weight, 'General' AS ShippingType, 
+                         tblShipMain.strDeliveryNote, tblShipDet.ShipDetDetQty / tblItems.intUnitsPerCase * tblItems.CaseGrossWeight AS Weight,  case when tblItems.ItemType = 'FG' then 'General' else 'Returns' end AS ShippingType, 
                          tblShipMain.Freight, tblShipMain.sngSkits, tblShipMain.sngTotalPallets, tblShipDet.Note, tblShipMain.TotalGrossWeight
 FROM            tblShipMain INNER JOIN
                          tblShipDet ON tblShipMain.ShipMainID = tblShipDet.ShipDetMainID INNER JOIN
@@ -1154,7 +1154,7 @@ ORDER BY tblProdMain.ProdMainDate</CommandText>
                          + ' ' + ISNULL(tblCustomers.ZipCode, '') AS Address2, tblShippingAddresses.ShippingName, tblShippingAddresses.ShippingAddress, ISNULL(tblShippingAddresses.ShippingCity, '') 
                          + ' ' + ISNULL(tblShippingAddresses.ShippingState, '') + ' ' + ISNULL(tblShippingAddresses.ShippingPostal, '') AS ShippingAddress2, tblShipMain.strPO, tblItems.ItemCode, tblItems.ItemDescription, 
                          tblShipMain.DeliveryNoteNumber, tblCarriers.CarrierName, tblShipMain.strTrailer, tblShipMain.strSeal, tblShipDet.ShipDetDetQty, tblShipDet.sngPallets, tblShipMain.strDeliveryNote, 
-                         tblShipDet.ShipDetDetQty / tblItems.intUnitsPerCase * tblItems.CaseGrossWeight AS Weight, 'General' AS ShippingType, tblShipMain.Freight, tblShipMain.sngSkits, tblShipMain.sngTotalPallets, tblShipDet.Note, 
+                         tblShipDet.ShipDetDetQty / tblItems.intUnitsPerCase * tblItems.CaseGrossWeight AS Weight,  case when tblItems.ItemType = 'FG' then 'General' else 'Returns' end AS ShippingType, tblShipMain.Freight, tblShipMain.sngSkits, tblShipMain.sngTotalPallets, tblShipDet.Note, 
                          tblShipMain.TotalGrossWeight, tblShipDet.FullLPNNumber, tblShipDet.ShipDetLot, tblShipDet.ExpirationDate, tblCustomers.ExpirationDateFormat, tblShipMain.Temparature, tblShipMain.CorrectPallets, 
                          tblShipMain.InsectActivity, tblShipMain.ForeignSubstance, tblShipMain.WheelsChocked, tblShipMain.FinishTime, tblShipMain.StartTime, Employees_1.LastName + ', ' + Employees_1.FirstName AS LoadedBy, 
                          Employees.LastName + ', ' + Employees.FirstName AS CheckedBy, ShipmentConditions.ShipmentCondition AS LoadCondition, ShipmentConditions_1.ShipmentCondition AS PhysicalCondition
