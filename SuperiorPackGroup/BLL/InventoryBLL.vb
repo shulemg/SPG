@@ -456,7 +456,7 @@ Public Class InventoryBLL
                                                                                   New BinaryOperator(Inventory.Fields.InventoryItemID.ItemCustomerID.CustomerID.PropertyName, customerID, BinaryOperatorType.Equal) And
                                                                                   New BinaryOperator("FullLPNNumber", fullLPNNumber, BinaryOperatorType.Equal))
 
-        If result.Count = 0 Then
+        If result.Count = 0 AndAlso Not fullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
             'If customerID = 7 Then
             '    Dim locationInventorys As XPCollection(Of LocationInventoryByLot) = New XPCollection(Of LocationInventoryByLot)(session,
             '                                                          New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber.PropertyName, Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(customerID), "")), BinaryOperatorType.Equal))

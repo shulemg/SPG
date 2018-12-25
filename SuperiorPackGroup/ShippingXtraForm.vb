@@ -106,7 +106,7 @@ Public Class ShippingXtraForm
         Utilities.MakeFormReadOnly(Me.shipmentInfoXtraTabPage, True)
         Me.shippingGridView.OptionsBehavior.Editable = False
         lpnNumberTextEdit.Properties.ReadOnly = True
-        Utilities.MakeGridReadOnly(Me.returnsGridView, True)
+        'Utilities.MakeGridReadOnly(Me.returnsGridView, True)
         Me.shippingSearchGridControl.Enabled = True
 
         cancelBarButtonItem.Enabled = False
@@ -122,8 +122,8 @@ Public Class ShippingXtraForm
         'make sure that the record gets validated before saving by moving off the record being edited
         shippingGridView.CloseEditor()
         shippingGridView.MoveNext()
-        returnsGridView.CloseEditor()
-        returnsGridView.MoveNext()
+        'returnsGridView.CloseEditor()
+        'returnsGridView.MoveNext()
 
         If m_CanSaveDetails = False OrElse m_CanSaveReturns = False OrElse ValidateAvailability() = False Then
             Return False
@@ -154,67 +154,70 @@ Public Class ShippingXtraForm
             Return lResult1
         End If
 
-        Try
-            returnsGridView.CloseEditor()
-            If returnsGridView.GroupCount > 0 Then
-                Dim i As Integer = -1
-                While returnsGridView.IsValidRowHandle(i)
-                    If returnsGridView.GetChildRowHandle(i, 0) > -1 Then
-                        For ci As Integer = returnsGridView.GetChildRowHandle(i, 0) To returnsGridView.GetChildRowCount(i) + returnsGridView.GetChildRowHandle(i, 0) - 1
-                            Dim lot As String
-                            Dim reason As String
-                            If Not IsDBNull(returnsGridView.GetRowCellValue(ci, returnLotGridColumn)) Then
-                                lot = returnsGridView.GetRowCellValue(ci, returnLotGridColumn).ToString
-                            Else
-                                lot = String.Empty
-                            End If
-                            If Not IsDBNull(returnsGridView.GetRowCellValue(ci, returnReasonGridColumn)) Then
-                                reason = returnsGridView.GetRowCellValue(ci, returnReasonGridColumn).ToString
-                            Else
-                                reason = String.Empty
-                            End If
-                            If m_ShippingReturnDetails.UpdateShippingReturnDetails(m_ShippingSession, CType(returnsGridView.GetRowCellValue(ci, returnIDGridColumn), Integer?), m_CurrentShippingID.Value, _
-                                                                                   CType(returnsGridView.GetRowCellValue(ci, returnItemGridColumn), Integer?), lot, _
-                                                                                   CType(returnsGridView.GetRowCellValue(ci, returnQuantityGridColumn), Integer?), CType(returnsGridView.GetRowCellValue(ci, returnUnitsGridColumn), Integer?),
-                                                                                   CType(returnsGridView.GetRowCellValue(ci, returnPalletsGridColumn), Single?), reason,
-                                                                                   Utilities.ChangeType(Of Date?)(returnsGridView.GetRowCellValue(ci, returnExpirationDateGridColumn))) <> True Then
-                                MessageBox.Show("The return details were not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                Return False
-                            End If
-                        Next
-                    End If
-                    i -= 1
-                End While
-            Else
-                For i As Integer = 0 To returnsGridView.RowCount - 1
-                    If returnsGridView.IsValidRowHandle(i) Then
-                        Dim lot As String
-                        Dim reason As String
-                        If Not IsDBNull(returnsGridView.GetRowCellValue(i, returnLotGridColumn)) Then
-                            lot = returnsGridView.GetRowCellValue(i, returnLotGridColumn).ToString
-                        Else
-                            lot = String.Empty
-                        End If
-                        If Not IsDBNull(returnsGridView.GetRowCellValue(i, returnReasonGridColumn)) Then
-                            reason = returnsGridView.GetRowCellValue(i, returnReasonGridColumn).ToString
-                        Else
-                            reason = String.Empty
-                        End If
-                        If m_ShippingReturnDetails.UpdateShippingReturnDetails(m_ShippingSession, CType(returnsGridView.GetRowCellValue(i, returnIDGridColumn), Integer?), m_CurrentShippingID.Value, _
-                                                                               CType(returnsGridView.GetRowCellValue(i, returnItemGridColumn), Integer?), lot, _
-                                                                               CType(returnsGridView.GetRowCellValue(i, returnQuantityGridColumn), Integer?), CType(returnsGridView.GetRowCellValue(i, returnUnitsGridColumn), Integer?),
-                                                                               CType(returnsGridView.GetRowCellValue(i, returnPalletsGridColumn), Single?), reason,
-                                                                               Utilities.ChangeType(Of Date?)(returnsGridView.GetRowCellValue(i, returnExpirationDateGridColumn))) <> True Then
-                            MessageBox.Show("The return details were not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            Return False
-                        End If
-                    End If
-                Next
-            End If
-        Catch ex As ApplicationException
-            MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Return False
-        End Try
+#Region "SaveReturnsDetails"
+        'Try
+        '    returnsGridView.CloseEditor()
+        '    If returnsGridView.GroupCount > 0 Then
+        '        Dim i As Integer = -1
+        '        While returnsGridView.IsValidRowHandle(i)
+        '            If returnsGridView.GetChildRowHandle(i, 0) > -1 Then
+        '                For ci As Integer = returnsGridView.GetChildRowHandle(i, 0) To returnsGridView.GetChildRowCount(i) + returnsGridView.GetChildRowHandle(i, 0) - 1
+        '                    Dim lot As String
+        '                    Dim reason As String
+        '                    If Not IsDBNull(returnsGridView.GetRowCellValue(ci, returnLotGridColumn)) Then
+        '                        lot = returnsGridView.GetRowCellValue(ci, returnLotGridColumn).ToString
+        '                    Else
+        '                        lot = String.Empty
+        '                    End If
+        '                    If Not IsDBNull(returnsGridView.GetRowCellValue(ci, returnReasonGridColumn)) Then
+        '                        reason = returnsGridView.GetRowCellValue(ci, returnReasonGridColumn).ToString
+        '                    Else
+        '                        reason = String.Empty
+        '                    End If
+        '                    If m_ShippingReturnDetails.UpdateShippingReturnDetails(m_ShippingSession, CType(returnsGridView.GetRowCellValue(ci, returnIDGridColumn), Integer?), m_CurrentShippingID.Value, _
+        '                                                                           CType(returnsGridView.GetRowCellValue(ci, returnItemGridColumn), Integer?), lot, _
+        '                                                                           CType(returnsGridView.GetRowCellValue(ci, returnQuantityGridColumn), Integer?), CType(returnsGridView.GetRowCellValue(ci, returnUnitsGridColumn), Integer?),
+        '                                                                           CType(returnsGridView.GetRowCellValue(ci, returnPalletsGridColumn), Single?), reason,
+        '                                                                           Utilities.ChangeType(Of Date?)(returnsGridView.GetRowCellValue(ci, returnExpirationDateGridColumn))) <> True Then
+        '                        MessageBox.Show("The return details were not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '                        Return False
+        '                    End If
+        '                Next
+        '            End If
+        '            i -= 1
+        '        End While
+        '    Else
+        '        For i As Integer = 0 To returnsGridView.RowCount - 1
+        '            If returnsGridView.IsValidRowHandle(i) Then
+        '                Dim lot As String
+        '                Dim reason As String
+        '                If Not IsDBNull(returnsGridView.GetRowCellValue(i, returnLotGridColumn)) Then
+        '                    lot = returnsGridView.GetRowCellValue(i, returnLotGridColumn).ToString
+        '                Else
+        '                    lot = String.Empty
+        '                End If
+        '                If Not IsDBNull(returnsGridView.GetRowCellValue(i, returnReasonGridColumn)) Then
+        '                    reason = returnsGridView.GetRowCellValue(i, returnReasonGridColumn).ToString
+        '                Else
+        '                    reason = String.Empty
+        '                End If
+        '                If m_ShippingReturnDetails.UpdateShippingReturnDetails(m_ShippingSession, CType(returnsGridView.GetRowCellValue(i, returnIDGridColumn), Integer?), m_CurrentShippingID.Value, _
+        '                                                                       CType(returnsGridView.GetRowCellValue(i, returnItemGridColumn), Integer?), lot, _
+        '                                                                       CType(returnsGridView.GetRowCellValue(i, returnQuantityGridColumn), Integer?), CType(returnsGridView.GetRowCellValue(i, returnUnitsGridColumn), Integer?),
+        '                                                                       CType(returnsGridView.GetRowCellValue(i, returnPalletsGridColumn), Single?), reason,
+        '                                                                       Utilities.ChangeType(Of Date?)(returnsGridView.GetRowCellValue(i, returnExpirationDateGridColumn))) <> True Then
+        '                    MessageBox.Show("The return details were not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '                    Return False
+        '                End If
+        '            End If
+        '        Next
+        '    End If
+        'Catch ex As ApplicationException
+        '    MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    Return False
+        'End Try
+#End Region
+
 
         'm_ShippingSession.CommitTransaction()
 
@@ -737,7 +740,7 @@ Public Class ShippingXtraForm
         Me.destinationMemoEdit.Properties.ReadOnly = True
         Me.shippingGridView.OptionsBehavior.Editable = True
         lpnNumberTextEdit.Properties.ReadOnly = False
-        Utilities.MakeGridReadOnly(Me.returnsGridView, False)
+        ' Utilities.MakeGridReadOnly(Me.returnsGridView, False)
         Me.shippingSearchGridControl.Enabled = False
         CheckPermissions()
 
@@ -765,7 +768,7 @@ Public Class ShippingXtraForm
         Me.shippingGridView.OptionsBehavior.Editable = True
         locationLookUpEdit.Properties.ReadOnly = False
         lpnNumberTextEdit.Properties.ReadOnly = False
-        Utilities.MakeGridReadOnly(Me.returnsGridView, False)
+        'Utilities.MakeGridReadOnly(Me.returnsGridView, False)
         Me.shippingSearchGridControl.Enabled = False
         CheckPermissions()
 
@@ -787,7 +790,7 @@ Public Class ShippingXtraForm
         Utilities.MakeFormReadOnly(shipmentInfoXtraTabPage, True)
         Me.shippingGridView.OptionsBehavior.Editable = False
         lpnNumberTextEdit.Properties.ReadOnly = True
-        Utilities.MakeGridReadOnly(Me.returnsGridView, True)
+        'Utilities.MakeGridReadOnly(Me.returnsGridView, True)
         Me.shippingSearchGridControl.Enabled = True
 
         cancelBarButtonItem.Enabled = False
@@ -805,7 +808,7 @@ Public Class ShippingXtraForm
             Utilities.MakeFormReadOnly(shipmentInfoXtraTabPage, True)
             Me.shippingGridView.OptionsBehavior.Editable = False
             lpnNumberTextEdit.Properties.ReadOnly = True
-            Utilities.MakeGridReadOnly(Me.returnsGridView, True)
+            ' Utilities.MakeGridReadOnly(Me.returnsGridView, True)
             Me.shippingSearchGridControl.Enabled = True
 
             cancelBarButtonItem.Enabled = False
@@ -1054,10 +1057,12 @@ Public Class ShippingXtraForm
                     End If
                 Next i
                 'BindShippingGridControl(m_CurrentShippingID) -- had to comment it out because it deletes all unsaved records --
-                For Each lpnRecord As Inventory In InventoryBLL.GetLPNInventoryRecords(m_ShippingSession, lpnToDelete, CInt(customerLookUpEdit.EditValue))
-                    lpnRecord.Shipment = Nothing
-                    lpnRecord.Save()
-                Next
+                If Not lpnToDelete.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
+                    For Each lpnRecord As Inventory In InventoryBLL.GetLPNInventoryRecords(m_ShippingSession, lpnToDelete, CInt(customerLookUpEdit.EditValue))
+                        lpnRecord.Shipment = Nothing
+                        lpnRecord.Save()
+                    Next
+                End If
             End If
         Catch ex As ApplicationException
             MessageBox.Show(ex.Message, "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -1209,15 +1214,21 @@ Public Class ShippingXtraForm
     End Sub
 
     Private Sub LPNNumber_KeyDown(sender As Object, e As KeyEventArgs) Handles lpnNumberTextEdit.KeyDown
-
+        Dim spgInventory As Boolean = False
         If e.KeyCode = Keys.Enter AndAlso customerLookUpEdit.EditValue IsNot Nothing Then
             Dim customerID As Integer = CInt(customerLookUpEdit.EditValue)
-            If ShippingsBLL.IsLPNShipped(lpnNumberTextEdit.Text, customerID, m_ShippingSession) Then
-                MessageBox.Show("This LPN is already shipped.")
-            Else
-                Dim fullLPN As String
+            If lpnNumberTextEdit.Text.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
+                spgInventory = True
+            End If
+
+            If Not spgInventory AndAlso ShippingsBLL.IsLPNShipped(lpnNumberTextEdit.Text, customerID, m_ShippingSession) Then
+                    MessageBox.Show("This LPN is already shipped.")
+                Else
+                    Dim fullLPN As String
 
                 If lpnNumberTextEdit.Text.StartsWith(CustomersBLL.GetLPNPrefix(customerID)) Then
+                    fullLPN = lpnNumberTextEdit.Text
+                ElseIf spgInventory Then
                     fullLPN = lpnNumberTextEdit.Text
                 Else
                     fullLPN = CustomersBLL.GetLPNPrefix(customerID) & Strings.Right("0000000000" & lpnNumberTextEdit.Text, Len(CustomersBLL.GetCustomer(customerID, m_ShippingSession).LastLPNNumber.ToString))
@@ -1231,15 +1242,33 @@ Public Class ShippingXtraForm
                     End If
                 Next
 
-                For Each record As Inventory In InventoryBLL.GetLPNInventoryRecords(m_ShippingSession, fullLPN, customerID)
-                    shippingGridView.AddNewRow()
-                    shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, itemGridColumn, record.InventoryItemID.ItemID)
-                    shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, quantityGridColumn, record.InventoryQuantity)
-                    shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, lotGridColumn, record.Lot)
-                    shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, expirationDateGridColumn, record.ExpirationDate)
-                    shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, fullLPNNumberGridColumn, record.FullLPNNumber)
-                    shippingGridView.UpdateCurrentRow()
-                Next
+                If spgInventory Then
+                    Dim LPN As Integer = Integer.Parse(lpnNumberTextEdit.Text.Replace(CustomersBLL.GetLPNPrefix(7), ""))
+
+                    For Each record As LocationInventoryByLot In New XPCollection(Of LocationInventoryByLot)(m_ShippingSession, New GroupOperator(New BinaryOperator(LocationInventoryByLot.Fields.LPNNumber, LPN, BinaryOperatorType.Equal) And
+                                                                                                  New BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, locationLookUpEdit.EditValue, BinaryOperatorType.Equal) And
+                                                                                                  New BinaryOperator(LocationInventoryByLot.Fields.QuantityOnHand.PropertyName, 0, BinaryOperatorType.Greater) And
+                                                                                                  New BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemCustomerID.CustomerID.PropertyName, customerID, BinaryOperatorType.Equal)))
+                        shippingGridView.AddNewRow()
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, itemGridColumn, record.LocationInventoryItem.ItemID)
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, quantityGridColumn, record.QuantityOnHand)
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, lotGridColumn, record.LocationInventoryLot)
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, expirationDateGridColumn, record.ExpirationDate)
+                        fullLPN = CustomersBLL.GetLPNPrefix(7) & Strings.Right("0000000000" & record.LPNNumber.ToString(), Len(CustomersBLL.GetCustomer(7, m_ShippingSession).LastLPNNumber.ToString))
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, fullLPNNumberGridColumn, fullLPN)
+                        shippingGridView.UpdateCurrentRow()
+                    Next
+                Else
+                    For Each record As Inventory In InventoryBLL.GetLPNInventoryRecords(m_ShippingSession, fullLPN, customerID)
+                        shippingGridView.AddNewRow()
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, itemGridColumn, record.InventoryItemID.ItemID)
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, quantityGridColumn, record.InventoryQuantity)
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, lotGridColumn, record.Lot)
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, expirationDateGridColumn, record.ExpirationDate)
+                        shippingGridView.SetRowCellValue(shippingGridView.FocusedRowHandle, fullLPNNumberGridColumn, record.FullLPNNumber)
+                        shippingGridView.UpdateCurrentRow()
+                    Next
+                End If
             End If
             lpnNumberTextEdit.EditValue = Nothing
         End If

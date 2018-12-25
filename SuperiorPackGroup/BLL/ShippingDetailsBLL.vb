@@ -88,6 +88,9 @@ Public Class ShippingDetailsBLL
         Dim originalRecord As Object() = Nothing
         originalRecord = shippingDetail.ItemArray
 
+        Dim originalDetail As SPG.ShippingDetailsRow = details.NewShippingDetailsRow()
+        originalDetail.ItemArray = CType(originalRecord.Clone(), Object())
+
         originalItem = shippingDetail.ShipDetItemID
         If originalItem <> itemID.Value Then
             itemChanged = True
@@ -132,15 +135,23 @@ Public Class ShippingDetailsBLL
         If rowsAffected = 1 Then
             Dim items As ItemsBLL = New ItemsBLL
             Dim locationID As Integer = session.GetObjectByKey(Of Shipping)(shippingID).ShippingLocation.Oid
-            If itemChanged = True Then
-                items.UpdateStock(session, originalItem, originalQuantity, False, locationID)
-                items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, locationID)
+            'If itemChanged = True Then
+            If originalDetail.FullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
+                items.UpdateStock(session, originalItem, originalQuantity, False, locationID, originalDetail.ShipDetLot, Integer.Parse(originalDetail.FullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(7), "")))
             Else
-                If newQuantity <> 0 Then
-                    items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID)
+                items.UpdateStock(session, originalItem, originalQuantity, False, locationID)
                 End If
+                If fullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
+                    items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, locationID, lot, Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(7), "")))
+                Else
+                    items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, locationID)
+                End If
+                'Else
+                '    If newQuantity <> 0 Then
+                '        items.UpdateStock(session, itemID.Value, newQuantity * -1, False, locationID)
+                '    End If
+                'End If
             End If
-        End If
 
         Return rowsAffected = 1
 
@@ -188,7 +199,11 @@ Public Class ShippingDetailsBLL
 
         If rowsAffected = 1 Then
             Dim items As ItemsBLL = New ItemsBLL
-            items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, session.GetObjectByKey(Of Shipping)(shippingID).ShippingLocation.Oid)
+            If fullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
+                items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, session.GetObjectByKey(Of Shipping)(shippingID).ShippingLocation.Oid, lot, Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(7), "")))
+            Else
+                items.UpdateStock(session, itemID.Value, quantity.Value * -1, False, session.GetObjectByKey(Of Shipping)(shippingID).ShippingLocation.Oid)
+            End If
         End If
 
         Return rowsAffected = 1
@@ -201,18 +216,25 @@ Public Class ShippingDetailsBLL
         Dim details As SPG.ShippingDetailsDataTable = Adapter.GetDetailsByDetailID(detailID)
         Dim rowsAffected As Integer = 0
         Dim itemID, quantity, locationID As Integer
+        Dim lot, fullLPNNumber As String
 
         If details.Count = 1 Then
             Dim shippingDetail As SPG.ShippingDetailsRow = CType(details.Rows(0), SPG.ShippingDetailsRow)
             itemID = shippingDetail.ShipDetItemID
             quantity = shippingDetail.ShipDetDetQty
+            lot = shippingDetail.ShipDetLot
+            fullLPNNumber = shippingDetail.FullLPNNumber
             locationID = session.GetObjectByKey(Of Shipping)(shippingDetail.ShipDetMainID).ShippingLocation.Oid
             rowsAffected = Adapter.Delete(detailID, shippingDetail.ts)
         End If
 
         If rowsAffected = 1 Then
             Dim items As ItemsBLL = New ItemsBLL
-            items.UpdateStock(session, itemID, quantity, False, locationID)
+            If fullLPNNumber.StartsWith(CustomersBLL.GetLPNPrefix(7)) Then
+                items.UpdateStock(session, itemID, quantity, False, locationID, lot, Integer.Parse(fullLPNNumber.Replace(CustomersBLL.GetLPNPrefix(7), "")))
+            Else
+                items.UpdateStock(session, itemID, quantity, False, locationID)
+            End If
         End If
 
         'Return true if precisely one row was deleted, otherwise return false.

@@ -1174,6 +1174,7 @@ Partial Class ShippingXtraForm
         '
         Me.returnsXtraTabPage.Controls.Add(Me.returnsGridControl)
         Me.returnsXtraTabPage.Name = "returnsXtraTabPage"
+        Me.returnsXtraTabPage.PageVisible = False
         Me.returnsXtraTabPage.Size = New System.Drawing.Size(607, 405)
         Me.returnsXtraTabPage.Text = "Return Details"
         '

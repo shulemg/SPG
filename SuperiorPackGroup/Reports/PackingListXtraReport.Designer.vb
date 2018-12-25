@@ -126,11 +126,11 @@ Partial Public Class PackingListXtraReport
         '
         Me.lpnXrLabel.Borders = DevExpress.XtraPrinting.BorderSide.None
         Me.lpnXrLabel.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lpnXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(398.0!, 0!)
+        Me.lpnXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(377.1667!, 0!)
         Me.lpnXrLabel.Multiline = True
         Me.lpnXrLabel.Name = "lpnXrLabel"
         Me.lpnXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lpnXrLabel.SizeF = New System.Drawing.SizeF(87.0!, 25.0!)
+        Me.lpnXrLabel.SizeF = New System.Drawing.SizeF(107.8334!, 25.0!)
         Me.lpnXrLabel.StylePriority.UseBorders = False
         Me.lpnXrLabel.StylePriority.UseFont = False
         Me.lpnXrLabel.StylePriority.UseTextAlignment = False
@@ -175,7 +175,7 @@ Partial Public Class PackingListXtraReport
         Me.itemDescriptionXrLabel.Multiline = True
         Me.itemDescriptionXrLabel.Name = "itemDescriptionXrLabel"
         Me.itemDescriptionXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.itemDescriptionXrLabel.SizeF = New System.Drawing.SizeF(250.0!, 25.0!)
+        Me.itemDescriptionXrLabel.SizeF = New System.Drawing.SizeF(229.1667!, 25.0!)
         Me.itemDescriptionXrLabel.StylePriority.UseBorders = False
         Me.itemDescriptionXrLabel.StylePriority.UseFont = False
         Me.itemDescriptionXrLabel.StylePriority.UseTextAlignment = False
@@ -570,10 +570,10 @@ Partial Public Class PackingListXtraReport
             Or DevExpress.XtraPrinting.BorderSide.Bottom), DevExpress.XtraPrinting.BorderSide)
         Me.lpnLabelXrLabel.CanGrow = False
         Me.lpnLabelXrLabel.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lpnLabelXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(398.0!, 375.0!)
+        Me.lpnLabelXrLabel.LocationFloat = New DevExpress.Utils.PointFloat(377.1667!, 375.0!)
         Me.lpnLabelXrLabel.Name = "lpnLabelXrLabel"
         Me.lpnLabelXrLabel.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.lpnLabelXrLabel.SizeF = New System.Drawing.SizeF(87.0!, 25.0!)
+        Me.lpnLabelXrLabel.SizeF = New System.Drawing.SizeF(107.8334!, 25.0!)
         Me.lpnLabelXrLabel.StylePriority.UseBorders = False
         Me.lpnLabelXrLabel.StylePriority.UseFont = False
         Me.lpnLabelXrLabel.StylePriority.UseTextAlignment = False
@@ -641,7 +641,7 @@ Partial Public Class PackingListXtraReport
         Me.XrLabel16.LocationFloat = New DevExpress.Utils.PointFloat(148.0!, 375.0!)
         Me.XrLabel16.Name = "XrLabel16"
         Me.XrLabel16.Padding = New DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100.0!)
-        Me.XrLabel16.SizeF = New System.Drawing.SizeF(250.0!, 25.0!)
+        Me.XrLabel16.SizeF = New System.Drawing.SizeF(229.1667!, 25.0!)
         Me.XrLabel16.StylePriority.UseBorders = False
         Me.XrLabel16.StylePriority.UseFont = False
         Me.XrLabel16.StylePriority.UseTextAlignment = False
