@@ -45,13 +45,12 @@ Public Class InventoryAdjustmentXtraForm
         FilterLots()
         If LotXpView.Count = 1 Then
             originalLotLookUpEdit.EditValue = LotXpView.Item(0).Item("Lot")
+            Me.originalQtyTextEdit.Text = If(originalLotLookUpEdit.GetColumnValue("Qty"), 0).ToString()
         End If
     End Sub
     Private Sub originalLotLookUpEdit_Validated(ByVal sender As Object, ByVal e As EventArgs) Handles originalLotLookUpEdit.Validated
 
-        If originalQtyTextEdit.Text <> "" Then
-            Me.originalQtyTextEdit.Text = If(originalLotLookUpEdit.GetColumnValue("Qty"), 0).ToString()
-        End If
+        Me.originalQtyTextEdit.Text = If(originalLotLookUpEdit.GetColumnValue("Qty"), 0).ToString()
 
     End Sub
     Private Sub originalLotLookUpEdit_GetNotInListValue(ByVal sender As Object, ByVal e As GetNotInListValueEventArgs) Handles originalLotLookUpEdit.GetNotInListValue
