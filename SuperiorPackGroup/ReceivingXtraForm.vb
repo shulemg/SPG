@@ -9,6 +9,7 @@ Imports DXDAL.SPGData
 
 Public Class ReceivingXtraForm
 
+    Private m_upc As String
     Private m_TempId As New Dictionary(Of Integer, Integer)
     Private m_lastLPN As Integer
     Private m_Receivings As ReceivingsBLL
@@ -1299,10 +1300,21 @@ Err:
     Private Sub ItemLookUpEdit_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ItemLookUpEdit.Validating
         If Len(ItemLookUpEdit.Text) > 0 Then
             Dim item As Items
-            item = ItemsBLL.GetItemByUpc(ItemLookUpEdit.Text)
+            item = ItemsBLL.GetItemByUpc(If(m_upc <> "", m_upc, ItemLookUpEdit.Text))
             If item IsNot Nothing AndAlso item.Inactive = False AndAlso item.ItemCustomerID.CustomerID = CType(Me.customerLookUpEdit.EditValue, Integer?).Value Then
                 ItemLookUpEdit.EditValue = item.ItemID
             End If
+        End If
+    End Sub
+
+    Private Sub ItemLookUpEdit_KeyDown(sender As Object, e As KeyEventArgs) Handles ItemLookUpEdit.KeyDown
+        If e.KeyData = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+            e.Handled = True
+        ElseIf e.KeyData = Keys.Tab Then
+            m_upc = Me.ItemLookUpEdit.Text
+        Else
+            m_upc = ""
         End If
     End Sub
 End Class
