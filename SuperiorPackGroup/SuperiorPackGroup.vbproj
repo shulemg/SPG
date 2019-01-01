@@ -12,8 +12,9 @@
     <AssemblyName>SuperiorPackGroup - Test</AssemblyName>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>Resources\logolg.ico</ApplicationIcon>
-    <ManifestCertificateThumbprint>733F8010F78C43DD80C3BE320C2C17CC6F814FA1</ManifestCertificateThumbprint>
-    <ManifestKeyFile>JFPFX.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>D6C1F360E6AC7EEEC03F1A7FE517BC67BBCD5C7D</ManifestCertificateThumbprint>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -38,7 +39,7 @@
     <UpdateUrl>\\server1\SPG\SPG Test Install\</UpdateUrl>
     <ProductName>Superior Pack Group - Test</ProductName>
     <PublisherName>PC Ware Business Solutions</PublisherName>
-    <ApplicationRevision>268</ApplicationRevision>
+    <ApplicationRevision>270</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

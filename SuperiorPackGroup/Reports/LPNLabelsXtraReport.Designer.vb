@@ -325,8 +325,10 @@ Partial Public Class LPNLabelsXtraReport
         '
         Me.Bands.AddRange(New DevExpress.XtraReports.UI.Band() {Me.Detail, Me.TopMargin, Me.BottomMargin, Me.lpnGroupHeader, Me.lpnGroupFooter})
         Me.BorderColor = System.Drawing.Color.Transparent
+        Me.DefaultPrinterSettingsUsing.UseLandscape = True
         Me.Font = New System.Drawing.Font("Tw Cen MT Condensed", 72.0!)
         Me.HorizontalContentSplitting = DevExpress.XtraPrinting.HorizontalContentSplitting.Smart
+        Me.Landscape = True
         Me.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 1)
         Me.PageHeight = 400
         Me.PageWidth = 800
