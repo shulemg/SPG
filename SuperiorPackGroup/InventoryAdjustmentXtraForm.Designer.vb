@@ -251,6 +251,8 @@ Partial Class InventoryAdjustmentXtraForm
         'newQtyGridColumn
         '
         Me.newQtyGridColumn.Caption = "New Qty"
+        Me.newQtyGridColumn.DisplayFormat.FormatString = "{0:#,##0.######}"
+        Me.newQtyGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.newQtyGridColumn.FieldName = "NewCount"
         Me.newQtyGridColumn.Name = "newQtyGridColumn"
         Me.newQtyGridColumn.OptionsColumn.AllowEdit = False
