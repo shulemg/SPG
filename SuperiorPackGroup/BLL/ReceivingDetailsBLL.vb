@@ -139,7 +139,7 @@ Public Class ReceivingDetailsBLL
         If Not detail.Equals(originalDetail) Then
             Dim items As ItemsBLL = New ItemsBLL
             Dim locationID As Integer = session.GetObjectByKey(Of Receiving)(receivingID).ReceivingLocation.Oid
-            items.UpdateStock(session, originalDetail.ReceivDetItemID.ItemID, Nothing, originalDetail.ReceivDetQty * -1, False, locationID, lot, LPN)
+            items.UpdateStock(session, originalDetail.ReceivDetItemID.ItemID, Nothing, originalDetail.ReceivDetQty * -1, False, locationID, originalDetail.ReceivDetLot, LPN)
 
             items.UpdateStock(session, itemID.Value, quantity.Value, False, locationID, lot, LPN, expirationDate)
         End If

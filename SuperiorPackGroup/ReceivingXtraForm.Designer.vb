@@ -1306,6 +1306,7 @@ Partial Class ReceivingXtraForm
         Me.ReceivDetLPNColumn.Caption = "LPN"
         Me.ReceivDetLPNColumn.FieldName = "ReceivDetLPNColumn"
         Me.ReceivDetLPNColumn.Name = "ReceivDetLPNColumn"
+        Me.ReceivDetLPNColumn.OptionsColumn.ReadOnly = True
         Me.ReceivDetLPNColumn.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom, "ReceivDetLPN", "")})
         Me.ReceivDetLPNColumn.Visible = True
         Me.ReceivDetLPNColumn.VisibleIndex = 7
