@@ -212,6 +212,12 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllergensXtraForm.Designer.vb">
+      <DependentUpon>AllergensXtraForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AllergensXtraForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="BLL\AuditTrailBLL.vb" />
     <Compile Include="BLL\AuditTrailReportBLL.vb" />
@@ -244,6 +250,7 @@
     <Compile Include="BLL\LocationTransfersBLL.vb" />
     <Compile Include="BLL\LocationTransfersReportBLL.vb" />
     <Compile Include="BLL\LPNStatusReportBLL.vb" />
+    <Compile Include="BLL\AllergensBLL.vb" />
     <Compile Include="BLL\MachinesLinesBLL.vb" />
     <Compile Include="BLL\MyDataLayers.vb" />
     <Compile Include="BLL\PackingListReportBLL.vb" />
@@ -630,6 +637,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AllergensXtraForm.resx">
+      <DependentUpon>AllergensXtraForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BreakTimeXtraForm.resx">
       <DependentUpon>BreakTimeXtraForm.vb</DependentUpon>
     </EmbeddedResource>

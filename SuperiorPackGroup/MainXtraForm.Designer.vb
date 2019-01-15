@@ -128,6 +128,7 @@ Partial Class MainXtraForm
         Me.mainToolbarScheduleBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
         Me.DefaultLookAndFeel1 = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
+        Me.AllergensBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.mainBarManager, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -139,9 +140,9 @@ Partial Class MainXtraForm
         Me.mainBarManager.DockControls.Add(Me.barDockControlLeft)
         Me.mainBarManager.DockControls.Add(Me.barDockControlRight)
         Me.mainBarManager.Form = Me
-        Me.mainBarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.mainMenuFileBarSubItem, Me.mainMenuActivitiesBarSubItem, Me.mainMenuReportsBarSubItem, Me.mainMenuToolsBarSubItem, Me.mainMenuWindowBarSubItem, Me.helpBarSubItem, Me.fileExitBarButtonItem, Me.listsCustomerBarButtonItem, Me.listsItemBarButtonItem, Me.listsMachineBarButtonItem, Me.listsShiftsBarButtonItem, Me.listsCarriersBarButtonItem, Me.activitesRecieveBarButtonItem, Me.activitiesProductionBarButtonItem, Me.activitesShipBarButtonItem, Me.productionDetailBarButtonItem, Me.productionSummaryBarButtonItem, Me.reportsCostingBarSubItem, Me.costingDetailBarButtonItem, Me.costingDetailFullBarButtonItem, Me.costingSummaryBarButtonItem, Me.costingFinancialBarButtonItem, Me.toolsOptionsBarButtonItem, Me.toolsSecurityBarButtonItem, Me.windowCascadeBarButtonItem, Me.windowVerticalBarButtonItem, Me.windowHorizontalBarButtonItem, Me.windowCloseBarButtonItem, Me.windowArrangeBarButtonItem, Me.mainToolbarCustomersBarLargeButtonItem, Me.mainToolbarItemBarLargeButtonItem, Me.mainToolbarProductionBarLargeButtonItem, Me.mainToolbarShipBarLargeButtonItem, Me.mainToolbarReceiveBarLargeButtonItem, Me.BarMdiChildrenListItem1, Me.mainMenuListsBarSubItem, Me.databaseBarButtonItem, Me.listsAddressesBarButtonItem, Me.mainToolbarAddressesBarLargeButtonItem, Me.listsInventoryBarButtonItem, Me.mainToolbarInventoryBarLargeButtonItem, Me.inventoryAdjustmentBarButtonItem, Me.reportsBarButtonItem, Me.mainToolbarInventoryAdjustmentBarButtonItem, Me.listVendorsBarButtonItem, Me.listsEmployeesBarButtonItem, Me.listsShipmentConditionsBarButtonItem, Me.listsItemPoolBarButtonItem, Me.mainToolBarItemPoolBarLargeButtonItem, Me.mainToolbarLocationsBarButtonItem, Me.listLocationsBarButtonItem, Me.mainToolbarLocationTransferBarButtonItem, Me.activitiesLocationTransferBarButtonItem, Me.mainToolbarProjectsBarButtonItem, Me.mainToolbarScheduleBarButtonItem, Me.activitiesProjectsBarButtonItem, Me.activitiesScheduleBarButtonItem, Me.mainToolbarInventoryAdjustmentBarLargeButtonItem, Me.mainToolbarLocationsBarLargeButtonItem, Me.mainToolbarLocationTransferBarLargeButtonItem, Me.mainToolbarProjectsBarLargeButtonItem, Me.mainToolbarScheduleBarLargeButtonItem, Me.lotCodeFormatsBarButtonItem, Me.reasonCodesBarButtonItem})
+        Me.mainBarManager.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.mainMenuFileBarSubItem, Me.mainMenuActivitiesBarSubItem, Me.mainMenuReportsBarSubItem, Me.mainMenuToolsBarSubItem, Me.mainMenuWindowBarSubItem, Me.helpBarSubItem, Me.fileExitBarButtonItem, Me.listsCustomerBarButtonItem, Me.listsItemBarButtonItem, Me.listsMachineBarButtonItem, Me.listsShiftsBarButtonItem, Me.listsCarriersBarButtonItem, Me.activitesRecieveBarButtonItem, Me.activitiesProductionBarButtonItem, Me.activitesShipBarButtonItem, Me.productionDetailBarButtonItem, Me.productionSummaryBarButtonItem, Me.reportsCostingBarSubItem, Me.costingDetailBarButtonItem, Me.costingDetailFullBarButtonItem, Me.costingSummaryBarButtonItem, Me.costingFinancialBarButtonItem, Me.toolsOptionsBarButtonItem, Me.toolsSecurityBarButtonItem, Me.windowCascadeBarButtonItem, Me.windowVerticalBarButtonItem, Me.windowHorizontalBarButtonItem, Me.windowCloseBarButtonItem, Me.windowArrangeBarButtonItem, Me.mainToolbarCustomersBarLargeButtonItem, Me.mainToolbarItemBarLargeButtonItem, Me.mainToolbarProductionBarLargeButtonItem, Me.mainToolbarShipBarLargeButtonItem, Me.mainToolbarReceiveBarLargeButtonItem, Me.BarMdiChildrenListItem1, Me.mainMenuListsBarSubItem, Me.databaseBarButtonItem, Me.listsAddressesBarButtonItem, Me.mainToolbarAddressesBarLargeButtonItem, Me.listsInventoryBarButtonItem, Me.mainToolbarInventoryBarLargeButtonItem, Me.inventoryAdjustmentBarButtonItem, Me.reportsBarButtonItem, Me.mainToolbarInventoryAdjustmentBarButtonItem, Me.listVendorsBarButtonItem, Me.listsEmployeesBarButtonItem, Me.listsShipmentConditionsBarButtonItem, Me.listsItemPoolBarButtonItem, Me.mainToolBarItemPoolBarLargeButtonItem, Me.mainToolbarLocationsBarButtonItem, Me.listLocationsBarButtonItem, Me.mainToolbarLocationTransferBarButtonItem, Me.activitiesLocationTransferBarButtonItem, Me.mainToolbarProjectsBarButtonItem, Me.mainToolbarScheduleBarButtonItem, Me.activitiesProjectsBarButtonItem, Me.activitiesScheduleBarButtonItem, Me.mainToolbarInventoryAdjustmentBarLargeButtonItem, Me.mainToolbarLocationsBarLargeButtonItem, Me.mainToolbarLocationTransferBarLargeButtonItem, Me.mainToolbarProjectsBarLargeButtonItem, Me.mainToolbarScheduleBarLargeButtonItem, Me.lotCodeFormatsBarButtonItem, Me.reasonCodesBarButtonItem, Me.AllergensBarButtonItem})
         Me.mainBarManager.MainMenu = Me.mainMenuBar
-        Me.mainBarManager.MaxItemId = 76
+        Me.mainBarManager.MaxItemId = 77
         '
         'mainMenuBar
         '
@@ -181,7 +182,7 @@ Partial Class MainXtraForm
         '
         Me.mainMenuListsBarSubItem.Caption = "&Lists"
         Me.mainMenuListsBarSubItem.Id = 1
-        Me.mainMenuListsBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.listsCustomerBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemPoolBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listLocationsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsAddressesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsMachineBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShiftsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsCarriersBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listVendorsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsEmployeesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShipmentConditionsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.lotCodeFormatsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.reasonCodesBarButtonItem)})
+        Me.mainMenuListsBarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.listsCustomerBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsItemPoolBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listLocationsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsAddressesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.AllergensBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.listsMachineBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShiftsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsCarriersBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listVendorsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsEmployeesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.listsShipmentConditionsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.lotCodeFormatsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.reasonCodesBarButtonItem)})
         Me.mainMenuListsBarSubItem.Name = "mainMenuListsBarSubItem"
         '
         'listsCustomerBarButtonItem
@@ -699,6 +700,12 @@ Partial Class MainXtraForm
         '
         Me.DefaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Dark"
         '
+        'AllergensBarButtonItem
+        '
+        Me.AllergensBarButtonItem.Caption = "Allergens"
+        Me.AllergensBarButtonItem.Id = 76
+        Me.AllergensBarButtonItem.Name = "AllergensBarButtonItem"
+        '
         'MainXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -791,4 +798,5 @@ Partial Class MainXtraForm
     Friend WithEvents lotCodeFormatsBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents reasonCodesBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents DefaultLookAndFeel1 As DevExpress.LookAndFeel.DefaultLookAndFeel
+    Friend WithEvents AllergensBarButtonItem As DevExpress.XtraBars.BarButtonItem
 End Class

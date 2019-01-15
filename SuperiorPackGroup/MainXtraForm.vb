@@ -654,4 +654,14 @@ Public Class MainXtraForm
 
     End Sub
 
+    Private Sub AllergensBarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles AllergensBarButtonItem.ItemClick
+        With AllergensXtraForm
+            .MdiParent = Me
+            If .CheckPermissions = False Then
+                Exit Sub
+            End If
+            .Show()
+            .Activate()
+        End With
+    End Sub
 End Class

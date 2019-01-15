@@ -91,6 +91,7 @@
     <Compile Include="BreakTime.vb" />
     <Compile Include="ItemMachineStandards.vb" />
     <Compile Include="LocationInventoryByLot.vb" />
+    <Compile Include="Allergen.vb" />
     <Compile Include="ReasonCodes.vb" />
     <Compile Include="CustomerPlants.vb" />
     <Compile Include="CustomerShifts.vb" />
