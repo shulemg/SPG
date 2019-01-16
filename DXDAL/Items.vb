@@ -463,6 +463,16 @@ Namespace SPGData
             End Set
         End Property
 
+        Dim fAllergens As String
+        Public Property Allergens() As String
+            Get
+                Return fAllergens
+            End Get
+            Set(value As String)
+                SetPropertyValue("Allergens", fAllergens, value)
+            End Set
+        End Property
+
 #Region "Non persistent Properties"
 
         <Association("Item-BOM", GetType(BOMs)), Aggregated()>
@@ -784,6 +794,11 @@ Namespace SPGData
             Public ReadOnly Property MinutesPerShift() As OperandProperty
                 Get
                     Return New OperandProperty(GetNestedName("MinutesPerShift"))
+                End Get
+            End Property
+            Public ReadOnly Property Allergens() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("Allergens"))
                 End Get
             End Property
         End Class

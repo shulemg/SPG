@@ -465,7 +465,7 @@ Public Class ItemsBLL
 
     End Function
 
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)>
     Private Function InsertProduct(ByVal itemID As Integer, ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Integer?, ByVal itemDefaultMachine As Integer?,
                                    ByVal itemProdStandard As Double?, ByVal dblPrice As Double?, ByVal sngRebate As Single?, ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Double?,
                                    ByVal dblFreight As Double?, ByVal dblFilm As Double?, ByVal dblBoxes As Double?, ByVal dblPallets As Double?, ByVal dblStretchWrap As Double?,
@@ -473,17 +473,17 @@ Public Class ItemsBLL
                                    ByVal intUnitsPerCase As Double?, ByVal intUnitsPerPallet As Integer?, ByVal intCasesPerPallet As Integer?, ByVal sngQtyOnHand As Single?,
                                    ByVal CaseGrossWeight As Double?, ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String,
                                    ByVal LayersPerPallet As String, ByVal ShelfLife As String, ByVal Instructions As String, ByVal PalletPattern As String, ByVal inactive As Boolean, ByVal packers As Double?, ByVal upc As String,
-                                   ByVal bagsPerCase As Integer?, ByVal RequiresLotCode As Boolean?, ByVal RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, byval MinutesPerShift As Double?,
-                                   ByVal dxSession As Session) As Boolean
+                                   ByVal bagsPerCase As Integer?, ByVal RequiresLotCode As Boolean?, ByVal RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, ByVal MinutesPerShift As Double?,
+                                   ByVal AllergenInfo As String, ByVal dxSession As Session) As Boolean
 
         'Dim products As SPG.ItemsDataTable = New SPG.ItemsDataTable
         'Dim product As SPG.ItemsRow = products.NewItemsRow()
 
         'product.ItemID = itemID
         Dim product As Items = New Items(dxSession) With {.ItemID = itemID}
-        SetProductFields(itemCode, itemDescription, itemType, itemCustomerID, itemDefaultMachine, itemProdStandard, dblPrice, sngRebate, strUnitOfMeasure, intQtyPerUnit, dblFreight, dblFilm, dblBoxes, dblStretchWrap, _
-                         dblPallets, dblOther1, dblOther2, dblOther3, dblOther4, dblOther5, intUnitsPerCase, intUnitsPerPallet, intCasesPerPallet, sngQtyOnHand, CaseGrossWeight, PackageCode, CaseCode, RequiredWeight, MAV, _
-                         CasesPerLayer, LayersPerPallet, ShelfLife, Instructions, PalletPattern, inactive, packers, upc, bagsPerCase, RequiresLotCode, RequiresExpirationDate, GenerateLotCodes, DefaultLotCodeFormat, MinutesPerShift, product, dxSession)
+        SetProductFields(itemCode, itemDescription, itemType, itemCustomerID, itemDefaultMachine, itemProdStandard, dblPrice, sngRebate, strUnitOfMeasure, intQtyPerUnit, dblFreight, dblFilm, dblBoxes, dblStretchWrap,
+                         dblPallets, dblOther1, dblOther2, dblOther3, dblOther4, dblOther5, intUnitsPerCase, intUnitsPerPallet, intCasesPerPallet, sngQtyOnHand, CaseGrossWeight, PackageCode, CaseCode, RequiredWeight, MAV,
+                         CasesPerLayer, LayersPerPallet, ShelfLife, Instructions, PalletPattern, inactive, packers, upc, bagsPerCase, RequiresLotCode, RequiresExpirationDate, GenerateLotCodes, DefaultLotCodeFormat, MinutesPerShift, AllergenInfo, product, dxSession)
         product.strEnteredBy = My.Settings.UserName
         product.dtmEnteredOn = Now
 
@@ -520,8 +520,8 @@ Public Class ItemsBLL
                                  ByVal intUnitsPerCase As Double?, ByVal intUnitsPerPallet As Integer?, ByVal intCasesPerPallet As Integer?, ByVal sngQtyOnHand As Single?,
                                  ByVal CaseGrossWeight As Double?, ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String,
                                  ByVal LayersPerPallet As String, ByVal ShelfLife As String, ByVal Instructions As String, ByVal PalletPattern As String, ByVal inactive As Boolean, ByVal packers As Double?, ByVal upc As String,
-                                 ByVal bagsPerCase As Integer?, ByVal RequiresLotCode As Boolean?, ByVal RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, ByVal MinutesPerShift As Double?, 
-                                 ByVal product As Items, ByVal dxSession As Session)
+                                 ByVal bagsPerCase As Integer?, ByVal RequiresLotCode As Boolean?, ByVal RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, ByVal MinutesPerShift As Double?,
+                                 ByVal AllergenInfo As String, ByVal product As Items, ByVal dxSession As Session)
 
         SetField(Items.Fields.ItemCode.PropertyName, product.ItemCode, itemCode, product)
         SetField(Items.Fields.ItemDescription.PropertyName, product.ItemDescription, If(String.IsNullOrEmpty(itemDescription), Nothing, itemDescription), product)
@@ -565,6 +565,7 @@ Public Class ItemsBLL
         SetField(Items.Fields.GenerateLotCodes.PropertyName, product.GenerateLotCodes, If(GenerateLotCodes.HasValue, GenerateLotCodes.Value, Nothing), product)
         SetField(Items.Fields.DefaultLotCodeFormat.PropertyName, product.DefaultLotCodeFormat, If(DefaultLotCodeFormat.HasValue, dxSession.GetObjectByKey(Of LotCodeFormats)(DefaultLotCodeFormat.Value), Nothing), product)
         SetField(Items.Fields.MinutesPerShift.PropertyName, product.MinutesPerShift, If(MinutesPerShift.HasValue, MinutesPerShift.Value, Nothing), product)
+        SetField(Items.Fields.Allergens.PropertyName, product.Allergens, If(String.IsNullOrEmpty(AllergenInfo), Nothing, AllergenInfo), product)
 
     End Sub
 
@@ -615,16 +616,16 @@ Public Class ItemsBLL
     End Sub
 
 
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)>
     Public Function UpdateProduct(ByVal itemID As Integer, ByVal itemCode As String, ByVal itemDescription As String, ByVal itemType As String, ByVal itemCustomerID As Integer?, ByVal itemDefaultMachine As Integer?,
                                   ByVal itemProdStandard As Double?, ByVal dblPrice As Double?, ByVal sngRebate As Single?, ByVal strUnitOfMeasure As String, ByVal intQtyPerUnit As Double?,
                                   ByVal dblFreight As Double?, ByVal dblFilm As Double?, ByVal dblBoxes As Double?, ByVal dblStretchWrap As Double?, ByVal dblPallets As Double?,
                                   ByVal dblOther1 As Double?, ByVal dblOther2 As Double?, ByVal dblOther3 As Double?, ByVal dblOther4 As Double?, ByVal dblOther5 As Double?,
                                   ByVal intUnitsPerCase As Double?, ByVal intUnitsPerPallet As Integer?, ByVal intCasesPerPallet As Integer?, ByVal sngQtyOnHand As Single?,
-                                  ByVal CaseGrossWeight As Double?, ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String, 
-                                  ByVal LayersPerPallet As String, ByVal ShelfLife As String, ByVal Instructions As String, ByVal PalletPattern As String, ByVal inactive As Boolean, ByVal packers As Double?, ByVal upc As String, 
-                                  ByVal bagsPerCase As Integer?, byval RequiresLotCode As Boolean?, byval RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, ByVal MinutesPerSift As Double?,
-                                  ByVal dxSession As Session) As Boolean
+                                  ByVal CaseGrossWeight As Double?, ByVal PackageCode As String, ByVal CaseCode As String, ByVal RequiredWeight As String, ByVal MAV As String, ByVal CasesPerLayer As String,
+                                  ByVal LayersPerPallet As String, ByVal ShelfLife As String, ByVal Instructions As String, ByVal PalletPattern As String, ByVal inactive As Boolean, ByVal packers As Double?, ByVal upc As String,
+                                  ByVal bagsPerCase As Integer?, ByVal RequiresLotCode As Boolean?, ByVal RequiresExpirationDate As Boolean?, ByVal GenerateLotCodes As Boolean?, ByVal DefaultLotCodeFormat As Integer?, ByVal MinutesPerSift As Double?,
+                                  ByVal AllergenInfo As String, ByVal dxSession As Session) As Boolean
 
         Dim str As StringBuilder = New StringBuilder(String.Empty)
         If String.IsNullOrEmpty(itemCode) Then
@@ -667,7 +668,7 @@ Public Class ItemsBLL
             'It is a new Product
             Return InsertProduct(itemID, itemCode, itemDescription, itemType, itemCustomerID, itemDefaultMachine, itemProdStandard, dblPrice, sngRebate, strUnitOfMeasure, intQtyPerUnit, dblFreight, dblFilm, dblBoxes, dblStretchWrap, dblPallets,
                                  dblOther1, dblOther2, dblOther3, dblOther4, dblOther5, intUnitsPerCase, intUnitsPerPallet, intCasesPerPallet, sngQtyOnHand, CaseGrossWeight, PackageCode, CaseCode, RequiredWeight, MAV, CasesPerLayer, LayersPerPallet,
-                                 ShelfLife, Instructions, PalletPattern, inactive, packers, upc, bagsPerCase, RequiresLotCode, RequiresExpirationDate, GenerateLotCodes, DefaultLotCodeFormat, MinutesPerSift, dxSession)
+                                 ShelfLife, Instructions, PalletPattern, inactive, packers, upc, bagsPerCase, RequiresLotCode, RequiresExpirationDate, GenerateLotCodes, DefaultLotCodeFormat, MinutesPerSift, AllergenInfo, dxSession)
         End If
 
         'Dim product As SPG.ItemsRow = products(0)
@@ -678,9 +679,9 @@ Public Class ItemsBLL
         change = New Change() With {.PropertyName = Items.Fields.ItemID.PropertyName, .PrevValue = product.ItemID.ToString, .NewValue = product.ItemID.ToString}
         changes.Add(change)
 
-        SetProductFields(itemCode, itemDescription, itemType, itemCustomerID, itemDefaultMachine, itemProdStandard, dblPrice, sngRebate, strUnitOfMeasure, intQtyPerUnit, dblFreight, dblFilm, dblBoxes, dblStretchWrap, _
-                         dblPallets, dblOther1, dblOther2, dblOther3, dblOther4, dblOther5, intUnitsPerCase, intUnitsPerPallet, intCasesPerPallet, sngQtyOnHand, CaseGrossWeight, PackageCode, CaseCode, RequiredWeight, MAV, _
-                         CasesPerLayer, LayersPerPallet, ShelfLife, Instructions, PalletPattern, inactive, packers, upc, bagsPerCase, RequiresLotCode, RequiresExpirationDate, GenerateLotCodes, DefaultLotCodeFormat, MinutesPerSift, product, dxSession)
+        SetProductFields(itemCode, itemDescription, itemType, itemCustomerID, itemDefaultMachine, itemProdStandard, dblPrice, sngRebate, strUnitOfMeasure, intQtyPerUnit, dblFreight, dblFilm, dblBoxes, dblStretchWrap,
+                         dblPallets, dblOther1, dblOther2, dblOther3, dblOther4, dblOther5, intUnitsPerCase, intUnitsPerPallet, intCasesPerPallet, sngQtyOnHand, CaseGrossWeight, PackageCode, CaseCode, RequiredWeight, MAV,
+                         CasesPerLayer, LayersPerPallet, ShelfLife, Instructions, PalletPattern, inactive, packers, upc, bagsPerCase, RequiresLotCode, RequiresExpirationDate, GenerateLotCodes, DefaultLotCodeFormat, MinutesPerSift, AllergenInfo, product, dxSession)
 
         Try
             product.Editing = False

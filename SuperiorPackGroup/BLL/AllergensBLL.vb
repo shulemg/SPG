@@ -6,9 +6,10 @@ Imports DevExpress.Persistent.Base
 
 <ComponentModel.DataObject()>
 Public Class AllergensBLL
-    Public Function GetAllergens(ByRef session As Session) As XPView
+    Public Shared Function GetAllergens(ByRef session As Session) As XPCollection(Of Allergen)
+        Dim AllergeXPCollection As New XPCollection(Of Allergen)(session)
 
-        Return New XPView(session, GetType(Allergen))
+        Return AllergeXPCollection
 
     End Function
 

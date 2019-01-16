@@ -189,6 +189,10 @@ Public Class ItemsXtraForm
         cancelBarButtonItem.Enabled = False
         saveBarButtonItem.Enabled = False
 
+        For Each Allergen As Allergen In AllergensBLL.GetAllergens(m_ItemsSession)
+            Me.AllergenInfoCheckedComboBoxEdit.Properties.Items.Add(Allergen.AllergenName)
+        Next
+
         Me.Cursor = Cursors.Default
 
 
@@ -308,6 +312,8 @@ Public Class ItemsXtraForm
         Me.other4TextEdit.EditValue = item.dblOther4
         Me.other5TextEdit.EditValue = item.dblOther5
 
+
+        Me.AllergenInfoCheckedComboBoxEdit.EditValue = item.Allergens
         Me.packageCodeMemoEdit.EditValue = item.PackageCode
         Me.caseCodeMemoEdit.EditValue = item.CaseCode
         Me.requiredWeightTextEdit.EditValue = item.RequiredWeight
@@ -415,7 +421,8 @@ Public Class ItemsXtraForm
                                      Convert.ToString(layersPerPalletTextEdit.EditValue), Convert.ToString(shelfLifeTextEdit.EditValue), Convert.ToString(instructionsMemoEdit.EditValue), Convert.ToString(palletPatternButtonEdit.EditValue),
                                      inactiveCheckEdit.Checked, CDbl(packersTextEdit.EditValue), Convert.ToString(upcTextEdit.EditValue), Utilities.ChangeType(Of Integer?)(bagsPerCaseTextEdit.EditValue),
                                      Utilities.ChangeType(Of Boolean?)(requiresLotCodeCheckEdit.Checked), Utilities.ChangeType(Of Boolean?)(requiresExpirationDateCheckEdit.Checked), Utilities.ChangeType(Of Boolean?)(generateLotCodesCheckEdit.Checked),
-                                     Utilities.ChangeType(Of Integer?)(lotCodeFormatLookUpEdit.EditValue), Utilities.ChangeType(Of Double?)(minutesPerShiftTextEdit.EditValue), m_ItemsSession) <> True Then
+                                     Utilities.ChangeType(Of Integer?)(lotCodeFormatLookUpEdit.EditValue), Utilities.ChangeType(Of Double?)(minutesPerShiftTextEdit.EditValue),
+                                     Convert.ToString(AllergenInfoCheckedComboBoxEdit.EditValue), m_ItemsSession) <> True Then
                 MessageBox.Show("The item was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If

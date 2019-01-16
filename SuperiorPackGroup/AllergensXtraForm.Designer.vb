@@ -28,11 +28,9 @@ Partial Class AllergensXtraForm
         Me.allergenGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.idGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.nameGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.AllergenXpView = New DevExpress.Xpo.XPView(Me.components)
         CType(Me.machineLineGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AllergenXpCollection, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.allergenGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AllergenXpView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'deleteSimpleButton
@@ -98,11 +96,6 @@ Partial Class AllergensXtraForm
         Me.nameGridColumn.Visible = True
         Me.nameGridColumn.VisibleIndex = 0
         '
-        'AllergenXpView
-        '
-        Me.AllergenXpView.ObjectType = GetType(DXDAL.SPGData.Allergen)
-        Me.AllergenXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("AllergenID", DevExpress.Xpo.SortDirection.None, "[AllergenID]", False, True), New DevExpress.Xpo.ViewProperty("AllergenName", DevExpress.Xpo.SortDirection.Ascending, "[AllergenName]", False, True)})
-        '
         'AllergensXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -118,7 +111,6 @@ Partial Class AllergensXtraForm
         CType(Me.machineLineGridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AllergenXpCollection, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.allergenGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AllergenXpView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -128,6 +120,5 @@ Partial Class AllergensXtraForm
     Friend WithEvents allergenGridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents idGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents nameGridColumn As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents AllergenXpView As DevExpress.Xpo.XPView
     Friend WithEvents AllergenXpCollection As DevExpress.Xpo.XPCollection
 End Class

@@ -126,6 +126,7 @@ Partial Class ItemsXtraForm
         Me.receivingsGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.receivingDetailIDGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingIDGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.receivingLpnGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingLotGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingQuantityGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingDateGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -218,6 +219,7 @@ Partial Class ItemsXtraForm
         Me.receivingReturnGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.receivingReturnIDGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.returnReceivingIDGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.receivingReturnLpnGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingReturnLotGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingReturnQuantityGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.receivingReturnDateGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -274,8 +276,8 @@ Partial Class ItemsXtraForm
         Me.itemTypeGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.inactiveSearchCheckEdit = New DevExpress.XtraEditors.CheckEdit()
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
-        Me.receivingLpnGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.receivingReturnLpnGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.AllergenInfoCheckedComboBoxEdit = New DevExpress.XtraEditors.CheckedComboBoxEdit()
+        Me.LabelControl39 = New DevExpress.XtraEditors.LabelControl()
         CType(Me.poolDetailsGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.poolBomGridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.poolBomXpCollection, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -385,6 +387,7 @@ Partial Class ItemsXtraForm
         CType(Me.itemSearchGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.inactiveSearchCheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AllergenInfoCheckedComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'poolDetailsGridView
@@ -1301,6 +1304,15 @@ Partial Class ItemsXtraForm
         Me.receivingIDGridColumn.OptionsColumn.AllowEdit = False
         Me.receivingIDGridColumn.OptionsColumn.ReadOnly = True
         '
+        'receivingLpnGridColumn
+        '
+        Me.receivingLpnGridColumn.Caption = "LPN"
+        Me.receivingLpnGridColumn.Name = "receivingLpnGridColumn"
+        Me.receivingLpnGridColumn.OptionsColumn.AllowEdit = False
+        Me.receivingLpnGridColumn.OptionsColumn.ReadOnly = True
+        Me.receivingLpnGridColumn.Visible = True
+        Me.receivingLpnGridColumn.VisibleIndex = 1
+        '
         'receivingLotGridColumn
         '
         Me.receivingLotGridColumn.Caption = "Lot"
@@ -1836,6 +1848,8 @@ Partial Class ItemsXtraForm
         '
         'specificationXtraTabPage
         '
+        Me.specificationXtraTabPage.Controls.Add(Me.LabelControl39)
+        Me.specificationXtraTabPage.Controls.Add(Me.AllergenInfoCheckedComboBoxEdit)
         Me.specificationXtraTabPage.Controls.Add(Me.LabelControl35)
         Me.specificationXtraTabPage.Controls.Add(Me.LabelControl34)
         Me.specificationXtraTabPage.Controls.Add(Me.LabelControl33)
@@ -2124,6 +2138,15 @@ Partial Class ItemsXtraForm
         Me.returnReceivingIDGridColumn.Name = "returnReceivingIDGridColumn"
         Me.returnReceivingIDGridColumn.OptionsColumn.AllowEdit = False
         Me.returnReceivingIDGridColumn.OptionsColumn.ReadOnly = True
+        '
+        'receivingReturnLpnGridColumn
+        '
+        Me.receivingReturnLpnGridColumn.Caption = "LPN"
+        Me.receivingReturnLpnGridColumn.Name = "receivingReturnLpnGridColumn"
+        Me.receivingReturnLpnGridColumn.OptionsColumn.AllowEdit = False
+        Me.receivingReturnLpnGridColumn.OptionsColumn.ReadOnly = True
+        Me.receivingReturnLpnGridColumn.Visible = True
+        Me.receivingReturnLpnGridColumn.VisibleIndex = 1
         '
         'receivingReturnLotGridColumn
         '
@@ -2600,23 +2623,23 @@ Partial Class ItemsXtraForm
         Me.inactiveSearchCheckEdit.Size = New System.Drawing.Size(250, 19)
         Me.inactiveSearchCheckEdit.TabIndex = 0
         '
-        'receivingLpnGridColumn
+        'AllergenInfoCheckedComboBoxEdit
         '
-        Me.receivingLpnGridColumn.Caption = "LPN"
-        Me.receivingLpnGridColumn.Name = "receivingLpnGridColumn"
-        Me.receivingLpnGridColumn.OptionsColumn.AllowEdit = False
-        Me.receivingLpnGridColumn.OptionsColumn.ReadOnly = True
-        Me.receivingLpnGridColumn.Visible = True
-        Me.receivingLpnGridColumn.VisibleIndex = 1
+        Me.AllergenInfoCheckedComboBoxEdit.Location = New System.Drawing.Point(170, 28)
+        Me.AllergenInfoCheckedComboBoxEdit.MenuManager = Me.BarManager1
+        Me.AllergenInfoCheckedComboBoxEdit.Name = "AllergenInfoCheckedComboBoxEdit"
+        Me.AllergenInfoCheckedComboBoxEdit.Properties.AllowMultiSelect = True
+        Me.AllergenInfoCheckedComboBoxEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.AllergenInfoCheckedComboBoxEdit.Size = New System.Drawing.Size(408, 20)
+        Me.AllergenInfoCheckedComboBoxEdit.TabIndex = 18
         '
-        'receivingReturnLpnGridColumn
+        'LabelControl39
         '
-        Me.receivingReturnLpnGridColumn.Caption = "LPN"
-        Me.receivingReturnLpnGridColumn.Name = "receivingReturnLpnGridColumn"
-        Me.receivingReturnLpnGridColumn.OptionsColumn.AllowEdit = False
-        Me.receivingReturnLpnGridColumn.OptionsColumn.ReadOnly = True
-        Me.receivingReturnLpnGridColumn.Visible = True
-        Me.receivingReturnLpnGridColumn.VisibleIndex = 1
+        Me.LabelControl39.Location = New System.Drawing.Point(51, 31)
+        Me.LabelControl39.Name = "LabelControl39"
+        Me.LabelControl39.Size = New System.Drawing.Size(62, 13)
+        Me.LabelControl39.TabIndex = 19
+        Me.LabelControl39.Text = "Allergen Info"
         '
         'ItemsXtraForm
         '
@@ -2744,6 +2767,7 @@ Partial Class ItemsXtraForm
         CType(Me.itemSearchGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.inactiveSearchCheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AllergenInfoCheckedComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3001,4 +3025,6 @@ Partial Class ItemsXtraForm
     Friend WithEvents BehaviorManager1 As DevExpress.Utils.Behaviors.BehaviorManager
     Friend WithEvents receivingLpnGridColumn As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents receivingReturnLpnGridColumn As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl39 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents AllergenInfoCheckedComboBoxEdit As DevExpress.XtraEditors.CheckedComboBoxEdit
 End Class
