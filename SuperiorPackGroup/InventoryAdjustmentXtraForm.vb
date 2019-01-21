@@ -492,6 +492,7 @@ Public Class InventoryAdjustmentXtraForm
 
         lpnXPview.Properties.AddRange(New ViewProperty() {New ViewProperty("Item", SortDirection.None, "[LocationInventoryItem.ItemCode]", False, True),
                                       New ViewProperty("ItemDesc", SortDirection.None, "[LocationInventoryItem.ItemDescription]", False, True),
+                                      New ViewProperty("Allergens", SortDirection.None, "[LocationInventoryItem.Allergens]", False, True),
                                       New ViewProperty("Qty", SortDirection.None, "[QuantityOnHand]", False, True),
                                       New ViewProperty("Expr", SortDirection.None, "[ExpirationDate]", False, True),
                                       New ViewProperty("Lot", SortDirection.None, "[LocationInventoryLot]", False, True),
@@ -503,6 +504,8 @@ Public Class InventoryAdjustmentXtraForm
             .lpnGroupHeader.GroupFields.Add(New GroupField("LPN", XRColumnSortOrder.Ascending))
             .itemCodeXrLabel.DataBindings.Add("Text", lpnXPview, "Item")
             .itemDescXrLabel.DataBindings.Add("Text", lpnXPview, "ItemDesc")
+            .AllergensXrLabel.ExpressionBindings.Add(New ExpressionBinding("BeforePrint", "Text",
+                                                        "Iif(Len(Trim([Allergens]))>0,'Allergens: ' + [Allergens],'Allergens: None')"))
             .exprXrLabel.DataBindings.Add("Text", lpnXPview, "Expr", "{0:MM/dd/yyyy}")
             .qtyXrLabel.DataBindings.Add("Text", lpnXPview, "Qty")
             .lotXrLabel.DataBindings.Add("Text", lpnXPview, "Lot")
