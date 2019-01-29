@@ -12,6 +12,7 @@ Public Class ReceivingXtraForm
     Private m_upc As String
     Private m_TempId As New Dictionary(Of Integer, Integer)
     Private m_lastLPN As Integer
+    Private m_lastItem As Integer
     Private m_Receivings As ReceivingsBLL
     Private m_CustomerReceivings As CustomersBLL
     Private m_Shifts As ShiftsBLL
@@ -1186,7 +1187,7 @@ Public Class ReceivingXtraForm
         If CInt(UnitsTextEdit.Text) > 0 AndAlso CInt(UnitsPerPltTextEdit.Text) > 0 AndAlso ((CInt(QtyTextEdit.Text) > 0 AndAlso CInt(QtyPerPltTextEdit.Text) > 0) OrElse CInt(QtyTextEdit.Text) = 0) AndAlso
             LotCodeValidator.ValidateByItemID(CInt(ItemLookUpEdit.EditValue), LotTextEdit.Text, True) Then
             AddEntryButton.Enabled = True
-            AddToPalletButton.Enabled = CInt(UnitsTextEdit.Text) <= CInt(UnitsPerPltTextEdit.Text) AndAlso CInt(QtyTextEdit.Text) <= CInt(QtyPerPltTextEdit.Text)
+            AddToPalletButton.Enabled = CInt(UnitsTextEdit.Text) <= CInt(UnitsPerPltTextEdit.Text) AndAlso CInt(QtyTextEdit.Text) <= CInt(QtyPerPltTextEdit.Text) AndAlso CType(ItemLookUpEdit.EditValue, Integer) = m_lastItem
         Else
 Err:
             AddEntryButton.Enabled = False
@@ -1233,6 +1234,7 @@ Err:
         Dim addedQty, addedUnits, qty, units, qtyPerPlt, UnitPerPlt As Double
         Dim beginRow As Integer? = Nothing ' = receivingGridView.GetRowHandle(receivingGridView.DataRowCount)
 
+        m_lastItem = CType(ItemLookUpEdit.EditValue, Integer)
         qty = Convert.ToDouble(QtyTextEdit.Text)
         units = Convert.ToDouble(UnitsTextEdit.Text)
         qtyPerPlt = Convert.ToDouble(QtyPerPltTextEdit.Text)

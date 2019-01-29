@@ -129,7 +129,7 @@ Public Class InventoryXtraForm
                     palletsTextEdit.EditValue = inventoryRecord.InventoryPallets
                     lotTextEdit.EditValue = inventoryRecord.Lot
                     poTextEdit.EditValue = inventoryRecord.PO
-                    shiftLookUpEdit.EditValue = inventoryRecord.Shift.ShiftID
+                    shiftLookUpEdit.EditValue = inventoryRecord.Shift?.ShiftID
                     If inventoryRecord.Pallet > 0 Then
                         palletNumberTextEdit.EditValue = inventoryRecord.Pallet
                     Else
