@@ -1123,7 +1123,7 @@ Public Class ReceivingXtraForm
             If reprint Then
                 .ShowPreviewDialog()
             Else
-                .Print()
+                .Print(UsersBLL.GetUserByName(m_ReceivingSession, My.Settings.UserName).LPNPrinterName)
             End If
         End With
     End Sub

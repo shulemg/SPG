@@ -41,13 +41,22 @@ Namespace SPGData
             End Set
         End Property
         Dim fstrSecurityLevel As String
-        <Size(50)> _
+        <Size(50)>
         Public Property strSecurityLevel() As String
             Get
                 Return fstrSecurityLevel
             End Get
             Set(ByVal value As String)
                 SetPropertyValue(Of String)("strSecurityLevel", fstrSecurityLevel, value)
+            End Set
+        End Property
+        Dim fLPNPrinterName As String
+        Public Property LPNPrinterName() As String
+            Get
+                Return fLPNPrinterName
+            End Get
+            Set(ByVal value As String)
+                SetPropertyValue(Of String)("LPNPrinterName", fLPNPrinterName, value)
             End Set
         End Property
 
@@ -92,6 +101,11 @@ Namespace SPGData
             Public ReadOnly Property strSecurityLevel() As OperandProperty
                 Get
                     Return New OperandProperty(GetNestedName("strSecurityLevel"))
+                End Get
+            End Property
+            Public ReadOnly Property LPNPrinterName() As OperandProperty
+                Get
+                    Return New OperandProperty(GetNestedName("LPNPrinterName"))
                 End Get
             End Property
             Public ReadOnly Property DefaultLocation() As Locations.FieldsClass

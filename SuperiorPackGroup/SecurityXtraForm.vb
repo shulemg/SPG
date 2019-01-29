@@ -29,7 +29,7 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub SecurityXtraForm_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
+    Private Sub SecurityXtraForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
         m_Users = New UsersBLL
         m_UserPermissions = New UserPermissionsBLL
@@ -47,6 +47,7 @@ Public Class SecurityXtraForm
 
         Me.passwordTextEdit.Properties.ReadOnly = True
         Me.confirmTextEdit.Properties.ReadOnly = True
+        Me.LPNPrinterTextEdit.Properties.ReadOnly = True
         locationLookUpEdit.Properties.ReadOnly = True
         resetSimpleButton.Enabled = False
         Me.usersListBoxControl.Enabled = True
@@ -63,7 +64,7 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub usersListBoxControl_SelectedValueChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles usersListBoxControl.SelectedValueChanged
+    Private Sub usersListBoxControl_SelectedValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles usersListBoxControl.SelectedValueChanged
 
         If Me.usersListBoxControl.SelectedIndex <> -1 Then
             BindSecurityControls(Me.usersListBoxControl.SelectedValue.ToString)
@@ -71,21 +72,22 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Public Sub BindSecurityControls(ByVal user As String)
+    Public Sub BindSecurityControls(ByVal username As String)
 
-        Dim userPassword As String = m_Users.GetUserPassword(user)
-        Me.nameTextEdit.EditValue = Me.usersListBoxControl.SelectedValue
+        Dim user As Users = UsersBLL.GetUserByName(m_CustomersUOW, username)
+        Me.nameTextEdit.EditValue = user.strUserName
         Me.nameTextEdit.Enabled = False
-        Me.passwordTextEdit.EditValue = userPassword
-        Me.confirmTextEdit.EditValue = userPassword
+        Me.passwordTextEdit.EditValue = user.strPassword
+        Me.confirmTextEdit.EditValue = user.strPassword
+        Me.LPNPrinterTextEdit.EditValue = user.LPNPrinterName
         Try
-            locationLookUpEdit.EditValue = UsersBLL.GetUserByName(m_CustomersUOW, user).DefaultLocation.Oid
+            locationLookUpEdit.EditValue = UsersBLL.GetUserByName(m_CustomersUOW, user.strUserName).DefaultLocation.Oid
         Catch
             locationLookUpEdit.EditValue = Nothing
         End Try
 
-        Me.userPermissionsGridControl.DataSource = m_UserPermissions.GetUserPermissionsByUserName(user, Nothing)
-        If user = "Admin" Then
+        Me.userPermissionsGridControl.DataSource = m_UserPermissions.GetUserPermissionsByUserName(user.strUserName, Nothing)
+        If user.strUserName = "Admin" Then
             Me.customersXtraTabPage.PageVisible = False
         Else
             Me.customersXtraTabPage.PageVisible = True
@@ -152,7 +154,7 @@ Public Class SecurityXtraForm
         End If
 
         Try
-            If m_Users.UpdateUser(selectedUser, Me.passwordTextEdit.Text, Me.confirmTextEdit.Text, location) <> True Then
+            If m_Users.UpdateUser(selectedUser, Me.passwordTextEdit.Text, Me.confirmTextEdit.Text, location, Me.LPNPrinterTextEdit.Text) <> True Then
                 MessageBox.Show("The user was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If
@@ -169,8 +171,8 @@ Public Class SecurityXtraForm
                 Do While i < permissions
                     Dim permission As Integer = Me.userPermissionsGridView.GetSelectedRows(i)
                     If permission >= 0 Then
-                        If m_UserPermissions.UpdateUserPermissions(CType(userPermissionsGridView.GetRowCellValue(permission, permissionIDGridColumn), Integer?), _
-                                                                   userPermissionsGridView.GetRowCellValue(permission, permissionObjectGridColumn).ToString, _
+                        If m_UserPermissions.UpdateUserPermissions(CType(userPermissionsGridView.GetRowCellValue(permission, permissionIDGridColumn), Integer?),
+                                                                   userPermissionsGridView.GetRowCellValue(permission, permissionObjectGridColumn).ToString,
                                                                    userPermissionsGridView.GetRowCellValue(permission, permissionLevelGridColumn).ToString, selectedUser) <> True Then
                             MessageBox.Show("The user permissions was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             Return False
@@ -190,6 +192,7 @@ Public Class SecurityXtraForm
 
         Me.passwordTextEdit.Properties.ReadOnly = True
         Me.confirmTextEdit.Properties.ReadOnly = True
+        Me.LPNPrinterTextEdit.Properties.ReadOnly = True
         locationLookUpEdit.Properties.ReadOnly = True
         resetSimpleButton.Enabled = False
         Me.usersListBoxControl.Enabled = True
@@ -199,7 +202,7 @@ Public Class SecurityXtraForm
 
     End Function
 
-    Private Sub saveBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles saveBarButtonItem.ItemClick
+    Private Sub saveBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles saveBarButtonItem.ItemClick
 
         If SaveChanges() Then
             CheckPermissions()
@@ -209,12 +212,13 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub addBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles addBarButtonItem.ItemClick
+    Private Sub addBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles addBarButtonItem.ItemClick
 
         Me.nameTextEdit.Text = Nothing
         Me.nameTextEdit.Enabled = True
         Me.passwordTextEdit.EditValue = Nothing
         Me.confirmTextEdit.EditValue = Nothing
+        Me.LPNPrinterTextEdit.EditValue = Nothing
         locationLookUpEdit.EditValue = Nothing
 
         Me.userPermissionsGridControl.DataSource = m_UserPermissions.GetUserPermissionsByUserName("", Nothing)
@@ -222,6 +226,7 @@ Public Class SecurityXtraForm
 
         Me.passwordTextEdit.Properties.ReadOnly = False
         Me.confirmTextEdit.Properties.ReadOnly = False
+        Me.LPNPrinterTextEdit.Properties.ReadOnly = False
         locationLookUpEdit.Properties.ReadOnly = False
         resetSimpleButton.Enabled = True
         Me.usersListBoxControl.Enabled = False
@@ -255,7 +260,7 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub cancelBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles cancelBarButtonItem.ItemClick
+    Private Sub cancelBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles cancelBarButtonItem.ItemClick
 
         CancelChanges()
         CheckPermissions()
@@ -264,7 +269,7 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub deleteBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles deleteBarButtonItem.ItemClick
+    Private Sub deleteBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles deleteBarButtonItem.ItemClick
 
         If Me.nameTextEdit.Text.ToLower = "admin" Then
             MessageBox.Show("You can't Delete the Admin User")
@@ -301,10 +306,11 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub editBarButtonItem_ItemClick(ByVal sender As System.Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles editBarButtonItem.ItemClick
+    Private Sub editBarButtonItem_ItemClick(ByVal sender As Object, ByVal e As DevExpress.XtraBars.ItemClickEventArgs) Handles editBarButtonItem.ItemClick
 
         Me.passwordTextEdit.Properties.ReadOnly = False
         Me.confirmTextEdit.Properties.ReadOnly = False
+        Me.LPNPrinterTextEdit.Properties.ReadOnly = False
         locationLookUpEdit.Properties.ReadOnly = False
         resetSimpleButton.Enabled = True
         Me.usersListBoxControl.Enabled = False
@@ -319,7 +325,7 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub userPermissionsGridView_ShowingEditor(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles userPermissionsGridView.ShowingEditor
+    Private Sub userPermissionsGridView_ShowingEditor(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles userPermissionsGridView.ShowingEditor
 
         If userPermissionsGridView.GetFocusedRowCellValue(permissionObjectGridColumn).ToString = "Financial Tabs" OrElse userPermissionsGridView.GetFocusedRowCellValue(permissionObjectGridColumn).ToString = "Advanced Tabs" _
                 OrElse userPermissionsGridView.GetFocusedRowCellValue(permissionObjectGridColumn).ToString = "Security Settings" Then
@@ -330,13 +336,13 @@ Public Class SecurityXtraForm
 
     End Sub
 
-    Private Sub customersGridView_InitNewRow(ByVal sender As System.Object, ByVal e As InitNewRowEventArgs) Handles customersGridView.InitNewRow
+    Private Sub customersGridView_InitNewRow(ByVal sender As Object, ByVal e As InitNewRowEventArgs) Handles customersGridView.InitNewRow
 
         Me.customersGridView.SetFocusedRowCellValue("User!Key", usersListBoxControl.SelectedValue.ToString)
 
     End Sub
 
-    Private Sub customersXPCollection_ResolveSession(ByVal sender As System.Object, ByVal e As ResolveSessionEventArgs) Handles customersXPCollection.ResolveSession
+    Private Sub customersXPCollection_ResolveSession(ByVal sender As Object, ByVal e As ResolveSessionEventArgs) Handles customersXPCollection.ResolveSession
 
         e.Session = m_CustomersUOW
 

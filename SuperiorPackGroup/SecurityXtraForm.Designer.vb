@@ -66,6 +66,8 @@ Partial Class SecurityXtraForm
         Me.locationsXpView = New DevExpress.Xpo.XPView(Me.components)
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.resetSimpleButton = New DevExpress.XtraEditors.SimpleButton()
+        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
+        Me.LPNPrinterTextEdit = New DevExpress.XtraEditors.TextEdit()
         CType(Me.sidePanelControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.sidePanelControl.SuspendLayout()
         CType(Me.usersListBoxControl, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,6 +89,7 @@ Partial Class SecurityXtraForm
         CType(Me.customersXPView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.locationLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.locationsXpView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LPNPrinterTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'sidePanelControl
@@ -95,19 +98,19 @@ Partial Class SecurityXtraForm
         Me.sidePanelControl.Dock = System.Windows.Forms.DockStyle.Left
         Me.sidePanelControl.Location = New System.Drawing.Point(0, 49)
         Me.sidePanelControl.Name = "sidePanelControl"
-        Me.sidePanelControl.Size = New System.Drawing.Size(145, 405)
+        Me.sidePanelControl.Size = New System.Drawing.Size(145, 444)
         Me.sidePanelControl.TabIndex = 0
         '
         'usersListBoxControl
         '
         Me.usersListBoxControl.Location = New System.Drawing.Point(5, 6)
         Me.usersListBoxControl.Name = "usersListBoxControl"
-        Me.usersListBoxControl.Size = New System.Drawing.Size(135, 348)
+        Me.usersListBoxControl.Size = New System.Drawing.Size(135, 432)
         Me.usersListBoxControl.TabIndex = 4
         '
         'LabelControl1
         '
-        Me.LabelControl1.Location = New System.Drawing.Point(176, 60)
+        Me.LabelControl1.Location = New System.Drawing.Point(168, 60)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(56, 13)
         Me.LabelControl1.TabIndex = 1
@@ -115,30 +118,30 @@ Partial Class SecurityXtraForm
         '
         'nameTextEdit
         '
-        Me.nameTextEdit.Location = New System.Drawing.Point(268, 57)
+        Me.nameTextEdit.Location = New System.Drawing.Point(260, 57)
         Me.nameTextEdit.Name = "nameTextEdit"
-        Me.nameTextEdit.Size = New System.Drawing.Size(100, 20)
+        Me.nameTextEdit.Size = New System.Drawing.Size(140, 20)
         Me.nameTextEdit.TabIndex = 2
         '
         'confirmTextEdit
         '
-        Me.confirmTextEdit.Location = New System.Drawing.Point(268, 107)
+        Me.confirmTextEdit.Location = New System.Drawing.Point(260, 107)
         Me.confirmTextEdit.Name = "confirmTextEdit"
         Me.confirmTextEdit.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.confirmTextEdit.Size = New System.Drawing.Size(100, 20)
+        Me.confirmTextEdit.Size = New System.Drawing.Size(140, 20)
         Me.confirmTextEdit.TabIndex = 6
         '
         'passwordTextEdit
         '
-        Me.passwordTextEdit.Location = New System.Drawing.Point(268, 82)
+        Me.passwordTextEdit.Location = New System.Drawing.Point(260, 82)
         Me.passwordTextEdit.Name = "passwordTextEdit"
         Me.passwordTextEdit.Properties.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.passwordTextEdit.Size = New System.Drawing.Size(100, 20)
+        Me.passwordTextEdit.Size = New System.Drawing.Size(140, 20)
         Me.passwordTextEdit.TabIndex = 4
         '
         'LabelControl2
         '
-        Me.LabelControl2.Location = New System.Drawing.Point(176, 110)
+        Me.LabelControl2.Location = New System.Drawing.Point(168, 110)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(86, 13)
         Me.LabelControl2.TabIndex = 5
@@ -146,7 +149,7 @@ Partial Class SecurityXtraForm
         '
         'LabelControl3
         '
-        Me.LabelControl3.Location = New System.Drawing.Point(176, 85)
+        Me.LabelControl3.Location = New System.Drawing.Point(168, 85)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(50, 13)
         Me.LabelControl3.TabIndex = 3
@@ -289,13 +292,15 @@ Partial Class SecurityXtraForm
         Me.barDockControlTop.CausesValidation = False
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
         Me.barDockControlTop.Size = New System.Drawing.Size(427, 49)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 454)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 493)
+        Me.barDockControlBottom.Manager = Me.BarManager1
         Me.barDockControlBottom.Size = New System.Drawing.Size(427, 23)
         '
         'barDockControlLeft
@@ -303,18 +308,20 @@ Partial Class SecurityXtraForm
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
         Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 405)
+        Me.barDockControlLeft.Manager = Me.BarManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 444)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
         Me.barDockControlRight.Location = New System.Drawing.Point(427, 49)
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 405)
+        Me.barDockControlRight.Manager = Me.BarManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 444)
         '
         'securityXtraTabControl
         '
-        Me.securityXtraTabControl.Location = New System.Drawing.Point(151, 186)
+        Me.securityXtraTabControl.Location = New System.Drawing.Point(151, 223)
         Me.securityXtraTabControl.Name = "securityXtraTabControl"
         Me.securityXtraTabControl.SelectedTabPage = Me.permissionsXtraTabPage
         Me.securityXtraTabControl.Size = New System.Drawing.Size(264, 262)
@@ -393,7 +400,7 @@ Partial Class SecurityXtraForm
         '
         Me.customerRepositoryItemLookUpEdit.AutoHeight = False
         Me.customerRepositoryItemLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.customerRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near)})
+        Me.customerRepositoryItemLookUpEdit.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerID", "Customer ID", 83, DevExpress.Utils.FormatType.Numeric, "", False, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "Customer Name", 86, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.customerRepositoryItemLookUpEdit.DataSource = Me.customersXPView
         Me.customerRepositoryItemLookUpEdit.DisplayMember = "CustomerName"
         Me.customerRepositoryItemLookUpEdit.Name = "customerRepositoryItemLookUpEdit"
@@ -407,16 +414,16 @@ Partial Class SecurityXtraForm
         '
         'locationLookUpEdit
         '
-        Me.locationLookUpEdit.Location = New System.Drawing.Point(268, 132)
+        Me.locationLookUpEdit.Location = New System.Drawing.Point(260, 159)
         Me.locationLookUpEdit.MenuManager = Me.BarManager1
         Me.locationLookUpEdit.Name = "locationLookUpEdit"
         Me.locationLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.locationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 91, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "location", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near)})
+        Me.locationLookUpEdit.Properties.Columns.AddRange(New DevExpress.XtraEditors.Controls.LookUpColumnInfo() {New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationCode", "Location Code", 91, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationName", "Location Name", 80, DevExpress.Utils.FormatType.None, "", True, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default]), New DevExpress.XtraEditors.Controls.LookUpColumnInfo("LocationID", "location", 47, DevExpress.Utils.FormatType.None, "", False, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.[Default])})
         Me.locationLookUpEdit.Properties.DataSource = Me.locationsXpView
         Me.locationLookUpEdit.Properties.DisplayMember = "LocationCode"
         Me.locationLookUpEdit.Properties.NullText = "[Select default location]"
         Me.locationLookUpEdit.Properties.ValueMember = "LocationID"
-        Me.locationLookUpEdit.Size = New System.Drawing.Size(100, 20)
+        Me.locationLookUpEdit.Size = New System.Drawing.Size(140, 20)
         Me.locationLookUpEdit.TabIndex = 14
         '
         'locationsXpView
@@ -426,7 +433,7 @@ Partial Class SecurityXtraForm
         '
         'LabelControl4
         '
-        Me.LabelControl4.Location = New System.Drawing.Point(176, 135)
+        Me.LabelControl4.Location = New System.Drawing.Point(168, 162)
         Me.LabelControl4.Name = "LabelControl4"
         Me.LabelControl4.Size = New System.Drawing.Size(78, 13)
         Me.LabelControl4.TabIndex = 15
@@ -434,17 +441,34 @@ Partial Class SecurityXtraForm
         '
         'resetSimpleButton
         '
-        Me.resetSimpleButton.Location = New System.Drawing.Point(268, 157)
+        Me.resetSimpleButton.Location = New System.Drawing.Point(260, 184)
         Me.resetSimpleButton.Name = "resetSimpleButton"
         Me.resetSimpleButton.Size = New System.Drawing.Size(100, 23)
         Me.resetSimpleButton.TabIndex = 20
         Me.resetSimpleButton.Text = "Reset Permissions"
         '
+        'LabelControl5
+        '
+        Me.LabelControl5.Location = New System.Drawing.Point(168, 136)
+        Me.LabelControl5.Name = "LabelControl5"
+        Me.LabelControl5.Size = New System.Drawing.Size(53, 13)
+        Me.LabelControl5.TabIndex = 25
+        Me.LabelControl5.Text = "LPN Printer"
+        '
+        'LPNPrinterTextEdit
+        '
+        Me.LPNPrinterTextEdit.Location = New System.Drawing.Point(260, 133)
+        Me.LPNPrinterTextEdit.Name = "LPNPrinterTextEdit"
+        Me.LPNPrinterTextEdit.Size = New System.Drawing.Size(140, 20)
+        Me.LPNPrinterTextEdit.TabIndex = 26
+        '
         'SecurityXtraForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(427, 477)
+        Me.ClientSize = New System.Drawing.Size(427, 516)
+        Me.Controls.Add(Me.LabelControl5)
+        Me.Controls.Add(Me.LPNPrinterTextEdit)
         Me.Controls.Add(Me.resetSimpleButton)
         Me.Controls.Add(Me.LabelControl4)
         Me.Controls.Add(Me.locationLookUpEdit)
@@ -485,6 +509,7 @@ Partial Class SecurityXtraForm
         CType(Me.customersXPView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.locationLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.locationsXpView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LPNPrinterTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -534,4 +559,6 @@ Partial Class SecurityXtraForm
     Friend WithEvents locationLookUpEdit As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents locationsXpView As DevExpress.Xpo.XPView
     Friend WithEvents resetSimpleButton As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LPNPrinterTextEdit As DevExpress.XtraEditors.TextEdit
 End Class

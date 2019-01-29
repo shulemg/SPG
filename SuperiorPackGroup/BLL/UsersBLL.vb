@@ -48,10 +48,16 @@ Public Class UsersBLL
 
     End Function
 
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)> _
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Select, False)>
     Public Shared Function GetUserByName(ByVal session As Session, ByVal userName As String) As Users
+        If session Is Nothing Then Return GetUserByName(userName)
 
         Return session.GetObjectByKey(Of Users)(userName)
+
+    End Function
+    Public Shared Function GetUserByName(ByVal userName As String) As Users
+
+        Return Session.DefaultSession.GetObjectByKey(Of Users)(userName)
 
     End Function
 
@@ -78,8 +84,8 @@ Public Class UsersBLL
 
     End Sub
 
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)> _
-    Public Function UpdateUser(ByVal name As String, ByVal password As String, ByVal confirm As String, ByVal defaultLocation As Locations) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Update, True)>
+    Public Function UpdateUser(ByVal name As String, ByVal password As String, ByVal confirm As String, ByVal defaultLocation As Locations, ByVal LPNPrinter As String) As Boolean
 
         If String.IsNullOrEmpty(name) Then
             Throw New ApplicationException("You must provide a User Name.")
@@ -101,7 +107,7 @@ Public Class UsersBLL
 
         If user Is Nothing Then
             'It is a new user
-            Return InsertUser(name, password, defaultLocation)
+            Return InsertUser(name, password, defaultLocation, LPNPrinter)
         End If
 
         'Dim originalRecord As Object() = user.ItemArray
@@ -111,6 +117,7 @@ Public Class UsersBLL
 
         SetField(Users.Fields.strPassword.PropertyName, user.strPassword, password, user)
         SetField(Users.Fields.DefaultLocation.PropertyName, user.DefaultLocation, defaultLocation, user)
+        SetField(Users.Fields.LPNPrinterName.PropertyName, user.LPNPrinterName, LPNPrinter, user)
 
         'user.strPassword = password
 
@@ -180,8 +187,8 @@ Public Class UsersBLL
 
     End Sub
 
-    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)> _
-    Public Function InsertUser(ByVal name As String, ByVal password As String, ByVal defaultLocation As Locations) As Boolean
+    <ComponentModel.DataObjectMethod(ComponentModel.DataObjectMethodType.Insert, True)>
+    Public Function InsertUser(ByVal name As String, ByVal password As String, ByVal defaultLocation As Locations, ByVal LPNPrinter As String) As Boolean
 
         Dim change As Change = New Change() With {.PropertyName = Users.Fields.strUserName.PropertyName, .PrevValue = "<NULL>", .NewValue = name}
         changes.Add(change)
@@ -189,6 +196,7 @@ Public Class UsersBLL
         Dim user As Users = New Users(Session.DefaultSession) With {.strUserName = name}
         SetField(Users.Fields.strPassword.PropertyName, user.strPassword, password, user)
         SetField(Users.Fields.DefaultLocation.PropertyName, user.DefaultLocation, defaultLocation, user)
+        SetField(Users.Fields.LPNPrinterName.PropertyName, user.LPNPrinterName, LPNPrinter, user)
         SetField(Users.Fields.strSecurityLevel.PropertyName, user.strSecurityLevel, "User", user)
 
         Try
