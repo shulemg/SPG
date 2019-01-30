@@ -10,6 +10,7 @@ Imports DXDAL.SPGData
 Public Class ReceivingXtraForm
 
     Private m_upc As String
+    Private m_lpnItems As New Dictionary(Of Integer?, Integer?)
     Private m_TempId As New Dictionary(Of Integer, Integer)
     Private m_lastLPN As Integer
     Private m_lastItem As Integer
@@ -355,6 +356,8 @@ Public Class ReceivingXtraForm
 
     Private Function SaveShippingDetails(ByRef shouldReturn As Boolean) As Boolean
 
+        m_lpnItems.Clear()
+
         shouldReturn = False
 
         With Me.receivingGridView
@@ -408,6 +411,13 @@ Public Class ReceivingXtraForm
             Dim pckg As Integer? = CType(receivingGridView.GetRowCellValue(ci, packagesGridColumn), Integer?)
             Dim lpn As Integer? = Utilities.ChangeType(Of Integer?)(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn))
             Dim expr As Date? = Utilities.ChangeType(Of Date?)(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn))
+
+            If m_lpnItems.ContainsKey(lpn) AndAlso m_lpnItems.Item(lpn) <> item Then
+                MessageBox.Show($"LPN # {lpn} has multiple items")
+                Return False
+            ElseIf Not m_lpnItems.ContainsKey(lpn) Then
+                m_lpnItems.Add(lpn, item)
+            End If
 
             Dim tempId As Integer = m_ReceivingDetails.UpdateReceivingDetails(m_ReceivingSession, If(id < 0 AndAlso m_TempId.ContainsKey(id), m_TempId.Item(id), id), m_CurrentReceivingID.Value, item, lot, qty, pckg, lpn, expr)
 
@@ -1082,16 +1092,16 @@ Public Class ReceivingXtraForm
         '    End If
         'Else
         Dim selectedRowHandles As Integer() = receivingGridView.GetSelectedRows()
-            If selectedRowHandles.Length = 0 Then
-                MsgBox("Nothing is selected")
-                Exit Sub
+        If selectedRowHandles.Length = 0 Then
+            MsgBox("Nothing is selected")
+            Exit Sub
+        End If
+        For i As Integer = 0 To selectedRowHandles.Length - 1
+            Dim ci As Integer = selectedRowHandles(i)
+            If (ci >= 0) Then
+                addToCritaria(critaria, ci)
             End If
-            For i As Integer = 0 To selectedRowHandles.Length - 1
-                Dim ci As Integer = selectedRowHandles(i)
-                If (ci >= 0) Then
-                    addToCritaria(critaria, ci)
-                End If
-            Next
+        Next
         'End If
 
         lpnXPview.Criteria = CriteriaOperator.And(CriteriaOperator.Or(critaria), New BinaryOperator("QuantityOnHand", 0, BinaryOperatorType.Greater))
@@ -1137,8 +1147,8 @@ Public Class ReceivingXtraForm
         '        New BinaryOperator("LocationInventoryLot", lot, BinaryOperatorType.Equal)))
         'Else
         If lpn.HasValue Then
-                critaria.Add(New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal))
-            End If
+            critaria.Add(New BinaryOperator("LPNNumber", lpn.Value, BinaryOperatorType.Equal))
+        End If
     End Sub
 
     Private Sub LpnLabelsBarButtonItem_ItemClick(sender As Object, e As DevExpress.XtraBars.ItemClickEventArgs) Handles LpnLabelsBarButtonItem.ItemClick
