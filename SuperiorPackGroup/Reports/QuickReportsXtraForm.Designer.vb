@@ -1827,8 +1827,6 @@ Partial Class QuickReportsXtraForm
         Me.reasonsPivotGridField.Name = "reasonsPivotGridField"
         Me.reasonsPivotGridField.SummaryType = DevExpress.Data.PivotGrid.PivotSummaryType.Custom
         Me.reasonsPivotGridField.TotalsVisibility = DevExpress.XtraPivotGrid.PivotTotalsVisibility.None
-        Me.reasonsPivotGridField.UnboundFieldName = "reasons"
-        Me.reasonsPivotGridField.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         Me.reasonsPivotGridField.Width = 50
         '
         'minutesPivotGridField
@@ -1845,8 +1843,6 @@ Partial Class QuickReportsXtraForm
         Me.minutesPivotGridField.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.TotalValueFormat.FormatString = "f2"
         Me.minutesPivotGridField.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.minutesPivotGridField.UnboundFieldName = "minutes"
-        Me.minutesPivotGridField.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
         Me.minutesPivotGridField.ValueFormat.FormatString = "f2"
         Me.minutesPivotGridField.ValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.minutesPivotGridField.Width = 75

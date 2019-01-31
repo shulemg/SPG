@@ -1273,6 +1273,11 @@ Public Class QuickReportsXtraForm
                 productionBillingUOMGridColumn.FieldName = "UOM"
                 productionBillingCasesGridColumn.FieldName = "Cases"
                 productionBillingPriceGridColumn.FieldName = "Price"
+            Case "BaggingXtraReport"
+                reasonsPivotGridField.UnboundFieldName = "reasons"
+                reasonsPivotGridField.UnboundType = DevExpress.Data.UnboundColumnType.String
+                minutesPivotGridField.UnboundFieldName = "reasons"
+                minutesPivotGridField.UnboundType = DevExpress.Data.UnboundColumnType.Decimal
         End Select
 
     End Sub
