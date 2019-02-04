@@ -91,6 +91,7 @@ Partial Class ProjectsXtraForm
         Me.colPercentageComplete = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAllowOverrun = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colEstimatiedShifts = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.auditXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.detailHistorySimpleButton = New DevExpress.XtraEditors.SimpleButton()
         Me.detailHistoryGridControl = New DevExpress.XtraGrid.GridControl()
@@ -100,7 +101,6 @@ Partial Class ProjectsXtraForm
         Me.PropertyNameGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.PrevValueGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.NewValueGridColumn = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.deleteRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.itemXpView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -313,7 +313,7 @@ Partial Class ProjectsXtraForm
         'projectSearchXpView
         '
         Me.projectSearchXpView.ObjectType = GetType(DXDAL.SPGData.Project)
-        Me.projectSearchXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ProjectID", DevExpress.Xpo.SortDirection.None, "[Oid]", False, True), New DevExpress.Xpo.ViewProperty("Project", DevExpress.Xpo.SortDirection.None, "[Project]", False, True), New DevExpress.Xpo.ViewProperty("Req.StartDate", DevExpress.Xpo.SortDirection.Descending, "[RequestedStartDate]", False, True), New DevExpress.Xpo.ViewProperty("Customer", DevExpress.Xpo.SortDirection.None, "[Customer.CustomerName]", False, True)})
+        Me.projectSearchXpView.Properties.AddRange(New DevExpress.Xpo.ViewProperty() {New DevExpress.Xpo.ViewProperty("ProjectID", DevExpress.Xpo.SortDirection.None, "[Oid]", False, True), New DevExpress.Xpo.ViewProperty("Project", DevExpress.Xpo.SortDirection.None, "[project]", False, True), New DevExpress.Xpo.ViewProperty("Req.StartDate", DevExpress.Xpo.SortDirection.Descending, "[RequestedStartDate]", False, True), New DevExpress.Xpo.ViewProperty("Customer", DevExpress.Xpo.SortDirection.None, "[Customer.CustomerName]", False, True)})
         '
         'projectSearchGridView
         '
@@ -752,6 +752,13 @@ Partial Class ProjectsXtraForm
         Me.colEstimatiedShifts.Visible = True
         Me.colEstimatiedShifts.VisibleIndex = 12
         '
+        'GridColumn4
+        '
+        Me.GridColumn4.FieldName = "ProjectItem!"
+        Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.Visible = True
+        Me.GridColumn4.VisibleIndex = 13
+        '
         'auditXtraTabPage
         '
         Me.auditXtraTabPage.Controls.Add(Me.detailHistorySimpleButton)
@@ -825,13 +832,6 @@ Partial Class ProjectsXtraForm
         Me.NewValueGridColumn.Name = "NewValueGridColumn"
         Me.NewValueGridColumn.Visible = True
         Me.NewValueGridColumn.VisibleIndex = 4
-        '
-        'GridColumn4
-        '
-        Me.GridColumn4.FieldName = "ProjectItem!"
-        Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 13
         '
         'ProjectsXtraForm
         '

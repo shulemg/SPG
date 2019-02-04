@@ -944,8 +944,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DXDAL\DXDAL.vbproj">
-      <Project>{3F4B5B81-4398-4806-AF62-F3852A4ADFAE}</Project>
+    <ProjectReference Include="..\DXDAL\DXDAL.csproj">
+      <Project>{8D6FDAEA-8FC0-07F7-2D3A-39FB48DDEB0E}</Project>
       <Name>DXDAL</Name>
     </ProjectReference>
   </ItemGroup>
