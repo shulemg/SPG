@@ -92,6 +92,8 @@
     <Compile Include="ItemMachineStandards.vb" />
     <Compile Include="LocationInventoryByLot.vb" />
     <Compile Include="Allergen.vb" />
+    <Compile Include="MO.vb" />
+    <Compile Include="MoMachines.vb" />
     <Compile Include="ReasonCodes.vb" />
     <Compile Include="CustomerPlants.vb" />
     <Compile Include="CustomerShifts.vb" />

@@ -26,7 +26,7 @@ Namespace SPGData
                 Return _project
             End Get
             Set(ByVal Value As Project)
-                SetPropertyValue(Of Project)("Project", _project, Value)
+                SetPropertyValue("Project", _project, Value)
             End Set
         End Property
 
@@ -35,7 +35,7 @@ Namespace SPGData
                 Return _customerPO
             End Get
             Set(ByVal Value As String)
-                SetPropertyValue(Of String)("CustomerPO", _customerPO, Value)
+                SetPropertyValue("CustomerPO", _customerPO, Value)
             End Set
         End Property
 
@@ -44,7 +44,7 @@ Namespace SPGData
                 Return _projectItem
             End Get
             Set(ByVal Value As Items)
-                SetPropertyValue(Of Items)("ProjectItem", _projectItem, Value)
+                SetPropertyValue("ProjectItem", _projectItem, Value)
             End Set
         End Property
 
@@ -80,10 +80,17 @@ Namespace SPGData
                 Return _allowOverrun
             End Get
             Set(ByVal Value As Boolean)
-                SetPropertyValue(Of Boolean)("AllowOverrun", _allowOverrun, Value)
+                SetPropertyValue("AllowOverrun", _allowOverrun, Value)
             End Set
         End Property
-        
+
+        <Association("MO-ProjectDetail", GetType(MO)), Aggregated()>
+        Public ReadOnly Property ProjectMO As XPCollection(Of MO)
+            Get
+                Return GetCollection(Of MO)("ProjectMO")
+            End Get
+        End Property
+
         <Association("Production-ProjectDetail", GetType(ProductionProjectDetails)), Aggregated()>
         Public ReadOnly Property ProjectProduction As XPCollection(Of ProductionProjectDetails)
             Get
@@ -184,7 +191,7 @@ Namespace SPGData
         End Sub
 
         Public Shadows Class FieldsClass
-            Inherits DevExpress.Xpo.PersistentBase.FieldsClass
+            Inherits PersistentBase.FieldsClass
             Public Sub New()
                 MyBase.New()
             End Sub

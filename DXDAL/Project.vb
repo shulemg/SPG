@@ -22,7 +22,7 @@ Namespace SPGData
                 Return _project
             End Get
             Set(ByVal Value As String)
-                SetPropertyValue(Of String)("Project", _project, Value)
+                SetPropertyValue("Project", _project, Value)
             End Set
         End Property
 
@@ -32,7 +32,7 @@ Namespace SPGData
                 Return _customer
             End Get
             Set(ByVal Value As Customers)
-                SetPropertyValue(Of Customers)("Customer", _customer, Value)
+                SetPropertyValue("Customer", _customer, Value)
             End Set
         End Property
 
@@ -41,7 +41,7 @@ Namespace SPGData
                 Return _notes
             End Get
             Set(ByVal Value As String)
-                SetPropertyValue(Of String)("Notes", _notes, Value)
+                SetPropertyValue("Notes", _notes, Value)
             End Set
         End Property
 
@@ -50,7 +50,7 @@ Namespace SPGData
                 Return _requestedStartDate
             End Get
             Set(ByVal Value As Date?)
-                SetPropertyValue(Of Date?)("RequestedStartDate", _requestedStartDate, Value)
+                SetPropertyValue("RequestedStartDate", _requestedStartDate, Value)
             End Set
         End Property
 
@@ -59,7 +59,7 @@ Namespace SPGData
                 Return _requestedShippingDate
             End Get
             Set(ByVal Value As Date?)
-               SetPropertyValue(Of Date?)("RequestedShippingDate", _requestedShippingDate, Value)
+                SetPropertyValue("RequestedShippingDate", _requestedShippingDate, Value)
             End Set
         End Property
 
@@ -68,13 +68,13 @@ Namespace SPGData
                 Return _requestedDeliveryDate
             End Get
             Set(ByVal Value As Date?)
-                SetPropertyValue(Of Date?)("RequestedDeliveryDate", _requestedDeliveryDate, Value)
+                SetPropertyValue("RequestedDeliveryDate", _requestedDeliveryDate, Value)
             End Set
         End Property
 
         Public Property ProjectStatus As ProjectStatus
             Get
-                If _projectStatus <> DXDAL.ProjectStatus.Completed Then
+                If _projectStatus <> ProjectStatus.Completed Then
                     If CInt(Evaluate("ProjectDetails.Sum(UnitsNeeded)")) <> CInt(Evaluate("ProjectDetails.Sum(UnitsRequested)")) Then
                         Return ProjectStatus.Started
                     End If
@@ -87,7 +87,7 @@ Namespace SPGData
                 Return _projectStatus
             End Get
             Set(ByVal Value As ProjectStatus)
-                SetPropertyValue(Of ProjectStatus)("ProjectStatus", _projectStatus, Value)
+                SetPropertyValue("ProjectStatus", _projectStatus, Value)
             End Set
         End Property
 
@@ -96,7 +96,7 @@ Namespace SPGData
                 Return _scheduledDate
             End Get
             Set(ByVal Value As Date?)
-                SetPropertyValue(Of Date?)("ScheduledDate", _scheduledDate, Value)
+                SetPropertyValue("ScheduledDate", _scheduledDate, Value)
             End Set
         End Property
 
@@ -105,7 +105,7 @@ Namespace SPGData
                 Return _scheduledWeek
             End Get
             Set(value As String)
-                SetPropertyValue(Of String)("ScheduledWeek", _scheduledWeek, value)
+                SetPropertyValue("ScheduledWeek", _scheduledWeek, value)
             End Set
         End Property
 
@@ -114,7 +114,7 @@ Namespace SPGData
                 Return _actualStartDate
             End Get
             Set(ByVal Value As Date?)
-                SetPropertyValue(Of Date?)("ActualStartDate", _actualStartDate, Value)
+                SetPropertyValue("ActualStartDate", _actualStartDate, Value)
             End Set
         End Property
 
@@ -149,7 +149,7 @@ Namespace SPGData
         End Function
 
         Public Shadows Class FieldsClass
-            Inherits DevExpress.Xpo.PersistentBase.FieldsClass
+            Inherits PersistentBase.FieldsClass
             Public Sub New()
                 MyBase.New()
             End Sub
