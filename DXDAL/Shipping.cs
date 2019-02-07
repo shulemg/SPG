@@ -43,7 +43,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<Carriers>("ShipMainCarrierID", ref fShipMainCarrierID, value);
+                    SetPropertyValue("ShipMainCarrierID", ref fShipMainCarrierID, value);
                 }
             }
             private Customers fShipMainCustID;
@@ -55,7 +55,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<Customers>("ShipMainCustID", ref fShipMainCustID, value);
+                    SetPropertyValue("ShipMainCustID", ref fShipMainCustID, value);
                 }
             }
             private int fShipMainBOL;
@@ -80,7 +80,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("strEnteredBy", ref fstrEnteredBy, value);
+                    SetPropertyValue("strEnteredBy", ref fstrEnteredBy, value);
                 }
             }
             private DateTime fdtmEnteredOn;
@@ -104,7 +104,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<ShippingAddresses>("intDestination", ref fintDestination, value);
+                    SetPropertyValue("intDestination", ref fintDestination, value);
                 }
             }
             private string fstrPO;
@@ -117,7 +117,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("strPO", ref fstrPO, value);
+                    SetPropertyValue("strPO", ref fstrPO, value);
                 }
             }
             private string fstrTrailer;
@@ -130,7 +130,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("strTrailer", ref fstrTrailer, value);
+                    SetPropertyValue("strTrailer", ref fstrTrailer, value);
                 }
             }
             private float fsngSkits;
@@ -142,7 +142,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<float>("sngSkits", ref fsngSkits, value);
+                    SetPropertyValue("sngSkits", ref fsngSkits, value);
                 }
             }
             private float fsngTotalPallets;
@@ -154,7 +154,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<float>("sngTotalPallets", ref fsngTotalPallets, value);
+                    SetPropertyValue("sngTotalPallets", ref fsngTotalPallets, value);
                 }
             }
             private string fstrSeal;
@@ -167,7 +167,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("strSeal", ref fstrSeal, value);
+                    SetPropertyValue("strSeal", ref fstrSeal, value);
                 }
             }
             private string fstrRoute;
@@ -180,7 +180,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("strRoute", ref fstrRoute, value);
+                    SetPropertyValue("strRoute", ref fstrRoute, value);
                 }
             }
             private string fstrDeliveryNote;
@@ -192,7 +192,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("strDeliveryNote", ref fstrDeliveryNote, value);
+                    SetPropertyValue("strDeliveryNote", ref fstrDeliveryNote, value);
                 }
             }
             private string fDeliveryNoteNumber;
@@ -205,7 +205,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("DeliveryNoteNumber", ref fDeliveryNoteNumber, value);
+                    SetPropertyValue("DeliveryNoteNumber", ref fDeliveryNoteNumber, value);
                 }
             }
             private double fTotalGrossWeight;
@@ -217,7 +217,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<double>("TotalGrossWeight", ref fTotalGrossWeight, value);
+                    SetPropertyValue("TotalGrossWeight", ref fTotalGrossWeight, value);
                 }
             }
             private bool fShipper;
@@ -229,7 +229,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<bool>("Shipper", ref fShipper, value);
+                    SetPropertyValue("Shipper", ref fShipper, value);
                 }
             }
             private string fComments;
@@ -242,7 +242,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<string>("Comments", ref fComments, value);
+                    SetPropertyValue("Comments", ref fComments, value);
                 }
             }
             private Shifts fShift;
@@ -254,7 +254,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<Shifts>("Shift", ref fShift, value);
+                    SetPropertyValue("Shift", ref fShift, value);
                 }
             }
             private bool fFreight;
@@ -266,7 +266,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<bool>("Freight", ref fFreight, value);
+                    SetPropertyValue("Freight", ref fFreight, value);
                 }
             }
             private Employees fLoadedBy;
@@ -279,7 +279,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<Employees>("LoadedBy", ref fLoadedBy, value);
+                    SetPropertyValue("LoadedBy", ref fLoadedBy, value);
                 }
             }
             private Employees fCheckedBy;
@@ -292,7 +292,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<Employees>("CheckedBy", ref fCheckedBy, value);
+                    SetPropertyValue("CheckedBy", ref fCheckedBy, value);
                 }
             }
             private ShipmentConditions fPhysicalCondition;
@@ -305,7 +305,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<ShipmentConditions>("PhysicalCondition", ref fPhysicalCondition, value);
+                    SetPropertyValue("PhysicalCondition", ref fPhysicalCondition, value);
                 }
             }
             private ShipmentConditions fLoadCondition;
@@ -318,7 +318,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<ShipmentConditions>("LoadCondition", ref fLoadCondition, value);
+                    SetPropertyValue("LoadCondition", ref fLoadCondition, value);
                 }
             }
             private DateTime fStartTime;
@@ -345,8 +345,8 @@ namespace DXDAL
                     SetPropertyValue<DateTime>("FinishTime", ref fFinishTime, value);
                 }
             }
-            private double fTemparature;
-            public double Temparature
+            private double? fTemparature;
+            public double? Temparature
             {
                 get
                 {
@@ -354,11 +354,11 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<double>("Temparature", ref fTemparature, value);
+                    SetPropertyValue("Temparature", ref fTemparature, value);
                 }
             }
-            private ThreeWayYesNo fWheelsChocked;
-            public ThreeWayYesNo WheelsChocked
+            private ThreeWayYesNo? fWheelsChocked;
+            public ThreeWayYesNo? WheelsChocked
             {
                 get
                 {
@@ -366,11 +366,11 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<ThreeWayYesNo>("WheelsChocked", ref fWheelsChocked, value);
+                    SetPropertyValue("WheelsChocked", ref fWheelsChocked, value);
                 }
             }
-            private ThreeWayYesNo fForeignSubstance;
-            public ThreeWayYesNo ForeignSubstance
+            private ThreeWayYesNo? fForeignSubstance;
+            public ThreeWayYesNo? ForeignSubstance
             {
                 get
                 {
@@ -378,11 +378,11 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<ThreeWayYesNo>("ForeignSubstance", ref fForeignSubstance, value);
+                    SetPropertyValue("ForeignSubstance", ref fForeignSubstance, value);
                 }
             }
-            private ThreeWayYesNo fInsectActivity;
-            public ThreeWayYesNo InsectActivity
+            private ThreeWayYesNo? fInsectActivity;
+            public ThreeWayYesNo? InsectActivity
             {
                 get
                 {
@@ -390,11 +390,11 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<ThreeWayYesNo>("InsectActivity", ref fInsectActivity, value);
+                    SetPropertyValue("InsectActivity", ref fInsectActivity, value);
                 }
             }
-            private ThreeWayYesNo fCorrectPallets;
-            public ThreeWayYesNo CorrectPallets
+            private ThreeWayYesNo? fCorrectPallets;
+            public ThreeWayYesNo? CorrectPallets
             {
                 get
                 {
@@ -402,7 +402,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<ThreeWayYesNo>("CorrectPallets", ref fCorrectPallets, value);
+                    SetPropertyValue("CorrectPallets", ref fCorrectPallets, value);
                 }
             }
             private Locations fShippingLocation;
@@ -415,7 +415,7 @@ namespace DXDAL
                 }
                 set
                 {
-                    SetPropertyValue<Locations>("ShippingLocation", ref fShippingLocation, value);
+                    SetPropertyValue("ShippingLocation", ref fShippingLocation, value);
                 }
             }
 
@@ -458,7 +458,7 @@ namespace DXDAL
                 }
             }
             // Created/Updated: Joel-PC\Joel on JOEL-PC at 7/06/10 4:39 PM
-            public new class FieldsClass : DevExpress.Xpo.XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -466,18 +466,18 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public DevExpress.Data.Filtering.OperandProperty ShipMainID
+                public OperandProperty ShipMainID
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShipMainID"));
+                        return new OperandProperty(GetNestedName("ShipMainID"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty ShipMainDate
+                public OperandProperty ShipMainDate
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShipMainDate"));
+                        return new OperandProperty(GetNestedName("ShipMainDate"));
                     }
                 }
                 public Carriers.FieldsClass ShipMainCarrierID
@@ -494,25 +494,25 @@ namespace DXDAL
                         return new Customers.FieldsClass(GetNestedName("ShipMainCustID"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty ShipMainBOL
+                public OperandProperty ShipMainBOL
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShipMainBOL"));
+                        return new OperandProperty(GetNestedName("ShipMainBOL"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty strEnteredBy
+                public OperandProperty strEnteredBy
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("strEnteredBy"));
+                        return new OperandProperty(GetNestedName("strEnteredBy"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty dtmEnteredOn
+                public OperandProperty dtmEnteredOn
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("dtmEnteredOn"));
+                        return new OperandProperty(GetNestedName("dtmEnteredOn"));
                     }
                 }
                 public ShippingAddresses.FieldsClass intDestination
@@ -522,109 +522,109 @@ namespace DXDAL
                         return new ShippingAddresses.FieldsClass(GetNestedName("intDestination"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty strPO
+                public OperandProperty strPO
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("strPO"));
+                        return new OperandProperty(GetNestedName("strPO"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty strTrailer
+                public OperandProperty strTrailer
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("strTrailer"));
+                        return new OperandProperty(GetNestedName("strTrailer"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty sngSkits
+                public OperandProperty sngSkits
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("sngSkits"));
+                        return new OperandProperty(GetNestedName("sngSkits"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty sngTotalPallets
+                public OperandProperty sngTotalPallets
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("sngTotalPallets"));
+                        return new OperandProperty(GetNestedName("sngTotalPallets"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty strSeal
+                public OperandProperty strSeal
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("strSeal"));
+                        return new OperandProperty(GetNestedName("strSeal"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty strRoute
+                public OperandProperty strRoute
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("strRoute"));
+                        return new OperandProperty(GetNestedName("strRoute"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty strDeliveryNote
+                public OperandProperty strDeliveryNote
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("strDeliveryNote"));
+                        return new OperandProperty(GetNestedName("strDeliveryNote"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty DeliveryNoteNumber
+                public OperandProperty DeliveryNoteNumber
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("DeliveryNoteNumber"));
+                        return new OperandProperty(GetNestedName("DeliveryNoteNumber"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty TotalGrossWeight
+                public OperandProperty TotalGrossWeight
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("TotalGrossWeight"));
+                        return new OperandProperty(GetNestedName("TotalGrossWeight"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty Shipper
+                public OperandProperty Shipper
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("Shipper"));
+                        return new OperandProperty(GetNestedName("Shipper"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty Comments
+                public OperandProperty Comments
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("Comments"));
+                        return new OperandProperty(GetNestedName("Comments"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty Shift
+                public OperandProperty Shift
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("Shift"));
+                        return new OperandProperty(GetNestedName("Shift"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty Freight
+                public OperandProperty Freight
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("Freight"));
+                        return new OperandProperty(GetNestedName("Freight"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty ShippingDetails
+                public OperandProperty ShippingDetails
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShippingDetails"));
+                        return new OperandProperty(GetNestedName("ShippingDetails"));
                     }
                 }
-                public DevExpress.Data.Filtering.OperandProperty ShippingReturns
+                public OperandProperty ShippingReturns
                 {
                     get
                     {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShippingReturns"));
+                        return new OperandProperty(GetNestedName("ShippingReturns"));
                     }
                 }
                 public OperandProperty LoadedBy

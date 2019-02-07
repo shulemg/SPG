@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SuperiorPackGroup", "SuperiorPackGroup\SuperiorPackGroup.vbproj", "{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DXDAL", "DXDAL\DXDAL.csproj", "{8D6FDAEA-8FC0-07F7-2D3A-39FB48DDEB0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperiorPackGroup", "SuperiorPackGroup\SuperiorPackGroup.csproj", "{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,22 +13,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D6FDAEA-8FC0-07F7-2D3A-39FB48DDEB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D6FDAEA-8FC0-07F7-2D3A-39FB48DDEB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D6FDAEA-8FC0-07F7-2D3A-39FB48DDEB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D6FDAEA-8FC0-07F7-2D3A-39FB48DDEB0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E825D0E-DBBD-411C-B0DC-8CA2B989F811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6B5A31DF-EE4C-443C-8E2C-3CAD3ED05E10}
-		VisualSVNWorkingCopyRoot = .
-		CodeStyleEnforcer_Active = -1
 		CodeStyleEnforcer_RulesLocation = 0
+		CodeStyleEnforcer_Active = -1
+		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {6B5A31DF-EE4C-443C-8E2C-3CAD3ED05E10}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,1093 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SuperiorPackGroup - Test</name>
+    </assembly>
+    <members>
+        <member name="M:SuperiorPackGroup.ItemsBLL.GetAvailabilityByItemID(System.Int32,System.Int32)">
+            <summary>
+            Returns a list of all required material with their availability at the specified location.
+            </summary>
+            <param name="itemID">The item we're looking for</param>
+            <param name="localLocation">The location we're looking for</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SuperiorPackGroup.ItemsBLL.GetAvailabilityByItemID(DevExpress.Xpo.Session,System.Int32,System.Int32,System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Returns a formatted string of the BOM that's not available for the production or an empty string if all material is available.
+            When the new amount being used is less than the old amount it will return an empty string.
+            </summary>
+            <param name="itemID">The item ID of the product we want to produce.</param>
+            <param name="quantity">The quantity we want to produce.</param>
+            <param name="oldQuantity">The old quantity that was used, when modifying records the message should only give the amount that's needed more than before.</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:SuperiorPackGroup.ItemTransactionSummary.#ctor(System.String,System.String,System.String,System.String,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the ItemTransactionSummary class.
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.PalletTransaction.#ctor(System.DateTime,System.Int32,System.String,System.String,System.String,System.String,System.Double,System.Double)">
+            <summary>
+            Initializes a new instance of the PalletTransaction class.
+            </summary>
+            <param name="transactionDate"></param>
+            <param name="customerID"></param>
+            <param name="customerName"></param>
+            <param name="vendorName"></param>
+            <param name="shippingDestinationName"></param>
+            <param name="transactionBOL"></param>
+            <param name="received"></param>
+            <param name="shipped"></param>
+        </member>
+        <member name="M:SuperiorPackGroup.DBFunctions.#ctor">
+            <summary>
+            Initializes a new instance of the DBFunctions class.
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.CustomAppointmentForm.LoadFormData(DevExpress.XtraScheduler.Appointment)">
+            <summary>
+            Add your code to obtain a custom field value and fill the editor with data.
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.CustomAppointmentForm.SaveFormData(DevExpress.XtraScheduler.Appointment)">
+            <summary>
+            Add your code to retrieve a value from the editor and set the custom appointment field.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SuperiorPackGroup.CustomAppointmentForm.IsAppointmentChanged(DevExpress.XtraScheduler.Appointment)" -->
+        <member name="T:SuperiorPackGroup.SPG">
+            <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.SecurityDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.UsersDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CustomersDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ItemsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReceivingDetailsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReceivingsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ProductionDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.MachineLinesDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingDetailsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.BOMDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShiftsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CarriersDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CompanySettingsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingAddressesDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.UserPermissionsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReportsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReturnDetDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingReturnDetailsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryAdjustmentDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.AuditTrailDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryBOMsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.SecurityRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.UsersRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CustomersRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ItemsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReceivingDetailsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReceivingsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ProductionRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.MachineLinesRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingDetailsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.BOMRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShiftsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CarriersRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CompanySettingsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingAddressesRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.UserPermissionsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReportsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReturnDetRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingReturnDetailsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryAdjustmentRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.AuditTrailRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryBOMsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.SecurityRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.UsersRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CustomersRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ItemsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReceivingDetailsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReceivingsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ProductionRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.MachineLinesRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingDetailsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.BOMRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShiftsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CarriersRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.CompanySettingsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingAddressesRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.UserPermissionsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReportsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ReturnDetRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.ShippingReturnDetailsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryAdjustmentRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.AuditTrailRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPG.InventoryBOMsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.SecurityTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.UsersTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.CustomersTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ItemsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ReceivingDetailsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ReceivingsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ProductionTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ShippingsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.MachineLinesTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ShippingDetailsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.BOMTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ShiftsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.CarriersTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.CompanySettingsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ShippingAddressesTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.InventoryTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.UserPermissionsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ReportsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ReturnDetTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.ShippingReturnDetailsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.InventoryAdjustmentTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.AuditTrailTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGTableAdapters.InventoryBOMsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports">
+            <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ProductionEntriesReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ShippingReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ShippingReturnsReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingReturnsReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.InventoryAdjustmentReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PhysicalInventoryWorksheetDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.CurrentInventoryReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.FinishedProductAvailabilityReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ItemsListDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ItemsTransactionsReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PalletControlReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.AuditTrailReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PalletTicketDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.BOLReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.CostingReportsDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PackingListReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingListReportDataTable">
+            <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ProductionEntriesReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ShippingReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ShippingReturnsReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingReturnsReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.InventoryAdjustmentReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PhysicalInventoryWorksheetRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.CurrentInventoryReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.FinishedProductAvailabilityReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ItemsListRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ItemsTransactionsReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PalletControlReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.AuditTrailReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PalletTicketRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.BOLReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.CostingReportsRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PackingListReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingListReportRow">
+            <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ProductionEntriesReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ShippingReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ShippingReturnsReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingReturnsReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.InventoryAdjustmentReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PhysicalInventoryWorksheetRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.CurrentInventoryReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.FinishedProductAvailabilityReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ItemsListRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ItemsTransactionsReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PalletControlReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.AuditTrailReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PalletTicketRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.BOLReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.CostingReportsRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.PackingListReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReports.ReceivingListReportRowChangeEvent">
+            <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.PalletControlReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.CostingReportsTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.BOLReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ProductionEntriesReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ShippingReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ShippingReturnsReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ReceivingReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ReceivingReturnsReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.InventoryAdjustmentReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.PhysicalInventoryWorksheetTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.CurrentInventoryReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.FinishedProductAvailabilityReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ItemsListTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ItemsTransactionsReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.AuditTrailReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.PalletTicketTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.PackingListReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.ReceivingListReportTableAdapter">
+            <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager">
+            <summary>
+            TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager.UpdateUpdatedRows(SuperiorPackGroup.SPGReports,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+            <summary>
+            Update rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager.UpdateInsertedRows(SuperiorPackGroup.SPGReports,System.Collections.Generic.List{System.Data.DataRow})">
+            <summary>
+            Insert rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager.UpdateDeletedRows(SuperiorPackGroup.SPGReports,System.Collections.Generic.List{System.Data.DataRow})">
+            <summary>
+            Delete rows in bottom-up order.
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+            <summary>
+            Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager.UpdateAll(SuperiorPackGroup.SPGReports)">
+            <summary>
+            Update all changes to the dataset.
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager.UpdateOrderOption">
+            <summary>
+            Update Order Option
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.SPGReportsTableAdapters.TableAdapterManager.SelfReferenceComparer">
+            <summary>
+            Used to sort self-referenced table's rows
+            </summary>
+        </member>
+        <member name="T:SuperiorPackGroup.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.address_book2_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.address_book2_32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.box_closed24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.box_closed32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Inventory24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Inventory32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.InventoryAdjustment24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.InventoryAdjustment32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.ItemPool_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.ItemPool_32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.logolg">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.NewCustomer16">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.NewCustomer32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.NewInventoryAdjustment24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.NewInventoryAdjustment32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.NewInventoryBuildAssembly24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.NewInventoryBuildAssembly32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Project24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Project32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Schedule24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Schedule32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Ship24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.Ship32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.UpdateInventoryWarehouse24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.UpdateInventoryWarehouse32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.WarehouseLocation_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:SuperiorPackGroup.Properties.Resources.WarehouseLocation_32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="M:SuperiorPackGroup.ItemTransaction.#ctor(System.DateTime,System.String,System.String,SuperiorPackGroup.ItemTransactionType,System.Double)">
+            <summary>
+            Initializes a new instance of the ItemTransaction class.
+            </summary>
+            <param name="transactionDate"></param>
+            <param name="transactionItemCode"></param>
+            <param name="transactionItemDescription"></param>
+            <param name="transactionType"></param>
+            <param name="quantity"></param>
+        </member>
+    </members>
+</doc>

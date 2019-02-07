@@ -1,3 +1,0 @@
-﻿Public Class ProductionScheduleXtraSchedulerReport
-
-End Class
