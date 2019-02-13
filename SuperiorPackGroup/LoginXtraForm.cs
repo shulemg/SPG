@@ -71,5 +71,9 @@ namespace SuperiorPackGroup
 
 		}
 
-	}
+        private void LoginXtraForm_Load(object sender, EventArgs e)
+        {
+            userNameTextEdit.Focus();
+        }
+    }
 }

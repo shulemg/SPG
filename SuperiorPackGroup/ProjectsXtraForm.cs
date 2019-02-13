@@ -24,8 +24,9 @@ namespace SuperiorPackGroup
 
 		private string m_lastColumnChanged;
 		private bool m_changedByUser = true;
-		private Project m_CurrentProject;
-		private Session m_ProjectSession;
+        private Project m_CurrentProject;
+        private MO m_CurrentMo;
+        private Session m_ProjectSession;
 
 		private void addBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
@@ -279,8 +280,8 @@ namespace SuperiorPackGroup
 			m_ProjectSession = new Session(MyDataLayers.SPGDataLayer);
 			m_ProjectSession.TrackPropertiesModifications = true;
 			m_ProjectSession.OptimisticLockingReadBehavior = OptimisticLockingReadBehavior.MergeCollisionThrowException;
-
-			for (int i = 0; i < components.Components.Count; i++)
+            
+			for (int i = 0; i < (components?.Components.Count ?? 0); i++)
 			{
 				if ((components.Components[i]) is XPView)
 				{
@@ -292,18 +293,26 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			projectStatusComboBoxEdit.Properties.Items.AddRange(Enum.GetValues(typeof(ProjectStatus)));
+            projectStatusComboBoxEdit.Properties.Items.AddRange(Enum.GetValues(typeof(ProjectStatus)));
+            moStatusComboBoxEdit.Properties.Items.AddRange(Enum.GetValues(typeof(MOStatus)));
 
-			projectDetailsXpCollection.Criteria = new BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, 0, BinaryOperatorType.Equal);
-			projectSearchGridView.OptionsBehavior.Editable = false;
+            projectDetailsXpCollection.Criteria = new BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, 0, BinaryOperatorType.Equal);
+            projectSearchGridView.OptionsBehavior.Editable = false;
 
-			//scheduledWeekDatePeriodEdit.Properties.
+            moSearchXpView.Criteria = new BinaryOperator(MO.Fields.ProjectDetail.Project.Oid, 0, BinaryOperatorType.Equal);
+            moMachineLineGridView.OptionsBehavior.Editable = false;
 
-			XPBaseObject.AutoSaveOnEndEdit = false;
+            moMachineLineXpCollection.Criteria = new BinaryOperator(MoMachineLine.Fields.MO.Oid, 0, BinaryOperatorType.Equal);
+            moMachineLineXpCollection.Reload();
 
-			Utilities.MakeFormReadOnly(dataEntrySplitContainerControl.Panel1, true);
+            //scheduledWeekDatePeriodEdit.Properties.
 
-			EnableAvailableBarButtons(false);
+            XPBaseObject.AutoSaveOnEndEdit = false;
+
+            Utilities.MakeFormReadOnly(dataEntrySplitContainerControl.Panel1, true);
+            //Utilities.MakeFormReadOnly(moDataEntrySplitContainerControl.Panel1, true);
+
+            EnableAvailableBarButtons(false);
 
 			Cursor = Cursors.Default;
 
@@ -338,7 +347,7 @@ namespace SuperiorPackGroup
 
 			m_ProjectSession.DropIdentityMap();
 
-			Project project = (Project)m_ProjectSession.GetObjectByKey<Project>(ProjectID, true);
+			Project project = m_ProjectSession.GetObjectByKey<Project>(ProjectID, true);
 			m_CurrentProject = project;
 			oidTextEdit.EditValue = m_CurrentProject.Oid;
 			projectTextEdit.EditValue = m_CurrentProject.project;
@@ -350,8 +359,16 @@ namespace SuperiorPackGroup
 			//scheduledWeekDatePeriodEdit.EditValue = m_CurrentProject.ScheduledWeek
 			notesMemoExEdit.EditValue = m_CurrentProject.Notes;
 
-			projectDetailsXpCollection.Criteria = new BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, m_CurrentProject.Oid, BinaryOperatorType.Equal);
+            projectDetailsXpCollection.Criteria = new BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, m_CurrentProject.Oid, BinaryOperatorType.Equal);
 			projectDetailsXpCollection.Reload();
+
+            moProjectTextEdit.EditValue = null;
+
+            moSearchXpView.Criteria = new BinaryOperator(MO.Fields.ProjectDetail.Project.Oid, m_CurrentProject.Oid, BinaryOperatorType.Equal);
+            moSearchXpView.Reload();
+
+            moMachineLineXpCollection.Criteria = new BinaryOperator(MoMachineLine.Fields.MO.Oid, 0, BinaryOperatorType.Equal);
+            moMachineLineXpCollection.Reload();
 
 			detailHistoryGridControl.DataSource = null;
 			detailHistoryGridControl.Visible = false;
@@ -627,5 +644,37 @@ namespace SuperiorPackGroup
 			BindProjectControls(m_CurrentProject.Oid);
 			projectSearchXpView.Reload();
 		}
-	}
+
+        private void moMachineLineGridView_RowDeleting(object sender, DevExpress.Data.RowDeletingEventArgs e)
+        {
+            
+        }
+
+        private void moSearchGridView_Click(object sender, EventArgs e)
+        {
+            if (moSearchGridView.FocusedRowHandle == -999997)
+            {
+                return;
+            }
+
+            //if (moSearchGridView.CalcHitInfo(moSearchGridControl.PointToClient(MousePosition)).HitTest == DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell)
+            //{
+                BindMoControls(Convert.ToInt32(moSearchGridView.GetFocusedRowCellValue(colMoId)));
+            //}
+        }
+
+        private void BindMoControls(int moId)
+        {
+            m_CurrentMo = m_ProjectSession.GetObjectByKey<MO>(moId, true);
+
+            moProjectTextEdit.EditValue = m_CurrentMo.ProjectDetail.Project.project;
+            moProjectDetailLookupEdit.EditValue = m_CurrentMo.ProjectDetail.Oid;
+            moScheduledStartDateEdit.EditValue = m_CurrentMo.ScheduledStartDateTime;
+            moStatusComboBoxEdit.EditValue = m_CurrentMo.Status;
+
+            moMachineLineXpCollection.Criteria = new BinaryOperator(MoMachineLine.Fields.MO.Oid, moId, BinaryOperatorType.Equal);
+            moMachineLineXpCollection.Reload();
+            
+        }
+    }
 }

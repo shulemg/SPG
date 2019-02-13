@@ -149,6 +149,7 @@ namespace DXDAL
                         return new OperandProperty(GetNestedName("ChangeDate"));
                     }
                 }
+            }
 
                 private static FieldsClass _fields;
                 public static new FieldsClass Fields
@@ -160,7 +161,6 @@ namespace DXDAL
                         return _fields;
                     }
                 }
-            }
         }
     }
 }

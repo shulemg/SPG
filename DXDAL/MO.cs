@@ -13,11 +13,11 @@ namespace DXDAL
             public ProjectDetails ProjectDetail { get; set; }
             [Association("MO-MachineLines", typeof(MoMachineLine))]
             [Aggregated]
-            public XPCollection<MoMachineLine> MoMachineLine
+            public XPCollection<MoMachineLine> MoMachineLines
             {
                 get
                 {
-                    return GetCollection<MoMachineLine>("MoMachineLine");
+                    return GetCollection<MoMachineLine>("MoMachineLines");
                 }
             }
             public MOStatus Status { get; set; }
@@ -38,7 +38,7 @@ namespace DXDAL
 
             public new class FieldsClass : PersistentBase.FieldsClass
             {
-                public FieldsClass() : base()
+                public FieldsClass()
                 {
                 }
                 public FieldsClass(string propertyName) : base(propertyName)
@@ -49,6 +49,13 @@ namespace DXDAL
                     get
                     {
                         return new OperandProperty(GetNestedName("Oid"));
+                    }
+                }
+                public ProjectDetails.FieldsClass ProjectDetail
+                {
+                    get
+                    {
+                        return new ProjectDetails.FieldsClass(GetNestedName("ProjectDetail"));
                     }
                 }
                 public OperandProperty Status
@@ -65,15 +72,15 @@ namespace DXDAL
                         return new OperandProperty(GetNestedName("ScheduledStartDateTime"));
                     }
                 }
-                private static FieldsClass _fields;
-                public static new FieldsClass Fields
+            }
+            private static FieldsClass _fields;
+            public static new FieldsClass Fields
+            {
+                get
                 {
-                    get
-                    {
-                        if (ReferenceEquals(_fields, null))
-                            _fields = new FieldsClass();
-                        return _fields;
-                    }
+                    if (ReferenceEquals(_fields, null))
+                        _fields = new FieldsClass();
+                    return _fields;
                 }
             }
         }

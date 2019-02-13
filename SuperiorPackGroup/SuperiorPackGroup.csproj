@@ -39,7 +39,7 @@
     <UpdateUrl>\\server1\SPG\SPG Test Install\</UpdateUrl>
     <ProductName>Superior Pack Group - Test</ProductName>
     <PublisherName>PC Ware Business Solutions</PublisherName>
-    <ApplicationRevision>278</ApplicationRevision>
+    <ApplicationRevision>279</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -50,7 +50,8 @@
     <DebugType>full</DebugType>
     <DefineConstants>DEBUG;TRACE;WINDOWSFORMS</DefineConstants>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SuperiorPackGroup - Test.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <WarningLevel>1</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>

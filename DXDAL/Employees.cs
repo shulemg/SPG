@@ -127,7 +127,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldClass : PersistentBase.FieldsClass
+            public class FieldClass : PersistentBase.FieldsClass
             {
                 public FieldClass() : base()
                 {

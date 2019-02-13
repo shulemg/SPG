@@ -62,10 +62,6 @@ namespace SuperiorPackGroup
         }
         private static UserPermissionsBLL m_UserPermissions;
         protected static CompanySettingsBLL m_CompanySettings;
-        private static string m_AdvancedTabs = "NONE";
-        private static string m_FinancialTabs = "NONE";
-        private static string m_GeneralReports = "NONE";
-        private static string m_FinancialReports = "NONE";
         private static int? m_MinPerHour = null;
         private static float? m_OperatorsPay = null;
         private static float? m_SupersPay = null;
@@ -81,8 +77,6 @@ namespace SuperiorPackGroup
 
         private void listsCustomerBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new CustomersXtraForm();
             {
                 form.MdiParent = this;
@@ -93,7 +87,6 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-
         }
 
         private void listsItemBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -108,13 +101,10 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-
         }
 
         private void listsMachineBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new MachineLinesXtraForm();
             {
                 form.MdiParent = this;
@@ -125,13 +115,10 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-
         }
 
         private void listsShiftsBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new ShiftsXtraForm();
             {
                 form.MdiParent = this;
@@ -142,13 +129,10 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-
         }
 
         private void listsCarriersBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new CarriersXtraForm();
             {
                 form.MdiParent = this;
@@ -159,13 +143,10 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-
         }
 
         private void activitesRecieveBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new ReceivingXtraForm();
             {
                 form.MdiParent = this;
@@ -176,14 +157,10 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-            //.WindowState = FormWindowState.Maximized
-
         }
 
         private void activitiesProductionBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new ProductionXtraForm();
             {
                 form.MdiParent = this;
@@ -194,13 +171,10 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-
         }
 
         private void activitesShipBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new ShippingXtraForm();
             {
                 form.MdiParent = this;
@@ -211,7 +185,6 @@ namespace SuperiorPackGroup
                 form.Show();
                 form.Activate();
             }
-
         }
 
         private void productionDetailBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -303,8 +276,6 @@ namespace SuperiorPackGroup
 
         private void toolsSecurityBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-
             var form = new SecurityXtraForm();
             {
                 form.MdiParent = this;
@@ -417,10 +388,10 @@ namespace SuperiorPackGroup
 
             if (Properties.Settings.Default.UserSecurityLevel == "Admin")
             {
-                m_AdvancedTabs = "FULL";
-                m_FinancialTabs = "FULL";
-                m_GeneralReports = "FULL";
-                m_FinancialReports = "FULL";
+                AdvancedTabs = "FULL";
+                FinancialTabs = "FULL";
+                GeneralReports = "FULL";
+                FinancialReports = "FULL";
             }
 
             if (!(Properties.Settings.Default.UserSecurityLevel == "Admin"))
@@ -457,10 +428,10 @@ namespace SuperiorPackGroup
                         this.activitesRecieveBarButtonItem.Visibility = BarItemVisibility.Never;
                         this.mainToolbarReceiveBarLargeButtonItem.Visibility = BarItemVisibility.Never;
                     }
-                    m_AdvancedTabs = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Advanced Tabs")[0].PermissionLevel;
-                    m_FinancialTabs = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Financial Tabs")[0].PermissionLevel;
-                    m_GeneralReports = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "General Reports")[0].PermissionLevel;
-                    m_FinancialReports = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Financial Reports")[0].PermissionLevel;
+                    AdvancedTabs = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Advanced Tabs")[0].PermissionLevel;
+                    FinancialTabs = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Financial Tabs")[0].PermissionLevel;
+                    GeneralReports = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "General Reports")[0].PermissionLevel;
+                    FinancialReports = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Financial Reports")[0].PermissionLevel;
                 }
                 catch (Exception ex)
                 {
@@ -470,45 +441,13 @@ namespace SuperiorPackGroup
 
         }
 
-        public static string AdvancedTabs
-        {
+        public static string AdvancedTabs { get; private set; } = "NONE";
 
-            get
-            {
-                return m_AdvancedTabs;
-            }
+        public static string FinancialTabs { get; private set; } = "NONE";
 
-        }
+        public static string GeneralReports { get; private set; } = "NONE";
 
-        public static string FinancialTabs
-        {
-
-            get
-            {
-                return m_FinancialTabs;
-            }
-
-        }
-
-        public static string GeneralReports
-        {
-
-            get
-            {
-                return m_GeneralReports;
-            }
-
-        }
-
-        public static string FinancialReports
-        {
-
-            get
-            {
-                return m_FinancialReports;
-            }
-
-        }
+        public static string FinancialReports { get; private set; } = "NONE";
 
         private static void FillCompanySettings()
         {

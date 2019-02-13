@@ -66,6 +66,16 @@ namespace DXDAL
                     }
                 }
             }
+            private static FieldsClass _fields;
+            public static new FieldsClass Fields
+            {
+                get
+                {
+                    if (ReferenceEquals(_fields, null))
+                        _fields = new FieldsClass();
+                    return _fields;
+                }
+            }
         }
     }
 }
