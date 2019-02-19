@@ -37,11 +37,11 @@ namespace DXDAL
                         return new OperandProperty(GetNestedName("Oid"));
                     }
                 }
-                public MO.FieldsClass MO
+                public MO.FieldsClass Mo
                 {
                     get
                     {
-                        return new MO.FieldsClass(GetNestedName("MO"));
+                        return new MO.FieldsClass(GetNestedName("Mo"));
                     }
                 }
                 public MachineLine.FieldsClass MachineLine

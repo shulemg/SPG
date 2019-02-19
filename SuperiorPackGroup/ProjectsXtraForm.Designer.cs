@@ -121,6 +121,9 @@ namespace SuperiorPackGroup
             this.colMoId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMoProjectId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.moDataEntrySplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
+            this.showEndedCheckEdit = new DevExpress.XtraEditors.CheckEdit();
+            this.cancalMoSimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.editMoSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.saveMoSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.addMoSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.delMoSimpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -133,15 +136,18 @@ namespace SuperiorPackGroup
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.moProjectDetailLookupEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.moMachineLineGridControl = new DevExpress.XtraGrid.GridControl();
+            this.moMachineLineXpCollection = new DevExpress.Xpo.XPCollection(this.components);
             this.moMachineLineGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.idGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.moIdGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.delMoMlGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.delMoMlRepositoryItemButtonEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.machineLineNameGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.machineLineXpCollection = new DevExpress.Xpo.XPCollection(this.components);
             this.startTimeGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.endTimeGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.moIdGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.moMlIdGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.auditXtraTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.detailHistorySimpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -152,7 +158,6 @@ namespace SuperiorPackGroup
             this.PropertyNameGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PrevValueGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NewValueGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.moMachineLineXpCollection = new DevExpress.Xpo.XPCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.deleteRepositoryItemButtonEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemXpView)).BeginInit();
@@ -191,20 +196,24 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.moSearchGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moDataEntrySplitContainerControl)).BeginInit();
             this.moDataEntrySplitContainerControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.showEndedCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moStatusComboBoxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moScheduledStartDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moScheduledStartDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moProjectTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moProjectDetailLookupEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moMachineLineGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moMachineLineXpCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moMachineLineGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delMoMlRepositoryItemButtonEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.machineLineXpCollection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.auditXtraTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.moMachineLineXpCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // deleteRepositoryItemButtonEdit
@@ -733,6 +742,7 @@ namespace SuperiorPackGroup
             // 
             // projectDetailsXpCollection
             // 
+            this.projectDetailsXpCollection.DisplayableProperties = resources.GetString("projectDetailsXpCollection.DisplayableProperties");
             this.projectDetailsXpCollection.ObjectType = typeof(DXDAL.SPGData.ProjectDetails);
             // 
             // projectDetailsGridView
@@ -1024,6 +1034,9 @@ namespace SuperiorPackGroup
             this.moDataEntrySplitContainerControl.Horizontal = false;
             this.moDataEntrySplitContainerControl.Location = new System.Drawing.Point(0, 0);
             this.moDataEntrySplitContainerControl.Name = "moDataEntrySplitContainerControl";
+            this.moDataEntrySplitContainerControl.Panel1.Controls.Add(this.showEndedCheckEdit);
+            this.moDataEntrySplitContainerControl.Panel1.Controls.Add(this.cancalMoSimpleButton);
+            this.moDataEntrySplitContainerControl.Panel1.Controls.Add(this.editMoSimpleButton);
             this.moDataEntrySplitContainerControl.Panel1.Controls.Add(this.saveMoSimpleButton);
             this.moDataEntrySplitContainerControl.Panel1.Controls.Add(this.addMoSimpleButton);
             this.moDataEntrySplitContainerControl.Panel1.Controls.Add(this.delMoSimpleButton);
@@ -1043,33 +1056,66 @@ namespace SuperiorPackGroup
             this.moDataEntrySplitContainerControl.TabIndex = 0;
             this.moDataEntrySplitContainerControl.Text = "splitContainerControl3";
             // 
+            // showEndedCheckEdit
+            // 
+            this.showEndedCheckEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.showEndedCheckEdit.Location = new System.Drawing.Point(469, 202);
+            this.showEndedCheckEdit.MenuManager = this.BarManager1;
+            this.showEndedCheckEdit.Name = "showEndedCheckEdit";
+            this.showEndedCheckEdit.Properties.Caption = "Show All";
+            this.showEndedCheckEdit.Properties.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
+            this.showEndedCheckEdit.Size = new System.Drawing.Size(78, 19);
+            this.showEndedCheckEdit.TabIndex = 27;
+            this.showEndedCheckEdit.CheckedChanged += new System.EventHandler(this.showEndedCheckEdit_CheckedChanged);
+            // 
+            // cancalMoSimpleButton
+            // 
+            this.cancalMoSimpleButton.Location = new System.Drawing.Point(257, 2);
+            this.cancalMoSimpleButton.Name = "cancalMoSimpleButton";
+            this.cancalMoSimpleButton.Size = new System.Drawing.Size(75, 23);
+            this.cancalMoSimpleButton.TabIndex = 26;
+            this.cancalMoSimpleButton.Text = "Cancel";
+            this.cancalMoSimpleButton.Click += new System.EventHandler(this.cancalMoSimpleButton_Click);
+            // 
+            // editMoSimpleButton
+            // 
+            this.editMoSimpleButton.Location = new System.Drawing.Point(95, 2);
+            this.editMoSimpleButton.Name = "editMoSimpleButton";
+            this.editMoSimpleButton.Size = new System.Drawing.Size(75, 23);
+            this.editMoSimpleButton.TabIndex = 25;
+            this.editMoSimpleButton.Text = "Edit MO";
+            this.editMoSimpleButton.Click += new System.EventHandler(this.editMoSimpleButton_Click);
+            // 
             // saveMoSimpleButton
             // 
-            this.saveMoSimpleButton.Location = new System.Drawing.Point(200, 3);
+            this.saveMoSimpleButton.Location = new System.Drawing.Point(338, 2);
             this.saveMoSimpleButton.Name = "saveMoSimpleButton";
             this.saveMoSimpleButton.Size = new System.Drawing.Size(75, 23);
             this.saveMoSimpleButton.TabIndex = 24;
-            this.saveMoSimpleButton.Text = "Save MO";
+            this.saveMoSimpleButton.Text = "Save";
+            this.saveMoSimpleButton.Click += new System.EventHandler(this.saveMoSimpleButton_Click);
             // 
             // addMoSimpleButton
             // 
-            this.addMoSimpleButton.Location = new System.Drawing.Point(37, 3);
+            this.addMoSimpleButton.Location = new System.Drawing.Point(0, 2);
             this.addMoSimpleButton.Name = "addMoSimpleButton";
-            this.addMoSimpleButton.Size = new System.Drawing.Size(75, 23);
+            this.addMoSimpleButton.Size = new System.Drawing.Size(91, 23);
             this.addMoSimpleButton.TabIndex = 23;
             this.addMoSimpleButton.Text = "Add MO";
+            this.addMoSimpleButton.Click += new System.EventHandler(this.addMoSimpleButton_Click);
             // 
             // delMoSimpleButton
             // 
-            this.delMoSimpleButton.Location = new System.Drawing.Point(118, 3);
+            this.delMoSimpleButton.Location = new System.Drawing.Point(176, 2);
             this.delMoSimpleButton.Name = "delMoSimpleButton";
             this.delMoSimpleButton.Size = new System.Drawing.Size(75, 23);
             this.delMoSimpleButton.TabIndex = 22;
             this.delMoSimpleButton.Text = "Delete MO";
+            this.delMoSimpleButton.Click += new System.EventHandler(this.delMoSimpleButton_Click);
             // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(37, 93);
+            this.labelControl13.Location = new System.Drawing.Point(37, 100);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(68, 13);
             this.labelControl13.TabIndex = 20;
@@ -1115,6 +1161,7 @@ namespace SuperiorPackGroup
             this.moScheduledStartDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.moScheduledStartDateEdit.Properties.CalendarTimeProperties.Mask.EditMask = "g";
+            this.moScheduledStartDateEdit.Properties.CalendarTimeProperties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
             this.moScheduledStartDateEdit.Properties.DisplayFormat.FormatString = "g";
             this.moScheduledStartDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.moScheduledStartDateEdit.Properties.EditFormat.FormatString = "g";
@@ -1148,28 +1195,28 @@ namespace SuperiorPackGroup
             // 
             // moProjectDetailLookupEdit
             // 
-            this.moProjectDetailLookupEdit.Location = new System.Drawing.Point(37, 123);
+            this.moProjectDetailLookupEdit.Location = new System.Drawing.Point(138, 97);
             this.moProjectDetailLookupEdit.MenuManager = this.BarManager1;
             this.moProjectDetailLookupEdit.Name = "moProjectDetailLookupEdit";
             this.moProjectDetailLookupEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.moProjectDetailLookupEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerPO", "Customer PO", 73, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ProjectItem.ItemCode", "Item Code", 123, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Center, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("UnitsRequested", "Units Requested", 89, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BagsRequested", "Bags Requested", 88, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Oid", "Id", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.Ascending, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ProjectItem.ItemCode", "Item #", 100, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("UnitsRequested", "Units Req.", 100, DevExpress.Utils.FormatType.Numeric, "#,##0", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BagsRequested", "Bags Req.", 100, DevExpress.Utils.FormatType.Numeric, "#,##0", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.moProjectDetailLookupEdit.Properties.DataSource = this.projectDetailsXpCollection;
-            this.moProjectDetailLookupEdit.Properties.DisplayMember = "ProjectItem!Key";
+            this.moProjectDetailLookupEdit.Properties.DisplayMember = "ProjectItem.ItemCode";
             this.moProjectDetailLookupEdit.Properties.NullText = "";
-            this.moProjectDetailLookupEdit.Properties.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth;
+            this.moProjectDetailLookupEdit.Properties.PopupWidth = 400;
             this.moProjectDetailLookupEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.moProjectDetailLookupEdit.Properties.ValueMember = "Oid";
-            this.moProjectDetailLookupEdit.Size = new System.Drawing.Size(413, 20);
+            this.moProjectDetailLookupEdit.Size = new System.Drawing.Size(179, 20);
             this.moProjectDetailLookupEdit.TabIndex = 21;
             // 
             // moMachineLineGridControl
             // 
-            this.moMachineLineGridControl.DataSource = this.moSearchXpView;
+            this.moMachineLineGridControl.DataSource = this.moMachineLineXpCollection;
             this.moMachineLineGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.moMachineLineGridControl.Location = new System.Drawing.Point(0, 0);
             this.moMachineLineGridControl.MainView = this.moMachineLineGridView;
@@ -1177,45 +1224,65 @@ namespace SuperiorPackGroup
             this.moMachineLineGridControl.Name = "moMachineLineGridControl";
             this.moMachineLineGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit2,
-            this.repositoryItemButtonEdit1});
+            this.repositoryItemButtonEdit1,
+            this.delMoMlRepositoryItemButtonEdit,
+            this.repositoryItemDateEdit1});
             this.moMachineLineGridControl.Size = new System.Drawing.Size(554, 187);
             this.moMachineLineGridControl.TabIndex = 0;
             this.moMachineLineGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.moMachineLineGridView});
             // 
+            // moMachineLineXpCollection
+            // 
+            this.moMachineLineXpCollection.DisplayableProperties = "Oid;MachineLine!Key;StartTime;EndTime;Mo!Key;This";
+            this.moMachineLineXpCollection.ObjectType = typeof(DXDAL.SPGData.MoMachineLine);
+            // 
             // moMachineLineGridView
             // 
             this.moMachineLineGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.idGridColumn,
-            this.moIdGridColumn,
+            this.delMoMlGridColumn,
             this.machineLineNameGridColumn,
             this.startTimeGridColumn,
             this.endTimeGridColumn,
-            this.gridColumn5});
+            this.moIdGridColumn,
+            this.moMlIdGridColumn});
             this.moMachineLineGridView.GridControl = this.moMachineLineGridControl;
             this.moMachineLineGridView.Name = "moMachineLineGridView";
+            this.moMachineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.moMachineLineGridView.OptionsView.ShowAutoFilterRow = true;
             this.moMachineLineGridView.OptionsView.ShowGroupPanel = false;
+            this.moMachineLineGridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.moMachineLineGridView_InitNewRow);
             this.moMachineLineGridView.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.moMachineLineGridView_RowDeleting);
             // 
-            // idGridColumn
+            // delMoMlGridColumn
             // 
-            this.idGridColumn.FieldName = "Oid";
-            this.idGridColumn.Name = "idGridColumn";
+            this.delMoMlGridColumn.ColumnEdit = this.delMoMlRepositoryItemButtonEdit;
+            this.delMoMlGridColumn.MaxWidth = 20;
+            this.delMoMlGridColumn.Name = "delMoMlGridColumn";
+            this.delMoMlGridColumn.OptionsColumn.AllowSize = false;
+            this.delMoMlGridColumn.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
+            this.delMoMlGridColumn.Visible = true;
+            this.delMoMlGridColumn.VisibleIndex = 0;
+            this.delMoMlGridColumn.Width = 20;
             // 
-            // moIdGridColumn
+            // delMoMlRepositoryItemButtonEdit
             // 
-            this.moIdGridColumn.FieldName = "Mo.Oid";
-            this.moIdGridColumn.Name = "moIdGridColumn";
+            this.delMoMlRepositoryItemButtonEdit.AutoHeight = false;
+            this.delMoMlRepositoryItemButtonEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            this.delMoMlRepositoryItemButtonEdit.Name = "delMoMlRepositoryItemButtonEdit";
+            this.delMoMlRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.delMoMlRepositoryItemButtonEdit.Click += new System.EventHandler(this.delMoMlRepositoryItemButtonEdit_Click);
             // 
             // machineLineNameGridColumn
             // 
             this.machineLineNameGridColumn.Caption = "Machine Line";
             this.machineLineNameGridColumn.ColumnEdit = this.repositoryItemLookUpEdit2;
+            this.machineLineNameGridColumn.FieldName = "MachineLine!Key";
             this.machineLineNameGridColumn.Name = "machineLineNameGridColumn";
             this.machineLineNameGridColumn.Visible = true;
             this.machineLineNameGridColumn.VisibleIndex = 1;
-            this.machineLineNameGridColumn.Width = 172;
+            this.machineLineNameGridColumn.Width = 165;
             // 
             // repositoryItemLookUpEdit2
             // 
@@ -1229,20 +1296,48 @@ namespace SuperiorPackGroup
             this.repositoryItemLookUpEdit2.DisplayMember = "MachineLineName";
             this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
             this.repositoryItemLookUpEdit2.ValueMember = "MachineLineID";
+            this.repositoryItemLookUpEdit2.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.repositoryItemLookUpEdit2_EditValueChanging);
             // 
             // machineLineXpCollection
             // 
+            this.machineLineXpCollection.DisplayableProperties = "This;MachineLineID;MachineLineName";
             this.machineLineXpCollection.ObjectType = typeof(DXDAL.SPGData.MachineLine);
+            this.machineLineXpCollection.Sorting.AddRange(new DevExpress.Xpo.SortProperty[] {
+            new DevExpress.Xpo.SortProperty("[MachineLineName]", DevExpress.Xpo.DB.SortingDirection.Ascending)});
             // 
             // startTimeGridColumn
             // 
+            this.startTimeGridColumn.ColumnEdit = this.repositoryItemDateEdit1;
             this.startTimeGridColumn.DisplayFormat.FormatString = "g";
             this.startTimeGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.startTimeGridColumn.FieldName = "StartTime";
             this.startTimeGridColumn.Name = "startTimeGridColumn";
             this.startTimeGridColumn.Visible = true;
             this.startTimeGridColumn.VisibleIndex = 2;
-            this.startTimeGridColumn.Width = 172;
+            this.startTimeGridColumn.Width = 213;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            //this.repositoryItemDateEdit1.CalendarTimeProperties.DisplayFormat.FormatString = "g";
+            //this.repositoryItemDateEdit1.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            //this.repositoryItemDateEdit1.CalendarTimeProperties.EditFormat.FormatString = "g";
+            //this.repositoryItemDateEdit1.CalendarTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Mask.EditMask = "g";
+            this.repositoryItemDateEdit1.CalendarTimeProperties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
+            this.repositoryItemDateEdit1.DisplayFormat.FormatString = "g";
+            this.repositoryItemDateEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemDateEdit1.EditFormat.FormatString = "g";
+            this.repositoryItemDateEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemDateEdit1.Mask.EditMask = "g";
+            this.repositoryItemDateEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
+            this.repositoryItemDateEdit1.Mask.PlaceHolder = '0';
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.repositoryItemDateEdit1.TimeEditWidth = 150;
             // 
             // endTimeGridColumn
             // 
@@ -1250,18 +1345,22 @@ namespace SuperiorPackGroup
             this.endTimeGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.endTimeGridColumn.FieldName = "EndTime";
             this.endTimeGridColumn.Name = "endTimeGridColumn";
+            this.endTimeGridColumn.OptionsColumn.ReadOnly = true;
             this.endTimeGridColumn.Visible = true;
             this.endTimeGridColumn.VisibleIndex = 3;
-            this.endTimeGridColumn.Width = 172;
+            this.endTimeGridColumn.Width = 138;
             // 
-            // gridColumn5
+            // moIdGridColumn
             // 
-            this.gridColumn5.ColumnEdit = this.repositoryItemButtonEdit1;
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.OptionsColumn.AllowSize = false;
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 0;
-            this.gridColumn5.Width = 20;
+            this.moIdGridColumn.Caption = "gridColumn6";
+            this.moIdGridColumn.FieldName = "Mo!Key";
+            this.moIdGridColumn.Name = "moIdGridColumn";
+            // 
+            // moMlIdGridColumn
+            // 
+            this.moMlIdGridColumn.Caption = "gridColumn7";
+            this.moMlIdGridColumn.FieldName = "Oid";
+            this.moMlIdGridColumn.Name = "moMlIdGridColumn";
             // 
             // repositoryItemButtonEdit1
             // 
@@ -1352,12 +1451,6 @@ namespace SuperiorPackGroup
             this.NewValueGridColumn.Visible = true;
             this.NewValueGridColumn.VisibleIndex = 4;
             // 
-            // moMachineLineXpCollection
-            // 
-            this.moMachineLineXpCollection.DisplayableProperties = "Oid;Mo.Oid;MachineLine.MachineLineID;MachineLine.MachineLineName;StartTime;EndTim" +
-    "e";
-            this.moMachineLineXpCollection.ObjectType = typeof(DXDAL.SPGData.MoMachineLine);
-            // 
             // ProjectsXtraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1412,20 +1505,24 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.moSearchGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moDataEntrySplitContainerControl)).EndInit();
             this.moDataEntrySplitContainerControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.showEndedCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moStatusComboBoxEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moScheduledStartDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moScheduledStartDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moProjectTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moProjectDetailLookupEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moMachineLineGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moMachineLineXpCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.moMachineLineGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.delMoMlRepositoryItemButtonEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.machineLineXpCollection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             this.auditXtraTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.moMachineLineXpCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1526,7 +1623,6 @@ namespace SuperiorPackGroup
         private XPCollection moMachineLineXpCollection;
         private DevExpress.XtraGrid.Views.Grid.GridView moMachineLineGridView;
         private DevExpress.XtraGrid.Columns.GridColumn idGridColumn;
-        private DevExpress.XtraGrid.Columns.GridColumn moIdGridColumn;
         private DevExpress.XtraGrid.Columns.GridColumn machineLineNameGridColumn;
         private DevExpress.XtraGrid.Columns.GridColumn startTimeGridColumn;
         private DevExpress.XtraGrid.Columns.GridColumn endTimeGridColumn;
@@ -1547,6 +1643,14 @@ namespace SuperiorPackGroup
         private DevExpress.XtraEditors.SimpleButton delMoSimpleButton;
         private DevExpress.XtraGrid.Views.Grid.GridView moSearchGridView;
         private DevExpress.XtraGrid.Columns.GridColumn colMoProjectId;
+        private DevExpress.XtraEditors.SimpleButton cancalMoSimpleButton;
+        private DevExpress.XtraEditors.SimpleButton editMoSimpleButton;
+        private DevExpress.XtraGrid.Columns.GridColumn moIdGridColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn moMlIdGridColumn;
+        private DevExpress.XtraGrid.Columns.GridColumn delMoMlGridColumn;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit delMoMlRepositoryItemButtonEdit;
+        private DevExpress.XtraEditors.CheckEdit showEndedCheckEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 
 }

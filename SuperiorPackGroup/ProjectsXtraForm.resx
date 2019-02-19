@@ -132,8 +132,14 @@
   <metadata name="projectDetailsXpCollection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>452, 17</value>
   </metadata>
+  <data name="projectDetailsXpCollection.DisplayableProperties" xml:space="preserve">
+    <value>This;Oid;HasChanges;Project!;Project!Key;Project;CustomerPO;ProjectItem!;ProjectItem!Key;ProjectItem;UnitsRequested;BagsRequested;PalletsRequested;AllowOverrun;ProjectMO;ProjectProduction;ProjectProductionSchedule;UnitsProduced;UnitsScheduled;UnitsNeeded;UnitsNeededToSchedule;BagsProduced;PalletsProduced;PercentageComplete;RemainingBalance;EstimatedShifts;ProjectItem.ItemCode</value>
+  </data>
   <metadata name="moSearchXpView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>764, 17</value>
+  </metadata>
+  <metadata name="moMachineLineXpCollection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>910, 17</value>
   </metadata>
   <metadata name="machineLineXpCollection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>19, 49</value>
@@ -198,7 +204,4 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
-  <metadata name="moMachineLineXpCollection.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>910, 17</value>
-  </metadata>
 </root>
