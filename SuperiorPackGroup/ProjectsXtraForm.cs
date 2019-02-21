@@ -663,7 +663,7 @@ namespace SuperiorPackGroup
 
             moProjectDetailLookupEdit.EditValue = null;
             moScheduledStartDateEdit.EditValue = null;
-            moStatusComboBoxEdit.EditValue = null;
+            moStatusComboBoxEdit.EditValue = MOStatus.Scheduled;
 
             projectDetailsXpCollection.Criteria = new BinaryOperator(ProjectDetails.Fields.Project.Oid.PropertyName, m_CurrentProject.Oid, BinaryOperatorType.Equal);
             projectDetailsXpCollection.Reload();
@@ -675,7 +675,15 @@ namespace SuperiorPackGroup
 
         private void delMoMlRepositoryItemButtonEdit_Click(object sender, EventArgs e)
         {
-            if (moMachineLineGridView.GetFocusedRowCellValue(endTimeGridColumn) == null)
+            if ((MOStatus)moStatusComboBoxEdit.EditValue == MOStatus.Scheduled)
+            {
+                MoMachineLine detail = m_ProjectSession.GetObjectByKey<MoMachineLine>(moMachineLineGridView.GetFocusedRowCellValue(moMlIdGridColumn));
+                if (detail != null)
+                {
+                    detail.Delete();
+                }
+            }
+            else if (moMachineLineGridView.GetFocusedRowCellValue(endTimeGridColumn) == null)
                 moMachineLineGridView.SetFocusedRowCellValue(endTimeGridColumn, DateTime.Now);
         }
 
@@ -706,6 +714,9 @@ namespace SuperiorPackGroup
             dataEntryXtraTabPage.Enabled = mode != FormMode.EditMo;
             auditXtraTabPage.Enabled = mode != FormMode.EditMo;
 
+
+            moProjectTextEdit.ReadOnly = true;
+            moStatusComboBoxEdit.ReadOnly = true;
             showEndedCheckEdit.ReadOnly = false;
 
             if (mode == FormMode.Read)
@@ -805,6 +816,9 @@ namespace SuperiorPackGroup
         private void moMachineLineGridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             moMachineLineGridView.SetRowCellValue(e.RowHandle, colMoId, m_CurrentMo.Oid);
+
+            if ((MOStatus)moStatusComboBoxEdit.EditValue == MOStatus.Active)
+                moMachineLineGridView.SetFocusedRowCellValue(startTimeGridColumn, DateTime.Now);
         }
 
         private void repositoryItemLookUpEdit2_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)

@@ -1307,11 +1307,12 @@ namespace SuperiorPackGroup
             // 
             // startTimeGridColumn
             // 
-            this.startTimeGridColumn.ColumnEdit = this.repositoryItemDateEdit1;
+            //this.startTimeGridColumn.ColumnEdit = this.repositoryItemDateEdit1;
             this.startTimeGridColumn.DisplayFormat.FormatString = "g";
             this.startTimeGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.startTimeGridColumn.FieldName = "StartTime";
             this.startTimeGridColumn.Name = "startTimeGridColumn";
+            this.startTimeGridColumn.OptionsColumn.ReadOnly = true;
             this.startTimeGridColumn.Visible = true;
             this.startTimeGridColumn.VisibleIndex = 2;
             this.startTimeGridColumn.Width = 213;
@@ -1323,10 +1324,6 @@ namespace SuperiorPackGroup
             this.repositoryItemDateEdit1.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            //this.repositoryItemDateEdit1.CalendarTimeProperties.DisplayFormat.FormatString = "g";
-            //this.repositoryItemDateEdit1.CalendarTimeProperties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            //this.repositoryItemDateEdit1.CalendarTimeProperties.EditFormat.FormatString = "g";
-            //this.repositoryItemDateEdit1.CalendarTimeProperties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.repositoryItemDateEdit1.CalendarTimeProperties.Mask.EditMask = "g";
             this.repositoryItemDateEdit1.CalendarTimeProperties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
             this.repositoryItemDateEdit1.DisplayFormat.FormatString = "g";
