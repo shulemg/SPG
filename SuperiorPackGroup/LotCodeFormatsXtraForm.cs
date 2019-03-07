@@ -382,15 +382,15 @@ namespace SuperiorPackGroup
 						cancelFormatChangesSimpleButton.Enabled = false;
 						saveFormatSimpleButton.Enabled = false;
 
-						//Dim SavedSectionSettings = Aggregate SavedSettings In m_LotCodeSession.Query(Of LotCodeFormatSections)
-						//                           Where SavedSettings.LotCodeFormat.Oid = m_CurrentLotCodeFormat.Oid                                               
-						//                           Into SavedSettingsCount = Count(), MaxPosition = Max(SavedSettings.SectionPosition)
+                        //Dim SavedSectionSettings = Aggregate SavedSettings In m_LotCodeSession.Query(Of LotCodeFormatSections)
+                        //                           Where SavedSettings.LotCodeFormat.Oid = m_CurrentLotCodeFormat.Oid                                               
+                        //                           Into SavedSettingsCount = Count(), MaxPosition = Max(SavedSettings.SectionPosition)
 
 
 
 
-						var SavedSettingsCount = m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Count();
-						var MaxSavedPosition = (SavedSettingsCount > 0) ? m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Max((S) => S.SectionPosition) : 0;
+                        int SavedSettingsCount = m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Count();
+                        int MaxSavedPosition = (SavedSettingsCount > 0) ? m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Max((S) => S.SectionPosition) : 0;
 
 						if (SavedSettingsCount < formatSectionsSpinEdit.Value)
 						{
@@ -459,8 +459,8 @@ namespace SuperiorPackGroup
                         //select SavedSettings).Count(), MaxPosition = Max(SavedSettings.SectionPosition);
 
 
-                        var SavedSettingsCount = m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Count();
-                        var MaxSavedPosition = (SavedSettingsCount > 0) ? m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Max((S) => S.SectionPosition) : 0;
+                        int SavedSettingsCount = m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Count();
+                        int MaxSavedPosition = (SavedSettingsCount > 0) ? m_LotCodeSession.Query<LotCodeFormatSections>().Where((S) => S.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid).Max((S) => S.SectionPosition) : 0;
 
 
                         if (SavedSettingsCount == formatSectionsSpinEdit.Value && MaxSavedPosition == SavedSettingsCount)
@@ -976,7 +976,7 @@ namespace SuperiorPackGroup
 
 			if (oldSectionPosition < newSectionPosition)
 			{
-				foreach (var codeSection in
+				foreach (LotCodeFormatSections codeSection in
 					from LaterSection in m_LotCodeSession.Query<LotCodeFormatSections>()
 					where LaterSection.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid && LaterSection.SectionPosition > oldSectionPosition && LaterSection.SectionPosition <= newSectionPosition
 					select LaterSection)
@@ -987,7 +987,7 @@ namespace SuperiorPackGroup
 			}
 			else
 			{
-				foreach (var codeSection in
+				foreach (LotCodeFormatSections codeSection in
 					from PreviousSection in m_LotCodeSession.Query<LotCodeFormatSections>()
 					where PreviousSection.LotCodeFormat.Oid == m_CurrentLotCodeFormat.Oid && PreviousSection.SectionPosition < oldSectionPosition && PreviousSection.SectionPosition >= newSectionPosition
 					select PreviousSection)

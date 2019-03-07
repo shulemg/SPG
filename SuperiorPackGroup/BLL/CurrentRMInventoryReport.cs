@@ -215,47 +215,41 @@ namespace SuperiorPackGroup
 			public Customers Customer {get; set;}
 
 			public bool Inactive
-			{
-				get
-				{
-					if (_Inactive == false)
-					{
-						return false;
-					}
-					else
-					{
-						return _Inactive;
-					}
-				}
-				set
-				{
-					_Inactive = value;
-				}
-			}
+            {
+                get
+                {
+                    if (_Inactive == false)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return _Inactive;
+                    }
+                }
+                set => _Inactive = value;
+            }
 
-			public LocationInventory Item
-			{
-				get
-				{
-					return _Item;
-				}
-				set
-				{
-					if (value != null)
-					{
-						Customer = value.LocationInventoryItem.ItemCustomerID;
-						Inactive = value.LocationInventoryItem.Inactive;
-						ItemCode = value.LocationInventoryItem.ItemCode;
-						ItemDescription = value.LocationInventoryItem.ItemDescription;
-						ItemId = value.LocationInventoryItem.ItemID;
-						QuantityOnHand = value.QuantityOnHand;
-						Location = value.Location.LocationCode;
-					}
-					_Item = value;
-				}
-			}
+            public LocationInventory Item
+            {
+                get => _Item;
+                set
+                {
+                    if (value != null)
+                    {
+                        Customer = value.LocationInventoryItem.ItemCustomerID;
+                        Inactive = value.LocationInventoryItem.Inactive;
+                        ItemCode = value.LocationInventoryItem.ItemCode;
+                        ItemDescription = value.LocationInventoryItem.ItemDescription;
+                        ItemId = value.LocationInventoryItem.ItemID;
+                        QuantityOnHand = value.QuantityOnHand;
+                        Location = value.Location.LocationCode;
+                    }
+                    _Item = value;
+                }
+            }
 
-			public string ItemCode {get; set;}
+            public string ItemCode {get; set;}
 			public string ItemDescription {get; set;}
 			public int ItemId {get; set;}
 			public string Location {get; set;}

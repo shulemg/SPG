@@ -12,53 +12,29 @@ namespace DXDAL
             [Key(true)]
             public int UserPermissionID
             {
-                get
-                {
-                    return fUserPermissionID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("UserPermissionID", ref fUserPermissionID, value);
-                }
+                get => fUserPermissionID;
+                set => SetPropertyValue<int>("UserPermissionID", ref fUserPermissionID, value);
             }
             private string fUserName;
             [Size(50)]
             public string UserName
             {
-                get
-                {
-                    return fUserName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("UserName", ref fUserName, value);
-                }
+                get => fUserName;
+                set => SetPropertyValue("UserName", ref fUserName, value);
             }
             private string fPermissionObject;
             [Size(50)]
             public string PermissionObject
             {
-                get
-                {
-                    return fPermissionObject;
-                }
-                set
-                {
-                    SetPropertyValue<string>("PermissionObject", ref fPermissionObject, value);
-                }
+                get => fPermissionObject;
+                set => SetPropertyValue("PermissionObject", ref fPermissionObject, value);
             }
             private string fPermissionLevel;
             [Size(50)]
             public string PermissionLevel
             {
-                get
-                {
-                    return fPermissionLevel;
-                }
-                set
-                {
-                    SetPropertyValue<string>("PermissionLevel", ref fPermissionLevel, value);
-                }
+                get => fPermissionLevel;
+                set => SetPropertyValue("PermissionLevel", ref fPermissionLevel, value);
             }
             public UserPermissions(Session session) : base(session)
             {
@@ -70,7 +46,7 @@ namespace DXDAL
             {
                 base.AfterConstruction();
             }
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -78,34 +54,10 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty UserPermissionID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("UserPermissionID"));
-                    }
-                }
-                public OperandProperty UserName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("UserName"));
-                    }
-                }
-                public OperandProperty PermissionObject
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PermissionObject"));
-                    }
-                }
-                public OperandProperty PermissionLevel
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PermissionLevel"));
-                    }
-                }
+                public OperandProperty UserPermissionID => new OperandProperty(GetNestedName("UserPermissionID"));
+                public OperandProperty UserName => new OperandProperty(GetNestedName("UserName"));
+                public OperandProperty PermissionObject => new OperandProperty(GetNestedName("PermissionObject"));
+                public OperandProperty PermissionLevel => new OperandProperty(GetNestedName("PermissionLevel"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

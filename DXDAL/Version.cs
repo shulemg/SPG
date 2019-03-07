@@ -27,14 +27,8 @@ namespace DXDAL
             private int fLatestRevision;
             public int LatestRevision
             {
-                get
-                {
-                    return fLatestRevision;
-                }
-                set
-                {
-                    SetPropertyValue<int>("LatestRevision", ref fLatestRevision, value);
-                }
+                get => fLatestRevision;
+                set => SetPropertyValue<int>("LatestRevision", ref fLatestRevision, value);
             }
         }
     }

@@ -14,47 +14,23 @@ namespace DXDAL
             [Association("ItemPool-Details")]
             public ItemPool ItemPoolID
             {
-                get
-                {
-                    return _itemPoolID;
-                }
-                set
-                {
-                    SetPropertyValue<ItemPool>("ItemPoolID", ref _itemPoolID, value);
-                }
+                get => _itemPoolID;
+                set => SetPropertyValue("ItemPoolID", ref _itemPoolID, value);
             }
 
             public Items ItemID
             {
-                get
-                {
-                    return _itemID;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("ItemID", ref _itemID, value);
-                }
+                get => _itemID;
+                set => SetPropertyValue("ItemID", ref _itemID, value);
             }
 
             public double ItemPoolRatio
             {
-                get
-                {
-                    return _itemPoolRatio;
-                }
-                set
-                {
-                    SetPropertyValue<double>("ItemPoolRatio", ref _itemPoolRatio, value);
-                }
+                get => _itemPoolRatio;
+                set => SetPropertyValue("ItemPoolRatio", ref _itemPoolRatio, value);
             }
 
-            public double QuantityOnHand
-            {
-                get
-                {
-                    return ItemID.TotalQuantityOnHand * ItemPoolRatio;
-                }
-            }
+            public double QuantityOnHand => ItemID.TotalQuantityOnHand * ItemPoolRatio;
 
             public ItemPoolDetails() : base()
             {
@@ -69,7 +45,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -77,27 +53,9 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public ItemPool.FieldsClass ItemPoolID
-                {
-                    get
-                    {
-                        return new ItemPool.FieldsClass(GetNestedName("ItemPoolID"));
-                    }
-                }
-                public Items.FieldsClass ItemID
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("ItemID"));
-                    }
-                }
-                public OperandProperty ItemPoolRatio
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ItemPoolRatio"));
-                    }
-                }
+                public ItemPool.FieldsClass ItemPoolID => new ItemPool.FieldsClass(GetNestedName("ItemPoolID"));
+                public Items.FieldsClass ItemID => new Items.FieldsClass(GetNestedName("ItemID"));
+                public OperandProperty ItemPoolRatio => new OperandProperty(GetNestedName("ItemPoolRatio"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

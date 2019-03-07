@@ -11,248 +11,128 @@ namespace DXDAL
             [Size(25)]
             public string LocationCode
             {
-                get
-                {
-                    return fLocationCode;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationCode", ref fLocationCode, value);
-                }
+                get => fLocationCode;
+                set => SetPropertyValue("LocationCode", ref fLocationCode, value);
             }
 
             private string fLocationName;
             [Size(50)]
             public string LocationName
             {
-                get
-                {
-                    return fLocationName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationName", ref fLocationName, value);
-                }
+                get => fLocationName;
+                set => SetPropertyValue("LocationName", ref fLocationName, value);
             }
 
             private string fLocationAddress;
             [Size(150)]
             public string LocationAddress
             {
-                get
-                {
-                    return fLocationAddress;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationAddress", ref fLocationAddress, value);
-                }
+                get => fLocationAddress;
+                set => SetPropertyValue("LocationAddress", ref fLocationAddress, value);
             }
 
             private string fLocationCity;
             [Size(150)]
             public string LocationCity
             {
-                get
-                {
-                    return fLocationCity;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationCity", ref fLocationCity, value);
-                }
+                get => fLocationCity;
+                set => SetPropertyValue("LocationCity", ref fLocationCity, value);
             }
 
             private string fLocationState;
             [Size(50)]
             public string LocationState
             {
-                get
-                {
-                    return fLocationState;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationState", ref fLocationState, value);
-                }
+                get => fLocationState;
+                set => SetPropertyValue("LocationState", ref fLocationState, value);
             }
 
             private string fLocationZipCode;
             [Size(50)]
             public string LocationZipCode
             {
-                get
-                {
-                    return fLocationZipCode;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationZipCode", ref fLocationZipCode, value);
-                }
+                get => fLocationZipCode;
+                set => SetPropertyValue("LocationZipCode", ref fLocationZipCode, value);
             }
 
             private string fLocationPhone;
             [Size(50)]
             public string LocationPhone
             {
-                get
-                {
-                    return fLocationPhone;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationPhone", ref fLocationPhone, value);
-                }
+                get => fLocationPhone;
+                set => SetPropertyValue("LocationPhone", ref fLocationPhone, value);
             }
 
             private string fLocationFax;
             [Size(50)]
             public string LocationFax
             {
-                get
-                {
-                    return fLocationFax;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationFax", ref fLocationFax, value);
-                }
+                get => fLocationFax;
+                set => SetPropertyValue("LocationFax", ref fLocationFax, value);
             }
 
             private bool fCanReceive;
             public bool CanReceive
             {
-                get
-                {
-                    return fCanReceive;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("CanReceive", ref fCanReceive, value);
-                }
+                get => fCanReceive;
+                set => SetPropertyValue("CanReceive", ref fCanReceive, value);
             }
 
             private bool fCanProduce;
             public bool CanProduce
             {
-                get
-                {
-                    return fCanProduce;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("CanProduce", ref fCanProduce, value);
-                }
+                get => fCanProduce;
+                set => SetPropertyValue("CanProduce", ref fCanProduce, value);
             }
 
             private bool fCanShip;
             public bool CanShip
             {
-                get
-                {
-                    return fCanShip;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("CanShip", ref fCanShip, value);
-                }
+                get => fCanShip;
+                set => SetPropertyValue("CanShip", ref fCanShip, value);
             }
 
             private bool fCanWarehouse;
             public bool CanWarehouse
             {
-                get
-                {
-                    return fCanWarehouse;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("CanWarehouse", ref fCanWarehouse, value);
-                }
+                get => fCanWarehouse;
+                set => SetPropertyValue("CanWarehouse", ref fCanWarehouse, value);
             }
 
             private bool fInventoryAvailable;
             public bool InventoryAvailable
             {
-                get
-                {
-                    return fInventoryAvailable;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("InventoryAvailable", ref fInventoryAvailable, value);
-                }
+                get => fInventoryAvailable;
+                set => SetPropertyValue("InventoryAvailable", ref fInventoryAvailable, value);
             }
 
             [Association("Location-Inventory", typeof(LocationInventory))]
             [Aggregated()]
-            public XPCollection<LocationInventory> LocationsInventory
-            {
-                get
-                {
-                    return GetCollection<LocationInventory>("LocationsInventory");
-                }
-            }
+            public XPCollection<LocationInventory> LocationsInventory => GetCollection<LocationInventory>("LocationsInventory");
 
             [Association("Location-InventoryByLot", typeof(LocationInventoryByLot))]
             [Aggregated()]
-            public XPCollection<LocationInventoryByLot> LocationsInventoryByLot
-            {
-                get
-                {
-                    return GetCollection<LocationInventoryByLot>("LocationsInventoryByLot");
-                }
-            }
+            public XPCollection<LocationInventoryByLot> LocationsInventoryByLot => GetCollection<LocationInventoryByLot>("LocationsInventoryByLot");
 
             [Association("Location-TransfersFrom", typeof(LocationTransfers))]
             [Aggregated()]
-            public XPCollection<LocationTransfers> LocationTransfersFrom
-            {
-                get
-                {
-                    return GetCollection<LocationTransfers>("LocationTransfersFrom");
-                }
-            }
+            public XPCollection<LocationTransfers> LocationTransfersFrom => GetCollection<LocationTransfers>("LocationTransfersFrom");
 
             [Association("Location-TransfersTo", typeof(LocationTransfers))]
             [Aggregated()]
-            public XPCollection<LocationTransfers> LocationTransfersTo
-            {
-                get
-                {
-                    return GetCollection<LocationTransfers>("LocationTransfersTo");
-                }
-            }
+            public XPCollection<LocationTransfers> LocationTransfersTo => GetCollection<LocationTransfers>("LocationTransfersTo");
 
             [Association("Location-Receivings", typeof(Receiving))]
             [Aggregated()]
-            public XPCollection<Receiving> LocationReceivings
-            {
-                get
-                {
-                    return GetCollection<Receiving>("LocationReceivings");
-                }
-            }
+            public XPCollection<Receiving> LocationReceivings => GetCollection<Receiving>("LocationReceivings");
 
             [Association("Location-Shippings", typeof(Shipping))]
             [Aggregated()]
-            public XPCollection<Shipping> LocationShippings
-            {
-                get
-                {
-                    return GetCollection<Shipping>("LocationShippings");
-                }
-            }
+            public XPCollection<Shipping> LocationShippings => GetCollection<Shipping>("LocationShippings");
 
             [Association("Production-Location", typeof(Inventory))]
             [Aggregated()]
-            public XPCollection<Inventory> LocationProduction
-            {
-                get
-                {
-                    return GetCollection<Inventory>("LocationProduction");
-                }
-            }
+            public XPCollection<Inventory> LocationProduction => GetCollection<Inventory>("LocationProduction");
 
             public Locations() : base()
             {
@@ -267,7 +147,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -275,104 +155,20 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public OperandProperty LocationCode
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationCode"));
-                    }
-                }
-                public OperandProperty LocationName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationName"));
-                    }
-                }
-                public OperandProperty LocationAddress
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationAddress"));
-                    }
-                }
-                public OperandProperty LocationCity
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationCity"));
-                    }
-                }
-                public OperandProperty LocationState
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationState"));
-                    }
-                }
-                public OperandProperty LocationZipCode
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationZipCode"));
-                    }
-                }
-                public OperandProperty LocationPhone
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationPhone"));
-                    }
-                }
-                public OperandProperty LocationFax
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationFax"));
-                    }
-                }
-                public OperandProperty CanReceive
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CanReceive"));
-                    }
-                }
-                public OperandProperty CanProduce
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CanProduce"));
-                    }
-                }
-                public OperandProperty CanShip
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CanShip"));
-                    }
-                }
-                public OperandProperty CanWarehouse
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CanWarehouse"));
-                    }
-                }
-                public OperandProperty InventoryAvailable
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("InventoryAvailable"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public OperandProperty LocationCode => new OperandProperty(GetNestedName("LocationCode"));
+                public OperandProperty LocationName => new OperandProperty(GetNestedName("LocationName"));
+                public OperandProperty LocationAddress => new OperandProperty(GetNestedName("LocationAddress"));
+                public OperandProperty LocationCity => new OperandProperty(GetNestedName("LocationCity"));
+                public OperandProperty LocationState => new OperandProperty(GetNestedName("LocationState"));
+                public OperandProperty LocationZipCode => new OperandProperty(GetNestedName("LocationZipCode"));
+                public OperandProperty LocationPhone => new OperandProperty(GetNestedName("LocationPhone"));
+                public OperandProperty LocationFax => new OperandProperty(GetNestedName("LocationFax"));
+                public OperandProperty CanReceive => new OperandProperty(GetNestedName("CanReceive"));
+                public OperandProperty CanProduce => new OperandProperty(GetNestedName("CanProduce"));
+                public OperandProperty CanShip => new OperandProperty(GetNestedName("CanShip"));
+                public OperandProperty CanWarehouse => new OperandProperty(GetNestedName("CanWarehouse"));
+                public OperandProperty InventoryAvailable => new OperandProperty(GetNestedName("InventoryAvailable"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

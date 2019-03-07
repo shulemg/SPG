@@ -44,108 +44,60 @@ namespace SuperiorPackGroup
 
 		private DateTime m_TransactionDate;
 		public DateTime TransactionDate
-		{
-			get
-			{
-				return m_TransactionDate;
-			}
-			set
-			{
-				m_TransactionDate = value;
-			}
-		}
+        {
+            get => m_TransactionDate;
+            set => m_TransactionDate = value;
+        }
 
-		private int m_CustomerID;
+        private int m_CustomerID;
 		public int CustomerID
-		{
-			get
-			{
-				return m_CustomerID;
-			}
-			set
-			{
-				m_CustomerID = value;
-			}
-		}
+        {
+            get => m_CustomerID;
+            set => m_CustomerID = value;
+        }
 
-		private string m_CustomerName;
+        private string m_CustomerName;
 		public string CustomerName
-		{
-			get
-			{
-				return m_CustomerName;
-			}
-			set
-			{
-				m_CustomerName = value;
-			}
-		}
+        {
+            get => m_CustomerName;
+            set => m_CustomerName = value;
+        }
 
-		private string m_VendorName;
+        private string m_VendorName;
 		public string VendorName
-		{
-			get
-			{
-				return m_VendorName;
-			}
-			set
-			{
-				m_VendorName = value;
-			}
-		}
+        {
+            get => m_VendorName;
+            set => m_VendorName = value;
+        }
 
-		private string m_ShippingDestinationName;
+        private string m_ShippingDestinationName;
 		public string ShippingDestinationName
-		{
-			get
-			{
-				return m_ShippingDestinationName;
-			}
-			set
-			{
-				m_ShippingDestinationName = value;
-			}
-		}
+        {
+            get => m_ShippingDestinationName;
+            set => m_ShippingDestinationName = value;
+        }
 
-		private string m_TransactionBOL;
+        private string m_TransactionBOL;
 		public string TransactionBOL
-		{
-			get
-			{
-				return m_TransactionBOL;
-			}
-			set
-			{
-				m_TransactionBOL = value;
-			}
-		}
+        {
+            get => m_TransactionBOL;
+            set => m_TransactionBOL = value;
+        }
 
-		private double? m_Received;
+        private double? m_Received;
 		public double? Received
-		{
-			get
-			{
-				return m_Received;
-			}
-			set
-			{
-				m_Received = value;
-			}
-		}
+        {
+            get => m_Received;
+            set => m_Received = value;
+        }
 
-		private double? m_Shipped;
+        private double? m_Shipped;
 		public double? Shipped
-		{
-			get
-			{
-				return m_Shipped;
-			}
-			set
-			{
-				m_Shipped = value;
-			}
-		}
+        {
+            get => m_Shipped;
+            set => m_Shipped = value;
+        }
 
-	}
+    }
 
 }

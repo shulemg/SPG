@@ -11,26 +11,14 @@ namespace DXDAL
             [Size(40)]
             public string tablename
             {
-                get
-                {
-                    return ftablename;
-                }
-                set
-                {
-                    SetPropertyValue<string>("tablename", ref ftablename, value);
-                }
+                get => ftablename;
+                set => SetPropertyValue("tablename", ref ftablename, value);
             }
             private int fid;
             public int id
             {
-                get
-                {
-                    return fid;
-                }
-                set
-                {
-                    SetPropertyValue<int>("id", ref fid, value);
-                }
+                get => fid;
+                set => SetPropertyValue<int>("id", ref fid, value);
             }
             public tblid(Session session) : base(session)
             {

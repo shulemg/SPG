@@ -28,23 +28,11 @@ namespace SuperiorPackGroup
 
 		}
 
-		protected override string DefaultDisplayName
-		{
-			get
-			{
-				return "WorkShift";
-			}
-		}
+        protected override string DefaultDisplayName => "WorkShift";
 
-		protected override string DefaultMenuCaption
-		{
-			get
-			{
-				return "Work Shift";
-			}
-		}
+        protected override string DefaultMenuCaption => "Work Shift";
 
-		public override DateTime Floor(DateTime date)
+        public override DateTime Floor(DateTime date)
 		{
 
 			DateTime result = default(DateTime);

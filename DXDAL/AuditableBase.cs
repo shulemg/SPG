@@ -29,21 +29,15 @@ namespace DXDAL
             public string Value;
         }
 
-        public bool HasChanges
-        {
-            get
-            {
-                return changes.Count > 0;
-            }
-        }
+        public bool HasChanges => changes.Count > 0;
 
         private void UpdateAudit(int recordID)
         {
             if (changes.Count > 0)
             {
-                var audit = new AuditTrail(Session) { ChangeDate =DateTime.Now, RecordType = ClassInfo.ClassType.Name, UserID = Environment.UserName, RecordID = recordID };
+                AuditTrail audit = new AuditTrail(Session) { ChangeDate =DateTime.Now, RecordType = ClassInfo.ClassType.Name, UserID = Environment.UserName, RecordID = recordID };
 
-                foreach (var change in changes)
+                foreach (Change change in changes)
                     audit.RecordChanges += string.Format("{0}:{1}({2});", change.PropertyName, change.PrevValue, change.Value);
                 audit.Save();
             }
@@ -60,7 +54,7 @@ namespace DXDAL
         {
             base.OnChanged(propertyName, oldValue, newValue);
 
-            var change = new Change() { PropertyName = propertyName };
+            Change change = new Change() { PropertyName = propertyName };
             if (oldValue == null)
                 change.PrevValue = "NULL";
             else
@@ -79,7 +73,7 @@ namespace DXDAL
 
             int recordID = System.Convert.ToInt32(GetPropertyValue("Oid"));
 
-            var audit = new AuditTrail(Session) { ChangeDate = DateTime.Now, RecordType = ClassInfo.ClassType.Name, UserID = Environment.UserName, RecordID = recordID, RecordChanges = recordID.ToString() + " was deleted" };
+            AuditTrail audit = new AuditTrail(Session) { ChangeDate = DateTime.Now, RecordType = ClassInfo.ClassType.Name, UserID = Environment.UserName, RecordID = recordID, RecordChanges = recordID.ToString() + " was deleted" };
 
             audit.Save();
         }

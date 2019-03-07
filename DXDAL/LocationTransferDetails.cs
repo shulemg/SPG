@@ -12,120 +12,66 @@ namespace DXDAL
             [Association("Transfer-Details")]
             public LocationTransfers Transfer
             {
-                get
-                {
-                    return fTransfer;
-                }
-                set
-                {
-                    SetPropertyValue<LocationTransfers>("Transfer", ref fTransfer, value);
-                }
+                get => fTransfer;
+                set => SetPropertyValue("Transfer", ref fTransfer, value);
             }
 
             private Items fTransferItem;
             [Association("Transfer-Item")]
             public Items TransferItem
             {
-                get
-                {
-                    return fTransferItem;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("TransferItem", ref fTransferItem, value);
-                }
+                get => fTransferItem;
+                set => SetPropertyValue("TransferItem", ref fTransferItem, value);
             }
 
             private string fTransferlot;
             [Size(150)]
             public string TransferLot
             {
-                get
-                {
-                    return fTransferlot;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Transferlot", ref fTransferlot, value);
-                }
+                get => fTransferlot;
+                set => SetPropertyValue("Transferlot", ref fTransferlot, value);
             }
 
             private int fTransferQuantity;
             public int TransferQuantity
             {
-                get
-                {
-                    return fTransferQuantity;
-                }
-                set
-                {
-                    SetPropertyValue<int>("TransferQuantity", ref fTransferQuantity, value);
-                }
+                get => fTransferQuantity;
+                set => SetPropertyValue<int>("TransferQuantity", ref fTransferQuantity, value);
             }
 
             private int? fTransferUnits;
             public int? TransferUnits
             {
-                get
-                {
-                    return fTransferUnits;
-                }
-                set
-                {
-                    SetPropertyValue<int?>("TransferUnits", ref fTransferUnits, value);
-                }
+                get => fTransferUnits;
+                set => SetPropertyValue("TransferUnits", ref fTransferUnits, value);
             }
 
             private float fTransferPallets;
             public float TransferPallets
             {
-                get
-                {
-                    return fTransferPallets;
-                }
-                set
-                {
-                    SetPropertyValue<float>("TransferPallets", ref fTransferPallets, value);
-                }
+                get => fTransferPallets;
+                set => SetPropertyValue("TransferPallets", ref fTransferPallets, value);
             }
 
             private DateTime fItemExpirationDate;
             public DateTime ItemExpirationDate
             {
-                get
-                {
-                    return fItemExpirationDate;
-                }
-                set
-                {
-                    SetPropertyValue<DateTime>("ItemExpirationDate", ref fItemExpirationDate, value);
-                }
+                get => fItemExpirationDate;
+                set => SetPropertyValue<DateTime>("ItemExpirationDate", ref fItemExpirationDate, value);
             }
 
             private int? fFullLpnNumber;
             public int? FullLpnNumber
             {
-                get
-                {
-                    return fFullLpnNumber;
-                }
-                set
-                {
-                    SetPropertyValue<int?>("FullLpnNumber", ref fFullLpnNumber, value);
-                }
+                get => fFullLpnNumber;
+                set => SetPropertyValue("FullLpnNumber", ref fFullLpnNumber, value);
             }
 
             private string fNote;
             public string Note
             {
-                get
-                {
-                    return fNote;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Note", ref fNote, value);
-                }
+                get => fNote;
+                set => SetPropertyValue("Note", ref fNote, value);
             }
 
             public LocationTransferDetails() : base()
@@ -141,7 +87,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -149,69 +95,15 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public LocationTransfers.FieldsClass Transfer
-                {
-                    get
-                    {
-                        return new LocationTransfers.FieldsClass(GetNestedName("Transfer"));
-                    }
-                }
-                public Items.FieldsClass TransferItem
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("TransferItem"));
-                    }
-                }
-                public OperandProperty TransferLot
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("TransferLot"));
-                    }
-                }
-                public OperandProperty TransferQuantity
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("TransferQuantity"));
-                    }
-                }
-                public OperandProperty TransferUnits
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("TransferUnits"));
-                    }
-                }
-                public OperandProperty TransferPallets
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("TransferPallets"));
-                    }
-                }
-                public OperandProperty ItemExpirationDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ItemExpirationDate"));
-                    }
-                }
-                public OperandProperty FullLpnNumber
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("FullLpnNumber"));
-                    }
-                }
-                public OperandProperty Note
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Note"));
-                    }
-                }
+                public LocationTransfers.FieldsClass Transfer => new LocationTransfers.FieldsClass(GetNestedName("Transfer"));
+                public Items.FieldsClass TransferItem => new Items.FieldsClass(GetNestedName("TransferItem"));
+                public OperandProperty TransferLot => new OperandProperty(GetNestedName("TransferLot"));
+                public OperandProperty TransferQuantity => new OperandProperty(GetNestedName("TransferQuantity"));
+                public OperandProperty TransferUnits => new OperandProperty(GetNestedName("TransferUnits"));
+                public OperandProperty TransferPallets => new OperandProperty(GetNestedName("TransferPallets"));
+                public OperandProperty ItemExpirationDate => new OperandProperty(GetNestedName("ItemExpirationDate"));
+                public OperandProperty FullLpnNumber => new OperandProperty(GetNestedName("FullLpnNumber"));
+                public OperandProperty Note => new OperandProperty(GetNestedName("Note"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

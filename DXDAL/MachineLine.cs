@@ -12,38 +12,20 @@ namespace DXDAL
             [Key(true)]
             public int MachineLineID
             {
-                get
-                {
-                    return fMachineLineID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("MachineLineID", ref fMachineLineID, value);
-                }
+                get => fMachineLineID;
+                set => SetPropertyValue<int>("MachineLineID", ref fMachineLineID, value);
             }
             private string fMachineLineName;
             [Size(50)]
             public string MachineLineName
             {
-                get
-                {
-                    return fMachineLineName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("MachineLineName", ref fMachineLineName, value);
-                }
+                get => fMachineLineName;
+                set => SetPropertyValue("MachineLineName", ref fMachineLineName, value);
             }
 
             [Association("Machine-Items", typeof(ItemMachineStandards))]
             [Aggregated()]
-            public XPCollection<ItemMachineStandards> MachineItems
-            {
-                get
-                {
-                    return GetCollection<ItemMachineStandards>("MachineItems");
-                }
-            }
+            public XPCollection<ItemMachineStandards> MachineItems => GetCollection<ItemMachineStandards>("MachineItems");
             public MachineLine(Session session) : base(session)
             {
             }
@@ -54,7 +36,7 @@ namespace DXDAL
             {
                 base.AfterConstruction();
             }
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -62,34 +44,10 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty fMachineLineID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("fMachineLineID"));
-                    }
-                }
-                public OperandProperty MachineLineID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("MachineLineID"));
-                    }
-                }
-                public OperandProperty fMachineLineName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("fMachineLineName"));
-                    }
-                }
-                public OperandProperty MachineLineName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("MachineLineName"));
-                    }
-                }
+                public OperandProperty fMachineLineID => new OperandProperty(GetNestedName("fMachineLineID"));
+                public OperandProperty MachineLineID => new OperandProperty(GetNestedName("MachineLineID"));
+                public OperandProperty fMachineLineName => new OperandProperty(GetNestedName("fMachineLineName"));
+                public OperandProperty MachineLineName => new OperandProperty(GetNestedName("MachineLineName"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

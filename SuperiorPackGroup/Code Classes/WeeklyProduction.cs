@@ -102,22 +102,10 @@ namespace SuperiorPackGroup
 		public string ProductionWeek {get; set;}
 		public int TotalProduced {get; set;}
 
-		public double PercentageComplete
-		{
-			get
-			{
-				return TotalProduced / (double)RequiredCases;
-			}
-		}
+        public double PercentageComplete => TotalProduced / (double)RequiredCases;
 
-		public int TotalProducedWeek
-		{
-			get
-			{
-				return ProducedMonday + ProducedTuesday + ProducedWednesday + ProducedThursday + ProducedFriday + ProducedSaturday + ProducedSunday;
-			}
-		}
+        public int TotalProducedWeek => ProducedMonday + ProducedTuesday + ProducedWednesday + ProducedThursday + ProducedFriday + ProducedSaturday + ProducedSunday;
 
-	}
+    }
 
 }

@@ -12,27 +12,15 @@ namespace DXDAL
             [Key(true)]
             public int AllergenID
             {
-                get
-                {
-                    return fAllergenID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("AllergenID", ref fAllergenID, value);
-                }
+                get => fAllergenID;
+                set => SetPropertyValue<int>("AllergenID", ref fAllergenID, value);
             }
             private string fAllergenName;
             [Size(50)]
             public string AllergenName
             {
-                get
-                {
-                    return fAllergenName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("AllergenName", ref fAllergenName, value);
-                }
+                get => fAllergenName;
+                set => SetPropertyValue("AllergenName", ref fAllergenName, value);
             }
 
             public Allergen(Session session) : base(session)
@@ -45,7 +33,7 @@ namespace DXDAL
             {
                 base.AfterConstruction();
             }
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -53,20 +41,8 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty AllergenID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("AllergenID"));
-                    }
-                }
-                public OperandProperty AllergenName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("AllergenName"));
-                    }
-                }
+                public OperandProperty AllergenID => new OperandProperty(GetNestedName("AllergenID"));
+                public OperandProperty AllergenName => new OperandProperty(GetNestedName("AllergenName"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

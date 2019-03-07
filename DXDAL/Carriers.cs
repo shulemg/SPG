@@ -13,182 +13,98 @@ namespace DXDAL
             [Key()]
             public int CarrierID
             {
-                get
-                {
-                    return fCarrierID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("CarrierID", ref fCarrierID, value);
-                }
+                get => fCarrierID;
+                set => SetPropertyValue<int>("CarrierID", ref fCarrierID, value);
             }
             private string fCarrierName;
             [Size(50)]
             public string CarrierName
             {
-                get
-                {
-                    return fCarrierName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("CarrierName", ref fCarrierName, value);
-                }
+                get => fCarrierName;
+                set => SetPropertyValue("CarrierName", ref fCarrierName, value);
             }
             private string fContactFirstName;
             [Size(50)]
             public string ContactFirstName
             {
-                get
-                {
-                    return fContactFirstName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("ContactFirstName", ref fContactFirstName, value);
-                }
+                get => fContactFirstName;
+                set => SetPropertyValue("ContactFirstName", ref fContactFirstName, value);
             }
             private string fContactLastName;
             [Size(50)]
             public string ContactLastName
             {
-                get
-                {
-                    return fContactLastName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("ContactLastName", ref fContactLastName, value);
-                }
+                get => fContactLastName;
+                set => SetPropertyValue("ContactLastName", ref fContactLastName, value);
             }
             private string fAddress;
             [Size(150)]
             public string Address
             {
-                get
-                {
-                    return fAddress;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Address", ref fAddress, value);
-                }
+                get => fAddress;
+                set => SetPropertyValue("Address", ref fAddress, value);
             }
             private string fCity;
             [Size(50)]
             public string City
             {
-                get
-                {
-                    return fCity;
-                }
-                set
-                {
-                    SetPropertyValue<string>("City", ref fCity, value);
-                }
+                get => fCity;
+                set => SetPropertyValue("City", ref fCity, value);
             }
             private string fState;
             [Size(50)]
             public string State
             {
-                get
-                {
-                    return fState;
-                }
-                set
-                {
-                    SetPropertyValue<string>("State", ref fState, value);
-                }
+                get => fState;
+                set => SetPropertyValue("State", ref fState, value);
             }
             private string fPostal;
             [Size(50)]
             public string Postal
             {
-                get
-                {
-                    return fPostal;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Postal", ref fPostal, value);
-                }
+                get => fPostal;
+                set => SetPropertyValue("Postal", ref fPostal, value);
             }
             private string fPhone;
             [Size(50)]
             public string Phone
             {
-                get
-                {
-                    return fPhone;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Phone", ref fPhone, value);
-                }
+                get => fPhone;
+                set => SetPropertyValue("Phone", ref fPhone, value);
             }
             private string fEmail;
             [Size(50)]
             public string Email
             {
-                get
-                {
-                    return fEmail;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Email", ref fEmail, value);
-                }
+                get => fEmail;
+                set => SetPropertyValue("Email", ref fEmail, value);
             }
             private string fFax;
             [Size(50)]
             public string Fax
             {
-                get
-                {
-                    return fFax;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Fax", ref fFax, value);
-                }
+                get => fFax;
+                set => SetPropertyValue("Fax", ref fFax, value);
             }
             private string fNote;
             [Size(50)]
             public string Note
             {
-                get
-                {
-                    return fNote;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Note", ref fNote, value);
-                }
+                get => fNote;
+                set => SetPropertyValue("Note", ref fNote, value);
             }
             private string fEnteredBy;
             [Size(50)]
             public string EnteredBy
             {
-                get
-                {
-                    return fEnteredBy;
-                }
-                set
-                {
-                    SetPropertyValue<string>("EnteredBy", ref fEnteredBy, value);
-                }
+                get => fEnteredBy;
+                set => SetPropertyValue("EnteredBy", ref fEnteredBy, value);
             }
             private DateTime fEnteredOn;
             public DateTime EnteredOn
             {
-                get
-                {
-                    return fEnteredOn;
-                }
-                set
-                {
-                    SetPropertyValue<DateTime>("EnteredOn", ref fEnteredOn, value);
-                }
+                get => fEnteredOn;
+                set => SetPropertyValue<DateTime>("EnteredOn", ref fEnteredOn, value);
             }
             public Carriers(Session session) : base(session)
             {
@@ -201,7 +117,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -209,104 +125,20 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty CarrierID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CarrierID"));
-                    }
-                }
-                public OperandProperty CarrierName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CarrierName"));
-                    }
-                }
-                public OperandProperty ContactFirstName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ContactFirstName"));
-                    }
-                }
-                public OperandProperty ContactLastName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ContactLastName"));
-                    }
-                }
-                public OperandProperty Address
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Address"));
-                    }
-                }
-                public OperandProperty City
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("City"));
-                    }
-                }
-                public OperandProperty State
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("State"));
-                    }
-                }
-                public OperandProperty Postal
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Postal"));
-                    }
-                }
-                public OperandProperty Phone
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Phone"));
-                    }
-                }
-                public OperandProperty Email
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Email"));
-                    }
-                }
-                public OperandProperty Fax
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Fax"));
-                    }
-                }
-                public OperandProperty Note
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Note"));
-                    }
-                }
-                public OperandProperty EnteredBy
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("EnteredBy"));
-                    }
-                }
-                public OperandProperty EnteredOn
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("EnteredOn"));
-                    }
-                }
+                public OperandProperty CarrierID => new OperandProperty(GetNestedName("CarrierID"));
+                public OperandProperty CarrierName => new OperandProperty(GetNestedName("CarrierName"));
+                public OperandProperty ContactFirstName => new OperandProperty(GetNestedName("ContactFirstName"));
+                public OperandProperty ContactLastName => new OperandProperty(GetNestedName("ContactLastName"));
+                public OperandProperty Address => new OperandProperty(GetNestedName("Address"));
+                public OperandProperty City => new OperandProperty(GetNestedName("City"));
+                public OperandProperty State => new OperandProperty(GetNestedName("State"));
+                public OperandProperty Postal => new OperandProperty(GetNestedName("Postal"));
+                public OperandProperty Phone => new OperandProperty(GetNestedName("Phone"));
+                public OperandProperty Email => new OperandProperty(GetNestedName("Email"));
+                public OperandProperty Fax => new OperandProperty(GetNestedName("Fax"));
+                public OperandProperty Note => new OperandProperty(GetNestedName("Note"));
+                public OperandProperty EnteredBy => new OperandProperty(GetNestedName("EnteredBy"));
+                public OperandProperty EnteredOn => new OperandProperty(GetNestedName("EnteredOn"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

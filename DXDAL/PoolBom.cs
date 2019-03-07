@@ -10,51 +10,27 @@ namespace DXDAL
             private ItemPool fItemPoolId;
             public ItemPool ItemPoolID
             {
-                get
-                {
-                    return fItemPoolId;
-                }
-                set
-                {
-                    SetPropertyValue<ItemPool>("ItemPoolID", ref fItemPoolId, value);
-                }
+                get => fItemPoolId;
+                set => SetPropertyValue("ItemPoolID", ref fItemPoolId, value);
             }
             private Items fPoolBomFiniGoodID;
             [Association("Item-PoolBom")]
             public Items PoolBomFiniGoodID
             {
-                get
-                {
-                    return fPoolBomFiniGoodID;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("PoolBomFiniGoodID", ref fPoolBomFiniGoodID, value);
-                }
+                get => fPoolBomFiniGoodID;
+                set => SetPropertyValue("PoolBomFiniGoodID", ref fPoolBomFiniGoodID, value);
             }
             private float fPoolBomQuantity;
             public float PoolBomQuantity
             {
-                get
-                {
-                    return fPoolBomQuantity;
-                }
-                set
-                {
-                    SetPropertyValue<float>("PoolBomQuantity", ref fPoolBomQuantity, value);
-                }
+                get => fPoolBomQuantity;
+                set => SetPropertyValue("PoolBomQuantity", ref fPoolBomQuantity, value);
             }
             private double fScrapFactor;
             public double ScrapFactor
             {
-                get
-                {
-                    return fScrapFactor;
-                }
-                set
-                {
-                    SetPropertyValue<double>("ScrapFactor", ref fScrapFactor, value);
-                }
+                get => fScrapFactor;
+                set => SetPropertyValue("ScrapFactor", ref fScrapFactor, value);
             }
 
             public PoolBom() : base()
@@ -81,7 +57,7 @@ namespace DXDAL
                 }
             }
 
-            public new class FieldsClass : DevExpress.Xpo.XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -90,34 +66,10 @@ namespace DXDAL
                 {
                 }
 
-                public ItemPool.FieldsClass ItemPoolID
-                {
-                    get
-                    {
-                        return new ItemPool.FieldsClass(GetNestedName("ItemPoolID"));
-                    }
-                }
-                public Items.FieldsClass PoolBomFiniGoodID
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("PoolBomFiniGoodID"));
-                    }
-                }
-                public OperandProperty PoolBomQuantity
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PoolBomQuantity"));
-                    }
-                }
-                public OperandProperty ScrapFactor
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ScrapFactor"));
-                    }
-                }
+                public ItemPool.FieldsClass ItemPoolID => new ItemPool.FieldsClass(GetNestedName("ItemPoolID"));
+                public Items.FieldsClass PoolBomFiniGoodID => new Items.FieldsClass(GetNestedName("PoolBomFiniGoodID"));
+                public OperandProperty PoolBomQuantity => new OperandProperty(GetNestedName("PoolBomQuantity"));
+                public OperandProperty ScrapFactor => new OperandProperty(GetNestedName("ScrapFactor"));
             }
         }
     }

@@ -13,13 +13,7 @@ namespace DXDAL
             public ProjectDetails ProjectDetail { get; set; }
             [Association("MO-MachineLines", typeof(MoMachineLine))]
             [Aggregated]
-            public XPCollection<MoMachineLine> MoMachineLines
-            {
-                get
-                {
-                    return GetCollection<MoMachineLine>("MoMachineLines");
-                }
-            }
+            public XPCollection<MoMachineLine> MoMachineLines => GetCollection<MoMachineLine>("MoMachineLines");
             public MOStatus Status { get; set; }
             public DateTime? ScheduledStartDateTime { get; set; }
 
@@ -44,34 +38,10 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public ProjectDetails.FieldsClass ProjectDetail
-                {
-                    get
-                    {
-                        return new ProjectDetails.FieldsClass(GetNestedName("ProjectDetail"));
-                    }
-                }
-                public OperandProperty Status
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Status"));
-                    }
-                }
-                public OperandProperty ScheduledStartDateTime
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ScheduledStartDateTime"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public ProjectDetails.FieldsClass ProjectDetail => new ProjectDetails.FieldsClass(GetNestedName("ProjectDetail"));
+                public OperandProperty Status => new OperandProperty(GetNestedName("Status"));
+                public OperandProperty ScheduledStartDateTime => new OperandProperty(GetNestedName("ScheduledStartDateTime"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

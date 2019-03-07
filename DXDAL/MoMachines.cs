@@ -30,41 +30,11 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public MO.FieldsClass Mo
-                {
-                    get
-                    {
-                        return new MO.FieldsClass(GetNestedName("Mo"));
-                    }
-                }
-                public MachineLine.FieldsClass MachineLine
-                {
-                    get
-                    {
-                        return new MachineLine.FieldsClass(GetNestedName("MachineLine"));
-                    }
-                }
-                public OperandProperty StartTime
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("StartTime"));
-                    }
-                }
-                public OperandProperty EndTime
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("EndTime"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public MO.FieldsClass Mo => new MO.FieldsClass(GetNestedName("Mo"));
+                public MachineLine.FieldsClass MachineLine => new MachineLine.FieldsClass(GetNestedName("MachineLine"));
+                public OperandProperty StartTime => new OperandProperty(GetNestedName("StartTime"));
+                public OperandProperty EndTime => new OperandProperty(GetNestedName("EndTime"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

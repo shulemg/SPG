@@ -9,51 +9,27 @@ namespace DXDAL
             private Items fRawMatID;
             public Items RawMatID
             {
-                get
-                {
-                    return fRawMatID;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("RawMatID", ref fRawMatID, value);
-                }
+                get => fRawMatID;
+                set => SetPropertyValue("RawMatID", ref fRawMatID, value);
             }
             private Inventory fInventoryID;
             [Association("Inventory-Consumption")]
             public Inventory InventoryID
             {
-                get
-                {
-                    return fInventoryID;
-                }
-                set
-                {
-                    SetPropertyValue<Inventory>("InventoryID", ref fInventoryID, value);
-                }
+                get => fInventoryID;
+                set => SetPropertyValue("InventoryID", ref fInventoryID, value);
             }
             private float fQuantityUsed;
             public float QuantityUsed
             {
-                get
-                {
-                    return fQuantityUsed;
-                }
-                set
-                {
-                    SetPropertyValue<float>("QuantityUsed", ref fQuantityUsed, value);
-                }
+                get => fQuantityUsed;
+                set => SetPropertyValue("QuantityUsed", ref fQuantityUsed, value);
             }
             private double fScrapFactorUsed;
             public double ScrapFactorUsed
             {
-                get
-                {
-                    return fScrapFactorUsed;
-                }
-                set
-                {
-                    SetPropertyValue<double>("ScrapFactorUsed", ref fScrapFactorUsed, value);
-                }
+                get => fScrapFactorUsed;
+                set => SetPropertyValue("ScrapFactorUsed", ref fScrapFactorUsed, value);
             }
 
             public BomConsumption() : base()
@@ -69,7 +45,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -77,34 +53,10 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public Items.FieldsClass RawMatID
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("RawMatID"));
-                    }
-                }
-                public Inventory.FieldsClass InventoryID
-                {
-                    get
-                    {
-                        return new Inventory.FieldsClass(GetNestedName("InventoryID"));
-                    }
-                }
-                public DevExpress.Data.Filtering.OperandProperty QuantityUsed
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("QuantityUsed"));
-                    }
-                }
-                public DevExpress.Data.Filtering.OperandProperty ScrapFactorUsed
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ScrapFactorUsed"));
-                    }
-                }
+                public Items.FieldsClass RawMatID => new Items.FieldsClass(GetNestedName("RawMatID"));
+                public Inventory.FieldsClass InventoryID => new Inventory.FieldsClass(GetNestedName("InventoryID"));
+                public DevExpress.Data.Filtering.OperandProperty QuantityUsed => new DevExpress.Data.Filtering.OperandProperty(GetNestedName("QuantityUsed"));
+                public DevExpress.Data.Filtering.OperandProperty ScrapFactorUsed => new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ScrapFactorUsed"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

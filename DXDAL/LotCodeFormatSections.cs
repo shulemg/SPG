@@ -11,78 +11,42 @@ namespace DXDAL
             [Association("Format-Sections")]
             public LotCodeFormats LotCodeFormat
             {
-                get
-                {
-                    return fLotCodeFormat;
-                }
-                set
-                {
-                    SetPropertyValue("LotCodeFormat", ref fLotCodeFormat, value);
-                }
+                get => fLotCodeFormat;
+                set => SetPropertyValue("LotCodeFormat", ref fLotCodeFormat, value);
             }
 
             private string fSectionName;
             [Size(50)]
             public string SectionName
             {
-                get
-                {
-                    return fSectionName;
-                }
-                set
-                {
-                    SetPropertyValue("SectionName", ref fSectionName, value);
-                }
+                get => fSectionName;
+                set => SetPropertyValue("SectionName", ref fSectionName, value);
             }
 
             private LotCodeSectionType fSectionType;
             public LotCodeSectionType SectionType
             {
-                get
-                {
-                    return fSectionType;
-                }
-                set
-                {
-                    SetPropertyValue("SectionType", ref fSectionType, value);
-                }
+                get => fSectionType;
+                set => SetPropertyValue("SectionType", ref fSectionType, value);
             }
 
             private int fSectionLength;
             public int SectionLength
             {
-                get
-                {
-                    return fSectionLength;
-                }
-                set
-                {
-                    SetPropertyValue<int>("SectionLength", ref fSectionLength, value);
-                }
+                get => fSectionLength;
+                set => SetPropertyValue<int>("SectionLength", ref fSectionLength, value);
             }
 
             private int fSectionPosition;
             public int SectionPosition
             {
-                get
-                {
-                    return fSectionPosition;
-                }
-                set
-                {
-                    SetPropertyValue<int>("SectionPosition", ref fSectionPosition, value);
-                }
+                get => fSectionPosition;
+                set => SetPropertyValue<int>("SectionPosition", ref fSectionPosition, value);
             }
 
             [Association("Section-Settings", typeof(LotCodeSectionSettings))]
             [Aggregated()]
-            public XPCollection<LotCodeSectionSettings> SectionSettings
-            {
-                get
-                {
-                    return GetCollection<LotCodeSectionSettings>("SectionSettings");
-                }
-            }
+            public XPCollection<LotCodeSectionSettings> SectionSettings => GetCollection<LotCodeSectionSettings>("SectionSettings");
             public LotCodeFormatSections() : base()
             {
             }
@@ -96,7 +60,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -104,48 +68,12 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public LotCodeFormats.FieldsClass LotCodeFormat
-                {
-                    get
-                    {
-                        return new LotCodeFormats.FieldsClass(GetNestedName("LotCodeFormat"));
-                    }
-                }
-                public OperandProperty SectionName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("SectionName"));
-                    }
-                }
-                public OperandProperty SectionType
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("SectionType"));
-                    }
-                }
-                public OperandProperty SectionLength
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("SectionLength"));
-                    }
-                }
-                public OperandProperty SectionPosition
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("SectionPosition"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public LotCodeFormats.FieldsClass LotCodeFormat => new LotCodeFormats.FieldsClass(GetNestedName("LotCodeFormat"));
+                public OperandProperty SectionName => new OperandProperty(GetNestedName("SectionName"));
+                public OperandProperty SectionType => new OperandProperty(GetNestedName("SectionType"));
+                public OperandProperty SectionLength => new OperandProperty(GetNestedName("SectionLength"));
+                public OperandProperty SectionPosition => new OperandProperty(GetNestedName("SectionPosition"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

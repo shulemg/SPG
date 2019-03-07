@@ -11,55 +11,31 @@ namespace DXDAL
             [Association("Customer-Plants")]
             public Customers Customer
             {
-                get
-                {
-                    return fCustomer;
-                }
-                set
-                {
-                    SetPropertyValue("Customer", ref fCustomer, value);
-                }
+                get => fCustomer;
+                set => SetPropertyValue("Customer", ref fCustomer, value);
             }
 
             private string fPlantName;
             [Size(150)]
             public string PlantName
             {
-                get
-                {
-                    return fPlantName;
-                }
-                set
-                {
-                    SetPropertyValue("PlantName", ref fPlantName, value);
-                }
+                get => fPlantName;
+                set => SetPropertyValue("PlantName", ref fPlantName, value);
             }
 
             private string fPlantCode;
             [Size(10)]
             public string PlantCode
             {
-                get
-                {
-                    return fPlantCode;
-                }
-                set
-                {
-                    SetPropertyValue("PlantCode", ref fPlantCode, value);
-                }
+                get => fPlantCode;
+                set => SetPropertyValue("PlantCode", ref fPlantCode, value);
             }
 
             private Locations fSPGLocation;
             public Locations SPGLocation
             {
-                get
-                {
-                    return fSPGLocation;
-                }
-                set
-                {
-                    SetPropertyValue("SPGLocation", ref fSPGLocation, value);
-                }
+                get => fSPGLocation;
+                set => SetPropertyValue("SPGLocation", ref fSPGLocation, value);
             }
 
             public CustomerPlants() : base()
@@ -75,7 +51,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -83,41 +59,11 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public Customers.FieldsClass Customer
-                {
-                    get
-                    {
-                        return new Customers.FieldsClass(GetNestedName("Customer"));
-                    }
-                }
-                public OperandProperty PlantName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PlantName"));
-                    }
-                }
-                public OperandProperty PlantCode
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PlantCode"));
-                    }
-                }
-                public Locations.FieldsClass SPGLocation
-                {
-                    get
-                    {
-                        return new Locations.FieldsClass(GetNestedName("SPGLocation"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public Customers.FieldsClass Customer => new Customers.FieldsClass(GetNestedName("Customer"));
+                public OperandProperty PlantName => new OperandProperty(GetNestedName("PlantName"));
+                public OperandProperty PlantCode => new OperandProperty(GetNestedName("PlantCode"));
+                public Locations.FieldsClass SPGLocation => new Locations.FieldsClass(GetNestedName("SPGLocation"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

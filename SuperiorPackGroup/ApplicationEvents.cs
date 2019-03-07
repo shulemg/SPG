@@ -59,15 +59,9 @@ namespace SuperiorPackGroup
 
 
 			private static MyApplication MyApp;
-			internal static MyApplication Application
-			{
-				get
-				{
-					return MyApp;
-				}
-			}
+            internal static MyApplication Application => MyApp;
 
-			[STAThread]
+            [STAThread]
 			static void Main(string[] args)
 			{
 				MyApp = new MyApplication();

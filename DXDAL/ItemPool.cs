@@ -17,72 +17,36 @@ namespace DXDAL
             [Size(50)]
             public string PoolCode
             {
-                get
-                {
-                    return _poolCode;
-                }
-                set
-                {
-                    SetPropertyValue<string>("PoolCode", ref _poolCode, value);
-                }
+                get => _poolCode;
+                set => SetPropertyValue("PoolCode", ref _poolCode, value);
             }
 
             [Size(1073741823)]
             public string PoolDescription
             {
-                get
-                {
-                    return _poolDescription;
-                }
-                set
-                {
-                    SetPropertyValue<string>("PoolDescription", ref _poolDescription, value);
-                }
+                get => _poolDescription;
+                set => SetPropertyValue("PoolDescription", ref _poolDescription, value);
             }
 
             [Size(50)]
             public string PoolType
             {
-                get
-                {
-                    return _poolType;
-                }
-                set
-                {
-                    SetPropertyValue<string>("PoolType", ref _poolType, value);
-                }
+                get => _poolType;
+                set => SetPropertyValue("PoolType", ref _poolType, value);
             }
 
             public Customers PoolCustomerID
             {
-                get
-                {
-                    return _poolCustomerID;
-                }
-                set
-                {
-                    SetPropertyValue<Customers>("PoolCustomerID", ref _poolCustomerID, value);
-                }
+                get => _poolCustomerID;
+                set => SetPropertyValue("PoolCustomerID", ref _poolCustomerID, value);
             }
 
             [Association("ItemPool-Details", typeof(ItemPoolDetails))]
             [Aggregated()]
-            public XPCollection<ItemPoolDetails> Details
-            {
-                get
-                {
-                    return GetCollection<ItemPoolDetails>("Details");
-                }
-            }
+            public XPCollection<ItemPoolDetails> Details => GetCollection<ItemPoolDetails>("Details");
 
             [PersistentAlias("Details.Sum(QuantityOnHand)")]
-            public double QuantityOnHand
-            {
-                get
-                {
-                    return Convert.ToDouble(EvaluateAlias("QuantityOnHand"));
-                }
-            }
+            public double QuantityOnHand => Convert.ToDouble(EvaluateAlias("QuantityOnHand"));
 
             public ItemPool() : base()
             {
@@ -97,7 +61,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -105,34 +69,10 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty PoolCode
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PoolCode"));
-                    }
-                }
-                public OperandProperty PoolDescription
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PoolDescription"));
-                    }
-                }
-                public OperandProperty PoolType
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PoolType"));
-                    }
-                }
-                public Customers.FieldsClass PoolCustomerID
-                {
-                    get
-                    {
-                        return new Customers.FieldsClass(GetNestedName("PoolCustomerID"));
-                    }
-                }
+                public OperandProperty PoolCode => new OperandProperty(GetNestedName("PoolCode"));
+                public OperandProperty PoolDescription => new OperandProperty(GetNestedName("PoolDescription"));
+                public OperandProperty PoolType => new OperandProperty(GetNestedName("PoolType"));
+                public Customers.FieldsClass PoolCustomerID => new Customers.FieldsClass(GetNestedName("PoolCustomerID"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

@@ -11,55 +11,31 @@ namespace DXDAL
             [Association("Customer-Shifts")]
             public Customers Customer
             {
-                get
-                {
-                    return fCustomer;
-                }
-                set
-                {
-                    SetPropertyValue("Customer", ref fCustomer, value);
-                }
+                get => fCustomer;
+                set => SetPropertyValue("Customer", ref fCustomer, value);
             }
 
             private string fShiftName;
             [Size(150)]
             public string ShiftName
             {
-                get
-                {
-                    return fShiftName;
-                }
-                set
-                {
-                    SetPropertyValue("ShiftName", ref fShiftName, value);
-                }
+                get => fShiftName;
+                set => SetPropertyValue("ShiftName", ref fShiftName, value);
             }
 
             private string fShiftCode;
             [Size(10)]
             public string ShiftCode
             {
-                get
-                {
-                    return fShiftCode;
-                }
-                set
-                {
-                    SetPropertyValue("ShiftCode", ref fShiftCode, value);
-                }
+                get => fShiftCode;
+                set => SetPropertyValue("ShiftCode", ref fShiftCode, value);
             }
 
             private Shifts fSPGShift;
             public Shifts SPGShift
             {
-                get
-                {
-                    return fSPGShift;
-                }
-                set
-                {
-                    SetPropertyValue("SPGShift", ref fSPGShift, value);
-                }
+                get => fSPGShift;
+                set => SetPropertyValue("SPGShift", ref fSPGShift, value);
             }
 
             public CustomerShifts() : base()
@@ -75,7 +51,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -83,41 +59,11 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public Customers.FieldsClass Customer
-                {
-                    get
-                    {
-                        return new Customers.FieldsClass(GetNestedName("Customer"));
-                    }
-                }
-                public OperandProperty ShiftName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ShiftName"));
-                    }
-                }
-                public OperandProperty ShiftCode
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ShiftCode"));
-                    }
-                }
-                public Shifts.FieldsClass SPGShift
-                {
-                    get
-                    {
-                        return new Shifts.FieldsClass(GetNestedName("SPGShift"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public Customers.FieldsClass Customer => new Customers.FieldsClass(GetNestedName("Customer"));
+                public OperandProperty ShiftName => new OperandProperty(GetNestedName("ShiftName"));
+                public OperandProperty ShiftCode => new OperandProperty(GetNestedName("ShiftCode"));
+                public Shifts.FieldsClass SPGShift => new Shifts.FieldsClass(GetNestedName("SPGShift"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

@@ -13,100 +13,52 @@ namespace DXDAL
             [Key(true)]
             public int ReceivDetID
             {
-                get
-                {
-                    return fReceivDetID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("ReceivDetID", ref fReceivDetID, value);
-                }
+                get => fReceivDetID;
+                set => SetPropertyValue<int>("ReceivDetID", ref fReceivDetID, value);
             }
             private Receiving fReceivMainID;
             [Association("Receiving-Details")]
             public Receiving ReceivMainID
             {
-                get
-                {
-                    return fReceivMainID;
-                }
-                set
-                {
-                    SetPropertyValue("ReceivMainID", ref fReceivMainID, value);
-                }
+                get => fReceivMainID;
+                set => SetPropertyValue("ReceivMainID", ref fReceivMainID, value);
             }
             private Items fReceivDetItemID;
             public Items ReceivDetItemID
             {
-                get
-                {
-                    return fReceivDetItemID;
-                }
-                set
-                {
-                    SetPropertyValue("ReceivDetItemID", ref fReceivDetItemID, value);
-                }
+                get => fReceivDetItemID;
+                set => SetPropertyValue("ReceivDetItemID", ref fReceivDetItemID, value);
             }
             private string fReceivDetLot;
             [Size(150)]
             public string ReceivDetLot
             {
-                get
-                {
-                    return fReceivDetLot;
-                }
-                set
-                {
-                    SetPropertyValue("ReceivDetLot", ref fReceivDetLot, value);
-                }
+                get => fReceivDetLot;
+                set => SetPropertyValue("ReceivDetLot", ref fReceivDetLot, value);
             }
             private int? fReceivDetLPN;
             public int? ReceivDetLPN
             {
-                get
-                {
-                    return fReceivDetLPN;
-                }
-                set
-                {
-                    SetPropertyValue("ReceivDetLPN", ref fReceivDetLPN, value);
-                }
+                get => fReceivDetLPN;
+                set => SetPropertyValue("ReceivDetLPN", ref fReceivDetLPN, value);
             }
             private int fReceivDetQty;
             public int ReceivDetQty
             {
-                get
-                {
-                    return fReceivDetQty;
-                }
-                set
-                {
-                    SetPropertyValue<int>("ReceivDetQty", ref fReceivDetQty, value);
-                }
+                get => fReceivDetQty;
+                set => SetPropertyValue<int>("ReceivDetQty", ref fReceivDetQty, value);
             }
             private int fintUnits;
             public int intUnits
             {
-                get
-                {
-                    return fintUnits;
-                }
-                set
-                {
-                    SetPropertyValue<int>("intUnits", ref fintUnits, value);
-                }
+                get => fintUnits;
+                set => SetPropertyValue<int>("intUnits", ref fintUnits, value);
             }
             private DateTime? fExpirationDate;
             public DateTime? ExpirationDate
             {
-                get
-                {
-                    return fExpirationDate;
-                }
-                set
-                {
-                    SetPropertyValue<DateTime?>("ExpirationDate", ref fExpirationDate, value);
-                }
+                get => fExpirationDate;
+                set => SetPropertyValue("ExpirationDate", ref fExpirationDate, value);
             }
 
             public ReceivingDetail(Session session) : base(session)
@@ -128,64 +80,16 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty ReceivDetID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ReceivDetID"));
-                    }
-                }
-                public Receiving.FieldsClass ReceivMainID
-                {
-                    get
-                    {
-                        return new Receiving.FieldsClass(GetNestedName("ReceivMainID"));
-                    }
-                }
-                public Items.FieldsClass ReceivDetItemID
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("ReceivDetItemID"));
-                    }
-                }
+                public OperandProperty ReceivDetID => new OperandProperty(GetNestedName("ReceivDetID"));
+                public Receiving.FieldsClass ReceivMainID => new Receiving.FieldsClass(GetNestedName("ReceivMainID"));
+                public Items.FieldsClass ReceivDetItemID => new Items.FieldsClass(GetNestedName("ReceivDetItemID"));
                 public const string ReceivDetLotFieldName = "ReceivDetLot";
-                public OperandProperty ReceivDetLot
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ReceivDetLot"));
-                    }
-                }
-                public OperandProperty ReceivDetLPN
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ReceivDetLPN"));
-                    }
-                }
-                public OperandProperty ReceivDetQty
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ReceivDetQty"));
-                    }
-                }
-                public OperandProperty intUnits
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("intUnits"));
-                    }
-                }
+                public OperandProperty ReceivDetLot => new OperandProperty(GetNestedName("ReceivDetLot"));
+                public OperandProperty ReceivDetLPN => new OperandProperty(GetNestedName("ReceivDetLPN"));
+                public OperandProperty ReceivDetQty => new OperandProperty(GetNestedName("ReceivDetQty"));
+                public OperandProperty intUnits => new OperandProperty(GetNestedName("intUnits"));
                 public const string ExpirationDateFieldName = "ExpirationDate";
-                public OperandProperty ExpirationDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ExpirationDate"));
-                    }
-                }
+                public OperandProperty ExpirationDate => new OperandProperty(GetNestedName("ExpirationDate"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

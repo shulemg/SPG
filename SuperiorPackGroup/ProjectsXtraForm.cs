@@ -571,7 +571,7 @@ namespace SuperiorPackGroup
 
             if (m_CurrentProject != null)
             {
-                var form = new QuickReportsXtraForm();
+                QuickReportsXtraForm form = new QuickReportsXtraForm();
                 form.MdiParent = MdiParent;
                 form.Show();
                 form.SelectWeeklyScheduleReport(m_CurrentProject, "");
@@ -590,7 +590,7 @@ namespace SuperiorPackGroup
             if (m_CurrentProject != null)
             {
 
-                var form = new QuickReportsXtraForm();
+                QuickReportsXtraForm form = new QuickReportsXtraForm();
                 form.MdiParent = MdiParent;
                 form.Show();
                 form.SelectProjectBomAvailabilityReport(m_CurrentProject);

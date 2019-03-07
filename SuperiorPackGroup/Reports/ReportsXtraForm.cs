@@ -4683,18 +4683,12 @@ namespace SuperiorPackGroup
 
 		private bool m_OnlyAssigned;
 		public bool OnlyAssigned
-		{
-			get
-			{
-				return m_OnlyAssigned;
-			}
-			set
-			{
-				m_OnlyAssigned = value;
-			}
-		}
+        {
+            get => m_OnlyAssigned;
+            set => m_OnlyAssigned = value;
+        }
 
-		private void BindReport()
+        private void BindReport()
 		{
 
 			switch (m_SelectedReport)
@@ -5187,25 +5181,22 @@ namespace SuperiorPackGroup
 
 		private string m_ReportTitle;
 		public string ReportTitle
-		{
-			get
-			{
-				if (m_ReportTitle == "Physical Inventory Worksheet" || m_ReportTitle == "Items List")
-				{
-					return m_ReportTitle;
-				}
-				else
-				{
-					return string.Format("{0} Report", m_ReportTitle);
-				}
-			}
-			set
-			{
-				m_ReportTitle = value;
-			}
-		}
+        {
+            get
+            {
+                if (m_ReportTitle == "Physical Inventory Worksheet" || m_ReportTitle == "Items List")
+                {
+                    return m_ReportTitle;
+                }
+                else
+                {
+                    return string.Format("{0} Report", m_ReportTitle);
+                }
+            }
+            set => m_ReportTitle = value;
+        }
 
-		private void ReportsXtraForm_Load(object sender, EventArgs e)
+        private void ReportsXtraForm_Load(object sender, EventArgs e)
 		{
 
 			this.reportColumnsXtraTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;

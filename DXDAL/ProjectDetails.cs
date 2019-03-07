@@ -25,171 +25,75 @@ namespace DXDAL
             [Association("Project-Details")]
             public Project Project
             {
-                get
-                {
-                    return _project;
-                }
-                set
-                {
-                    SetPropertyValue("Project", ref _project, value);
-                }
+                get => _project;
+                set => SetPropertyValue("Project", ref _project, value);
             }
 
             public string CustomerPO
             {
-                get
-                {
-                    return _customerPO;
-                }
-                set
-                {
-                    SetPropertyValue("CustomerPO", ref _customerPO, value);
-                }
+                get => _customerPO;
+                set => SetPropertyValue("CustomerPO", ref _customerPO, value);
             }
 
             public Items ProjectItem
             {
-                get
-                {
-                    return _projectItem;
-                }
-                set
-                {
-                    SetPropertyValue("ProjectItem", ref _projectItem, value);
-                }
+                get => _projectItem;
+                set => SetPropertyValue("ProjectItem", ref _projectItem, value);
             }
 
             public int UnitsRequested
             {
-                get
-                {
-                    return _unitsRequested;
-                }
-                set
-                {
-                    SetPropertyValue<int>("UnitsRequested", ref _unitsRequested, value);
-                }
+                get => _unitsRequested;
+                set => SetPropertyValue<int>("UnitsRequested", ref _unitsRequested, value);
             }
 
             public int BagsRequested
             {
-                get
-                {
-                    return _bagsRequested;
-                }
-                set
-                {
-                    SetPropertyValue<int>("BagsRequested", ref _bagsRequested, value);
-                }
+                get => _bagsRequested;
+                set => SetPropertyValue<int>("BagsRequested", ref _bagsRequested, value);
             }
 
             public int PalletsRequested
             {
-                get
-                {
-                    return _palletsRequested;
-                }
-                set
-                {
-                    SetPropertyValue<int>("PalletsRequested", ref _palletsRequested, value);
-                }
+                get => _palletsRequested;
+                set => SetPropertyValue<int>("PalletsRequested", ref _palletsRequested, value);
             }
 
             public bool AllowOverrun
             {
-                get
-                {
-                    return _allowOverrun;
-                }
-                set
-                {
-                    SetPropertyValue("AllowOverrun", ref _allowOverrun, value);
-                }
+                get => _allowOverrun;
+                set => SetPropertyValue("AllowOverrun", ref _allowOverrun, value);
             }
 
             [Association("MO-ProjectDetail", typeof(MO))]
             [Aggregated()]
-            public XPCollection<MO> ProjectMO
-            {
-                get
-                {
-                    return GetCollection<MO>("ProjectMO");
-                }
-            }
+            public XPCollection<MO> ProjectMO => GetCollection<MO>("ProjectMO");
 
             [Association("Production-ProjectDetail", typeof(ProductionProjectDetails))]
             [Aggregated()]
-            public XPCollection<ProductionProjectDetails> ProjectProduction
-            {
-                get
-                {
-                    return GetCollection<ProductionProjectDetails>("ProjectProduction");
-                }
-            }
+            public XPCollection<ProductionProjectDetails> ProjectProduction => GetCollection<ProductionProjectDetails>("ProjectProduction");
 
             [Association("Project-ProductionSchedule", typeof(ProductionSchedule))]
             [Aggregated()]
-            public XPCollection<ProductionSchedule> ProjectProductionSchedule
-            {
-                get
-                {
-                    return GetCollection<ProductionSchedule>("ProjectProductionSchedule");
-                }
-            }
+            public XPCollection<ProductionSchedule> ProjectProductionSchedule => GetCollection<ProductionSchedule>("ProjectProductionSchedule");
 
             [PersistentAlias("IsNull(ProjectProduction.Sum(UnitsProduced), 0)")]
-            public int UnitsProduced
-            {
-                get
-                {
-                    return Convert.ToInt32(EvaluateAlias("UnitsProduced"));
-                }
-            }
+            public int UnitsProduced => Convert.ToInt32(EvaluateAlias("UnitsProduced"));
 
             [PersistentAlias("IsNull(ProjectProductionSchedule.Sum(Quantity), 0)")]
-            public int UnitsScheduled
-            {
-                get
-                {
-                    return Convert.ToInt32(EvaluateAlias("UnitsScheduled"));
-                }
-            }
+            public int UnitsScheduled => Convert.ToInt32(EvaluateAlias("UnitsScheduled"));
 
             // used to identify if there's still units needed to produce
-            public int UnitsNeeded
-            {
-                get
-                {
-                    return Math.Max(UnitsRequested - UnitsProduced, 0);
-                }
-            }
+            public int UnitsNeeded => Math.Max(UnitsRequested - UnitsProduced, 0);
 
             // Used to identify if there's still units needed to be scheduled
-            public int UnitsNeededToSchedule
-            {
-                get
-                {
-                    return Math.Max(UnitsRequested - Math.Max(UnitsProduced, UnitsScheduled), 0);
-                }
-            }
+            public int UnitsNeededToSchedule => Math.Max(UnitsRequested - Math.Max(UnitsProduced, UnitsScheduled), 0);
 
             [PersistentAlias("ProjectProduction.Sum(BagsProduced)")]
-            public int BagsProduced
-            {
-                get
-                {
-                    return Convert.ToInt32(EvaluateAlias("BagsProduced"));
-                }
-            }
+            public int BagsProduced => Convert.ToInt32(EvaluateAlias("BagsProduced"));
 
             [PersistentAlias("ProjectProduction.Sum(PalletsProduced)")]
-            public int PalletsProduced
-            {
-                get
-                {
-                    return Convert.ToInt32(EvaluateAlias("PalletsProduced"));
-                }
-            }
+            public int PalletsProduced => Convert.ToInt32(EvaluateAlias("PalletsProduced"));
 
             public double PercentageComplete
             {
@@ -202,13 +106,7 @@ namespace DXDAL
                 }
             }
 
-            public double RemainingBalance
-            {
-                get
-                {
-                    return UnitsRequested - UnitsProduced;
-                }
-            }
+            public double RemainingBalance => UnitsRequested - UnitsProduced;
 
             public double? EstimatedShifts
             {
@@ -242,111 +140,21 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public Project.FieldsClass Project
-                {
-                    get
-                    {
-                        return new Project.FieldsClass(GetNestedName("Project"));
-                    }
-                }
-                public OperandProperty CustomerPO
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CustomerPO"));
-                    }
-                }
-                public Items.FieldsClass ProjectItem
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("ProjectItem"));
-                    }
-                }
-                public OperandProperty UnitsRequested
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("UnitsRequested"));
-                    }
-                }
-                public OperandProperty BagsRequested
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("BagsRequested"));
-                    }
-                }
-                public OperandProperty PalletsRequested
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PalletsRequested"));
-                    }
-                }
-                public OperandProperty UnitsProduced
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("UnitsProduced"));
-                    }
-                }
-                public OperandProperty BagsProduced
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("BagsProduced"));
-                    }
-                }
-                public OperandProperty PalletsProduced
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PalletsProduced"));
-                    }
-                }
-                public OperandProperty PercentageComplete
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PercentageComplete"));
-                    }
-                }
-                public OperandProperty AllowOverrun
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("AllowOverrun"));
-                    }
-                }
-                public OperandProperty EstimatedShifts
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("EstimatedShifts"));
-                    }
-                }
-                public OperandProperty UnitsScheduled
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("UnitsScheduled"));
-                    }
-                }
-                public OperandProperty UnitsNeeded
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("UnitsNeeded"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public Project.FieldsClass Project => new Project.FieldsClass(GetNestedName("Project"));
+                public OperandProperty CustomerPO => new OperandProperty(GetNestedName("CustomerPO"));
+                public Items.FieldsClass ProjectItem => new Items.FieldsClass(GetNestedName("ProjectItem"));
+                public OperandProperty UnitsRequested => new OperandProperty(GetNestedName("UnitsRequested"));
+                public OperandProperty BagsRequested => new OperandProperty(GetNestedName("BagsRequested"));
+                public OperandProperty PalletsRequested => new OperandProperty(GetNestedName("PalletsRequested"));
+                public OperandProperty UnitsProduced => new OperandProperty(GetNestedName("UnitsProduced"));
+                public OperandProperty BagsProduced => new OperandProperty(GetNestedName("BagsProduced"));
+                public OperandProperty PalletsProduced => new OperandProperty(GetNestedName("PalletsProduced"));
+                public OperandProperty PercentageComplete => new OperandProperty(GetNestedName("PercentageComplete"));
+                public OperandProperty AllowOverrun => new OperandProperty(GetNestedName("AllowOverrun"));
+                public OperandProperty EstimatedShifts => new OperandProperty(GetNestedName("EstimatedShifts"));
+                public OperandProperty UnitsScheduled => new OperandProperty(GetNestedName("UnitsScheduled"));
+                public OperandProperty UnitsNeeded => new OperandProperty(GetNestedName("UnitsNeeded"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

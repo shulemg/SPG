@@ -35,7 +35,7 @@ namespace SuperiorPackGroup
 						AvailabilityDetail.ProjectDetailID = FGDemand;
 						AvailabilityDetail.ItemID = BomNeeded.BOMRawMatID;
 						AvailabilityDetail.ItemType = BomNeeded.BOMRawMatID.ItemType;
-						AvailabilityDetail.QuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
+						AvailabilityDetail.QuantityOnHand = (new XPCollection<LocationInventory>(new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
 						AvailabilityDetail.QuantityRequiredForProject = FGDemand.UnitsNeeded * (BomNeeded.BOMQuantity + (BomNeeded.BOMQuantity * (BomNeeded.ScrapFactor / 100)));
 						AvailabilityDetailList.Add(AvailabilityDetail);
 					}
@@ -83,8 +83,8 @@ namespace SuperiorPackGroup
 							}
 							else
 							{
-								BomDemand.LocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
-								BomDemand.NonLocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
+								BomDemand.LocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
+								BomDemand.NonLocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
 								//Try
 								//    BomDemand.NonLocalPalletsQuantityOnHand = BomDemand.NonLocalQuantityOnHand / BomNeeded.BOMRawMatID.intUnitsPerPallet
 								//Catch
@@ -109,8 +109,8 @@ namespace SuperiorPackGroup
 							else
 							{
 								//------------   not tested could be bugy
-								BomDemand.LocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
-								BomDemand.NonLocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
+								BomDemand.LocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
+								BomDemand.NonLocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
 								//BomDemand.QuantityOnHand = PoolBomNeeded.ItemPoolID.QuantityOnHand
 								BomDemand.QuantityOnScheduledProjects = (projectLine.UnitsNeeded - projectLine.UnitsNeededToSchedule) * (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)));
 								BomDemand.QuantityOnUnscheduledProjects = projectLine.UnitsNeededToSchedule * (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)));
@@ -150,8 +150,8 @@ namespace SuperiorPackGroup
 							}
 							else
 							{
-								BomDemand.LocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
-								BomDemand.NonLocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
+								BomDemand.LocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
+								BomDemand.NonLocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, BomNeeded.BOMRawMatID.ItemID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
 								//Try
 								//    BomDemand.NonLocalPalletsQuantityOnHand = BomDemand.NonLocalQuantityOnHand / BomNeeded.BOMRawMatID.intUnitsPerPallet
 								//Catch
@@ -176,8 +176,8 @@ namespace SuperiorPackGroup
 							else
 							{
 								//------------   not tested could be bugy
-								BomDemand.LocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
-								BomDemand.NonLocalQuantityOnHand = (new XPCollection<DXDAL.SPGData.LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
+								BomDemand.LocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.Equal))).Sum((i) => i.QuantityOnHand);
+								BomDemand.NonLocalQuantityOnHand = (new XPCollection<LocationInventory>(session, new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, PoolBomNeeded.ItemPoolID, BinaryOperatorType.Equal) & new BinaryOperator(DXDAL.SPGData.LocationInventory.Fields.Location.PropertyName, 1, BinaryOperatorType.NotEqual))).Sum((i) => i.QuantityOnHand);
 								//BomDemand.QuantityOnHand = PoolBomNeeded.ItemPoolID.QuantityOnHand
 								BomDemand.QuantityOnScheduledProjects = (projectLine.UnitsNeeded - projectLine.UnitsNeededToSchedule) * (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)));
 								BomDemand.QuantityOnUnscheduledProjects = projectLine.UnitsNeededToSchedule * (PoolBomNeeded.PoolBomQuantity + (PoolBomNeeded.PoolBomQuantity * (PoolBomNeeded.ScrapFactor / 100)));

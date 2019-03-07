@@ -45,29 +45,26 @@ namespace SuperiorPackGroup
 		[System.Runtime.CompilerServices.AccessedThroughProperty(nameof(m_timer))]
 		private Timer _m_timer;
 		private Timer m_timer
-		{
-			[System.Diagnostics.DebuggerNonUserCode]
-			get
-			{
-				return _m_timer;
-			}
-			[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized), System.Diagnostics.DebuggerNonUserCode]
-			set
-			{
-				if (_m_timer != null)
-				{
-					_m_timer.Tick -= TimerEventProcessor;
-				}
+        {
+            [DebuggerNonUserCode]
+            get => _m_timer;
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized), DebuggerNonUserCode]
+            set
+            {
+                if (_m_timer != null)
+                {
+                    _m_timer.Tick -= TimerEventProcessor;
+                }
 
-				_m_timer = value;
+                _m_timer = value;
 
-				if (value != null)
-				{
-					_m_timer.Tick += TimerEventProcessor;
-				}
-			}
-		}
-		private bool m_AllowAdd = false;
+                if (value != null)
+                {
+                    _m_timer.Tick += TimerEventProcessor;
+                }
+            }
+        }
+        private bool m_AllowAdd = false;
 		private CustomersBLL m_Customers;
 		private InventoryBLL m_Inventory;
 		//Private m_InventorySession As Session

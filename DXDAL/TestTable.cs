@@ -11,27 +11,15 @@ namespace DXDAL
             [Key(true)]
             public int ID
             {
-                get
-                {
-                    return fID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("ID", ref fID, value);
-                }
+                get => fID;
+                set => SetPropertyValue<int>("ID", ref fID, value);
             }
             private string fName;
             [Size(SizeAttribute.Unlimited)]
             public string Name
             {
-                get
-                {
-                    return fName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Name", ref fName, value);
-                }
+                get => fName;
+                set => SetPropertyValue("Name", ref fName, value);
             }
 
 
@@ -56,7 +44,7 @@ namespace DXDAL
                 }
             }
             // Created/Updated: Joel-PC\Joel on JOEL-PC at 7/06/10 4:40 PM
-            public new class FieldsClass : DevExpress.Xpo.XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -64,20 +52,8 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public DevExpress.Data.Filtering.OperandProperty ID
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ID"));
-                    }
-                }
-                public DevExpress.Data.Filtering.OperandProperty Name
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("Name"));
-                    }
-                }
+                public DevExpress.Data.Filtering.OperandProperty ID => new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ID"));
+                public DevExpress.Data.Filtering.OperandProperty Name => new DevExpress.Data.Filtering.OperandProperty(GetNestedName("Name"));
             }
         }
     }

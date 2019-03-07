@@ -39,12 +39,9 @@ namespace SuperiorPackGroup
         private Timer _m_timer;
         private Timer m_timer
         {
-            [System.Diagnostics.DebuggerNonUserCode]
-            get
-            {
-                return _m_timer;
-            }
-            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized), System.Diagnostics.DebuggerNonUserCode]
+            [DebuggerNonUserCode]
+            get => _m_timer;
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized), DebuggerNonUserCode]
             set
             {
                 if (_m_timer != null)
@@ -77,7 +74,7 @@ namespace SuperiorPackGroup
 
         private void listsCustomerBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new CustomersXtraForm();
+            CustomersXtraForm form = new CustomersXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -91,7 +88,7 @@ namespace SuperiorPackGroup
 
         private void listsItemBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new ItemsXtraForm();
+            ItemsXtraForm form = new ItemsXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -105,7 +102,7 @@ namespace SuperiorPackGroup
 
         private void listsMachineBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new MachineLinesXtraForm();
+            MachineLinesXtraForm form = new MachineLinesXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -119,7 +116,7 @@ namespace SuperiorPackGroup
 
         private void listsShiftsBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new ShiftsXtraForm();
+            ShiftsXtraForm form = new ShiftsXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -133,7 +130,7 @@ namespace SuperiorPackGroup
 
         private void listsCarriersBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new CarriersXtraForm();
+            CarriersXtraForm form = new CarriersXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -147,7 +144,7 @@ namespace SuperiorPackGroup
 
         private void activitesRecieveBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new ReceivingXtraForm();
+            ReceivingXtraForm form = new ReceivingXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -161,7 +158,7 @@ namespace SuperiorPackGroup
 
         private void activitiesProductionBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new ProductionXtraForm();
+            ProductionXtraForm form = new ProductionXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -175,7 +172,7 @@ namespace SuperiorPackGroup
 
         private void activitesShipBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new ShippingXtraForm();
+            ShippingXtraForm form = new ShippingXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -276,7 +273,7 @@ namespace SuperiorPackGroup
 
         private void toolsSecurityBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new SecurityXtraForm();
+            SecurityXtraForm form = new SecurityXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -545,7 +542,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new ShippingAddressesXtraForm();
+            ShippingAddressesXtraForm form = new ShippingAddressesXtraForm();
             form.MdiParent = this;
             if (form.CheckPermissions() == false)
             {
@@ -560,7 +557,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new InventoryXtraForm();
+            InventoryXtraForm form = new InventoryXtraForm();
             form.MdiParent = this;
             if (form.CheckPermissions() == false)
             {
@@ -575,7 +572,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new InventoryAdjustmentXtraForm();
+            InventoryAdjustmentXtraForm form = new InventoryAdjustmentXtraForm();
             form.MdiParent = this;
             if (form.CheckPermissions() == false)
             {
@@ -588,7 +585,7 @@ namespace SuperiorPackGroup
         private void reportsBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            var form = new QuickReportsXtraForm();
+            QuickReportsXtraForm form = new QuickReportsXtraForm();
             {
                 form.MdiParent = this;
 
@@ -603,7 +600,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new VendorsXtraForm();
+            VendorsXtraForm form = new VendorsXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -620,7 +617,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new employeesXtraForm();
+            employeesXtraForm form = new employeesXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -637,7 +634,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new shipmentConditionXtraForm();
+            shipmentConditionXtraForm form = new shipmentConditionXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -654,7 +651,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new ItemPoolXtraForm();
+            ItemPoolXtraForm form = new ItemPoolXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -684,7 +681,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new LocationXtraForm();
+            LocationXtraForm form = new LocationXtraForm();
             form.MdiParent = this;
             if (form.CheckPermissions() == false)
             {
@@ -699,7 +696,7 @@ namespace SuperiorPackGroup
         {
 
 
-            var form = new LocationTransfersXtraForm();
+            LocationTransfersXtraForm form = new LocationTransfersXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -715,7 +712,7 @@ namespace SuperiorPackGroup
         private void activitiesProjectsBarButtomItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            var form = new ProjectsXtraForm();
+            ProjectsXtraForm form = new ProjectsXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -730,7 +727,7 @@ namespace SuperiorPackGroup
 
         private void mainToolbarScheduleBarLargeButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var form = new ProjectSchedulingXtraForm();
+            ProjectSchedulingXtraForm form = new ProjectSchedulingXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -746,7 +743,7 @@ namespace SuperiorPackGroup
         private void lotCodeFormatsBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            var form = new LotCodeFormatsXtraForm();
+            LotCodeFormatsXtraForm form = new LotCodeFormatsXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -761,7 +758,7 @@ namespace SuperiorPackGroup
         private void reasonCodesBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            var form = new ReasonCodesXtraForm();
+            ReasonCodesXtraForm form = new ReasonCodesXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
@@ -776,7 +773,7 @@ namespace SuperiorPackGroup
         private void AllergensBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            var form = new AllergensXtraForm();
+            AllergensXtraForm form = new AllergensXtraForm();
             {
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)

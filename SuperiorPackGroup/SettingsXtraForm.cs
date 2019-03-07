@@ -47,21 +47,15 @@ namespace SuperiorPackGroup
 
 		private string m_FinancialTabs;
 		public string FinancialTabs
-		{
+        {
 
-			get
-			{
-				return m_FinancialTabs;
-			}
+            get => m_FinancialTabs;
 
-			set
-			{
-				m_FinancialTabs = value;
-			}
+            set => m_FinancialTabs = value;
 
-		}
+        }
 
-		public void BindSettingControls()
+        public void BindSettingControls()
 		{
 
 			CompanySettings companySettings = CompanySettingsBLL.GetSettings();

@@ -10,28 +10,16 @@ namespace DXDAL
             [Association("UsersCustomer-User")]
             public Users User
             {
-                get
-                {
-                    return _user;
-                }
-                set
-                {
-                    SetPropertyValue("User", ref _user, value);
-                }
+                get => _user;
+                set => SetPropertyValue("User", ref _user, value);
             }
 
             private Customers _customer;
             [Association("UsersCustomer-Customer")]
             public Customers Customer
             {
-                get
-                {
-                    return _customer;
-                }
-                set
-                {
-                    SetPropertyValue("Customer", ref _customer, value);
-                }
+                get => _customer;
+                set => SetPropertyValue("Customer", ref _customer, value);
             }
 
             public UsersCustomer() : base()
@@ -46,7 +34,7 @@ namespace DXDAL
             {
                 base.AfterConstruction();
             }
-            public new class FieldsClass : DevExpress.Xpo.XPObject.FieldsClass
+            public new class FieldsClass : XPObject.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -54,20 +42,8 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public Users.FieldsClass User
-                {
-                    get
-                    {
-                        return new Users.FieldsClass(GetNestedName("User"));
-                    }
-                }
-                public Customers.FieldsClass Customer
-                {
-                    get
-                    {
-                        return new Customers.FieldsClass(GetNestedName("Customer"));
-                    }
-                }
+                public Users.FieldsClass User => new Users.FieldsClass(GetNestedName("User"));
+                public Customers.FieldsClass Customer => new Customers.FieldsClass(GetNestedName("Customer"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

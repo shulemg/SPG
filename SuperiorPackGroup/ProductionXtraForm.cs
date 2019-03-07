@@ -293,13 +293,13 @@ namespace SuperiorPackGroup
 			}
 			else
 			{
-				var productionRow = m_ProductionSession.GetObjectByKey<Production>(Convert.ToInt32(saveSimpleButton.Tag), true);
-				for (var i = productionRow.ReasonCodes.Count - 1; i >= 0; i--)
+                Production productionRow = m_ProductionSession.GetObjectByKey<Production>(Convert.ToInt32(saveSimpleButton.Tag), true);
+				for (int i = productionRow.ReasonCodes.Count - 1; i >= 0; i--)
 				{
 					productionRow.ReasonCodes.Remove(productionRow.ReasonCodes[i]);
 				}
 				reasonsGridView.SelectAll();
-				foreach (var reason in reasonsGridView.GetSelectedRows())
+				foreach (int reason in reasonsGridView.GetSelectedRows())
 				{
 					if (productionRow.ReasonCodes.Contains(new ReasonCodes() {Oid = Convert.ToInt32(reasonsGridView.GetRowCellValue(reason, reasonDescriptionGridColumn))}) == false)
 					{
@@ -397,7 +397,7 @@ namespace SuperiorPackGroup
 				this.machineLookUpEdit.EditValue = productionRecord.ProdMainMachineLine.MachineLineID;
 				this.packersTextEdit.EditValue = productionRecord.ProdMainPackers;
 				m_ReasonsCollection.Clear();
-				foreach (var reason in productionRecord.ReasonCodes)
+				foreach (ReasonCodes reason in productionRecord.ReasonCodes)
 				{
 					m_ReasonsCollection.Add(new ReasonIDs() {Oid = reason.Oid});
 				}

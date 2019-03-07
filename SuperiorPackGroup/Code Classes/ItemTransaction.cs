@@ -39,70 +39,40 @@ namespace SuperiorPackGroup
 
 		private DateTime _transactionDate;
 		public DateTime TransactionDate
-		{
-			get
-			{
-				return _transactionDate;
-			}
-			set
-			{
-				_transactionDate = value;
-			}
-		}
+        {
+            get => _transactionDate;
+            set => _transactionDate = value;
+        }
 
-		private string _transactionItemCode;
+        private string _transactionItemCode;
 		public string TransactionItemCode
-		{
-			get
-			{
-				return _transactionItemCode;
-			}
-			set
-			{
-				_transactionItemCode = value;
-			}
-		}
+        {
+            get => _transactionItemCode;
+            set => _transactionItemCode = value;
+        }
 
-		private string _transactionItemDescription;
+        private string _transactionItemDescription;
 		public string TransactionItemDescription
-		{
-			get
-			{
-				return _transactionItemDescription;
-			}
-			set
-			{
-				_transactionItemDescription = value;
-			}
-		}
+        {
+            get => _transactionItemDescription;
+            set => _transactionItemDescription = value;
+        }
 
-		private ItemTransactionType _transactionType;
+        private ItemTransactionType _transactionType;
 		public ItemTransactionType TransactionType
-		{
-			get
-			{
-				return _transactionType;
-			}
-			set
-			{
-				_transactionType = value;
-			}
-		}
+        {
+            get => _transactionType;
+            set => _transactionType = value;
+        }
 
-		private double _quantity;
+        private double _quantity;
 		public double Quantity
-		{
-			get
-			{
-				return _quantity;
-			}
-			set
-			{
-				_quantity = value;
-			}
-		}
+        {
+            get => _quantity;
+            set => _quantity = value;
+        }
 
-	}
+    }
 
 
 }

@@ -24,160 +24,82 @@ namespace DXDAL
 
             public DateTime Finish
             {
-                get
-                {
-                    return _finish;
-                }
-                set
-                {
-                    SetPropertyValue<DateTime>("Finish", ref _finish, value);
-                }
+                get => _finish;
+                set => SetPropertyValue<DateTime>("Finish", ref _finish, value);
             }
 
             public DateTime Start
             {
-                get
-                {
-                    return _start;
-                }
-                set
-                {
-                    SetPropertyValue<DateTime>("Start", ref _start, value);
-                }
+                get => _start;
+                set => SetPropertyValue<DateTime>("Start", ref _start, value);
             }
 
             public MachineLine MachineLine
             {
-                get
-                {
-                    return _machineLine;
-                }
-                set
-                {
-                    SetPropertyValue<MachineLine>("MachineLine", ref _machineLine, value);
-                }
+                get => _machineLine;
+                set => SetPropertyValue("MachineLine", ref _machineLine, value);
             }
 
             public double? People
             {
-                get
-                {
-                    return _people;
-                }
-                set
-                {
-                    SetPropertyValue<double?>("People", ref _people, value);
-                }
+                get => _people;
+                set => SetPropertyValue("People", ref _people, value);
             }
 
             public double? MachineOperator
             {
-                get
-                {
-                    return _machineOperator;
-                }
-                set
-                {
-                    SetPropertyValue<double?>("MachineOperator", ref _machineOperator, value);
-                }
+                get => _machineOperator;
+                set => SetPropertyValue("MachineOperator", ref _machineOperator, value);
             }
 
             public Items ProductionItem
             {
-                get
-                {
-                    return _productionItem;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("ProductionItem", ref _productionItem, value);
-                }
+                get => _productionItem;
+                set => SetPropertyValue("ProductionItem", ref _productionItem, value);
             }
 
             public bool? MustRun
             {
-                get
-                {
-                    return _mustRun;
-                }
-                set
-                {
-                    SetPropertyValue<bool?>("MustRun", ref _mustRun, value);
-                }
+                get => _mustRun;
+                set => SetPropertyValue("MustRun", ref _mustRun, value);
             }
 
             public int? PriorityLevel
             {
-                get
-                {
-                    return _priorityLevel;
-                }
-                set
-                {
-                    SetPropertyValue<int?>("PriorityLevel", ref _priorityLevel, value);
-                }
+                get => _priorityLevel;
+                set => SetPropertyValue("PriorityLevel", ref _priorityLevel, value);
             }
 
             public Project Project
             {
-                get
-                {
-                    return _project;
-                }
-                set
-                {
-                    SetPropertyValue<Project>("Project", ref _project, value);
-                }
+                get => _project;
+                set => SetPropertyValue("Project", ref _project, value);
             }
 
             [Association("Project-ProductionSchedule")]
             public ProjectDetails ProjectDetail
             {
-                get
-                {
-                    return _projectDetail;
-                }
-                set
-                {
-                    SetPropertyValue<ProjectDetails>("ProjectDetail", ref _projectDetail, value);
-                }
+                get => _projectDetail;
+                set => SetPropertyValue("ProjectDetail", ref _projectDetail, value);
             }
 
             [Size(SizeAttribute.Unlimited)]
             public string ScheduleNote
             {
-                get
-                {
-                    return _scheduleNote;
-                }
-                set
-                {
-                    SetPropertyValue<string>("ScheduleNote", ref _scheduleNote, value);
-                }
+                get => _scheduleNote;
+                set => SetPropertyValue("ScheduleNote", ref _scheduleNote, value);
             }
 
             public double Quantity
             {
-                get
-                {
-                    return _Quantity;
-                }
-                set
-                {
-                    SetPropertyValue<double>("Quantity", ref _Quantity, value);
-                }
+                get => _Quantity;
+                set => SetPropertyValue("Quantity", ref _Quantity, value);
             }
 
             public bool ScheduleByQuantity
             {
-                get
-                {
-                    return _scheduleByQuantity;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("ScheduleByQuantity", ref _scheduleByQuantity, value);
-                }
+                get => _scheduleByQuantity;
+                set => SetPropertyValue("ScheduleByQuantity", ref _scheduleByQuantity, value);
             }
 
             public string ScheduleTitle
@@ -208,7 +130,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -216,104 +138,20 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public OperandProperty Finish
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Finish"));
-                    }
-                }
-                public OperandProperty Start
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Start"));
-                    }
-                }
-                public MachineLine.FieldsClass MachineLine
-                {
-                    get
-                    {
-                        return new MachineLine.FieldsClass(GetNestedName("MachineLine"));
-                    }
-                }
-                public OperandProperty People
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("People"));
-                    }
-                }
-                public OperandProperty MachineOperator
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("MachineOperator"));
-                    }
-                }
-                public Items.FieldsClass ProductionItem
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("ProductionItem"));
-                    }
-                }
-                public OperandProperty MustRun
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("MustRun"));
-                    }
-                }
-                public OperandProperty PriorityLevel
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PriorityLevel"));
-                    }
-                }
-                public Project.FieldsClass Project
-                {
-                    get
-                    {
-                        return new Project.FieldsClass(GetNestedName("Project"));
-                    }
-                }
-                public ProjectDetails.FieldsClass ProjectDetail
-                {
-                    get
-                    {
-                        return new ProjectDetails.FieldsClass(GetNestedName("ProjectDetail"));
-                    }
-                }
-                public OperandProperty ScheduleNote
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ScheduleNote"));
-                    }
-                }
-                public OperandProperty Quantity
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Quantity"));
-                    }
-                }
-                public OperandProperty ScheduleByQuantity
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ScheduleByQuantity"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public OperandProperty Finish => new OperandProperty(GetNestedName("Finish"));
+                public OperandProperty Start => new OperandProperty(GetNestedName("Start"));
+                public MachineLine.FieldsClass MachineLine => new MachineLine.FieldsClass(GetNestedName("MachineLine"));
+                public OperandProperty People => new OperandProperty(GetNestedName("People"));
+                public OperandProperty MachineOperator => new OperandProperty(GetNestedName("MachineOperator"));
+                public Items.FieldsClass ProductionItem => new Items.FieldsClass(GetNestedName("ProductionItem"));
+                public OperandProperty MustRun => new OperandProperty(GetNestedName("MustRun"));
+                public OperandProperty PriorityLevel => new OperandProperty(GetNestedName("PriorityLevel"));
+                public Project.FieldsClass Project => new Project.FieldsClass(GetNestedName("Project"));
+                public ProjectDetails.FieldsClass ProjectDetail => new ProjectDetails.FieldsClass(GetNestedName("ProjectDetail"));
+                public OperandProperty ScheduleNote => new OperandProperty(GetNestedName("ScheduleNote"));
+                public OperandProperty Quantity => new OperandProperty(GetNestedName("Quantity"));
+                public OperandProperty ScheduleByQuantity => new OperandProperty(GetNestedName("ScheduleByQuantity"));
             }
 
             private static FieldsClass _fields;

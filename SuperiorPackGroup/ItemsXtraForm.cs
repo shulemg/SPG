@@ -433,7 +433,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		private void AdvancedTextEditParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+		private void AdvancedTextEditParseEditValue(object sender, ConvertEditValueEventArgs e)
 		{
 
 			if (e.Value != null && !string.IsNullOrEmpty((e.Value == null ? null : Convert.ToString(e.Value))))
@@ -443,7 +443,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		private void rebateTextEdit_ParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+		private void rebateTextEdit_ParseEditValue(object sender, ConvertEditValueEventArgs e)
 		{
 
 			if (e.Value != null)
@@ -455,22 +455,19 @@ namespace SuperiorPackGroup
 		}
 
 		public int? CurrentItemID
-		{
-			get
-			{
-				return m_CurrentItemID;
-			}
-			set
-			{
-				m_CurrentItemID = value;
-				if (value.HasValue)
-				{
-					BindItemControls(value.Value);
-				}
-			}
-		}
+        {
+            get => m_CurrentItemID;
+            set
+            {
+                m_CurrentItemID = value;
+                if (value.HasValue)
+                {
+                    BindItemControls(value.Value);
+                }
+            }
+        }
 
-		private bool SaveChanges()
+        private bool SaveChanges()
 		{
 
 			//Required to get back to current customer when entering a new customer.
@@ -762,7 +759,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		private void typeFilterLookUpEdit_Closed(object sender, DevExpress.XtraEditors.Controls.ClosedEventArgs e)
+		private void typeFilterLookUpEdit_Closed(object sender, ClosedEventArgs e)
 		{
 
 			BindItemsSearch();
@@ -794,7 +791,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		private void uomLookUpEdit_ProcessNewValue(object sender, DevExpress.XtraEditors.Controls.ProcessNewValueEventArgs e)
+		private void uomLookUpEdit_ProcessNewValue(object sender, ProcessNewValueEventArgs e)
 		{
 
 			DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit edit = ((LookUpEdit)sender).Properties;
@@ -809,7 +806,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		private void palletPatternButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+		private void palletPatternButtonEdit_ButtonClick(object sender, ButtonPressedEventArgs e)
 		{
 
 			if (patternOpenFileDialog.ShowDialog() == DialogResult.OK)
@@ -1310,7 +1307,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		private void RMRepositoryItemLookUpEdit_Closed(object sender, DevExpress.XtraEditors.Controls.ClosedEventArgs e)
+		private void RMRepositoryItemLookUpEdit_Closed(object sender, ClosedEventArgs e)
 		{
 
 			if (e.CloseMode != PopupCloseMode.Cancel)

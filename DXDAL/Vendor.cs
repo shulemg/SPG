@@ -16,27 +16,15 @@ namespace DXDAL
             [Size(150)]
             public string VendorName
             {
-                get
-                {
-                    return m_VendorName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("VendorName", ref m_VendorName, value);
-                }
+                get => m_VendorName;
+                set => SetPropertyValue("VendorName", ref m_VendorName, value);
             }
 
 
 
             [Association("Receiving-Vendor", typeof(Receiving))]
             [Aggregated()]
-            public XPCollection<Receiving> Receivings
-            {
-                get
-                {
-                    return GetCollection<Receiving>("Receivings");
-                }
-            }
+            public XPCollection<Receiving> Receivings => GetCollection<Receiving>("Receivings");
 
 
 
@@ -47,7 +35,7 @@ namespace DXDAL
 
 
 
-            public new class FieldsClass : DevExpress.Xpo.XPObject.FieldsClass
+            public new class FieldsClass : XPObject.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -55,13 +43,7 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty VendorName
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("VendorName"));
-                    }
-                }
+                public OperandProperty VendorName => new OperandProperty(GetNestedName("VendorName"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

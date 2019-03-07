@@ -239,7 +239,7 @@ namespace SuperiorPackGroup
 		public bool DeleteProduction(int id, Session mySession)
 		{
 
-			var production = mySession.GetObjectByKey<Production>(id);
+            Production production = mySession.GetObjectByKey<Production>(id);
 
 			if (production != null)
 			{

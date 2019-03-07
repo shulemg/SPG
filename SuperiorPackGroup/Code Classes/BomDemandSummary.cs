@@ -22,43 +22,13 @@ namespace SuperiorPackGroup
 		public double QuantityOnScheduledProjects {get; set;}
 		public double QuantityOnUnscheduledProjects {get; set;}
 		public string CustomerName {get; set;}
-		public double QuantityOnHand
-		{
-			get
-			{
-				return LocalQuantityOnHand + NonLocalQuantityOnHand;
-			}
-		}
-		public double BomDemandShortage
-		{
-			get
-			{
-				return Math.Max(QuantityOnScheduledProjects - QuantityOnHand, 0);
-			}
-		}
+        public double QuantityOnHand => LocalQuantityOnHand + NonLocalQuantityOnHand;
+        public double BomDemandShortage => Math.Max(QuantityOnScheduledProjects - QuantityOnHand, 0);
 
-		public double TotalBomDemand
-		{
-			get
-			{
-				return QuantityOnScheduledProjects + QuantityOnUnscheduledProjects;
-			}
-		}
-		public double BomDemandLocalShortage
-		{
-			get
-			{
-				return Math.Max(TotalBomDemand - LocalQuantityOnHand, 0);
-			}
-		}
-		public double TotalBomDemandShortage
-		{
-			get
-			{
-				return Math.Max(TotalBomDemand - QuantityOnHand, 0);
-			}
-		}
-		public double NonLocalPalletsQuantityOnHand
+        public double TotalBomDemand => QuantityOnScheduledProjects + QuantityOnUnscheduledProjects;
+        public double BomDemandLocalShortage => Math.Max(TotalBomDemand - LocalQuantityOnHand, 0);
+        public double TotalBomDemandShortage => Math.Max(TotalBomDemand - QuantityOnHand, 0);
+        public double NonLocalPalletsQuantityOnHand
 		{
 			get
 			{

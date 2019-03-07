@@ -11,124 +11,64 @@ namespace DXDAL
             private bool fAdvancedTabs;
             public bool AdvancedTabs
             {
-                get
-                {
-                    return fAdvancedTabs;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("AdvancedTabs", ref fAdvancedTabs, value);
-                }
+                get => fAdvancedTabs;
+                set => SetPropertyValue("AdvancedTabs", ref fAdvancedTabs, value);
             }
             private bool fProductionReport;
             public bool ProductionReport
             {
-                get
-                {
-                    return fProductionReport;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("ProductionReport", ref fProductionReport, value);
-                }
+                get => fProductionReport;
+                set => SetPropertyValue("ProductionReport", ref fProductionReport, value);
             }
             private string fstrUser;
             [Key()]
             [Size(50)]
             public string strUser
             {
-                get
-                {
-                    return fstrUser;
-                }
-                set
-                {
-                    SetPropertyValue<string>("strUser", ref fstrUser, value);
-                }
+                get => fstrUser;
+                set => SetPropertyValue("strUser", ref fstrUser, value);
             }
             private bool fCostingReport;
             public bool CostingReport
             {
-                get
-                {
-                    return fCostingReport;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("CostingReport", ref fCostingReport, value);
-                }
+                get => fCostingReport;
+                set => SetPropertyValue("CostingReport", ref fCostingReport, value);
             }
             private bool fItemsForm;
             public bool ItemsForm
             {
-                get
-                {
-                    return fItemsForm;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("ItemsForm", ref fItemsForm, value);
-                }
+                get => fItemsForm;
+                set => SetPropertyValue("ItemsForm", ref fItemsForm, value);
             }
             private bool fProductionForm;
             public bool ProductionForm
             {
-                get
-                {
-                    return fProductionForm;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("ProductionForm", ref fProductionForm, value);
-                }
+                get => fProductionForm;
+                set => SetPropertyValue("ProductionForm", ref fProductionForm, value);
             }
             private bool fCustomersForm;
             public bool CustomersForm
             {
-                get
-                {
-                    return fCustomersForm;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("CustomersForm", ref fCustomersForm, value);
-                }
+                get => fCustomersForm;
+                set => SetPropertyValue("CustomersForm", ref fCustomersForm, value);
             }
             private bool fShippingForm;
             public bool ShippingForm
             {
-                get
-                {
-                    return fShippingForm;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("ShippingForm", ref fShippingForm, value);
-                }
+                get => fShippingForm;
+                set => SetPropertyValue("ShippingForm", ref fShippingForm, value);
             }
             private bool fReceivingForm;
             public bool ReceivingForm
             {
-                get
-                {
-                    return fReceivingForm;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("ReceivingForm", ref fReceivingForm, value);
-                }
+                get => fReceivingForm;
+                set => SetPropertyValue("ReceivingForm", ref fReceivingForm, value);
             }
             private bool fFinancialTabs;
             public bool FinancialTabs
             {
-                get
-                {
-                    return fFinancialTabs;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("FinancialTabs", ref fFinancialTabs, value);
-                }
+                get => fFinancialTabs;
+                set => SetPropertyValue("FinancialTabs", ref fFinancialTabs, value);
             }
             public Security(Session session) : base(session)
             {
@@ -140,7 +80,7 @@ namespace DXDAL
             {
                 base.AfterConstruction();
             }
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -148,76 +88,16 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty AdvancedTabs
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("AdvancedTabs"));
-                    }
-                }
-                public OperandProperty ProductionReport
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ProductionReport"));
-                    }
-                }
-                public OperandProperty strUser
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("strUser"));
-                    }
-                }
-                public OperandProperty CostingReport
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CostingReport"));
-                    }
-                }
-                public OperandProperty ItemsForm
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ItemsForm"));
-                    }
-                }
-                public OperandProperty ProductionForm
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ProductionForm"));
-                    }
-                }
-                public OperandProperty CustomersForm
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CustomersForm"));
-                    }
-                }
-                public OperandProperty ShippingForm
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ShippingForm"));
-                    }
-                }
-                public OperandProperty ReceivingForm
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ReceivingForm"));
-                    }
-                }
-                public OperandProperty FinancialTabs
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("FinancialTabs"));
-                    }
-                }
+                public OperandProperty AdvancedTabs => new OperandProperty(GetNestedName("AdvancedTabs"));
+                public OperandProperty ProductionReport => new OperandProperty(GetNestedName("ProductionReport"));
+                public OperandProperty strUser => new OperandProperty(GetNestedName("strUser"));
+                public OperandProperty CostingReport => new OperandProperty(GetNestedName("CostingReport"));
+                public OperandProperty ItemsForm => new OperandProperty(GetNestedName("ItemsForm"));
+                public OperandProperty ProductionForm => new OperandProperty(GetNestedName("ProductionForm"));
+                public OperandProperty CustomersForm => new OperandProperty(GetNestedName("CustomersForm"));
+                public OperandProperty ShippingForm => new OperandProperty(GetNestedName("ShippingForm"));
+                public OperandProperty ReceivingForm => new OperandProperty(GetNestedName("ReceivingForm"));
+                public OperandProperty FinancialTabs => new OperandProperty(GetNestedName("FinancialTabs"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

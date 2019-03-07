@@ -12,63 +12,33 @@ namespace DXDAL
             [Key(true)]
             public int BOMID
             {
-                get
-                {
-                    return fBOMID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("BOMID", ref fBOMID, value);
-                }
+                get => fBOMID;
+                set => SetPropertyValue<int>("BOMID", ref fBOMID, value);
             }
             private Items fBOMRawMatID;
             public Items BOMRawMatID
             {
-                get
-                {
-                    return fBOMRawMatID;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("BOMRawMatID", ref fBOMRawMatID, value);
-                }
+                get => fBOMRawMatID;
+                set => SetPropertyValue("BOMRawMatID", ref fBOMRawMatID, value);
             }
             private Items fBOMFiniGoodID;
             [Association("Item-BOM")]
             public Items BOMFiniGoodID
             {
-                get
-                {
-                    return fBOMFiniGoodID;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("BOMFiniGoodID", ref fBOMFiniGoodID, value);
-                }
+                get => fBOMFiniGoodID;
+                set => SetPropertyValue("BOMFiniGoodID", ref fBOMFiniGoodID, value);
             }
             private float fBOMQuantity;
             public float BOMQuantity
             {
-                get
-                {
-                    return fBOMQuantity;
-                }
-                set
-                {
-                    SetPropertyValue<float>("BOMQuantity", ref fBOMQuantity, value);
-                }
+                get => fBOMQuantity;
+                set => SetPropertyValue("BOMQuantity", ref fBOMQuantity, value);
             }
             private double fScrapFactor;
             public double ScrapFactor
             {
-                get
-                {
-                    return fScrapFactor;
-                }
-                set
-                {
-                    SetPropertyValue<double>("ScrapFactor", ref fScrapFactor, value);
-                }
+                get => fScrapFactor;
+                set => SetPropertyValue("ScrapFactor", ref fScrapFactor, value);
             }
             public BOMs(Session session) : base(session)
             {
@@ -91,7 +61,7 @@ namespace DXDAL
                 }
             }
             // Created/Updated: Joel-PC\Joel on JOEL-PC at 28/03/2012 11:55 PM
-            public new class FieldsClass : DevExpress.Xpo.XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -100,41 +70,11 @@ namespace DXDAL
                 {
                 }
 
-                public OperandProperty BOMID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("BOMID"));
-                    }
-                }
-                public Items.FieldsClass BOMRawMatID
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("BOMRawMatID"));
-                    }
-                }
-                public Items.FieldsClass BOMFiniGoodID
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("BOMFiniGoodID"));
-                    }
-                }
-                public OperandProperty BOMQuantity
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("BOMQuantity"));
-                    }
-                }
-                public OperandProperty ScrapFactor
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ScrapFactor"));
-                    }
-                }
+                public OperandProperty BOMID => new OperandProperty(GetNestedName("BOMID"));
+                public Items.FieldsClass BOMRawMatID => new Items.FieldsClass(GetNestedName("BOMRawMatID"));
+                public Items.FieldsClass BOMFiniGoodID => new Items.FieldsClass(GetNestedName("BOMFiniGoodID"));
+                public OperandProperty BOMQuantity => new OperandProperty(GetNestedName("BOMQuantity"));
+                public OperandProperty ScrapFactor => new OperandProperty(GetNestedName("ScrapFactor"));
             }
         }
     }

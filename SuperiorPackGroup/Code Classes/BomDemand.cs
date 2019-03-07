@@ -23,15 +23,9 @@ namespace SuperiorPackGroup
 		public double QuantityOnUnscheduledProjects {get; set;}
 		public double QuantityRequiredForProject {get; set;}
 
-		public double BomDemandShortage
-		{
-			get
-			{
-				return Math.Max(QuantityRequiredForProject - (QuantityOnHand - QuantityOnScheduledProjects), 0);
-			}
-		}
+        public double BomDemandShortage => Math.Max(QuantityRequiredForProject - (QuantityOnHand - QuantityOnScheduledProjects), 0);
 
-		public string CustomerPO
+        public string CustomerPO
 		{
 			get
 			{

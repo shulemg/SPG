@@ -17,75 +17,39 @@ namespace DXDAL
             [Association("Production-ProjectDetail")]
             public ProjectDetails ProjectDetail
             {
-                get
-                {
-                    return _ProjectDetail;
-                }
-                set
-                {
-                    SetPropertyValue<ProjectDetails>("ProjectDetail", ref _ProjectDetail, value);
-                }
+                get => _ProjectDetail;
+                set => SetPropertyValue("ProjectDetail", ref _ProjectDetail, value);
             }
 
             [Association("ProjectDetails-Production")]
             public Inventory Production
             {
-                get
-                {
-                    return _Production;
-                }
-                set
-                {
-                    SetPropertyValue<Inventory>("Production", ref _Production, value);
-                }
+                get => _Production;
+                set => SetPropertyValue("Production", ref _Production, value);
             }
 
             public int UnitsProduced
             {
-                get
-                {
-                    return _unitsProduced;
-                }
-                set
-                {
-                    SetPropertyValue<int>("UnitsProduced", ref _unitsProduced, value);
-                }
+                get => _unitsProduced;
+                set => SetPropertyValue<int>("UnitsProduced", ref _unitsProduced, value);
             }
 
             public int BagsProduced
             {
-                get
-                {
-                    return _bagsProduced;
-                }
-                set
-                {
-                    SetPropertyValue<int>("BagsProduced", ref _bagsProduced, value);
-                }
+                get => _bagsProduced;
+                set => SetPropertyValue<int>("BagsProduced", ref _bagsProduced, value);
             }
 
             public int PalletsProduced
             {
-                get
-                {
-                    return _palletsProduced;
-                }
-                set
-                {
-                    SetPropertyValue<int>("PalletsProduced", ref _palletsProduced, value);
-                }
+                get => _palletsProduced;
+                set => SetPropertyValue<int>("PalletsProduced", ref _palletsProduced, value);
             }
 
             public bool IsOverrun
             {
-                get
-                {
-                    return _IsOverrun;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("IsOverrun", ref _IsOverrun, value);
-                }
+                get => _IsOverrun;
+                set => SetPropertyValue("IsOverrun", ref _IsOverrun, value);
             }
 
             public ProductionProjectDetails() : base()
@@ -101,7 +65,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -109,55 +73,13 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public ProjectDetails.FieldsClass ProjectDetail
-                {
-                    get
-                    {
-                        return new ProjectDetails.FieldsClass(GetNestedName("ProjectDetail"));
-                    }
-                }
-                public Inventory.FieldsClass Production
-                {
-                    get
-                    {
-                        return new Inventory.FieldsClass(GetNestedName("Production"));
-                    }
-                }
-                public OperandProperty UnitsProduced
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("UnitsProduced"));
-                    }
-                }
-                public OperandProperty BagsProduced
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("BagsProduced"));
-                    }
-                }
-                public OperandProperty PalletsProduced
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PalletsProduced"));
-                    }
-                }
-                public OperandProperty IsOverrun
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("PalletsProduced"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public ProjectDetails.FieldsClass ProjectDetail => new ProjectDetails.FieldsClass(GetNestedName("ProjectDetail"));
+                public Inventory.FieldsClass Production => new Inventory.FieldsClass(GetNestedName("Production"));
+                public OperandProperty UnitsProduced => new OperandProperty(GetNestedName("UnitsProduced"));
+                public OperandProperty BagsProduced => new OperandProperty(GetNestedName("BagsProduced"));
+                public OperandProperty PalletsProduced => new OperandProperty(GetNestedName("PalletsProduced"));
+                public OperandProperty IsOverrun => new OperandProperty(GetNestedName("PalletsProduced"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

@@ -12,80 +12,47 @@ namespace DXDAL
             [Association("Location-InventoryByLot")]
             public Locations Location
             {
-                get
-                {
-                    return fLocation;
-                }
-                set
-                {
-                    SetPropertyValue<Locations>("Location", ref fLocation, value);
-                }
+                get => fLocation;
+                set => SetPropertyValue("Location", ref fLocation, value);
             }
 
             private Items fItem;
             [Association("LocationInventoryByLot-Item")]
             public Items LocationInventoryItem
             {
-                get
-                {
-                    return fItem;
-                }
-                set
-                {
-                    SetPropertyValue<Items>("LocationInventoryItem", ref fItem, value);
-                }
+                get => fItem;
+                set => SetPropertyValue("LocationInventoryItem", ref fItem, value);
             }
 
             private string fLot;
             public string LocationInventoryLot
             {
-                get
-                {
-                    return fLot;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LocationInventoryLot", ref fLot, value);
-                }
+                get => fLot;
+                set => SetPropertyValue("LocationInventoryLot", ref fLot, value);
             }
 
             private int? fLPNNumber;
             public int? LPNNumber
             {
-                get
-                {
-                    return fLPNNumber;
-                }
-                set
-                {
-                    SetPropertyValue<int?>("LPNNumber", ref fLPNNumber, value);
-                }
+                get => fLPNNumber;
+                set => SetPropertyValue("LPNNumber", ref fLPNNumber, value);
             }
 
             private float fQuantityOnHand;
             public float QuantityOnHand
             {
-                get
-                {
-                    return fQuantityOnHand;
-                }
-                set
-                {
-                    SetPropertyValue<float>("QuantityOnHand", ref fQuantityOnHand, value);
-                }
+                get => fQuantityOnHand;
+                set => SetPropertyValue("QuantityOnHand", ref fQuantityOnHand, value);
             }
             private DateTime? fExpirationDate;
             public DateTime? ExpirationDate
             {
-                get
-                {
-                    return fExpirationDate;
-                }
+                get => fExpirationDate;
                 set
                 {
                     if (value < DateTime.Parse("1990-01-01"))
                         value = default(DateTime?);
-                    SetPropertyValue<DateTime?>("ExpirationDate", ref fExpirationDate, value);
+                    SetPropertyValue("ExpirationDate", ref fExpirationDate, value);
                 }
             }
 
@@ -102,7 +69,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : DevExpress.Xpo.PersistentBase.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -110,48 +77,12 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public Locations.FieldsClass Location
-                {
-                    get
-                    {
-                        return new Locations.FieldsClass(GetNestedName("Location"));
-                    }
-                }
-                public Items.FieldsClass LocationInventoryItem
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("LocationInventoryItem"));
-                    }
-                }
-                public OperandProperty LocationInventoryLot
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LocationInventoryLot"));
-                    }
-                }
-                public OperandProperty LPNNumber
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LPNNumber"));
-                    }
-                }
-                public OperandProperty QuantityOnHand
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("QuantityOnHand"));
-                    }
-                }
-                public OperandProperty ExpirationDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ExpirationDate"));
-                    }
-                }
+                public Locations.FieldsClass Location => new Locations.FieldsClass(GetNestedName("Location"));
+                public Items.FieldsClass LocationInventoryItem => new Items.FieldsClass(GetNestedName("LocationInventoryItem"));
+                public OperandProperty LocationInventoryLot => new OperandProperty(GetNestedName("LocationInventoryLot"));
+                public OperandProperty LPNNumber => new OperandProperty(GetNestedName("LPNNumber"));
+                public OperandProperty QuantityOnHand => new OperandProperty(GetNestedName("QuantityOnHand"));
+                public OperandProperty ExpirationDate => new OperandProperty(GetNestedName("ExpirationDate"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

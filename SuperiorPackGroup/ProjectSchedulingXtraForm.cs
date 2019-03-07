@@ -34,29 +34,26 @@ namespace SuperiorPackGroup
 		[System.Runtime.CompilerServices.AccessedThroughProperty(nameof(openInItemsManager))]
 		private MenuItem _openInItemsManager;
 		internal MenuItem openInItemsManager
-		{
-			[System.Diagnostics.DebuggerNonUserCode]
-			get
-			{
-				return _openInItemsManager;
-			}
-			[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized), System.Diagnostics.DebuggerNonUserCode]
-			set
-			{
-				if (_openInItemsManager != null)
-				{
-					_openInItemsManager.Click -= openInItemsManager_Click;
-				}
+        {
+            [DebuggerNonUserCode]
+            get => _openInItemsManager;
+            [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.Synchronized), DebuggerNonUserCode]
+            set
+            {
+                if (_openInItemsManager != null)
+                {
+                    _openInItemsManager.Click -= openInItemsManager_Click;
+                }
 
-				_openInItemsManager = value;
+                _openInItemsManager = value;
 
-				if (value != null)
-				{
-					_openInItemsManager.Click += openInItemsManager_Click;
-				}
-			}
-		}
-		private ShiftsTimeScaleFixedIntervalCaptionService shiftTimeScaleCaption;
+                if (value != null)
+                {
+                    _openInItemsManager.Click += openInItemsManager_Click;
+                }
+            }
+        }
+        private ShiftsTimeScaleFixedIntervalCaptionService shiftTimeScaleCaption;
 		private IHeaderCaptionService prevHeaderCaptionServeice;
 		private IMouseHandlerService oldMouseHandler;
 		private CustomMouseHandlerService newMouseHandler;
@@ -236,7 +233,7 @@ namespace SuperiorPackGroup
 		private void openInItemsManager_Click(object sender, EventArgs e)
 		{
 
-            var form = new ItemsXtraForm();
+            ItemsXtraForm form = new ItemsXtraForm();
                 form.MdiParent = this;
                 if (form.CheckPermissions() == false)
                 {
@@ -317,7 +314,7 @@ namespace SuperiorPackGroup
 		private void openReportBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 
-            var form = new QuickReportsXtraForm();
+            QuickReportsXtraForm form = new QuickReportsXtraForm();
                 form.MdiParent = MdiParent;
                 form.Show();
                 form.SelectReport(true, "ShiftScheduleXtraReport", false);

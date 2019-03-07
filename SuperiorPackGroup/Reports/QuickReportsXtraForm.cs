@@ -2110,22 +2110,22 @@ namespace SuperiorPackGroup
 			}
 			else if (e.Field.UnboundFieldName == "minutes") //PivotGridField.UnboundFieldName Then
 			{
-				//Dim MinPerHour As Integer = MainXtraForm.MinPerHOur
-				//Dim currentProduction = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID"))
-				//Dim MachineStandard = currentProduction.ProdMainItemID.MachineStandards.Where(Function(IMS) IMS.Machine.MachineLineID = CurrentProduction.ProdMainMachineLine.MachineLineID).FirstOrDefault()
-				//If MachineStandard IsNot Nothing Then
-				//    If MachineStandard.MinutesPerShift > 0 Then
-				//        MinPerHour = CInt(MachineStandard.MinutesPerShift / 7.16667)
-				//    Else If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
-				//        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
-				//    End If
-				//Else
-				//    If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
-				//        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
-				//    End If
-				//End If
-				var Minutes = DateHelper.DateDiff(DateHelper.DateInterval.Minute, Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")));
-				var BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(e.GetListSourceColumnValue("ProductionDate")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")));
+                //Dim MinPerHour As Integer = MainXtraForm.MinPerHOur
+                //Dim currentProduction = XpoDefault.Session.GetObjectByKey(Of Production)(e.GetListSourceColumnValue("ProductionID"))
+                //Dim MachineStandard = currentProduction.ProdMainItemID.MachineStandards.Where(Function(IMS) IMS.Machine.MachineLineID = CurrentProduction.ProdMainMachineLine.MachineLineID).FirstOrDefault()
+                //If MachineStandard IsNot Nothing Then
+                //    If MachineStandard.MinutesPerShift > 0 Then
+                //        MinPerHour = CInt(MachineStandard.MinutesPerShift / 7.16667)
+                //    Else If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
+                //        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
+                //    End If
+                //Else
+                //    If CurrentProduction.ProdMainItemID.MinutesPerShift > 0
+                //        MinPerHour = CInt(CurrentProduction.ProdMainItemID.MinutesPerShift / 7.1667)
+                //    End If
+                //End If
+                long Minutes = DateHelper.DateDiff(DateHelper.DateInterval.Minute, Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")));
+                long BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(e.GetListSourceColumnValue("ProductionDate")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStartTime")), Convert.ToDateTime(e.GetListSourceColumnValue("ProductionStopTime")));
 				e.Value = Minutes - BreakMinutes;
 			}
 

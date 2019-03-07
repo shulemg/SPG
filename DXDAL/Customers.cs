@@ -11,61 +11,25 @@ namespace DXDAL
         {
             [Association("UsersCustomer-Customer", typeof(UsersCustomer))]
             [Aggregated()]
-            public XPCollection<UsersCustomer> AssignedUser
-            {
-                get
-                {
-                    return GetCollection<UsersCustomer>("AssignedUser");
-                }
-            }
+            public XPCollection<UsersCustomer> AssignedUser => GetCollection<UsersCustomer>("AssignedUser");
 
             [Association("Customer-RelatedCustomers", typeof(RelatedCustomer))]
             [Aggregated()]
-            public XPCollection<RelatedCustomer> RelatedCustomers
-            {
-                get
-                {
-                    return GetCollection<RelatedCustomer>("RelatedCustomers");
-                }
-            }
+            public XPCollection<RelatedCustomer> RelatedCustomers => GetCollection<RelatedCustomer>("RelatedCustomers");
 
             [Association("Customer-Projects", typeof(Project))]
             [Aggregated()]
-            public XPCollection<Project> Projects
-            {
-                get
-                {
-                    return GetCollection<Project>("Projects");
-                }
-            }
+            public XPCollection<Project> Projects => GetCollection<Project>("Projects");
 
-            public XPCollection<Items> Items
-            {
-                get
-                {
-                    return GetCollection<Items>("Items");
-                }
-            }
+            public XPCollection<Items> Items => GetCollection<Items>("Items");
 
             [Association("Customer-Shifts", typeof(CustomerShifts))]
             [Aggregated()]
-            public XPCollection<CustomerShifts> CustomerShifts
-            {
-                get
-                {
-                    return GetCollection<CustomerShifts>("CustomerShifts");
-                }
-            }
+            public XPCollection<CustomerShifts> CustomerShifts => GetCollection<CustomerShifts>("CustomerShifts");
 
             [Association("Customer-Plants", typeof(CustomerPlants))]
             [Aggregated()]
-            public XPCollection<CustomerPlants> CustomerPlants
-            {
-                get
-                {
-                    return GetCollection<CustomerPlants>("CustomerPlants");
-                }
-            }
+            public XPCollection<CustomerPlants> CustomerPlants => GetCollection<CustomerPlants>("CustomerPlants");
 
             private string _plantCode;
             private int _nextLPNNumber;
@@ -79,253 +43,133 @@ namespace DXDAL
             [Key()]
             public int CustomerID
             {
-                get
-                {
-                    return fCustomerID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("CustomerID", ref fCustomerID, value);
-                }
+                get => fCustomerID;
+                set => SetPropertyValue<int>("CustomerID", ref fCustomerID, value);
             }
             private string m_CustomerName;
             [Size(50)]
             public string CustomerName
             {
-                get
-                {
-                    return m_CustomerName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("CustomerName", ref m_CustomerName, value);
-                }
+                get => m_CustomerName;
+                set => SetPropertyValue("CustomerName", ref m_CustomerName, value);
             }
             private string m_CustomerContact;
             [Size(50)]
             public string CustomerContact
             {
-                get
-                {
-                    return m_CustomerContact;
-                }
-                set
-                {
-                    SetPropertyValue<string>("CustomerContact", ref m_CustomerContact, value);
-                }
+                get => m_CustomerContact;
+                set => SetPropertyValue("CustomerContact", ref m_CustomerContact, value);
             }
             private string fCustomerPhone;
             [Size(50)]
             public string CustomerPhone
             {
-                get
-                {
-                    return fCustomerPhone;
-                }
-                set
-                {
-                    SetPropertyValue<string>("CustomerPhone", ref fCustomerPhone, value);
-                }
+                get => fCustomerPhone;
+                set => SetPropertyValue("CustomerPhone", ref fCustomerPhone, value);
             }
             private string fCustomerEmail;
             [Size(50)]
             public string CustomerEmail
             {
-                get
-                {
-                    return fCustomerEmail;
-                }
-                set
-                {
-                    SetPropertyValue<string>("CustomerEmail", ref fCustomerEmail, value);
-                }
+                get => fCustomerEmail;
+                set => SetPropertyValue("CustomerEmail", ref fCustomerEmail, value);
             }
             private string fCustomerFax;
             [Size(50)]
             public string CustomerFax
             {
-                get
-                {
-                    return fCustomerFax;
-                }
-                set
-                {
-                    SetPropertyValue<string>("CustomerFax", ref fCustomerFax, value);
-                }
+                get => fCustomerFax;
+                set => SetPropertyValue("CustomerFax", ref fCustomerFax, value);
             }
             private string fCustomerNote;
             [Size(250)]
             public string CustomerNote
             {
-                get
-                {
-                    return fCustomerNote;
-                }
-                set
-                {
-                    SetPropertyValue<string>("CustomerNote", ref fCustomerNote, value);
-                }
+                get => fCustomerNote;
+                set => SetPropertyValue("CustomerNote", ref fCustomerNote, value);
             }
             private string fstrEnteredBy;
             [Size(50)]
             public string strEnteredBy
             {
-                get
-                {
-                    return fstrEnteredBy;
-                }
-                set
-                {
-                    SetPropertyValue<string>("strEnteredBy", ref fstrEnteredBy, value);
-                }
+                get => fstrEnteredBy;
+                set => SetPropertyValue("strEnteredBy", ref fstrEnteredBy, value);
             }
             private DateTime fdtmEnteredOn;
             public DateTime dtmEnteredOn
             {
-                get
-                {
-                    return fdtmEnteredOn;
-                }
-                set
-                {
-                    SetPropertyValue<DateTime>("dtmEnteredOn", ref fdtmEnteredOn, value);
-                }
+                get => fdtmEnteredOn;
+                set => SetPropertyValue<DateTime>("dtmEnteredOn", ref fdtmEnteredOn, value);
             }
             private string fAddress;
             [Size(150)]
             public string Address
             {
-                get
-                {
-                    return fAddress;
-                }
-                set
-                {
-                    SetPropertyValue<string>("Address", ref fAddress, value);
-                }
+                get => fAddress;
+                set => SetPropertyValue("Address", ref fAddress, value);
             }
             private string fCity;
             [Size(150)]
             public string City
             {
-                get
-                {
-                    return fCity;
-                }
-                set
-                {
-                    SetPropertyValue<string>("City", ref fCity, value);
-                }
+                get => fCity;
+                set => SetPropertyValue("City", ref fCity, value);
             }
             private string fState;
             [Size(50)]
             public string State
             {
-                get
-                {
-                    return fState;
-                }
-                set
-                {
-                    SetPropertyValue<string>("State", ref fState, value);
-                }
+                get => fState;
+                set => SetPropertyValue("State", ref fState, value);
             }
             private string fZipCode;
             [Size(50)]
             public string ZipCode
             {
-                get
-                {
-                    return fZipCode;
-                }
-                set
-                {
-                    SetPropertyValue<string>("ZipCode", ref fZipCode, value);
-                }
+                get => fZipCode;
+                set => SetPropertyValue("ZipCode", ref fZipCode, value);
             }
             private bool fInactive;
             public bool Inactive
             {
-                get
-                {
-                    return fInactive;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("Inactive", ref fInactive, value);
-                }
+                get => fInactive;
+                set => SetPropertyValue("Inactive", ref fInactive, value);
             }
             private bool fEditing;
             public bool Editing
             {
-                get
-                {
-                    return fEditing;
-                }
-                set
-                {
-                    SetPropertyValue<bool>("Editing", ref fEditing, value);
-                }
+                get => fEditing;
+                set => SetPropertyValue("Editing", ref fEditing, value);
             }
 
             public string LPNPrefix
             {
-                get
-                {
-                    return _lPNPrefix;
-                }
-                set
-                {
-                    SetPropertyValue<string>("LPNPrefix", ref _lPNPrefix, value);
-                }
+                get => _lPNPrefix;
+                set => SetPropertyValue("LPNPrefix", ref _lPNPrefix, value);
             }
 
             public int? FirstLPNNumber
             {
-                get
-                {
-                    return _firstLPNNumber;
-                }
-                set
-                {
-                    SetPropertyValue<int?>("FirstLPNNumber", ref _firstLPNNumber, value);
-                }
+                get => _firstLPNNumber;
+                set => SetPropertyValue("FirstLPNNumber", ref _firstLPNNumber, value);
             }
 
             public int? LastLPNNumber
             {
-                get
-                {
-                    return _lastLPNNumber;
-                }
-                set
-                {
-                    SetPropertyValue<int?>("LastLPNNumber", ref _lastLPNNumber, value);
-                }
+                get => _lastLPNNumber;
+                set => SetPropertyValue("LastLPNNumber", ref _lastLPNNumber, value);
             }
 
             public int NextLPNNumber
             {
-                get
-                {
-                    return _nextLPNNumber;
-                }
-                set
-                {
-                    SetPropertyValue<int>("NextLPNNumber", ref _nextLPNNumber, value);
-                }
+                get => _nextLPNNumber;
+                set => SetPropertyValue<int>("NextLPNNumber", ref _nextLPNNumber, value);
             }
 
             public string PlantCode
             {
-                get
-                {
-                    return _plantCode;
-                }
-                set
-                {
-                    SetPropertyValue<string>("PlantCode", ref _plantCode, value);
-                }
+                get => _plantCode;
+                set => SetPropertyValue("PlantCode", ref _plantCode, value);
             }
 
             public string ExpirationDateFormat
@@ -336,22 +180,13 @@ namespace DXDAL
                         return "MM/dd/yyyy";
                     return _expirationDateFormat;
                 }
-                set
-                {
-                    SetPropertyValue<string>("ExpirationDateFormat", ref _expirationDateFormat, value);
-                }
+                set => SetPropertyValue("ExpirationDateFormat", ref _expirationDateFormat, value);
             }
 
             public LotCodeFormats DefaultLotCodeFormat
             {
-                get
-                {
-                    return _defaultLotCodeFormat;
-                }
-                set
-                {
-                    SetPropertyValue("DefaultLotCodeFormat", ref _defaultLotCodeFormat, value);
-                }
+                get => _defaultLotCodeFormat;
+                set => SetPropertyValue("DefaultLotCodeFormat", ref _defaultLotCodeFormat, value);
             }
 
             public Customers(Session session) : base(session)
@@ -365,7 +200,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
             // Created/Updated: Joel-PC\Joel on JOEL-PC at 3/8/2013 8:14 AM
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -374,189 +209,45 @@ namespace DXDAL
                 {
                 }
                 public const string AssignedUserFieldName = "AssignedUser";
-                public DevExpress.Data.Filtering.OperandProperty AssignedUser
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("AssignedUser"));
-                    }
-                }
+                public OperandProperty AssignedUser => new OperandProperty(GetNestedName("AssignedUser"));
                 public const string RelatedCustomersFieldName = "RelatedCustomers";
-                public DevExpress.Data.Filtering.OperandProperty RelatedCustomers
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("RelatedCustomers"));
-                    }
-                }
-                public OperandProperty CustomerID
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("CustomerID"));
-                    }
-                }
+                public OperandProperty RelatedCustomers => new OperandProperty(GetNestedName("RelatedCustomers"));
+                public OperandProperty CustomerID => new OperandProperty(GetNestedName("CustomerID"));
                 public const string CustomerNameFieldName = "CustomerName";
-                public DevExpress.Data.Filtering.OperandProperty CustomerName
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("CustomerName"));
-                    }
-                }
+                public OperandProperty CustomerName => new OperandProperty(GetNestedName("CustomerName"));
                 public const string CustomerContactFieldName = "CustomerContact";
-                public DevExpress.Data.Filtering.OperandProperty CustomerContact
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("CustomerContact"));
-                    }
-                }
+                public OperandProperty CustomerContact => new OperandProperty(GetNestedName("CustomerContact"));
                 public const string CustomerPhoneFieldName = "CustomerPhone";
-                public DevExpress.Data.Filtering.OperandProperty CustomerPhone
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("CustomerPhone"));
-                    }
-                }
+                public OperandProperty CustomerPhone => new OperandProperty(GetNestedName("CustomerPhone"));
                 public const string CustomerEmailFieldName = "CustomerEmail";
-                public DevExpress.Data.Filtering.OperandProperty CustomerEmail
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("CustomerEmail"));
-                    }
-                }
+                public OperandProperty CustomerEmail => new OperandProperty(GetNestedName("CustomerEmail"));
                 public const string CustomerFaxFieldName = "CustomerFax";
-                public DevExpress.Data.Filtering.OperandProperty CustomerFax
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("CustomerFax"));
-                    }
-                }
+                public OperandProperty CustomerFax => new OperandProperty(GetNestedName("CustomerFax"));
                 public const string CustomerNoteFieldName = "CustomerNote";
-                public DevExpress.Data.Filtering.OperandProperty CustomerNote
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("CustomerNote"));
-                    }
-                }
+                public OperandProperty CustomerNote => new OperandProperty(GetNestedName("CustomerNote"));
                 public const string strEnteredByFieldName = "strEnteredBy";
-                public DevExpress.Data.Filtering.OperandProperty strEnteredBy
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("strEnteredBy"));
-                    }
-                }
-                public OperandProperty dtmEnteredOn
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("dtmEnteredOn"));
-                    }
-                }
+                public OperandProperty strEnteredBy => new OperandProperty(GetNestedName("strEnteredBy"));
+                public OperandProperty dtmEnteredOn => new OperandProperty(GetNestedName("dtmEnteredOn"));
                 public const string AddressFieldName = "Address";
-                public DevExpress.Data.Filtering.OperandProperty Address
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("Address"));
-                    }
-                }
+                public OperandProperty Address => new OperandProperty(GetNestedName("Address"));
                 public const string CityFieldName = "City";
-                public DevExpress.Data.Filtering.OperandProperty City
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("City"));
-                    }
-                }
+                public OperandProperty City => new OperandProperty(GetNestedName("City"));
                 public const string StateFieldName = "State";
-                public DevExpress.Data.Filtering.OperandProperty State
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("State"));
-                    }
-                }
+                public OperandProperty State => new OperandProperty(GetNestedName("State"));
                 public const string ZipCodeFieldName = "ZipCode";
-                public DevExpress.Data.Filtering.OperandProperty ZipCode
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ZipCode"));
-                    }
-                }
-                public OperandProperty Inactive
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Inactive"));
-                    }
-                }
-                public OperandProperty Editing
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Editing"));
-                    }
-                }
+                public OperandProperty ZipCode => new OperandProperty(GetNestedName("ZipCode"));
+                public OperandProperty Inactive => new OperandProperty(GetNestedName("Inactive"));
+                public OperandProperty Editing => new OperandProperty(GetNestedName("Editing"));
                 public const string LPNPrefixFieldName = "LPNPrefix";
-                public DevExpress.Data.Filtering.OperandProperty LPNPrefix
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("LPNPrefix"));
-                    }
-                }
-                public OperandProperty FirstLPNNumber
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("FirstLPNNumber"));
-                    }
-                }
-                public OperandProperty LastLPNNumber
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("LastLPNNumber"));
-                    }
-                }
-                public OperandProperty NextLPNNumber
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("NextLPNNumber"));
-                    }
-                }
+                public OperandProperty LPNPrefix => new OperandProperty(GetNestedName("LPNPrefix"));
+                public OperandProperty FirstLPNNumber => new OperandProperty(GetNestedName("FirstLPNNumber"));
+                public OperandProperty LastLPNNumber => new OperandProperty(GetNestedName("LastLPNNumber"));
+                public OperandProperty NextLPNNumber => new OperandProperty(GetNestedName("NextLPNNumber"));
                 public const string PlantCodeFieldName = "PlantCode";
-                public DevExpress.Data.Filtering.OperandProperty PlantCode
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("PlantCode"));
-                    }
-                }
+                public OperandProperty PlantCode => new OperandProperty(GetNestedName("PlantCode"));
                 public const string ExpirationDateFormatFieldName = "ExpirationDateFormat";
-                public OperandProperty ExpirationDateFormat
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ExpirationDateFormat"));
-                    }
-                }
-                public LotCodeFormats.FieldsClass DefaultLotCodeFormat
-                {
-                    get
-                    {
-                        return new LotCodeFormats.FieldsClass(GetNestedName("DefaultLotCodeFormat"));
-                    }
-                }
+                public OperandProperty ExpirationDateFormat => new OperandProperty(GetNestedName("ExpirationDateFormat"));
+                public LotCodeFormats.FieldsClass DefaultLotCodeFormat => new LotCodeFormats.FieldsClass(GetNestedName("DefaultLotCodeFormat"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

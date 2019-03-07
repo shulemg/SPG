@@ -12,70 +12,41 @@ namespace DXDAL
             [Association("Item-Machines")]
             public Items ProductionItem
             {
-                get
-                {
-                    return fItem;
-                }
-                set
-                {
-                    SetPropertyValue("ProductionItem", ref fItem, value);
-                }
+                get => fItem;
+                set => SetPropertyValue("ProductionItem", ref fItem, value);
             }
 
             private MachineLine fMachineLine;
             [Association("Machine-Items")]
             public MachineLine Machine
             {
-                get
-                {
-                    return fMachineLine;
-                }
-                set
-                {
-                    SetPropertyValue("Machine", ref fMachineLine, value);
-                }
+                get => fMachineLine;
+                set => SetPropertyValue("Machine", ref fMachineLine, value);
             }
 
             private double fProductionPerMinute;
             public double ProductionPerMinute
             {
-                get
-                {
-                    return fProductionPerMinute;
-                }
-                set
-                {
-                    SetPropertyValue("ProductionPerMinute", ref fProductionPerMinute, value);
-                }
+                get => fProductionPerMinute;
+                set => SetPropertyValue("ProductionPerMinute", ref fProductionPerMinute, value);
             }
 
             private double fMinutesPerShift;
             public double MinutesPerShift
             {
-                get
-                {
-                    return fMinutesPerShift;
-                }
-                set
-                {
-                    SetPropertyValue("MinutesPerShift", ref fMinutesPerShift, value);
-                }
+                get => fMinutesPerShift;
+                set => SetPropertyValue("MinutesPerShift", ref fMinutesPerShift, value);
             }
 
             private double fProjectedPackeres;
             public double ProjectedPackers
             {
-                get
-                {
+                get =>
                     //if (ProjectedPackers == null)
                     //    return 0D;
 
-                    return fProjectedPackeres;
-                }
-                set
-                {
-                    SetPropertyValue("ProjectedPackers", ref fProjectedPackeres, value);
-                }
+                    fProjectedPackeres;
+                set => SetPropertyValue("ProjectedPackers", ref fProjectedPackeres, value);
             }
             public ItemMachineStandards() : base()
             {
@@ -90,7 +61,7 @@ namespace DXDAL
                 base.AfterConstruction();
             }
 
-            public new class FieldsClass : XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -98,52 +69,16 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
 
-                public Items.FieldsClass ProductionItem
-                {
-                    get
-                    {
-                        return new Items.FieldsClass(GetNestedName("ProductionItem"));
-                    }
-                }
+                public Items.FieldsClass ProductionItem => new Items.FieldsClass(GetNestedName("ProductionItem"));
 
-                public MachineLine.FieldsClass Machine
-                {
-                    get
-                    {
-                        return new MachineLine.FieldsClass(GetNestedName("Machine"));
-                    }
-                }
+                public MachineLine.FieldsClass Machine => new MachineLine.FieldsClass(GetNestedName("Machine"));
 
-                public OperandProperty ProductionPerMinute
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ProductionPerMinute"));
-                    }
-                }
-                public OperandProperty MinutesPerShift
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("MinutesPerShift"));
-                    }
-                }
+                public OperandProperty ProductionPerMinute => new OperandProperty(GetNestedName("ProductionPerMinute"));
+                public OperandProperty MinutesPerShift => new OperandProperty(GetNestedName("MinutesPerShift"));
 
-                public OperandProperty ProjectedPackers
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ProjectedPackers"));
-                    }
-                }
+                public OperandProperty ProjectedPackers => new OperandProperty(GetNestedName("ProjectedPackers"));
             }
             private static FieldsClass _fields;
             public static new FieldsClass Fields

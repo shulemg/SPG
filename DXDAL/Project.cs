@@ -21,75 +21,39 @@ namespace DXDAL
 
             public string project
             {
-                get
-                {
-                    return _project;
-                }
-                set
-                {
-                    SetPropertyValue("project", ref _project, value);
-                }
+                get => _project;
+                set => SetPropertyValue("project", ref _project, value);
             }
 
             [Association("Customer-Projects")]
             public Customers Customer
             {
-                get
-                {
-                    return _customer;
-                }
-                set
-                {
-                    SetPropertyValue("Customer", ref _customer, value);
-                }
+                get => _customer;
+                set => SetPropertyValue("Customer", ref _customer, value);
             }
 
             public string Notes
             {
-                get
-                {
-                    return _notes;
-                }
-                set
-                {
-                    SetPropertyValue("Notes", ref _notes, value);
-                }
+                get => _notes;
+                set => SetPropertyValue("Notes", ref _notes, value);
             }
 
             public DateTime? RequestedStartDate
             {
-                get
-                {
-                    return _requestedStartDate;
-                }
-                set
-                {
-                    SetPropertyValue("RequestedStartDate", ref _requestedStartDate, value);
-                }
+                get => _requestedStartDate;
+                set => SetPropertyValue("RequestedStartDate", ref _requestedStartDate, value);
             }
 
             public DateTime? RequestedShippingDate
             {
-                get
-                {
-                    return _requestedShippingDate;
-                }
-                set
-                {
-                    SetPropertyValue("RequestedShippingDate", ref _requestedShippingDate, value);
-                }
+                get => _requestedShippingDate;
+                set => SetPropertyValue("RequestedShippingDate", ref _requestedShippingDate, value);
             }
 
             public DateTime? RequestedDeliveryDate
             {
-                get
-                {
-                    return _requestedDeliveryDate;
-                }
-                set
-                {
-                    SetPropertyValue("RequestedDeliveryDate", ref _requestedDeliveryDate, value);
-                }
+                get => _requestedDeliveryDate;
+                set => SetPropertyValue("RequestedDeliveryDate", ref _requestedDeliveryDate, value);
             }
 
             public ProjectStatus ProjectStatus
@@ -107,57 +71,30 @@ namespace DXDAL
 
                     return _projectStatus;
                 }
-                set
-                {
-                    SetPropertyValue("ProjectStatus", ref _projectStatus, value);
-                }
+                set => SetPropertyValue("ProjectStatus", ref _projectStatus, value);
             }
 
             public DateTime? ScheduledDate
             {
-                get
-                {
-                    return _scheduledDate;
-                }
-                set
-                {
-                    SetPropertyValue("ScheduledDate", ref _scheduledDate, value);
-                }
+                get => _scheduledDate;
+                set => SetPropertyValue("ScheduledDate", ref _scheduledDate, value);
             }
 
             public string ScheduledWeek
             {
-                get
-                {
-                    return _scheduledWeek;
-                }
-                set
-                {
-                    SetPropertyValue("ScheduledWeek", ref _scheduledWeek, value);
-                }
+                get => _scheduledWeek;
+                set => SetPropertyValue("ScheduledWeek", ref _scheduledWeek, value);
             }
 
             public DateTime? ActualStartDate
             {
-                get
-                {
-                    return _actualStartDate;
-                }
-                set
-                {
-                    SetPropertyValue("ActualStartDate", ref _actualStartDate, value);
-                }
+                get => _actualStartDate;
+                set => SetPropertyValue("ActualStartDate", ref _actualStartDate, value);
             }
 
             [Association("Project-Details", typeof(ProjectDetails))]
             [Aggregated()]
-            public XPCollection<ProjectDetails> ProjectDetails
-            {
-                get
-                {
-                    return GetCollection<ProjectDetails>("ProjectDetails");
-                }
-            }
+            public XPCollection<ProjectDetails> ProjectDetails => GetCollection<ProjectDetails>("ProjectDetails");
 
             public Project() : base()
             {
@@ -185,83 +122,17 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public OperandProperty Oid
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Oid"));
-                    }
-                }
-                public OperandProperty project
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("project"));
-                    }
-                }
-                public Customers.FieldsClass Customer
-                {
-                    get
-                    {
-                        return new Customers.FieldsClass(GetNestedName("Customer"));
-                    }
-                }
-                public OperandProperty Notes
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("Notes"));
-                    }
-                }
-                public OperandProperty RequestedStartDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("RequestedStartDate"));
-                    }
-                }
-                public OperandProperty RequestedShippingDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("RequestedShippingDate"));
-                    }
-                }
-                public OperandProperty RequestedDeliveryDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("RequestedDeliveryDate"));
-                    }
-                }
-                public OperandProperty ProjectStatus
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ProjectStatus"));
-                    }
-                }
-                public OperandProperty ScheduledWeek
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ScheduledWeek"));
-                    }
-                }
-                public OperandProperty ScheduledDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ScheduledDate"));
-                    }
-                }
-                public OperandProperty ActualStartDate
-                {
-                    get
-                    {
-                        return new OperandProperty(GetNestedName("ActualStartDate"));
-                    }
-                }
+                public OperandProperty Oid => new OperandProperty(GetNestedName("Oid"));
+                public OperandProperty project => new OperandProperty(GetNestedName("project"));
+                public Customers.FieldsClass Customer => new Customers.FieldsClass(GetNestedName("Customer"));
+                public OperandProperty Notes => new OperandProperty(GetNestedName("Notes"));
+                public OperandProperty RequestedStartDate => new OperandProperty(GetNestedName("RequestedStartDate"));
+                public OperandProperty RequestedShippingDate => new OperandProperty(GetNestedName("RequestedShippingDate"));
+                public OperandProperty RequestedDeliveryDate => new OperandProperty(GetNestedName("RequestedDeliveryDate"));
+                public OperandProperty ProjectStatus => new OperandProperty(GetNestedName("ProjectStatus"));
+                public OperandProperty ScheduledWeek => new OperandProperty(GetNestedName("ScheduledWeek"));
+                public OperandProperty ScheduledDate => new OperandProperty(GetNestedName("ScheduledDate"));
+                public OperandProperty ActualStartDate => new OperandProperty(GetNestedName("ActualStartDate"));
             }
 
             private static FieldsClass _fields;

@@ -11,27 +11,15 @@ namespace DXDAL
             [Key(true)]
             public int ShiftID
             {
-                get
-                {
-                    return fShiftID;
-                }
-                set
-                {
-                    SetPropertyValue<int>("ShiftID", ref fShiftID, value);
-                }
+                get => fShiftID;
+                set => SetPropertyValue<int>("ShiftID", ref fShiftID, value);
             }
             private string fShiftName;
             [Size(50)]
             public string ShiftName
             {
-                get
-                {
-                    return fShiftName;
-                }
-                set
-                {
-                    SetPropertyValue<string>("ShiftName", ref fShiftName, value);
-                }
+                get => fShiftName;
+                set => SetPropertyValue("ShiftName", ref fShiftName, value);
             }
 
 
@@ -56,7 +44,7 @@ namespace DXDAL
                 }
             }
             // Created/Updated: Joel-PC\Joel on JOEL-PC at 7/06/10 4:40 PM
-            public new class FieldsClass : DevExpress.Xpo.XPLiteObject.FieldsClass
+            public new class FieldsClass : PersistentBase.FieldsClass
             {
                 public FieldsClass() : base()
                 {
@@ -64,20 +52,8 @@ namespace DXDAL
                 public FieldsClass(string propertyName) : base(propertyName)
                 {
                 }
-                public DevExpress.Data.Filtering.OperandProperty ShiftID
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShiftID"));
-                    }
-                }
-                public DevExpress.Data.Filtering.OperandProperty ShiftName
-                {
-                    get
-                    {
-                        return new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShiftName"));
-                    }
-                }
+                public DevExpress.Data.Filtering.OperandProperty ShiftID => new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShiftID"));
+                public DevExpress.Data.Filtering.OperandProperty ShiftName => new DevExpress.Data.Filtering.OperandProperty(GetNestedName("ShiftName"));
             }
         }
     }

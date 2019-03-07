@@ -34,7 +34,7 @@ namespace SuperiorPackGroup
 						int row = reassonCodesGridView.GetSelectedRows()[i];
 						if (row >= 0)
 						{
-							var currentReason = Session.DefaultSession.GetObjectByKey<ReasonCodes>(Convert.ToInt32(reassonCodesGridView.GetRowCellValue(row, colOid)));
+                            ReasonCodes currentReason = Session.DefaultSession.GetObjectByKey<ReasonCodes>(Convert.ToInt32(reassonCodesGridView.GetRowCellValue(row, colOid)));
 							if (currentReason.Production.Any())
 							{
 								MessageBox.Show("This reason can't be deleted, it's used for a production reason code", "Reason In Use", MessageBoxButtons.OK, MessageBoxIcon.Hand);
