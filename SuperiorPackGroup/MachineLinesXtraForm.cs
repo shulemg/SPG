@@ -22,7 +22,7 @@ namespace SuperiorPackGroup
 		private void BindGridControl()
 		{
 
-			this.machineLineGridControl.DataSource = m_MachineLines.GetMachineLines();
+			machineLineGridControl.DataSource = m_MachineLines.GetMachineLines();
 
 		}
 
@@ -32,8 +32,8 @@ namespace SuperiorPackGroup
 			m_MachineLines = new MachinesLinesBLL();
 
 			CheckPermissions();
-			this.nameGridColumn.FieldName = "MachineLineName";
-			this.idGridColumn.FieldName = "MachineLineID";
+			nameGridColumn.FieldName = "MachineLineName";
+			idGridColumn.FieldName = "MachineLineID";
 			BindGridControl();
 
 		}
@@ -107,38 +107,38 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.machineLineGridView.OptionsBehavior.Editable = true;
-						this.machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = true;
+						machineLineGridView.OptionsBehavior.Editable = true;
+						machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteSimpleButton.Visible = true;
 						break;
 					case "ADD":
 					case "Add":
-						this.machineLineGridView.OptionsBehavior.Editable = true;
-						this.machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = false;
+						machineLineGridView.OptionsBehavior.Editable = true;
+						machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 					case "VIEW ASSIGNED":
 					case "EDIT ASSIGNED":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.machineLineGridView.OptionsBehavior.Editable = false;
-						this.machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						machineLineGridView.OptionsBehavior.Editable = false;
+						machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.machineLineGridView.OptionsBehavior.Editable = true;
-						this.machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						machineLineGridView.OptionsBehavior.Editable = true;
+						machineLineGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteSimpleButton.Visible = false;
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;

@@ -110,7 +110,7 @@ namespace SuperiorPackGroup
 			if (production.Count() == 0)
 			{
 				//It is a new Production Record
-				return this.InsertProduction(productionID, productionDate, shift, item, quantity, machine, startTime, stopTime, packers);
+				return InsertProduction(productionID, productionDate, shift, item, quantity, machine, startTime, stopTime, packers);
 			}
 
 			SPG.ProductionRow productionRecord = production[0];
@@ -135,7 +135,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(productionRecord, originalRecord);
+				UpdateAuditTrail(productionRecord, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(productionRecord);

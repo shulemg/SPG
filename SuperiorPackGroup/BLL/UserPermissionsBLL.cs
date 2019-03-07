@@ -92,7 +92,7 @@ namespace SuperiorPackGroup
 			if (permissions.Count() == 0)
 			{
 				//It is a new record
-				return this.InsertUserPermissions(PermissionObject, PermissionLevel, UserName);
+				return InsertUserPermissions(PermissionObject, PermissionLevel, UserName);
 			}
 
 			SPG.UserPermissionsRow userPermissions = permissions[0];
@@ -107,7 +107,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(userPermissions, originalRecord);
+				UpdateAuditTrail(userPermissions, originalRecord);
 			}
 
 			return rowsAffected == 1;
@@ -169,7 +169,7 @@ namespace SuperiorPackGroup
 			{
 //INSTANT C# NOTE: Commented this declaration since looping variables in 'foreach' loops are declared in the 'foreach' header in C#:
 //				Dim row As SPG.UserPermissionsRow
-				foreach (SPG.UserPermissionsRow row in this.Adapter.GetUserPermissions())
+				foreach (SPG.UserPermissionsRow row in Adapter.GetUserPermissions())
 				{
 					string permissionObject = row.PermissionObject;
 					if (!permissionObjects.Contains(permissionObject))

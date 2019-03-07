@@ -20,54 +20,54 @@ namespace SuperiorPackGroup
 		public WeeklyProduction(string customerName, int itemID, string itemCode, string itemDescription, int requiredCases, int requiredBags, int producedMonday, int producedTuesday, int producedWednesday, int producedThursday, int producedFriday, int producedSaturday, int producedSunday, int scheduledMonday, int scheduledTuesday, int scheduledWednesday, int scheduledThursday, int scheduledFriday, int scheduledSaturday, int scheduledSunday, string productionWeek)
 		{
 
-			this.CustomerName = customerName;
-			this.ItemID = itemID;
-			this.ItemCode = itemCode;
-			this.ItemDescription = itemDescription;
-			this.RequiredCases = requiredCases;
-			this.RequiredBags = requiredBags;
-			this.ProducedMonday = producedMonday;
-			this.ProducedTuesday = producedTuesday;
-			this.ProducedWednesday = producedWednesday;
-			this.ProducedThursday = producedThursday;
-			this.ProducedFriday = producedFriday;
-			this.ProducedSaturday = producedSaturday;
-			this.ProducedSunday = producedSunday;
-			this.ScheduledMonday = scheduledMonday;
-			this.ScheduledTuesday = scheduledTuesday;
-			this.ScheduledWednesday = scheduledWednesday;
-			this.ScheduledThursday = scheduledThursday;
-			this.ScheduledFriday = scheduledFriday;
-			this.ScheduledSaturday = scheduledSaturday;
-			this.ScheduledSunday = scheduledSunday;
-			this.ProductionWeek = productionWeek;
+			CustomerName = customerName;
+			ItemID = itemID;
+			ItemCode = itemCode;
+			ItemDescription = itemDescription;
+			RequiredCases = requiredCases;
+			RequiredBags = requiredBags;
+			ProducedMonday = producedMonday;
+			ProducedTuesday = producedTuesday;
+			ProducedWednesday = producedWednesday;
+			ProducedThursday = producedThursday;
+			ProducedFriday = producedFriday;
+			ProducedSaturday = producedSaturday;
+			ProducedSunday = producedSunday;
+			ScheduledMonday = scheduledMonday;
+			ScheduledTuesday = scheduledTuesday;
+			ScheduledWednesday = scheduledWednesday;
+			ScheduledThursday = scheduledThursday;
+			ScheduledFriday = scheduledFriday;
+			ScheduledSaturday = scheduledSaturday;
+			ScheduledSunday = scheduledSunday;
+			ProductionWeek = productionWeek;
 
 		}
 
 		public WeeklyProduction(string customerName, int itemID, string itemCode, string itemDescription, int requiredCases, int requiredBags, int producedMonday, int producedTuesday, int producedWednesday, int producedThursday, int producedFriday, int producedSaturday, int producedSunday, string productionWeek)
 		{
 
-			this.CustomerName = customerName;
-			this.ItemID = itemID;
-			this.ItemCode = itemCode;
-			this.ItemDescription = itemDescription;
-			this.RequiredCases = requiredCases;
-			this.RequiredBags = requiredBags;
-			this.ProducedMonday = producedMonday;
-			this.ProducedTuesday = producedTuesday;
-			this.ProducedWednesday = producedWednesday;
-			this.ProducedThursday = producedThursday;
-			this.ProducedFriday = producedFriday;
-			this.ProducedSaturday = producedSaturday;
-			this.ProducedSunday = producedSunday;
-			this.ProductionWeek = productionWeek;
+			CustomerName = customerName;
+			ItemID = itemID;
+			ItemCode = itemCode;
+			ItemDescription = itemDescription;
+			RequiredCases = requiredCases;
+			RequiredBags = requiredBags;
+			ProducedMonday = producedMonday;
+			ProducedTuesday = producedTuesday;
+			ProducedWednesday = producedWednesday;
+			ProducedThursday = producedThursday;
+			ProducedFriday = producedFriday;
+			ProducedSaturday = producedSaturday;
+			ProducedSunday = producedSunday;
+			ProductionWeek = productionWeek;
 
 		}
 
 		public override bool Equals(object obj)
 		{
 
-			if (obj == null || this.GetType().Equals(obj.GetType()) == false)
+			if (obj == null || GetType().Equals(obj.GetType()) == false)
 			{
 				return false;
 			}

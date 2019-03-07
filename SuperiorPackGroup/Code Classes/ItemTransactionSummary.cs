@@ -18,15 +18,15 @@ namespace SuperiorPackGroup
 		public ItemTransactionSummary(string customerName, string itemCode, string itemDescription, string itemType, double produced, double usedInProduction, double shipped, double received, double adjusted)
 		{
 
-			this.CustomerName = customerName;
-			this.ItemCode = itemCode;
-			this.ItemDescription = itemDescription;
-			this.ItemType = itemType;
-			this.Produced = produced;
-			this.UsedInProduction = usedInProduction;
-			this.Shipped = shipped;
-			this.Received = received;
-			this.Adjusted = adjusted;
+			CustomerName = customerName;
+			ItemCode = itemCode;
+			ItemDescription = itemDescription;
+			ItemType = itemType;
+			Produced = produced;
+			UsedInProduction = usedInProduction;
+			Shipped = shipped;
+			Received = received;
+			Adjusted = adjusted;
 
 		}
 

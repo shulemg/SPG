@@ -94,7 +94,7 @@ namespace SuperiorPackGroup
 			if (machineLines.Count() == 0)
 			{
 				//It is a new Product
-				return this.InsertMachineLine(name);
+				return InsertMachineLine(name);
 			}
 
 			SPG.MachineLinesRow machineLine = machineLines[0];
@@ -110,7 +110,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(machineLine, originalRecord);
+				UpdateAuditTrail(machineLine, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(machineLine);

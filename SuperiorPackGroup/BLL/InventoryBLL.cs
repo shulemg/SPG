@@ -331,7 +331,7 @@ namespace SuperiorPackGroup
 		public static Inventory GetInventoryRecord(Session session, int inventoryID, bool getFromDB = false)
 		{
 
-			return (Inventory)session.GetObjectByKey<Inventory>(inventoryID, getFromDB);
+			return session.GetObjectByKey<Inventory>(inventoryID, getFromDB);
 
 		}
 

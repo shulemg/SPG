@@ -19,12 +19,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_InventoryAdjustmentReportTableAdapter == null)
+				if (m_InventoryAdjustmentReportTableAdapter == null)
 				{
-					this.m_InventoryAdjustmentReportTableAdapter = new InventoryAdjustmentReportTableAdapter();
-					this.m_InventoryAdjustmentReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_InventoryAdjustmentReportTableAdapter = new InventoryAdjustmentReportTableAdapter();
+					m_InventoryAdjustmentReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_InventoryAdjustmentReportTableAdapter;
+				return m_InventoryAdjustmentReportTableAdapter;
 			}
 		}
 

@@ -44,7 +44,7 @@ namespace SuperiorPackGroup
 		public static bool AllowEdit(Session session, int itemID)
 		{
 
-			Items item = (Items)session.GetObjectByKey<Items>(itemID, true);
+			Items item = session.GetObjectByKey<Items>(itemID, true);
 			if (item.Editing)
 			{
 				return false;
@@ -91,7 +91,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				Items item = (Items)session.GetObjectByKey<Items>(itemID, true);
+				Items item = session.GetObjectByKey<Items>(itemID, true);
 				item.Editing = false;
 				item.Save();
 			}
@@ -202,7 +202,7 @@ namespace SuperiorPackGroup
 			//Returns units per case
 			try
 			{
-				Items item = (Items)Session.DefaultSession.GetObjectByKey<Items>(itemID, true);
+				Items item = Session.DefaultSession.GetObjectByKey<Items>(itemID, true);
 				return item.intUnitsPerCase * item.intQtyPerUnit;
 			}
 			catch (Exception ex)
@@ -237,7 +237,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				Items item = (Items)Session.DefaultSession.GetObjectByKey<Items>(itemID.Value, true);
+				Items item = Session.DefaultSession.GetObjectByKey<Items>(itemID.Value, true);
 				return item.ItemDescription;
 			}
 			catch (Exception ex)
@@ -395,7 +395,7 @@ namespace SuperiorPackGroup
 			{
 //INSTANT C# NOTE: Commented this declaration since looping variables in 'foreach' loops are declared in the 'foreach' header in C#:
 //				Dim row As SPG.ItemsRow
-				foreach (SPG.ItemsRow row in this.Adapter.GetItemUOMs())
+				foreach (SPG.ItemsRow row in Adapter.GetItemUOMs())
 				{
 					string uom = row.strUnitOfMeasure;
 					if (!itemUOMs.Contains(uom))
@@ -534,7 +534,7 @@ namespace SuperiorPackGroup
 			//Returns units per case
 			try
 			{
-				Items item = (Items)Session.DefaultSession.GetObjectByKey<Items>(itemID, true);
+				Items item = Session.DefaultSession.GetObjectByKey<Items>(itemID, true);
 				return item.intQtyPerUnit;
 			}
 			catch (Exception ex)
@@ -569,7 +569,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				Items item = (Items)Session.DefaultSession.GetObjectByKey<Items>(itemID.Value, true);
+				Items item = Session.DefaultSession.GetObjectByKey<Items>(itemID.Value, true);
 				return item.strUnitOfMeasure;
 			}
 			catch (Exception ex)

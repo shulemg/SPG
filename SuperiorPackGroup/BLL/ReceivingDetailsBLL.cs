@@ -122,7 +122,7 @@ namespace SuperiorPackGroup
 				throw new ApplicationException("LPN is blank.");
 			}
 
-			Items item = (Items)session.GetObjectByKey<Items>(itemID.Value, true);
+			Items item = session.GetObjectByKey<Items>(itemID.Value, true);
 
 			if (!LotCodeValidator.ValidateByItem(item, lot, true))
 			{
@@ -135,7 +135,7 @@ namespace SuperiorPackGroup
 			if (detail == null)
 			{
 				//It is a new Detail
-				return this.InsertDetails(session, receivingID, item, lot, quantity, units, LPN, expirationDate);
+				return InsertDetails(session, receivingID, item, lot, quantity, units, LPN, expirationDate);
 			}
 
 			bool itemChanged = false;
@@ -159,7 +159,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalDetail == null))
 			{
-				this.UpdateAuditTrail(detail, originalDetail);
+				UpdateAuditTrail(detail, originalDetail);
 			}
 
 			session.Save(detail);

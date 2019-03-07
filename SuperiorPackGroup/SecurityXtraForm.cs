@@ -31,7 +31,7 @@ namespace SuperiorPackGroup
 		private void SecurityXtraForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
-			if (this.usersListBoxControl.Enabled == false)
+			if (usersListBoxControl.Enabled == false)
 			{
 				switch (MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
@@ -60,23 +60,23 @@ namespace SuperiorPackGroup
 
 			CheckPermissions();
 
-			this.usersListBoxControl.ValueMember = "strUserName";
+			usersListBoxControl.ValueMember = "strUserName";
 			usersListBoxControl.DisplayMember = "strUserName";
 			BindUsersListBox();
 
-			this.permissionIDGridColumn.FieldName = "UserPermissionID";
-			this.permissionLevelGridColumn.FieldName = "PermissionLevel";
-			this.permissionObjectGridColumn.FieldName = "PermissionObject";
-			this.userNaemGridColumn.FieldName = "UserName";
+			permissionIDGridColumn.FieldName = "UserPermissionID";
+			permissionLevelGridColumn.FieldName = "PermissionLevel";
+			permissionObjectGridColumn.FieldName = "PermissionObject";
+			userNaemGridColumn.FieldName = "UserName";
 
-			this.passwordTextEdit.Properties.ReadOnly = true;
-			this.confirmTextEdit.Properties.ReadOnly = true;
-			this.LPNPrinterTextEdit.Properties.ReadOnly = true;
+			passwordTextEdit.Properties.ReadOnly = true;
+			confirmTextEdit.Properties.ReadOnly = true;
+			LPNPrinterTextEdit.Properties.ReadOnly = true;
 			locationLookUpEdit.Properties.ReadOnly = true;
 			resetSimpleButton.Enabled = false;
-			this.usersListBoxControl.Enabled = true;
-			this.userPermissionsGridView.OptionsBehavior.Editable = false;
-			this.customersGridView.OptionsBehavior.Editable = false;
+			usersListBoxControl.Enabled = true;
+			userPermissionsGridView.OptionsBehavior.Editable = false;
+			customersGridView.OptionsBehavior.Editable = false;
 
 			m_CustomersUOW = new UnitOfWork(MyDataLayers.SPGDataLayer);
 
@@ -85,16 +85,16 @@ namespace SuperiorPackGroup
 		public void BindUsersListBox()
 		{
 
-			this.usersListBoxControl.DataSource = m_Users.GetUsers();
+			usersListBoxControl.DataSource = m_Users.GetUsers();
 
 		}
 
 		private void usersListBoxControl_SelectedValueChanged(object sender, EventArgs e)
 		{
 
-			if (this.usersListBoxControl.SelectedIndex != -1)
+			if (usersListBoxControl.SelectedIndex != -1)
 			{
-				BindSecurityControls(this.usersListBoxControl.SelectedValue.ToString());
+				BindSecurityControls(usersListBoxControl.SelectedValue.ToString());
 			}
 
 		}
@@ -103,11 +103,11 @@ namespace SuperiorPackGroup
 		{
 
 			Users user = UsersBLL.GetUserByName(m_CustomersUOW, username);
-			this.nameTextEdit.EditValue = user.strUserName;
-			this.nameTextEdit.Enabled = false;
-			this.passwordTextEdit.EditValue = user.strPassword;
-			this.confirmTextEdit.EditValue = user.strPassword;
-			this.LPNPrinterTextEdit.EditValue = user.LPNPrinterName;
+			nameTextEdit.EditValue = user.strUserName;
+			nameTextEdit.Enabled = false;
+			passwordTextEdit.EditValue = user.strPassword;
+			confirmTextEdit.EditValue = user.strPassword;
+			LPNPrinterTextEdit.EditValue = user.LPNPrinterName;
 			try
 			{
 				locationLookUpEdit.EditValue = UsersBLL.GetUserByName(m_CustomersUOW, user.strUserName).DefaultLocation.Oid;
@@ -117,15 +117,15 @@ namespace SuperiorPackGroup
 				locationLookUpEdit.EditValue = null;
 			}
 
-			this.userPermissionsGridControl.DataSource = m_UserPermissions.GetUserPermissionsByUserName(user.strUserName, null);
+			userPermissionsGridControl.DataSource = m_UserPermissions.GetUserPermissionsByUserName(user.strUserName, null);
 			if (user.strUserName == "Admin")
 			{
-				this.customersXtraTabPage.PageVisible = false;
+				customersXtraTabPage.PageVisible = false;
 			}
 			else
 			{
-				this.customersXtraTabPage.PageVisible = true;
-				this.customersXPCollection.Criteria = CriteriaOperator.Parse(string.Format("User.strUserName = '{0}'", user));
+				customersXtraTabPage.PageVisible = true;
+				customersXPCollection.Criteria = CriteriaOperator.Parse(string.Format("User.strUserName = '{0}'", user));
 			}
 
 		}
@@ -141,46 +141,46 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.passwordTextEdit.Properties.PasswordChar = '\0';
-						this.confirmTextEdit.Properties.PasswordChar = '\0';
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = true;
+						passwordTextEdit.Properties.PasswordChar = '\0';
+						confirmTextEdit.Properties.PasswordChar = '\0';
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = true;
 						break;
 					case "ADD":
 					case "Add":
-						this.passwordTextEdit.Properties.PasswordChar = '*';
-						this.confirmTextEdit.Properties.PasswordChar = '*';
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
+						passwordTextEdit.Properties.PasswordChar = '*';
+						confirmTextEdit.Properties.PasswordChar = '*';
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
 						break;
 					case "NONE":
 					case "None":
 					case "VIEW ASSIGNED":
 					case "EDIT ASSIGNED":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.passwordTextEdit.Properties.PasswordChar = '*';
-						this.confirmTextEdit.Properties.PasswordChar = '*';
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.deleteBarButtonItem.Enabled = false;
+						passwordTextEdit.Properties.PasswordChar = '*';
+						confirmTextEdit.Properties.PasswordChar = '*';
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						deleteBarButtonItem.Enabled = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.passwordTextEdit.Properties.PasswordChar = '*';
-						this.confirmTextEdit.Properties.PasswordChar = '*';
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
+						passwordTextEdit.Properties.PasswordChar = '*';
+						confirmTextEdit.Properties.PasswordChar = '*';
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;
@@ -195,7 +195,7 @@ namespace SuperiorPackGroup
 		private bool SaveChanges()
 		{
 
-			string selectedUser = this.nameTextEdit.Text;
+			string selectedUser = nameTextEdit.Text;
 
 			Locations location = null;
 			if (locationLookUpEdit.EditValue != null)
@@ -209,7 +209,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				if (m_Users.UpdateUser(selectedUser, this.passwordTextEdit.Text, this.confirmTextEdit.Text, location, this.LPNPrinterTextEdit.Text) != true)
+				if (m_Users.UpdateUser(selectedUser, passwordTextEdit.Text, confirmTextEdit.Text, location, LPNPrinterTextEdit.Text) != true)
 				{
 					MessageBox.Show("The user was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
@@ -223,14 +223,14 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				this.userPermissionsGridView.SelectAll();
-				if (this.userPermissionsGridView.SelectedRowsCount > 0)
+				userPermissionsGridView.SelectAll();
+				if (userPermissionsGridView.SelectedRowsCount > 0)
 				{
-					int permissions = this.userPermissionsGridView.SelectedRowsCount;
+					int permissions = userPermissionsGridView.SelectedRowsCount;
 					int i = 0;
 					while (i < permissions)
 					{
-						int permission = this.userPermissionsGridView.GetSelectedRows()[i];
+						int permission = userPermissionsGridView.GetSelectedRows()[i];
 						if (permission >= 0)
 						{
 							if (m_UserPermissions.UpdateUserPermissions((int?)userPermissionsGridView.GetRowCellValue(permission, permissionIDGridColumn), userPermissionsGridView.GetRowCellValue(permission, permissionObjectGridColumn).ToString(), userPermissionsGridView.GetRowCellValue(permission, permissionLevelGridColumn).ToString(), selectedUser) != true)
@@ -251,16 +251,16 @@ namespace SuperiorPackGroup
 			}
 
 			BindUsersListBox();
-			this.usersListBoxControl.SelectedValue = selectedUser;
+			usersListBoxControl.SelectedValue = selectedUser;
 
-			this.passwordTextEdit.Properties.ReadOnly = true;
-			this.confirmTextEdit.Properties.ReadOnly = true;
-			this.LPNPrinterTextEdit.Properties.ReadOnly = true;
+			passwordTextEdit.Properties.ReadOnly = true;
+			confirmTextEdit.Properties.ReadOnly = true;
+			LPNPrinterTextEdit.Properties.ReadOnly = true;
 			locationLookUpEdit.Properties.ReadOnly = true;
 			resetSimpleButton.Enabled = false;
-			this.usersListBoxControl.Enabled = true;
-			this.userPermissionsGridView.OptionsBehavior.Editable = false;
-			this.customersGridView.OptionsBehavior.Editable = false;
+			usersListBoxControl.Enabled = true;
+			userPermissionsGridView.OptionsBehavior.Editable = false;
+			customersGridView.OptionsBehavior.Editable = false;
 			return true;
 
 		}
@@ -280,52 +280,52 @@ namespace SuperiorPackGroup
 		private void addBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 
-			this.nameTextEdit.Text = null;
-			this.nameTextEdit.Enabled = true;
-			this.passwordTextEdit.EditValue = null;
-			this.confirmTextEdit.EditValue = null;
-			this.LPNPrinterTextEdit.EditValue = null;
+			nameTextEdit.Text = null;
+			nameTextEdit.Enabled = true;
+			passwordTextEdit.EditValue = null;
+			confirmTextEdit.EditValue = null;
+			LPNPrinterTextEdit.EditValue = null;
 			locationLookUpEdit.EditValue = null;
 
-			this.userPermissionsGridControl.DataSource = m_UserPermissions.GetUserPermissionsByUserName("", null);
-			this.customersXPCollection.Criteria = CriteriaOperator.Parse("User.strUserName IS NULL");
+			userPermissionsGridControl.DataSource = m_UserPermissions.GetUserPermissionsByUserName("", null);
+			customersXPCollection.Criteria = CriteriaOperator.Parse("User.strUserName IS NULL");
 
-			this.passwordTextEdit.Properties.ReadOnly = false;
-			this.confirmTextEdit.Properties.ReadOnly = false;
-			this.LPNPrinterTextEdit.Properties.ReadOnly = false;
+			passwordTextEdit.Properties.ReadOnly = false;
+			confirmTextEdit.Properties.ReadOnly = false;
+			LPNPrinterTextEdit.Properties.ReadOnly = false;
 			locationLookUpEdit.Properties.ReadOnly = false;
 			resetSimpleButton.Enabled = true;
-			this.usersListBoxControl.Enabled = false;
-			this.userPermissionsGridView.OptionsBehavior.Editable = true;
-			this.customersGridView.OptionsBehavior.Editable = true;
+			usersListBoxControl.Enabled = false;
+			userPermissionsGridView.OptionsBehavior.Editable = true;
+			customersGridView.OptionsBehavior.Editable = true;
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
-			this.deleteBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
+			deleteBarButtonItem.Enabled = false;
 
 		}
 
 		private void CancelChanges()
 		{
 
-			if (this.usersListBoxControl.SelectedIndex != -1)
+			if (usersListBoxControl.SelectedIndex != -1)
 			{
 				if (m_CustomersUOW.InTransaction == true)
 				{
 					m_CustomersUOW.RollbackTransaction();
 				}
-				BindSecurityControls(this.usersListBoxControl.SelectedValue.ToString());
+				BindSecurityControls(usersListBoxControl.SelectedValue.ToString());
 			}
 
-			this.passwordTextEdit.Properties.ReadOnly = true;
-			this.confirmTextEdit.Properties.ReadOnly = true;
+			passwordTextEdit.Properties.ReadOnly = true;
+			confirmTextEdit.Properties.ReadOnly = true;
 			locationLookUpEdit.Properties.ReadOnly = true;
 			resetSimpleButton.Enabled = false;
-			this.usersListBoxControl.Enabled = true;
-			this.userPermissionsGridView.OptionsBehavior.Editable = false;
-			this.customersGridView.OptionsBehavior.Editable = false;
+			usersListBoxControl.Enabled = true;
+			userPermissionsGridView.OptionsBehavior.Editable = false;
+			customersGridView.OptionsBehavior.Editable = false;
 
 		}
 
@@ -342,7 +342,7 @@ namespace SuperiorPackGroup
 		private void deleteBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 
-			if (this.nameTextEdit.Text.ToLower() == "admin")
+			if (nameTextEdit.Text.ToLower() == "admin")
 			{
 				MessageBox.Show("You can't Delete the Admin User");
 				return;
@@ -350,13 +350,13 @@ namespace SuperiorPackGroup
 
 			if (MessageBox.Show("Are you sure you want to delete this user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				if (m_UserPermissions.DeleteUserPermissions(this.nameTextEdit.Text) != true)
+				if (m_UserPermissions.DeleteUserPermissions(nameTextEdit.Text) != true)
 				{
 					MessageBox.Show("The user permissions was not deleted succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
 				//The assigned customers will be deleted by XPO it's aggregated to the user
-				if (m_Users.DeleteUser(this.nameTextEdit.Text) != true)
+				if (m_Users.DeleteUser(nameTextEdit.Text) != true)
 				{
 					MessageBox.Show("The user was not deleted succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
@@ -365,40 +365,40 @@ namespace SuperiorPackGroup
 
 			BindUsersListBox();
 
-			this.passwordTextEdit.Properties.ReadOnly = true;
-			this.confirmTextEdit.Properties.ReadOnly = true;
+			passwordTextEdit.Properties.ReadOnly = true;
+			confirmTextEdit.Properties.ReadOnly = true;
 			locationLookUpEdit.Properties.ReadOnly = true;
 			resetSimpleButton.Enabled = false;
-			this.usersListBoxControl.Enabled = true;
-			this.userPermissionsGridView.OptionsBehavior.Editable = false;
-			this.customersGridView.OptionsBehavior.Editable = false;
+			usersListBoxControl.Enabled = true;
+			userPermissionsGridView.OptionsBehavior.Editable = false;
+			customersGridView.OptionsBehavior.Editable = false;
 
 		}
 
 		private void PermissionsRepositoryItemComboBox_EditValueChanged(object sender, EventArgs e)
 		{
 
-			this.userPermissionsGridView.PostEditor();
+			userPermissionsGridView.PostEditor();
 
 		}
 
 		private void editBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 
-			this.passwordTextEdit.Properties.ReadOnly = false;
-			this.confirmTextEdit.Properties.ReadOnly = false;
-			this.LPNPrinterTextEdit.Properties.ReadOnly = false;
+			passwordTextEdit.Properties.ReadOnly = false;
+			confirmTextEdit.Properties.ReadOnly = false;
+			LPNPrinterTextEdit.Properties.ReadOnly = false;
 			locationLookUpEdit.Properties.ReadOnly = false;
 			resetSimpleButton.Enabled = true;
-			this.usersListBoxControl.Enabled = false;
-			this.userPermissionsGridView.OptionsBehavior.Editable = true;
-			this.customersGridView.OptionsBehavior.Editable = true;
+			usersListBoxControl.Enabled = false;
+			userPermissionsGridView.OptionsBehavior.Editable = true;
+			customersGridView.OptionsBehavior.Editable = true;
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
-			this.deleteBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
+			deleteBarButtonItem.Enabled = false;
 
 		}
 
@@ -418,7 +418,7 @@ namespace SuperiorPackGroup
 		private void customersGridView_InitNewRow(object sender, InitNewRowEventArgs e)
 		{
 
-			this.customersGridView.SetFocusedRowCellValue("User!Key", usersListBoxControl.SelectedValue.ToString());
+			customersGridView.SetFocusedRowCellValue("User!Key", usersListBoxControl.SelectedValue.ToString());
 
 		}
 
@@ -447,7 +447,7 @@ namespace SuperiorPackGroup
 		private void resetSimpleButton_Click(object sender, EventArgs e)
 		{
 
-			m_UserPermissions.DeleteUserPermissions(this.nameTextEdit.Text);
+			m_UserPermissions.DeleteUserPermissions(nameTextEdit.Text);
 			if (m_UserPermissions.CreateNewUserPermissions(nameTextEdit.Text) == false)
 			{
 				MessageBox.Show("The permissions were not created succesfuly.");

@@ -22,7 +22,7 @@ namespace SuperiorPackGroup
 		private void BindGridControl()
 		{
 
-			this.shiftsGridControl.DataSource = m_Shift.GetShifts();
+			shiftsGridControl.DataSource = m_Shift.GetShifts();
 
 		}
 
@@ -90,8 +90,8 @@ namespace SuperiorPackGroup
 			m_Shift = new ShiftsBLL();
 
 			CheckPermissions();
-			this.shiftGridColumn.FieldName = "ShiftName";
-			this.idGridColumn.FieldName = "ShiftID";
+			shiftGridColumn.FieldName = "ShiftName";
+			idGridColumn.FieldName = "ShiftID";
 			BindGridControl();
 
 		}
@@ -107,34 +107,34 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.shiftsGridView.OptionsBehavior.Editable = true;
-						this.shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = true;
+						shiftsGridView.OptionsBehavior.Editable = true;
+						shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteSimpleButton.Visible = true;
 						break;
 					case "ADD":
 					case "Add":
-						this.shiftsGridView.OptionsBehavior.Editable = true;
-						this.shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = false;
+						shiftsGridView.OptionsBehavior.Editable = true;
+						shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 					case "VIEW ASSIGNED":
 					case "EDIT ASSIGNED":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.shiftsGridView.OptionsBehavior.Editable = false;
-						this.shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						shiftsGridView.OptionsBehavior.Editable = false;
+						shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.shiftsGridView.OptionsBehavior.Editable = true;
-						this.shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						shiftsGridView.OptionsBehavior.Editable = true;
+						shiftsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteSimpleButton.Visible = false;
 						break;
 				}
 

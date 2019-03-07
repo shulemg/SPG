@@ -49,7 +49,7 @@ namespace SuperiorPackGroup
 		private void ReceivingXtraForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
-			if (this.receivingSearchGridControl.Enabled == false)
+			if (receivingSearchGridControl.Enabled == false)
 			{
 				switch (MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
@@ -73,7 +73,7 @@ namespace SuperiorPackGroup
 		private void ReceivingXtraForm_Load(object sender, EventArgs e)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			m_Receivings = new ReceivingsBLL();
 			m_CustomerReceivings = new CustomersBLL();
 			m_Shifts = new ShiftsBLL();
@@ -90,50 +90,50 @@ namespace SuperiorPackGroup
 			BindReceivingsSearchGrid();
 
 			shiftLookUpEdit.Properties.DataSource = m_Shifts.GetShifts();
-			this.shiftLookUpEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo());
-			this.shiftLookUpEdit.Properties.Columns[0].FieldName = "ShiftName";
-			this.shiftLookUpEdit.Properties.Columns[0].Caption = "Shift";
-			this.shiftLookUpEdit.Properties.DisplayMember = "ShiftName";
-			this.shiftLookUpEdit.Properties.ValueMember = "ShiftID";
+			shiftLookUpEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo());
+			shiftLookUpEdit.Properties.Columns[0].FieldName = "ShiftName";
+			shiftLookUpEdit.Properties.Columns[0].Caption = "Shift";
+			shiftLookUpEdit.Properties.DisplayMember = "ShiftName";
+			shiftLookUpEdit.Properties.ValueMember = "ShiftID";
 
 			carrierLookUpEdit.Properties.DataSource = m_Carriers.GetCarrierIDAndNames();
-			this.carrierLookUpEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo());
-			this.carrierLookUpEdit.Properties.Columns[0].FieldName = "CarrierName";
-			this.carrierLookUpEdit.Properties.Columns[0].Caption = "Carrier Name";
-			this.carrierLookUpEdit.Properties.DisplayMember = "CarrierName";
-			this.carrierLookUpEdit.Properties.ValueMember = "CarrierID";
+			carrierLookUpEdit.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo());
+			carrierLookUpEdit.Properties.Columns[0].FieldName = "CarrierName";
+			carrierLookUpEdit.Properties.Columns[0].Caption = "Carrier Name";
+			carrierLookUpEdit.Properties.DisplayMember = "CarrierName";
+			carrierLookUpEdit.Properties.ValueMember = "CarrierID";
 
-			this.idGridColumn.FieldName = "ReceivDetID";
-			this.receivingIDGridColumn.FieldName = "ReceivMainID";
-			this.itemGridColumn.FieldName = "ReceivDetItemID";
-			this.quantityGridColumn.FieldName = "ReceivDetQty";
-			this.packagesGridColumn.FieldName = "intUnits";
-			this.ReceivDetLPNColumn.FieldName = "ReceivDetLPN";
-			this.lotGridColumn.FieldName = "ReceivDetLot";
+			idGridColumn.FieldName = "ReceivDetID";
+			receivingIDGridColumn.FieldName = "ReceivMainID";
+			itemGridColumn.FieldName = "ReceivDetItemID";
+			quantityGridColumn.FieldName = "ReceivDetQty";
+			packagesGridColumn.FieldName = "intUnits";
+			ReceivDetLPNColumn.FieldName = "ReceivDetLPN";
+			lotGridColumn.FieldName = "ReceivDetLot";
 			expirationDateGridColumn.FieldName = "ExpirationDate";
 
-			this.returnIDGridColumn.FieldName = "ReturnDetID";
-			this.ReceiveMainIDGridColumn.FieldName = "ReceiveMainID";
-			this.returnItemGridColumn.FieldName = "ReturnDetItemID";
-			this.returnQuantityGridColumn.FieldName = "ReturnDetQty";
-			this.returnUnitsGridColumn.FieldName = "intUnits";
-			this.returnPalletsGridColumn.FieldName = "sngPallets";
-			this.returnLotGridColumn.FieldName = "ReturnDetLot";
-			this.returnReasonGridColumn.FieldName = "Reason";
+			returnIDGridColumn.FieldName = "ReturnDetID";
+			ReceiveMainIDGridColumn.FieldName = "ReceiveMainID";
+			returnItemGridColumn.FieldName = "ReturnDetItemID";
+			returnQuantityGridColumn.FieldName = "ReturnDetQty";
+			returnUnitsGridColumn.FieldName = "intUnits";
+			returnPalletsGridColumn.FieldName = "sngPallets";
+			returnLotGridColumn.FieldName = "ReturnDetLot";
+			returnReasonGridColumn.FieldName = "Reason";
 			returnExpirationDateGridColumn.FieldName = "ExpirationDate";
 
 			Utilities.MakeFormReadOnly(generalXtraTabPage, true);
-			this.receivingGridView.OptionsBehavior.Editable = false;
-			this.BulkEntryGroupControl.Enabled = false;
-			Utilities.MakeGridReadOnly(this.returnsGridView, true);
-			this.receivingSearchGridControl.Enabled = true;
+			receivingGridView.OptionsBehavior.Editable = false;
+			BulkEntryGroupControl.Enabled = false;
+			Utilities.MakeGridReadOnly(returnsGridView, true);
+			receivingSearchGridControl.Enabled = true;
 
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
 			refreshBarButtonItem.Enabled = false;
-			this.SaveContinueSimpleButton.Enabled = false;
+			SaveContinueSimpleButton.Enabled = false;
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 
@@ -159,25 +159,25 @@ namespace SuperiorPackGroup
 				return;
 			}
 			m_CurrentReceivingID = receiving.ReceivID;
-			this.customerLookUpEdit.EditValue = receiving.ReceivCustID.CustomerID;
-			this.receiveDateEdit.EditValue = receiving.ReceivDate;
-			this.shiftLookUpEdit.EditValue = receiving.intShiftID.ShiftID;
-			this.bolTextEdit.Text = receiving.ReceivBOL;
-			this.poTextEdit.Text = receiving.strPO;
-			this.carrierLookUpEdit.EditValue = receiving.ReceivCarrierID.CarrierID;
+			customerLookUpEdit.EditValue = receiving.ReceivCustID.CustomerID;
+			receiveDateEdit.EditValue = receiving.ReceivDate;
+			shiftLookUpEdit.EditValue = receiving.intShiftID.ShiftID;
+			bolTextEdit.Text = receiving.ReceivBOL;
+			poTextEdit.Text = receiving.strPO;
+			carrierLookUpEdit.EditValue = receiving.ReceivCarrierID.CarrierID;
 			if (receiving.strVendor != null)
 			{
-				this.vendorLookUpEdit.EditValue = receiving.strVendor.Oid;
+				vendorLookUpEdit.EditValue = receiving.strVendor.Oid;
 			}
 			else
 			{
-				this.vendorLookUpEdit.EditValue = null;
+				vendorLookUpEdit.EditValue = null;
 			}
-			this.trailerTextEdit.Text = receiving.strTrailer;
-			this.sealTextEdit.Text = receiving.strSeal;
-			this.skitsTextEdit.EditValue = receiving.sngSkits;
-			this.palletsTextEdit.EditValue = receiving.sngTotalPallets;
-			this.notesMemoEdit.EditValue = receiving.Notes;
+			trailerTextEdit.Text = receiving.strTrailer;
+			sealTextEdit.Text = receiving.strSeal;
+			skitsTextEdit.EditValue = receiving.sngSkits;
+			palletsTextEdit.EditValue = receiving.sngTotalPallets;
+			notesMemoEdit.EditValue = receiving.Notes;
 			if (receiving.UnloadedBy == null)
 			{
 				unloadedByLookUpEdit.EditValue = null;
@@ -194,7 +194,7 @@ namespace SuperiorPackGroup
 			{
 				checkedByLookUpEdit.EditValue = receiving.CheckedBy.Oid;
 			}
-			if ((int)receiving.WheelsChocked == 0)
+			if (receiving.WheelsChocked == 0)
 			{
 				wheelsChockedComboBoxEdit.EditValue = null;
 			}
@@ -242,7 +242,7 @@ namespace SuperiorPackGroup
 			{
 				loadConditionLookUpEdit.EditValue = receiving.LoadCondition.Oid;
 			}
-			if ((int)receiving.ForeignSubstance == 0)
+			if (receiving.ForeignSubstance == 0)
 			{
 				foreignSubstanceComboBoxEdit.EditValue = null;
 			}
@@ -250,7 +250,7 @@ namespace SuperiorPackGroup
 			{
 				foreignSubstanceComboBoxEdit.EditValue = Enum.GetName(typeof(DXDAL.ThreeWayYesNo), receiving.ForeignSubstance);
 			}
-			if ((int)receiving.InsectActivity == 0)
+			if (receiving.InsectActivity == 0)
 			{
 				insectActivityComboBoxEdit.EditValue = null;
 			}
@@ -258,7 +258,7 @@ namespace SuperiorPackGroup
 			{
 				insectActivityComboBoxEdit.EditValue = Enum.GetName(typeof(DXDAL.ThreeWayYesNo), receiving.InsectActivity);
 			}
-			if ((int)receiving.CorrectPallets == 0)
+			if (receiving.CorrectPallets == 0)
 			{
 				correctPalletsComboBoxEdit.EditValue = null;
 			}
@@ -288,14 +288,14 @@ namespace SuperiorPackGroup
 				receivingID = 0;
 			}
 
-			int? customer = (int?)this.customerLookUpEdit.EditValue;
+			int? customer = (int?)customerLookUpEdit.EditValue;
 			if (customer.HasValue)
 			{
 				expirationDateGridColumn.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(customer.Value);
 				ExpirationDateEdit.Properties.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(customer.Value);
 			}
 
-			this.receivingGridControl.DataSource = m_ReceivingDetails.GetDetailsByReceivingID(receivingID.Value);
+			receivingGridControl.DataSource = m_ReceivingDetails.GetDetailsByReceivingID(receivingID.Value);
 
 		}
 
@@ -307,29 +307,29 @@ namespace SuperiorPackGroup
 				receivingID = 0;
 			}
 
-			int? customer = (int?)this.customerLookUpEdit.EditValue;
+			int? customer = (int?)customerLookUpEdit.EditValue;
 			if (customer.HasValue)
 			{
 				returnExpirationDateGridColumn.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(customer.Value);
 			}
 
-			this.returnsGridControl.DataSource = m_ReturnDetails.GetDetailsByReceivingID(receivingID.Value);
+			returnsGridControl.DataSource = m_ReturnDetails.GetDetailsByReceivingID(receivingID.Value);
 
 		}
 
 		private void BindItemLookupEdit()
 		{
 
-			int? customer = (int?)this.customerLookUpEdit.EditValue;
+			int? customer = (int?)customerLookUpEdit.EditValue;
 			if (customer.HasValue)
 			{
-				this.receivingItemXPView.Filter = CriteriaOperator.Or(new BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal), new BinaryOperator("CustomerID", CompanySettingsBLL.GetUniversalCustomer(), BinaryOperatorType.Equal), new InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ReceivingSession))));
-				this.returnItemXPView.Filter = CriteriaOperator.Or(new BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal), new InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ReceivingSession))));
+				receivingItemXPView.Filter = CriteriaOperator.Or(new BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal), new BinaryOperator("CustomerID", CompanySettingsBLL.GetUniversalCustomer(), BinaryOperatorType.Equal), new InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ReceivingSession))));
+				returnItemXPView.Filter = CriteriaOperator.Or(new BinaryOperator("CustomerID", customer.Value, BinaryOperatorType.Equal), new InOperator("CustomerID", CustomersBLL.GetRelatedCustomerIDs(CustomersBLL.GetCustomer(customer.Value, m_ReceivingSession))));
 			}
 			else
 			{
-				this.receivingItemXPView.Filter = null;
-				this.returnItemXPView.Filter = null;
+				receivingItemXPView.Filter = null;
+				returnItemXPView.Filter = null;
 			}
 
 		}
@@ -337,9 +337,9 @@ namespace SuperiorPackGroup
 		private void receivingGridView_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
 		{
 
-			if (!Convert.IsDBNull(receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.itemGridColumn)) && e.Column.Name == descriptionGridColumn.Name)
+			if (!Convert.IsDBNull(receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, itemGridColumn)) && e.Column.Name == descriptionGridColumn.Name)
 			{
-				e.Value = ItemsBLL.GetDescriptionByItemID((int?)receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.itemGridColumn));
+				e.Value = ItemsBLL.GetDescriptionByItemID((int?)receivingGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, itemGridColumn));
 			}
 
 		}
@@ -347,9 +347,9 @@ namespace SuperiorPackGroup
 		private void returnsGridView_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
 		{
 
-			if (!Convert.IsDBNull(returnsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.returnItemGridColumn)))
+			if (!Convert.IsDBNull(returnsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, returnItemGridColumn)))
 			{
-				e.Value = ItemsBLL.GetDescriptionByItemID((int?)returnsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.returnItemGridColumn));
+				e.Value = ItemsBLL.GetDescriptionByItemID((int?)returnsGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, returnItemGridColumn));
 			}
 
 		}
@@ -357,9 +357,9 @@ namespace SuperiorPackGroup
 		private void receivingGridView_InitNewRow(object sender, InitNewRowEventArgs e)
 		{
 
-			this.receivingGridView.SetRowCellValue(e.RowHandle, this.receivingIDGridColumn, m_CurrentReceivingID);
-			this.receivingGridView.SetRowCellValue(e.RowHandle, this.quantityGridColumn, 0);
-			this.receivingGridView.SetRowCellValue(e.RowHandle, this.packagesGridColumn, 0);
+			receivingGridView.SetRowCellValue(e.RowHandle, receivingIDGridColumn, m_CurrentReceivingID);
+			receivingGridView.SetRowCellValue(e.RowHandle, quantityGridColumn, 0);
+			receivingGridView.SetRowCellValue(e.RowHandle, packagesGridColumn, 0);
 			//.SetRowCellValue(e.RowHandle, Me.palletsGridColumn, 0)
 			//.SetRowCellValue(e.RowHandle, Me.ReceivDetLPNFromColumn, GetNextLPN())
 
@@ -368,10 +368,10 @@ namespace SuperiorPackGroup
 		private void returnsGridView_InitNewRow(object sender, InitNewRowEventArgs e)
 		{
 
-			this.returnsGridView.SetRowCellValue(e.RowHandle, this.ReceiveMainIDGridColumn, m_CurrentReceivingID);
-			this.returnsGridView.SetRowCellValue(e.RowHandle, this.returnQuantityGridColumn, 0);
-			this.returnsGridView.SetRowCellValue(e.RowHandle, this.returnUnitsGridColumn, 0);
-			this.returnsGridView.SetRowCellValue(e.RowHandle, this.returnPalletsGridColumn, 0);
+			returnsGridView.SetRowCellValue(e.RowHandle, ReceiveMainIDGridColumn, m_CurrentReceivingID);
+			returnsGridView.SetRowCellValue(e.RowHandle, returnQuantityGridColumn, 0);
+			returnsGridView.SetRowCellValue(e.RowHandle, returnUnitsGridColumn, 0);
+			returnsGridView.SetRowCellValue(e.RowHandle, returnPalletsGridColumn, 0);
 
 		}
 
@@ -396,7 +396,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				if (m_Receivings.UpdateReceiving(m_CurrentReceivingID.Value, (DateTime?)this.receiveDateEdit.EditValue, (int?)this.carrierLookUpEdit.EditValue, (int?)this.customerLookUpEdit.EditValue, this.bolTextEdit.Text, (int?)this.vendorLookUpEdit.EditValue, Utilities.ChangeType<float?>(this.skitsTextEdit.EditValue), Utilities.ChangeType<float?>(this.palletsTextEdit.EditValue), this.poTextEdit.Text, (int?)this.shiftLookUpEdit.EditValue, trailerTextEdit.Text, sealTextEdit.Text, Convert.ToString(notesMemoEdit.EditValue), (int?)unloadedByLookUpEdit.EditValue, (int?)checkedByLookUpEdit.EditValue, GetThreeWayYesNoValue(wheelsChockedComboBoxEdit.Text), (DateTime?)startTimeEdit.EditValue, (DateTime?)finishTimeEdit.EditValue, Utilities.ChangeType<double?>(temperatureSpinEdit.EditValue), (int?)physicalConditionLookUpEdit.EditValue, (int?)loadConditionLookUpEdit.EditValue, GetThreeWayYesNoValue(foreignSubstanceComboBoxEdit.Text), GetThreeWayYesNoValue(insectActivityComboBoxEdit.Text), GetThreeWayYesNoValue(correctPalletsComboBoxEdit.Text), Convert.ToInt32(locationLookUpEdit.EditValue)) != true)
+				if (m_Receivings.UpdateReceiving(m_CurrentReceivingID.Value, (DateTime?)receiveDateEdit.EditValue, (int?)carrierLookUpEdit.EditValue, (int?)customerLookUpEdit.EditValue, bolTextEdit.Text, (int?)vendorLookUpEdit.EditValue, Utilities.ChangeType<float?>(skitsTextEdit.EditValue), Utilities.ChangeType<float?>(palletsTextEdit.EditValue), poTextEdit.Text, (int?)shiftLookUpEdit.EditValue, trailerTextEdit.Text, sealTextEdit.Text, Convert.ToString(notesMemoEdit.EditValue), (int?)unloadedByLookUpEdit.EditValue, (int?)checkedByLookUpEdit.EditValue, GetThreeWayYesNoValue(wheelsChockedComboBoxEdit.Text), (DateTime?)startTimeEdit.EditValue, (DateTime?)finishTimeEdit.EditValue, Utilities.ChangeType<double?>(temperatureSpinEdit.EditValue), (int?)physicalConditionLookUpEdit.EditValue, (int?)loadConditionLookUpEdit.EditValue, GetThreeWayYesNoValue(foreignSubstanceComboBoxEdit.Text), GetThreeWayYesNoValue(insectActivityComboBoxEdit.Text), GetThreeWayYesNoValue(correctPalletsComboBoxEdit.Text), Convert.ToInt32(locationLookUpEdit.EditValue)) != true)
 				{
 					MessageBox.Show("The receiving was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
@@ -430,7 +430,7 @@ namespace SuperiorPackGroup
 			BindReceivingsControls(m_CurrentReceivingID.Value);
 			if (selectedID != -1)
 			{
-				this.receivingSearchGridView.FocusedRowHandle = selectedID;
+				receivingSearchGridView.FocusedRowHandle = selectedID;
 			}
 			return true;
 
@@ -659,9 +659,9 @@ namespace SuperiorPackGroup
 		{
 
 			//Make sure the summary is updated before calculating the total pallets
-			this.receivingGridView.UpdateTotalSummary();
-			this.returnsGridView.UpdateTotalSummary();
-			this.palletsTextEdit.Text = (Convert.ToInt32(ReceivDetLPNColumn.SummaryItem.SummaryValue) + Convert.ToDouble(returnPalletsGridColumn.SummaryItem.SummaryValue) + Math.Ceiling(Convert.ToDouble(this.skitsTextEdit.EditValue))).ToString("f2");
+			receivingGridView.UpdateTotalSummary();
+			returnsGridView.UpdateTotalSummary();
+			palletsTextEdit.Text = (Convert.ToInt32(ReceivDetLPNColumn.SummaryItem.SummaryValue) + Convert.ToDouble(returnPalletsGridColumn.SummaryItem.SummaryValue) + Math.Ceiling(Convert.ToDouble(skitsTextEdit.EditValue))).ToString("f2");
 
 		}
 
@@ -675,7 +675,7 @@ namespace SuperiorPackGroup
 		private void returnsGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
 		{
 
-			if ((this.returnsGridView.GetFocusedRowCellValue(this.returnItemGridColumn) == null) || Convert.IsDBNull(this.returnsGridView.GetFocusedRowCellValue(this.returnItemGridColumn)))
+			if ((returnsGridView.GetFocusedRowCellValue(returnItemGridColumn) == null) || Convert.IsDBNull(returnsGridView.GetFocusedRowCellValue(returnItemGridColumn)))
 			{
 				return;
 			}
@@ -684,7 +684,7 @@ namespace SuperiorPackGroup
 //ORIGINAL LINE: Case returnItemGridColumn.Name
 			if (e.Column.Name == returnItemGridColumn.Name)
 			{
-				if (Convert.ToDouble(this.returnsGridView.GetFocusedRowCellValue(this.returnQuantityGridColumn)) > 0)
+				if (Convert.ToDouble(returnsGridView.GetFocusedRowCellValue(returnQuantityGridColumn)) > 0)
 				{
 					UpdateReturnPallets();
 				}
@@ -722,26 +722,26 @@ namespace SuperiorPackGroup
 
 			int units = 0;
 			float pallets = 0;
-			units = m_Items.GetUnits(Convert.ToInt32(this.returnsGridView.GetRowCellValue(this.returnsGridView.FocusedRowHandle, this.returnItemGridColumn)));
+			units = m_Items.GetUnits(Convert.ToInt32(returnsGridView.GetRowCellValue(returnsGridView.FocusedRowHandle, returnItemGridColumn)));
 
 			if (units != 0)
 			{
-				this.returnsGridView.SetFocusedRowCellValue(this.returnUnitsGridColumn, Convert.ToDouble(this.returnsGridView.GetFocusedRowCellValue(this.returnQuantityGridColumn)) * units);
+				returnsGridView.SetFocusedRowCellValue(returnUnitsGridColumn, Convert.ToDouble(returnsGridView.GetFocusedRowCellValue(returnQuantityGridColumn)) * units);
 			}
 			else
 			{
-				this.returnsGridView.SetFocusedRowCellValue(this.returnUnitsGridColumn, 0);
+				returnsGridView.SetFocusedRowCellValue(returnUnitsGridColumn, 0);
 			}
 
-			pallets = m_Items.GetCasesPerPallet(Convert.ToInt32(this.returnsGridView.GetFocusedRowCellValue(this.returnItemGridColumn)));
+			pallets = m_Items.GetCasesPerPallet(Convert.ToInt32(returnsGridView.GetFocusedRowCellValue(returnItemGridColumn)));
 
 			if (pallets != 0)
 			{
-				this.returnsGridView.SetFocusedRowCellValue(this.returnPalletsGridColumn, Convert.ToDouble(this.returnsGridView.GetFocusedRowCellValue(this.returnQuantityGridColumn)) / pallets);
+				returnsGridView.SetFocusedRowCellValue(returnPalletsGridColumn, Convert.ToDouble(returnsGridView.GetFocusedRowCellValue(returnQuantityGridColumn)) / pallets);
 			}
 			else
 			{
-				this.returnsGridView.SetFocusedRowCellValue(this.returnPalletsGridColumn, 0);
+				returnsGridView.SetFocusedRowCellValue(returnPalletsGridColumn, 0);
 			}
 
 
@@ -750,9 +750,9 @@ namespace SuperiorPackGroup
 		private void receivingSearchGridView_Click(object sender, EventArgs e)
 		{
 
-			if (this.receivingSearchGridView.CalcHitInfo(this.receivingSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
+			if (receivingSearchGridView.CalcHitInfo(receivingSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
 			{
-				this.BindReceivingsControls(Convert.ToInt32(this.receivingSearchGridView.GetFocusedRowCellValue(this.receivingIDSearchGridColumn)));
+				BindReceivingsControls(Convert.ToInt32(receivingSearchGridView.GetFocusedRowCellValue(receivingIDSearchGridColumn)));
 			}
 
 		}
@@ -761,18 +761,18 @@ namespace SuperiorPackGroup
 		{
 
 			m_CurrentReceivingID = -1;
-			this.receiveDateEdit.EditValue = null;
-			this.customerLookUpEdit.EditValue = null;
-			this.carrierLookUpEdit.EditValue = null;
-			this.bolTextEdit.Text = string.Empty;
-			this.vendorLookUpEdit.EditValue = null;
-			this.skitsTextEdit.EditValue = 0;
-			this.shiftLookUpEdit.EditValue = null;
-			this.poTextEdit.Text = string.Empty;
-			this.palletsTextEdit.EditValue = 0;
-			this.trailerTextEdit.Text = string.Empty;
-			this.sealTextEdit.Text = string.Empty;
-			this.notesMemoEdit.EditValue = null;
+			receiveDateEdit.EditValue = null;
+			customerLookUpEdit.EditValue = null;
+			carrierLookUpEdit.EditValue = null;
+			bolTextEdit.Text = string.Empty;
+			vendorLookUpEdit.EditValue = null;
+			skitsTextEdit.EditValue = 0;
+			shiftLookUpEdit.EditValue = null;
+			poTextEdit.Text = string.Empty;
+			palletsTextEdit.EditValue = 0;
+			trailerTextEdit.Text = string.Empty;
+			sealTextEdit.Text = string.Empty;
+			notesMemoEdit.EditValue = null;
 			unloadedByLookUpEdit.EditValue = null;
 			checkedByLookUpEdit.EditValue = null;
 			wheelsChockedComboBoxEdit.EditValue = null;
@@ -789,22 +789,22 @@ namespace SuperiorPackGroup
 			BindReceivingGridControl(m_CurrentReceivingID);
 			BindReturnsGridControl(m_CurrentReceivingID);
 
-			this.receivingsXtraTabControl.SelectedTabPage = this.generalXtraTabPage;
+			receivingsXtraTabControl.SelectedTabPage = generalXtraTabPage;
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, false);
-			this.palletsTextEdit.Properties.ReadOnly = true;
-			this.BulkEntryGroupControl.Enabled = false;
-			this.receivingGridView.OptionsBehavior.Editable = true;
-			Utilities.MakeGridReadOnly(this.returnsGridView, false);
-			this.receivingSearchGridControl.Enabled = false;
+			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
+			palletsTextEdit.Properties.ReadOnly = true;
+			BulkEntryGroupControl.Enabled = false;
+			receivingGridView.OptionsBehavior.Editable = true;
+			Utilities.MakeGridReadOnly(returnsGridView, false);
+			receivingSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.UnitQtyLockCheckEdit.Checked = true;
-			this.SaveContinueSimpleButton.Enabled = true;
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
+			UnitQtyLockCheckEdit.Checked = true;
+			SaveContinueSimpleButton.Enabled = true;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
 			refreshBarButtonItem.Enabled = false;
 
 		}
@@ -818,20 +818,20 @@ namespace SuperiorPackGroup
 				return;
 			}
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, false);
-			this.palletsTextEdit.Properties.ReadOnly = true;
+			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
+			palletsTextEdit.Properties.ReadOnly = true;
 			//locationLookUpEdit.Properties.ReadOnly = True
-			this.BulkEntryGroupControl.Enabled = true;
-			this.receivingGridView.OptionsBehavior.Editable = true;
-			Utilities.MakeGridReadOnly(this.returnsGridView, false);
-			this.receivingSearchGridControl.Enabled = false;
+			BulkEntryGroupControl.Enabled = true;
+			receivingGridView.OptionsBehavior.Editable = true;
+			Utilities.MakeGridReadOnly(returnsGridView, false);
+			receivingSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.UnitQtyLockCheckEdit.Checked = true;
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
+			UnitQtyLockCheckEdit.Checked = true;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
 			refreshBarButtonItem.Enabled = false;
 
 		}
@@ -843,15 +843,15 @@ namespace SuperiorPackGroup
 
 			CheckPermissions();
 
-			this.BulkEntryGroupControl.Enabled = false;
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
-			this.receivingGridView.OptionsBehavior.Editable = false;
-			Utilities.MakeGridReadOnly(this.returnsGridView, true);
-			this.receivingSearchGridControl.Enabled = true;
+			BulkEntryGroupControl.Enabled = false;
+			Utilities.MakeFormReadOnly(generalXtraTabPage, true);
+			receivingGridView.OptionsBehavior.Editable = false;
+			Utilities.MakeGridReadOnly(returnsGridView, true);
+			receivingSearchGridControl.Enabled = true;
 
 			m_TempId.Clear();
 
-			this.SaveContinueSimpleButton.Enabled = false;
+			SaveContinueSimpleButton.Enabled = false;
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
 			refreshBarButtonItem.Enabled = true;
@@ -866,11 +866,11 @@ namespace SuperiorPackGroup
 
 				CheckPermissions();
 
-				this.BulkEntryGroupControl.Enabled = false;
-				Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
-				this.receivingGridView.OptionsBehavior.Editable = false;
-				Utilities.MakeGridReadOnly(this.returnsGridView, true);
-				this.receivingSearchGridControl.Enabled = true;
+				BulkEntryGroupControl.Enabled = false;
+				Utilities.MakeFormReadOnly(generalXtraTabPage, true);
+				receivingGridView.OptionsBehavior.Editable = false;
+				Utilities.MakeGridReadOnly(returnsGridView, true);
+				receivingSearchGridControl.Enabled = true;
 
 				m_TempId.Clear();
 
@@ -893,54 +893,54 @@ namespace SuperiorPackGroup
 
 					case "FULL":
 					case "Full":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.delGridColumn.Visible = true;
-						this.deleteGridColumn.Visible = true;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						delGridColumn.Visible = true;
+						deleteGridColumn.Visible = true;
 						break;
 					case "ADD":
 					case "Add":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.delGridColumn.Visible = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						delGridColumn.Visible = false;
+						deleteGridColumn.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.delGridColumn.Visible = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						delGridColumn.Visible = false;
+						deleteGridColumn.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.delGridColumn.Visible = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						delGridColumn.Visible = false;
+						deleteGridColumn.Visible = false;
 						break;
 					case "VIEW ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.delGridColumn.Visible = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						delGridColumn.Visible = false;
+						deleteGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					case "EDIT ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.delGridColumn.Visible = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						delGridColumn.Visible = false;
+						deleteGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;
@@ -955,10 +955,10 @@ namespace SuperiorPackGroup
 		private void FilterAssignedCustomers()
 		{
 
-			this.receivingSearchXPView.Criteria = new InOperator(Receiving.Fields.ReceivCustID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession));
-			this.customersXPView.Criteria = CriteriaOperator.And(new BinaryOperator(Customers.Fields.Inactive.PropertyName, false), new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)));
-			this.receivingItemXPView.Criteria = new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession));
-			this.returnItemXPView.Criteria = CriteriaOperator.And(CriteriaOperator.Or(new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)), new BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer(), BinaryOperatorType.Equal)), new BinaryOperator(Items.Fields.ItemType.PropertyName, "FG", BinaryOperatorType.Equal));
+			receivingSearchXPView.Criteria = new InOperator(Receiving.Fields.ReceivCustID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession));
+			customersXPView.Criteria = CriteriaOperator.And(new BinaryOperator(Customers.Fields.Inactive.PropertyName, false), new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)));
+			receivingItemXPView.Criteria = new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession));
+			returnItemXPView.Criteria = CriteriaOperator.And(CriteriaOperator.Or(new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ReceivingSession)), new BinaryOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, CompanySettingsBLL.GetUniversalCustomer(), BinaryOperatorType.Equal)), new BinaryOperator(Items.Fields.ItemType.PropertyName, "FG", BinaryOperatorType.Equal));
 
 		}
 
@@ -983,7 +983,7 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			if (this.m_CurrentReceivingID != null)
+			if (m_CurrentReceivingID != null)
 			{
 				BindReceivingsControls(m_CurrentReceivingID.Value);
 			}
@@ -1068,10 +1068,10 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				int lReceivingReturnDetailID = Convert.ToInt32(this.returnsGridView.GetRowCellValue(this.returnsGridView.FocusedRowHandle, this.returnIDGridColumn));
+				int lReceivingReturnDetailID = Convert.ToInt32(returnsGridView.GetRowCellValue(returnsGridView.FocusedRowHandle, returnIDGridColumn));
 				if (lReceivingReturnDetailID <= -1)
 				{
-					this.returnsGridView.DeleteRow(this.returnsGridView.FocusedRowHandle);
+					returnsGridView.DeleteRow(returnsGridView.FocusedRowHandle);
 				}
 				else if (m_ReturnDetails.DeleteReturnDetail(m_ReceivingSession, lReceivingReturnDetailID) == true)
 				{
@@ -1099,7 +1099,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				int lReceivingDetailID = Convert.ToInt32(this.receivingGridView.GetRowCellValue(this.receivingGridView.FocusedRowHandle, this.idGridColumn));
+				int lReceivingDetailID = Convert.ToInt32(receivingGridView.GetRowCellValue(receivingGridView.FocusedRowHandle, idGridColumn));
 
 				if (m_TempId.ContainsKey(lReceivingDetailID))
 				{
@@ -1108,7 +1108,7 @@ namespace SuperiorPackGroup
 
 				if (lReceivingDetailID <= -1)
 				{
-					this.receivingGridView.DeleteRow(this.receivingGridView.FocusedRowHandle);
+					receivingGridView.DeleteRow(receivingGridView.FocusedRowHandle);
 				}
 				else if (m_ReceivingDetails.DeleteReceivingDetail(m_ReceivingSession, lReceivingDetailID) == true)
 				{
@@ -1604,7 +1604,7 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			this.UnitQtyLockCheckEdit.Checked = true;
+			UnitQtyLockCheckEdit.Checked = true;
 
 			BulkEntryChanged();
 
@@ -1614,9 +1614,9 @@ namespace SuperiorPackGroup
 		{
 			if (SaveChanges())
 			{
-				this.SaveContinueSimpleButton.Enabled = false;
-				this.BulkEntryGroupControl.Enabled = true;
-				this.receivingsXtraTabControl.SelectedTabPage = this.detailsXtraTabPage;
+				SaveContinueSimpleButton.Enabled = false;
+				BulkEntryGroupControl.Enabled = true;
+				receivingsXtraTabControl.SelectedTabPage = detailsXtraTabPage;
 			}
 		}
 
@@ -1625,7 +1625,7 @@ namespace SuperiorPackGroup
 			if (ItemLookUpEdit.Text.Length > 0)
 			{
 				Items item = ItemsBLL.GetItemByUpc((!string.IsNullOrEmpty(m_upc)) ? m_upc : ItemLookUpEdit.Text);
-				if (item != null && item.Inactive == false && item.ItemCustomerID.CustomerID == ((int?)this.customerLookUpEdit.EditValue).Value)
+				if (item != null && item.Inactive == false && item.ItemCustomerID.CustomerID == ((int?)customerLookUpEdit.EditValue).Value)
 				{
 					ItemLookUpEdit.EditValue = item.ItemID;
 				}
@@ -1641,7 +1641,7 @@ namespace SuperiorPackGroup
 			}
 			else if (e.KeyData == Keys.Tab)
 			{
-				m_upc = this.ItemLookUpEdit.Text;
+				m_upc = ItemLookUpEdit.Text;
 			}
 			else
 			{

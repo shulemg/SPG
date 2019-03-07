@@ -76,8 +76,8 @@ namespace SuperiorPackGroup
 		private void saveSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			this.allergenGridView.CloseEditor();
-			this.Close();
+			allergenGridView.CloseEditor();
+			Close();
 			//Try
 			//    allergenGridView.SelectAll()
 			//    If allergenGridView.SelectedRowsCount > 0 Then
@@ -112,38 +112,38 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.allergenGridView.OptionsBehavior.Editable = true;
-						this.allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = true;
+						allergenGridView.OptionsBehavior.Editable = true;
+						allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteSimpleButton.Visible = true;
 						break;
 					case "ADD":
 					case "Add":
-						this.allergenGridView.OptionsBehavior.Editable = true;
-						this.allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = false;
+						allergenGridView.OptionsBehavior.Editable = true;
+						allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 					case "VIEW ASSIGNED":
 					case "EDIT ASSIGNED":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.allergenGridView.OptionsBehavior.Editable = false;
-						this.allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						allergenGridView.OptionsBehavior.Editable = false;
+						allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.allergenGridView.OptionsBehavior.Editable = true;
-						this.allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						allergenGridView.OptionsBehavior.Editable = true;
+						allergenGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteSimpleButton.Visible = false;
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;

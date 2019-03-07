@@ -24,7 +24,7 @@ namespace SuperiorPackGroup
 		private void CarriersXtraForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
-			if (this.carriersSearchGridControl.Enabled == false)
+			if (carriersSearchGridControl.Enabled == false)
 			{
 				switch (MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
@@ -48,20 +48,20 @@ namespace SuperiorPackGroup
 		private void CarriersXtraForm_Load(System.Object sender, EventArgs e)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			m_Carriers = new CarriersBLL();
 
 			BindCarrierSearch();
 
 			CheckPermissions();
 
-			Utilities.MakeFormReadOnly(this.carriersXtraTabPage, true);
-			this.carriersSearchGridControl.Enabled = true;
+			Utilities.MakeFormReadOnly(carriersXtraTabPage, true);
+			carriersSearchGridControl.Enabled = true;
 
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 
@@ -70,7 +70,7 @@ namespace SuperiorPackGroup
 
 			//Me.carrierListBoxControl.DisplayMember = "CarrierName"
 			//Me.carrierListBoxControl.ValueMember = "CarrierID"
-			this.carriersSearchGridControl.DataSource = m_Carriers.GetCarrierIDAndNames();
+			carriersSearchGridControl.DataSource = m_Carriers.GetCarrierIDAndNames();
 
 		}
 
@@ -93,23 +93,23 @@ namespace SuperiorPackGroup
 			{
 				string firstName = null;
 				string lastName = null;
-				if (this.firstNameTextEdit.EditValue == null || Convert.ToString(this.firstNameTextEdit.EditValue) == this.firstNameTextEdit.Properties.NullText)
+				if (firstNameTextEdit.EditValue == null || Convert.ToString(firstNameTextEdit.EditValue) == firstNameTextEdit.Properties.NullText)
 				{
 					firstName = string.Empty;
 				}
 				else
 				{
-					firstName = Convert.ToString(this.firstNameTextEdit.EditValue);
+					firstName = Convert.ToString(firstNameTextEdit.EditValue);
 				}
-				if (this.lastNameTextEdit.EditValue == null || Convert.ToString(this.lastNameTextEdit.EditValue) == this.lastNameTextEdit.Properties.NullText)
+				if (lastNameTextEdit.EditValue == null || Convert.ToString(lastNameTextEdit.EditValue) == lastNameTextEdit.Properties.NullText)
 				{
 					lastName = string.Empty;
 				}
 				else
 				{
-					lastName = Convert.ToString(this.lastNameTextEdit.EditValue);
+					lastName = Convert.ToString(lastNameTextEdit.EditValue);
 				}
-				if (m_Carriers.UpdateCarrier(m_CurrentCarrierID.Value, this.nameTextEdit.Text, firstName, lastName, this.addressTextEdit.Text, this.cityTextEdit.Text, this.stateTextEdit.Text, this.postalTextEdit.Text, this.phoneTextEdit.Text, this.emailTextEdit.Text, this.faxTextEdit.Text, this.noteMemoEdit.Text) != true)
+				if (m_Carriers.UpdateCarrier(m_CurrentCarrierID.Value, nameTextEdit.Text, firstName, lastName, addressTextEdit.Text, cityTextEdit.Text, stateTextEdit.Text, postalTextEdit.Text, phoneTextEdit.Text, emailTextEdit.Text, faxTextEdit.Text, noteMemoEdit.Text) != true)
 				{
 					MessageBox.Show("The carrier was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
@@ -122,7 +122,7 @@ namespace SuperiorPackGroup
 			}
 
 			BindCarrierSearch();
-			this.carriersSearchGridView.FocusedRowHandle = selectedID;
+			carriersSearchGridView.FocusedRowHandle = selectedID;
 			return true;
 
 		}
@@ -149,17 +149,17 @@ namespace SuperiorPackGroup
 			SPG.CarriersRow carrier = (SPG.CarriersRow)(m_Carriers.GetCarrierByID(carrierID).Rows[0]);
 
 			m_CurrentCarrierID = carrier.CarrierID;
-			this.nameTextEdit.Text = carrier.CarrierName;
-			this.firstNameTextEdit.Text = carrier.ContactFirstName;
-			this.lastNameTextEdit.Text = carrier.ContactLastName;
-			this.addressTextEdit.Text = carrier.Address;
-			this.cityTextEdit.Text = carrier.City;
-			this.stateTextEdit.Text = carrier.State;
-			this.postalTextEdit.Text = carrier.Postal;
-			this.phoneTextEdit.Text = carrier.Phone;
-			this.emailTextEdit.Text = carrier.Email;
-			this.faxTextEdit.Text = carrier.Fax;
-			this.noteMemoEdit.Text = carrier.Note;
+			nameTextEdit.Text = carrier.CarrierName;
+			firstNameTextEdit.Text = carrier.ContactFirstName;
+			lastNameTextEdit.Text = carrier.ContactLastName;
+			addressTextEdit.Text = carrier.Address;
+			cityTextEdit.Text = carrier.City;
+			stateTextEdit.Text = carrier.State;
+			postalTextEdit.Text = carrier.Postal;
+			phoneTextEdit.Text = carrier.Phone;
+			emailTextEdit.Text = carrier.Email;
+			faxTextEdit.Text = carrier.Fax;
+			noteMemoEdit.Text = carrier.Note;
 
 		}
 
@@ -167,17 +167,17 @@ namespace SuperiorPackGroup
 		{
 
 			m_CurrentCarrierID = null;
-			this.nameTextEdit.Text = string.Empty;
-			this.firstNameTextEdit.Text = null;
-			this.lastNameTextEdit.Text = null;
-			this.addressTextEdit.Text = string.Empty;
-			this.cityTextEdit.Text = string.Empty;
-			this.stateTextEdit.Text = string.Empty;
-			this.postalTextEdit.Text = string.Empty;
-			this.phoneTextEdit.Text = string.Empty;
-			this.emailTextEdit.Text = string.Empty;
-			this.faxTextEdit.Text = string.Empty;
-			this.noteMemoEdit.Text = string.Empty;
+			nameTextEdit.Text = string.Empty;
+			firstNameTextEdit.Text = null;
+			lastNameTextEdit.Text = null;
+			addressTextEdit.Text = string.Empty;
+			cityTextEdit.Text = string.Empty;
+			stateTextEdit.Text = string.Empty;
+			postalTextEdit.Text = string.Empty;
+			phoneTextEdit.Text = string.Empty;
+			emailTextEdit.Text = string.Empty;
+			faxTextEdit.Text = string.Empty;
+			noteMemoEdit.Text = string.Empty;
 
 		}
 
@@ -193,9 +193,9 @@ namespace SuperiorPackGroup
 		private void carriersSearchGridView_Click(object sender, EventArgs e)
 		{
 
-			if (this.carriersSearchGridView.CalcHitInfo(this.carriersSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
+			if (carriersSearchGridView.CalcHitInfo(carriersSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
 			{
-				this.BindCarrierControls(Convert.ToInt32(this.carriersSearchGridView.GetFocusedRowCellValue(this.carrierIDGridColumn)));
+				BindCarrierControls(Convert.ToInt32(carriersSearchGridView.GetFocusedRowCellValue(carrierIDGridColumn)));
 			}
 
 		}
@@ -204,27 +204,27 @@ namespace SuperiorPackGroup
 		{
 
 			m_CurrentCarrierID = null;
-			this.nameTextEdit.Text = string.Empty;
-			this.firstNameTextEdit.Text = null;
-			this.lastNameTextEdit.Text = null;
-			this.addressTextEdit.Text = string.Empty;
-			this.cityTextEdit.Text = string.Empty;
-			this.stateTextEdit.Text = string.Empty;
-			this.postalTextEdit.Text = string.Empty;
-			this.phoneTextEdit.Text = string.Empty;
-			this.emailTextEdit.Text = string.Empty;
-			this.faxTextEdit.Text = string.Empty;
-			this.noteMemoEdit.Text = string.Empty;
+			nameTextEdit.Text = string.Empty;
+			firstNameTextEdit.Text = null;
+			lastNameTextEdit.Text = null;
+			addressTextEdit.Text = string.Empty;
+			cityTextEdit.Text = string.Empty;
+			stateTextEdit.Text = string.Empty;
+			postalTextEdit.Text = string.Empty;
+			phoneTextEdit.Text = string.Empty;
+			emailTextEdit.Text = string.Empty;
+			faxTextEdit.Text = string.Empty;
+			noteMemoEdit.Text = string.Empty;
 
-			this.carriersSearchGridView.FocusedRowHandle = -1;
-			Utilities.MakeFormReadOnly(this.carriersXtraTabPage, false);
-			this.carriersSearchGridControl.Enabled = false;
+			carriersSearchGridView.FocusedRowHandle = -1;
+			Utilities.MakeFormReadOnly(carriersXtraTabPage, false);
+			carriersSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
 
 		}
 
@@ -237,14 +237,14 @@ namespace SuperiorPackGroup
 				return;
 			}
 
-			Utilities.MakeFormReadOnly(this.carriersXtraTabPage, false);
-			this.carriersSearchGridControl.Enabled = false;
+			Utilities.MakeFormReadOnly(carriersXtraTabPage, false);
+			carriersSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
 
 		}
 
@@ -255,8 +255,8 @@ namespace SuperiorPackGroup
 
 			CheckPermissions();
 
-			Utilities.MakeFormReadOnly(this.carriersXtraTabPage, true);
-			this.carriersSearchGridControl.Enabled = true;
+			Utilities.MakeFormReadOnly(carriersXtraTabPage, true);
+			carriersSearchGridControl.Enabled = true;
 
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
@@ -271,8 +271,8 @@ namespace SuperiorPackGroup
 
 				CheckPermissions();
 
-				Utilities.MakeFormReadOnly(this.carriersXtraTabPage, true);
-				this.carriersSearchGridControl.Enabled = true;
+				Utilities.MakeFormReadOnly(carriersXtraTabPage, true);
+				carriersSearchGridControl.Enabled = true;
 
 				cancelBarButtonItem.Enabled = false;
 				saveBarButtonItem.Enabled = false;
@@ -291,30 +291,30 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
 						//Me.deleteBarButtonItem.Enabled = True
 						break;
 					case "ADD":
 					case "Add":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
 						break;
 					case "NONE":
 					case "None":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
 						//Me.deleteBarButtonItem.Enabled = False
 						break;
 					case "EDIT":
 					case "Edit":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
 						//Me.deleteBarButtonItem.Enabled = False
 						break;
 				}
@@ -331,7 +331,7 @@ namespace SuperiorPackGroup
 		private void CancelChanges()
 		{
 
-			if (this.m_CurrentCarrierID != null)
+			if (m_CurrentCarrierID != null)
 			{
 				BindCarrierControls(m_CurrentCarrierID.Value);
 			}

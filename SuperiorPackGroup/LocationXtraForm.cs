@@ -355,7 +355,7 @@ namespace SuperiorPackGroup
 
 			m_LocationSession.DropIdentityMap();
 
-			Locations location = (Locations)m_LocationSession.GetObjectByKey<Locations>(locationID, true);
+			Locations location = m_LocationSession.GetObjectByKey<Locations>(locationID, true);
 			m_CurrentLocation = location;
 			oidTextEdit.EditValue = m_CurrentLocation.Oid;
 			codeTextEdit.EditValue = m_CurrentLocation.LocationCode;

@@ -19,12 +19,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_BOLReportTableAdapter == null)
+				if (m_BOLReportTableAdapter == null)
 				{
-					this.m_BOLReportTableAdapter = new BOLReportTableAdapter();
-					this.m_BOLReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_BOLReportTableAdapter = new BOLReportTableAdapter();
+					m_BOLReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_BOLReportTableAdapter;
+				return m_BOLReportTableAdapter;
 			}
 		}
 

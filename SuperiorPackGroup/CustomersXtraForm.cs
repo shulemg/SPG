@@ -35,7 +35,7 @@ namespace SuperiorPackGroup
 		private void CustomersXtraForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
-			if (this.customerSearchGridControl.Enabled == false)
+			if (customerSearchGridControl.Enabled == false)
 			{
 				switch (MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
@@ -59,7 +59,7 @@ namespace SuperiorPackGroup
 		private void CustomersXtraForm_Load(object sender, EventArgs e)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			m_Customer = new CustomersBLL();
 			m_CustomersItems = new ItemsBLL();
 			m_Receiving = new ReceivingsBLL();
@@ -90,14 +90,14 @@ namespace SuperiorPackGroup
 			customerShiftsXpCollection.Criteria = new BinaryOperator(CustomerShifts.Fields.Customer, null, BinaryOperatorType.Equal);
 			customerPlantsXpCollection.Criteria = new BinaryOperator(CustomerPlants.Fields.Customer, null, BinaryOperatorType.Equal);
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
+			Utilities.MakeFormReadOnly(generalXtraTabPage, true);
 			addRelatedCustomerGroupControl.Enabled = false;
 			customerPlantsGridView.OptionsBehavior.Editable = false;
 			customerShiftsGridView.OptionsBehavior.Editable = false;
 			deleteGridColumn.Visible = false;
 			deleteCustomerPlantGridColumn.Visible = false;
 			deleteCustomerShiftGridColumn.Visible = false;
-			this.customerSearchGridControl.Enabled = true;
+			customerSearchGridControl.Enabled = true;
 
 			Cursor = Cursors.Default;
 
@@ -181,7 +181,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				if (m_Customer.UpdateCustomer(m_CurrentCustomer.Value, this.nameTextEdit.Text, this.contactTextEdit.Text, Convert.ToString(this.phoneTextEdit.EditValue), this.emailTextEdit.Text, Convert.ToString(this.faxTextEdit.EditValue), this.noteMemoEdit.Text, Convert.ToString(addressTextEdit.EditValue), Convert.ToString(cityTextEdit.EditValue), Convert.ToString(stateTextEdit.EditValue), Convert.ToString(postalTextEdit.EditValue), inactiveCheckEdit.Checked, Convert.ToString(lpnPrefixTextEdit.EditValue), Utilities.ChangeType<int?>(firstLPNNumberTextEdit.EditValue), Utilities.ChangeType<int?>(lastLPNNumberTextEdit.EditValue), Convert.ToString(plantCodeTextEdit.EditValue), Convert.ToString(expirationDateFormatComboBox.EditValue), Utilities.ChangeType<int?>(lotCodeFormatLookUpEdit.EditValue), m_CustomersSession) != true)
+				if (m_Customer.UpdateCustomer(m_CurrentCustomer.Value, nameTextEdit.Text, contactTextEdit.Text, Convert.ToString(phoneTextEdit.EditValue), emailTextEdit.Text, Convert.ToString(faxTextEdit.EditValue), noteMemoEdit.Text, Convert.ToString(addressTextEdit.EditValue), Convert.ToString(cityTextEdit.EditValue), Convert.ToString(stateTextEdit.EditValue), Convert.ToString(postalTextEdit.EditValue), inactiveCheckEdit.Checked, Convert.ToString(lpnPrefixTextEdit.EditValue), Utilities.ChangeType<int?>(firstLPNNumberTextEdit.EditValue), Utilities.ChangeType<int?>(lastLPNNumberTextEdit.EditValue), Convert.ToString(plantCodeTextEdit.EditValue), Convert.ToString(expirationDateFormatComboBox.EditValue), Utilities.ChangeType<int?>(lotCodeFormatLookUpEdit.EditValue), m_CustomersSession) != true)
 				{
 					MessageBox.Show("The customer was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
@@ -209,7 +209,7 @@ namespace SuperiorPackGroup
 				BindCustomersControls(m_CurrentCustomer.Value);
 				if (selectedID != -1)
 				{
-					this.customerSearchGridView.FocusedRowHandle = selectedID;
+					customerSearchGridView.FocusedRowHandle = selectedID;
 				}
 			}
 			catch (ApplicationException ex)
@@ -232,10 +232,10 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = true;
-						this.deleteGridColumn.Visible = true;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = true;
+						deleteGridColumn.Visible = true;
 						deleteGridColumn.VisibleIndex = 0;
 						deleteCustomerPlantGridColumn.Visible = true;
 						deleteCustomerPlantGridColumn.VisibleIndex = 0;
@@ -244,57 +244,57 @@ namespace SuperiorPackGroup
 						break;
 					case "ADD":
 					case "Add":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						deleteCustomerPlantGridColumn.Visible = false;
 						deleteCustomerShiftGridColumn.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						deleteCustomerPlantGridColumn.Visible = false;
 						deleteCustomerShiftGridColumn.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						deleteCustomerPlantGridColumn.Visible = false;
 						deleteCustomerShiftGridColumn.Visible = false;
 						break;
 					case "VIEW ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						deleteCustomerPlantGridColumn.Visible = false;
 						deleteCustomerShiftGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					case "EDIT ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						deleteCustomerPlantGridColumn.Visible = false;
 						deleteCustomerShiftGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						this.Close();
+						Close();
 						return false;
 				}
 
@@ -310,17 +310,17 @@ namespace SuperiorPackGroup
 		private void FilterAssignedCustomers()
 		{
 
-			this.customerSearchXPView.Criteria = new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_CustomersSession));
-			this.customersXpView.Criteria = new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_CustomersSession));
+			customerSearchXPView.Criteria = new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_CustomersSession));
+			customersXpView.Criteria = new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_CustomersSession));
 
 		}
 
 		private void customerSearchGridView_Click(object sender, EventArgs e)
 		{
 
-			if (this.customerSearchGridView.CalcHitInfo(this.customerSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
+			if (customerSearchGridView.CalcHitInfo(customerSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
 			{
-				this.BindCustomersControls(Convert.ToInt32(this.customerSearchGridView.GetFocusedRowCellValue(this.customerIDGridColumn)));
+				BindCustomersControls(Convert.ToInt32(customerSearchGridView.GetFocusedRowCellValue(customerIDGridColumn)));
 			}
 
 		}
@@ -330,10 +330,10 @@ namespace SuperiorPackGroup
 
 			if (SaveChanges())
 			{
-				Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
+				Utilities.MakeFormReadOnly(generalXtraTabPage, true);
 				customerPlantsGridView.OptionsBehavior.Editable = false;
 				customerShiftsGridView.OptionsBehavior.Editable = false;
-				this.customerSearchGridControl.Enabled = true;
+				customerSearchGridControl.Enabled = true;
 
 				CheckPermissions();
 				cancelBarButtonItem.Enabled = false;
@@ -372,28 +372,28 @@ namespace SuperiorPackGroup
 			customerShiftsXpCollection.Reload();
 			customerPlantsXpCollection.Reload();
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, false);
+			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
 			customerShiftsGridView.OptionsBehavior.Editable = true;
 			customerPlantsGridView.OptionsBehavior.Editable = true;
-			this.customerSearchGridControl.Enabled = false;
+			customerSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
-			this.deleteBarButtonItem.Enabled = false;
-			this.deleteGridColumn.Visible = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
+			deleteBarButtonItem.Enabled = false;
+			deleteGridColumn.Visible = false;
 			deleteCustomerPlantGridColumn.Visible = false;
 			deleteCustomerShiftGridColumn.Visible = false;
-			this.addRelatedCustomerGroupControl.Enabled = false;
+			addRelatedCustomerGroupControl.Enabled = false;
 
 		}
 
 		private void CancelChanges()
 		{
 
-			if (this.m_CurrentCustomer.HasValue)
+			if (m_CurrentCustomer.HasValue)
 			{
 				BindCustomersControls(m_CurrentCustomer.Value);
 				m_Customer.EndedEdit(m_CurrentCustomer.Value);
@@ -406,11 +406,11 @@ namespace SuperiorPackGroup
 
 			CancelChanges();
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
+			Utilities.MakeFormReadOnly(generalXtraTabPage, true);
 			customerShiftsGridView.OptionsBehavior.Editable = false;
 			customerPlantsGridView.OptionsBehavior.Editable = false;
-			this.customerSearchGridControl.Enabled = true;
-			this.addRelatedCustomerGroupControl.Enabled = false;
+			customerSearchGridControl.Enabled = true;
+			addRelatedCustomerGroupControl.Enabled = false;
 
 			CheckPermissions();
 			cancelBarButtonItem.Enabled = false;
@@ -517,20 +517,20 @@ namespace SuperiorPackGroup
 				return;
 			}
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, false);
+			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
 			customerPlantsGridView.OptionsBehavior.Editable = true;
 			customerShiftsGridView.OptionsBehavior.Editable = true;
-			this.customerSearchGridControl.Enabled = false;
+			customerSearchGridControl.Enabled = false;
 			addRelatedCustomerGroupControl.Enabled = true;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
 			deleteGridColumn.Visible = deleteBarButtonItem.Enabled;
 			deleteGridColumn.VisibleIndex = 0;
-			this.deleteBarButtonItem.Enabled = false;
+			deleteBarButtonItem.Enabled = false;
 
 		}
 
@@ -585,7 +585,7 @@ namespace SuperiorPackGroup
 				return;
 			}
 
-			if (RelatedCustomerBLL.DeleteRelatedCustomer(m_CustomersSession.GetObjectByKey<RelatedCustomer>(relatedCustomersGridView.GetFocusedRowCellValue(this.idGridColumn))))
+			if (RelatedCustomerBLL.DeleteRelatedCustomer(m_CustomersSession.GetObjectByKey<RelatedCustomer>(relatedCustomersGridView.GetFocusedRowCellValue(idGridColumn))))
 			{
 				MessageBox.Show("The customer relationship was successfully deleted.");
 			}

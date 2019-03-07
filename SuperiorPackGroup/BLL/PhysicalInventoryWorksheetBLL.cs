@@ -19,12 +19,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_PhysicalInventoryWorksheetTableAdapter == null)
+				if (m_PhysicalInventoryWorksheetTableAdapter == null)
 				{
-					this.m_PhysicalInventoryWorksheetTableAdapter = new PhysicalInventoryWorksheetTableAdapter();
-					this.m_PhysicalInventoryWorksheetTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_PhysicalInventoryWorksheetTableAdapter = new PhysicalInventoryWorksheetTableAdapter();
+					m_PhysicalInventoryWorksheetTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_PhysicalInventoryWorksheetTableAdapter;
+				return m_PhysicalInventoryWorksheetTableAdapter;
 			}
 		}
 

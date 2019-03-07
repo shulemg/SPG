@@ -34,24 +34,24 @@ namespace SuperiorPackGroup
 		private void QuickReportsXtraForm_Load(object sender, EventArgs e)
 		{
 
-			this.reportCodeNameGridColumn.FieldName = "CodeName";
-			this.reportNameGridColumn.FieldName = "Name";
-			this.reportTypeGridColumn.FieldName = "Type";
-			this.filterReportGridColumn.FieldName = "FilterReport";
-			this.dateFilterGridColumn.FieldName = "DateFilter";
-			this.customerFilterGridColumn.FieldName = "CustomerFilter";
-			this.itemFilterGridColumn.FieldName = "ItemFilter";
-			this.lotFilterGridColumn.FieldName = "LotFilter";
-			this.poFilterGridColumn.FieldName = "POFilter";
-			this.machineFilterGridColumn.FieldName = "MachineFilter";
-			this.shiftFilterGridColumn.FieldName = "ShiftFilter";
-			this.bolFilterGridColumn.FieldName = "BOLFilter";
-			this.dnFilterGridColumn.FieldName = "DNFilter";
-			this.destinationFilterGridColumn.FieldName = "DestinationFilter";
-			this.carrierFilterGridColumn.FieldName = "CarrierFilter";
-			this.vendorFilterGridColumn.FieldName = "VendorFilter";
-			this.itemTypeFilterGridColumn.FieldName = "itemtypeFilter";
-			this.outOfStockFilterGridColumn.FieldName = "stockFilter";
+			reportCodeNameGridColumn.FieldName = "CodeName";
+			reportNameGridColumn.FieldName = "Name";
+			reportTypeGridColumn.FieldName = "Type";
+			filterReportGridColumn.FieldName = "FilterReport";
+			dateFilterGridColumn.FieldName = "DateFilter";
+			customerFilterGridColumn.FieldName = "CustomerFilter";
+			itemFilterGridColumn.FieldName = "ItemFilter";
+			lotFilterGridColumn.FieldName = "LotFilter";
+			poFilterGridColumn.FieldName = "POFilter";
+			machineFilterGridColumn.FieldName = "MachineFilter";
+			shiftFilterGridColumn.FieldName = "ShiftFilter";
+			bolFilterGridColumn.FieldName = "BOLFilter";
+			dnFilterGridColumn.FieldName = "DNFilter";
+			destinationFilterGridColumn.FieldName = "DestinationFilter";
+			carrierFilterGridColumn.FieldName = "CarrierFilter";
+			vendorFilterGridColumn.FieldName = "VendorFilter";
+			itemTypeFilterGridColumn.FieldName = "itemtypeFilter";
+			outOfStockFilterGridColumn.FieldName = "stockFilter";
 
 		}
 
@@ -60,11 +60,11 @@ namespace SuperiorPackGroup
 
 			if (string.IsNullOrEmpty(moduleName))
 			{
-				this.quickReportsGridControl.DataSource = (new ReportsBLL()).GetReports();
+				quickReportsGridControl.DataSource = (new ReportsBLL()).GetReports();
 			}
 			else
 			{
-				this.quickReportsGridControl.DataSource = (new ReportsBLL()).GetReportsByModule(moduleName);
+				quickReportsGridControl.DataSource = (new ReportsBLL()).GetReportsByModule(moduleName);
 			}
 
 		}
@@ -91,13 +91,13 @@ namespace SuperiorPackGroup
 
 			if (quickReportsGridView.CalcHitInfo(quickReportsGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
 			{
-				if (quickReportsGridView.GetFocusedRowCellValue(this.reportTypeGridColumn).ToString() != "QuickReport")
+				if (quickReportsGridView.GetFocusedRowCellValue(reportTypeGridColumn).ToString() != "QuickReport")
 				{
 					SelectReport(false, quickReportsGridView.GetFocusedRowCellValue(reportCodeNameGridColumn).ToString(), false);
 				}
 				else
 				{
-					SelectReport(true, quickReportsGridView.GetFocusedRowCellValue(this.reportCodeNameGridColumn).ToString(), Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.filterReportGridColumn)));
+					SelectReport(true, quickReportsGridView.GetFocusedRowCellValue(reportCodeNameGridColumn).ToString(), Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(filterReportGridColumn)));
 				}
 			}
 
@@ -164,22 +164,22 @@ namespace SuperiorPackGroup
 
 			reportForm.Cursor = Cursors.WaitCursor;
 
-			reportForm.fromDateEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.dateFilterGridColumn));
-			reportForm.toDateEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.dateFilterGridColumn));
-			reportForm.customerLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.customerFilterGridColumn));
-			reportForm.itemCheckedListBoxControl.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.itemFilterGridColumn));
-			reportForm.lotTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.lotFilterGridColumn));
-			reportForm.poTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.poFilterGridColumn));
-			reportForm.machineLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.machineFilterGridColumn));
-			reportForm.shiftLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.shiftFilterGridColumn));
-			reportForm.bolTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.bolFilterGridColumn));
-			reportForm.deliveryNoteNumberTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.dnFilterGridColumn));
-			reportForm.destinationLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.destinationFilterGridColumn));
-			reportForm.carrierLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.carrierFilterGridColumn));
-			reportForm.vendorLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.vendorFilterGridColumn));
-			reportForm.itemTypeLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.itemTypeFilterGridColumn));
-			reportForm.outOfStockCheckEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(this.outOfStockFilterGridColumn));
-			reportForm.ReportTitle = quickReportsGridView.GetFocusedRowCellValue(this.reportNameGridColumn).ToString();
+			reportForm.fromDateEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(dateFilterGridColumn));
+			reportForm.toDateEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(dateFilterGridColumn));
+			reportForm.customerLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(customerFilterGridColumn));
+			reportForm.itemCheckedListBoxControl.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(itemFilterGridColumn));
+			reportForm.lotTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(lotFilterGridColumn));
+			reportForm.poTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(poFilterGridColumn));
+			reportForm.machineLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(machineFilterGridColumn));
+			reportForm.shiftLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(shiftFilterGridColumn));
+			reportForm.bolTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(bolFilterGridColumn));
+			reportForm.deliveryNoteNumberTextEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(dnFilterGridColumn));
+			reportForm.destinationLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(destinationFilterGridColumn));
+			reportForm.carrierLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(carrierFilterGridColumn));
+			reportForm.vendorLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(vendorFilterGridColumn));
+			reportForm.itemTypeLookUpEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(itemTypeFilterGridColumn));
+			reportForm.outOfStockCheckEdit.Enabled = Convert.ToBoolean(quickReportsGridView.GetFocusedRowCellValue(outOfStockFilterGridColumn));
+			reportForm.ReportTitle = quickReportsGridView.GetFocusedRowCellValue(reportNameGridColumn).ToString();
 
 			switch (reportCodeName)
 			{
@@ -1126,7 +1126,7 @@ namespace SuperiorPackGroup
 		private void PreviewReport()
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			SetColumnFieldNames();
 			DisplayReportColumns();
 
@@ -1358,7 +1358,7 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 
@@ -1403,14 +1403,14 @@ namespace SuperiorPackGroup
 				case "CustomerListXtraReport":
 					nameGridColumn.FieldName = "CustomerName";
 					contactNameGridColumn.FieldName = "CustomerContact";
-					this.addressGridColumn.FieldName = "Address";
-					this.cityGridColumn.FieldName = "City";
-					this.stateGridColumn.FieldName = "State";
-					this.postalGridColumn.FieldName = "ZipCode";
-					this.phoneGridColumn.FieldName = "CustomerPhone";
-					this.faxGridColumn.FieldName = "CustomerFax";
-					this.emailGridColumn.FieldName = "CustomerEmail";
-					this.inactiveGridColumn.FieldName = "Inactive";
+					addressGridColumn.FieldName = "Address";
+					cityGridColumn.FieldName = "City";
+					stateGridColumn.FieldName = "State";
+					postalGridColumn.FieldName = "ZipCode";
+					phoneGridColumn.FieldName = "CustomerPhone";
+					faxGridColumn.FieldName = "CustomerFax";
+					emailGridColumn.FieldName = "CustomerEmail";
+					inactiveGridColumn.FieldName = "Inactive";
 					break;
 				case "ProductionEntriesXtraReport":
 					productionDateGridColumn.FieldName = "Production Date";
@@ -1551,29 +1551,29 @@ namespace SuperiorPackGroup
 			switch (m_CurrentReport)
 			{
 				case "CustomerListXtraReport":
-					this.nameGridColumn.Visible = true;
-					this.contactNameGridColumn.Visible = true;
-					this.addressGridColumn.Visible = true;
-					this.cityGridColumn.Visible = true;
-					this.stateGridColumn.Visible = true;
-					this.postalGridColumn.Visible = true;
-					this.phoneGridColumn.Visible = true;
-					this.faxGridColumn.Visible = true;
-					this.emailGridColumn.Visible = true;
-					this.inactiveGridColumn.Visible = true;
+					nameGridColumn.Visible = true;
+					contactNameGridColumn.Visible = true;
+					addressGridColumn.Visible = true;
+					cityGridColumn.Visible = true;
+					stateGridColumn.Visible = true;
+					postalGridColumn.Visible = true;
+					phoneGridColumn.Visible = true;
+					faxGridColumn.Visible = true;
+					emailGridColumn.Visible = true;
+					inactiveGridColumn.Visible = true;
 
-					this.nameGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.contactNameGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.addressGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.cityGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.stateGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.postalGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.phoneGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.faxGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.emailGridColumn.OptionsColumn.ShowInCustomizationForm = true;
-					this.inactiveGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					nameGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					contactNameGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					addressGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					cityGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					stateGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					postalGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					phoneGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					faxGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					emailGridColumn.OptionsColumn.ShowInCustomizationForm = true;
+					inactiveGridColumn.OptionsColumn.ShowInCustomizationForm = true;
 
-					this.inactiveGridColumn.FilterInfo = new ColumnFilterInfo(inactiveGridColumn, false);
+					inactiveGridColumn.FilterInfo = new ColumnFilterInfo(inactiveGridColumn, false);
 
 					previewGridView.BestFitColumns();
 					break;
@@ -1831,7 +1831,7 @@ namespace SuperiorPackGroup
 		private void reportsXtraTabControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
 		{
 
-			this.printBarButtonItem.Enabled = (e.Page.Name != filterXtraTabPage.Name);
+			printBarButtonItem.Enabled = (e.Page.Name != filterXtraTabPage.Name);
 
 		}
 
@@ -1995,12 +1995,12 @@ namespace SuperiorPackGroup
 			inactiveGridColumn.ColumnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
 			exportSaveFileDialog.Filter = "Microsoft Office Excel Workbook(*.xlsx)|*.xlsx|All Files(*.*)|*.*";
 			exportSaveFileDialog.DefaultExt = ".xlsx";
-			if (this.exportSaveFileDialog.ShowDialog() == DialogResult.OK)
+			if (exportSaveFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				switch (m_CurrentReport)
 				{
 					case "CustomerListXtraReport":
-						previewGridView.ExportToXlsx(this.exportSaveFileDialog.FileName, new XlsxExportOptions(TextExportMode.Value, true));
+						previewGridView.ExportToXlsx(exportSaveFileDialog.FileName, new XlsxExportOptions(TextExportMode.Value, true));
 						break;
 					case "ProductionEntriesXtraReport":
 						previewProductionEntriesGridView.ExportToXlsx(exportSaveFileDialog.FileName, new XlsxExportOptions(TextExportMode.Value, true));

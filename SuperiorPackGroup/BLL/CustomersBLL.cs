@@ -302,7 +302,7 @@ namespace SuperiorPackGroup
 		public void EndedEdit(int customerID)
 		{
 
-			Customers customer = (Customers)Session.DefaultSession.GetObjectByKey<Customers>(customerID, true);
+			Customers customer = Session.DefaultSession.GetObjectByKey<Customers>(customerID, true);
 			customer.Editing = false;
 			customer.Save();
 
@@ -311,7 +311,7 @@ namespace SuperiorPackGroup
 		public bool AllowEdit(int customerID)
 		{
 
-			Customers customer = (Customers)Session.DefaultSession.GetObjectByKey<Customers>(customerID, true);
+			Customers customer = Session.DefaultSession.GetObjectByKey<Customers>(customerID, true);
 			if (customer.Editing)
 			{
 				return false;

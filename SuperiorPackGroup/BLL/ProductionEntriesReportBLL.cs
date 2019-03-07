@@ -23,12 +23,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_ProductionEntriesReportTableAdapter == null)
+				if (m_ProductionEntriesReportTableAdapter == null)
 				{
-					this.m_ProductionEntriesReportTableAdapter = new ProductionEntriesReportTableAdapter();
-					this.m_ProductionEntriesReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_ProductionEntriesReportTableAdapter = new ProductionEntriesReportTableAdapter();
+					m_ProductionEntriesReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_ProductionEntriesReportTableAdapter;
+				return m_ProductionEntriesReportTableAdapter;
 			}
 		}
 

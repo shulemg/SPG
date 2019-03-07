@@ -24,7 +24,7 @@ namespace SuperiorPackGroup
 		private void ShippingAddressesXtraForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
-			if (this.destinationsSearchGridControl.Enabled == false)
+			if (destinationsSearchGridControl.Enabled == false)
 			{
 				switch (MessageBox.Show("Do you want to save changes?", "Save Changes", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
 				{
@@ -48,20 +48,20 @@ namespace SuperiorPackGroup
 		private void ShippingAddressesXtraForm_Load(object sender, EventArgs e)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			m_Address = new ShippingAddressBLL();
 
 			BindDestinationsSearch();
 
 			CheckPermissions();
 
-			Utilities.MakeFormReadOnly(this.destinationsPanelControl, true);
-			this.destinationsSearchGridControl.Enabled = true;
+			Utilities.MakeFormReadOnly(destinationsPanelControl, true);
+			destinationsSearchGridControl.Enabled = true;
 
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 
@@ -70,7 +70,7 @@ namespace SuperiorPackGroup
 
 			//Me.addressesListBoxControl.DisplayMember = "ShippingName"
 			//Me.addressesListBoxControl.ValueMember = "AddressID"
-			this.destinationsSearchGridControl.DataSource = m_Address.GetAddressNameAndIDS();
+			destinationsSearchGridControl.DataSource = m_Address.GetAddressNameAndIDS();
 
 		}
 
@@ -89,17 +89,17 @@ namespace SuperiorPackGroup
 			SPG.ShippingAddressesRow address = (SPG.ShippingAddressesRow)(m_Address.GetAddressByID(addressID).Rows[0]);
 
 			m_CurrentDestinationID = address.AddressID;
-			this.nameTextEdit.Text = address.ShippingName;
-			this.firstNameTextEdit.Text = address.ContactFirstName;
-			this.lastNameTextEdit.Text = address.ContactLastName;
-			this.addressTextEdit.Text = address.ShippingAddress;
-			this.cityTextEdit.Text = address.ShippingCity;
-			this.stateTextEdit.Text = address.ShippingState;
-			this.postalTextEdit.Text = address.ShippingPostal;
-			this.phoneTextEdit.Text = address.ShippingPhone;
-			this.emailTextEdit.Text = address.ShippingEmail;
-			this.faxTextEdit.Text = address.ShippingFax;
-			this.noteMemoEdit.Text = address.ShippingNote;
+			nameTextEdit.Text = address.ShippingName;
+			firstNameTextEdit.Text = address.ContactFirstName;
+			lastNameTextEdit.Text = address.ContactLastName;
+			addressTextEdit.Text = address.ShippingAddress;
+			cityTextEdit.Text = address.ShippingCity;
+			stateTextEdit.Text = address.ShippingState;
+			postalTextEdit.Text = address.ShippingPostal;
+			phoneTextEdit.Text = address.ShippingPhone;
+			emailTextEdit.Text = address.ShippingEmail;
+			faxTextEdit.Text = address.ShippingFax;
+			noteMemoEdit.Text = address.ShippingNote;
 
 		}
 
@@ -107,17 +107,17 @@ namespace SuperiorPackGroup
 		{
 
 			m_CurrentDestinationID = null;
-			this.nameTextEdit.Text = string.Empty;
-			this.firstNameTextEdit.Text = null;
-			this.lastNameTextEdit.Text = null;
-			this.addressTextEdit.Text = string.Empty;
-			this.cityTextEdit.Text = string.Empty;
-			this.stateTextEdit.Text = string.Empty;
-			this.postalTextEdit.Text = string.Empty;
-			this.phoneTextEdit.Text = string.Empty;
-			this.emailTextEdit.Text = string.Empty;
-			this.faxTextEdit.Text = string.Empty;
-			this.noteMemoEdit.Text = string.Empty;
+			nameTextEdit.Text = string.Empty;
+			firstNameTextEdit.Text = null;
+			lastNameTextEdit.Text = null;
+			addressTextEdit.Text = string.Empty;
+			cityTextEdit.Text = string.Empty;
+			stateTextEdit.Text = string.Empty;
+			postalTextEdit.Text = string.Empty;
+			phoneTextEdit.Text = string.Empty;
+			emailTextEdit.Text = string.Empty;
+			faxTextEdit.Text = string.Empty;
+			noteMemoEdit.Text = string.Empty;
 
 		}
 
@@ -148,23 +148,23 @@ namespace SuperiorPackGroup
 			{
 				string firstName = null;
 				string lastName = null;
-				if (this.firstNameTextEdit.EditValue == null || Convert.ToString(this.firstNameTextEdit.EditValue) == this.firstNameTextEdit.Properties.NullText)
+				if (firstNameTextEdit.EditValue == null || Convert.ToString(firstNameTextEdit.EditValue) == firstNameTextEdit.Properties.NullText)
 				{
 					firstName = string.Empty;
 				}
 				else
 				{
-					firstName = Convert.ToString(this.firstNameTextEdit.EditValue);
+					firstName = Convert.ToString(firstNameTextEdit.EditValue);
 				}
-				if (this.lastNameTextEdit.EditValue == null || Convert.ToString(this.lastNameTextEdit.EditValue) == this.lastNameTextEdit.Properties.NullText)
+				if (lastNameTextEdit.EditValue == null || Convert.ToString(lastNameTextEdit.EditValue) == lastNameTextEdit.Properties.NullText)
 				{
 					lastName = string.Empty;
 				}
 				else
 				{
-					lastName = Convert.ToString(this.lastNameTextEdit.EditValue);
+					lastName = Convert.ToString(lastNameTextEdit.EditValue);
 				}
-				if (m_Address.UpdateAddress(m_CurrentDestinationID.Value, this.nameTextEdit.Text, firstName, lastName, this.addressTextEdit.Text, this.cityTextEdit.Text, this.stateTextEdit.Text, this.postalTextEdit.Text, this.phoneTextEdit.Text, this.emailTextEdit.Text, this.faxTextEdit.Text, this.noteMemoEdit.Text) != true)
+				if (m_Address.UpdateAddress(m_CurrentDestinationID.Value, nameTextEdit.Text, firstName, lastName, addressTextEdit.Text, cityTextEdit.Text, stateTextEdit.Text, postalTextEdit.Text, phoneTextEdit.Text, emailTextEdit.Text, faxTextEdit.Text, noteMemoEdit.Text) != true)
 				{
 					MessageBox.Show("The shipping address was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
@@ -177,7 +177,7 @@ namespace SuperiorPackGroup
 			}
 
 			BindDestinationsSearch();
-			this.destinationsSearchGridView.FocusedRowHandle = selectedID;
+			destinationsSearchGridView.FocusedRowHandle = selectedID;
 			return true;
 
 		}
@@ -193,9 +193,9 @@ namespace SuperiorPackGroup
 		private void destinationsSearchGridView_Click(object sender, EventArgs e)
 		{
 
-			if (this.destinationsSearchGridView.CalcHitInfo(this.destinationsSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
+			if (destinationsSearchGridView.CalcHitInfo(destinationsSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
 			{
-				this.BindAddressControls(Convert.ToInt32(this.destinationsSearchGridView.GetFocusedRowCellValue(this.destinationIDGridColumn)));
+				BindAddressControls(Convert.ToInt32(destinationsSearchGridView.GetFocusedRowCellValue(destinationIDGridColumn)));
 			}
 
 		}
@@ -204,27 +204,27 @@ namespace SuperiorPackGroup
 		{
 
 			m_CurrentDestinationID = null;
-			this.nameTextEdit.Text = string.Empty;
-			this.firstNameTextEdit.Text = null;
-			this.lastNameTextEdit.Text = null;
-			this.addressTextEdit.Text = string.Empty;
-			this.cityTextEdit.Text = string.Empty;
-			this.stateTextEdit.Text = string.Empty;
-			this.postalTextEdit.Text = string.Empty;
-			this.phoneTextEdit.Text = string.Empty;
-			this.emailTextEdit.Text = string.Empty;
-			this.faxTextEdit.Text = string.Empty;
-			this.noteMemoEdit.Text = string.Empty;
+			nameTextEdit.Text = string.Empty;
+			firstNameTextEdit.Text = null;
+			lastNameTextEdit.Text = null;
+			addressTextEdit.Text = string.Empty;
+			cityTextEdit.Text = string.Empty;
+			stateTextEdit.Text = string.Empty;
+			postalTextEdit.Text = string.Empty;
+			phoneTextEdit.Text = string.Empty;
+			emailTextEdit.Text = string.Empty;
+			faxTextEdit.Text = string.Empty;
+			noteMemoEdit.Text = string.Empty;
 
-			this.destinationsSearchGridView.FocusedRowHandle = -1;
-			Utilities.MakeFormReadOnly(this.destinationsPanelControl, false);
-			this.destinationsSearchGridControl.Enabled = false;
+			destinationsSearchGridView.FocusedRowHandle = -1;
+			Utilities.MakeFormReadOnly(destinationsPanelControl, false);
+			destinationsSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
 			//Me.deleteBarButtonItem.Enabled = False
 
 		}
@@ -238,14 +238,14 @@ namespace SuperiorPackGroup
 				return;
 			}
 
-			Utilities.MakeFormReadOnly(this.destinationsPanelControl, false);
-			this.destinationsSearchGridControl.Enabled = false;
+			Utilities.MakeFormReadOnly(destinationsPanelControl, false);
+			destinationsSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
 			//Me.deleteBarButtonItem.Enabled = False
 
 		}
@@ -276,8 +276,8 @@ namespace SuperiorPackGroup
 
 			CheckPermissions();
 
-			Utilities.MakeFormReadOnly(this.destinationsPanelControl, true);
-			this.destinationsSearchGridControl.Enabled = true;
+			Utilities.MakeFormReadOnly(destinationsPanelControl, true);
+			destinationsSearchGridControl.Enabled = true;
 
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
@@ -292,8 +292,8 @@ namespace SuperiorPackGroup
 
 				CheckPermissions();
 
-				Utilities.MakeFormReadOnly(this.destinationsPanelControl, true);
-				this.destinationsSearchGridControl.Enabled = true;
+				Utilities.MakeFormReadOnly(destinationsPanelControl, true);
+				destinationsSearchGridControl.Enabled = true;
 
 				cancelBarButtonItem.Enabled = false;
 				saveBarButtonItem.Enabled = false;
@@ -312,37 +312,37 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
 						//Me.deleteBarButtonItem.Enabled = True
 						break;
 					case "ADD":
 					case "Add":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
 						break;
 					case "NONE":
 					case "None":
 					case "VIEW ASSIGNED":
 					case "EDIT ASSIGNED":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
 						//Me.deleteBarButtonItem.Enabled = False
 						break;
 					case "EDIT":
 					case "Edit":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
 						//Me.deleteBarButtonItem.Enabled = False
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;
@@ -357,7 +357,7 @@ namespace SuperiorPackGroup
 		private void CancelChanges()
 		{
 
-			if (this.m_CurrentDestinationID != null)
+			if (m_CurrentDestinationID != null)
 			{
 				BindAddressControls(m_CurrentDestinationID.Value);
 			}

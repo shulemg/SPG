@@ -65,7 +65,7 @@ namespace SuperiorPackGroup
 			if (Allergen != null)
 			{
 				//It is a new Product
-				return this.InsertAllergen(session, name);
+				return InsertAllergen(session, name);
 			}
 
 			if (string.IsNullOrEmpty(name))
@@ -81,7 +81,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(Allergen, originalRecord);
+				UpdateAuditTrail(Allergen, originalRecord);
 			}
 
 			Allergen.Save();

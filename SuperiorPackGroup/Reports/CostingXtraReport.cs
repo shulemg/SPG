@@ -208,7 +208,7 @@ namespace SuperiorPackGroup
 		private void totalMinutesFooterXRLabel_BeforePrint(System.Object sender, System.Drawing.Printing.PrintEventArgs e)
 		{
 
-			this.totalMinutesFooterXRLabel.Text = m_Totalminutestotal.ToString();
+			totalMinutesFooterXRLabel.Text = m_Totalminutestotal.ToString();
 
 		}
 
@@ -375,7 +375,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				differenceFooterXRLabel.Text = (m_TotalExpected - Convert.ToDouble(this.quantityFooterXRLabel.Summary.GetResult())).ToString("#,#");
+				differenceFooterXRLabel.Text = (m_TotalExpected - Convert.ToDouble(quantityFooterXRLabel.Summary.GetResult())).ToString("#,#");
 			}
 			catch (Exception ex)
 			{
@@ -389,7 +389,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				actualSpeedFooterXRLabel.Text = (Convert.ToDouble(this.actualSpeedSummary.Summary.GetResult()) / m_Totalminutestotal).ToString("0.00");
+				actualSpeedFooterXRLabel.Text = (Convert.ToDouble(actualSpeedSummary.Summary.GetResult()) / m_Totalminutestotal).ToString("0.00");
 			}
 			catch (Exception ex)
 			{

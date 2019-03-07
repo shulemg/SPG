@@ -119,15 +119,15 @@ namespace SuperiorPackGroup
 			DataTable itemTypes = ItemsBLL.GetItemTypes();
 
 			typeLookUpEdit.Properties.DataSource = itemTypes;
-			this.typeLookUpEdit.Properties.DisplayMember = "Description";
-			this.typeLookUpEdit.Properties.ValueMember = "Type";
+			typeLookUpEdit.Properties.DisplayMember = "Description";
+			typeLookUpEdit.Properties.ValueMember = "Type";
 
-			this.typeFilterLookUpEdit.Properties.DataSource = itemTypes;
-			this.typeFilterLookUpEdit.Properties.DisplayMember = "Description";
-			this.typeFilterLookUpEdit.Properties.ValueMember = "Type";
+			typeFilterLookUpEdit.Properties.DataSource = itemTypes;
+			typeFilterLookUpEdit.Properties.DisplayMember = "Description";
+			typeFilterLookUpEdit.Properties.ValueMember = "Type";
 
-			this.uomLookUpEdit.Properties.DataSource = m_Items.GetItemUOMs();
-			this.uomLookUpEdit.Properties.ShowHeader = false;
+			uomLookUpEdit.Properties.DataSource = m_Items.GetItemUOMs();
+			uomLookUpEdit.Properties.ShowHeader = false;
 
 			//Me.defaultMachineLookUpEdit.Properties.DataSource = m_MachineLines.GetMachineLines
 			//Me.defaultMachineLookUpEdit.Properties.Columns.Add(New DevExpress.XtraEditors.Controls.LookUpColumnInfo)
@@ -136,19 +136,19 @@ namespace SuperiorPackGroup
 			//Me.defaultMachineLookUpEdit.Properties.DisplayMember = "MachineLineName"
 			//Me.defaultMachineLookUpEdit.Properties.ValueMember = "MachineLineID"
 
-			this.RMRepositoryItemLookUpEdit.Columns.Add(new LookUpColumnInfo());
-			this.RMRepositoryItemLookUpEdit.Columns[0].FieldName = "ItemCode";
-			this.RMRepositoryItemLookUpEdit.Columns[0].Caption = "Raw Material";
-			this.RMRepositoryItemLookUpEdit.DisplayMember = "ItemCode";
-			this.RMRepositoryItemLookUpEdit.ValueMember = "ItemID";
+			RMRepositoryItemLookUpEdit.Columns.Add(new LookUpColumnInfo());
+			RMRepositoryItemLookUpEdit.Columns[0].FieldName = "ItemCode";
+			RMRepositoryItemLookUpEdit.Columns[0].Caption = "Raw Material";
+			RMRepositoryItemLookUpEdit.DisplayMember = "ItemCode";
+			RMRepositoryItemLookUpEdit.ValueMember = "ItemID";
 
-			this.shippingDetailIDGridColumn.FieldName = "ShipDetDetID";
-			this.shippingIDGridColumn.FieldName = "ShipDetMainID";
-			this.shippingLotGridColumn.FieldName = "ShipDetLot";
+			shippingDetailIDGridColumn.FieldName = "ShipDetDetID";
+			shippingIDGridColumn.FieldName = "ShipDetMainID";
+			shippingLotGridColumn.FieldName = "ShipDetLot";
 			shippingExpirationDateGridColumn.FieldName = "ExpirationDate";
-			this.shippingQuantityGridColumn.FieldName = "ShipDetDetQty";
-			this.shippingBOLGridColumn.FieldName = "ShipMainBOL";
-			this.shippingDateGridColumn.FieldName = "ShipMainDate";
+			shippingQuantityGridColumn.FieldName = "ShipDetDetQty";
+			shippingBOLGridColumn.FieldName = "ShipMainBOL";
+			shippingDateGridColumn.FieldName = "ShipMainDate";
 
 			shippingReturnIDGridColumn.FieldName = "ReturnDetID";
 			returnShippingIDGridColumn.FieldName = "ShipMainID";
@@ -158,20 +158,20 @@ namespace SuperiorPackGroup
 			shippingReturnBOLGridColumn.FieldName = "ShipMainBOL";
 			shippingReturnDateGridColumn.FieldName = "ShipMainDate";
 
-			this.productionDateGridColumn.FieldName = "InventoryDate";
-			this.productionQuantityGridColumn.FieldName = "InventoryQuantity";
-			this.productionLotGridColumn.FieldName = "Lot";
+			productionDateGridColumn.FieldName = "InventoryDate";
+			productionQuantityGridColumn.FieldName = "InventoryQuantity";
+			productionLotGridColumn.FieldName = "Lot";
 			productionExpirationDateGridColumn.FieldName = "ExpirationDate";
-			this.productionPOGridColumn.FieldName = "PO";
+			productionPOGridColumn.FieldName = "PO";
 
-			this.receivingDetailIDGridColumn.FieldName = "ReceiveDetID";
-			this.receivingIDGridColumn.FieldName = "ReceiveMainID";
-			this.receivingLpnGridColumn.FieldName = "ReceiveDetLPN";
-			this.receivingLotGridColumn.FieldName = "ReceiveDetLot";
+			receivingDetailIDGridColumn.FieldName = "ReceiveDetID";
+			receivingIDGridColumn.FieldName = "ReceiveMainID";
+			receivingLpnGridColumn.FieldName = "ReceiveDetLPN";
+			receivingLotGridColumn.FieldName = "ReceiveDetLot";
 			receivingExpirationDateGridColumn.FieldName = "ExpirationDate";
-			this.receivingQuantityGridColumn.FieldName = "ReceiveDetQty";
-			this.receivingBOLGridColumn.FieldName = "ReceiveBOL";
-			this.receivingDateGridColumn.FieldName = "ReceiveDate";
+			receivingQuantityGridColumn.FieldName = "ReceiveDetQty";
+			receivingBOLGridColumn.FieldName = "ReceiveBOL";
+			receivingDateGridColumn.FieldName = "ReceiveDate";
 
 			receivingReturnIDGridColumn.FieldName = "ReceiveDetID";
 			returnReceivingIDGridColumn.FieldName = "ReceiveMainID";
@@ -182,19 +182,19 @@ namespace SuperiorPackGroup
 			receivingReturnBolGridColumn.FieldName = "ReceiveBOL";
 			receivingReturnDateGridColumn.FieldName = "ReceiveDate";
 
-			this.bomIDGridColumn.FieldName = "BOMID";
-			this.FGItemCodeGridColumn.FieldName = "BOMFiniGoodID";
-			this.RMItemCodeGridColumn.FieldName = "BOMRawMatID";
-			this.RMQuantityGridColumn.FieldName = "BOMQuantity";
-			this.scrapFactorGridColumn.FieldName = "ScrapFactor";
+			bomIDGridColumn.FieldName = "BOMID";
+			FGItemCodeGridColumn.FieldName = "BOMFiniGoodID";
+			RMItemCodeGridColumn.FieldName = "BOMRawMatID";
+			RMQuantityGridColumn.FieldName = "BOMQuantity";
+			scrapFactorGridColumn.FieldName = "ScrapFactor";
 
-			this.availabilityItemIDGridColumn.FieldName = "BOMRawMatID";
-			this.bomItemCodeGridColumn.FieldName = "ItemCode";
-			this.bomItemDescriptionGridColumn.FieldName = "ItemDescription";
-			this.quantityOnHandGridColumn.FieldName = "TotalQuantityOnHand";
+			availabilityItemIDGridColumn.FieldName = "BOMRawMatID";
+			bomItemCodeGridColumn.FieldName = "ItemCode";
+			bomItemDescriptionGridColumn.FieldName = "ItemDescription";
+			quantityOnHandGridColumn.FieldName = "TotalQuantityOnHand";
 			localQuantityOnHandGridColumn.FieldName = "LocalQuantityOnHand";
-			this.quantityRequiredGridColumn.FieldName = "BOMQuantity";
-			this.scrapPercentageGridColumn.FieldName = "ScrapFactor";
+			quantityRequiredGridColumn.FieldName = "BOMQuantity";
+			scrapPercentageGridColumn.FieldName = "ScrapFactor";
 			//isPoolGridColumn.FieldName = "IsPool"
 
 			adjustmentIDGridColumn.FieldName = "AdjustmentID";
@@ -213,24 +213,24 @@ namespace SuperiorPackGroup
 			inventoryXpView.Criteria = new BinaryOperator(LocationInventory.Fields.LocationInventoryItem.ItemID, 0, BinaryOperatorType.Equal);
 			transfersXpView.Criteria = new BinaryOperator(LocationTransferDetails.Fields.TransferItem.ItemID.PropertyName, 0, BinaryOperatorType.Equal);
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
-			Utilities.MakeFormReadOnly(this.advancedXtraTabPage, true);
-			Utilities.MakeFormReadOnly(this.specificationXtraTabPage, true);
-			this.BOMGridView.OptionsBehavior.Editable = false;
+			Utilities.MakeFormReadOnly(generalXtraTabPage, true);
+			Utilities.MakeFormReadOnly(advancedXtraTabPage, true);
+			Utilities.MakeFormReadOnly(specificationXtraTabPage, true);
+			BOMGridView.OptionsBehavior.Editable = false;
 			poolBomGridView.OptionsBehavior.Editable = false;
 			productionStandardsGridView.OptionsBehavior.Editable = false;
-			this.itemsSearchGridControl.Enabled = true;
+			itemsSearchGridControl.Enabled = true;
 
-			this.printGridBarButtonItem.Enabled = false;
+			printGridBarButtonItem.Enabled = false;
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
 
 			foreach (Allergen Allergen in AllergensBLL.GetAllergens(ref m_ItemsSession))
 			{
-				this.AllergenInfoCheckedComboBoxEdit.Properties.Items.Add(Allergen.AllergenName);
+				AllergenInfoCheckedComboBoxEdit.Properties.Items.Add(Allergen.AllergenName);
 			}
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 
 		}
@@ -272,41 +272,41 @@ namespace SuperiorPackGroup
 			//Dim item As SPG.ItemsRow = CType(m_Items.GetItemBYId(itemID).Rows(0), SPG.ItemsRow)
 			Items item = m_ItemsSession.GetObjectByKey<Items>(itemID);
 			m_CurrentItemID = item.ItemID;
-			this.codeTextEdit.Text = item.ItemCode;
-			this.customerLookUpEdit.EditValue = item.ItemCustomerID.CustomerID;
-			this.customerLookUpEdit.Enabled = false;
-			this.descriptionMemoEdit.Text = item.ItemDescription;
-			this.typeLookUpEdit.EditValue = item.ItemType;
-			this.typeLookUpEdit.Enabled = false;
+			codeTextEdit.Text = item.ItemCode;
+			customerLookUpEdit.EditValue = item.ItemCustomerID.CustomerID;
+			customerLookUpEdit.Enabled = false;
+			descriptionMemoEdit.Text = item.ItemDescription;
+			typeLookUpEdit.EditValue = item.ItemType;
+			typeLookUpEdit.Enabled = false;
 			UpdateTypeSensitiveControls();
-			this.standardProductionTextEdit.EditValue = item.ItemProdStandard;
+			standardProductionTextEdit.EditValue = item.ItemProdStandard;
 			if (item.ItemDefaultMachine != null)
 			{
-				this.defaultMachineLookUpEdit.EditValue = item.ItemDefaultMachine.MachineLineID;
+				defaultMachineLookUpEdit.EditValue = item.ItemDefaultMachine.MachineLineID;
 			}
 			else
 			{
-				this.defaultMachineLookUpEdit.EditValue = null;
+				defaultMachineLookUpEdit.EditValue = null;
 			}
 
-			this.uomLookUpEdit.EditValue = item.strUnitOfMeasure;
-			this.qtyOnHandTextEdit.EditValue = ItemsBLL.GetQtyOnHandByID(m_ItemsSession, m_CurrentItemID, 0);
-			this.qtyPerUnitTextEdit.EditValue = item.intQtyPerUnit;
-			if (this.unitsPerCaseTextEdit.Enabled == true)
+			uomLookUpEdit.EditValue = item.strUnitOfMeasure;
+			qtyOnHandTextEdit.EditValue = ItemsBLL.GetQtyOnHandByID(m_ItemsSession, m_CurrentItemID, 0);
+			qtyPerUnitTextEdit.EditValue = item.intQtyPerUnit;
+			if (unitsPerCaseTextEdit.Enabled == true)
 			{
-				this.unitsPerCaseTextEdit.EditValue = item.intUnitsPerCase;
+				unitsPerCaseTextEdit.EditValue = item.intUnitsPerCase;
 			}
-			if (this.unitsPerPalletTextEdit.Enabled == true)
+			if (unitsPerPalletTextEdit.Enabled == true)
 			{
-				this.unitsPerPalletTextEdit.EditValue = item.intUnitsPerPallet;
+				unitsPerPalletTextEdit.EditValue = item.intUnitsPerPallet;
 			}
-			if (this.casesPerPalletTextEdit.Enabled == true)
+			if (casesPerPalletTextEdit.Enabled == true)
 			{
-				this.casesPerPalletTextEdit.EditValue = item.intCasesPerPallet;
+				casesPerPalletTextEdit.EditValue = item.intCasesPerPallet;
 			}
-			this.caseGrossWeightTextEdit.EditValue = item.CaseGrossWeight;
-			this.inactiveCheckEdit.Checked = item.Inactive;
-			this.packersTextEdit.EditValue = item.Packers.HasValue ? item.Packers : null;
+			caseGrossWeightTextEdit.EditValue = item.CaseGrossWeight;
+			inactiveCheckEdit.Checked = item.Inactive;
+			packersTextEdit.EditValue = item.Packers.HasValue ? item.Packers : null;
 			if (string.IsNullOrEmpty(item.UPC))
 			{
 				upcTextEdit.EditValue = null;
@@ -329,25 +329,25 @@ namespace SuperiorPackGroup
 			productionExpirationDateGridColumn.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(item.ItemCustomerID.CustomerID);
 			colItemExpirationDate.DisplayFormat.FormatString = CustomersBLL.GetExpirationDateFormat(item.ItemCustomerID.CustomerID);
 
-			this.shippingGridControl.DataSource = ShippingDetailsBLL.GetShippingDetailsByItemID(itemID);
-			this.shippingReturnGridControl.DataSource = ShippingReturnDetailsBLL.GetShippingReturnDetailsViewByItemID(itemID);
+			shippingGridControl.DataSource = ShippingDetailsBLL.GetShippingDetailsByItemID(itemID);
+			shippingReturnGridControl.DataSource = ShippingReturnDetailsBLL.GetShippingReturnDetailsViewByItemID(itemID);
 
-			this.productionGridControl.DataSource = m_Inventory.GetInventoryByItemID(itemID);
+			productionGridControl.DataSource = m_Inventory.GetInventoryByItemID(itemID);
 
-			this.receivingsGridControl.DataSource = ReceivingDetailsBLL.GetReceivingDetailsByItemID(itemID);
-			this.receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetReceivingReturnDetailsByItemID(itemID);
+			receivingsGridControl.DataSource = ReceivingDetailsBLL.GetReceivingDetailsByItemID(itemID);
+			receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetReceivingReturnDetailsByItemID(itemID);
 
 			adjustmentGridControl.DataSource = InventoryAdjustmentBLL.GetAdjustmentsByItemID(itemID);
 
 			//bind the BOM tab
-			if ((this.customerLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerLookUpEdit.EditValue)) == this.customerLookUpEdit.Properties.NullText)
+			if ((customerLookUpEdit.EditValue == null ? null : Convert.ToString(customerLookUpEdit.EditValue)) == customerLookUpEdit.Properties.NullText)
 			{
-				this.RMRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM|IG", true, m_ItemsSession);
+				RMRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM|IG", true, m_ItemsSession);
 				itemPoolsXpView.Criteria = null;
 			}
 			else
 			{
-				this.RMRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)this.customerLookUpEdit.EditValue, "RM|IG", true, m_ItemsSession);
+				RMRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)customerLookUpEdit.EditValue, "RM|IG", true, m_ItemsSession);
 				itemPoolsXpView.Criteria = new BinaryOperator(ItemPool.Fields.PoolCustomerID.CustomerID.PropertyName, Convert.ToInt32(customerLookUpEdit.EditValue), BinaryOperatorType.Equal);
 			}
 
@@ -356,30 +356,30 @@ namespace SuperiorPackGroup
 			productionStandardsXpCollection.Criteria = new BinaryOperator(ItemMachineStandards.Fields.ProductionItem.ItemID.PropertyName, itemID, BinaryOperatorType.Equal);
 			productionStandardsXpCollection.Reload();
 
-			this.priceTextEdit.EditValue = item.dblPrice;
-			this.rebateTextEdit.EditValue = item.sngRebate;
-			this.freightTextEdit.EditValue = item.dblFreight;
-			this.filmTextEdit.EditValue = item.dblFilm;
-			this.boxesTextEdit.EditValue = item.dblBoxes;
-			this.stretchWrapTextEdit.EditValue = item.dblStretchWrap;
-			this.palletsTextEdit.EditValue = item.dblPallets;
-			this.other1TextEdit.EditValue = item.dblOther1;
-			this.other2TextEdit.EditValue = item.dblOther2;
-			this.other3TextEdit.EditValue = item.dblOther3;
-			this.other4TextEdit.EditValue = item.dblOther4;
-			this.other5TextEdit.EditValue = item.dblOther5;
+			priceTextEdit.EditValue = item.dblPrice;
+			rebateTextEdit.EditValue = item.sngRebate;
+			freightTextEdit.EditValue = item.dblFreight;
+			filmTextEdit.EditValue = item.dblFilm;
+			boxesTextEdit.EditValue = item.dblBoxes;
+			stretchWrapTextEdit.EditValue = item.dblStretchWrap;
+			palletsTextEdit.EditValue = item.dblPallets;
+			other1TextEdit.EditValue = item.dblOther1;
+			other2TextEdit.EditValue = item.dblOther2;
+			other3TextEdit.EditValue = item.dblOther3;
+			other4TextEdit.EditValue = item.dblOther4;
+			other5TextEdit.EditValue = item.dblOther5;
 
 
-			this.AllergenInfoCheckedComboBoxEdit.EditValue = item.Allergens;
-			this.packageCodeMemoEdit.EditValue = item.PackageCode;
-			this.caseCodeMemoEdit.EditValue = item.CaseCode;
-			this.requiredWeightTextEdit.EditValue = item.RequiredWeight;
-			this.mavTextEdit.EditValue = item.MAV;
-			this.cassesPerLayerTextEdit.EditValue = item.CasesPerLayer;
-			this.layersPerPalletTextEdit.EditValue = item.LayersPerPallet;
-			this.shelfLifeTextEdit.EditValue = item.ShelfLife;
-			this.instructionsMemoEdit.EditValue = item.Instructions;
-			this.palletPatternButtonEdit.EditValue = item.PalletPattern;
+			AllergenInfoCheckedComboBoxEdit.EditValue = item.Allergens;
+			packageCodeMemoEdit.EditValue = item.PackageCode;
+			caseCodeMemoEdit.EditValue = item.CaseCode;
+			requiredWeightTextEdit.EditValue = item.RequiredWeight;
+			mavTextEdit.EditValue = item.MAV;
+			cassesPerLayerTextEdit.EditValue = item.CasesPerLayer;
+			layersPerPalletTextEdit.EditValue = item.LayersPerPallet;
+			shelfLifeTextEdit.EditValue = item.ShelfLife;
+			instructionsMemoEdit.EditValue = item.Instructions;
+			palletPatternButtonEdit.EditValue = item.PalletPattern;
 
 			if (m_CurrentItemID.HasValue)
 			{
@@ -403,11 +403,11 @@ namespace SuperiorPackGroup
 				itemID = 0;
 			}
 
-			if (this.bomXtraTabPage.PageVisible == true)
+			if (bomXtraTabPage.PageVisible == true)
 			{
 				SPG.BOMDataTable bomdatasource = BOM.GetBOMBYFGItemID(itemID.Value);
-				this.bomGridControl.DataSource = bomdatasource;
-				this.availabilityGridControl.DataSource = m_Items.GetAvailabilityByItemID(itemID.Value, UsersBLL.GetUsersLocalLocation(m_ItemsSession, Properties.Settings.Default.UserName).Oid);
+				bomGridControl.DataSource = bomdatasource;
+				availabilityGridControl.DataSource = m_Items.GetAvailabilityByItemID(itemID.Value, UsersBLL.GetUsersLocalLocation(m_ItemsSession, Properties.Settings.Default.UserName).Oid);
 				poolBomXpCollection.Criteria = new BinaryOperator(PoolBom.Fields.PoolBomFiniGoodID.ItemID.PropertyName, itemID.Value, BinaryOperatorType.Equal);
 				poolBomXpCollection.Reload();
 			}
@@ -417,18 +417,18 @@ namespace SuperiorPackGroup
 		private void BOMGridView_InitNewRow(object sender, InitNewRowEventArgs e)
 		{
 
-			this.BOMGridView.SetRowCellValue(e.RowHandle, this.FGItemCodeGridColumn, m_CurrentItemID);
-			this.BOMGridView.SetRowCellValue(e.RowHandle, this.RMQuantityGridColumn, 0);
-			this.BOMGridView.SetRowCellValue(e.RowHandle, this.scrapFactorGridColumn, 0);
+			BOMGridView.SetRowCellValue(e.RowHandle, FGItemCodeGridColumn, m_CurrentItemID);
+			BOMGridView.SetRowCellValue(e.RowHandle, RMQuantityGridColumn, 0);
+			BOMGridView.SetRowCellValue(e.RowHandle, scrapFactorGridColumn, 0);
 
 		}
 
 		private void BOMGridView_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
 		{
 
-			if (!Convert.IsDBNull(BOMGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.RMItemCodeGridColumn)))
+			if (!Convert.IsDBNull(BOMGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, RMItemCodeGridColumn)))
 			{
-				e.Value = ItemsBLL.GetDescriptionByItemID((int?)BOMGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.RMItemCodeGridColumn));
+				e.Value = ItemsBLL.GetDescriptionByItemID((int?)BOMGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, RMItemCodeGridColumn));
 			}
 
 		}
@@ -495,7 +495,7 @@ namespace SuperiorPackGroup
 				return false;
 			}
 
-			if (this.bomXtraTabPage.PageVisible == true)
+			if (bomXtraTabPage.PageVisible == true)
 			{
 				BOMGridView.CloseEditor();
 				poolBomGridView.CloseEditor();
@@ -552,7 +552,7 @@ namespace SuperiorPackGroup
 
 			BindItemsSearch();
 			BindItemControls(m_CurrentItemID.Value);
-			this.itemSearchGridView.FocusedRowHandle = selectedID;
+			itemSearchGridView.FocusedRowHandle = selectedID;
 			return true;
 
 		}
@@ -560,7 +560,7 @@ namespace SuperiorPackGroup
 		private void customerFilterLookUpEdit_EditValueChanged(object sender, EventArgs e)
 		{
 
-			if (this.customerFilterLookUpEdit.EditValue == null || (this.customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerFilterLookUpEdit.EditValue)) == this.customerFilterLookUpEdit.Properties.NullText)
+			if (customerFilterLookUpEdit.EditValue == null || (customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(customerFilterLookUpEdit.EditValue)) == customerFilterLookUpEdit.Properties.NullText)
 			{
 				BindItemsSearch();
 			}
@@ -579,25 +579,25 @@ namespace SuperiorPackGroup
 		private void UpdateTypeSensitiveControls()
 		{
 
-			switch (Convert.ToString(this.typeLookUpEdit.EditValue))
+			switch (Convert.ToString(typeLookUpEdit.EditValue))
 			{
 				case "RM":
-					this.bomXtraTabPage.PageVisible = false;
-					this.availabilityXtraTabPage.PageVisible = false;
-					this.shippingXtraTabPage.PageVisible = false;
-					this.productionXtraTabPage.PageVisible = false;
-					this.receivingXtraTabPage.PageVisible = true;
+					bomXtraTabPage.PageVisible = false;
+					availabilityXtraTabPage.PageVisible = false;
+					shippingXtraTabPage.PageVisible = false;
+					productionXtraTabPage.PageVisible = false;
+					receivingXtraTabPage.PageVisible = true;
 					shippingReturnXtraTabPage.PageVisible = true;
 					receivingReturnXtraTabPage.PageVisible = false;
 					adjustmentXtraTabPage.PageVisible = true;
 					productionStandardsXtraTabPage.PageVisible = false;
 					break;
 				case "IG":
-					this.bomXtraTabPage.PageVisible = true;
-					this.availabilityXtraTabPage.PageVisible = true;
-					this.shippingXtraTabPage.PageVisible = false;
-					this.receivingXtraTabPage.PageVisible = true;
-					this.productionXtraTabPage.PageVisible = true;
+					bomXtraTabPage.PageVisible = true;
+					availabilityXtraTabPage.PageVisible = true;
+					shippingXtraTabPage.PageVisible = false;
+					receivingXtraTabPage.PageVisible = true;
+					productionXtraTabPage.PageVisible = true;
 					shippingReturnXtraTabPage.PageVisible = true;
 					receivingReturnXtraTabPage.PageVisible = false;
 					adjustmentXtraTabPage.PageVisible = true;
@@ -605,11 +605,11 @@ namespace SuperiorPackGroup
 					BindBomGridControls(m_CurrentItemID);
 					break;
 				case "FG":
-					this.bomXtraTabPage.PageVisible = true;
-					this.availabilityXtraTabPage.PageVisible = true;
-					this.receivingXtraTabPage.PageVisible = false;
-					this.shippingXtraTabPage.PageVisible = true;
-					this.productionXtraTabPage.PageVisible = true;
+					bomXtraTabPage.PageVisible = true;
+					availabilityXtraTabPage.PageVisible = true;
+					receivingXtraTabPage.PageVisible = false;
+					shippingXtraTabPage.PageVisible = true;
+					productionXtraTabPage.PageVisible = true;
 					shippingReturnXtraTabPage.PageVisible = false;
 					receivingReturnXtraTabPage.PageVisible = true;
 					adjustmentXtraTabPage.PageVisible = true;
@@ -624,18 +624,18 @@ namespace SuperiorPackGroup
 		{
 
 			BestFitColumns();
-			this.availabilityGridControl.Print();
+			availabilityGridControl.Print();
 
 		}
 
 		private void availabilityGridView_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
 		{
 
-			if (!Convert.IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.availabilityItemIDGridColumn)) && availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.availabilityItemIDGridColumn) != null && !Convert.IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.quantityOnHandGridColumn)))
+			if (!Convert.IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, availabilityItemIDGridColumn)) && availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, availabilityItemIDGridColumn) != null && !Convert.IsDBNull(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, quantityOnHandGridColumn)))
 			{
 				if (e.Column.Name == "quantityYieldsGridColumn" && e.IsGetData)
 				{
-					e.Value = Math.Floor(Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.quantityOnHandGridColumn)) / (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.quantityRequiredGridColumn)) + (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.scrapPercentageGridColumn)) / 100 * Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.quantityRequiredGridColumn)))));
+					e.Value = Math.Floor(Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, quantityOnHandGridColumn)) / (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, quantityRequiredGridColumn)) + (Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, scrapPercentageGridColumn)) / 100 * Convert.ToDouble(availabilityGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, quantityRequiredGridColumn)))));
 					//e.value = availabilityGridView.GetRowCellValue(e.RowHandle, Me.quantityOnHandGridColumn)
 				}
 				else if (e.Column.Name == localQuantityYieldsGridColumn.Name && e.IsGetData)
@@ -654,20 +654,20 @@ namespace SuperiorPackGroup
 //ORIGINAL LINE: Case "availabilityXtraTabPage"
 			if (e.Page.Name == "availabilityXtraTabPage")
 			{
-					this.availabilityGridView.UpdateTotalSummary();
-					this.printGridBarButtonItem.Enabled = true;
+					availabilityGridView.UpdateTotalSummary();
+					printGridBarButtonItem.Enabled = true;
 					BestFitColumns();
 			}
 //ORIGINAL LINE: Case Me.generalXtraTabPage.Name
-			else if (e.Page.Name == this.generalXtraTabPage.Name)
+			else if (e.Page.Name == generalXtraTabPage.Name)
 			{
-					this.printGridBarButtonItem.Enabled = false;
+					printGridBarButtonItem.Enabled = false;
 			}
 //ORIGINAL LINE: Case Me.shippingXtraTabPage.Name
-			else if (e.Page.Name == this.shippingXtraTabPage.Name)
+			else if (e.Page.Name == shippingXtraTabPage.Name)
 			{
-					this.printGridBarButtonItem.Enabled = true;
-					this.shippingGridView.BestFitColumns();
+					printGridBarButtonItem.Enabled = true;
+					shippingGridView.BestFitColumns();
 			}
 //ORIGINAL LINE: Case shippingReturnXtraTabPage.Name
 			else if (e.Page.Name == shippingReturnXtraTabPage.Name)
@@ -676,10 +676,10 @@ namespace SuperiorPackGroup
 					shippingReturnGridView.BestFitColumns();
 			}
 //ORIGINAL LINE: Case Me.receivingXtraTabPage.Name
-			else if (e.Page.Name == this.receivingXtraTabPage.Name)
+			else if (e.Page.Name == receivingXtraTabPage.Name)
 			{
-					this.printGridBarButtonItem.Enabled = true;
-					this.receivingsGridView.BestFitColumns();
+					printGridBarButtonItem.Enabled = true;
+					receivingsGridView.BestFitColumns();
 			}
 //ORIGINAL LINE: Case receivingReturnXtraTabPage.Name
 			else if (e.Page.Name == receivingReturnXtraTabPage.Name)
@@ -688,10 +688,10 @@ namespace SuperiorPackGroup
 					receivingReturnGridView.BestFitColumns();
 			}
 //ORIGINAL LINE: Case Me.productionXtraTabPage.Name
-			else if (e.Page.Name == this.productionXtraTabPage.Name)
+			else if (e.Page.Name == productionXtraTabPage.Name)
 			{
-					this.printGridBarButtonItem.Enabled = true;
-					this.productionGridView.BestFitColumns();
+					printGridBarButtonItem.Enabled = true;
+					productionGridView.BestFitColumns();
 			}
 //ORIGINAL LINE: Case adjustmentXtraTabPage.Name
 			else if (e.Page.Name == adjustmentXtraTabPage.Name)
@@ -700,19 +700,19 @@ namespace SuperiorPackGroup
 					adjustmentGridView.BestFitColumns();
 			}
 //ORIGINAL LINE: Case Me.transfersXtraTabPage.Name
-			else if (e.Page.Name == this.transfersXtraTabPage.Name)
+			else if (e.Page.Name == transfersXtraTabPage.Name)
 			{
 					printGridBarButtonItem.Enabled = true;
 					transfersGridView.BestFitColumns();
 			}
 //ORIGINAL LINE: Case Me.bomXtraTabPage.Name
-			else if (e.Page.Name == this.bomXtraTabPage.Name)
+			else if (e.Page.Name == bomXtraTabPage.Name)
 			{
-					this.printGridBarButtonItem.Enabled = true;
-					this.BOMGridView.BestFitColumns();
-					if (this.customerLookUpEdit.EditValue != null && (this.customerLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerLookUpEdit.EditValue)) != this.customerLookUpEdit.Properties.NullText)
+					printGridBarButtonItem.Enabled = true;
+					BOMGridView.BestFitColumns();
+					if (customerLookUpEdit.EditValue != null && (customerLookUpEdit.EditValue == null ? null : Convert.ToString(customerLookUpEdit.EditValue)) != customerLookUpEdit.Properties.NullText)
 					{
-						this.RMRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)this.customerLookUpEdit.EditValue, "RM|IG", true, m_ItemsSession);
+						RMRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)customerLookUpEdit.EditValue, "RM|IG", true, m_ItemsSession);
 						itemPoolsXpView.Criteria = new BinaryOperator(ItemPool.Fields.PoolCustomerID.CustomerID.PropertyName, Convert.ToInt32(customerLookUpEdit.EditValue), BinaryOperatorType.Equal);
 					}
 					else
@@ -722,14 +722,14 @@ namespace SuperiorPackGroup
 					}
 			}
 //ORIGINAL LINE: Case Me.specificationXtraTabPage.Name
-			else if (e.Page.Name == this.specificationXtraTabPage.Name)
+			else if (e.Page.Name == specificationXtraTabPage.Name)
 			{
-					this.printGridBarButtonItem.Enabled = false;
+					printGridBarButtonItem.Enabled = false;
 			}
 //ORIGINAL LINE: Case Me.advancedXtraTabPage.Name
-			else if (e.Page.Name == this.advancedXtraTabPage.Name)
+			else if (e.Page.Name == advancedXtraTabPage.Name)
 			{
-					this.printGridBarButtonItem.Enabled = false;
+					printGridBarButtonItem.Enabled = false;
 			}
 //ORIGINAL LINE: Case productionStandardsXtraTabPage.Name
 			else if (e.Page.Name == productionStandardsXtraTabPage.Name)
@@ -744,16 +744,16 @@ namespace SuperiorPackGroup
 		{
 
 			BestFitColumns();
-			this.availabilityGridControl.ShowPrintPreview();
+			availabilityGridControl.ShowPrintPreview();
 
 		}
 
 		private void BestFitColumns()
 		{
 
-			this.bomItemCodeGridColumn.BestFit();
-			this.quantityOnHandGridColumn.BestFit();
-			this.quantityYieldsGridColumn.BestFit();
+			bomItemCodeGridColumn.BestFit();
+			quantityOnHandGridColumn.BestFit();
+			quantityYieldsGridColumn.BestFit();
 			localQuantityOnHandGridColumn.BestFit();
 			localQuantityYieldsGridColumn.BestFit();
 
@@ -769,7 +769,7 @@ namespace SuperiorPackGroup
 		private void typeFilterLookUpEdit_EditValueChanged(object sender, EventArgs e)
 		{
 
-			if (this.typeFilterLookUpEdit.EditValue == null || (this.typeFilterLookUpEdit.EditValue == null ? null : Convert.ToString(this.typeFilterLookUpEdit.EditValue)) == this.typeFilterLookUpEdit.Properties.NullText)
+			if (typeFilterLookUpEdit.EditValue == null || (typeFilterLookUpEdit.EditValue == null ? null : Convert.ToString(typeFilterLookUpEdit.EditValue)) == typeFilterLookUpEdit.Properties.NullText)
 			{
 				BindItemsSearch();
 			}
@@ -779,15 +779,15 @@ namespace SuperiorPackGroup
 		private void UnitsPerPalletCalculation(object sender, EventArgs e)
 		{
 
-			this.unitsPerPalletTextEdit.Text = (Convert.ToDouble(unitsPerCaseTextEdit.EditValue) * Convert.ToDouble(casesPerPalletTextEdit.EditValue)).ToString();
+			unitsPerPalletTextEdit.Text = (Convert.ToDouble(unitsPerCaseTextEdit.EditValue) * Convert.ToDouble(casesPerPalletTextEdit.EditValue)).ToString();
 
 		}
 
 		private void clearFilterSimpleButton_Click(object sender, EventArgs e)
 		{
 
-			this.customerFilterLookUpEdit.EditValue = null;
-			this.typeFilterLookUpEdit.EditValue = null;
+			customerFilterLookUpEdit.EditValue = null;
+			typeFilterLookUpEdit.EditValue = null;
 
 		}
 
@@ -826,43 +826,43 @@ namespace SuperiorPackGroup
 //INSTANT C# NOTE: The following VB 'Select Case' included either a non-ordinal switch expression or non-ordinal, range-type, or non-constant 'Case' expressions and was converted to C# 'if-else' logic:
 //			Select Case this.itemsXtraTabControl.SelectedTabPage.Name
 //ORIGINAL LINE: Case Me.shippingXtraTabPage.Name
-			if (this.itemsXtraTabControl.SelectedTabPage.Name == this.shippingXtraTabPage.Name)
+			if (itemsXtraTabControl.SelectedTabPage.Name == shippingXtraTabPage.Name)
 			{
 					pcl.Component = shippingGridControl;
 					m_GridReportTitle = "Shipping";
 			}
 //ORIGINAL LINE: Case shippingReturnXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == shippingReturnXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == shippingReturnXtraTabPage.Name)
 			{
 					pcl.Component = shippingReturnGridControl;
 					m_GridReportTitle = "Shipping Returns";
 			}
 //ORIGINAL LINE: Case Me.productionXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == this.productionXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == productionXtraTabPage.Name)
 			{
 					pcl.Component = productionGridControl;
 					m_GridReportTitle = "Inventory";
 			}
 //ORIGINAL LINE: Case Me.receivingXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == this.receivingXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == receivingXtraTabPage.Name)
 			{
 					pcl.Component = receivingsGridControl;
 					m_GridReportTitle = "Receivings";
 			}
 //ORIGINAL LINE: Case receivingReturnXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == receivingReturnXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == receivingReturnXtraTabPage.Name)
 			{
 					pcl.Component = receivingReturnGridControl;
 					m_GridReportTitle = "Receiving Returns";
 			}
 //ORIGINAL LINE: Case transfersXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == transfersXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == transfersXtraTabPage.Name)
 			{
 					pcl.Component = transfersGridControl;
 					m_GridReportTitle = "Item Transfers";
 			}
 //ORIGINAL LINE: Case Me.bomXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == this.bomXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == bomXtraTabPage.Name)
 			{
 					pcl.Component = bomGridControl;
 					m_GridReportTitle = "BOM";
@@ -871,19 +871,19 @@ namespace SuperiorPackGroup
 					pcl2.Component = poolBomGridControl;
 			}
 //ORIGINAL LINE: Case Me.availabilityXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == this.availabilityXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == availabilityXtraTabPage.Name)
 			{
 					pcl.Component = availabilityGridControl;
 					m_GridReportTitle = "Availability";
 			}
 //ORIGINAL LINE: Case adjustmentXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == adjustmentXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == adjustmentXtraTabPage.Name)
 			{
 					pcl.Component = adjustmentGridControl;
 					m_GridReportTitle = "Inventory Adjustments";
 			}
 //ORIGINAL LINE: Case productionStandardsXtraTabPage.Name
-			else if (this.itemsXtraTabControl.SelectedTabPage.Name == productionStandardsXtraTabPage.Name)
+			else if (itemsXtraTabControl.SelectedTabPage.Name == productionStandardsXtraTabPage.Name)
 			{
 					pcl.Component = productionStandardsGridControl;
 					m_GridReportTitle = "Item Machine Standards";
@@ -917,9 +917,9 @@ namespace SuperiorPackGroup
 				return;
 			}
 
-			if (this.itemSearchGridView.CalcHitInfo(this.itemsSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
+			if (itemSearchGridView.CalcHitInfo(itemsSearchGridControl.PointToClient(Control.MousePosition)).HitTest == GridHitTest.RowCell)
 			{
-				this.BindItemControls(Convert.ToInt32(this.itemSearchGridView.GetFocusedRowCellValue(this.itemIDGridColumn)));
+				BindItemControls(Convert.ToInt32(itemSearchGridView.GetFocusedRowCellValue(itemIDGridColumn)));
 			}
 
 		}
@@ -928,23 +928,23 @@ namespace SuperiorPackGroup
 		{
 
 			m_CurrentItemID = -1;
-			this.codeTextEdit.Text = null;
-			this.customerLookUpEdit.EditValue = null;
-			this.customerLookUpEdit.Enabled = true;
-			this.descriptionMemoEdit.Text = null;
-			this.typeLookUpEdit.EditValue = null;
-			this.typeLookUpEdit.Enabled = true;
-			this.standardProductionTextEdit.EditValue = 0;
-			this.defaultMachineLookUpEdit.EditValue = null;
-			this.uomLookUpEdit.EditValue = null;
-			this.qtyPerUnitTextEdit.EditValue = 1;
-			this.unitsPerCaseTextEdit.EditValue = 1;
-			this.unitsPerPalletTextEdit.EditValue = 0;
-			this.casesPerPalletTextEdit.EditValue = 0;
-			this.qtyOnHandTextEdit.EditValue = 0;
-			this.caseGrossWeightTextEdit.EditValue = 0;
-			this.packersTextEdit.EditValue = 0;
-			this.inactiveCheckEdit.Checked = false;
+			codeTextEdit.Text = null;
+			customerLookUpEdit.EditValue = null;
+			customerLookUpEdit.Enabled = true;
+			descriptionMemoEdit.Text = null;
+			typeLookUpEdit.EditValue = null;
+			typeLookUpEdit.Enabled = true;
+			standardProductionTextEdit.EditValue = 0;
+			defaultMachineLookUpEdit.EditValue = null;
+			uomLookUpEdit.EditValue = null;
+			qtyPerUnitTextEdit.EditValue = 1;
+			unitsPerCaseTextEdit.EditValue = 1;
+			unitsPerPalletTextEdit.EditValue = 0;
+			casesPerPalletTextEdit.EditValue = 0;
+			qtyOnHandTextEdit.EditValue = 0;
+			caseGrossWeightTextEdit.EditValue = 0;
+			packersTextEdit.EditValue = 0;
+			inactiveCheckEdit.Checked = false;
 			upcTextEdit.EditValue = null;
 			requiresExpirationDateCheckEdit.Checked = false;
 			requiresLotCodeCheckEdit.Checked = false;
@@ -954,36 +954,36 @@ namespace SuperiorPackGroup
 
 			BindBomGridControls(m_CurrentItemID);
 
-			this.priceTextEdit.EditValue = 0;
-			this.rebateTextEdit.EditValue = 0;
-			this.freightTextEdit.EditValue = 0;
-			this.filmTextEdit.EditValue = 0;
-			this.boxesTextEdit.EditValue = 0;
-			this.stretchWrapTextEdit.EditValue = 0;
-			this.palletsTextEdit.EditValue = 0;
-			this.other1TextEdit.EditValue = 0;
-			this.other2TextEdit.EditValue = 0;
-			this.other3TextEdit.EditValue = 0;
-			this.other4TextEdit.EditValue = 0;
-			this.other5TextEdit.EditValue = 0;
+			priceTextEdit.EditValue = 0;
+			rebateTextEdit.EditValue = 0;
+			freightTextEdit.EditValue = 0;
+			filmTextEdit.EditValue = 0;
+			boxesTextEdit.EditValue = 0;
+			stretchWrapTextEdit.EditValue = 0;
+			palletsTextEdit.EditValue = 0;
+			other1TextEdit.EditValue = 0;
+			other2TextEdit.EditValue = 0;
+			other3TextEdit.EditValue = 0;
+			other4TextEdit.EditValue = 0;
+			other5TextEdit.EditValue = 0;
 
-			this.packageCodeMemoEdit.EditValue = null;
-			this.caseCodeMemoEdit.EditValue = null;
-			this.requiredWeightTextEdit.EditValue = null;
-			this.mavTextEdit.EditValue = null;
-			this.cassesPerLayerTextEdit.EditValue = null;
-			this.layersPerPalletTextEdit.EditValue = null;
-			this.shelfLifeTextEdit.EditValue = null;
-			this.instructionsMemoEdit.EditValue = null;
-			this.palletPatternButtonEdit.EditValue = null;
+			packageCodeMemoEdit.EditValue = null;
+			caseCodeMemoEdit.EditValue = null;
+			requiredWeightTextEdit.EditValue = null;
+			mavTextEdit.EditValue = null;
+			cassesPerLayerTextEdit.EditValue = null;
+			layersPerPalletTextEdit.EditValue = null;
+			shelfLifeTextEdit.EditValue = null;
+			instructionsMemoEdit.EditValue = null;
+			palletPatternButtonEdit.EditValue = null;
 
-			this.shippingGridControl.DataSource = SuperiorPackGroup.ShippingDetailsBLL.GetShippingDetailsByItemID(m_CurrentItemID.Value);
+			shippingGridControl.DataSource = SuperiorPackGroup.ShippingDetailsBLL.GetShippingDetailsByItemID(m_CurrentItemID.Value);
 			shippingReturnGridControl.DataSource = ShippingReturnDetailsBLL.GetShippingReturnDetailsViewByItemID(m_CurrentItemID.Value);
 
-			this.productionGridControl.DataSource = m_Inventory.GetInventoryByItemID(m_CurrentItemID.Value);
+			productionGridControl.DataSource = m_Inventory.GetInventoryByItemID(m_CurrentItemID.Value);
 
-			this.receivingsGridControl.DataSource = ReceivingDetailsBLL.GetReceivingDetailsByItemID(m_CurrentItemID.Value);
-			this.receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetReceivingReturnDetailsByItemID(m_CurrentItemID.Value);
+			receivingsGridControl.DataSource = ReceivingDetailsBLL.GetReceivingDetailsByItemID(m_CurrentItemID.Value);
+			receivingReturnGridControl.DataSource = ReturnDetailsBLL.GetReceivingReturnDetailsByItemID(m_CurrentItemID.Value);
 
 			adjustmentGridControl.DataSource = InventoryAdjustmentBLL.GetAdjustmentsByItemID(m_CurrentItemID.Value);
 
@@ -993,26 +993,26 @@ namespace SuperiorPackGroup
 			productionStandardsXpCollection.Criteria = new BinaryOperator(ItemMachineStandards.Fields.ProductionItem.ItemID.PropertyName, -1, BinaryOperatorType.Equal);
 			productionStandardsXpCollection.Reload();
 
-			this.itemsXtraTabControl.SelectedTabPage = this.generalXtraTabPage;
+			itemsXtraTabControl.SelectedTabPage = generalXtraTabPage;
 
-			this.itemSearchGridView.FocusedRowHandle = -1;
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, false);
+			itemSearchGridView.FocusedRowHandle = -1;
+			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
 			qtyOnHandTextEdit.Properties.ReadOnly = true;
 			unitsPerPalletTextEdit.Properties.ReadOnly = true;
-			Utilities.MakeFormReadOnly(this.advancedXtraTabPage, false);
-			Utilities.MakeFormReadOnly(this.specificationXtraTabPage, false);
-			this.BOMGridView.OptionsBehavior.Editable = true;
+			Utilities.MakeFormReadOnly(advancedXtraTabPage, false);
+			Utilities.MakeFormReadOnly(specificationXtraTabPage, false);
+			BOMGridView.OptionsBehavior.Editable = true;
 			poolBomGridView.OptionsBehavior.Editable = true;
 			productionStandardsGridView.OptionsBehavior.Editable = true;
-			this.itemsSearchGridControl.Enabled = false;
+			itemsSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
-			this.deleteBarButtonItem.Enabled = false;
-			this.deleteGridColumn.Visible = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
+			deleteBarButtonItem.Enabled = false;
+			deleteGridColumn.Visible = false;
 			poolBomDeleteGridColumn.Visible = false;
 
 		}
@@ -1034,22 +1034,22 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, false);
+			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
 			qtyOnHandTextEdit.Properties.ReadOnly = true;
 			unitsPerPalletTextEdit.Properties.ReadOnly = true;
-			Utilities.MakeFormReadOnly(this.advancedXtraTabPage, false);
-			Utilities.MakeFormReadOnly(this.specificationXtraTabPage, false);
-			this.BOMGridView.OptionsBehavior.Editable = true;
+			Utilities.MakeFormReadOnly(advancedXtraTabPage, false);
+			Utilities.MakeFormReadOnly(specificationXtraTabPage, false);
+			BOMGridView.OptionsBehavior.Editable = true;
 			poolBomGridView.OptionsBehavior.Editable = true;
 			productionStandardsGridView.OptionsBehavior.Editable = true;
-			this.itemsSearchGridControl.Enabled = false;
+			itemsSearchGridControl.Enabled = false;
 			CheckPermissions();
 
-			this.cancelBarButtonItem.Enabled = true;
-			this.saveBarButtonItem.Enabled = true;
-			this.editBarButtonItem.Enabled = false;
-			this.addBarButtonItem.Enabled = false;
-			this.deleteBarButtonItem.Enabled = false;
+			cancelBarButtonItem.Enabled = true;
+			saveBarButtonItem.Enabled = true;
+			editBarButtonItem.Enabled = false;
+			addBarButtonItem.Enabled = false;
+			deleteBarButtonItem.Enabled = false;
 
 		}
 
@@ -1086,13 +1086,13 @@ namespace SuperiorPackGroup
 
 			CheckPermissions();
 
-			Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
-			Utilities.MakeFormReadOnly(this.advancedXtraTabPage, true);
-			Utilities.MakeFormReadOnly(this.specificationXtraTabPage, true);
-			this.BOMGridView.OptionsBehavior.Editable = false;
+			Utilities.MakeFormReadOnly(generalXtraTabPage, true);
+			Utilities.MakeFormReadOnly(advancedXtraTabPage, true);
+			Utilities.MakeFormReadOnly(specificationXtraTabPage, true);
+			BOMGridView.OptionsBehavior.Editable = false;
 			poolBomGridView.OptionsBehavior.Editable = false;
 			productionStandardsGridView.OptionsBehavior.Editable = false;
-			this.itemsSearchGridControl.Enabled = true;
+			itemsSearchGridControl.Enabled = true;
 
 			cancelBarButtonItem.Enabled = false;
 			saveBarButtonItem.Enabled = false;
@@ -1107,13 +1107,13 @@ namespace SuperiorPackGroup
 
 				CheckPermissions();
 
-				Utilities.MakeFormReadOnly(this.generalXtraTabPage, true);
-				Utilities.MakeFormReadOnly(this.advancedXtraTabPage, true);
-				Utilities.MakeFormReadOnly(this.specificationXtraTabPage, true);
-				this.BOMGridView.OptionsBehavior.Editable = false;
+				Utilities.MakeFormReadOnly(generalXtraTabPage, true);
+				Utilities.MakeFormReadOnly(advancedXtraTabPage, true);
+				Utilities.MakeFormReadOnly(specificationXtraTabPage, true);
+				BOMGridView.OptionsBehavior.Editable = false;
 				poolBomGridView.OptionsBehavior.Editable = false;
 				productionStandardsGridView.OptionsBehavior.Editable = false;
-				this.itemsSearchGridControl.Enabled = true;
+				itemsSearchGridControl.Enabled = true;
 
 				cancelBarButtonItem.Enabled = false;
 				saveBarButtonItem.Enabled = false;
@@ -1181,11 +1181,11 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = true;
-						this.deleteGridColumn.Visible = true;
-						this.deleteGridColumn.VisibleIndex = 0;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = true;
+						deleteGridColumn.Visible = true;
+						deleteGridColumn.VisibleIndex = 0;
 						poolBomDeleteGridColumn.Visible = true;
 						poolBomDeleteGridColumn.VisibleIndex = 0;
 						delProdStdGridColumn.Visible = true;
@@ -1193,83 +1193,83 @@ namespace SuperiorPackGroup
 						break;
 					case "ADD":
 					case "Add":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						poolBomDeleteGridColumn.Visible = false;
 						delProdStdGridColumn.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						poolBomDeleteGridColumn.Visible = false;
 						delProdStdGridColumn.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						poolBomDeleteGridColumn.Visible = false;
 						delProdStdGridColumn.Visible = false;
 						break;
 					case "VIEW ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						poolBomDeleteGridColumn.Visible = false;
-						this.deleteBarButtonItem.Enabled = false;
+						deleteBarButtonItem.Enabled = false;
 						delProdStdGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					case "EDIT ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						deleteGridColumn.Visible = false;
 						poolBomDeleteGridColumn.Visible = false;
-						this.deleteBarButtonItem.Enabled = false;
+						deleteBarButtonItem.Enabled = false;
 						delProdStdGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						this.Close();
+						Close();
 						return false;
 				}
 
-				switch (this.AdvancedTabs)
+				switch (AdvancedTabs)
 				{
 					case "FULL":
 					case "Full":
-						Utilities.MakeFormReadOnly(this.advancedXtraTabPage, false);
+						Utilities.MakeFormReadOnly(advancedXtraTabPage, false);
 						break;
 					case "ADD":
 					case "Add":
-						Utilities.MakeFormReadOnly(this.advancedXtraTabPage, false);
+						Utilities.MakeFormReadOnly(advancedXtraTabPage, false);
 						break;
 					case "NONE":
 					case "None":
-						this.advancedXtraTabPage.PageVisible = false;
+						advancedXtraTabPage.PageVisible = false;
 						break;
 					case "VIEW":
 					case "View":
 					case "VIEW ASSIGNED":
-						Utilities.MakeFormReadOnly(this.advancedXtraTabPage, true);
+						Utilities.MakeFormReadOnly(advancedXtraTabPage, true);
 						break;
 					case "EDIT":
 					case "Edit":
 					case "EDIT ASSIGNED":
-						Utilities.MakeFormReadOnly(this.advancedXtraTabPage, false);
+						Utilities.MakeFormReadOnly(advancedXtraTabPage, false);
 						break;
 				}
 				return true;
@@ -1284,7 +1284,7 @@ namespace SuperiorPackGroup
 		private void FilterAssignedCustomers()
 		{
 
-			this.itemSearchXPView.Criteria = new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ItemsSession));
+			itemSearchXPView.Criteria = new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ItemsSession));
 
 		}
 
@@ -1292,7 +1292,7 @@ namespace SuperiorPackGroup
 		private void CancelChanges()
 		{
 
-			if (this.m_CurrentItemID.HasValue && this.m_CurrentItemID.Value != -1)
+			if (m_CurrentItemID.HasValue && m_CurrentItemID.Value != -1)
 			{
 				BindItemControls(m_CurrentItemID.Value);
 				m_Items.EndedEdit(m_ItemsSession, m_CurrentItemID.Value);
@@ -1332,7 +1332,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				int BOMID = Convert.ToInt32(this.BOMGridView.GetRowCellValue(this.BOMGridView.FocusedRowHandle, this.bomIDGridColumn));
+				int BOMID = Convert.ToInt32(BOMGridView.GetRowCellValue(BOMGridView.FocusedRowHandle, bomIDGridColumn));
 				if (BOMID < 1 || m_BOM.DeleteBOM(BOMID) == true)
 				{
 					BindBomGridControls(m_CurrentItemID);

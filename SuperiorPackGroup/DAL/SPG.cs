@@ -15,7 +15,7 @@ namespace SuperiorPackGroup
 		{
 			private void ShippingsDataTable_ColumnChanging(object sender, DataColumnChangeEventArgs e)
 			{
-				if (e.Column.ColumnName == this.strDeliveryNoteColumn.ColumnName)
+				if (e.Column.ColumnName == strDeliveryNoteColumn.ColumnName)
 				{
 					//Add user code here
 				}

@@ -40,13 +40,13 @@ namespace SuperiorPackGroup
 			poolDetailsXpCollection.Criteria = new BinaryOperator(ItemPoolDetails.Fields.ItemPoolID, m_CurrentPoolID.Oid, BinaryOperatorType.Equal);
 			poolDetailsXpCollection.Reload();
 
-			if ((this.customerLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerLookUpEdit.EditValue)) == this.customerLookUpEdit.Properties.NullText)
+			if ((customerLookUpEdit.EditValue == null ? null : Convert.ToString(customerLookUpEdit.EditValue)) == customerLookUpEdit.Properties.NullText)
 			{
 				itemRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM", true, m_ItemPoolSession);
 			}
 			else
 			{
-				itemRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)this.customerLookUpEdit.EditValue, "RM", true, m_ItemPoolSession);
+				itemRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)customerLookUpEdit.EditValue, "RM", true, m_ItemPoolSession);
 			}
 
 			Utilities.MakeFormReadOnly(poolXtraTabPage, false);
@@ -82,13 +82,13 @@ namespace SuperiorPackGroup
 		private void customerLookUpEdit_EditValueChanged(object sender, EventArgs e)
 		{
 
-			if ((this.customerLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerLookUpEdit.EditValue)) == this.customerLookUpEdit.Properties.NullText)
+			if ((customerLookUpEdit.EditValue == null ? null : Convert.ToString(customerLookUpEdit.EditValue)) == customerLookUpEdit.Properties.NullText)
 			{
 				itemRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM", true, m_ItemPoolSession);
 			}
 			else
 			{
-				itemRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)this.customerLookUpEdit.EditValue, "RM", true, m_ItemPoolSession);
+				itemRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID((int?)customerLookUpEdit.EditValue, "RM", true, m_ItemPoolSession);
 			}
 
 		}
@@ -302,7 +302,7 @@ namespace SuperiorPackGroup
 
 			m_ItemPoolSession.DropIdentityMap();
 
-			ItemPool pool = (ItemPool)m_ItemPoolSession.GetObjectByKey<ItemPool>(poolID, true);
+			ItemPool pool = m_ItemPoolSession.GetObjectByKey<ItemPool>(poolID, true);
 			m_CurrentPoolID = pool;
 			codeTextEdit.Text = pool.PoolCode;
 			customerLookUpEdit.EditValue = pool.PoolCustomerID.CustomerID;
@@ -313,7 +313,7 @@ namespace SuperiorPackGroup
 
 			poolDetailsXpCollection.Reload();
 
-			if ((this.customerLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerLookUpEdit.EditValue)) == this.customerLookUpEdit.Properties.NullText)
+			if ((customerLookUpEdit.EditValue == null ? null : Convert.ToString(customerLookUpEdit.EditValue)) == customerLookUpEdit.Properties.NullText)
 			{
 				itemRepositoryItemLookUpEdit.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM", true, m_ItemPoolSession);
 			}
@@ -352,55 +352,55 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = true;
-						this.deleteGridColumn.Visible = true;
-						this.deleteGridColumn.VisibleIndex = 0;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = true;
+						deleteGridColumn.Visible = true;
+						deleteGridColumn.VisibleIndex = 0;
 						break;
 					case "ADD":
 					case "Add":
-						this.addBarButtonItem.Enabled = true;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = true;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						deleteBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
 						break;
 					case "VIEW ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = false;
-						this.deleteGridColumn.Visible = false;
-						this.deleteBarButtonItem.Enabled = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = false;
+						deleteGridColumn.Visible = false;
+						deleteBarButtonItem.Enabled = false;
 						FilterAssignedCustomers();
 						break;
 					case "EDIT ASSIGNED":
-						this.addBarButtonItem.Enabled = false;
-						this.editBarButtonItem.Enabled = true;
-						this.deleteGridColumn.Visible = false;
-						this.deleteBarButtonItem.Enabled = false;
+						addBarButtonItem.Enabled = false;
+						editBarButtonItem.Enabled = true;
+						deleteGridColumn.Visible = false;
+						deleteBarButtonItem.Enabled = false;
 						FilterAssignedCustomers();
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;
@@ -415,7 +415,7 @@ namespace SuperiorPackGroup
 		private void FilterAssignedCustomers()
 		{
 
-			this.poolSearchXpView.Criteria = new InOperator(ItemPool.Fields.PoolCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ItemPoolSession));
+			poolSearchXpView.Criteria = new InOperator(ItemPool.Fields.PoolCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ItemPoolSession));
 
 		}
 
@@ -432,7 +432,7 @@ namespace SuperiorPackGroup
 				selectedID = poolSearchGridView.FocusedRowHandle;
 			}
 
-			if (ItemPoolBLL.ValidateRecord(this.codeTextEdit.Text, (int?)this.customerLookUpEdit.EditValue))
+			if (ItemPoolBLL.ValidateRecord(codeTextEdit.Text, (int?)customerLookUpEdit.EditValue))
 			{
 				m_CurrentPoolID.PoolCode = codeTextEdit.Text;
 				m_CurrentPoolID.PoolDescription = descriptionMemoEdit.Text;

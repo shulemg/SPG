@@ -26,31 +26,31 @@ namespace SuperiorPackGroup
 		private void DatabaseSelectionXtraForm_Load(object sender, EventArgs e)
 		{
 
-			this.serversBackgroundWorker.RunWorkerAsync();
+			serversBackgroundWorker.RunWorkerAsync();
 
 		}
 
 		private void refreshSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			if (this.serversBackgroundWorker.IsBusy == false)
+			if (serversBackgroundWorker.IsBusy == false)
 			{
-				this.serversBackgroundWorker.RunWorkerAsync();
+				serversBackgroundWorker.RunWorkerAsync();
 			}
 
 		}
 		private void FillServerLookUpEdit()
 		{
 
-			this.serverLookUpEdit.Properties.DataSource = m_Servers;
-			this.serverLookUpEdit.Properties.ShowHeader = false;
+			serverLookUpEdit.Properties.DataSource = m_Servers;
+			serverLookUpEdit.Properties.ShowHeader = false;
 
 		}
 
 		private void logOnRadioGroup_SelectedIndexChanged(System.Object sender, EventArgs e)
 		{
 
-			this.sqlAuthenticationPanelControl.Enabled = (this.logOnRadioGroup.SelectedIndex == 1);
+			sqlAuthenticationPanelControl.Enabled = (logOnRadioGroup.SelectedIndex == 1);
 			FillDatabaseLookupEdit();
 
 		}
@@ -58,7 +58,7 @@ namespace SuperiorPackGroup
 		public void FillDatabaseLookupEdit()
 		{
 
-			if (this.serverLookUpEdit.EditValue != null)
+			if (serverLookUpEdit.EditValue != null)
 			{
 				string connectionString = CreateConnectionString();
 				ArrayList dataBases = null;
@@ -75,10 +75,10 @@ namespace SuperiorPackGroup
 				{
 					return;
 				}
-				this.dataBaseLookUpEdit.Properties.DataSource = dataBases;
-				this.dataBaseLookUpEdit.Properties.ShowHeader = false;
-				this.dataBaseLookUpEdit.Enabled = (dataBases.Count > 0);
-				this.testConnectionSimpleButton.Enabled = (this.dataBaseLookUpEdit.Enabled);
+				dataBaseLookUpEdit.Properties.DataSource = dataBases;
+				dataBaseLookUpEdit.Properties.ShowHeader = false;
+				dataBaseLookUpEdit.Enabled = (dataBases.Count > 0);
+				testConnectionSimpleButton.Enabled = (dataBaseLookUpEdit.Enabled);
 			}
 
 		}
@@ -86,24 +86,24 @@ namespace SuperiorPackGroup
 		public string CreateConnectionString()
 		{
 
-			if (this.serverLookUpEdit.EditValue == null)
+			if (serverLookUpEdit.EditValue == null)
 			{
 				return null;
 			}
 
-			if (this.logOnRadioGroup.SelectedIndex == 0)
+			if (logOnRadioGroup.SelectedIndex == 0)
 			{
-				return string.Format("Data Source={0};Integrated Security=True", this.serverLookUpEdit.EditValue);
+				return string.Format("Data Source={0};Integrated Security=True", serverLookUpEdit.EditValue);
 			}
 			else
 			{
-				if (string.IsNullOrEmpty(this.userNameTextEdit.Text))
+				if (string.IsNullOrEmpty(userNameTextEdit.Text))
 				{
 					return null;
 				}
 				else
 				{
-					return string.Format("Data Source={0};User ID={1};Password={2}", this.serverLookUpEdit.EditValue, this.userNameTextEdit.Text, this.passwordTextEdit.Text);
+					return string.Format("Data Source={0};User ID={1};Password={2}", serverLookUpEdit.EditValue, userNameTextEdit.Text, passwordTextEdit.Text);
 				}
 			}
 
@@ -112,19 +112,19 @@ namespace SuperiorPackGroup
 		private string CreateFullConnectionString()
 		{
 
-			if (this.dataBaseLookUpEdit.EditValue == null)
+			if (dataBaseLookUpEdit.EditValue == null)
 			{
 				return null;
 			}
 
-			return string.Format("{0};Initial Catalog={1}", CreateConnectionString(), this.dataBaseLookUpEdit.EditValue);
+			return string.Format("{0};Initial Catalog={1}", CreateConnectionString(), dataBaseLookUpEdit.EditValue);
 
 		}
 
 		private void testConnectionSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			if (this.dataBaseLookUpEdit.EditValue == null)
+			if (dataBaseLookUpEdit.EditValue == null)
 			{
 				MessageBox.Show("Select a database before testing the connection.", "Error Encountered", MessageBoxButtons.OK);
 				return;
@@ -146,7 +146,7 @@ namespace SuperiorPackGroup
 		private void cancelSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			this.Close();
+			Close();
 
 		}
 
@@ -154,7 +154,7 @@ namespace SuperiorPackGroup
 		{
 
 			Properties.Settings.Default.UserConnectionString = CreateFullConnectionString();
-			this.Close();
+			Close();
 
 		}
 
@@ -183,9 +183,9 @@ namespace SuperiorPackGroup
 		private void refreshDatabasesSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			FillDatabaseLookupEdit();
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 

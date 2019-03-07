@@ -23,9 +23,9 @@ namespace SuperiorPackGroup
 		{
 
 			StringBuilder str = new StringBuilder(string.Empty);
-			if (Convert.ToBoolean(this.GetCurrentColumnValue("Shipper")))
+			if (Convert.ToBoolean(GetCurrentColumnValue("Shipper")))
 			{
-				str.Append(string.Format("{0}{1}C/O Superior Pack Group", this.GetCurrentColumnValue("CustomerName").ToString(), Environment.NewLine));
+				str.Append(string.Format("{0}{1}C/O Superior Pack Group", GetCurrentColumnValue("CustomerName").ToString(), Environment.NewLine));
 			}
 			else
 			{
@@ -50,7 +50,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				toXrLabel.Text = string.Format("{0}{1}{2}{1}{3}", this.GetCurrentColumnValue("ShippingName").ToString(), Environment.NewLine, this.GetCurrentColumnValue("ShippingAddress").ToString(), this.GetCurrentColumnValue("ShippingAddress2").ToString());
+				toXrLabel.Text = string.Format("{0}{1}{2}{1}{3}", GetCurrentColumnValue("ShippingName").ToString(), Environment.NewLine, GetCurrentColumnValue("ShippingAddress").ToString(), GetCurrentColumnValue("ShippingAddress2").ToString());
 			}
 			catch (Exception ex)
 			{
@@ -64,7 +64,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				if (this.GetCurrentColumnValue("ShippingType").ToString() == "General")
+				if (GetCurrentColumnValue("ShippingType").ToString() == "General")
 				{
 					e.Cancel = true;
 				}

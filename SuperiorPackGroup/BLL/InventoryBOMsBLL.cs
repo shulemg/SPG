@@ -95,7 +95,7 @@ namespace SuperiorPackGroup
 			if (inventoryBOMs.Count() == 0)
 			{
 				//It is a new Product
-				return this.InsertInventoryBOM(InventoryBOMsRawMatID, InventoryBOMsInventoryID, InventoryBOMsQuantity, scrapFactor);
+				return InsertInventoryBOM(InventoryBOMsRawMatID, InventoryBOMsInventoryID, InventoryBOMsQuantity, scrapFactor);
 			}
 
 			SPG.InventoryBOMsRow inventoryBOM = inventoryBOMs[0];
@@ -106,7 +106,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(inventoryBOM, originalRecord);
+				UpdateAuditTrail(inventoryBOM, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(inventoryBOM);

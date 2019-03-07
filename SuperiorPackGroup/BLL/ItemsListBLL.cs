@@ -19,12 +19,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_ItemsListTableAdapter == null)
+				if (m_ItemsListTableAdapter == null)
 				{
-					this.m_ItemsListTableAdapter = new ItemsListTableAdapter();
-					this.m_ItemsListTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_ItemsListTableAdapter = new ItemsListTableAdapter();
+					m_ItemsListTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_ItemsListTableAdapter;
+				return m_ItemsListTableAdapter;
 			}
 		}
 

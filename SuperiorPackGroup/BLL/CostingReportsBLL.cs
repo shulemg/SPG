@@ -19,12 +19,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_CostingReportsTableAdapter == null)
+				if (m_CostingReportsTableAdapter == null)
 				{
-					this.m_CostingReportsTableAdapter = new CostingReportsTableAdapter();
-					this.m_CostingReportsTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_CostingReportsTableAdapter = new CostingReportsTableAdapter();
+					m_CostingReportsTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_CostingReportsTableAdapter;
+				return m_CostingReportsTableAdapter;
 			}
 		}
 

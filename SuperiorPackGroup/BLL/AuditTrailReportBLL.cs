@@ -19,12 +19,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_AuditTrailReportTableAdapter == null)
+				if (m_AuditTrailReportTableAdapter == null)
 				{
-					this.m_AuditTrailReportTableAdapter = new AuditTrailReportTableAdapter();
-					this.m_AuditTrailReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_AuditTrailReportTableAdapter = new AuditTrailReportTableAdapter();
+					m_AuditTrailReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_AuditTrailReportTableAdapter;
+				return m_AuditTrailReportTableAdapter;
 			}
 		}
 

@@ -70,38 +70,38 @@ namespace SuperiorPackGroup
 				{
 					case "FULL":
 					case "Full":
-						this.vendorsGridView.OptionsBehavior.Editable = true;
-						this.vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteGridColumn.Visible = true;
+						vendorsGridView.OptionsBehavior.Editable = true;
+						vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteGridColumn.Visible = true;
 						break;
 					case "ADD":
 					case "Add":
-						this.vendorsGridView.OptionsBehavior.Editable = true;
-						this.vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteGridColumn.Visible = false;
+						vendorsGridView.OptionsBehavior.Editable = true;
+						vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+						deleteGridColumn.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 					case "VIEW ASSIGNED":
 					case "EDIT ASSIGNED":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.vendorsGridView.OptionsBehavior.Editable = false;
-						this.vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteGridColumn.Visible = false;
+						vendorsGridView.OptionsBehavior.Editable = false;
+						vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteGridColumn.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.vendorsGridView.OptionsBehavior.Editable = true;
-						this.vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteGridColumn.Visible = false;
+						vendorsGridView.OptionsBehavior.Editable = true;
+						vendorsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
+						deleteGridColumn.Visible = false;
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;

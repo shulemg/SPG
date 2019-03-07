@@ -604,7 +604,7 @@ namespace SuperiorPackGroup
 
 			m_LotCodeSession.DropIdentityMap();
 
-			m_CurrentLotCodeFormat = (LotCodeFormats)m_LotCodeSession.GetObjectByKey<LotCodeFormats>(FormatID, true);
+			m_CurrentLotCodeFormat = m_LotCodeSession.GetObjectByKey<LotCodeFormats>(FormatID, true);
 			formatNameTextEdit.EditValue = m_CurrentLotCodeFormat.FormatName;
 			formatSectionsSpinEdit.EditValue = m_CurrentLotCodeFormat.Sections;
 			formatWarningLabelControl.Visible = m_CurrentLotCodeFormat.FormatSections.Count == m_CurrentLotCodeFormat.Sections;
@@ -615,7 +615,7 @@ namespace SuperiorPackGroup
 		private void BindLotCodeSectionFields(int SectionID)
 		{
 
-			m_CurrentLotCodeSection = (LotCodeFormatSections)m_LotCodeSession.GetObjectByKey<LotCodeFormatSections>(SectionID, true);
+			m_CurrentLotCodeSection = m_LotCodeSession.GetObjectByKey<LotCodeFormatSections>(SectionID, true);
 			sectionPositionSpinEdit.EditValue = m_CurrentLotCodeSection.SectionPosition;
 			sectionPositionSpinEdit.ReadOnly = true;
 			sectionNameTextEdit.EditValue = m_CurrentLotCodeSection.SectionName;

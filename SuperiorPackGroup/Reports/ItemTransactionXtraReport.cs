@@ -20,16 +20,16 @@ namespace SuperiorPackGroup
 		private void balacneDetailXrLabel_SummaryCalculated(System.Object sender, DevExpress.XtraReports.UI.TextFormatEventArgs e)
 		{
 
-			e.Text = (Convert.ToDouble(e.Value) + Convert.ToDouble(this.openingBalanceParameter.Value)).ToString("#,##0.00");
+			e.Text = (Convert.ToDouble(e.Value) + Convert.ToDouble(openingBalanceParameter.Value)).ToString("#,##0.00");
 
 		}
 
 		private void ItemTransactionXtraReport_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
 		{
 
-			if (this.DataSource != null)
+			if (DataSource != null)
 			{
-				this.openingBalanceParameter.Value = ((ItemTransactionsList)this.DataSource).OpeningBalance;
+				openingBalanceParameter.Value = ((ItemTransactionsList)DataSource).OpeningBalance;
 			}
 
 		}

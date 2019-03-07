@@ -116,7 +116,7 @@ namespace SuperiorPackGroup
 			if (permissions.Count() == 0)
 			{
 				//It is a new Product
-				return this.InsertUserPermissions(name, receivingForm, shippingForm, customersForm, itmesForm, productionForm, costingReports, productionReports, advancedTabs, financialTabs);
+				return InsertUserPermissions(name, receivingForm, shippingForm, customersForm, itmesForm, productionForm, costingReports, productionReports, advancedTabs, financialTabs);
 			}
 
 			SPG.SecurityRow userPermissions = permissions[0];
@@ -135,7 +135,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(userPermissions, originalRecord);
+				UpdateAuditTrail(userPermissions, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(userPermissions);

@@ -289,28 +289,28 @@ namespace SuperiorPackGroup
         private void windowCascadeBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            this.LayoutMdi(MdiLayout.Cascade);
+            LayoutMdi(MdiLayout.Cascade);
 
         }
 
         private void windowVerticalBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            this.LayoutMdi(MdiLayout.TileVertical);
+            LayoutMdi(MdiLayout.TileVertical);
 
         }
 
         private void windowHorizontalBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            this.LayoutMdi(MdiLayout.TileHorizontal);
+            LayoutMdi(MdiLayout.TileHorizontal);
 
         }
 
         private void windowCloseBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            foreach (XtraForm childForm in this.MdiChildren)
+            foreach (XtraForm childForm in MdiChildren)
             {
                 childForm.Close();
             }
@@ -320,7 +320,7 @@ namespace SuperiorPackGroup
         private void windowArrangeBarButtonItem_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            this.LayoutMdi(MdiLayout.ArrangeIcons);
+            LayoutMdi(MdiLayout.ArrangeIcons);
 
         }
 
@@ -398,32 +398,32 @@ namespace SuperiorPackGroup
                     m_UserPermissions = new UserPermissionsBLL();
                     if (m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Security Settings")[0].PermissionLevel == "NONE")
                     {
-                        this.toolsSecurityBarButtonItem.Visibility = BarItemVisibility.Never;
+                        toolsSecurityBarButtonItem.Visibility = BarItemVisibility.Never;
                     }
                     if (m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Items Form")[0].PermissionLevel == "NONE")
                     {
-                        this.listsItemBarButtonItem.Visibility = BarItemVisibility.Never;
-                        this.mainToolbarItemBarLargeButtonItem.Visibility = BarItemVisibility.Never;
+                        listsItemBarButtonItem.Visibility = BarItemVisibility.Never;
+                        mainToolbarItemBarLargeButtonItem.Visibility = BarItemVisibility.Never;
                     }
                     if (m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Production Form")[0].PermissionLevel == "NONE")
                     {
-                        this.activitiesProductionBarButtonItem.Visibility = BarItemVisibility.Never;
-                        this.mainToolbarProductionBarLargeButtonItem.Visibility = BarItemVisibility.Never;
+                        activitiesProductionBarButtonItem.Visibility = BarItemVisibility.Never;
+                        mainToolbarProductionBarLargeButtonItem.Visibility = BarItemVisibility.Never;
                     }
                     if (m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Customers Form")[0].PermissionLevel == "NONE")
                     {
-                        this.listsCustomerBarButtonItem.Visibility = BarItemVisibility.Never;
-                        this.mainToolbarCustomersBarLargeButtonItem.Visibility = BarItemVisibility.Never;
+                        listsCustomerBarButtonItem.Visibility = BarItemVisibility.Never;
+                        mainToolbarCustomersBarLargeButtonItem.Visibility = BarItemVisibility.Never;
                     }
                     if (m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Shipping Form")[0].PermissionLevel == "NONE")
                     {
-                        this.activitesShipBarButtonItem.Visibility = BarItemVisibility.Never;
-                        this.mainToolbarShipBarLargeButtonItem.Visibility = BarItemVisibility.Never;
+                        activitesShipBarButtonItem.Visibility = BarItemVisibility.Never;
+                        mainToolbarShipBarLargeButtonItem.Visibility = BarItemVisibility.Never;
                     }
                     if (m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Receiving Form")[0].PermissionLevel == "NONE")
                     {
-                        this.activitesRecieveBarButtonItem.Visibility = BarItemVisibility.Never;
-                        this.mainToolbarReceiveBarLargeButtonItem.Visibility = BarItemVisibility.Never;
+                        activitesRecieveBarButtonItem.Visibility = BarItemVisibility.Never;
+                        mainToolbarReceiveBarLargeButtonItem.Visibility = BarItemVisibility.Never;
                     }
                     AdvancedTabs = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Advanced Tabs")[0].PermissionLevel;
                     FinancialTabs = m_UserPermissions.GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Financial Tabs")[0].PermissionLevel;

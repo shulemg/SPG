@@ -39,7 +39,7 @@ namespace SuperiorPackGroup
 		public void SelectedReport(string reportName)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
 			m_SelectedReport = reportName;
 
@@ -50,14 +50,14 @@ namespace SuperiorPackGroup
 
 			InitiateLookupEditControls();
 
-			this.fromDateEdit.EditValue = DateTime.Today.AddDays((Microsoft.VisualBasic.DateAndTime.Weekday(DateTime.Today) - 1) * -1);
-			this.toDateEdit.EditValue = DateTime.Today;
+			fromDateEdit.EditValue = DateTime.Today.AddDays((Microsoft.VisualBasic.DateAndTime.Weekday(DateTime.Today) - 1) * -1);
+			toDateEdit.EditValue = DateTime.Today;
 
 			switch (reportName)
 			{
 				case "ProductionDetailXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new ProductionXtraReport();
@@ -69,7 +69,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ProductionMachineXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new ProductionMachineXtraReport();
@@ -81,7 +81,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ProductionShiftXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new ProductionShiftXtraReport();
@@ -93,7 +93,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ProductionSummaryXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new ProductionSummaryXtraReport();
@@ -102,7 +102,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ProductionEntriesXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new ProductionXtraReport();
@@ -116,7 +116,7 @@ namespace SuperiorPackGroup
 				case "CostingSmallXtraReport":
 				case "FinancialCostingXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new CostingXtraReport();
@@ -128,7 +128,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ShippingXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new TransportationXtraReport();
@@ -139,7 +139,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ShippingReturnsXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new TransportationXtraReport();
@@ -150,7 +150,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ReceivingXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "RM|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new TransportationXtraReport();
@@ -161,7 +161,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ReceivingReturnsXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new TransportationXtraReport();
@@ -172,7 +172,7 @@ namespace SuperiorPackGroup
 					break;
 				case "InventoryAdjustmentXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new InventoryXtraReport();
@@ -183,7 +183,7 @@ namespace SuperiorPackGroup
 					break;
 				case "PhysicalInventoryXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new InventoryXtraReport();
@@ -194,7 +194,7 @@ namespace SuperiorPackGroup
 					break;
 				case "CurrentInventoryXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new InventoryXtraReport();
@@ -205,7 +205,7 @@ namespace SuperiorPackGroup
 					break;
 				case "FinishedProductAvailabilityXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new InventoryXtraReport();
@@ -216,7 +216,7 @@ namespace SuperiorPackGroup
 					break;
 				case "ItemsListXtraReport":
 					columnsDockPanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-					this.itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
+					itemCheckedListBoxControl.DataSource = ItemsBLL.GetItemCodeAndIDsByTypesAndCustomerID(null, "FG|IG|RM", false, XpoDefault.Session);
 					if (m_Report == null)
 					{
 						m_Report = new ItemsXtraReport();
@@ -285,7 +285,7 @@ namespace SuperiorPackGroup
 				m_Report.PrintingSystem.Document.AutoFitToPagesWidth = 1;
 			}
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 
@@ -295,67 +295,67 @@ namespace SuperiorPackGroup
 			if (m_CustomersBLL == null && customerLookUpEdit.Enabled == true)
 			{
 				m_CustomersBLL = new CustomersBLL();
-				this.customerLookUpEdit.Properties.DataSource = m_CustomersBLL.GetCustomerNameAndIDS(false);
-				this.customerLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
-				this.customerLookUpEdit.Properties.Columns[0].Caption = "Customer Name";
-				this.customerLookUpEdit.Properties.Columns[0].FieldName = "CustomerName";
-				this.customerLookUpEdit.Properties.DisplayMember = "CustomerName";
-				this.customerLookUpEdit.Properties.ValueMember = "CustomerID";
+				customerLookUpEdit.Properties.DataSource = m_CustomersBLL.GetCustomerNameAndIDS(false);
+				customerLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
+				customerLookUpEdit.Properties.Columns[0].Caption = "Customer Name";
+				customerLookUpEdit.Properties.Columns[0].FieldName = "CustomerName";
+				customerLookUpEdit.Properties.DisplayMember = "CustomerName";
+				customerLookUpEdit.Properties.ValueMember = "CustomerID";
 			}
 
 			if (m_ShiftsBLL == null && shiftLookUpEdit.Enabled == true)
 			{
 				m_ShiftsBLL = new ShiftsBLL();
-				this.shiftLookUpEdit.Properties.DataSource = m_ShiftsBLL.GetShifts();
-				this.shiftLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
-				this.shiftLookUpEdit.Properties.Columns[0].Caption = "Shift";
-				this.shiftLookUpEdit.Properties.Columns[0].FieldName = "ShiftName";
-				this.shiftLookUpEdit.Properties.DisplayMember = "ShiftName";
-				this.shiftLookUpEdit.Properties.ValueMember = "ShiftID";
+				shiftLookUpEdit.Properties.DataSource = m_ShiftsBLL.GetShifts();
+				shiftLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
+				shiftLookUpEdit.Properties.Columns[0].Caption = "Shift";
+				shiftLookUpEdit.Properties.Columns[0].FieldName = "ShiftName";
+				shiftLookUpEdit.Properties.DisplayMember = "ShiftName";
+				shiftLookUpEdit.Properties.ValueMember = "ShiftID";
 			}
 
 			if (m_ItemsBLL == null && (itemCheckedListBoxControl.Enabled == true || itemTypeLookUpEdit.Enabled == true))
 			{
 				m_ItemsBLL = new ItemsBLL();
-				this.itemCheckedListBoxControl.DisplayMember = "ItemCode";
-				this.itemCheckedListBoxControl.ValueMember = "ItemID";
+				itemCheckedListBoxControl.DisplayMember = "ItemCode";
+				itemCheckedListBoxControl.ValueMember = "ItemID";
 
-				this.itemTypeLookUpEdit.Properties.DataSource = ItemsBLL.GetItemTypes();
-				this.itemTypeLookUpEdit.Properties.DisplayMember = "Description";
-				this.itemTypeLookUpEdit.Properties.ValueMember = "Type";
+				itemTypeLookUpEdit.Properties.DataSource = ItemsBLL.GetItemTypes();
+				itemTypeLookUpEdit.Properties.DisplayMember = "Description";
+				itemTypeLookUpEdit.Properties.ValueMember = "Type";
 			}
 
 			if (m_MachinesBLL == null && machineLookUpEdit.Enabled == true)
 			{
 				m_MachinesBLL = new MachinesLinesBLL();
-				this.machineLookUpEdit.Properties.DataSource = m_MachinesBLL.GetMachineLines();
-				this.machineLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
-				this.machineLookUpEdit.Properties.Columns[0].Caption = "Machine Line";
-				this.machineLookUpEdit.Properties.Columns[0].FieldName = "MachineLineName";
-				this.machineLookUpEdit.Properties.DisplayMember = "MachineLineName";
-				this.machineLookUpEdit.Properties.ValueMember = "MachineLineID";
+				machineLookUpEdit.Properties.DataSource = m_MachinesBLL.GetMachineLines();
+				machineLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
+				machineLookUpEdit.Properties.Columns[0].Caption = "Machine Line";
+				machineLookUpEdit.Properties.Columns[0].FieldName = "MachineLineName";
+				machineLookUpEdit.Properties.DisplayMember = "MachineLineName";
+				machineLookUpEdit.Properties.ValueMember = "MachineLineID";
 			}
 
 			if (m_Destinations == null && destinationLookUpEdit.Enabled == true)
 			{
 				m_Destinations = new ShippingAddressBLL();
-				this.destinationLookUpEdit.Properties.DataSource = m_Destinations.GetAddressNameAndIDS();
-				this.destinationLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
-				this.destinationLookUpEdit.Properties.Columns[0].FieldName = "ShippingName";
-				this.destinationLookUpEdit.Properties.Columns[0].Caption = "Destination";
-				this.destinationLookUpEdit.Properties.DisplayMember = "ShippingName";
-				this.destinationLookUpEdit.Properties.ValueMember = "AddressID";
+				destinationLookUpEdit.Properties.DataSource = m_Destinations.GetAddressNameAndIDS();
+				destinationLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
+				destinationLookUpEdit.Properties.Columns[0].FieldName = "ShippingName";
+				destinationLookUpEdit.Properties.Columns[0].Caption = "Destination";
+				destinationLookUpEdit.Properties.DisplayMember = "ShippingName";
+				destinationLookUpEdit.Properties.ValueMember = "AddressID";
 			}
 
 			if (m_Carriers == null && carrierLookUpEdit.Enabled == true)
 			{
 				m_Carriers = new CarriersBLL();
-				this.carrierLookUpEdit.Properties.DataSource = m_Carriers.GetCarrierIDAndNames();
-				this.carrierLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
-				this.carrierLookUpEdit.Properties.Columns[0].FieldName = "CarrierName";
-				this.carrierLookUpEdit.Properties.Columns[0].Caption = "Carrier Name";
-				this.carrierLookUpEdit.Properties.DisplayMember = "CarrierName";
-				this.carrierLookUpEdit.Properties.ValueMember = "CarrierID";
+				carrierLookUpEdit.Properties.DataSource = m_Carriers.GetCarrierIDAndNames();
+				carrierLookUpEdit.Properties.Columns.Add(new LookUpColumnInfo());
+				carrierLookUpEdit.Properties.Columns[0].FieldName = "CarrierName";
+				carrierLookUpEdit.Properties.Columns[0].Caption = "Carrier Name";
+				carrierLookUpEdit.Properties.DisplayMember = "CarrierName";
+				carrierLookUpEdit.Properties.ValueMember = "CarrierID";
 			}
 
 		}
@@ -370,7 +370,7 @@ namespace SuperiorPackGroup
 				case "ProductionDetailXtraReport":
 				{
 					ProductionXtraReport report = (ProductionXtraReport)m_Report;
-					if (this.productionDateCheckEdit.Checked == true)
+					if (productionDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -383,7 +383,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.productionShiftCheckEdit.Checked == true)
+					if (productionShiftCheckEdit.Checked == true)
 					{
 						report.shiftHeaderXrLabel.Visible = true;
 						report.shiftDetailXrLabel.Visible = true;
@@ -396,7 +396,7 @@ namespace SuperiorPackGroup
 						report.shiftHeaderXrLabel.Visible = false;
 						report.shiftDetailXrLabel.Visible = false;
 					}
-					if (this.productionCustomerNameCheckEdit.Checked == true)
+					if (productionCustomerNameCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -409,7 +409,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.productionLotCheckEdit.Checked == true)
+					if (productionLotCheckEdit.Checked == true)
 					{
 						report.lotHeadeerXrLabel.Visible = true;
 						report.lotDetailXrLabel.Visible = true;
@@ -422,7 +422,7 @@ namespace SuperiorPackGroup
 						report.lotHeadeerXrLabel.Visible = false;
 						report.lotDetailXrLabel.Visible = false;
 					}
-					if (this.productionItemCodeCheckEdit.Checked == true)
+					if (productionItemCodeCheckEdit.Checked == true)
 					{
 						report.itemCodeHeaderXrLabel.Visible = true;
 						report.itemCodeDetailXrLabel.Visible = true;
@@ -435,7 +435,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.productionItemDescriptionCheckEdit.Checked == true)
+					if (productionItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -448,7 +448,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.productionStartTimeCheckEdit.Checked == true)
+					if (productionStartTimeCheckEdit.Checked == true)
 					{
 						report.startTimeHeaderXrLabel.Visible = true;
 						report.startTimeDetailXrLabel.Visible = true;
@@ -461,7 +461,7 @@ namespace SuperiorPackGroup
 						report.startTimeHeaderXrLabel.Visible = false;
 						report.stopTimeDetailXrLabel.Visible = false;
 					}
-					if (this.productionStopTimeCheckEdit.Checked == true)
+					if (productionStopTimeCheckEdit.Checked == true)
 					{
 						report.stopTimeHeaderXrLabel.Visible = true;
 						report.stopTimeDetailXrLabel.Visible = true;
@@ -474,7 +474,7 @@ namespace SuperiorPackGroup
 						report.stopTimeHeaderXrLabel.Visible = false;
 						report.stopTimeDetailXrLabel.Visible = false;
 					}
-					if (this.productionTotalHoursCheckEdit.Checked == true)
+					if (productionTotalHoursCheckEdit.Checked == true)
 					{
 						report.totalHoursHeaderXrLabel.Visible = true;
 						report.totalHoursDetailXrLabel.Visible = true;
@@ -490,7 +490,7 @@ namespace SuperiorPackGroup
 						report.totalHoursDetailXrLabel.Visible = false;
 						report.totalHoursFooterXrLabel.Visible = false;
 					}
-					if (this.productionTotalMinutesCheckEdit.Checked == true)
+					if (productionTotalMinutesCheckEdit.Checked == true)
 					{
 						report.totalMinutesHeaderXrLabel.Visible = true;
 						report.totalMinutesDetailXrLabel.Visible = true;
@@ -503,7 +503,7 @@ namespace SuperiorPackGroup
 						report.totalMinutesHeaderXrLabel.Visible = false;
 						report.totalMinutesDetailXrLabel.Visible = false;
 					}
-					if (this.productionQuantityCheckEdit.Checked == true)
+					if (productionQuantityCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.quantityDetailXrLabel.Visible = true;
@@ -532,7 +532,7 @@ namespace SuperiorPackGroup
 						report.uomHeaderXrLabel.Visible = false;
 						report.uomDetailXrLabel.Visible = false;
 					}
-					if (this.productionExpectedCheckEdit.Checked == true)
+					if (productionExpectedCheckEdit.Checked == true)
 					{
 						report.expectedHeaderXrLabel.Visible = true;
 						report.expectedDetailXrLabel.Visible = true;
@@ -548,7 +548,7 @@ namespace SuperiorPackGroup
 						report.expectedDetailXrLabel.Visible = false;
 						report.expectedFooterXrLabel.Visible = false;
 					}
-					if (this.productionDifferenceCheckEdit.Checked == true)
+					if (productionDifferenceCheckEdit.Checked == true)
 					{
 						report.differenceHeaderXrLabel.Visible = true;
 						report.differenceDetailXrLabel.Visible = true;
@@ -564,7 +564,7 @@ namespace SuperiorPackGroup
 						report.differenceDetailXrLabel.Visible = false;
 						report.differenceFooterXrLabel.Visible = false;
 					}
-					if (this.productionMachineLineCheckEdit.Checked == true)
+					if (productionMachineLineCheckEdit.Checked == true)
 					{
 						report.machineLineHeaderXrLabel.Visible = true;
 						report.machineLineDetailXrLabel.Visible = true;
@@ -577,7 +577,7 @@ namespace SuperiorPackGroup
 						report.machineLineHeaderXrLabel.Visible = false;
 						report.machineLineDetailXrLabel.Visible = false;
 					}
-					if (this.productionProjectedSpeedCheckEdit.Checked == true)
+					if (productionProjectedSpeedCheckEdit.Checked == true)
 					{
 						report.machineSpeedHeaderXrLabel.Visible = true;
 						report.machineSpeedDetailXrLabel.Visible = true;
@@ -590,7 +590,7 @@ namespace SuperiorPackGroup
 						report.machineSpeedHeaderXrLabel.Visible = false;
 						report.machineSpeedDetailXrLabel.Visible = false;
 					}
-					if (this.productionActualSpeedCheckEdit.Checked == true)
+					if (productionActualSpeedCheckEdit.Checked == true)
 					{
 						report.actualSpeedHeaderXrLabel.Visible = true;
 						report.actualSpeedDetailXrLabel.Visible = true;
@@ -606,7 +606,7 @@ namespace SuperiorPackGroup
 						report.actualSpeedDetailXrLabel.Visible = false;
 						report.actualSpeedFooterXrLabel.Visible = false;
 					}
-					if (this.productionPOCheckEdit.Checked == true)
+					if (productionPOCheckEdit.Checked == true)
 					{
 						report.poHeaderXrLabel.Visible = true;
 						report.poDetailXrLabel.Visible = true;
@@ -619,7 +619,7 @@ namespace SuperiorPackGroup
 						report.poHeaderXrLabel.Visible = false;
 						report.poDetailXrLabel.Visible = false;
 					}
-					if (this.productionPackersCheckEdit.Checked == true)
+					if (productionPackersCheckEdit.Checked == true)
 					{
 						report.packersHeaderXrLabel.Visible = true;
 						report.packersDetailXrLabel.Visible = true;
@@ -658,7 +658,7 @@ namespace SuperiorPackGroup
 						report.reasonCodeHeaderXrLabel.Visible = false;
 						report.reasonCodeDetailXrLabel.Visible = false;
 					}
-					if (this.productionTotalPayrollCheckEdit.Checked == true)
+					if (productionTotalPayrollCheckEdit.Checked == true)
 					{
 						report.totalPayrollHeaderXrLabel.Visible = true;
 						report.totalPayrollDetailXrLabel.Visible = true;
@@ -686,7 +686,7 @@ namespace SuperiorPackGroup
 				{
 					ProductionMachineXtraReport report = (ProductionMachineXtraReport)m_Report;
 					left = 67;
-					if (this.pmsTotalMinutesCheckEdit.Checked == true)
+					if (pmsTotalMinutesCheckEdit.Checked == true)
 					{
 						report.minutesHeaderXrLabel.Visible = true;
 						report.machineTotalMinutesXRLabel.Visible = true;
@@ -702,7 +702,7 @@ namespace SuperiorPackGroup
 						report.machineTotalMinutesXRLabel.Visible = false;
 						report.itemMinutesXrLabel.Visible = false;
 					}
-					if (this.pmsQuantityCheckEdit.Checked == true)
+					if (pmsQuantityCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.machineQuantityXrLabel.Visible = true;
@@ -718,7 +718,7 @@ namespace SuperiorPackGroup
 						report.machineQuantityXrLabel.Visible = false;
 						report.itemQuantityXrLabel.Visible = false;
 					}
-					if (this.pmsProjectedSpeedCheckEdit.Checked == true)
+					if (pmsProjectedSpeedCheckEdit.Checked == true)
 					{
 						report.machineSpeedHeaderXrLabel.Visible = true;
 						report.machineProjectedSpeedXrLabel.Visible = true;
@@ -734,7 +734,7 @@ namespace SuperiorPackGroup
 						report.machineProjectedSpeedXrLabel.Visible = false;
 						report.itemProjectedSpeedXrLabel.Left = left;
 					}
-					if (this.pmsAverageSpeedCheckEdit.Checked == true)
+					if (pmsAverageSpeedCheckEdit.Checked == true)
 					{
 						report.averageSpeedHeadeerXrLabel.Visible = true;
 						report.machineAverageSpeedXRLabel.Visible = true;
@@ -750,7 +750,7 @@ namespace SuperiorPackGroup
 						report.machineAverageSpeedXRLabel.Visible = false;
 						report.itemAverageSpeedXrLabel.Left = left;
 					}
-					if (this.pmsSpeedVariationVolCheckEdit.Checked == true)
+					if (pmsSpeedVariationVolCheckEdit.Checked == true)
 					{
 						report.speedVariationVolumeHeaderXrLabel.Visible = true;
 						report.machineSpeedVariationVolumeXrLabel.Visible = true;
@@ -766,7 +766,7 @@ namespace SuperiorPackGroup
 						report.machineSpeedVariationVolumeXrLabel.Visible = false;
 						report.itemSpeedVariationXrLabel.Visible = false;
 					}
-					if (this.pmsSpeedVariationPerCheckEdit.Checked == true)
+					if (pmsSpeedVariationPerCheckEdit.Checked == true)
 					{
 						report.speedVariationPercentageHeaderXrLabel.Visible = true;
 						report.machineSpeedVariationPercentageXrLabel.Visible = true;
@@ -782,7 +782,7 @@ namespace SuperiorPackGroup
 						report.machineSpeedVariationPercentageXrLabel.Visible = false;
 						report.itemSpeedVariationPercentageXrLabel.Visible = false;
 					}
-					if (this.pmsProjectedPackersCheckEdit.Checked == true)
+					if (pmsProjectedPackersCheckEdit.Checked == true)
 					{
 						report.projectedPackersHeaderXrLabel.Visible = true;
 						report.machineProjectedPackersXrLabel.Visible = true;
@@ -798,7 +798,7 @@ namespace SuperiorPackGroup
 						report.machineProjectedPackersXrLabel.Visible = false;
 						report.itemProjectedPackersXrLabel.Visible = false;
 					}
-					if (this.pmsPackersCheckEdit.Checked == true)
+					if (pmsPackersCheckEdit.Checked == true)
 					{
 						report.packersHeaderXrLabel.Visible = true;
 						report.machineAverageActualPackersXrLabel.Visible = true;
@@ -814,7 +814,7 @@ namespace SuperiorPackGroup
 						report.machineAverageActualPackersXrLabel.Visible = false;
 						report.itemAverageActualPackersXrLabel.Visible = false;
 					}
-					if (this.pmsPackersVariationVolCheckEdit.Checked == true)
+					if (pmsPackersVariationVolCheckEdit.Checked == true)
 					{
 						report.packersVariationVolumeHeaderXrLabel.Visible = true;
 						report.machinePackersVariationVolumeXrLabel.Visible = true;
@@ -830,7 +830,7 @@ namespace SuperiorPackGroup
 						report.machinePackersVariationVolumeXrLabel.Visible = false;
 						report.itemPackersVariationVolumeXrLabel.Visible = false;
 					}
-					if (this.pmsPackersVariationPerCheckEdit.Checked == true)
+					if (pmsPackersVariationPerCheckEdit.Checked == true)
 					{
 						report.packersVariationPercentageHeaderXrLabel.Visible = true;
 						report.machinePackersVariationPercentageXrLabel.Visible = true;
@@ -846,7 +846,7 @@ namespace SuperiorPackGroup
 						report.machinePackersVariationPercentageXrLabel.Visible = false;
 						report.itemPackersVariationPercentageXrLabel.Visible = false;
 					}
-					if (this.pmsProjectedCostCheckEdit.Checked == true)
+					if (pmsProjectedCostCheckEdit.Checked == true)
 					{
 						report.projectedCostHeaderXrLabel.Visible = true;
 						report.machineProjectedCostXrLabel.Visible = true;
@@ -862,7 +862,7 @@ namespace SuperiorPackGroup
 						report.machineProjectedCostXrLabel.Visible = false;
 						report.itemProjectedCostXrLabel.Visible = false;
 					}
-					if (this.pmsCostCheckEdit.Checked == true)
+					if (pmsCostCheckEdit.Checked == true)
 					{
 						report.averageActualCostHeaderXrLabel.Visible = true;
 						report.machineAverageCostXrLabel.Visible = true;
@@ -878,7 +878,7 @@ namespace SuperiorPackGroup
 						report.machineAverageCostXrLabel.Visible = false;
 						report.itemAverageCostXrLabel.Visible = false;
 					}
-					if (this.pmsCostVariationCheckEdit.Checked == true)
+					if (pmsCostVariationCheckEdit.Checked == true)
 					{
 						report.costVariationHeaderXrLabel.Visible = true;
 						report.machineCostVariationXrLabel.Visible = true;
@@ -894,7 +894,7 @@ namespace SuperiorPackGroup
 						report.machineCostVariationXrLabel.Visible = false;
 						report.itemCostVariationXrLabel.Visible = false;
 					}
-					if (this.pmsCostVariationPerCheckEdit.Checked == true)
+					if (pmsCostVariationPerCheckEdit.Checked == true)
 					{
 						report.costVariationPercentageHeaderXrLabel.Visible = true;
 						report.machineCostVariationPercentageXrLabel.Visible = true;
@@ -910,7 +910,7 @@ namespace SuperiorPackGroup
 						report.machineCostVariationPercentageXrLabel.Visible = false;
 						report.itemCostVariationPercentageXrLabel.Visible = false;
 					}
-					if (this.pmsPricePerPieceCheckEdit.Checked == true)
+					if (pmsPricePerPieceCheckEdit.Checked == true)
 					{
 						report.pricePerPieceHeaderXrLabel.Visible = true;
 						report.machinePricePerPieceXrLabel.Visible = true;
@@ -926,7 +926,7 @@ namespace SuperiorPackGroup
 						report.machinePricePerPieceXrLabel.Visible = false;
 						report.itemPricePerPieceXrLabel.Visible = false;
 					}
-					if (this.pmsSalesVsPayrollCheckEdit.Checked == true)
+					if (pmsSalesVsPayrollCheckEdit.Checked == true)
 					{
 						report.salesVsPayrollHeaderXrLabel.Visible = true;
 						report.machineSalesVsPayrollXrLabel.Visible = true;
@@ -942,7 +942,7 @@ namespace SuperiorPackGroup
 						report.machineSalesVsPayrollXrLabel.Visible = false;
 						report.itemSalesVsPayrollXrLabel.Visible = false;
 					}
-					if (this.pmsPriceCheckEdit.Checked == true)
+					if (pmsPriceCheckEdit.Checked == true)
 					{
 						report.priceHeaderXrLabel.Visible = true;
 						report.machinePriceXrLabel.Visible = true;
@@ -958,7 +958,7 @@ namespace SuperiorPackGroup
 						report.machinePriceXrLabel.Visible = false;
 						report.itemPriceXrLabel.Visible = false;
 					}
-					if (this.pmsTotalSalesCheckEdit.Checked == true)
+					if (pmsTotalSalesCheckEdit.Checked == true)
 					{
 						report.totalSalesHeaderXrLabel.Visible = true;
 						report.machineTotalSalesXrLabel.Visible = true;
@@ -988,7 +988,7 @@ namespace SuperiorPackGroup
 				{
 					ProductionShiftXtraReport report = (ProductionShiftXtraReport)m_Report;
 					left = 67;
-					if (this.pmsTotalMinutesCheckEdit.Checked == true)
+					if (pmsTotalMinutesCheckEdit.Checked == true)
 					{
 						report.minutesHeaderXrLabel.Visible = true;
 						report.shiftTotalMinutesXRLabel.Visible = true;
@@ -1004,7 +1004,7 @@ namespace SuperiorPackGroup
 						report.shiftTotalMinutesXRLabel.Visible = false;
 						report.itemMinutesXrLabel.Visible = false;
 					}
-					if (this.pmsQuantityCheckEdit.Checked == true)
+					if (pmsQuantityCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.shiftQuantityXrLabel.Visible = true;
@@ -1020,7 +1020,7 @@ namespace SuperiorPackGroup
 						report.shiftQuantityXrLabel.Visible = false;
 						report.itemQuantityXrLabel.Visible = false;
 					}
-					if (this.pmsProjectedSpeedCheckEdit.Checked == true)
+					if (pmsProjectedSpeedCheckEdit.Checked == true)
 					{
 						report.machineSpeedHeaderXrLabel.Visible = true;
 						report.shiftProjectedSpeedXrLabel.Visible = true;
@@ -1036,7 +1036,7 @@ namespace SuperiorPackGroup
 						report.shiftProjectedSpeedXrLabel.Visible = false;
 						report.itemProjectedSpeedXrLabel.Left = left;
 					}
-					if (this.pmsAverageSpeedCheckEdit.Checked == true)
+					if (pmsAverageSpeedCheckEdit.Checked == true)
 					{
 						report.averageSpeedHeadeerXrLabel.Visible = true;
 						report.shiftAverageSpeedXRLabel.Visible = true;
@@ -1052,7 +1052,7 @@ namespace SuperiorPackGroup
 						report.shiftAverageSpeedXRLabel.Visible = false;
 						report.itemAverageSpeedXrLabel.Left = left;
 					}
-					if (this.pmsSpeedVariationVolCheckEdit.Checked == true)
+					if (pmsSpeedVariationVolCheckEdit.Checked == true)
 					{
 						report.speedVariationVolumeHeaderXrLabel.Visible = true;
 						report.shiftSpeedVariationVolumeXrLabel.Visible = true;
@@ -1068,7 +1068,7 @@ namespace SuperiorPackGroup
 						report.shiftSpeedVariationVolumeXrLabel.Visible = false;
 						report.itemSpeedVariationXrLabel.Visible = false;
 					}
-					if (this.pmsSpeedVariationPerCheckEdit.Checked == true)
+					if (pmsSpeedVariationPerCheckEdit.Checked == true)
 					{
 						report.speedVariationPercentageHeaderXrLabel.Visible = true;
 						report.shiftSpeedVariationPercentageXrLabel.Visible = true;
@@ -1084,7 +1084,7 @@ namespace SuperiorPackGroup
 						report.shiftSpeedVariationPercentageXrLabel.Visible = false;
 						report.itemSpeedVariationPercentageXrLabel.Visible = false;
 					}
-					if (this.pmsProjectedPackersCheckEdit.Checked == true)
+					if (pmsProjectedPackersCheckEdit.Checked == true)
 					{
 						report.projectedPackersHeaderXrLabel.Visible = true;
 						report.shiftProjectedPackersXrLabel.Visible = true;
@@ -1100,7 +1100,7 @@ namespace SuperiorPackGroup
 						report.shiftProjectedPackersXrLabel.Visible = false;
 						report.itemProjectedPackersXrLabel.Visible = false;
 					}
-					if (this.pmsPackersCheckEdit.Checked == true)
+					if (pmsPackersCheckEdit.Checked == true)
 					{
 						report.packersHeaderXrLabel.Visible = true;
 						report.shiftAverageActualPackersXrLabel.Visible = true;
@@ -1116,7 +1116,7 @@ namespace SuperiorPackGroup
 						report.shiftAverageActualPackersXrLabel.Visible = false;
 						report.itemAverageActualPackersXrLabel.Visible = false;
 					}
-					if (this.pmsPackersVariationVolCheckEdit.Checked == true)
+					if (pmsPackersVariationVolCheckEdit.Checked == true)
 					{
 						report.packersVariationVolumeHeaderXrLabel.Visible = true;
 						report.shiftPackersVariationVolumeXrLabel.Visible = true;
@@ -1132,7 +1132,7 @@ namespace SuperiorPackGroup
 						report.shiftPackersVariationVolumeXrLabel.Visible = false;
 						report.itemPackersVariationVolumeXrLabel.Visible = false;
 					}
-					if (this.pmsPackersVariationPerCheckEdit.Checked == true)
+					if (pmsPackersVariationPerCheckEdit.Checked == true)
 					{
 						report.packersVariationPercentageHeaderXrLabel.Visible = true;
 						report.shiftPackersVariationPercentageXrLabel.Visible = true;
@@ -1148,7 +1148,7 @@ namespace SuperiorPackGroup
 						report.shiftPackersVariationPercentageXrLabel.Visible = false;
 						report.itemPackersVariationPercentageXrLabel.Visible = false;
 					}
-					if (this.pmsProjectedCostCheckEdit.Checked == true)
+					if (pmsProjectedCostCheckEdit.Checked == true)
 					{
 						report.projectedCostHeaderXrLabel.Visible = true;
 						report.shiftProjectedCostXrLabel.Visible = true;
@@ -1164,7 +1164,7 @@ namespace SuperiorPackGroup
 						report.shiftProjectedCostXrLabel.Visible = false;
 						report.itemProjectedCostXrLabel.Visible = false;
 					}
-					if (this.pmsCostCheckEdit.Checked == true)
+					if (pmsCostCheckEdit.Checked == true)
 					{
 						report.averageActualCostHeaderXrLabel.Visible = true;
 						report.shiftAverageCostXrLabel.Visible = true;
@@ -1180,7 +1180,7 @@ namespace SuperiorPackGroup
 						report.shiftAverageCostXrLabel.Visible = false;
 						report.itemAverageCostXrLabel.Visible = false;
 					}
-					if (this.pmsCostVariationCheckEdit.Checked == true)
+					if (pmsCostVariationCheckEdit.Checked == true)
 					{
 						report.costVariationHeaderXrLabel.Visible = true;
 						report.shiftCostVariationXrLabel.Visible = true;
@@ -1196,7 +1196,7 @@ namespace SuperiorPackGroup
 						report.shiftCostVariationXrLabel.Visible = false;
 						report.itemCostVariationXrLabel.Visible = false;
 					}
-					if (this.pmsCostVariationPerCheckEdit.Checked == true)
+					if (pmsCostVariationPerCheckEdit.Checked == true)
 					{
 						report.costVariationPercentageHeaderXrLabel.Visible = true;
 						report.shiftCostVariationPercentageXrLabel.Visible = true;
@@ -1212,7 +1212,7 @@ namespace SuperiorPackGroup
 						report.shiftCostVariationPercentageXrLabel.Visible = false;
 						report.itemCostVariationPercentageXrLabel.Visible = false;
 					}
-					if (this.pmsPricePerPieceCheckEdit.Checked == true)
+					if (pmsPricePerPieceCheckEdit.Checked == true)
 					{
 						report.pricePerPieceHeaderXrLabel.Visible = true;
 						report.shiftPricePerPieceXrLabel.Visible = true;
@@ -1228,7 +1228,7 @@ namespace SuperiorPackGroup
 						report.shiftPricePerPieceXrLabel.Visible = false;
 						report.itemPricePerPieceXrLabel.Visible = false;
 					}
-					if (this.pmsSalesVsPayrollCheckEdit.Checked == true)
+					if (pmsSalesVsPayrollCheckEdit.Checked == true)
 					{
 						report.salesVsPayrollHeaderXrLabel.Visible = true;
 						report.shiftSalesVsPayrollXrLabel.Visible = true;
@@ -1244,7 +1244,7 @@ namespace SuperiorPackGroup
 						report.shiftSalesVsPayrollXrLabel.Visible = false;
 						report.itemSalesVsPayrollXrLabel.Visible = false;
 					}
-					if (this.pmsPriceCheckEdit.Checked == true)
+					if (pmsPriceCheckEdit.Checked == true)
 					{
 						report.priceHeaderXrLabel.Visible = true;
 						report.shiftPriceXrLabel.Visible = true;
@@ -1260,7 +1260,7 @@ namespace SuperiorPackGroup
 						report.shiftPriceXrLabel.Visible = false;
 						report.itemPriceXrLabel.Visible = false;
 					}
-					if (this.pmsTotalSalesCheckEdit.Checked == true)
+					if (pmsTotalSalesCheckEdit.Checked == true)
 					{
 						report.totalSalesHeaderXrLabel.Visible = true;
 						report.shiftTotalSalesXrLabel.Visible = true;
@@ -1289,7 +1289,7 @@ namespace SuperiorPackGroup
 				case "ProductionEntriesXtraReport":
 				{
 					ProductionXtraReport report = (ProductionXtraReport)m_Report;
-					if (this.productionDateCheckEdit.Checked == true)
+					if (productionDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -1304,7 +1304,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.productionShiftCheckEdit.Checked == true)
+					if (productionShiftCheckEdit.Checked == true)
 					{
 						report.shiftHeaderXrLabel.Visible = true;
 						report.shiftDetailXrLabel.Visible = true;
@@ -1317,7 +1317,7 @@ namespace SuperiorPackGroup
 						report.shiftHeaderXrLabel.Visible = false;
 						report.shiftDetailXrLabel.Visible = false;
 					}
-					if (this.productionCustomerNameCheckEdit.Checked == true)
+					if (productionCustomerNameCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -1332,7 +1332,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.productionItemCodeCheckEdit.Checked == true)
+					if (productionItemCodeCheckEdit.Checked == true)
 					{
 						report.itemCodeHeaderXrLabel.Visible = true;
 						report.itemCodeDetailXrLabel.Visible = true;
@@ -1347,7 +1347,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.productionItemDescriptionCheckEdit.Checked == true)
+					if (productionItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -1362,7 +1362,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.productionLotCheckEdit.Checked == true)
+					if (productionLotCheckEdit.Checked == true)
 					{
 						report.lotHeadeerXrLabel.Visible = true;
 						report.lotDetailXrLabel.Visible = true;
@@ -1377,7 +1377,7 @@ namespace SuperiorPackGroup
 						report.lotHeadeerXrLabel.Visible = false;
 						report.lotDetailXrLabel.Visible = false;
 					}
-					if (this.productionStartTimeCheckEdit.Checked == true)
+					if (productionStartTimeCheckEdit.Checked == true)
 					{
 						report.startTimeHeaderXrLabel.Visible = true;
 						report.startTimeDetailXrLabel.Visible = true;
@@ -1390,7 +1390,7 @@ namespace SuperiorPackGroup
 						report.startTimeHeaderXrLabel.Visible = false;
 						report.startTimeDetailXrLabel.Visible = false;
 					}
-					if (this.productionStopTimeCheckEdit.Checked == true)
+					if (productionStopTimeCheckEdit.Checked == true)
 					{
 						report.stopTimeHeaderXrLabel.Visible = true;
 						report.stopTimeDetailXrLabel.Visible = true;
@@ -1403,7 +1403,7 @@ namespace SuperiorPackGroup
 						report.stopTimeHeaderXrLabel.Visible = false;
 						report.stopTimeDetailXrLabel.Visible = false;
 					}
-					if (this.productionTotalHoursCheckEdit.Checked == true)
+					if (productionTotalHoursCheckEdit.Checked == true)
 					{
 						report.totalHoursHeaderXrLabel.Visible = true;
 						report.totalHoursDetailXrLabel.Visible = true;
@@ -1419,7 +1419,7 @@ namespace SuperiorPackGroup
 						report.totalHoursDetailXrLabel.Visible = false;
 						report.totalHoursFooterXrLabel.Visible = false;
 					}
-					if (this.productionTotalMinutesCheckEdit.Checked == true)
+					if (productionTotalMinutesCheckEdit.Checked == true)
 					{
 						report.totalMinutesHeaderXrLabel.Visible = true;
 						report.totalMinutesDetailXrLabel.Visible = true;
@@ -1432,7 +1432,7 @@ namespace SuperiorPackGroup
 						report.totalMinutesHeaderXrLabel.Visible = false;
 						report.totalMinutesDetailXrLabel.Visible = false;
 					}
-					if (this.productionPOCheckEdit.Checked == true)
+					if (productionPOCheckEdit.Checked == true)
 					{
 						report.poHeaderXrLabel.Visible = true;
 						report.poDetailXrLabel.Visible = true;
@@ -1447,7 +1447,7 @@ namespace SuperiorPackGroup
 						report.poHeaderXrLabel.Visible = false;
 						report.poDetailXrLabel.Visible = false;
 					}
-					if (this.productionQuantityCheckEdit.Checked == true)
+					if (productionQuantityCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.quantityDetailXrLabel.Visible = true;
@@ -1466,7 +1466,7 @@ namespace SuperiorPackGroup
 						report.quantityDetailXrLabel.Visible = false;
 						report.quantityFooterXrLabel.Visible = false;
 					}
-					if (this.productionExpectedCheckEdit.Checked == true)
+					if (productionExpectedCheckEdit.Checked == true)
 					{
 						report.expectedHeaderXrLabel.Visible = true;
 						report.expectedDetailXrLabel.Visible = true;
@@ -1484,7 +1484,7 @@ namespace SuperiorPackGroup
 					}
 					report.uomHeaderXrLabel.Visible = false;
 					report.uomDetailXrLabel.Visible = false;
-					if (this.productionDifferenceCheckEdit.Checked == true)
+					if (productionDifferenceCheckEdit.Checked == true)
 					{
 						report.differenceHeaderXrLabel.Visible = true;
 						report.differenceDetailXrLabel.Visible = true;
@@ -1500,7 +1500,7 @@ namespace SuperiorPackGroup
 						report.differenceDetailXrLabel.Visible = false;
 						report.differenceFooterXrLabel.Visible = false;
 					}
-					if (this.productionMachineLineCheckEdit.Checked == true)
+					if (productionMachineLineCheckEdit.Checked == true)
 					{
 						report.machineLineHeaderXrLabel.Visible = true;
 						report.machineLineDetailXrLabel.Visible = true;
@@ -1515,7 +1515,7 @@ namespace SuperiorPackGroup
 					}
 					report.machineSpeedHeaderXrLabel.Visible = false;
 					report.machineSpeedDetailXrLabel.Visible = false;
-					if (this.productionActualSpeedCheckEdit.Checked == true)
+					if (productionActualSpeedCheckEdit.Checked == true)
 					{
 						report.actualSpeedHeaderXrLabel.Visible = true;
 						report.actualSpeedDetailXrLabel.Visible = true;
@@ -1531,7 +1531,7 @@ namespace SuperiorPackGroup
 						report.actualSpeedDetailXrLabel.Visible = false;
 						report.actualSpeedFooterXrLabel.Visible = false;
 					}
-					if (this.productionPackersCheckEdit.Checked == true)
+					if (productionPackersCheckEdit.Checked == true)
 					{
 						report.packersHeaderXrLabel.Visible = true;
 						report.packersDetailXrLabel.Visible = true;
@@ -1548,7 +1548,7 @@ namespace SuperiorPackGroup
 					report.projectedPackersDetailXrLabel.Visible = false;
 					report.reasonCodeHeaderXrLabel.Visible = false;
 					report.reasonCodeDetailXrLabel.Visible = false;
-					if (this.productionTotalPayrollCheckEdit.Checked == true)
+					if (productionTotalPayrollCheckEdit.Checked == true)
 					{
 						report.totalPayrollHeaderXrLabel.Visible = true;
 						report.totalPayrollDetailXrLabel.Visible = true;
@@ -1577,7 +1577,7 @@ namespace SuperiorPackGroup
 				case "FinancialCostingXtraReport":
 				{
 					CostingXtraReport report = (CostingXtraReport)m_Report;
-					if (this.costingProductionDateCheckEdit.Checked == true)
+					if (costingProductionDateCheckEdit.Checked == true)
 					{
 						report.dateHeaderXRLabel.Visible = true;
 						report.dateDetailXrLabel.Visible = true;
@@ -1590,7 +1590,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXRLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.costingShiftCheckEdit.Checked == true)
+					if (costingShiftCheckEdit.Checked == true)
 					{
 						report.shiftHeaderXRLabel.Visible = true;
 						report.shiftDetailXrLabel.Visible = true;
@@ -1603,7 +1603,7 @@ namespace SuperiorPackGroup
 						report.shiftHeaderXRLabel.Visible = false;
 						report.shiftDetailXrLabel.Visible = false;
 					}
-					if (this.costingCustomerCheckEdit.Checked)
+					if (costingCustomerCheckEdit.Checked)
 					{
 						report.customerNameHeaderXRLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -1616,7 +1616,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXRLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.costingLotCheckEdit.Checked)
+					if (costingLotCheckEdit.Checked)
 					{
 						report.lotHeaderXRLabel.Visible = true;
 						report.lotDetailXrLabel.Visible = true;
@@ -1655,7 +1655,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXRLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.costingStartTimeCheckEdit.Checked == true)
+					if (costingStartTimeCheckEdit.Checked == true)
 					{
 						report.startTimeHeaderXRLabel.Visible = true;
 						report.startTimeDetailXrLabel.Visible = true;
@@ -1668,7 +1668,7 @@ namespace SuperiorPackGroup
 						report.startTimeHeaderXRLabel.Visible = false;
 						report.startTimeDetailXrLabel.Visible = false;
 					}
-					if (this.costingStopTimeCheckEdit.Checked == true)
+					if (costingStopTimeCheckEdit.Checked == true)
 					{
 						report.stopTimeHeaderXRLabel.Visible = true;
 						report.stopTimeDetailXrLabel.Visible = true;
@@ -1681,7 +1681,7 @@ namespace SuperiorPackGroup
 						report.stopTimeHeaderXRLabel.Visible = false;
 						report.stopTimeDetailXrLabel.Visible = false;
 					}
-					if (this.costingTotalHoursCheckEdit.Checked)
+					if (costingTotalHoursCheckEdit.Checked)
 					{
 						report.totalHoursHeaderXRLabel.Visible = true;
 						report.totalHoursDetailXrLabel.Visible = true;
@@ -1697,7 +1697,7 @@ namespace SuperiorPackGroup
 						report.totalHoursDetailXrLabel.Visible = false;
 						report.totalHoursFooterXRLabel.Visible = false;
 					}
-					if (this.costingTotalMinutesCheckEdit.Checked)
+					if (costingTotalMinutesCheckEdit.Checked)
 					{
 						report.totalMinutesHeaderXRLabel.Visible = true;
 						report.totalMinutesDetailXrLabel.Visible = true;
@@ -1745,7 +1745,7 @@ namespace SuperiorPackGroup
 						report.expectedDetailXrLabel.Visible = false;
 						report.expectedFooterXRLabel.Visible = false;
 					}
-					if (this.costingDifferenceCheckEdit.Checked == true)
+					if (costingDifferenceCheckEdit.Checked == true)
 					{
 						report.differenceHeaderXRLabel.Visible = true;
 						report.differenceDetailXrLabel.Visible = true;
@@ -1761,7 +1761,7 @@ namespace SuperiorPackGroup
 						report.differenceDetailXrLabel.Visible = false;
 						report.differenceFooterXRLabel.Visible = false;
 					}
-					if (this.costingMachineLineCheckEdit.Checked == true)
+					if (costingMachineLineCheckEdit.Checked == true)
 					{
 						report.machineLineHeaderXRLabel.Visible = true;
 						report.machineLineDetailXrLabel.Visible = true;
@@ -1774,7 +1774,7 @@ namespace SuperiorPackGroup
 						report.machineLineHeaderXRLabel.Visible = false;
 						report.machineLineDetailXrLabel.Visible = false;
 					}
-					if (this.costingMachineSpeedCheckEdit.Checked)
+					if (costingMachineSpeedCheckEdit.Checked)
 					{
 						report.speedHeaderXRLabel.Visible = true;
 						report.speedDetailXrLabel.Visible = true;
@@ -1787,7 +1787,7 @@ namespace SuperiorPackGroup
 						report.speedHeaderXRLabel.Visible = false;
 						report.speedDetailXrLabel.Visible = false;
 					}
-					if (this.costingActualSpeedCheckEdit.Checked)
+					if (costingActualSpeedCheckEdit.Checked)
 					{
 						report.actualSpeedHeaderXRLabel.Visible = true;
 						report.actualSpeedDetailXrLabel.Visible = true;
@@ -1829,7 +1829,7 @@ namespace SuperiorPackGroup
 						report.packerHeaderXRLabel.Visible = false;
 						report.packerDetailXrLabel.Visible = false;
 					}
-					if (this.costingSupersCheckEdit.Checked == true)
+					if (costingSupersCheckEdit.Checked == true)
 					{
 						report.superHeaderXRLabel.Visible = true;
 						report.superDetailXrLabel.Visible = true;
@@ -1842,7 +1842,7 @@ namespace SuperiorPackGroup
 						report.superHeaderXRLabel.Visible = false;
 						report.superDetailXrLabel.Visible = false;
 					}
-					if (this.costingPriceCheckEdit.Checked == true)
+					if (costingPriceCheckEdit.Checked == true)
 					{
 						report.priceHeaderXRLabel.Visible = true;
 						report.priceDetailXrLabel.Visible = true;
@@ -1858,7 +1858,7 @@ namespace SuperiorPackGroup
 						report.priceDetailXrLabel.Visible = false;
 						report.priceFooterXrLabel.Visible = false;
 					}
-					if (this.costingPayrollCheckEdit.Checked)
+					if (costingPayrollCheckEdit.Checked)
 					{
 						report.payrollHeaderXRLabel.Visible = true;
 						report.payrollDetailXrLabel.Visible = true;
@@ -1874,7 +1874,7 @@ namespace SuperiorPackGroup
 						report.payrollDetailXrLabel.Visible = false;
 						report.payrollFooterXrLabel.Visible = false;
 					}
-					if (this.costingRebateCheckEdit.Checked)
+					if (costingRebateCheckEdit.Checked)
 					{
 						report.rebateHeaderXRLabel.Visible = true;
 						report.rebateDetailXrLabel.Visible = true;
@@ -1922,7 +1922,7 @@ namespace SuperiorPackGroup
 						report.filmDetailXrLabel.Visible = false;
 						report.filmFooterXrLabel.Visible = false;
 					}
-					if (this.costingBoxesCheckEdit.Checked == true)
+					if (costingBoxesCheckEdit.Checked == true)
 					{
 						report.boxesHeaderXRLabel.Visible = true;
 						report.boxesDetailXrLabel.Visible = true;
@@ -1938,7 +1938,7 @@ namespace SuperiorPackGroup
 						report.boxesDetailXrLabel.Visible = false;
 						report.boxesFooterXrLabel.Visible = false;
 					}
-					if (this.costingStretchWrapCheckEdit.Checked == true)
+					if (costingStretchWrapCheckEdit.Checked == true)
 					{
 						report.stretchWrapHeaderXRLabel.Visible = true;
 						report.stretchWrapDetailXrLabel.Visible = true;
@@ -1954,7 +1954,7 @@ namespace SuperiorPackGroup
 						report.stretchWrapDetailXrLabel.Visible = false;
 						report.stretchWrapFooterXrLabel.Visible = false;
 					}
-					if (this.costingPalletsCheckEdit.Checked)
+					if (costingPalletsCheckEdit.Checked)
 					{
 						report.palletsHeaderXRLabel.Visible = true;
 						report.palletsDetailXrLabel.Visible = true;
@@ -1970,7 +1970,7 @@ namespace SuperiorPackGroup
 						report.palletsDetailXrLabel.Visible = false;
 						report.palletsFooterXrLabel.Visible = false;
 					}
-					if (this.costingTotalOtherCheckEdit.Checked)
+					if (costingTotalOtherCheckEdit.Checked)
 					{
 						report.totalOtherHeaderXRLabel.Visible = true;
 						report.totalOtherDetailXrLabel.Visible = true;
@@ -2018,7 +2018,7 @@ namespace SuperiorPackGroup
 						report.profitDetailXrLabel.Visible = false;
 						report.profitFooterXrLabel.Visible = false;
 					}
-					if (this.costingCostPerPieceCheckEdit.Checked == true)
+					if (costingCostPerPieceCheckEdit.Checked == true)
 					{
 						report.costPerPieceHeaderXRLabel.Visible = true;
 						report.costPerPieceDetailXrLabel.Visible = true;
@@ -2034,7 +2034,7 @@ namespace SuperiorPackGroup
 						report.costPerPieceDetailXrLabel.Visible = false;
 						report.costPerPieceFooterXrLabel.Visible = false;
 					}
-					if (this.costingPacksPerMinuteCheckEdit.Checked == true)
+					if (costingPacksPerMinuteCheckEdit.Checked == true)
 					{
 						report.packsPerMinuteHeaderXRLabel.Visible = true;
 						report.packsPerMinuteDetailXrLabel.Visible = true;
@@ -2050,7 +2050,7 @@ namespace SuperiorPackGroup
 						report.packsPerMinuteDetailXrLabel.Visible = false;
 						report.packsPerMinuteFooterXrLabel.Visible = false;
 					}
-					if (this.costingSalesVsPayrollCheckEdit.Checked)
+					if (costingSalesVsPayrollCheckEdit.Checked)
 					{
 						report.salesVsPayrollHeaderXRLabel.Visible = true;
 						report.salesVsPayrollDetailXrLabel.Visible = true;
@@ -2066,7 +2066,7 @@ namespace SuperiorPackGroup
 						report.salesVsPayrollDetailXrLabel.Visible = false;
 						report.salesVsPayrollFooterXrLabel.Visible = false;
 					}
-					if (this.CostingSalesVsCostCheckEdit.Checked)
+					if (CostingSalesVsCostCheckEdit.Checked)
 					{
 						report.salesVsCostHeaderXRLabel.Visible = true;
 						report.salesVsCostDetailXrLabel.Visible = true;
@@ -2135,7 +2135,7 @@ namespace SuperiorPackGroup
 				case "ShippingXtraReport":
 				{
 					TransportationXtraReport report = (TransportationXtraReport)m_Report;
-					if (this.transportationDateCheckEdit.Checked == true)
+					if (transportationDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -2150,532 +2150,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.transportationShiftCheckEdit.Checked == true)
-					{
-						report.shiftHeaderXrLabel.Visible = true;
-						report.shiftDetailXrLabel.Visible = true;
-						report.shiftHeaderXrLabel.Left = left;
-						report.shiftDetailXrLabel.Left = left;
-						report.shiftDetailXrLabel.Width += additionalWidth;
-						report.shiftHeaderXrLabel.Width += additionalWidth;
-						left += report.shiftDetailXrLabel.Width;
-					}
-					else
-					{
-						report.shiftHeaderXrLabel.Visible = false;
-						report.shiftDetailXrLabel.Visible = false;
-					}
-					if (this.transportationCustomerCheckEdit.Checked == true)
-					{
-						report.customerNameHeaderXrLabel.Visible = true;
-						report.customerNameDetailXrLabel.Visible = true;
-						report.customerNameHeaderXrLabel.Left = left;
-						report.customerNameDetailXrLabel.Left = left;
-						report.customerNameDetailXrLabel.Width += additionalWidth;
-						report.customerNameHeaderXrLabel.Width += additionalWidth;
-						left += report.customerNameDetailXrLabel.Width;
-					}
-					else
-					{
-						report.customerNameHeaderXrLabel.Visible = false;
-						report.customerNameDetailXrLabel.Visible = false;
-					}
-					if (this.transportationBolCheckEdit.Checked == true)
-					{
-						report.bolHeaderXrLabel.Visible = true;
-						report.bolDetailXrLabel.Visible = true;
-						report.bolDetailXrLabel.Left = left;
-						report.bolHeaderXrLabel.Left = left;
-						report.bolDetailXrLabel.Width += additionalWidth;
-						report.bolHeaderXrLabel.Width += additionalWidth;
-						left += report.bolDetailXrLabel.Width;
-					}
-					else
-					{
-						report.bolHeaderXrLabel.Visible = false;
-						report.bolDetailXrLabel.Visible = false;
-					}
-					if (this.transportationPOCheckEdit.Checked == true)
-					{
-						report.poHeaderXrLabel.Visible = true;
-						report.poDetailXrLabel.Visible = true;
-						report.poHeaderXrLabel.Left = left;
-						report.poDetailXrLabel.Left = left;
-						report.poDetailXrLabel.Width += additionalWidth;
-						report.poHeaderXrLabel.Width += additionalWidth;
-						left += report.poDetailXrLabel.Width;
-					}
-					else
-					{
-						report.poHeaderXrLabel.Visible = false;
-						report.poDetailXrLabel.Visible = false;
-					}
-					if (this.transportationDeliveryNoteCheckEdit.Checked == true)
-					{
-						report.deliveryNoteNumberHeaderXrLabel.Visible = true;
-						report.deliveryNoteNumberDetailXrLabel.Visible = true;
-						report.deliveryNoteNumberHeaderXrLabel.Left = left;
-						report.deliveryNoteNumberDetailXrLabel.Left = left;
-						report.deliveryNoteNumberDetailXrLabel.Width += additionalWidth;
-						report.deliveryNoteNumberHeaderXrLabel.Width += additionalWidth;
-						left += report.deliveryNoteNumberDetailXrLabel.Width;
-					}
-					else
-					{
-						report.deliveryNoteNumberHeaderXrLabel.Visible = false;
-						report.deliveryNoteNumberDetailXrLabel.Visible = false;
-					}
-					if (this.transportationDestinationCheckEdit.Checked == true)
-					{
-						report.destinationHeaderXrLabel.Visible = true;
-						report.destinationDetailXrLabel.Visible = true;
-						report.destinationHeaderXrLabel.Left = left;
-						report.destinationDetailXrLabel.Left = left;
-						report.destinationDetailXrLabel.Width += additionalWidth;
-						report.destinationHeaderXrLabel.Width += additionalWidth;
-						left += report.destinationDetailXrLabel.Width;
-					}
-					else
-					{
-						report.destinationHeaderXrLabel.Visible = false;
-						report.destinationDetailXrLabel.Visible = false;
-					}
-					if (this.transportationItemCheckEdit.Checked == true)
-					{
-						report.itemCodeHeaderXrLabel.Visible = true;
-						report.itemCodeDetailXrLabel.Visible = true;
-						report.itemCodeHeaderXrLabel.Left = left;
-						report.itemCodeDetailXrLabel.Left = left;
-						report.itemCodeDetailXrLabel.Width += additionalWidth;
-						report.itemCodeHeaderXrLabel.Width += additionalWidth;
-						left += report.itemCodeDetailXrLabel.Width;
-					}
-					else
-					{
-						report.itemCodeHeaderXrLabel.Visible = false;
-						report.itemCodeDetailXrLabel.Visible = false;
-					}
-					if (this.transportationItemDescriptionCheckEdit.Checked == true)
-					{
-						report.itemDescriptionHeaderXrLabel.Visible = true;
-						report.itemDescriptionDetailXrLabel.Visible = true;
-						report.itemDescriptionHeaderXrLabel.Left = left;
-						report.itemDescriptionDetailXrLabel.Left = left;
-						report.itemDescriptionDetailXrLabel.Width += additionalWidth;
-						report.itemDescriptionHeaderXrLabel.Width += additionalWidth;
-						left += report.itemDescriptionDetailXrLabel.Width;
-					}
-					else
-					{
-						report.itemDescriptionHeaderXrLabel.Visible = false;
-						report.itemDescriptionDetailXrLabel.Visible = false;
-					}
-					if (this.transportationLpnCheckEdit.Checked == true)
-					{
-						report.lpnHeadeerXrLabel.Visible = true;
-						report.lpnDetailXrLabel.Visible = true;
-						report.lpnHeadeerXrLabel.Left = left;
-						report.lpnDetailXrLabel.Left = left;
-						report.lpnDetailXrLabel.Width += additionalWidth;
-						report.lpnHeadeerXrLabel.Width += additionalWidth;
-						left += report.lpnDetailXrLabel.Width;
-					}
-					else
-					{
-						report.lpnHeadeerXrLabel.Visible = false;
-						report.lpnDetailXrLabel.Visible = false;
-					}
-					if (this.transportationLotCheckEdit.Checked == true)
-					{
-						report.lotHeadeerXrLabel.Visible = true;
-						report.lotDetailXrLabel.Visible = true;
-						report.lotHeadeerXrLabel.Left = left;
-						report.lotDetailXrLabel.Left = left;
-						report.lotDetailXrLabel.Width += additionalWidth;
-						report.lotHeadeerXrLabel.Width += additionalWidth;
-						left += report.lotDetailXrLabel.Width;
-					}
-					else
-					{
-						report.lotHeadeerXrLabel.Visible = false;
-					report.lotDetailXrLabel.Visible = false;
-					}
-					if (transportationExpirationDateCheckEdit.Checked == true)
-					{
-						report.expirationDateHeaderXrLabel.Visible = true;
-						report.expirationDateDetailXrLabel.Visible = true;
-						report.expirationDateHeaderXrLabel.Left = left;
-						report.expirationDateDetailXrLabel.Left = left;
-						report.expirationDateHeaderXrLabel.Width += additionalWidth;
-						report.expirationDateDetailXrLabel.Width += additionalWidth;
-						left += report.expirationDateDetailXrLabel.Width;
-					}
-					else
-					{
-						report.expirationDateHeaderXrLabel.Visible = false;
-						report.expirationDateDetailXrLabel.Visible = false;
-					}
-					if (this.transportationQuantityCheckEdit.Checked == true)
-					{
-						report.quantityHeaderXrLabel.Visible = true;
-						report.quantityDetailXrLabel.Visible = true;
-						report.quantityFooterXrLabel.Visible = true;
-						report.quantityHeaderXrLabel.Left = left;
-						report.quantityDetailXrLabel.Left = left;
-						report.quantityFooterXrLabel.Left = left;
-						report.quantityDetailXrLabel.Width += additionalWidth;
-						report.quantityFooterXrLabel.Width += additionalWidth;
-						report.quantityHeaderXrLabel.Width += additionalWidth;
-						left += report.quantityDetailXrLabel.Width;
-					}
-					else
-					{
-						report.quantityHeaderXrLabel.Visible = false;
-						report.quantityDetailXrLabel.Visible = false;
-						report.quantityFooterXrLabel.Visible = false;
-					}
-					if (this.transportationVendorCheckEdit.Checked == true)
-					{
-						report.vendorDetailXrLabel.Visible = true;
-						report.vendorHeaderXrLabel.Visible = true;
-						report.vendorHeaderXrLabel.Left = left;
-						report.vendorDetailXrLabel.Left = left;
-						report.vendorHeaderXrLabel.Width += additionalWidth;
-						report.vendorDetailXrLabel.Width += additionalWidth;
-						left += report.vendorDetailXrLabel.Width;
-					}
-					else
-					{
-						report.vendorHeaderXrLabel.Visible = false;
-						report.vendorDetailXrLabel.Visible = false;
-					}
-					if (this.transportationCarrierCheckEdit.Checked == true)
-					{
-						report.carrierHeaderXrLabel.Visible = true;
-						report.carrierDetailXrLabel.Visible = true;
-						report.carrierHeaderXrLabel.Left = left;
-						report.carrierDetailXrLabel.Left = left;
-						report.carrierDetailXrLabel.Width += additionalWidth;
-						report.carrierHeaderXrLabel.Width += additionalWidth;
-						left += report.carrierDetailXrLabel.Width;
-					}
-					else
-					{
-						report.carrierHeaderXrLabel.Visible = false;
-						report.carrierDetailXrLabel.Visible = false;
-					}
-					if (this.transportationTrailerCheckEdit.Checked == true)
-					{
-						report.trailerHeaderXrLabel.Visible = true;
-						report.trailerDetailXrLabel.Visible = true;
-						report.trailerHeaderXrLabel.Left = left;
-						report.trailerDetailXrLabel.Left = left;
-						report.trailerDetailXrLabel.Width += additionalWidth;
-						report.trailerHeaderXrLabel.Width += additionalWidth;
-						left += report.trailerDetailXrLabel.Width;
-					}
-					else
-					{
-						report.trailerHeaderXrLabel.Visible = false;
-						report.trailerDetailXrLabel.Visible = false;
-					}
-					if (this.transportationSealCheckEdit.Checked == true)
-					{
-						report.sealHeaderXrLabel.Visible = true;
-						report.sealDetailXrLabel.Visible = true;
-						report.sealDetailXrLabel.Left = left;
-						report.sealHeaderXrLabel.Left = left;
-						report.sealDetailXrLabel.Width += additionalWidth;
-						report.sealHeaderXrLabel.Width += additionalWidth;
-						left += report.sealDetailXrLabel.Width;
-					}
-					else
-					{
-						report.sealHeaderXrLabel.Visible = false;
-						report.sealDetailXrLabel.Visible = false;
-					}
-					report.printDateXrPageInfo.Left = left - 185;
-					report.reportCriteriaXrLabel.Width = left - 190;
-					report.reportTitleXrLabel.Width = left;
-					report.headerXrPanel.Width = left;
-					report.footerXrPanel.Width = left;
-					report.pageNumberXrPageInfo.Left = left - 100;
-					break;
-				}
-				case "ShippingReturnsXtraReport":
-				{
-					TransportationXtraReport report = (TransportationXtraReport)m_Report;
-					if (this.transportationDateCheckEdit.Checked == true)
-					{
-						report.dateDetailXrLabel.Visible = true;
-						report.dateHeaderXrLabel.Visible = true;
-						report.dateHeaderXrLabel.Left = left;
-						report.dateDetailXrLabel.Left = left;
-						report.dateHeaderXrLabel.Width += additionalWidth;
-						report.dateDetailXrLabel.Width += additionalWidth;
-						left += report.dateDetailXrLabel.Width;
-					}
-					else
-					{
-						report.dateHeaderXrLabel.Visible = false;
-						report.dateDetailXrLabel.Visible = false;
-					}
-					if (this.transportationShiftCheckEdit.Checked == true)
-					{
-						report.shiftHeaderXrLabel.Visible = true;
-						report.shiftDetailXrLabel.Visible = true;
-						report.shiftHeaderXrLabel.Left = left;
-						report.shiftDetailXrLabel.Left = left;
-						report.shiftDetailXrLabel.Width += additionalWidth;
-						report.shiftHeaderXrLabel.Width += additionalWidth;
-						left += report.shiftDetailXrLabel.Width;
-					}
-					else
-					{
-						report.shiftHeaderXrLabel.Visible = false;
-						report.shiftDetailXrLabel.Visible = false;
-					}
-					if (this.transportationCustomerCheckEdit.Checked == true)
-					{
-						report.customerNameHeaderXrLabel.Visible = true;
-						report.customerNameDetailXrLabel.Visible = true;
-						report.customerNameHeaderXrLabel.Left = left;
-						report.customerNameDetailXrLabel.Left = left;
-						report.customerNameDetailXrLabel.Width += additionalWidth;
-						report.customerNameHeaderXrLabel.Width += additionalWidth;
-						left += report.customerNameDetailXrLabel.Width;
-					}
-					else
-					{
-						report.customerNameHeaderXrLabel.Visible = false;
-						report.customerNameDetailXrLabel.Visible = false;
-					}
-					if (this.transportationBolCheckEdit.Checked == true)
-					{
-						report.bolHeaderXrLabel.Visible = true;
-						report.bolDetailXrLabel.Visible = true;
-						report.bolDetailXrLabel.Left = left;
-						report.bolHeaderXrLabel.Left = left;
-						report.bolDetailXrLabel.Width += additionalWidth;
-						report.bolHeaderXrLabel.Width += additionalWidth;
-						left += report.bolDetailXrLabel.Width;
-					}
-					else
-					{
-						report.bolHeaderXrLabel.Visible = false;
-						report.bolDetailXrLabel.Visible = false;
-					}
-					if (this.transportationPOCheckEdit.Checked == true)
-					{
-						report.poHeaderXrLabel.Visible = true;
-						report.poDetailXrLabel.Visible = true;
-						report.poHeaderXrLabel.Left = left;
-						report.poDetailXrLabel.Left = left;
-						report.poDetailXrLabel.Width += additionalWidth;
-						report.poHeaderXrLabel.Width += additionalWidth;
-						left += report.poDetailXrLabel.Width;
-					}
-					else
-					{
-						report.poHeaderXrLabel.Visible = false;
-						report.poDetailXrLabel.Visible = false;
-					}
-					if (this.transportationDeliveryNoteCheckEdit.Checked == true)
-					{
-						report.deliveryNoteNumberHeaderXrLabel.Visible = true;
-						report.deliveryNoteNumberDetailXrLabel.Visible = true;
-						report.deliveryNoteNumberHeaderXrLabel.Left = left;
-						report.deliveryNoteNumberDetailXrLabel.Left = left;
-						report.deliveryNoteNumberDetailXrLabel.Width += additionalWidth;
-						report.deliveryNoteNumberHeaderXrLabel.Width += additionalWidth;
-						left += report.deliveryNoteNumberDetailXrLabel.Width;
-					}
-					else
-					{
-						report.deliveryNoteNumberHeaderXrLabel.Visible = false;
-						report.deliveryNoteNumberDetailXrLabel.Visible = false;
-					}
-					if (this.transportationDestinationCheckEdit.Checked == true)
-					{
-						report.destinationHeaderXrLabel.Visible = true;
-						report.destinationDetailXrLabel.Visible = true;
-						report.destinationHeaderXrLabel.Left = left;
-						report.destinationDetailXrLabel.Left = left;
-						report.destinationDetailXrLabel.Width += additionalWidth;
-						report.destinationHeaderXrLabel.Width += additionalWidth;
-						left += report.destinationDetailXrLabel.Width;
-					}
-					else
-					{
-						report.destinationHeaderXrLabel.Visible = false;
-						report.destinationDetailXrLabel.Visible = false;
-					}
-					if (this.transportationItemCheckEdit.Checked == true)
-					{
-						report.itemCodeHeaderXrLabel.Visible = true;
-						report.itemCodeDetailXrLabel.Visible = true;
-						report.itemCodeHeaderXrLabel.Left = left;
-						report.itemCodeDetailXrLabel.Left = left;
-						report.itemCodeDetailXrLabel.Width += additionalWidth;
-						report.itemCodeHeaderXrLabel.Width += additionalWidth;
-						left += report.itemCodeDetailXrLabel.Width;
-					}
-					else
-					{
-						report.itemCodeHeaderXrLabel.Visible = false;
-						report.itemCodeDetailXrLabel.Visible = false;
-					}
-					if (this.transportationItemDescriptionCheckEdit.Checked == true)
-					{
-						report.itemDescriptionHeaderXrLabel.Visible = true;
-						report.itemDescriptionDetailXrLabel.Visible = true;
-						report.itemDescriptionHeaderXrLabel.Left = left;
-						report.itemDescriptionDetailXrLabel.Left = left;
-						report.itemDescriptionDetailXrLabel.Width += additionalWidth;
-						report.itemDescriptionHeaderXrLabel.Width += additionalWidth;
-						left += report.itemDescriptionDetailXrLabel.Width;
-					}
-					else
-					{
-						report.itemDescriptionHeaderXrLabel.Visible = false;
-						report.itemDescriptionDetailXrLabel.Visible = false;
-					}
-					if (this.transportationLotCheckEdit.Checked == true)
-					{
-						report.lotHeadeerXrLabel.Visible = true;
-						report.lotDetailXrLabel.Visible = true;
-						report.lotHeadeerXrLabel.Left = left;
-						report.lotDetailXrLabel.Left = left;
-						report.lotDetailXrLabel.Width += additionalWidth;
-						report.lotHeadeerXrLabel.Width += additionalWidth;
-						left += report.lotDetailXrLabel.Width;
-					}
-					else
-					{
-						report.lotHeadeerXrLabel.Visible = false;
-						report.lotDetailXrLabel.Visible = false;
-					}
-					if (transportationExpirationDateCheckEdit.Checked == true)
-					{
-						report.expirationDateHeaderXrLabel.Visible = true;
-						report.expirationDateDetailXrLabel.Visible = true;
-						report.expirationDateHeaderXrLabel.Left = left;
-						report.expirationDateDetailXrLabel.Left = left;
-						report.expirationDateHeaderXrLabel.Width += additionalWidth;
-						report.expirationDateDetailXrLabel.Width += additionalWidth;
-						left += report.expirationDateDetailXrLabel.Width;
-					}
-					else
-					{
-						report.expirationDateHeaderXrLabel.Visible = false;
-						report.expirationDateDetailXrLabel.Visible = false;
-					}
-					if (this.transportationQuantityCheckEdit.Checked == true)
-					{
-						report.quantityHeaderXrLabel.Visible = true;
-						report.quantityDetailXrLabel.Visible = true;
-						report.quantityFooterXrLabel.Visible = true;
-						report.quantityHeaderXrLabel.Left = left;
-						report.quantityDetailXrLabel.Left = left;
-						report.quantityFooterXrLabel.Left = left;
-						report.quantityDetailXrLabel.Width += additionalWidth;
-						report.quantityFooterXrLabel.Width += additionalWidth;
-						report.quantityHeaderXrLabel.Width += additionalWidth;
-						left += report.quantityDetailXrLabel.Width;
-					}
-					else
-					{
-						report.quantityHeaderXrLabel.Visible = false;
-						report.quantityDetailXrLabel.Visible = false;
-						report.quantityFooterXrLabel.Visible = false;
-					}
-					if (this.transportationVendorCheckEdit.Checked == true)
-					{
-						report.vendorDetailXrLabel.Visible = true;
-						report.vendorHeaderXrLabel.Visible = true;
-						report.vendorHeaderXrLabel.Left = left;
-						report.vendorDetailXrLabel.Left = left;
-						report.vendorHeaderXrLabel.Width += additionalWidth;
-						report.vendorDetailXrLabel.Width += additionalWidth;
-						left += report.vendorDetailXrLabel.Width;
-					}
-					else
-					{
-						report.vendorHeaderXrLabel.Visible = false;
-						report.vendorDetailXrLabel.Visible = false;
-					}
-					if (this.transportationCarrierCheckEdit.Checked == true)
-					{
-						report.carrierHeaderXrLabel.Visible = true;
-						report.carrierDetailXrLabel.Visible = true;
-						report.carrierHeaderXrLabel.Left = left;
-						report.carrierDetailXrLabel.Left = left;
-						report.carrierDetailXrLabel.Width += additionalWidth;
-						report.carrierHeaderXrLabel.Width += additionalWidth;
-						left += report.carrierDetailXrLabel.Width;
-					}
-					else
-					{
-						report.carrierHeaderXrLabel.Visible = false;
-						report.carrierDetailXrLabel.Visible = false;
-					}
-					if (this.transportationTrailerCheckEdit.Checked == true)
-					{
-						report.trailerHeaderXrLabel.Visible = true;
-						report.trailerDetailXrLabel.Visible = true;
-						report.trailerHeaderXrLabel.Left = left;
-						report.trailerDetailXrLabel.Left = left;
-						report.trailerDetailXrLabel.Width += additionalWidth;
-						report.trailerHeaderXrLabel.Width += additionalWidth;
-						left += report.trailerDetailXrLabel.Width;
-					}
-					else
-					{
-						report.trailerHeaderXrLabel.Visible = false;
-						report.trailerDetailXrLabel.Visible = false;
-					}
-					if (this.transportationSealCheckEdit.Checked == true)
-					{
-						report.sealHeaderXrLabel.Visible = true;
-						report.sealDetailXrLabel.Visible = true;
-						report.sealDetailXrLabel.Left = left;
-						report.sealHeaderXrLabel.Left = left;
-						report.sealDetailXrLabel.Width += additionalWidth;
-						report.sealHeaderXrLabel.Width += additionalWidth;
-						left += report.sealDetailXrLabel.Width;
-					}
-					else
-					{
-						report.sealHeaderXrLabel.Visible = false;
-						report.sealDetailXrLabel.Visible = false;
-					}
-					report.printDateXrPageInfo.Left = left - 185;
-					report.reportCriteriaXrLabel.Width = left - 190;
-					report.reportTitleXrLabel.Width = left;
-					report.headerXrPanel.Width = left;
-					report.footerXrPanel.Width = left;
-					report.pageNumberXrPageInfo.Left = left - 100;
-					break;
-				}
-				case "ReceivingXtraReport":
-				{
-					TransportationXtraReport report = (TransportationXtraReport)m_Report;
-					if (this.transportationDateCheckEdit.Checked == true)
-					{
-						report.dateDetailXrLabel.Visible = true;
-						report.dateHeaderXrLabel.Visible = true;
-						report.dateHeaderXrLabel.Left = left;
-						report.dateDetailXrLabel.Left = left;
-						report.dateHeaderXrLabel.Width += additionalWidth;
-						report.dateDetailXrLabel.Width += additionalWidth;
-						left += report.dateDetailXrLabel.Width;
-					}
-					else
-					{
-						report.dateHeaderXrLabel.Visible = false;
-						report.dateDetailXrLabel.Visible = false;
-					}
-					if (this.transportationShiftCheckEdit.Checked == true)
+					if (transportationShiftCheckEdit.Checked == true)
 					{
 						report.shiftHeaderXrLabel.Visible = true;
 						report.shiftDetailXrLabel.Visible = true;
@@ -2705,7 +2180,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.transportationBolCheckEdit.Checked == true)
+					if (transportationBolCheckEdit.Checked == true)
 					{
 						report.bolHeaderXrLabel.Visible = true;
 						report.bolDetailXrLabel.Visible = true;
@@ -2720,7 +2195,7 @@ namespace SuperiorPackGroup
 						report.bolHeaderXrLabel.Visible = false;
 						report.bolDetailXrLabel.Visible = false;
 					}
-					if (this.transportationPOCheckEdit.Checked == true)
+					if (transportationPOCheckEdit.Checked == true)
 					{
 						report.poHeaderXrLabel.Visible = true;
 						report.poDetailXrLabel.Visible = true;
@@ -2735,7 +2210,7 @@ namespace SuperiorPackGroup
 						report.poHeaderXrLabel.Visible = false;
 						report.poDetailXrLabel.Visible = false;
 					}
-					if (this.transportationDeliveryNoteCheckEdit.Checked == true)
+					if (transportationDeliveryNoteCheckEdit.Checked == true)
 					{
 						report.deliveryNoteNumberHeaderXrLabel.Visible = true;
 						report.deliveryNoteNumberDetailXrLabel.Visible = true;
@@ -2750,7 +2225,7 @@ namespace SuperiorPackGroup
 						report.deliveryNoteNumberHeaderXrLabel.Visible = false;
 						report.deliveryNoteNumberDetailXrLabel.Visible = false;
 					}
-					if (this.transportationDestinationCheckEdit.Checked == true)
+					if (transportationDestinationCheckEdit.Checked == true)
 					{
 						report.destinationHeaderXrLabel.Visible = true;
 						report.destinationDetailXrLabel.Visible = true;
@@ -2765,7 +2240,7 @@ namespace SuperiorPackGroup
 						report.destinationHeaderXrLabel.Visible = false;
 						report.destinationDetailXrLabel.Visible = false;
 					}
-					if (this.transportationItemCheckEdit.Checked == true)
+					if (transportationItemCheckEdit.Checked == true)
 					{
 						report.itemCodeHeaderXrLabel.Visible = true;
 						report.itemCodeDetailXrLabel.Visible = true;
@@ -2780,7 +2255,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.transportationItemDescriptionCheckEdit.Checked == true)
+					if (transportationItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -2795,7 +2270,277 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.transportationLotCheckEdit.Checked == true)
+					if (transportationLpnCheckEdit.Checked == true)
+					{
+						report.lpnHeadeerXrLabel.Visible = true;
+						report.lpnDetailXrLabel.Visible = true;
+						report.lpnHeadeerXrLabel.Left = left;
+						report.lpnDetailXrLabel.Left = left;
+						report.lpnDetailXrLabel.Width += additionalWidth;
+						report.lpnHeadeerXrLabel.Width += additionalWidth;
+						left += report.lpnDetailXrLabel.Width;
+					}
+					else
+					{
+						report.lpnHeadeerXrLabel.Visible = false;
+						report.lpnDetailXrLabel.Visible = false;
+					}
+					if (transportationLotCheckEdit.Checked == true)
+					{
+						report.lotHeadeerXrLabel.Visible = true;
+						report.lotDetailXrLabel.Visible = true;
+						report.lotHeadeerXrLabel.Left = left;
+						report.lotDetailXrLabel.Left = left;
+						report.lotDetailXrLabel.Width += additionalWidth;
+						report.lotHeadeerXrLabel.Width += additionalWidth;
+						left += report.lotDetailXrLabel.Width;
+					}
+					else
+					{
+						report.lotHeadeerXrLabel.Visible = false;
+					report.lotDetailXrLabel.Visible = false;
+					}
+					if (transportationExpirationDateCheckEdit.Checked == true)
+					{
+						report.expirationDateHeaderXrLabel.Visible = true;
+						report.expirationDateDetailXrLabel.Visible = true;
+						report.expirationDateHeaderXrLabel.Left = left;
+						report.expirationDateDetailXrLabel.Left = left;
+						report.expirationDateHeaderXrLabel.Width += additionalWidth;
+						report.expirationDateDetailXrLabel.Width += additionalWidth;
+						left += report.expirationDateDetailXrLabel.Width;
+					}
+					else
+					{
+						report.expirationDateHeaderXrLabel.Visible = false;
+						report.expirationDateDetailXrLabel.Visible = false;
+					}
+					if (transportationQuantityCheckEdit.Checked == true)
+					{
+						report.quantityHeaderXrLabel.Visible = true;
+						report.quantityDetailXrLabel.Visible = true;
+						report.quantityFooterXrLabel.Visible = true;
+						report.quantityHeaderXrLabel.Left = left;
+						report.quantityDetailXrLabel.Left = left;
+						report.quantityFooterXrLabel.Left = left;
+						report.quantityDetailXrLabel.Width += additionalWidth;
+						report.quantityFooterXrLabel.Width += additionalWidth;
+						report.quantityHeaderXrLabel.Width += additionalWidth;
+						left += report.quantityDetailXrLabel.Width;
+					}
+					else
+					{
+						report.quantityHeaderXrLabel.Visible = false;
+						report.quantityDetailXrLabel.Visible = false;
+						report.quantityFooterXrLabel.Visible = false;
+					}
+					if (transportationVendorCheckEdit.Checked == true)
+					{
+						report.vendorDetailXrLabel.Visible = true;
+						report.vendorHeaderXrLabel.Visible = true;
+						report.vendorHeaderXrLabel.Left = left;
+						report.vendorDetailXrLabel.Left = left;
+						report.vendorHeaderXrLabel.Width += additionalWidth;
+						report.vendorDetailXrLabel.Width += additionalWidth;
+						left += report.vendorDetailXrLabel.Width;
+					}
+					else
+					{
+						report.vendorHeaderXrLabel.Visible = false;
+						report.vendorDetailXrLabel.Visible = false;
+					}
+					if (transportationCarrierCheckEdit.Checked == true)
+					{
+						report.carrierHeaderXrLabel.Visible = true;
+						report.carrierDetailXrLabel.Visible = true;
+						report.carrierHeaderXrLabel.Left = left;
+						report.carrierDetailXrLabel.Left = left;
+						report.carrierDetailXrLabel.Width += additionalWidth;
+						report.carrierHeaderXrLabel.Width += additionalWidth;
+						left += report.carrierDetailXrLabel.Width;
+					}
+					else
+					{
+						report.carrierHeaderXrLabel.Visible = false;
+						report.carrierDetailXrLabel.Visible = false;
+					}
+					if (transportationTrailerCheckEdit.Checked == true)
+					{
+						report.trailerHeaderXrLabel.Visible = true;
+						report.trailerDetailXrLabel.Visible = true;
+						report.trailerHeaderXrLabel.Left = left;
+						report.trailerDetailXrLabel.Left = left;
+						report.trailerDetailXrLabel.Width += additionalWidth;
+						report.trailerHeaderXrLabel.Width += additionalWidth;
+						left += report.trailerDetailXrLabel.Width;
+					}
+					else
+					{
+						report.trailerHeaderXrLabel.Visible = false;
+						report.trailerDetailXrLabel.Visible = false;
+					}
+					if (transportationSealCheckEdit.Checked == true)
+					{
+						report.sealHeaderXrLabel.Visible = true;
+						report.sealDetailXrLabel.Visible = true;
+						report.sealDetailXrLabel.Left = left;
+						report.sealHeaderXrLabel.Left = left;
+						report.sealDetailXrLabel.Width += additionalWidth;
+						report.sealHeaderXrLabel.Width += additionalWidth;
+						left += report.sealDetailXrLabel.Width;
+					}
+					else
+					{
+						report.sealHeaderXrLabel.Visible = false;
+						report.sealDetailXrLabel.Visible = false;
+					}
+					report.printDateXrPageInfo.Left = left - 185;
+					report.reportCriteriaXrLabel.Width = left - 190;
+					report.reportTitleXrLabel.Width = left;
+					report.headerXrPanel.Width = left;
+					report.footerXrPanel.Width = left;
+					report.pageNumberXrPageInfo.Left = left - 100;
+					break;
+				}
+				case "ShippingReturnsXtraReport":
+				{
+					TransportationXtraReport report = (TransportationXtraReport)m_Report;
+					if (transportationDateCheckEdit.Checked == true)
+					{
+						report.dateDetailXrLabel.Visible = true;
+						report.dateHeaderXrLabel.Visible = true;
+						report.dateHeaderXrLabel.Left = left;
+						report.dateDetailXrLabel.Left = left;
+						report.dateHeaderXrLabel.Width += additionalWidth;
+						report.dateDetailXrLabel.Width += additionalWidth;
+						left += report.dateDetailXrLabel.Width;
+					}
+					else
+					{
+						report.dateHeaderXrLabel.Visible = false;
+						report.dateDetailXrLabel.Visible = false;
+					}
+					if (transportationShiftCheckEdit.Checked == true)
+					{
+						report.shiftHeaderXrLabel.Visible = true;
+						report.shiftDetailXrLabel.Visible = true;
+						report.shiftHeaderXrLabel.Left = left;
+						report.shiftDetailXrLabel.Left = left;
+						report.shiftDetailXrLabel.Width += additionalWidth;
+						report.shiftHeaderXrLabel.Width += additionalWidth;
+						left += report.shiftDetailXrLabel.Width;
+					}
+					else
+					{
+						report.shiftHeaderXrLabel.Visible = false;
+						report.shiftDetailXrLabel.Visible = false;
+					}
+					if (transportationCustomerCheckEdit.Checked == true)
+					{
+						report.customerNameHeaderXrLabel.Visible = true;
+						report.customerNameDetailXrLabel.Visible = true;
+						report.customerNameHeaderXrLabel.Left = left;
+						report.customerNameDetailXrLabel.Left = left;
+						report.customerNameDetailXrLabel.Width += additionalWidth;
+						report.customerNameHeaderXrLabel.Width += additionalWidth;
+						left += report.customerNameDetailXrLabel.Width;
+					}
+					else
+					{
+						report.customerNameHeaderXrLabel.Visible = false;
+						report.customerNameDetailXrLabel.Visible = false;
+					}
+					if (transportationBolCheckEdit.Checked == true)
+					{
+						report.bolHeaderXrLabel.Visible = true;
+						report.bolDetailXrLabel.Visible = true;
+						report.bolDetailXrLabel.Left = left;
+						report.bolHeaderXrLabel.Left = left;
+						report.bolDetailXrLabel.Width += additionalWidth;
+						report.bolHeaderXrLabel.Width += additionalWidth;
+						left += report.bolDetailXrLabel.Width;
+					}
+					else
+					{
+						report.bolHeaderXrLabel.Visible = false;
+						report.bolDetailXrLabel.Visible = false;
+					}
+					if (transportationPOCheckEdit.Checked == true)
+					{
+						report.poHeaderXrLabel.Visible = true;
+						report.poDetailXrLabel.Visible = true;
+						report.poHeaderXrLabel.Left = left;
+						report.poDetailXrLabel.Left = left;
+						report.poDetailXrLabel.Width += additionalWidth;
+						report.poHeaderXrLabel.Width += additionalWidth;
+						left += report.poDetailXrLabel.Width;
+					}
+					else
+					{
+						report.poHeaderXrLabel.Visible = false;
+						report.poDetailXrLabel.Visible = false;
+					}
+					if (transportationDeliveryNoteCheckEdit.Checked == true)
+					{
+						report.deliveryNoteNumberHeaderXrLabel.Visible = true;
+						report.deliveryNoteNumberDetailXrLabel.Visible = true;
+						report.deliveryNoteNumberHeaderXrLabel.Left = left;
+						report.deliveryNoteNumberDetailXrLabel.Left = left;
+						report.deliveryNoteNumberDetailXrLabel.Width += additionalWidth;
+						report.deliveryNoteNumberHeaderXrLabel.Width += additionalWidth;
+						left += report.deliveryNoteNumberDetailXrLabel.Width;
+					}
+					else
+					{
+						report.deliveryNoteNumberHeaderXrLabel.Visible = false;
+						report.deliveryNoteNumberDetailXrLabel.Visible = false;
+					}
+					if (transportationDestinationCheckEdit.Checked == true)
+					{
+						report.destinationHeaderXrLabel.Visible = true;
+						report.destinationDetailXrLabel.Visible = true;
+						report.destinationHeaderXrLabel.Left = left;
+						report.destinationDetailXrLabel.Left = left;
+						report.destinationDetailXrLabel.Width += additionalWidth;
+						report.destinationHeaderXrLabel.Width += additionalWidth;
+						left += report.destinationDetailXrLabel.Width;
+					}
+					else
+					{
+						report.destinationHeaderXrLabel.Visible = false;
+						report.destinationDetailXrLabel.Visible = false;
+					}
+					if (transportationItemCheckEdit.Checked == true)
+					{
+						report.itemCodeHeaderXrLabel.Visible = true;
+						report.itemCodeDetailXrLabel.Visible = true;
+						report.itemCodeHeaderXrLabel.Left = left;
+						report.itemCodeDetailXrLabel.Left = left;
+						report.itemCodeDetailXrLabel.Width += additionalWidth;
+						report.itemCodeHeaderXrLabel.Width += additionalWidth;
+						left += report.itemCodeDetailXrLabel.Width;
+					}
+					else
+					{
+						report.itemCodeHeaderXrLabel.Visible = false;
+						report.itemCodeDetailXrLabel.Visible = false;
+					}
+					if (transportationItemDescriptionCheckEdit.Checked == true)
+					{
+						report.itemDescriptionHeaderXrLabel.Visible = true;
+						report.itemDescriptionDetailXrLabel.Visible = true;
+						report.itemDescriptionHeaderXrLabel.Left = left;
+						report.itemDescriptionDetailXrLabel.Left = left;
+						report.itemDescriptionDetailXrLabel.Width += additionalWidth;
+						report.itemDescriptionHeaderXrLabel.Width += additionalWidth;
+						left += report.itemDescriptionDetailXrLabel.Width;
+					}
+					else
+					{
+						report.itemDescriptionHeaderXrLabel.Visible = false;
+						report.itemDescriptionDetailXrLabel.Visible = false;
+					}
+					if (transportationLotCheckEdit.Checked == true)
 					{
 						report.lotHeadeerXrLabel.Visible = true;
 						report.lotDetailXrLabel.Visible = true;
@@ -2825,7 +2570,7 @@ namespace SuperiorPackGroup
 						report.expirationDateHeaderXrLabel.Visible = false;
 						report.expirationDateDetailXrLabel.Visible = false;
 					}
-					if (this.transportationQuantityCheckEdit.Checked == true)
+					if (transportationQuantityCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.quantityDetailXrLabel.Visible = true;
@@ -2844,7 +2589,7 @@ namespace SuperiorPackGroup
 						report.quantityDetailXrLabel.Visible = false;
 						report.quantityFooterXrLabel.Visible = false;
 					}
-					if (this.transportationVendorCheckEdit.Checked == true)
+					if (transportationVendorCheckEdit.Checked == true)
 					{
 						report.vendorDetailXrLabel.Visible = true;
 						report.vendorHeaderXrLabel.Visible = true;
@@ -2859,7 +2604,7 @@ namespace SuperiorPackGroup
 						report.vendorHeaderXrLabel.Visible = false;
 						report.vendorDetailXrLabel.Visible = false;
 					}
-					if (this.transportationCarrierCheckEdit.Checked == true)
+					if (transportationCarrierCheckEdit.Checked == true)
 					{
 						report.carrierHeaderXrLabel.Visible = true;
 						report.carrierDetailXrLabel.Visible = true;
@@ -2874,7 +2619,7 @@ namespace SuperiorPackGroup
 						report.carrierHeaderXrLabel.Visible = false;
 						report.carrierDetailXrLabel.Visible = false;
 					}
-					if (this.transportationTrailerCheckEdit.Checked == true)
+					if (transportationTrailerCheckEdit.Checked == true)
 					{
 						report.trailerHeaderXrLabel.Visible = true;
 						report.trailerDetailXrLabel.Visible = true;
@@ -2889,7 +2634,262 @@ namespace SuperiorPackGroup
 						report.trailerHeaderXrLabel.Visible = false;
 						report.trailerDetailXrLabel.Visible = false;
 					}
-					if (this.transportationSealCheckEdit.Checked == true)
+					if (transportationSealCheckEdit.Checked == true)
+					{
+						report.sealHeaderXrLabel.Visible = true;
+						report.sealDetailXrLabel.Visible = true;
+						report.sealDetailXrLabel.Left = left;
+						report.sealHeaderXrLabel.Left = left;
+						report.sealDetailXrLabel.Width += additionalWidth;
+						report.sealHeaderXrLabel.Width += additionalWidth;
+						left += report.sealDetailXrLabel.Width;
+					}
+					else
+					{
+						report.sealHeaderXrLabel.Visible = false;
+						report.sealDetailXrLabel.Visible = false;
+					}
+					report.printDateXrPageInfo.Left = left - 185;
+					report.reportCriteriaXrLabel.Width = left - 190;
+					report.reportTitleXrLabel.Width = left;
+					report.headerXrPanel.Width = left;
+					report.footerXrPanel.Width = left;
+					report.pageNumberXrPageInfo.Left = left - 100;
+					break;
+				}
+				case "ReceivingXtraReport":
+				{
+					TransportationXtraReport report = (TransportationXtraReport)m_Report;
+					if (transportationDateCheckEdit.Checked == true)
+					{
+						report.dateDetailXrLabel.Visible = true;
+						report.dateHeaderXrLabel.Visible = true;
+						report.dateHeaderXrLabel.Left = left;
+						report.dateDetailXrLabel.Left = left;
+						report.dateHeaderXrLabel.Width += additionalWidth;
+						report.dateDetailXrLabel.Width += additionalWidth;
+						left += report.dateDetailXrLabel.Width;
+					}
+					else
+					{
+						report.dateHeaderXrLabel.Visible = false;
+						report.dateDetailXrLabel.Visible = false;
+					}
+					if (transportationShiftCheckEdit.Checked == true)
+					{
+						report.shiftHeaderXrLabel.Visible = true;
+						report.shiftDetailXrLabel.Visible = true;
+						report.shiftHeaderXrLabel.Left = left;
+						report.shiftDetailXrLabel.Left = left;
+						report.shiftDetailXrLabel.Width += additionalWidth;
+						report.shiftHeaderXrLabel.Width += additionalWidth;
+						left += report.shiftDetailXrLabel.Width;
+					}
+					else
+					{
+						report.shiftHeaderXrLabel.Visible = false;
+						report.shiftDetailXrLabel.Visible = false;
+					}
+					if (transportationCustomerCheckEdit.Checked == true)
+					{
+						report.customerNameHeaderXrLabel.Visible = true;
+						report.customerNameDetailXrLabel.Visible = true;
+						report.customerNameHeaderXrLabel.Left = left;
+						report.customerNameDetailXrLabel.Left = left;
+						report.customerNameDetailXrLabel.Width += additionalWidth;
+						report.customerNameHeaderXrLabel.Width += additionalWidth;
+						left += report.customerNameDetailXrLabel.Width;
+					}
+					else
+					{
+						report.customerNameHeaderXrLabel.Visible = false;
+						report.customerNameDetailXrLabel.Visible = false;
+					}
+					if (transportationBolCheckEdit.Checked == true)
+					{
+						report.bolHeaderXrLabel.Visible = true;
+						report.bolDetailXrLabel.Visible = true;
+						report.bolDetailXrLabel.Left = left;
+						report.bolHeaderXrLabel.Left = left;
+						report.bolDetailXrLabel.Width += additionalWidth;
+						report.bolHeaderXrLabel.Width += additionalWidth;
+						left += report.bolDetailXrLabel.Width;
+					}
+					else
+					{
+						report.bolHeaderXrLabel.Visible = false;
+						report.bolDetailXrLabel.Visible = false;
+					}
+					if (transportationPOCheckEdit.Checked == true)
+					{
+						report.poHeaderXrLabel.Visible = true;
+						report.poDetailXrLabel.Visible = true;
+						report.poHeaderXrLabel.Left = left;
+						report.poDetailXrLabel.Left = left;
+						report.poDetailXrLabel.Width += additionalWidth;
+						report.poHeaderXrLabel.Width += additionalWidth;
+						left += report.poDetailXrLabel.Width;
+					}
+					else
+					{
+						report.poHeaderXrLabel.Visible = false;
+						report.poDetailXrLabel.Visible = false;
+					}
+					if (transportationDeliveryNoteCheckEdit.Checked == true)
+					{
+						report.deliveryNoteNumberHeaderXrLabel.Visible = true;
+						report.deliveryNoteNumberDetailXrLabel.Visible = true;
+						report.deliveryNoteNumberHeaderXrLabel.Left = left;
+						report.deliveryNoteNumberDetailXrLabel.Left = left;
+						report.deliveryNoteNumberDetailXrLabel.Width += additionalWidth;
+						report.deliveryNoteNumberHeaderXrLabel.Width += additionalWidth;
+						left += report.deliveryNoteNumberDetailXrLabel.Width;
+					}
+					else
+					{
+						report.deliveryNoteNumberHeaderXrLabel.Visible = false;
+						report.deliveryNoteNumberDetailXrLabel.Visible = false;
+					}
+					if (transportationDestinationCheckEdit.Checked == true)
+					{
+						report.destinationHeaderXrLabel.Visible = true;
+						report.destinationDetailXrLabel.Visible = true;
+						report.destinationHeaderXrLabel.Left = left;
+						report.destinationDetailXrLabel.Left = left;
+						report.destinationDetailXrLabel.Width += additionalWidth;
+						report.destinationHeaderXrLabel.Width += additionalWidth;
+						left += report.destinationDetailXrLabel.Width;
+					}
+					else
+					{
+						report.destinationHeaderXrLabel.Visible = false;
+						report.destinationDetailXrLabel.Visible = false;
+					}
+					if (transportationItemCheckEdit.Checked == true)
+					{
+						report.itemCodeHeaderXrLabel.Visible = true;
+						report.itemCodeDetailXrLabel.Visible = true;
+						report.itemCodeHeaderXrLabel.Left = left;
+						report.itemCodeDetailXrLabel.Left = left;
+						report.itemCodeDetailXrLabel.Width += additionalWidth;
+						report.itemCodeHeaderXrLabel.Width += additionalWidth;
+						left += report.itemCodeDetailXrLabel.Width;
+					}
+					else
+					{
+						report.itemCodeHeaderXrLabel.Visible = false;
+						report.itemCodeDetailXrLabel.Visible = false;
+					}
+					if (transportationItemDescriptionCheckEdit.Checked == true)
+					{
+						report.itemDescriptionHeaderXrLabel.Visible = true;
+						report.itemDescriptionDetailXrLabel.Visible = true;
+						report.itemDescriptionHeaderXrLabel.Left = left;
+						report.itemDescriptionDetailXrLabel.Left = left;
+						report.itemDescriptionDetailXrLabel.Width += additionalWidth;
+						report.itemDescriptionHeaderXrLabel.Width += additionalWidth;
+						left += report.itemDescriptionDetailXrLabel.Width;
+					}
+					else
+					{
+						report.itemDescriptionHeaderXrLabel.Visible = false;
+						report.itemDescriptionDetailXrLabel.Visible = false;
+					}
+					if (transportationLotCheckEdit.Checked == true)
+					{
+						report.lotHeadeerXrLabel.Visible = true;
+						report.lotDetailXrLabel.Visible = true;
+						report.lotHeadeerXrLabel.Left = left;
+						report.lotDetailXrLabel.Left = left;
+						report.lotDetailXrLabel.Width += additionalWidth;
+						report.lotHeadeerXrLabel.Width += additionalWidth;
+						left += report.lotDetailXrLabel.Width;
+					}
+					else
+					{
+						report.lotHeadeerXrLabel.Visible = false;
+						report.lotDetailXrLabel.Visible = false;
+					}
+					if (transportationExpirationDateCheckEdit.Checked == true)
+					{
+						report.expirationDateHeaderXrLabel.Visible = true;
+						report.expirationDateDetailXrLabel.Visible = true;
+						report.expirationDateHeaderXrLabel.Left = left;
+						report.expirationDateDetailXrLabel.Left = left;
+						report.expirationDateHeaderXrLabel.Width += additionalWidth;
+						report.expirationDateDetailXrLabel.Width += additionalWidth;
+						left += report.expirationDateDetailXrLabel.Width;
+					}
+					else
+					{
+						report.expirationDateHeaderXrLabel.Visible = false;
+						report.expirationDateDetailXrLabel.Visible = false;
+					}
+					if (transportationQuantityCheckEdit.Checked == true)
+					{
+						report.quantityHeaderXrLabel.Visible = true;
+						report.quantityDetailXrLabel.Visible = true;
+						report.quantityFooterXrLabel.Visible = true;
+						report.quantityHeaderXrLabel.Left = left;
+						report.quantityDetailXrLabel.Left = left;
+						report.quantityFooterXrLabel.Left = left;
+						report.quantityDetailXrLabel.Width += additionalWidth;
+						report.quantityFooterXrLabel.Width += additionalWidth;
+						report.quantityHeaderXrLabel.Width += additionalWidth;
+						left += report.quantityDetailXrLabel.Width;
+					}
+					else
+					{
+						report.quantityHeaderXrLabel.Visible = false;
+						report.quantityDetailXrLabel.Visible = false;
+						report.quantityFooterXrLabel.Visible = false;
+					}
+					if (transportationVendorCheckEdit.Checked == true)
+					{
+						report.vendorDetailXrLabel.Visible = true;
+						report.vendorHeaderXrLabel.Visible = true;
+						report.vendorHeaderXrLabel.Left = left;
+						report.vendorDetailXrLabel.Left = left;
+						report.vendorHeaderXrLabel.Width += additionalWidth;
+						report.vendorDetailXrLabel.Width += additionalWidth;
+						left += report.vendorDetailXrLabel.Width;
+					}
+					else
+					{
+						report.vendorHeaderXrLabel.Visible = false;
+						report.vendorDetailXrLabel.Visible = false;
+					}
+					if (transportationCarrierCheckEdit.Checked == true)
+					{
+						report.carrierHeaderXrLabel.Visible = true;
+						report.carrierDetailXrLabel.Visible = true;
+						report.carrierHeaderXrLabel.Left = left;
+						report.carrierDetailXrLabel.Left = left;
+						report.carrierDetailXrLabel.Width += additionalWidth;
+						report.carrierHeaderXrLabel.Width += additionalWidth;
+						left += report.carrierDetailXrLabel.Width;
+					}
+					else
+					{
+						report.carrierHeaderXrLabel.Visible = false;
+						report.carrierDetailXrLabel.Visible = false;
+					}
+					if (transportationTrailerCheckEdit.Checked == true)
+					{
+						report.trailerHeaderXrLabel.Visible = true;
+						report.trailerDetailXrLabel.Visible = true;
+						report.trailerHeaderXrLabel.Left = left;
+						report.trailerDetailXrLabel.Left = left;
+						report.trailerDetailXrLabel.Width += additionalWidth;
+						report.trailerHeaderXrLabel.Width += additionalWidth;
+						left += report.trailerDetailXrLabel.Width;
+					}
+					else
+					{
+						report.trailerHeaderXrLabel.Visible = false;
+						report.trailerDetailXrLabel.Visible = false;
+					}
+					if (transportationSealCheckEdit.Checked == true)
 					{
 						report.sealHeaderXrLabel.Visible = true;
 						report.sealDetailXrLabel.Visible = true;
@@ -2915,7 +2915,7 @@ namespace SuperiorPackGroup
 				case "ReceivingReturnsXtraReport":
 				{
 					TransportationXtraReport report = (TransportationXtraReport)m_Report;
-					if (this.transportationDateCheckEdit.Checked == true)
+					if (transportationDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -2930,7 +2930,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.transportationShiftCheckEdit.Checked == true)
+					if (transportationShiftCheckEdit.Checked == true)
 					{
 						report.shiftHeaderXrLabel.Visible = true;
 						report.shiftDetailXrLabel.Visible = true;
@@ -2945,7 +2945,7 @@ namespace SuperiorPackGroup
 						report.shiftHeaderXrLabel.Visible = false;
 						report.shiftDetailXrLabel.Visible = false;
 					}
-					if (this.transportationCustomerCheckEdit.Checked == true)
+					if (transportationCustomerCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -2960,7 +2960,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.transportationBolCheckEdit.Checked == true)
+					if (transportationBolCheckEdit.Checked == true)
 					{
 						report.bolHeaderXrLabel.Visible = true;
 						report.bolDetailXrLabel.Visible = true;
@@ -2975,7 +2975,7 @@ namespace SuperiorPackGroup
 						report.bolHeaderXrLabel.Visible = false;
 						report.bolDetailXrLabel.Visible = false;
 					}
-					if (this.transportationPOCheckEdit.Checked == true)
+					if (transportationPOCheckEdit.Checked == true)
 					{
 						report.poHeaderXrLabel.Visible = true;
 						report.poDetailXrLabel.Visible = true;
@@ -2990,7 +2990,7 @@ namespace SuperiorPackGroup
 						report.poHeaderXrLabel.Visible = false;
 						report.poDetailXrLabel.Visible = false;
 					}
-					if (this.transportationDeliveryNoteCheckEdit.Checked == true)
+					if (transportationDeliveryNoteCheckEdit.Checked == true)
 					{
 						report.deliveryNoteNumberHeaderXrLabel.Visible = true;
 						report.deliveryNoteNumberDetailXrLabel.Visible = true;
@@ -3005,7 +3005,7 @@ namespace SuperiorPackGroup
 						report.deliveryNoteNumberHeaderXrLabel.Visible = false;
 						report.deliveryNoteNumberDetailXrLabel.Visible = false;
 					}
-					if (this.transportationDestinationCheckEdit.Checked == true)
+					if (transportationDestinationCheckEdit.Checked == true)
 					{
 						report.destinationHeaderXrLabel.Visible = true;
 						report.destinationDetailXrLabel.Visible = true;
@@ -3020,7 +3020,7 @@ namespace SuperiorPackGroup
 						report.destinationHeaderXrLabel.Visible = false;
 						report.destinationDetailXrLabel.Visible = false;
 					}
-					if (this.transportationItemCheckEdit.Checked == true)
+					if (transportationItemCheckEdit.Checked == true)
 					{
 						report.itemCodeHeaderXrLabel.Visible = true;
 						report.itemCodeDetailXrLabel.Visible = true;
@@ -3035,7 +3035,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.transportationItemDescriptionCheckEdit.Checked == true)
+					if (transportationItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -3050,7 +3050,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.transportationLotCheckEdit.Checked == true)
+					if (transportationLotCheckEdit.Checked == true)
 					{
 						report.lotHeadeerXrLabel.Visible = true;
 						report.lotDetailXrLabel.Visible = true;
@@ -3080,7 +3080,7 @@ namespace SuperiorPackGroup
 						report.expirationDateHeaderXrLabel.Visible = false;
 						report.expirationDateDetailXrLabel.Visible = false;
 					}
-					if (this.transportationQuantityCheckEdit.Checked == true)
+					if (transportationQuantityCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.quantityDetailXrLabel.Visible = true;
@@ -3099,7 +3099,7 @@ namespace SuperiorPackGroup
 						report.quantityDetailXrLabel.Visible = false;
 						report.quantityFooterXrLabel.Visible = false;
 					}
-					if (this.transportationVendorCheckEdit.Checked == true)
+					if (transportationVendorCheckEdit.Checked == true)
 					{
 						report.vendorDetailXrLabel.Visible = true;
 						report.vendorHeaderXrLabel.Visible = true;
@@ -3114,7 +3114,7 @@ namespace SuperiorPackGroup
 						report.vendorHeaderXrLabel.Visible = false;
 						report.vendorDetailXrLabel.Visible = false;
 					}
-					if (this.transportationCarrierCheckEdit.Checked == true)
+					if (transportationCarrierCheckEdit.Checked == true)
 					{
 						report.carrierHeaderXrLabel.Visible = true;
 						report.carrierDetailXrLabel.Visible = true;
@@ -3129,7 +3129,7 @@ namespace SuperiorPackGroup
 						report.carrierHeaderXrLabel.Visible = false;
 						report.carrierDetailXrLabel.Visible = false;
 					}
-					if (this.transportationTrailerCheckEdit.Checked == true)
+					if (transportationTrailerCheckEdit.Checked == true)
 					{
 						report.trailerHeaderXrLabel.Visible = true;
 						report.trailerDetailXrLabel.Visible = true;
@@ -3144,7 +3144,7 @@ namespace SuperiorPackGroup
 						report.trailerHeaderXrLabel.Visible = false;
 						report.trailerDetailXrLabel.Visible = false;
 					}
-					if (this.transportationSealCheckEdit.Checked == true)
+					if (transportationSealCheckEdit.Checked == true)
 					{
 						report.sealHeaderXrLabel.Visible = true;
 						report.sealDetailXrLabel.Visible = true;
@@ -3170,7 +3170,7 @@ namespace SuperiorPackGroup
 				case "InventoryAdjustmentXtraReport":
 				{
 					InventoryXtraReport report = (InventoryXtraReport)m_Report;
-					if (this.inventoryDateCheckEdit.Checked == true)
+					if (inventoryDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -3185,7 +3185,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryCustomerCheckEdit.Checked == true)
+					if (inventoryCustomerCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -3200,7 +3200,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemCheckEdit.Checked == true)
+					if (inventoryItemCheckEdit.Checked == true)
 					{
 						report.itemCodeDetailXrLabel.Visible = true;
 						report.itemCodeHeaderXrLabel.Visible = true;
@@ -3215,7 +3215,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryAdjustmentCheckEdit.Checked == true)
+					if (inventoryAdjustmentCheckEdit.Checked == true)
 					{
 						report.quantityDetailXrLabel.Visible = true;
 						report.quantityHeaderXrLabel.Visible = true;
@@ -3230,7 +3230,7 @@ namespace SuperiorPackGroup
 						report.quantityHeaderXrLabel.Visible = false;
 						report.quantityDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryAdjustmentReasonCheckEdit.Checked == true)
+					if (inventoryAdjustmentReasonCheckEdit.Checked == true)
 					{
 						report.reasonHeaderXrLabel.Visible = true;
 						report.reasonDetailXrLabel.Visible = true;
@@ -3245,7 +3245,7 @@ namespace SuperiorPackGroup
 						report.reasonHeaderXrLabel.Visible = false;
 						report.reasonDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryInventoryByPalletCheckEdit.Checked == true)
+					if (inventoryInventoryByPalletCheckEdit.Checked == true)
 					{
 						report.byPalletDetailXrLabel.Visible = true;
 						report.byPalletHeaderXrLabel.Visible = true;
@@ -3260,7 +3260,7 @@ namespace SuperiorPackGroup
 						report.byPalletHeaderXrLabel.Visible = false;
 						report.byPalletDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemDescriptionCheckEdit.Checked == true)
+					if (inventoryItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -3275,7 +3275,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemTypeCheckEdit.Checked == true)
+					if (inventoryItemTypeCheckEdit.Checked == true)
 					{
 						report.itemTypeHeaderXrLabel.Visible = true;
 						report.itemTypeDetailXrLabel.Visible = true;
@@ -3290,7 +3290,7 @@ namespace SuperiorPackGroup
 						report.itemTypeHeaderXrLabel.Visible = false;
 						report.itemTypeDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemCodeCheckEdit.Checked == true)
+					if (RMItemCodeCheckEdit.Checked == true)
 					{
 						report.lowestRMItemCodeXrLabel.Visible = true;
 						report.RMitemCodeDetailXrLabel.Visible = true;
@@ -3305,7 +3305,7 @@ namespace SuperiorPackGroup
 						report.lowestRMItemCodeXrLabel.Visible = false;
 						report.RMitemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemDescriptionCheckEdit.Checked == true)
+					if (RMItemDescriptionCheckEdit.Checked == true)
 					{
 						report.lowestRMDescriptionXrLabel.Visible = true;
 						report.RMitemDescriptionDetailXrLabel.Visible = true;
@@ -3320,7 +3320,7 @@ namespace SuperiorPackGroup
 						report.lowestRMDescriptionXrLabel.Visible = false;
 						report.RMitemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.UOMCheckEdit.Checked)
+					if (UOMCheckEdit.Checked)
 					{
 						report.UOMHeaderXrLabel.Visible = true;
 						report.UOMDetailXrLabel.Visible = true;
@@ -3345,7 +3345,7 @@ namespace SuperiorPackGroup
 				case "PhysicalInventoryXtraReport":
 				{
 					InventoryXtraReport report = (InventoryXtraReport)m_Report;
-					if (this.inventoryDateCheckEdit.Checked == true)
+					if (inventoryDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -3360,7 +3360,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryCustomerCheckEdit.Checked == true)
+					if (inventoryCustomerCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -3375,7 +3375,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemCheckEdit.Checked == true)
+					if (inventoryItemCheckEdit.Checked == true)
 					{
 						report.itemCodeDetailXrLabel.Visible = true;
 						report.itemCodeHeaderXrLabel.Visible = true;
@@ -3390,7 +3390,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemDescriptionCheckEdit.Checked == true)
+					if (inventoryItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -3405,7 +3405,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemTypeCheckEdit.Checked == true)
+					if (inventoryItemTypeCheckEdit.Checked == true)
 					{
 						report.itemTypeHeaderXrLabel.Visible = true;
 						report.itemTypeDetailXrLabel.Visible = true;
@@ -3420,7 +3420,7 @@ namespace SuperiorPackGroup
 						report.itemTypeHeaderXrLabel.Visible = false;
 						report.itemTypeDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryCurrentInventoryCheckEdit.Checked == true)
+					if (inventoryCurrentInventoryCheckEdit.Checked == true)
 					{
 						report.quantityDetailXrLabel.Visible = true;
 						report.quantityHeaderXrLabel.Visible = true;
@@ -3435,7 +3435,7 @@ namespace SuperiorPackGroup
 						report.quantityHeaderXrLabel.Visible = false;
 						report.quantityDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryAdjustmentReasonCheckEdit.Checked == true)
+					if (inventoryAdjustmentReasonCheckEdit.Checked == true)
 					{
 						report.reasonHeaderXrLabel.Visible = true;
 						report.reasonDetailXrLabel.Visible = true;
@@ -3450,7 +3450,7 @@ namespace SuperiorPackGroup
 						report.reasonHeaderXrLabel.Visible = false;
 						report.reasonDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryInventoryByPalletCheckEdit.Checked == true)
+					if (inventoryInventoryByPalletCheckEdit.Checked == true)
 					{
 						report.byPalletDetailXrLabel.Visible = true;
 						report.byPalletHeaderXrLabel.Visible = true;
@@ -3465,7 +3465,7 @@ namespace SuperiorPackGroup
 						report.byPalletHeaderXrLabel.Visible = false;
 						report.byPalletDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemCodeCheckEdit.Checked == true)
+					if (RMItemCodeCheckEdit.Checked == true)
 					{
 						report.lowestRMItemCodeXrLabel.Visible = true;
 						report.RMitemCodeDetailXrLabel.Visible = true;
@@ -3480,7 +3480,7 @@ namespace SuperiorPackGroup
 						report.lowestRMItemCodeXrLabel.Visible = false;
 						report.RMitemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemDescriptionCheckEdit.Checked == true)
+					if (RMItemDescriptionCheckEdit.Checked == true)
 					{
 						report.lowestRMDescriptionXrLabel.Visible = true;
 						report.RMitemDescriptionDetailXrLabel.Visible = true;
@@ -3495,7 +3495,7 @@ namespace SuperiorPackGroup
 						report.lowestRMDescriptionXrLabel.Visible = false;
 						report.RMitemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.UOMCheckEdit.Checked)
+					if (UOMCheckEdit.Checked)
 					{
 						report.UOMHeaderXrLabel.Visible = true;
 						report.UOMDetailXrLabel.Visible = true;
@@ -3520,7 +3520,7 @@ namespace SuperiorPackGroup
 				case "CurrentInventoryXtraReport":
 				{
 					InventoryXtraReport report = (InventoryXtraReport)m_Report;
-					if (this.inventoryDateCheckEdit.Checked == true)
+					if (inventoryDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -3535,7 +3535,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryCustomerCheckEdit.Checked == true)
+					if (inventoryCustomerCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -3550,7 +3550,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemCheckEdit.Checked == true)
+					if (inventoryItemCheckEdit.Checked == true)
 					{
 						report.itemCodeDetailXrLabel.Visible = true;
 						report.itemCodeHeaderXrLabel.Visible = true;
@@ -3565,7 +3565,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemDescriptionCheckEdit.Checked == true)
+					if (inventoryItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -3580,7 +3580,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemTypeCheckEdit.Checked == true)
+					if (inventoryItemTypeCheckEdit.Checked == true)
 					{
 						report.itemTypeHeaderXrLabel.Visible = true;
 						report.itemTypeDetailXrLabel.Visible = true;
@@ -3595,7 +3595,7 @@ namespace SuperiorPackGroup
 						report.itemTypeHeaderXrLabel.Visible = false;
 						report.itemTypeDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryCurrentInventoryCheckEdit.Checked == true)
+					if (inventoryCurrentInventoryCheckEdit.Checked == true)
 					{
 						report.quantityDetailXrLabel.Visible = true;
 						report.quantityHeaderXrLabel.Visible = true;
@@ -3608,7 +3608,7 @@ namespace SuperiorPackGroup
 						report.quantityHeaderXrLabel.Visible = false;
 						report.quantityDetailXrLabel.Visible = false;
 					}
-					if (this.UOMCheckEdit.Checked)
+					if (UOMCheckEdit.Checked)
 					{
 						report.UOMHeaderXrLabel.Visible = true;
 						report.UOMDetailXrLabel.Visible = true;
@@ -3621,7 +3621,7 @@ namespace SuperiorPackGroup
 						report.UOMHeaderXrLabel.Visible = false;
 						report.UOMDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryAdjustmentReasonCheckEdit.Checked == true)
+					if (inventoryAdjustmentReasonCheckEdit.Checked == true)
 					{
 						report.reasonHeaderXrLabel.Visible = true;
 						report.reasonDetailXrLabel.Visible = true;
@@ -3636,7 +3636,7 @@ namespace SuperiorPackGroup
 						report.reasonHeaderXrLabel.Visible = false;
 						report.reasonDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryInventoryByPalletCheckEdit.Checked == true)
+					if (inventoryInventoryByPalletCheckEdit.Checked == true)
 					{
 						report.byPalletDetailXrLabel.Visible = true;
 						report.byPalletHeaderXrLabel.Visible = true;
@@ -3649,7 +3649,7 @@ namespace SuperiorPackGroup
 						report.byPalletHeaderXrLabel.Visible = false;
 						report.byPalletDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemCodeCheckEdit.Checked == true)
+					if (RMItemCodeCheckEdit.Checked == true)
 					{
 						report.lowestRMItemCodeXrLabel.Visible = true;
 						report.RMitemCodeDetailXrLabel.Visible = true;
@@ -3664,7 +3664,7 @@ namespace SuperiorPackGroup
 						report.lowestRMItemCodeXrLabel.Visible = false;
 						report.RMitemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemDescriptionCheckEdit.Checked == true)
+					if (RMItemDescriptionCheckEdit.Checked == true)
 					{
 						report.lowestRMDescriptionXrLabel.Visible = true;
 						report.RMitemDescriptionDetailXrLabel.Visible = true;
@@ -3689,7 +3689,7 @@ namespace SuperiorPackGroup
 				case "FinishedProductAvailabilityXtraReport":
 				{
 					InventoryXtraReport report = (InventoryXtraReport)m_Report;
-					if (this.inventoryDateCheckEdit.Checked == true)
+					if (inventoryDateCheckEdit.Checked == true)
 					{
 						report.dateDetailXrLabel.Visible = true;
 						report.dateHeaderXrLabel.Visible = true;
@@ -3704,7 +3704,7 @@ namespace SuperiorPackGroup
 						report.dateHeaderXrLabel.Visible = false;
 						report.dateDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryCustomerCheckEdit.Checked == true)
+					if (inventoryCustomerCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -3719,7 +3719,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemCheckEdit.Checked == true)
+					if (inventoryItemCheckEdit.Checked == true)
 					{
 						report.itemCodeDetailXrLabel.Visible = true;
 						report.itemCodeHeaderXrLabel.Visible = true;
@@ -3734,7 +3734,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemDescriptionCheckEdit.Checked == true)
+					if (inventoryItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -3749,7 +3749,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryItemTypeCheckEdit.Checked == true)
+					if (inventoryItemTypeCheckEdit.Checked == true)
 					{
 						report.itemTypeHeaderXrLabel.Visible = true;
 						report.itemTypeDetailXrLabel.Visible = true;
@@ -3764,7 +3764,7 @@ namespace SuperiorPackGroup
 						report.itemTypeHeaderXrLabel.Visible = false;
 						report.itemTypeDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryAvailabilityCheckEdit.Checked == true)
+					if (inventoryAvailabilityCheckEdit.Checked == true)
 					{
 						report.quantityDetailXrLabel.Visible = true;
 						report.quantityHeaderXrLabel.Visible = true;
@@ -3779,7 +3779,7 @@ namespace SuperiorPackGroup
 						report.quantityHeaderXrLabel.Visible = false;
 						report.quantityDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryAdjustmentReasonCheckEdit.Checked == true)
+					if (inventoryAdjustmentReasonCheckEdit.Checked == true)
 					{
 						report.reasonHeaderXrLabel.Visible = true;
 						report.reasonDetailXrLabel.Visible = true;
@@ -3794,7 +3794,7 @@ namespace SuperiorPackGroup
 						report.reasonHeaderXrLabel.Visible = false;
 						report.reasonDetailXrLabel.Visible = false;
 					}
-					if (this.inventoryPalletAvailabilityCheckEdit.Checked == true)
+					if (inventoryPalletAvailabilityCheckEdit.Checked == true)
 					{
 						report.byPalletDetailXrLabel.Visible = true;
 						report.byPalletHeaderXrLabel.Visible = true;
@@ -3809,7 +3809,7 @@ namespace SuperiorPackGroup
 						report.byPalletHeaderXrLabel.Visible = false;
 						report.byPalletDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemCodeCheckEdit.Checked == true)
+					if (RMItemCodeCheckEdit.Checked == true)
 					{
 						report.lowestRMItemCodeXrLabel.Visible = true;
 						report.RMitemCodeDetailXrLabel.Visible = true;
@@ -3824,7 +3824,7 @@ namespace SuperiorPackGroup
 						report.lowestRMItemCodeXrLabel.Visible = false;
 						report.RMitemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.RMItemDescriptionCheckEdit.Checked == true)
+					if (RMItemDescriptionCheckEdit.Checked == true)
 					{
 						report.lowestRMDescriptionXrLabel.Visible = true;
 						report.RMitemDescriptionDetailXrLabel.Visible = true;
@@ -3839,7 +3839,7 @@ namespace SuperiorPackGroup
 						report.lowestRMDescriptionXrLabel.Visible = false;
 						report.RMitemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.UOMCheckEdit.Checked)
+					if (UOMCheckEdit.Checked)
 					{
 						report.UOMHeaderXrLabel.Visible = true;
 						report.UOMDetailXrLabel.Visible = true;
@@ -3864,7 +3864,7 @@ namespace SuperiorPackGroup
 				case "ItemsListXtraReport":
 				{
 					ItemsXtraReport report = (ItemsXtraReport)m_Report;
-					if (this.itemsCustomerCheckEdit.Checked == true)
+					if (itemsCustomerCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -3879,7 +3879,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.itemsItemCheckEdit.Checked == true)
+					if (itemsItemCheckEdit.Checked == true)
 					{
 						report.itemCodeHeaderXrLabel.Visible = true;
 						report.itemCodeDetailXrLabel.Visible = true;
@@ -3894,7 +3894,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.itemsItemDescriptionCheckEdit.Checked == true)
+					if (itemsItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -3909,7 +3909,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.itemsItemTypeCheckEdit.Checked == true)
+					if (itemsItemTypeCheckEdit.Checked == true)
 					{
 						report.itemTypeDetailXrLabel.Visible = true;
 						report.itemTypeHeaderXrLabel.Visible = true;
@@ -3924,7 +3924,7 @@ namespace SuperiorPackGroup
 						report.itemTypeHeaderXrLabel.Visible = false;
 						report.itemTypeDetailXrLabel.Visible = false;
 					}
-					if (this.itemsUnitsOfMeasureCheckEdit.Checked == true)
+					if (itemsUnitsOfMeasureCheckEdit.Checked == true)
 					{
 						report.uomHeaderXrLabel.Visible = true;
 						report.uomDetailXrLabel.Visible = true;
@@ -3937,7 +3937,7 @@ namespace SuperiorPackGroup
 						report.uomHeaderXrLabel.Visible = false;
 						report.uomDetailXrLabel.Visible = false;
 					}
-					if (this.itemsQtyPerUnitCheckEdit.Checked == true)
+					if (itemsQtyPerUnitCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.quantityDetailXrLabel.Visible = true;
@@ -3950,7 +3950,7 @@ namespace SuperiorPackGroup
 						report.quantityHeaderXrLabel.Visible = false;
 						report.quantityDetailXrLabel.Visible = false;
 					}
-					if (this.itemsUnitsPerCaseCheckEdit.Checked == true)
+					if (itemsUnitsPerCaseCheckEdit.Checked == true)
 					{
 						report.unitsPerCaseHeaderXrLabel.Visible = true;
 						report.unitsPerCaseDetailXrLabel.Visible = true;
@@ -3963,7 +3963,7 @@ namespace SuperiorPackGroup
 						report.unitsPerCaseHeaderXrLabel.Visible = false;
 						report.unitsPerCaseDetailXrLabel.Visible = false;
 					}
-					if (this.itemsProducedCheckEdit.Checked == true)
+					if (itemsProducedCheckEdit.Checked == true)
 					{
 						report.producedHeaderXrLabel.Visible = true;
 						report.producedDetailXrLabel.Visible = true;
@@ -3979,7 +3979,7 @@ namespace SuperiorPackGroup
 						report.producedDetailXrLabel.Visible = false;
 						report.producedFooterXrLabel.Visible = false;
 					}
-					if (this.itemsShippedCheckEdit.Checked == true)
+					if (itemsShippedCheckEdit.Checked == true)
 					{
 						report.shippedHeaderXrLabel.Visible = true;
 						report.shippedDetailXrLabel.Visible = true;
@@ -3995,7 +3995,7 @@ namespace SuperiorPackGroup
 						report.shippedDetailXrLabel.Visible = false;
 						report.shippedFooterXrLabel.Visible = false;
 					}
-					if (this.itemsReceivedCheckEdit.Checked == true)
+					if (itemsReceivedCheckEdit.Checked == true)
 					{
 						report.receivedHeaderXrLabel.Visible = true;
 						report.receivedDetailXrLabel.Visible = true;
@@ -4011,7 +4011,7 @@ namespace SuperiorPackGroup
 						report.receivedDetailXrLabel.Visible = false;
 						report.receivedFooterXrLabel.Visible = false;
 					}
-					if (this.itemsCasesPerPalletCheckEdit.Checked == true)
+					if (itemsCasesPerPalletCheckEdit.Checked == true)
 					{
 						report.casesPerPalletHeadeerXrLabel.Visible = true;
 						report.casesPerPalletDetailXrLabel.Visible = true;
@@ -4024,7 +4024,7 @@ namespace SuperiorPackGroup
 						report.casesPerPalletHeadeerXrLabel.Visible = false;
 						report.casesPerPalletDetailXrLabel.Visible = false;
 					}
-					if (this.itemsAdjustedCheckEdit.Checked == true)
+					if (itemsAdjustedCheckEdit.Checked == true)
 					{
 						report.adjustedDetailXrLabel.Visible = true;
 						report.AdjustedHeaderXrLabel.Visible = true;
@@ -4040,7 +4040,7 @@ namespace SuperiorPackGroup
 						report.adjustedDetailXrLabel.Visible = false;
 						report.adjustedFooterXrLabel.Visible = false;
 					}
-					if (this.itemUsedInProductionCheckEdit.Checked == true)
+					if (itemUsedInProductionCheckEdit.Checked == true)
 					{
 						report.usedInProductionDetailXrLabel.Visible = true;
 						report.usedInProductionHeaderXrLabel.Visible = true;
@@ -4067,7 +4067,7 @@ namespace SuperiorPackGroup
 				case "ItemTransactionSummaryXtraReport":
 				{
 					ItemsXtraReport report = (ItemsXtraReport)m_Report;
-					if (this.itemsCustomerCheckEdit.Checked == true)
+					if (itemsCustomerCheckEdit.Checked == true)
 					{
 						report.customerNameHeaderXrLabel.Visible = true;
 						report.customerNameDetailXrLabel.Visible = true;
@@ -4082,7 +4082,7 @@ namespace SuperiorPackGroup
 						report.customerNameHeaderXrLabel.Visible = false;
 						report.customerNameDetailXrLabel.Visible = false;
 					}
-					if (this.itemsItemCheckEdit.Checked == true)
+					if (itemsItemCheckEdit.Checked == true)
 					{
 						report.itemCodeHeaderXrLabel.Visible = true;
 						report.itemCodeDetailXrLabel.Visible = true;
@@ -4097,7 +4097,7 @@ namespace SuperiorPackGroup
 						report.itemCodeHeaderXrLabel.Visible = false;
 						report.itemCodeDetailXrLabel.Visible = false;
 					}
-					if (this.itemsItemDescriptionCheckEdit.Checked == true)
+					if (itemsItemDescriptionCheckEdit.Checked == true)
 					{
 						report.itemDescriptionHeaderXrLabel.Visible = true;
 						report.itemDescriptionDetailXrLabel.Visible = true;
@@ -4112,7 +4112,7 @@ namespace SuperiorPackGroup
 						report.itemDescriptionHeaderXrLabel.Visible = false;
 						report.itemDescriptionDetailXrLabel.Visible = false;
 					}
-					if (this.itemsItemTypeCheckEdit.Checked == true)
+					if (itemsItemTypeCheckEdit.Checked == true)
 					{
 						report.itemTypeDetailXrLabel.Visible = true;
 						report.itemTypeHeaderXrLabel.Visible = true;
@@ -4127,7 +4127,7 @@ namespace SuperiorPackGroup
 						report.itemTypeHeaderXrLabel.Visible = false;
 						report.itemTypeDetailXrLabel.Visible = false;
 					}
-					if (this.itemsUnitsOfMeasureCheckEdit.Checked == true)
+					if (itemsUnitsOfMeasureCheckEdit.Checked == true)
 					{
 						report.uomHeaderXrLabel.Visible = true;
 						report.uomDetailXrLabel.Visible = true;
@@ -4140,7 +4140,7 @@ namespace SuperiorPackGroup
 						report.uomHeaderXrLabel.Visible = false;
 						report.uomDetailXrLabel.Visible = false;
 					}
-					if (this.itemsQtyPerUnitCheckEdit.Checked == true)
+					if (itemsQtyPerUnitCheckEdit.Checked == true)
 					{
 						report.quantityHeaderXrLabel.Visible = true;
 						report.quantityDetailXrLabel.Visible = true;
@@ -4153,7 +4153,7 @@ namespace SuperiorPackGroup
 						report.quantityHeaderXrLabel.Visible = false;
 						report.quantityDetailXrLabel.Visible = false;
 					}
-					if (this.itemsUnitsPerCaseCheckEdit.Checked == true)
+					if (itemsUnitsPerCaseCheckEdit.Checked == true)
 					{
 						report.unitsPerCaseHeaderXrLabel.Visible = true;
 						report.unitsPerCaseDetailXrLabel.Visible = true;
@@ -4166,7 +4166,7 @@ namespace SuperiorPackGroup
 						report.unitsPerCaseHeaderXrLabel.Visible = false;
 						report.unitsPerCaseDetailXrLabel.Visible = false;
 					}
-					if (this.itemsProducedCheckEdit.Checked == true)
+					if (itemsProducedCheckEdit.Checked == true)
 					{
 						report.producedHeaderXrLabel.Visible = true;
 						report.producedDetailXrLabel.Visible = true;
@@ -4182,7 +4182,7 @@ namespace SuperiorPackGroup
 						report.producedDetailXrLabel.Visible = false;
 						report.producedFooterXrLabel.Visible = false;
 					}
-					if (this.itemUsedInProductionCheckEdit.Checked == true)
+					if (itemUsedInProductionCheckEdit.Checked == true)
 					{
 						report.usedInProductionDetailXrLabel.Visible = true;
 						report.usedInProductionHeaderXrLabel.Visible = true;
@@ -4198,7 +4198,7 @@ namespace SuperiorPackGroup
 						report.usedInProductionHeaderXrLabel.Visible = false;
 						report.usedInProductionFooterXrLabel.Visible = false;
 					}
-					if (this.itemsShippedCheckEdit.Checked == true)
+					if (itemsShippedCheckEdit.Checked == true)
 					{
 						report.shippedHeaderXrLabel.Visible = true;
 						report.shippedDetailXrLabel.Visible = true;
@@ -4214,7 +4214,7 @@ namespace SuperiorPackGroup
 						report.shippedDetailXrLabel.Visible = false;
 						report.shippedFooterXrLabel.Visible = false;
 					}
-					if (this.itemsReceivedCheckEdit.Checked == true)
+					if (itemsReceivedCheckEdit.Checked == true)
 					{
 						report.receivedHeaderXrLabel.Visible = true;
 						report.receivedDetailXrLabel.Visible = true;
@@ -4230,7 +4230,7 @@ namespace SuperiorPackGroup
 						report.receivedDetailXrLabel.Visible = false;
 						report.receivedFooterXrLabel.Visible = false;
 					}
-					if (this.itemsCasesPerPalletCheckEdit.Checked == true)
+					if (itemsCasesPerPalletCheckEdit.Checked == true)
 					{
 						report.casesPerPalletHeadeerXrLabel.Visible = true;
 						report.casesPerPalletDetailXrLabel.Visible = true;
@@ -4243,7 +4243,7 @@ namespace SuperiorPackGroup
 						report.casesPerPalletHeadeerXrLabel.Visible = false;
 						report.casesPerPalletDetailXrLabel.Visible = false;
 					}
-					if (this.itemsAdjustedCheckEdit.Checked == true)
+					if (itemsAdjustedCheckEdit.Checked == true)
 					{
 						report.adjustedDetailXrLabel.Visible = true;
 						report.AdjustedHeaderXrLabel.Visible = true;
@@ -4273,7 +4273,7 @@ namespace SuperiorPackGroup
 					left = 240;
 					report.totalsXRLabel.Width = 600;
 					report.totalOverShippedXRLabel.Width = 600;
-					if (this.ptVendorCheckEdit.Checked == true)
+					if (ptVendorCheckEdit.Checked == true)
 					{
 						report.vendorHeaderXrLabel.Visible = true;
 						report.vendorDetailXrLabel.Visible = true;
@@ -4288,7 +4288,7 @@ namespace SuperiorPackGroup
 						report.totalsXRLabel.Width -= report.vendorDetailXrLabel.Width;
 						report.totalOverShippedXRLabel.Width -= report.vendorDetailXrLabel.Width;
 					}
-					if (this.ptDestinationCheckEdit.Checked == true)
+					if (ptDestinationCheckEdit.Checked == true)
 					{
 						report.destinationHeaderXrLabel.Visible = true;
 						report.destinationDetailXrLabel.Visible = true;
@@ -4308,7 +4308,7 @@ namespace SuperiorPackGroup
 					left += report.bolDetailXrLabel.Width;
 					report.xRLOverShippedTotal.Left = left;
 					report.xRLOverShippedTotal.Width = 200;
-					if (this.ptReceivedCheckEdit.Checked == true)
+					if (ptReceivedCheckEdit.Checked == true)
 					{
 						report.recieveHeaderXrLabel.Visible = true;
 						report.receivedDetailXrLabel.Visible = true;
@@ -4325,7 +4325,7 @@ namespace SuperiorPackGroup
 						report.receivedTotalXRLabel.Visible = false;
 						report.xRLOverShippedTotal.Width -= report.receivedDetailXrLabel.Width;
 					}
-					if (this.ptShippedCheckEdit.Checked == true)
+					if (ptShippedCheckEdit.Checked == true)
 					{
 						report.shippedHeadeerXrLabel.Visible = true;
 						report.shippedDetailXrLabel.Visible = true;
@@ -4374,25 +4374,25 @@ namespace SuperiorPackGroup
 					report.machineLineDetailXrLabel.DataBindings.Add("Text", m_Production, "MachineLine");
 					report.packersDetailXrLabel.DataBindings.Add("Text", m_Production, "ProdMainPackers");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ProductionSummaryXtraReport":
 				{
 					ProductionSummaryXtraReport report = (ProductionSummaryXtraReport)m_Report;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ProductionMachineXtraReport":
 				{
 					ProductionMachineXtraReport report = (ProductionMachineXtraReport)m_Report;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ProductionShiftXtraReport":
 				{
 					ProductionShiftXtraReport report = (ProductionShiftXtraReport)m_Report;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ProductionEntriesXtraReport":
@@ -4407,7 +4407,7 @@ namespace SuperiorPackGroup
 					report.quantityFooterXrLabel.DataBindings.Add("Text", m_Production, "InventoryQuantity");
 					report.poDetailXrLabel.DataBindings.Add("Text", m_Production, "PO");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "CostingXtraReport":
@@ -4448,7 +4448,7 @@ namespace SuperiorPackGroup
 					report.boxesFooterXrLabel.DataBindings.Add("Text", m_Production, "Boxes", "{0:$0.00}");
 					report.stretchWrapFooterXrLabel.DataBindings.Add("Text", m_Production, "StretchWrap", "{0:$0.00}");
 					report.palletsFooterXrLabel.DataBindings.Add("Text", m_Production, "Pallets", "{0:$0.00}");
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ShippingXtraReport":
@@ -4473,7 +4473,7 @@ namespace SuperiorPackGroup
 					report.trailerDetailXrLabel.DataBindings.Add("Text", null, "strTrailer");
 					report.sealDetailXrLabel.DataBindings.Add("Text", null, "strSeal");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ShippingReturnsXtraReport":
@@ -4497,7 +4497,7 @@ namespace SuperiorPackGroup
 					report.trailerDetailXrLabel.DataBindings.Add("Text", null, "strTrailer");
 					report.sealDetailXrLabel.DataBindings.Add("Text", null, "strSeal");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ReceivingXtraReport":
@@ -4520,7 +4520,7 @@ namespace SuperiorPackGroup
 					report.trailerDetailXrLabel.DataBindings.Add("Text", null, "strTrailer");
 					report.sealDetailXrLabel.DataBindings.Add("Text", null, "strSeal");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ReceivingReturnsXtraReport":
@@ -4543,7 +4543,7 @@ namespace SuperiorPackGroup
 					report.trailerDetailXrLabel.DataBindings.Add("Text", null, "strTrailer");
 					report.sealDetailXrLabel.DataBindings.Add("Text", null, "strSeal");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "InventoryAdjustmentXtraReport":
@@ -4556,7 +4556,7 @@ namespace SuperiorPackGroup
 					report.reasonDetailXrLabel.DataBindings.Add("Text", m_Production, "Reason");
 					report.reportTitleXrLabel.Text = ReportTitle;
 					report.quantityHeaderXrLabel.Text = "Adjustment Qty";
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "PhysicalInventoryXtraReport":
@@ -4585,7 +4585,7 @@ namespace SuperiorPackGroup
 					report.reportTitleXrLabel.Text = ReportTitle;
 					report.quantityHeaderXrLabel.Text = "Current Inventory";
 					report.byPalletHeaderXrLabel.Text = "Inventory by Pallet";
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "FinishedProductAvailabilityXtraReport":
@@ -4601,7 +4601,7 @@ namespace SuperiorPackGroup
 					report.reportTitleXrLabel.Text = ReportTitle;
 					report.quantityHeaderXrLabel.Text = "Availability";
 					report.byPalletHeaderXrLabel.Text = "Availability by Pallet";
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ItemsListXtraReport":
@@ -4616,7 +4616,7 @@ namespace SuperiorPackGroup
 					report.unitsPerCaseDetailXrLabel.DataBindings.Add("Text", m_Production, "intUnitsPerCase", "{0:N2}");
 					report.casesPerPalletDetailXrLabel.DataBindings.Add("Text", m_Production, "intCasesPerPallet");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "ItemsTransactionsXtraReport":
@@ -4647,14 +4647,14 @@ namespace SuperiorPackGroup
 					report.usedInProductionDetailXrLabel.DataBindings.Add("Text", null, "UsedInProduction");
 					report.usedInProductionFooterXrLabel.DataBindings.Add("Text", null, "UsedInProduction");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "PalletTransactionXtraReport":
 				{
 					PalletTransactionXtraReport report = (PalletTransactionXtraReport)m_Report;
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "PalletControlXtraReport":
@@ -4663,7 +4663,7 @@ namespace SuperiorPackGroup
 					report.customerNameDetailXrLabel.DataBindings.Add("Text", m_Production, "CustomerName");
 					report.byPalletDetailXrLabel.DataBindings.Add("Text", m_Production, "PalletQTY");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 				case "AuditTrailXtraReport":
@@ -4674,7 +4674,7 @@ namespace SuperiorPackGroup
 					report.recordTypeDetailXrLabel.DataBindings.Add("Text", m_Production, "RecordType");
 					report.recordChangesDetailXrLabel.DataBindings.Add("Text", m_Production, "RecordChanges");
 					report.reportTitleXrLabel.Text = ReportTitle;
-					this.Text = ReportTitle;
+					Text = ReportTitle;
 					break;
 				}
 			}
@@ -5163,7 +5163,7 @@ namespace SuperiorPackGroup
 		private void columnsRefreshSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 			if (m_SelectedReport != "PalletControlXtraReport" && m_SelectedReport != "ItemsTransactionsXtraReport" && m_SelectedReport != "PalletTransactionXtraReport")
 			{
 				m_Report.PrintingSystem.Document.AutoFitToPagesWidth = 0;
@@ -5175,7 +5175,7 @@ namespace SuperiorPackGroup
 			{
 				m_Report.PrintingSystem.Document.AutoFitToPagesWidth = 1;
 			}
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 
@@ -5199,7 +5199,7 @@ namespace SuperiorPackGroup
         private void ReportsXtraForm_Load(object sender, EventArgs e)
 		{
 
-			this.reportColumnsXtraTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+			reportColumnsXtraTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
 		}
 

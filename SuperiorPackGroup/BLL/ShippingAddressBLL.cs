@@ -200,7 +200,7 @@ namespace SuperiorPackGroup
             {
 
                 //It is a new Shipping Address 
-                return this.InsertAddress(addressID, shippingName, contactFirstName, contactLastName, shippingAddress, shippingCity, shippingState, shippingPostal, shippingPhone, shippingEmail, shippingFax, shippingNote);
+                return InsertAddress(addressID, shippingName, contactFirstName, contactLastName, shippingAddress, shippingCity, shippingState, shippingPostal, shippingPhone, shippingEmail, shippingFax, shippingNote);
             }
 
             SPG.ShippingAddressesRow address = addresses[0];
@@ -211,7 +211,7 @@ namespace SuperiorPackGroup
 
             if (!(originalRecord == null))
             {
-                this.UpdateAuditTrail(address, originalRecord);
+                UpdateAuditTrail(address, originalRecord);
             }
 
             int rowsAffected = Adapter.Update(address);

@@ -145,7 +145,7 @@ namespace SuperiorPackGroup
 			if (boms.Count() == 0)
 			{
 				//It is a new Product
-				return this.InsertBOM(bomRawMatID, bomFiniGoodID, bomQuantity, scrapFactor);
+				return InsertBOM(bomRawMatID, bomFiniGoodID, bomQuantity, scrapFactor);
 			}
 
 			SPG.BOMRow bom = boms[0];
@@ -166,7 +166,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(bom, originalRecord);
+				UpdateAuditTrail(bom, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(bom);

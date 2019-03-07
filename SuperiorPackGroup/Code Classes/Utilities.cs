@@ -28,8 +28,6 @@ namespace SuperiorPackGroup
 
 			try
 			{
-//INSTANT C# NOTE: Commented this declaration since looping variables in 'foreach' loops are declared in the 'foreach' header in C#:
-//				Dim control As Control
 				foreach (Control control in container.Controls)
 				{
 					if (control.ToString() == "DevExpress.XtraEditors.GroupControl")

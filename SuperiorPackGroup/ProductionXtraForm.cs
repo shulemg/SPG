@@ -45,7 +45,7 @@ namespace SuperiorPackGroup
 		private void ProductionXtraForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 
-			if (this.editSimpleButton.Tag != null)
+			if (editSimpleButton.Tag != null)
 			{
 				MessageBox.Show("You must first save or cancel the changes");
 				e.Cancel = true;
@@ -61,8 +61,8 @@ namespace SuperiorPackGroup
 
 			//Me.machineLookUpEdit.Properties.DataSource = machines
 			//Me.machineFilterLookUpEdit.Properties.DataSource = machines
-			this.shiftLookUpEdit.Properties.DataSource = shifts;
-			this.shiftFilterLookUpEdit.Properties.DataSource = shifts;
+			shiftLookUpEdit.Properties.DataSource = shifts;
+			shiftFilterLookUpEdit.Properties.DataSource = shifts;
 			itemsFilterXPView.Reload();
 			itemsXPView.Reload();
 			customersXPView.Reload();
@@ -72,7 +72,7 @@ namespace SuperiorPackGroup
 		private void ProductionXtraForm_Load(object sender, EventArgs e)
 		{
 
-			this.Cursor = Cursors.WaitCursor;
+			Cursor = Cursors.WaitCursor;
 
 			m_ProductionSession = new Session(MyDataLayers.SPGDataLayer)
 			{
@@ -105,13 +105,13 @@ namespace SuperiorPackGroup
 				Caption = "Shift",
 				FieldName = "ShiftName"
 			};
-			this.shiftLookUpEdit.Properties.Columns.Add(shiftNameColumn);
-			this.shiftLookUpEdit.Properties.DisplayMember = "ShiftName";
-			this.shiftLookUpEdit.Properties.ValueMember = "ShiftID";
+			shiftLookUpEdit.Properties.Columns.Add(shiftNameColumn);
+			shiftLookUpEdit.Properties.DisplayMember = "ShiftName";
+			shiftLookUpEdit.Properties.ValueMember = "ShiftID";
 
-			this.shiftFilterLookUpEdit.Properties.Columns.Add(shiftNameColumn);
-			this.shiftFilterLookUpEdit.Properties.DisplayMember = "ShiftName";
-			this.shiftFilterLookUpEdit.Properties.ValueMember = "ShiftID";
+			shiftFilterLookUpEdit.Properties.Columns.Add(shiftNameColumn);
+			shiftFilterLookUpEdit.Properties.DisplayMember = "ShiftName";
+			shiftFilterLookUpEdit.Properties.ValueMember = "ShiftID";
 
 			//Dim machineNameColumn As Controls.LookUpColumnInfo = New Controls.LookUpColumnInfo() With {.Caption = "Machine Line", .FieldName = "MachineLineName"}
 
@@ -138,7 +138,7 @@ namespace SuperiorPackGroup
 			SetDefaultViewFilter();
 			FillProductionView();
 
-			this.Cursor = Cursors.Default;
+			Cursor = Cursors.Default;
 
 		}
 
@@ -146,19 +146,19 @@ namespace SuperiorPackGroup
 		{
 
 			//Set the from filter to the sunday of this week
-			this.fromFilterDateEdit.DateTime = DateTime.Today.AddDays((Microsoft.VisualBasic.DateAndTime.Weekday(DateTime.Today) - 1) * -1);
-			this.toFilterDateEdit.DateTime = DateTime.Today;
-			this.machineFilterLookUpEdit.EditValue = null;
-			this.customerFilterLookUpEdit.EditValue = null;
-			this.shiftFilterLookUpEdit.EditValue = null;
-			this.itemFilterLookUpEdit.EditValue = null;
+			fromFilterDateEdit.DateTime = DateTime.Today.AddDays((Microsoft.VisualBasic.DateAndTime.Weekday(DateTime.Today) - 1) * -1);
+			toFilterDateEdit.DateTime = DateTime.Today;
+			machineFilterLookUpEdit.EditValue = null;
+			customerFilterLookUpEdit.EditValue = null;
+			shiftFilterLookUpEdit.EditValue = null;
+			itemFilterLookUpEdit.EditValue = null;
 
 		}
 
 		private void itemLookUpEdit_Validated(System.Object sender, EventArgs e)
 		{
 
-			this.descriptionMemoEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)this.itemLookUpEdit.EditValue);
+			descriptionMemoEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)itemLookUpEdit.EditValue);
 			uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)itemLookUpEdit.EditValue);
 
 		}
@@ -166,21 +166,21 @@ namespace SuperiorPackGroup
 		private void productionGridView_CustomUnboundColumnData(System.Object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
 		{
 
-			if (Convert.IsDBNull(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.startGridColumn)))
+			if (Convert.IsDBNull(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, startGridColumn)))
 			{
 				return;
 			}
 
-			if (Convert.IsDBNull(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.stopGridColumn)))
+			if (Convert.IsDBNull(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, stopGridColumn)))
 			{
 				return;
 			}
 
 			if (e.Column.Name == "timeGridColumn")
 			{
-				DateTime ProductionDay = Convert.ToDateTime(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.dateGridColumn));
-				DateTime startTime = Convert.ToDateTime(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.startGridColumn));
-				DateTime stopTime = Convert.ToDateTime(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, this.stopGridColumn));
+				DateTime ProductionDay = Convert.ToDateTime(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, dateGridColumn));
+				DateTime startTime = Convert.ToDateTime(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, startGridColumn));
+				DateTime stopTime = Convert.ToDateTime(productionGridView.GetListSourceRowCellValue(e.ListSourceRowIndex, stopGridColumn));
 				//Make sure that the work dates are the same as the production date
 				startTime = new DateTime(ProductionDay.Year, ProductionDay.Month, ProductionDay.Day, startTime.Hour, startTime.Minute, 0);
 				stopTime = new DateTime(ProductionDay.Year, ProductionDay.Month, ProductionDay.Day, stopTime.Hour, stopTime.Minute, 0);
@@ -203,7 +203,7 @@ namespace SuperiorPackGroup
 
 			if (ValidateRecord())
 			{
-				if (SaveRecord((int?)this.saveSimpleButton.Tag))
+				if (SaveRecord((int?)saveSimpleButton.Tag))
 				{
 					PrepareNewRecord();
 				}
@@ -214,17 +214,17 @@ namespace SuperiorPackGroup
 		public bool ValidateRecord()
 		{
 
-			if (this.itemLookUpEdit.EditValue == null || (this.itemLookUpEdit.EditValue == null ? null : Convert.ToString(this.itemLookUpEdit.EditValue)) == this.itemLookUpEdit.Properties.NullText)
+			if (itemLookUpEdit.EditValue == null || (itemLookUpEdit.EditValue == null ? null : Convert.ToString(itemLookUpEdit.EditValue)) == itemLookUpEdit.Properties.NullText)
 			{
 				MessageBox.Show("You must select a Item Code.");
-				this.itemLookUpEdit.Focus();
+				itemLookUpEdit.Focus();
 				return false;
 			}
 
-			if (string.IsNullOrEmpty(this.quantityTextEdit.Text))
+			if (string.IsNullOrEmpty(quantityTextEdit.Text))
 			{
 				MessageBox.Show("You must enter a quantity.");
-				this.quantityTextEdit.Focus();
+				quantityTextEdit.Focus();
 				return false;
 			}
 
@@ -233,40 +233,40 @@ namespace SuperiorPackGroup
 				startTimeEdit.Time = new DateTime(productionDateEdit.DateTime.Date.Year, productionDateEdit.DateTime.Date.Month, productionDateEdit.DateTime.Date.Day, startTimeEdit.Time.Hour, startTimeEdit.Time.Minute, startTimeEdit.Time.Second);
 				stopTimeEdit.Time = new DateTime(productionDateEdit.DateTime.Date.Year, productionDateEdit.DateTime.Date.Month, productionDateEdit.DateTime.Date.Day, stopTimeEdit.Time.Hour, stopTimeEdit.Time.Minute, stopTimeEdit.Time.Second);
 			}
-			if (DateHelper.DateDiff(DateHelper.DateInterval.Minute, this.startTimeEdit.Time, this.stopTimeEdit.Time) < 1)
+			if (DateHelper.DateDiff(DateHelper.DateInterval.Minute, startTimeEdit.Time, stopTimeEdit.Time) < 1)
 			{
-				this.stopTimeEdit.Time = stopTimeEdit.Time.AddDays(1);
+				stopTimeEdit.Time = stopTimeEdit.Time.AddDays(1);
 			}
-			if (productionDateEdit.DateTime.DayOfWeek == DayOfWeek.Saturday && DateHelper.DateDiff(DateHelper.DateInterval.Hour, this.startTimeEdit.Time, this.stopTimeEdit.Time) > 12 || productionDateEdit.DateTime.DayOfWeek != DayOfWeek.Saturday && DateHelper.DateDiff(DateHelper.DateInterval.Hour, this.startTimeEdit.Time, this.stopTimeEdit.Time) > 10)
+			if (productionDateEdit.DateTime.DayOfWeek == DayOfWeek.Saturday && DateHelper.DateDiff(DateHelper.DateInterval.Hour, startTimeEdit.Time, stopTimeEdit.Time) > 12 || productionDateEdit.DateTime.DayOfWeek != DayOfWeek.Saturday && DateHelper.DateDiff(DateHelper.DateInterval.Hour, startTimeEdit.Time, stopTimeEdit.Time) > 10)
 			{
 
-				if (MessageBox.Show(string.Format("The tims stop is more than {0} hours later than the time start.", DateHelper.DateDiff(DateHelper.DateInterval.Hour, this.startTimeEdit.Time, this.stopTimeEdit.Time)), "Time Stop", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+				if (MessageBox.Show(string.Format("The tims stop is more than {0} hours later than the time start.", DateHelper.DateDiff(DateHelper.DateInterval.Hour, startTimeEdit.Time, stopTimeEdit.Time)), "Time Stop", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
 				{
-					this.stopTimeEdit.Time = stopTimeEdit.Time.AddDays(-1);
-					this.stopTimeEdit.Focus();
+					stopTimeEdit.Time = stopTimeEdit.Time.AddDays(-1);
+					stopTimeEdit.Focus();
 					return false;
 				}
 			}
 
-			if (this.shiftLookUpEdit.EditValue == null || (this.shiftLookUpEdit.EditValue == null ? null : Convert.ToString(this.shiftLookUpEdit.EditValue)) == this.shiftLookUpEdit.Properties.NullText)
+			if (shiftLookUpEdit.EditValue == null || (shiftLookUpEdit.EditValue == null ? null : Convert.ToString(shiftLookUpEdit.EditValue)) == shiftLookUpEdit.Properties.NullText)
 			{
 				MessageBox.Show("You must select a Shift.");
-				this.shiftLookUpEdit.Focus();
+				shiftLookUpEdit.Focus();
 				return false;
 			}
 
-			if (this.machineLookUpEdit.EditValue == null || (this.machineLookUpEdit.EditValue == null ? null : Convert.ToString(this.machineLookUpEdit.EditValue)) == this.machineLookUpEdit.Properties.NullText)
+			if (machineLookUpEdit.EditValue == null || (machineLookUpEdit.EditValue == null ? null : Convert.ToString(machineLookUpEdit.EditValue)) == machineLookUpEdit.Properties.NullText)
 			{
 				MessageBox.Show("You must select a Machine line.");
-				this.machineLookUpEdit.Focus();
+				machineLookUpEdit.Focus();
 				return false;
 			}
 
-			if (this.saveSimpleButton.Tag == null)
+			if (saveSimpleButton.Tag == null)
 			{
 				if (m_AllowAdd == true)
 				{
-					this.saveSimpleButton.Tag = m_Production.GetNewProductionID();
+					saveSimpleButton.Tag = m_Production.GetNewProductionID();
 				}
 				else
 				{
@@ -274,9 +274,9 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			if (string.IsNullOrEmpty(this.packersTextEdit.Text))
+			if (string.IsNullOrEmpty(packersTextEdit.Text))
 			{
-				this.packersTextEdit.EditValue = 0;
+				packersTextEdit.EditValue = 0;
 			}
 
 			return true;
@@ -286,7 +286,7 @@ namespace SuperiorPackGroup
 		public bool SaveRecord(int? id)
 		{
 
-			if (m_Production.UpdateProduction(Convert.ToInt32(this.saveSimpleButton.Tag), this.productionDateEdit.DateTime, (int?)this.shiftLookUpEdit.EditValue, (int?)this.itemLookUpEdit.EditValue, Utilities.ChangeType<float?>(this.quantityTextEdit.EditValue), (int?)this.machineLookUpEdit.EditValue, this.startTimeEdit.Time, this.stopTimeEdit.Time, Utilities.ChangeType<float?>(this.packersTextEdit.EditValue)) != true)
+			if (m_Production.UpdateProduction(Convert.ToInt32(saveSimpleButton.Tag), productionDateEdit.DateTime, (int?)shiftLookUpEdit.EditValue, (int?)itemLookUpEdit.EditValue, Utilities.ChangeType<float?>(quantityTextEdit.EditValue), (int?)machineLookUpEdit.EditValue, startTimeEdit.Time, stopTimeEdit.Time, Utilities.ChangeType<float?>(packersTextEdit.EditValue)) != true)
 			{
 				MessageBox.Show("The production record was not updated successfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
@@ -310,7 +310,7 @@ namespace SuperiorPackGroup
 			}
 
 				// delete record from view if we are updating a record
-				this.productionXPView.Reload();
+				productionXPView.Reload();
 
 				return true;
 
@@ -319,24 +319,24 @@ namespace SuperiorPackGroup
 		public void PrepareNewRecord()
 		{
 
-			this.saveSimpleButton.Tag = null;
-			this.editSimpleButton.Tag = null;
-			this.descriptionMemoEdit.Text = null;
-			this.shiftLookUpEdit.EditValue = null;
-			this.machineLookUpEdit.EditValue = null;
+			saveSimpleButton.Tag = null;
+			editSimpleButton.Tag = null;
+			descriptionMemoEdit.Text = null;
+			shiftLookUpEdit.EditValue = null;
+			machineLookUpEdit.EditValue = null;
 			//Date should be saved form last entry
 			//Me.productionDateEdit.DateTime = Today
-			this.itemLookUpEdit.EditValue = null;
-			this.packersTextEdit.Text = null;
-			this.quantityTextEdit.Text = null;
+			itemLookUpEdit.EditValue = null;
+			packersTextEdit.Text = null;
+			quantityTextEdit.Text = null;
 			uomTextEdit.Text = null;
 			m_ReasonsCollection.Clear();
 			reasonsGridControl.DataSource = m_ReasonsCollection;
 
-			this.startTimeEdit.Time = DateTime.Now;
-			this.stopTimeEdit.Time = DateTime.Now.AddMinutes(5);
+			startTimeEdit.Time = DateTime.Now;
+			stopTimeEdit.Time = DateTime.Now.AddMinutes(5);
 
-			this.productionDateEdit.Focus();
+			productionDateEdit.Focus();
 
 		}
 
@@ -345,32 +345,32 @@ namespace SuperiorPackGroup
 
 			CriteriaOperatorCollection productionViewCriteria = new CriteriaOperatorCollection();
 
-			if (((DateTime?)this.fromFilterDateEdit.EditValue).HasValue)
+			if (((DateTime?)fromFilterDateEdit.EditValue).HasValue)
 			{
-				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainDate.PropertyName, Convert.ToDateTime(this.fromFilterDateEdit.EditValue), BinaryOperatorType.GreaterOrEqual));
+				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainDate.PropertyName, Convert.ToDateTime(fromFilterDateEdit.EditValue), BinaryOperatorType.GreaterOrEqual));
 			}
-			if (((DateTime?)this.toFilterDateEdit.EditValue).HasValue)
+			if (((DateTime?)toFilterDateEdit.EditValue).HasValue)
 			{
-				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainDate.PropertyName, Convert.ToDateTime(this.toFilterDateEdit.EditValue), BinaryOperatorType.LessOrEqual));
+				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainDate.PropertyName, Convert.ToDateTime(toFilterDateEdit.EditValue), BinaryOperatorType.LessOrEqual));
 			}
-			if (((int?)this.customerFilterLookUpEdit.EditValue).HasValue)
+			if (((int?)customerFilterLookUpEdit.EditValue).HasValue)
 			{
-				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainItemID.ItemCustomerID.CustomerID.PropertyName, Convert.ToInt32(this.customerFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
+				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainItemID.ItemCustomerID.CustomerID.PropertyName, Convert.ToInt32(customerFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
 			}
-			if (((int?)this.shiftFilterLookUpEdit.EditValue).HasValue)
+			if (((int?)shiftFilterLookUpEdit.EditValue).HasValue)
 			{
-				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainShift.ShiftID.PropertyName, Convert.ToInt32(this.shiftFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
+				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainShift.ShiftID.PropertyName, Convert.ToInt32(shiftFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
 			}
-			if (((int?)this.machineFilterLookUpEdit.EditValue).HasValue)
+			if (((int?)machineFilterLookUpEdit.EditValue).HasValue)
 			{
-				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainMachineLine.MachineLineID.PropertyName, Convert.ToInt32(this.machineFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
+				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainMachineLine.MachineLineID.PropertyName, Convert.ToInt32(machineFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
 			}
-			if (((int?)this.itemFilterLookUpEdit.EditValue).HasValue)
+			if (((int?)itemFilterLookUpEdit.EditValue).HasValue)
 			{
-				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainItemID.ItemID.PropertyName, Convert.ToInt32(this.itemFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
+				productionViewCriteria.Add(new BinaryOperator(Production.Fields.ProdMainItemID.ItemID.PropertyName, Convert.ToInt32(itemFilterLookUpEdit.EditValue), BinaryOperatorType.Equal));
 			}
 
-			this.productionXPView.Criteria = CriteriaOperator.And(productionViewCriteria);
+			productionXPView.Criteria = CriteriaOperator.And(productionViewCriteria);
 
 		}
 
@@ -378,24 +378,24 @@ namespace SuperiorPackGroup
 		{
 
 			//enters the row handle for the editing record in the edit button tag property
-			if (this.productionGridView.SelectedRowsCount == 1)
+			if (productionGridView.SelectedRowsCount == 1)
 			{
-				int rowHandle = this.productionGridView.GetSelectedRows()[0];
+				int rowHandle = productionGridView.GetSelectedRows()[0];
 				m_ProductionSession.DropIdentityMap();
-				this.editSimpleButton.Tag = rowHandle;
+				editSimpleButton.Tag = rowHandle;
 
-				Production productionRecord = m_ProductionSession.GetObjectByKey<Production>(Convert.ToInt32(this.productionGridView.GetRowCellValue(rowHandle, this.idGridColumn)));
-				this.saveSimpleButton.Tag = productionRecord.ProdMainID;
-				this.productionDateEdit.DateTime = productionRecord.ProdMainDate;
-				this.itemLookUpEdit.EditValue = productionRecord.ProdMainItemID.ItemID;
-				this.shiftLookUpEdit.EditValue = productionRecord.ProdMainShift.ShiftID;
-				this.startTimeEdit.Time = productionRecord.ProdMainTimeStart;
-				this.stopTimeEdit.Time = productionRecord.ProdMainTimeStop;
-				this.descriptionMemoEdit.EditValue = this.productionGridView.GetRowCellValue(rowHandle, this.descriptionGridColumn);
-				this.quantityTextEdit.EditValue = productionRecord.ProdMainQuantity;
+				Production productionRecord = m_ProductionSession.GetObjectByKey<Production>(Convert.ToInt32(productionGridView.GetRowCellValue(rowHandle, idGridColumn)));
+				saveSimpleButton.Tag = productionRecord.ProdMainID;
+				productionDateEdit.DateTime = productionRecord.ProdMainDate;
+				itemLookUpEdit.EditValue = productionRecord.ProdMainItemID.ItemID;
+				shiftLookUpEdit.EditValue = productionRecord.ProdMainShift.ShiftID;
+				startTimeEdit.Time = productionRecord.ProdMainTimeStart;
+				stopTimeEdit.Time = productionRecord.ProdMainTimeStop;
+				descriptionMemoEdit.EditValue = productionGridView.GetRowCellValue(rowHandle, descriptionGridColumn);
+				quantityTextEdit.EditValue = productionRecord.ProdMainQuantity;
 				uomTextEdit.Text = productionRecord.ProdMainItemID.strUnitOfMeasure;
-				this.machineLookUpEdit.EditValue = productionRecord.ProdMainMachineLine.MachineLineID;
-				this.packersTextEdit.EditValue = productionRecord.ProdMainPackers;
+				machineLookUpEdit.EditValue = productionRecord.ProdMainMachineLine.MachineLineID;
+				packersTextEdit.EditValue = productionRecord.ProdMainPackers;
 				m_ReasonsCollection.Clear();
 				foreach (ReasonCodes reason in productionRecord.ReasonCodes)
 				{
@@ -410,27 +410,27 @@ namespace SuperiorPackGroup
 
 			if (MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 			{
-				if (m_Production.DeleteProduction(Convert.ToInt32(productionGridView.GetFocusedRowCellValue(this.idGridColumn)), m_ProductionSession) != true)
+				if (m_Production.DeleteProduction(Convert.ToInt32(productionGridView.GetFocusedRowCellValue(idGridColumn)), m_ProductionSession) != true)
 				{
 					MessageBox.Show("The production record was not deleted successfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
 			}
 
-			this.productionXPView.Reload();
+			productionXPView.Reload();
 
 		}
 
 		private void customerFilterLookUpEdit_Validated(System.Object sender, EventArgs e)
 		{
 
-			if ((this.customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerFilterLookUpEdit.EditValue)) == this.customerFilterLookUpEdit.Properties.NullText || string.IsNullOrEmpty((this.customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(this.customerFilterLookUpEdit.EditValue))))
+			if ((customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(customerFilterLookUpEdit.EditValue)) == customerFilterLookUpEdit.Properties.NullText || string.IsNullOrEmpty((customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(customerFilterLookUpEdit.EditValue))))
 			{
-				this.itemsFilterXPView.Filter = null;
+				itemsFilterXPView.Filter = null;
 			}
 			else
 			{
-				this.itemsFilterXPView.Filter = new BinaryOperator("CustomerID", (customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(customerFilterLookUpEdit.EditValue)), BinaryOperatorType.Equal);
+				itemsFilterXPView.Filter = new BinaryOperator("CustomerID", (customerFilterLookUpEdit.EditValue == null ? null : Convert.ToString(customerFilterLookUpEdit.EditValue)), BinaryOperatorType.Equal);
 			}
 
 		}
@@ -439,8 +439,8 @@ namespace SuperiorPackGroup
 		{
 
 			SetDefaultViewFilter();
-			this.fromFilterDateEdit.EditValue = null;
-			this.toFilterDateEdit.EditValue = null;
+			fromFilterDateEdit.EditValue = null;
+			toFilterDateEdit.EditValue = null;
 			FillProductionView();
 
 		}
@@ -472,43 +472,43 @@ namespace SuperiorPackGroup
 					case "FULL":
 					case "Full":
 						m_AllowAdd = true;
-						this.editSimpleButton.Enabled = true;
-						this.deleteGridColumn.Visible = true;
+						editSimpleButton.Enabled = true;
+						deleteGridColumn.Visible = true;
 						break;
 					case "ADD":
 					case "Add":
 						m_AllowAdd = true;
-						this.editSimpleButton.Enabled = true;
-						this.deleteGridColumn.Visible = false;
+						editSimpleButton.Enabled = true;
+						deleteGridColumn.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
-						this.editSimpleButton.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						editSimpleButton.Enabled = false;
+						deleteGridColumn.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
-						this.editSimpleButton.Enabled = true;
-						this.deleteGridColumn.Visible = false;
+						editSimpleButton.Enabled = true;
+						deleteGridColumn.Visible = false;
 						break;
 					case "VIEW ASSIGNED":
-						this.editSimpleButton.Enabled = false;
-						this.deleteGridColumn.Visible = false;
+						editSimpleButton.Enabled = false;
+						deleteGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					case "EDIT ASSIGNED":
-						this.editSimpleButton.Enabled = true;
-						this.deleteGridColumn.Visible = false;
+						editSimpleButton.Enabled = true;
+						deleteGridColumn.Visible = false;
 						FilterAssignedCustomers();
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;
@@ -523,10 +523,10 @@ namespace SuperiorPackGroup
 		private void FilterAssignedCustomers()
 		{
 
-			this.productionXPView.Filter = new InOperator("CustomerID", UsersCustomerBLL.GetAssignedCustomerIDs(m_ProductionSession));
-			this.customersXPView.Criteria = CriteriaOperator.And(new BinaryOperator(Customers.Fields.Inactive.PropertyName, false), new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)));
-			this.itemsFilterXPView.Criteria = CriteriaOperator.And(new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), new InOperator(Items.Fields.ItemType.PropertyName, new string[] {"FG", "IG"}), new BinaryOperator(Items.Fields.Inactive.PropertyName, false, BinaryOperatorType.Equal));
-			this.itemsXPView.Criteria = CriteriaOperator.And(new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), new InOperator(Items.Fields.ItemType.PropertyName, new string[] {"FG", "IG"}), new BinaryOperator(Items.Fields.Inactive.PropertyName, false, BinaryOperatorType.Equal));
+			productionXPView.Filter = new InOperator("CustomerID", UsersCustomerBLL.GetAssignedCustomerIDs(m_ProductionSession));
+			customersXPView.Criteria = CriteriaOperator.And(new BinaryOperator(Customers.Fields.Inactive.PropertyName, false), new InOperator(Customers.Fields.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)));
+			itemsFilterXPView.Criteria = CriteriaOperator.And(new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), new InOperator(Items.Fields.ItemType.PropertyName, new string[] {"FG", "IG"}), new BinaryOperator(Items.Fields.Inactive.PropertyName, false, BinaryOperatorType.Equal));
+			itemsXPView.Criteria = CriteriaOperator.And(new InOperator(Items.Fields.ItemCustomerID.CustomerID.PropertyName, UsersCustomerBLL.GetAssignedCustomers(m_ProductionSession)), new InOperator(Items.Fields.ItemType.PropertyName, new string[] {"FG", "IG"}), new BinaryOperator(Items.Fields.Inactive.PropertyName, false, BinaryOperatorType.Equal));
 
 		}
 

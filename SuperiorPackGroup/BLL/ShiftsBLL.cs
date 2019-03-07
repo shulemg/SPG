@@ -94,7 +94,7 @@ namespace SuperiorPackGroup
 			if (shifts.Count() == 0)
 			{
 				//It is a new Product
-				return this.InsertShift(name);
+				return InsertShift(name);
 			}
 
 			SPG.ShiftsRow shift = shifts[0];
@@ -110,7 +110,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(shift, originalRecord);
+				UpdateAuditTrail(shift, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(shift);

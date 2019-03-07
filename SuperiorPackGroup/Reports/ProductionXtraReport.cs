@@ -80,7 +80,7 @@ namespace SuperiorPackGroup
 
 			if (differenceDetailXrLabel.Visible)
 			{
-				float difference = Convert.ToSingle(Convert.ToSingle(this.GetCurrentColumnValue("ProdMainQuantity")) - m_Expected);
+				float difference = Convert.ToSingle(Convert.ToSingle(GetCurrentColumnValue("ProdMainQuantity")) - m_Expected);
 
 				differenceDetailXrLabel.Text = difference.ToString("#.##");
 				m_TotalDifference += difference;
@@ -93,7 +93,7 @@ namespace SuperiorPackGroup
 
 			if (actualSpeedDetailXrLabel.Visible)
 			{
-				float actualSpeed = ((Convert.ToSingle(this.GetCurrentColumnValue("ProdMainQuantity")) * Convert.ToSingle(this.GetCurrentColumnValue("intQtyPerUnit"))) / Convert.ToInt32(((m_Minutes - m_BreakMinutes) / 60.0) * m_MinPerHour));
+				float actualSpeed = ((Convert.ToSingle(GetCurrentColumnValue("ProdMainQuantity")) * Convert.ToSingle(GetCurrentColumnValue("intQtyPerUnit"))) / Convert.ToInt32(((m_Minutes - m_BreakMinutes) / 60.0) * m_MinPerHour));
 
 				if (float.IsInfinity(actualSpeed) || float.IsNaN(actualSpeed))
 				{
@@ -111,7 +111,7 @@ namespace SuperiorPackGroup
 		private void Detail_BeforePrint(System.Object sender, System.Drawing.Printing.PrintEventArgs e)
 		{
 
-			m_Minutes = DateHelper.DateDiff(DateHelper.DateInterval.Minute, Convert.ToDateTime(this.GetCurrentColumnValue("ProdMainTimeStart")), Convert.ToDateTime(this.GetCurrentColumnValue("ProdMainTimeStop")));
+			m_Minutes = DateHelper.DateDiff(DateHelper.DateInterval.Minute, Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStop")));
 			m_BreakMinutes = BreakTimeBLL.GetBreakMinutes(Convert.ToDateTime(GetCurrentColumnValue("ProdMainDate")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStart")), Convert.ToDateTime(GetCurrentColumnValue("ProdMainTimeStop")));
 			m_TotalMinutes += m_Minutes - m_BreakMinutes;
 
@@ -181,7 +181,7 @@ namespace SuperiorPackGroup
 			if (totalPayrollDetailXrLabel.Visible)
 			{
 				double totalPayroll = Convert.ToDouble(GetCurrentColumnValue("ProdMainPackers")) * (m_Minutes - m_BreakMinutes) / 60 *  MainXtraForm.PackersPay;
-				this.totalPayrollDetailXrLabel.Text = totalPayroll.ToString("$0.00");
+				totalPayrollDetailXrLabel.Text = totalPayroll.ToString("$0.00");
 				m_TotalPayroll += totalPayroll;
 			}
 

@@ -18,7 +18,7 @@ namespace SuperiorPackGroup
 		public ShiftsTimeScaleFixedIntervalCaptionService(IHeaderCaptionService service, SchedulerControl provider) : base(service)
 		{
 
-			this.Provider = provider;
+			Provider = provider;
 
 		}
 

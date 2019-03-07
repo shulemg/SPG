@@ -78,12 +78,12 @@ namespace SuperiorPackGroup
 				else
 					EventsSubscribed = true;
 
-				this.Startup += MyApplication_Startup;
+				Startup += MyApplication_Startup;
 			}
 
             protected override void OnCreateMainForm()
             {
-                this.MainForm = new MainXtraForm();
+                MainForm = new MainXtraForm();
                 //base.OnCreateMainForm();
             }
 

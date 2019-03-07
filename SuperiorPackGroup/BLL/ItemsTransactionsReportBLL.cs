@@ -26,12 +26,12 @@ namespace SuperiorPackGroup
 		{
 			get
 			{
-				if (this.m_ItemsTransactionsReportTableAdapter == null)
+				if (m_ItemsTransactionsReportTableAdapter == null)
 				{
-					this.m_ItemsTransactionsReportTableAdapter = new ItemsTransactionsReportTableAdapter();
-					this.m_ItemsTransactionsReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
+					m_ItemsTransactionsReportTableAdapter = new ItemsTransactionsReportTableAdapter();
+					m_ItemsTransactionsReportTableAdapter.Connection.ConnectionString = Properties.Settings.Default.UserConnectionString;
 				}
-				return this.m_ItemsTransactionsReportTableAdapter;
+				return m_ItemsTransactionsReportTableAdapter;
 			}
 		}
 

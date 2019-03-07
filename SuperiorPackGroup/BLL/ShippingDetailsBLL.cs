@@ -105,7 +105,7 @@ namespace SuperiorPackGroup
 			if (details.Count() == 0)
 			{
 				//It is a new Detail
-				return this.InsertDetails(session, shippingID, itemID, lot, quantity, pallets, note, expirationDate, fullLPNNumber);
+				return InsertDetails(session, shippingID, itemID, lot, quantity, pallets, note, expirationDate, fullLPNNumber);
 			}
 
 			SPG.ShippingDetailsRow shippingDetail = details[0];
@@ -172,7 +172,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(shippingDetail, originalRecord);
+				UpdateAuditTrail(shippingDetail, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(shippingDetail);

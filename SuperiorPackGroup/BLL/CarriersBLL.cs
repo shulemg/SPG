@@ -201,7 +201,7 @@ namespace SuperiorPackGroup
 			if (carriers.Count() == 0)
 			{
 				//It is a new carriers
-				return this.InsertCarrier(id, name, contactFirstName, contactLastName, address, city, state, postal, phone, email, fax, note);
+				return InsertCarrier(id, name, contactFirstName, contactLastName, address, city, state, postal, phone, email, fax, note);
 			}
 
 			SPG.CarriersRow carrier = carriers[0];
@@ -212,7 +212,7 @@ namespace SuperiorPackGroup
 
 			if (!(originalRecord == null))
 			{
-				this.UpdateAuditTrail(carrier, originalRecord);
+				UpdateAuditTrail(carrier, originalRecord);
 			}
 
 			int rowsAffected = Adapter.Update(carrier);

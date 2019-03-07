@@ -64,36 +64,36 @@ namespace SuperiorPackGroup
 					case "Full":
 						conditionsGridView.OptionsBehavior.Editable = true;
 						conditionsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = true;
+						deleteSimpleButton.Visible = true;
 						break;
 					case "ADD":
 					case "Add":
 						conditionsGridView.OptionsBehavior.Editable = true;
 						conditionsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
-						this.deleteSimpleButton.Visible = false;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "NONE":
 					case "None":
 					case "VIEW ASSIGNED":
 					case "EDIT ASSIGNED":
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 					case "VIEW":
 					case "View":
 						conditionsGridView.OptionsBehavior.Editable = false;
 						conditionsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						deleteSimpleButton.Visible = false;
 						break;
 					case "EDIT":
 					case "Edit":
 						conditionsGridView.OptionsBehavior.Editable = true;
 						conditionsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.None;
-						this.deleteSimpleButton.Visible = false;
+						deleteSimpleButton.Visible = false;
 						break;
 					default:
 						MessageBox.Show("You don't have permission to view this form.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-						this.Close();
+						Close();
 						return false;
 				}
 				return true;

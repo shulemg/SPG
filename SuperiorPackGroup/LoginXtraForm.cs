@@ -37,7 +37,7 @@ namespace SuperiorPackGroup
 					if (m_Wrong >= 4)
 					{
 						MessageBox.Show("Wrong User Name or Password", "Incorrect Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						this.Close();
+						Close();
 						return;
 					}
 					else
@@ -53,8 +53,8 @@ namespace SuperiorPackGroup
 				{
 					Properties.Settings.Default.UserName = userNameTextEdit.Text;
 					Properties.Settings.Default.UserSecurityLevel = securityLevel;
-					this.DialogResult = DialogResult.OK;
-					this.Close();
+					DialogResult = DialogResult.OK;
+					Close();
 				}
 			}
 			catch (Exception ex)
@@ -67,7 +67,7 @@ namespace SuperiorPackGroup
 		private void cancelSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			this.Close();
+			Close();
 
 		}
 

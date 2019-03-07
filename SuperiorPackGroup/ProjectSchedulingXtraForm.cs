@@ -267,7 +267,7 @@ namespace SuperiorPackGroup
 		private double CalculateVisibleResourceTotals(TimeInterval interval, Resource resource)
 		{
 
-			AppointmentBaseCollection scheduledProduction = this.SchedulerStorage1.GetAppointments(interval);
+			AppointmentBaseCollection scheduledProduction = SchedulerStorage1.GetAppointments(interval);
 			double total = 0.0F;
 
 			ResourceBaseCollection machines = new ResourceBaseCollection();
