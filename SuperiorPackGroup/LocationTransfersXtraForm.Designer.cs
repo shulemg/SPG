@@ -720,6 +720,7 @@ namespace SuperiorPackGroup
             this.transferDetailsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
             this.transferDetailsGridView.OptionsView.ShowDetailButtons = false;
             this.transferDetailsGridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.transferDetailsGridView_InitNewRow);
+            this.transferDetailsGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.transferDetailsGridView_FocusedRowChanged);
             this.transferDetailsGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.transferDetailsGridView_CellValueChanged);
             this.transferDetailsGridView.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.transferDetailsGridView_InvalidRowException);
             this.transferDetailsGridView.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.transferDetailsGridView_ValidateRow);

@@ -1,5 +1,4 @@
-﻿//INSTANT C# NOTE: Formerly VB project-level imports:
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -253,7 +252,6 @@ namespace SuperiorPackGroup
 
         private void transferDetailsGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-
             if ((transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn) == null) || Convert.IsDBNull(transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn)))
             {
                 return;
@@ -831,6 +829,15 @@ namespace SuperiorPackGroup
 
             LotXpView.Criteria = CriteriaOperator.And(lotViewCriteria);
             LotXpView.Reload();
+        }
+
+        private void transferDetailsGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            bool isEdit = (int?)transferDetailsGridView.GetFocusedRowCellValue(colOid) > 0;
+
+                itemRepositoryItemLookUpEdit.ReadOnly = isEdit;
+                LotRepositoryItemLookUpEdit.ReadOnly = isEdit;
+                lpnRepositoryItemLookUpEdit.ReadOnly = isEdit;
         }
     }
 }
