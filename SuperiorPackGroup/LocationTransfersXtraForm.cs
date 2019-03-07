@@ -108,7 +108,7 @@ namespace SuperiorPackGroup
         private void deleteRepositoryItemButtonEdit_Click(object sender, EventArgs e)
         {
 
-            if (MessageBox.Show("Are you sure you want to remove this transfer detail?", "Delete Transfer Detail", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.No)
+            if (MessageBox.Show("Are you sure you want to remove this transfer detail, this can`t be undone?", "Delete Transfer Detail", MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.No)
             {
                 return;
             }
@@ -116,10 +116,9 @@ namespace SuperiorPackGroup
             LocationTransferDetails detail = m_TransfersSession.GetObjectByKey<LocationTransferDetails>(transferDetailsGridView.GetFocusedRowCellValue(colOid));
             if (detail != null)
             {
-                float quantity = Convert.ToSingle(transferDetailsGridView.GetFocusedRowCellValue(colTransferQuantity));
                 int item = Convert.ToInt32(transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn));
 
-                if (quantity > ItemsBLL.GetQtyOnHandByID(m_TransfersSession, item, Convert.ToInt32(fromLocationLookUpEdit.EditValue)))
+                if (detail.TransferQuantity > ItemsBLL.GetQtyOnHandByID(m_TransfersSession,item, Convert.ToInt32(toLocationLookUpEdit.EditValue), detail.TransferLot,detail.FullLpnNumber))
                 {
                     MessageBox.Show("You can't delete this transfer detail, it will create a negative stock at the location", "Insufficient Inventory", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     return;
@@ -132,9 +131,8 @@ namespace SuperiorPackGroup
                 }
                 else
                 {
-                    //transferDetailsGridView.DeleteRow(transferDetailsGridView.FocusedRowHandle)
-                    LocationInventoryBLL.UpdateStock(m_TransfersSession, item, Convert.ToInt32(fromLocationLookUpEdit.EditValue), quantity);
-                    LocationInventoryBLL.UpdateStock(m_TransfersSession, item, Convert.ToInt32(toLocationLookUpEdit.EditValue), quantity * -1);
+                    LocationInventoryBLL.UpdateStock(m_TransfersSession, item, Convert.ToInt32(fromLocationLookUpEdit.EditValue), detail.TransferQuantity,detail.TransferLot,detail.FullLpnNumber);
+                    LocationInventoryBLL.UpdateStock(m_TransfersSession, item, Convert.ToInt32(toLocationLookUpEdit.EditValue), detail.TransferQuantity *-1, detail.TransferLot, detail.FullLpnNumber);
                 }
             }
             else
