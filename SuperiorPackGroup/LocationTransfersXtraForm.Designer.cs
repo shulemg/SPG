@@ -15,29 +15,29 @@ using System.Windows.Forms;
 
 namespace SuperiorPackGroup
 {
-	[Microsoft.VisualBasic.CompilerServices.DesignerGenerated()]
-	public partial class LocationTransfersXtraForm : DevExpress.XtraEditors.XtraForm
-	{
-		//Form overrides dispose to clean up the component list.
-		[System.Diagnostics.DebuggerNonUserCode()]
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && components != null)
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+    [Microsoft.VisualBasic.CompilerServices.DesignerGenerated()]
+    public partial class LocationTransfersXtraForm : DevExpress.XtraEditors.XtraForm
+    {
+        //Form overrides dispose to clean up the component list.
+        [System.Diagnostics.DebuggerNonUserCode()]
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && components != null)
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		//Required by the Windows Form Designer
-		private System.ComponentModel.IContainer components;
+        //Required by the Windows Form Designer
+        private System.ComponentModel.IContainer components;
 
-		//NOTE: The following procedure is required by the Windows Form Designer
-		//It can be modified using the Windows Form Designer.  
-		//Do not modify it using the code editor.
-		[System.Diagnostics.DebuggerStepThrough()]
-		private void InitializeComponent()
-		{
+        //NOTE: The following procedure is required by the Windows Form Designer
+        //It can be modified using the Windows Form Designer.  
+        //Do not modify it using the code editor.
+        [System.Diagnostics.DebuggerStepThrough()]
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -674,8 +674,8 @@ namespace SuperiorPackGroup
             // 
             // transferDetailsGridControl
             // 
-            this.transferDetailsGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.transferDetailsGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.transferDetailsGridControl.DataSource = this.transferDetailsXpCollection;
             this.transferDetailsGridControl.Location = new System.Drawing.Point(0, 33);
@@ -846,8 +846,6 @@ namespace SuperiorPackGroup
             this.LotRepositoryItemLookUpEdit.DisplayMember = "Lot";
             this.LotRepositoryItemLookUpEdit.Name = "LotRepositoryItemLookUpEdit";
             this.LotRepositoryItemLookUpEdit.NullText = "";
-            this.LotRepositoryItemLookUpEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.LotRepositoryItemLookUpEdit.UseReadOnlyAppearance = false;
             this.LotRepositoryItemLookUpEdit.ValueMember = "Lot";
             // 
             // LotXpView
@@ -970,74 +968,74 @@ namespace SuperiorPackGroup
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		internal DevExpress.XtraBars.BarManager BarManager1;
-		internal DevExpress.XtraBars.Bar transfersBar;
-		internal DevExpress.XtraBars.Bar Bar2;
-		internal DevExpress.XtraBars.Bar Bar3;
-		internal DevExpress.XtraBars.BarDockControl barDockControlTop;
-		internal DevExpress.XtraBars.BarDockControl barDockControlBottom;
-		internal DevExpress.XtraBars.BarDockControl barDockControlLeft;
-		internal DevExpress.XtraBars.BarDockControl barDockControlRight;
-		internal DevExpress.XtraBars.BarButtonItem addBarButtonItem;
-		internal DevExpress.XtraBars.BarButtonItem editBarButtonItem;
-		internal DevExpress.XtraBars.BarButtonItem cancelBarButtonItem;
-		internal DevExpress.XtraBars.BarButtonItem saveBarButtonItem;
-		internal DevExpress.XtraBars.BarButtonItem deleteBarButtonItem;
-		internal DevExpress.XtraEditors.SplitContainerControl SplitContainerControl1;
-		internal DevExpress.Xpo.XPView transferSearchXpView;
-		internal DevExpress.XtraGrid.GridControl transferSearchGridControl;
-		internal DevExpress.XtraGrid.Views.Grid.GridView transferSearchGridView;
-		internal DevExpress.XtraGrid.Columns.GridColumn colTransferID;
-		internal DevExpress.XtraGrid.Columns.GridColumn colTransferNumber;
-		internal DevExpress.XtraGrid.Columns.GridColumn colTransferDate;
-		internal DevExpress.XtraEditors.SplitContainerControl dataEntrySplitContainerControl;
-		internal DevExpress.XtraEditors.TextEdit oidTextEdit;
-		internal DevExpress.XtraEditors.LabelControl LabelControl1;
-		internal DevExpress.XtraEditors.LabelControl LabelControl2;
-		internal DevExpress.XtraEditors.TextEdit transferNumberTextEdit;
-		internal DevExpress.XtraEditors.LookUpEdit toLocationLookUpEdit;
-		internal DevExpress.Xpo.XPView locationsXpView;
-		internal DevExpress.XtraEditors.LabelControl LabelControl4;
-		internal DevExpress.XtraEditors.LabelControl LabelControl3;
-		internal DevExpress.XtraEditors.LookUpEdit fromLocationLookUpEdit;
-		internal DevExpress.XtraEditors.DateEdit transferDateDateEdit;
-		internal DevExpress.XtraEditors.LabelControl LabelControl5;
-		internal DevExpress.XtraEditors.LookUpEdit carrierLookUpEdit;
-		internal DevExpress.XtraEditors.LabelControl LabelControl6;
-		internal DevExpress.Xpo.XPView carrierXpView;
-		internal DevExpress.Xpo.XPView employeesXpView;
-		internal DevExpress.XtraEditors.TextEdit trailerTextEdit;
-		internal DevExpress.XtraEditors.LookUpEdit checkedByLookUpEdit;
-		internal DevExpress.XtraEditors.LabelControl LabelControl7;
-		internal DevExpress.XtraEditors.LabelControl LabelControl8;
-		internal DevExpress.XtraEditors.LookUpEdit unloadedByLookUpEdit;
-		internal DevExpress.XtraEditors.LabelControl LabelControl10;
-		internal DevExpress.XtraEditors.LookUpEdit loadedByLookUpEdit;
-		internal DevExpress.XtraEditors.LabelControl LabelControl9;
-		internal DevExpress.XtraGrid.GridControl transferDetailsGridControl;
-		internal DevExpress.XtraGrid.Views.Grid.GridView transferDetailsGridView;
-		internal DevExpress.Xpo.XPCollection transferDetailsXpCollection;
-		internal DevExpress.XtraGrid.Columns.GridColumn colOid;
-		internal DevExpress.XtraGrid.Columns.GridColumn GridColumn1;
-		internal DevExpress.XtraGrid.Columns.GridColumn transferIDGridColumn;
-		internal DevExpress.XtraGrid.Columns.GridColumn GridColumn3;
-		internal DevExpress.XtraGrid.Columns.GridColumn transferItemGridColumn;
-		internal DevExpress.XtraGrid.Columns.GridColumn colTransferLot;
-		internal DevExpress.XtraGrid.Columns.GridColumn colTransferQuantity;
-		internal DevExpress.XtraGrid.Columns.GridColumn colTransferUnits;
-		internal DevExpress.XtraGrid.Columns.GridColumn colTransferPallets;
-		internal DevExpress.XtraGrid.Columns.GridColumn colItemExpirationDate;
-		internal DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit itemRepositoryItemLookUpEdit;
-		internal DevExpress.Xpo.XPView itemXpView;
-		internal DevExpress.XtraGrid.Columns.GridColumn delGridColumn;
-		internal DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit deleteRepositoryItemButtonEdit;
-		internal DevExpress.XtraEditors.LabelControl LabelControl11;
-		internal DevExpress.XtraEditors.TextEdit lpnNumberTextEdit;
-		internal DevExpress.XtraGrid.Columns.GridColumn fullLpnNumberGridColumn;
-		internal DevExpress.XtraBars.BarButtonItem refreshBarButtonItem;
-		internal DevExpress.Xpo.XPView LotXpView;
-		internal DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LotRepositoryItemLookUpEdit;
+        }
+        internal DevExpress.XtraBars.BarManager BarManager1;
+        internal DevExpress.XtraBars.Bar transfersBar;
+        internal DevExpress.XtraBars.Bar Bar2;
+        internal DevExpress.XtraBars.Bar Bar3;
+        internal DevExpress.XtraBars.BarDockControl barDockControlTop;
+        internal DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        internal DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        internal DevExpress.XtraBars.BarDockControl barDockControlRight;
+        internal DevExpress.XtraBars.BarButtonItem addBarButtonItem;
+        internal DevExpress.XtraBars.BarButtonItem editBarButtonItem;
+        internal DevExpress.XtraBars.BarButtonItem cancelBarButtonItem;
+        internal DevExpress.XtraBars.BarButtonItem saveBarButtonItem;
+        internal DevExpress.XtraBars.BarButtonItem deleteBarButtonItem;
+        internal DevExpress.XtraEditors.SplitContainerControl SplitContainerControl1;
+        internal DevExpress.Xpo.XPView transferSearchXpView;
+        internal DevExpress.XtraGrid.GridControl transferSearchGridControl;
+        internal DevExpress.XtraGrid.Views.Grid.GridView transferSearchGridView;
+        internal DevExpress.XtraGrid.Columns.GridColumn colTransferID;
+        internal DevExpress.XtraGrid.Columns.GridColumn colTransferNumber;
+        internal DevExpress.XtraGrid.Columns.GridColumn colTransferDate;
+        internal DevExpress.XtraEditors.SplitContainerControl dataEntrySplitContainerControl;
+        internal DevExpress.XtraEditors.TextEdit oidTextEdit;
+        internal DevExpress.XtraEditors.LabelControl LabelControl1;
+        internal DevExpress.XtraEditors.LabelControl LabelControl2;
+        internal DevExpress.XtraEditors.TextEdit transferNumberTextEdit;
+        internal DevExpress.XtraEditors.LookUpEdit toLocationLookUpEdit;
+        internal DevExpress.Xpo.XPView locationsXpView;
+        internal DevExpress.XtraEditors.LabelControl LabelControl4;
+        internal DevExpress.XtraEditors.LabelControl LabelControl3;
+        internal DevExpress.XtraEditors.LookUpEdit fromLocationLookUpEdit;
+        internal DevExpress.XtraEditors.DateEdit transferDateDateEdit;
+        internal DevExpress.XtraEditors.LabelControl LabelControl5;
+        internal DevExpress.XtraEditors.LookUpEdit carrierLookUpEdit;
+        internal DevExpress.XtraEditors.LabelControl LabelControl6;
+        internal DevExpress.Xpo.XPView carrierXpView;
+        internal DevExpress.Xpo.XPView employeesXpView;
+        internal DevExpress.XtraEditors.TextEdit trailerTextEdit;
+        internal DevExpress.XtraEditors.LookUpEdit checkedByLookUpEdit;
+        internal DevExpress.XtraEditors.LabelControl LabelControl7;
+        internal DevExpress.XtraEditors.LabelControl LabelControl8;
+        internal DevExpress.XtraEditors.LookUpEdit unloadedByLookUpEdit;
+        internal DevExpress.XtraEditors.LabelControl LabelControl10;
+        internal DevExpress.XtraEditors.LookUpEdit loadedByLookUpEdit;
+        internal DevExpress.XtraEditors.LabelControl LabelControl9;
+        internal DevExpress.XtraGrid.GridControl transferDetailsGridControl;
+        internal DevExpress.XtraGrid.Views.Grid.GridView transferDetailsGridView;
+        internal DevExpress.Xpo.XPCollection transferDetailsXpCollection;
+        internal DevExpress.XtraGrid.Columns.GridColumn colOid;
+        internal DevExpress.XtraGrid.Columns.GridColumn GridColumn1;
+        internal DevExpress.XtraGrid.Columns.GridColumn transferIDGridColumn;
+        internal DevExpress.XtraGrid.Columns.GridColumn GridColumn3;
+        internal DevExpress.XtraGrid.Columns.GridColumn transferItemGridColumn;
+        internal DevExpress.XtraGrid.Columns.GridColumn colTransferLot;
+        internal DevExpress.XtraGrid.Columns.GridColumn colTransferQuantity;
+        internal DevExpress.XtraGrid.Columns.GridColumn colTransferUnits;
+        internal DevExpress.XtraGrid.Columns.GridColumn colTransferPallets;
+        internal DevExpress.XtraGrid.Columns.GridColumn colItemExpirationDate;
+        internal DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit itemRepositoryItemLookUpEdit;
+        internal DevExpress.Xpo.XPView itemXpView;
+        internal DevExpress.XtraGrid.Columns.GridColumn delGridColumn;
+        internal DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit deleteRepositoryItemButtonEdit;
+        internal DevExpress.XtraEditors.LabelControl LabelControl11;
+        internal DevExpress.XtraEditors.TextEdit lpnNumberTextEdit;
+        internal DevExpress.XtraGrid.Columns.GridColumn fullLpnNumberGridColumn;
+        internal DevExpress.XtraBars.BarButtonItem refreshBarButtonItem;
+        internal DevExpress.Xpo.XPView LotXpView;
+        internal DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit LotRepositoryItemLookUpEdit;
         private DevExpress.XtraGrid.Columns.GridColumn noteGridColumn;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit repositoryItemMemoExEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit lpnRepositoryItemLookUpEdit;

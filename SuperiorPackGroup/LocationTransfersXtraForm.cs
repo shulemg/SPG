@@ -26,6 +26,7 @@ namespace SuperiorPackGroup
         private LocationTransfers m_CurrentTransfer;
         private List<string> m_LPNsInTransfer = new List<string>();
         private Session m_TransfersSession;
+        private bool autochange;
 
         private void addBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -255,9 +256,11 @@ namespace SuperiorPackGroup
                 return;
             }
 
-            FilterLpns();
-            FilterLots();
-
+            if (e.Column == transferItemGridColumn && !autochange)
+                FilterLpns();
+            if (e.Column == fullLpnNumberGridColumn && !autochange)
+                FilterLots();
+            
             if (e.Column == colTransferLot && e.Value != null)
             {
                 float qty = 0;
@@ -809,11 +812,14 @@ namespace SuperiorPackGroup
 
             if (fromLocationLookUpEdit.EditValue != null)
                 lpnViewCriteria.Add(new BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, Convert.ToInt32(fromLocationLookUpEdit.EditValue), BinaryOperatorType.Equal));
-            
-                lpnViewCriteria.Add(new BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemID.PropertyName, transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn), BinaryOperatorType.Equal));
 
+            autochange = true;
+                lpnViewCriteria.Add(new BinaryOperator(LocationInventoryByLot.Fields.LocationInventoryItem.ItemID.PropertyName, transferDetailsGridView.GetFocusedRowCellValue(transferItemGridColumn), BinaryOperatorType.Equal));
                 LPNxpView.Criteria = CriteriaOperator.And(lpnViewCriteria);
-            
+
+            if (LPNxpView.Count == 1)
+                transferDetailsGridView.SetFocusedRowCellValue(fullLpnNumberGridColumn, LPNxpView[0]["LPN"]);
+            autochange = false;
         }
         private void FilterLots()
         {
@@ -823,10 +829,15 @@ namespace SuperiorPackGroup
             if (fromLocationLookUpEdit.EditValue != null)
                 lotViewCriteria.Add(new BinaryOperator(LocationInventoryByLot.Fields.Location.Oid.PropertyName, Convert.ToInt32(fromLocationLookUpEdit.EditValue), BinaryOperatorType.Equal));
 
+            autochange = true;
             lotViewCriteria.Add(new BinaryOperator(LocationInventoryByLot.Fields.LPNNumber.PropertyName, transferDetailsGridView.GetFocusedRowCellValue(fullLpnNumberGridColumn), BinaryOperatorType.Equal));
 
             LotXpView.Criteria = CriteriaOperator.And(lotViewCriteria);
             LotXpView.Reload();
+
+            if (LotXpView.Count == 1)
+                transferDetailsGridView.SetFocusedRowCellValue(colTransferLot, LotXpView[0]["Lot"]);
+            autochange = false;
         }
 
         private void transferDetailsGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
