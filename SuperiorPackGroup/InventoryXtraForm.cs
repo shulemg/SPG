@@ -74,8 +74,9 @@ namespace SuperiorPackGroup
 		private readonly ArrayList m_PoolItemQtyUsed = new ArrayList();
 		private double m_PoolQuantityUsed;
 		private Inventory m_SavedRecord = null;
+        private bool m_AllowAddOnly = false;
 
-		private void addLotCodeSimpleButton_Click(object sender, EventArgs e)
+        private void addLotCodeSimpleButton_Click(object sender, EventArgs e)
 		{
 
 			if (ValidateRecord())
@@ -176,14 +177,22 @@ namespace SuperiorPackGroup
 		private void editSimpleButton_Click(System.Object sender, EventArgs e)
 		{
 
-			//enters the rowhandle for the editing record in the edit button tag property
-			if (inventoryGridView.SelectedRowsCount == 1)
-			{
-				int rowHandle = inventoryGridView.GetSelectedRows()[0];
+            //enters the rowhandle for the editing record in the edit button tag property
+            if (inventoryGridView.SelectedRowsCount == 1)
+            {
+                int rowHandle = inventoryGridView.GetSelectedRows()[0];
+
+                Inventory inventoryRecord = InventoryBLL.GetInventoryRecord(m_InventoryUOW, Convert.ToInt32(inventoryGridView.GetRowCellValue(rowHandle, idGridColumn)));
+
+                if(m_AllowAddOnly && inventoryRecord.InventoryDate.Date < DateTime.Today)
+                {
+                    MessageBox.Show("You don't have permission to edit this record.", "User Permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
 				m_InventoryUOW.DropIdentityMap();
 
-				Inventory inventoryRecord = InventoryBLL.GetInventoryRecord(m_InventoryUOW, Convert.ToInt32(inventoryGridView.GetRowCellValue(rowHandle, idGridColumn)));
-				if (inventoryRecord.Shipment == null)
+                if (inventoryRecord.Shipment == null)
 				{
 					editSimpleButton.Tag = rowHandle;
 
@@ -705,7 +714,9 @@ namespace SuperiorPackGroup
 			{
 				SPG.UserPermissionsRow permission = (new UserPermissionsBLL()).GetUserPermissionsByUserName(Properties.Settings.Default.UserName, "Production Entries")[0];
 
-				switch (permission.PermissionLevel)
+                m_AllowAddOnly = false;
+
+                switch (permission.PermissionLevel)
 				{
 
 					case "FULL":
@@ -718,6 +729,7 @@ namespace SuperiorPackGroup
 					case "ADD":
 					case "Add":
 						m_AllowAdd = true;
+                        m_AllowAddOnly = true;
 						editSimpleButton.Enabled = true;
 						deleteGridColumn.Visible = false;
 						inventoryDateEdit.Enabled = false;
