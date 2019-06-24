@@ -144,11 +144,11 @@ namespace SuperiorPackGroup
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.machineLineXpCollection = new DevExpress.Xpo.XPCollection(this.components);
             this.startTimeGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.endTimeGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.moIdGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.moMlIdGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.auditXtraTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.detailHistorySimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.detailHistoryGridControl = new DevExpress.XtraGrid.GridControl();
@@ -158,6 +158,7 @@ namespace SuperiorPackGroup
             this.PropertyNameGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PrevValueGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NewValueGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colProjectStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.deleteRepositoryItemButtonEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemXpView)).BeginInit();
@@ -208,9 +209,9 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.delMoMlRepositoryItemButtonEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.machineLineXpCollection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             this.auditXtraTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridView)).BeginInit();
@@ -439,7 +440,8 @@ namespace SuperiorPackGroup
             new DevExpress.Xpo.ViewProperty("ProjectID", DevExpress.Xpo.SortDirection.None, "[Oid]", false, true),
             new DevExpress.Xpo.ViewProperty("Project", DevExpress.Xpo.SortDirection.None, "[project]", false, true),
             new DevExpress.Xpo.ViewProperty("Req.StartDate", DevExpress.Xpo.SortDirection.Descending, "[RequestedStartDate]", false, true),
-            new DevExpress.Xpo.ViewProperty("Customer", DevExpress.Xpo.SortDirection.None, "[Customer.CustomerName]", false, true)});
+            new DevExpress.Xpo.ViewProperty("Customer", DevExpress.Xpo.SortDirection.None, "[Customer.CustomerName]", false, true),
+            new DevExpress.Xpo.ViewProperty("Status", DevExpress.Xpo.SortDirection.None, "[ProjectStatus]", false, true)});
             // 
             // projectSearchGridView
             // 
@@ -447,7 +449,8 @@ namespace SuperiorPackGroup
             this.colProjectID,
             this.colProject,
             this.colCustomerGridColumn,
-            this.colReqStartDateGridColumn});
+            this.colReqStartDateGridColumn,
+            this.colProjectStatus});
             this.projectSearchGridView.GridControl = this.projectSearchGridControl;
             this.projectSearchGridView.Name = "projectSearchGridView";
             this.projectSearchGridView.OptionsBehavior.Editable = false;
@@ -1307,7 +1310,6 @@ namespace SuperiorPackGroup
             // 
             // startTimeGridColumn
             // 
-            //this.startTimeGridColumn.ColumnEdit = this.repositoryItemDateEdit1;
             this.startTimeGridColumn.DisplayFormat.FormatString = "g";
             this.startTimeGridColumn.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.startTimeGridColumn.FieldName = "StartTime";
@@ -1316,25 +1318,6 @@ namespace SuperiorPackGroup
             this.startTimeGridColumn.Visible = true;
             this.startTimeGridColumn.VisibleIndex = 2;
             this.startTimeGridColumn.Width = 213;
-            // 
-            // repositoryItemDateEdit1
-            // 
-            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit1.CalendarTimeProperties.Mask.EditMask = "g";
-            this.repositoryItemDateEdit1.CalendarTimeProperties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
-            this.repositoryItemDateEdit1.DisplayFormat.FormatString = "g";
-            this.repositoryItemDateEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.repositoryItemDateEdit1.EditFormat.FormatString = "g";
-            this.repositoryItemDateEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.repositoryItemDateEdit1.Mask.EditMask = "g";
-            this.repositoryItemDateEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
-            this.repositoryItemDateEdit1.Mask.PlaceHolder = '0';
-            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
-            this.repositoryItemDateEdit1.TimeEditWidth = 150;
             // 
             // endTimeGridColumn
             // 
@@ -1366,6 +1349,25 @@ namespace SuperiorPackGroup
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Mask.EditMask = "g";
+            this.repositoryItemDateEdit1.CalendarTimeProperties.TimeEditStyle = DevExpress.XtraEditors.Repository.TimeEditStyle.TouchUI;
+            this.repositoryItemDateEdit1.DisplayFormat.FormatString = "g";
+            this.repositoryItemDateEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemDateEdit1.EditFormat.FormatString = "g";
+            this.repositoryItemDateEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemDateEdit1.Mask.EditMask = "g";
+            this.repositoryItemDateEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTimeAdvancingCaret;
+            this.repositoryItemDateEdit1.Mask.PlaceHolder = '0';
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.repositoryItemDateEdit1.TimeEditWidth = 150;
             // 
             // auditXtraTabPage
             // 
@@ -1448,6 +1450,13 @@ namespace SuperiorPackGroup
             this.NewValueGridColumn.Visible = true;
             this.NewValueGridColumn.VisibleIndex = 4;
             // 
+            // colProjectStatus
+            // 
+            this.colProjectStatus.FieldName = "Status";
+            this.colProjectStatus.Name = "colProjectStatus";
+            this.colProjectStatus.Visible = true;
+            this.colProjectStatus.VisibleIndex = 3;
+            // 
             // ProjectsXtraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1514,9 +1523,9 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.delMoMlRepositoryItemButtonEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.machineLineXpCollection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             this.auditXtraTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailHistoryGridView)).EndInit();
@@ -1648,6 +1657,7 @@ namespace SuperiorPackGroup
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit delMoMlRepositoryItemButtonEdit;
         private DevExpress.XtraEditors.CheckEdit showEndedCheckEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn colProjectStatus;
     }
 
 }

@@ -18,9 +18,9 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("SuperiorPackGroup - Test")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("Ektec Soft")]
+[assembly: AssemblyCompany("PC Ware Business Solutions")]
 [assembly: AssemblyProduct("SuperiorPackGroup")]
-[assembly: AssemblyCopyright("Copyright ©  2007")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 
 [assembly: ComVisible(false)]
