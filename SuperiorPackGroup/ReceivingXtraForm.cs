@@ -1539,10 +1539,17 @@ namespace SuperiorPackGroup
 
 			while (!(addedQty >= qty))
 			{
-				if (!toLastLPN)
+				if (toLastLPN)
 				{
-					m_lastLPN = LPNLabel.GetNextLPNNumber(7);
+                    if (receivingGridView.SelectedRowsCount == 1)
+                    {
+                        m_lastLPN = Convert.ToInt32(receivingGridView.GetFocusedRowCellValue(ReceivDetLPNColumn));
+                    }
 				}
+                else
+                {
+					m_lastLPN = LPNLabel.GetNextLPNNumber(7);
+                }
 
 				receivingGridView.AddNewRow();
 				int rowHandle = receivingGridView.GetRowHandle(receivingGridView.DataRowCount);
