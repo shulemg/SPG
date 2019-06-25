@@ -422,9 +422,12 @@ namespace SuperiorPackGroup
 				return lResult1;
 			}
 
-			//If newReceiving Then
-			//    printLpn(True)
-			//End If
+            //If newReceiving Then
+            //    printLpn(True)
+            //End If
+
+            ItemLookUpEdit.Text = null;
+            ItemDescTextEdit.Text = null;
 
 			BindReceivingsSearchGrid();
 			BindReceivingsControls(m_CurrentReceivingID.Value);
@@ -1537,6 +1540,14 @@ namespace SuperiorPackGroup
 			qtyPerPlt = Convert.ToDouble(QtyPerPltTextEdit.Text);
 			UnitPerPlt = Convert.ToDouble(UnitsPerPltTextEdit.Text);
 
+            if (qty / qtyPerPlt > 60)
+            {
+                if (MessageBox.Show("More than 60 pallets, do you want to receive","",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning) != DialogResult.OK)
+                {
+                    return;
+                }
+            }
+
 			while (!(addedQty >= qty))
 			{
 				if (toLastLPN)
@@ -1599,22 +1610,22 @@ namespace SuperiorPackGroup
 				printLpn(false);
 			}
 
-			foreach (Control control in BulkEntryGroupControl.Controls)
-			{
-				if (control is TextEdit)
-				{
-					(control as TextEdit).Text = control.Tag?.ToString();
-					if (control.Name == "ItemLookUpEdit")
-					{
-						(control as TextEdit).EditValue = null;
-					}
-				}
-			}
+            foreach (Control control in BulkEntryGroupControl.Controls)
+            {
+                if (control is TextEdit)
+                {
+                    if (control != ItemLookUpEdit && control != ItemDescTextEdit)
+                    {
+                        (control as TextEdit).Text = control.Tag?.ToString();
+                    }
+                }
+            }
 
-			UnitQtyLockCheckEdit.Checked = true;
+            UnitQtyLockCheckEdit.Checked = true;
 
 			BulkEntryChanged();
 
+            LotTextEdit.Focus();
 		}
 
 		private void SaveContinueSimpleButton_Click(object sender, EventArgs e)
