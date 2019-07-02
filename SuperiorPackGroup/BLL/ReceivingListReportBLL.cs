@@ -33,7 +33,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				return Adapter.GetReceivingList(ReceivingID);
+                return Adapter.GetReceivingList(ReceivingID);
 			}
 			catch (Exception ex)
 			{
