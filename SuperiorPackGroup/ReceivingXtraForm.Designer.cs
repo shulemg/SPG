@@ -1168,6 +1168,7 @@ namespace SuperiorPackGroup
             this.UnitsTextEdit.Name = "UnitsTextEdit";
             this.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.UnitsTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.UnitsTextEdit.Properties.ReadOnly = true;
             this.UnitsTextEdit.Size = new System.Drawing.Size(100, 20);
             this.UnitsTextEdit.TabIndex = 29;
             this.UnitsTextEdit.Tag = "0";
@@ -1340,7 +1341,7 @@ namespace SuperiorPackGroup
             this.RepositoryItemDateEdit1,
             this.AddLotRepositoryItemButtonEdit,
             this.AddedLotCheckEdit});
-            this.receivingGridControl.Size = new System.Drawing.Size(1124, 420);
+            this.receivingGridControl.Size = new System.Drawing.Size(1128, 405);
             this.receivingGridControl.TabIndex = 0;
             this.receivingGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.receivingGridView});
@@ -1365,6 +1366,7 @@ namespace SuperiorPackGroup
             this.receivingGridView.Name = "receivingGridView";
             this.receivingGridView.OptionsSelection.MultiSelect = true;
             this.receivingGridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.receivingGridView.OptionsView.ShowFooter = true;
             this.receivingGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.receivingGridView_CustomSummaryCalculate);
             this.receivingGridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.receivingGridView_InitNewRow);
             this.receivingGridView.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.receivingGridView_CustomUnboundColumnData);
@@ -1454,6 +1456,8 @@ namespace SuperiorPackGroup
             // 
             this.quantityGridColumn.Caption = "Quantity";
             this.quantityGridColumn.Name = "quantityGridColumn";
+            this.quantityGridColumn.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "Quantity = {0:0.##}")});
             this.quantityGridColumn.Visible = true;
             this.quantityGridColumn.VisibleIndex = 6;
             this.quantityGridColumn.Width = 73;
@@ -1472,8 +1476,6 @@ namespace SuperiorPackGroup
             this.ReceivDetLPNColumn.FieldName = "ReceivDetLPNColumn";
             this.ReceivDetLPNColumn.Name = "ReceivDetLPNColumn";
             this.ReceivDetLPNColumn.OptionsColumn.ReadOnly = true;
-            this.ReceivDetLPNColumn.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom, "ReceivDetLPN", "")});
             this.ReceivDetLPNColumn.Visible = true;
             this.ReceivDetLPNColumn.VisibleIndex = 7;
             // 
