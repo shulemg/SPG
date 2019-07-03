@@ -1416,14 +1416,13 @@ namespace SuperiorPackGroup
 		private void AddToPalletButton_Click(object sender, EventArgs e)
 		{
 			AddLpns(true);
-		}
+            UpdateQtyPerPallets("Item");
+        }
 
-		private void AddEntryButton_Click(object sender, EventArgs e)
+        private void AddEntryButton_Click(object sender, EventArgs e)
 		{
 			AddLpns();
-            //UpdateQtyPerPallets("Qty");
             UpdateQtyPerPallets("Item");
-            //BulkEntryChanged();
         }
 
 		private void ItemLookUpEdit_Validated(object sender, EventArgs e)
