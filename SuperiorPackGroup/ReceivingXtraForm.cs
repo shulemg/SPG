@@ -377,7 +377,6 @@ namespace SuperiorPackGroup
 
 		private bool SaveChanges()
 		{
-
 			UpdateTotalPallets();
 
 			//Required to get back to current receiving when entering a new receiving.
@@ -764,13 +763,13 @@ namespace SuperiorPackGroup
 		{
 
 			m_CurrentReceivingID = -1;
-			receiveDateEdit.EditValue = null;
+			receiveDateEdit.EditValue = DateTime.Today;
 			customerLookUpEdit.EditValue = null;
 			carrierLookUpEdit.EditValue = null;
 			bolTextEdit.Text = string.Empty;
 			vendorLookUpEdit.EditValue = null;
 			skitsTextEdit.EditValue = 0;
-			shiftLookUpEdit.EditValue = null;
+			shiftLookUpEdit.EditValue = 3; //shift 1 == ID 3
 			poTextEdit.Text = string.Empty;
 			palletsTextEdit.EditValue = 0;
 			trailerTextEdit.Text = string.Empty;
@@ -779,7 +778,7 @@ namespace SuperiorPackGroup
 			unloadedByLookUpEdit.EditValue = null;
 			checkedByLookUpEdit.EditValue = null;
 			wheelsChockedComboBoxEdit.EditValue = null;
-			startTimeEdit.EditValue = null;
+			startTimeEdit.Time = DateTime.Now;
 			finishTimeEdit.EditValue = null;
 			temperatureSpinEdit.EditValue = null;
 			physicalConditionLookUpEdit.EditValue = null;
@@ -863,8 +862,9 @@ namespace SuperiorPackGroup
 
 		private void saveBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
+            if (finishTimeEdit.EditValue == null) finishTimeEdit.Time = DateTime.Now;
 
-			if (SaveChanges())
+            if (SaveChanges())
 			{
 
 				CheckPermissions();
