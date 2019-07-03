@@ -1231,15 +1231,8 @@ namespace SuperiorPackGroup
 			packingList.startTimeXrLabel.DataBindings.Add("Text", null, "StartTime", "{0:hh:mm:ss tt}");
 			packingList.finishTimeXrLabel.DataBindings.Add("Text", null, "FinishTime", "{0:hh:mm:ss tt}");
 			packingList.temperatureXrLabel.DataBindings.Add("Text", null, "Temparature", "{0:N1}");
-            int totalQty = 0;
-            var receivingList = (new ReceivingListReportBLL()).GetReceivingListreport(m_CurrentReceivingID.Value);
-            foreach (var item in receivingList)
-            {
-                totalQty += item.ReceivDetQty;
-            }
-            packingList.totalQtyLabel.Text = totalQty.ToString();
-            packingList.DataSource = receivingList;
-			packingList.ShowPreview();
+            packingList.DataSource = (new ReceivingListReportBLL()).GetReceivingListreport(m_CurrentReceivingID.Value);
+            packingList.ShowPreview();
 
 		}
 
@@ -1427,7 +1420,10 @@ namespace SuperiorPackGroup
 		private void AddEntryButton_Click(object sender, EventArgs e)
 		{
 			AddLpns();
-		}
+            //UpdateQtyPerPallets("Qty");
+            UpdateQtyPerPallets("Item");
+            //BulkEntryChanged();
+        }
 
 		private void ItemLookUpEdit_Validated(object sender, EventArgs e)
 		{
