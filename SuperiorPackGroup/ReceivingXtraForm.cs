@@ -518,12 +518,12 @@ namespace SuperiorPackGroup
 				int? lpn = Utilities.ChangeType<int?>(receivingGridView.GetRowCellValue(ci, ReceivDetLPNColumn));
 				DateTime? expr = Utilities.ChangeType<DateTime?>(receivingGridView.GetRowCellValue(ci, expirationDateGridColumn));
 
-				if (m_lpnItems.ContainsKey(lpn) && m_lpnItems[lpn].HasValue && item.HasValue && m_lpnItems[lpn] != item)
+				if (lpn != null && m_lpnItems.ContainsKey(lpn) && m_lpnItems[lpn].HasValue && item.HasValue && m_lpnItems[lpn] != item)
 				{
 					MessageBox.Show($"LPN # {lpn} has multiple items");
 					return false;
 				}
-				else if (!m_lpnItems.ContainsKey(lpn))
+				else if (lpn != null && !m_lpnItems.ContainsKey(lpn))
 				{
 					m_lpnItems.Add(lpn, item);
 				}
@@ -1673,6 +1673,20 @@ namespace SuperiorPackGroup
 				m_upc = "";
 			}
 		}
-	}
+
+        private void DuplicateButton_Click(object sender, EventArgs e)
+        {
+            //string receiveDetails = receivingGridView.GetFocusedRowCellDisplayText("");
+            ItemLookUpEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(itemGridColumn);
+            UpdateQtyPerPallets("Item");
+            ItemDescTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(descriptionGridColumn);
+            LotTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(lotGridColumn);
+            ExpirationDateEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(expirationDateGridColumn);
+            QtyTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(quantityGridColumn);
+            UpdateQtyPerPallets("Qty");
+            BulkEntryChanged();
+        }
+
+    }
 
 }

@@ -116,6 +116,7 @@ namespace SuperiorPackGroup
             this.LabelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.detailsXtraTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.BulkEntryGroupControl = new DevExpress.XtraEditors.GroupControl();
+            this.duplicateButton = new DevExpress.XtraEditors.SimpleButton();
             this.LabelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.UnitQtyLockCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.AddToPalletButton = new DevExpress.XtraEditors.SimpleButton();
@@ -1044,6 +1045,7 @@ namespace SuperiorPackGroup
             this.BulkEntryGroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BulkEntryGroupControl.AutoSize = true;
+            this.BulkEntryGroupControl.Controls.Add(this.duplicateButton);
             this.BulkEntryGroupControl.Controls.Add(this.LabelControl25);
             this.BulkEntryGroupControl.Controls.Add(this.UnitQtyLockCheckEdit);
             this.BulkEntryGroupControl.Controls.Add(this.AddToPalletButton);
@@ -1067,14 +1069,24 @@ namespace SuperiorPackGroup
             this.BulkEntryGroupControl.Location = new System.Drawing.Point(0, 3);
             this.BulkEntryGroupControl.Name = "BulkEntryGroupControl";
             this.BulkEntryGroupControl.ShowCaption = false;
-            this.BulkEntryGroupControl.Size = new System.Drawing.Size(1126, 49);
+            this.BulkEntryGroupControl.Size = new System.Drawing.Size(1126, 78);
             this.BulkEntryGroupControl.TabIndex = 26;
             this.BulkEntryGroupControl.Text = "GroupControl1";
+            // 
+            // duplicateButton
+            // 
+            this.duplicateButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.duplicateButton.Location = new System.Drawing.Point(3, 6);
+            this.duplicateButton.Name = "duplicateButton";
+            this.duplicateButton.Size = new System.Drawing.Size(154, 23);
+            this.duplicateButton.TabIndex = 42;
+            this.duplicateButton.Text = "Duplicate";
+            this.duplicateButton.Click += new System.EventHandler(this.DuplicateButton_Click);
             // 
             // LabelControl25
             // 
             this.LabelControl25.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.LabelControl25.Location = new System.Drawing.Point(843, 2);
+            this.LabelControl25.Location = new System.Drawing.Point(840, 31);
             this.LabelControl25.Name = "LabelControl25";
             this.LabelControl25.Size = new System.Drawing.Size(32, 13);
             this.LabelControl25.TabIndex = 40;
@@ -1084,7 +1096,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitQtyLockCheckEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitQtyLockCheckEdit.EditValue = true;
-            this.UnitQtyLockCheckEdit.Location = new System.Drawing.Point(852, 21);
+            this.UnitQtyLockCheckEdit.Location = new System.Drawing.Point(849, 50);
             this.UnitQtyLockCheckEdit.MenuManager = this.BarManager1;
             this.UnitQtyLockCheckEdit.Name = "UnitQtyLockCheckEdit";
             this.UnitQtyLockCheckEdit.Properties.Caption = "CheckEdit1";
@@ -1098,7 +1110,7 @@ namespace SuperiorPackGroup
             // AddToPalletButton
             // 
             this.AddToPalletButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.AddToPalletButton.Location = new System.Drawing.Point(1044, 19);
+            this.AddToPalletButton.Location = new System.Drawing.Point(1041, 48);
             this.AddToPalletButton.Name = "AddToPalletButton";
             this.AddToPalletButton.Size = new System.Drawing.Size(75, 23);
             this.AddToPalletButton.TabIndex = 35;
@@ -1108,7 +1120,7 @@ namespace SuperiorPackGroup
             // AddEntryButton
             // 
             this.AddEntryButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.AddEntryButton.Location = new System.Drawing.Point(963, 19);
+            this.AddEntryButton.Location = new System.Drawing.Point(960, 48);
             this.AddEntryButton.Name = "AddEntryButton";
             this.AddEntryButton.Size = new System.Drawing.Size(75, 23);
             this.AddEntryButton.TabIndex = 34;
@@ -1119,7 +1131,7 @@ namespace SuperiorPackGroup
             // 
             this.QtyPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyPerPltTextEdit.EditValue = 0D;
-            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(874, 21);
+            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(871, 50);
             this.QtyPerPltTextEdit.MenuManager = this.BarManager1;
             this.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit";
             this.QtyPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1134,7 +1146,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsPerPltTextEdit.EditValue = 0D;
-            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(779, 21);
+            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(776, 50);
             this.UnitsPerPltTextEdit.MenuManager = this.BarManager1;
             this.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit";
             this.UnitsPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1149,7 +1161,7 @@ namespace SuperiorPackGroup
             // 
             this.QtyTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyTextEdit.EditValue = 0D;
-            this.QtyTextEdit.Location = new System.Drawing.Point(673, 20);
+            this.QtyTextEdit.Location = new System.Drawing.Point(670, 49);
             this.QtyTextEdit.MenuManager = this.BarManager1;
             this.QtyTextEdit.Name = "QtyTextEdit";
             this.QtyTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1163,7 +1175,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsTextEdit.EditValue = 0D;
-            this.UnitsTextEdit.Location = new System.Drawing.Point(567, 20);
+            this.UnitsTextEdit.Location = new System.Drawing.Point(564, 49);
             this.UnitsTextEdit.MenuManager = this.BarManager1;
             this.UnitsTextEdit.Name = "UnitsTextEdit";
             this.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1177,7 +1189,7 @@ namespace SuperiorPackGroup
             // LotTextEdit
             // 
             this.LotTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.LotTextEdit.Location = new System.Drawing.Point(351, 21);
+            this.LotTextEdit.Location = new System.Drawing.Point(348, 50);
             this.LotTextEdit.MenuManager = this.BarManager1;
             this.LotTextEdit.Name = "LotTextEdit";
             this.LotTextEdit.Size = new System.Drawing.Size(100, 20);
@@ -1187,7 +1199,7 @@ namespace SuperiorPackGroup
             // ItemDescTextEdit
             // 
             this.ItemDescTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ItemDescTextEdit.Location = new System.Drawing.Point(169, 21);
+            this.ItemDescTextEdit.Location = new System.Drawing.Point(166, 50);
             this.ItemDescTextEdit.MenuManager = this.BarManager1;
             this.ItemDescTextEdit.Name = "ItemDescTextEdit";
             this.ItemDescTextEdit.Size = new System.Drawing.Size(176, 20);
@@ -1198,7 +1210,7 @@ namespace SuperiorPackGroup
             // 
             this.Label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label8.AutoSize = true;
-            this.Label8.Location = new System.Drawing.Point(879, 3);
+            this.Label8.Location = new System.Drawing.Point(876, 32);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(61, 13);
             this.Label8.TabIndex = 37;
@@ -1208,7 +1220,7 @@ namespace SuperiorPackGroup
             // 
             this.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(776, 3);
+            this.Label7.Location = new System.Drawing.Point(773, 32);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(67, 13);
             this.Label7.TabIndex = 36;
@@ -1218,7 +1230,7 @@ namespace SuperiorPackGroup
             // 
             this.Label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(670, 3);
+            this.Label6.Location = new System.Drawing.Point(667, 32);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(96, 13);
             this.Label6.TabIndex = 35;
@@ -1228,7 +1240,7 @@ namespace SuperiorPackGroup
             // 
             this.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(564, 3);
+            this.Label5.Location = new System.Drawing.Point(561, 32);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(78, 13);
             this.Label5.TabIndex = 34;
@@ -1238,7 +1250,7 @@ namespace SuperiorPackGroup
             // 
             this.Label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(454, 3);
+            this.Label4.Location = new System.Drawing.Point(451, 32);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(81, 13);
             this.Label4.TabIndex = 33;
@@ -1248,7 +1260,7 @@ namespace SuperiorPackGroup
             // 
             this.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label3.AutoSize = true;
-            this.Label3.Location = new System.Drawing.Point(348, 3);
+            this.Label3.Location = new System.Drawing.Point(345, 32);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(33, 13);
             this.Label3.TabIndex = 32;
@@ -1258,7 +1270,7 @@ namespace SuperiorPackGroup
             // 
             this.Label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(166, 3);
+            this.Label2.Location = new System.Drawing.Point(163, 32);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(85, 13);
             this.Label2.TabIndex = 31;
@@ -1268,7 +1280,7 @@ namespace SuperiorPackGroup
             // 
             this.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(5, 3);
+            this.Label1.Location = new System.Drawing.Point(2, 32);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(69, 13);
             this.Label1.TabIndex = 30;
@@ -1278,7 +1290,7 @@ namespace SuperiorPackGroup
             // 
             this.ExpirationDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ExpirationDateEdit.EditValue = null;
-            this.ExpirationDateEdit.Location = new System.Drawing.Point(457, 20);
+            this.ExpirationDateEdit.Location = new System.Drawing.Point(454, 49);
             this.ExpirationDateEdit.MenuManager = this.BarManager1;
             this.ExpirationDateEdit.Name = "ExpirationDateEdit";
             this.ExpirationDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1293,7 +1305,7 @@ namespace SuperiorPackGroup
             // ItemLookUpEdit
             // 
             this.ItemLookUpEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ItemLookUpEdit.Location = new System.Drawing.Point(8, 21);
+            this.ItemLookUpEdit.Location = new System.Drawing.Point(5, 50);
             this.ItemLookUpEdit.MenuManager = this.BarManager1;
             this.ItemLookUpEdit.Name = "ItemLookUpEdit";
             this.ItemLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1332,7 +1344,7 @@ namespace SuperiorPackGroup
             this.receivingGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.receivingGridControl.Location = new System.Drawing.Point(-1, 55);
+            this.receivingGridControl.Location = new System.Drawing.Point(-1, 78);
             this.receivingGridControl.MainView = this.receivingGridView;
             this.receivingGridControl.Name = "receivingGridControl";
             this.receivingGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -1341,7 +1353,7 @@ namespace SuperiorPackGroup
             this.RepositoryItemDateEdit1,
             this.AddLotRepositoryItemButtonEdit,
             this.AddedLotCheckEdit});
-            this.receivingGridControl.Size = new System.Drawing.Size(1128, 405);
+            this.receivingGridControl.Size = new System.Drawing.Size(1128, 382);
             this.receivingGridControl.TabIndex = 0;
             this.receivingGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.receivingGridView});
@@ -1388,7 +1400,7 @@ namespace SuperiorPackGroup
             this.itemGridColumn.Name = "itemGridColumn";
             this.itemGridColumn.Visible = true;
             this.itemGridColumn.VisibleIndex = 1;
-            this.itemGridColumn.Width = 73;
+            this.itemGridColumn.Width = 149;
             // 
             // itemRepositoryItemLookUpEdit
             // 
@@ -1441,6 +1453,7 @@ namespace SuperiorPackGroup
             this.expirationDateGridColumn.Name = "expirationDateGridColumn";
             this.expirationDateGridColumn.Visible = true;
             this.expirationDateGridColumn.VisibleIndex = 4;
+            this.expirationDateGridColumn.Width = 153;
             // 
             // RepositoryItemDateEdit1
             // 
@@ -2087,6 +2100,7 @@ namespace SuperiorPackGroup
 		internal DevExpress.XtraEditors.CheckEdit UnitQtyLockCheckEdit;
 		internal DevExpress.XtraEditors.LabelControl LabelControl25;
 		internal SPGReportsTableAdapters.FinishedProductAvailabilityReportTableAdapter FinishedProductAvailabilityReportTableAdapter1;
-	}
+        private SimpleButton duplicateButton;
+    }
 
 }
