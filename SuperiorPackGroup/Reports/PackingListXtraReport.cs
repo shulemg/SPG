@@ -105,7 +105,7 @@ namespace SuperiorPackGroup
 		private void totalPalletWeightXrLabel_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
 		{
 
-			totalPalletWeightXrLabel.Text = (Convert.ToDouble(GetCurrentColumnValue("sngTotalPallets")) * 40).ToString();
+			totalWeightXrLabel.Text = (Convert.ToDouble(GetCurrentColumnValue("sngTotalPallets")) * 40).ToString();
 
 		}
 

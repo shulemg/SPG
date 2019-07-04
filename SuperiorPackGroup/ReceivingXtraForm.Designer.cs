@@ -98,8 +98,6 @@ namespace SuperiorPackGroup
             this.carrierLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.receiveDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.sealTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.palletsTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.skitsTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.trailerTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.bolTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.poTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -107,9 +105,7 @@ namespace SuperiorPackGroup
             this.LabelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.LabelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.LabelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -218,8 +214,6 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.receiveDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receiveDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sealTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.palletsTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skitsTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trailerTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bolTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.poTextEdit.Properties)).BeginInit();
@@ -312,8 +306,6 @@ namespace SuperiorPackGroup
             this.generalXtraTabPage.Controls.Add(this.carrierLookUpEdit);
             this.generalXtraTabPage.Controls.Add(this.receiveDateEdit);
             this.generalXtraTabPage.Controls.Add(this.sealTextEdit);
-            this.generalXtraTabPage.Controls.Add(this.palletsTextEdit);
-            this.generalXtraTabPage.Controls.Add(this.skitsTextEdit);
             this.generalXtraTabPage.Controls.Add(this.trailerTextEdit);
             this.generalXtraTabPage.Controls.Add(this.bolTextEdit);
             this.generalXtraTabPage.Controls.Add(this.poTextEdit);
@@ -321,9 +313,7 @@ namespace SuperiorPackGroup
             this.generalXtraTabPage.Controls.Add(this.LabelControl11);
             this.generalXtraTabPage.Controls.Add(this.LabelControl10);
             this.generalXtraTabPage.Controls.Add(this.LabelControl9);
-            this.generalXtraTabPage.Controls.Add(this.LabelControl8);
             this.generalXtraTabPage.Controls.Add(this.LabelControl7);
-            this.generalXtraTabPage.Controls.Add(this.LabelControl6);
             this.generalXtraTabPage.Controls.Add(this.LabelControl5);
             this.generalXtraTabPage.Controls.Add(this.LabelControl4);
             this.generalXtraTabPage.Controls.Add(this.LabelControl3);
@@ -334,7 +324,7 @@ namespace SuperiorPackGroup
             // 
             // SaveContinueSimpleButton
             // 
-            this.SaveContinueSimpleButton.Location = new System.Drawing.Point(357, 420);
+            this.SaveContinueSimpleButton.Location = new System.Drawing.Point(357, 397);
             this.SaveContinueSimpleButton.Name = "SaveContinueSimpleButton";
             this.SaveContinueSimpleButton.Size = new System.Drawing.Size(128, 23);
             this.SaveContinueSimpleButton.TabIndex = 52;
@@ -522,7 +512,7 @@ namespace SuperiorPackGroup
             // 
             // correctPalletsComboBoxEdit
             // 
-            this.correctPalletsComboBoxEdit.Location = new System.Drawing.Point(440, 376);
+            this.correctPalletsComboBoxEdit.Location = new System.Drawing.Point(440, 353);
             this.correctPalletsComboBoxEdit.MenuManager = this.BarManager1;
             this.correctPalletsComboBoxEdit.Name = "correctPalletsComboBoxEdit";
             this.correctPalletsComboBoxEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -537,7 +527,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl16
             // 
-            this.LabelControl16.Location = new System.Drawing.Point(360, 378);
+            this.LabelControl16.Location = new System.Drawing.Point(360, 355);
             this.LabelControl16.Name = "LabelControl16";
             this.LabelControl16.Size = new System.Drawing.Size(74, 13);
             this.LabelControl16.TabIndex = 48;
@@ -545,7 +535,7 @@ namespace SuperiorPackGroup
             // 
             // insectActivityComboBoxEdit
             // 
-            this.insectActivityComboBoxEdit.Location = new System.Drawing.Point(306, 375);
+            this.insectActivityComboBoxEdit.Location = new System.Drawing.Point(306, 352);
             this.insectActivityComboBoxEdit.MenuManager = this.BarManager1;
             this.insectActivityComboBoxEdit.Name = "insectActivityComboBoxEdit";
             this.insectActivityComboBoxEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -560,7 +550,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl15
             // 
-            this.LabelControl15.Location = new System.Drawing.Point(188, 378);
+            this.LabelControl15.Location = new System.Drawing.Point(188, 355);
             this.LabelControl15.Name = "LabelControl15";
             this.LabelControl15.Size = new System.Drawing.Size(112, 13);
             this.LabelControl15.TabIndex = 46;
@@ -568,7 +558,7 @@ namespace SuperiorPackGroup
             // 
             // foreignSubstanceComboBoxEdit
             // 
-            this.foreignSubstanceComboBoxEdit.Location = new System.Drawing.Point(134, 375);
+            this.foreignSubstanceComboBoxEdit.Location = new System.Drawing.Point(134, 352);
             this.foreignSubstanceComboBoxEdit.MenuManager = this.BarManager1;
             this.foreignSubstanceComboBoxEdit.Name = "foreignSubstanceComboBoxEdit";
             this.foreignSubstanceComboBoxEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -591,7 +581,7 @@ namespace SuperiorPackGroup
             // 
             // wheelsChockedComboBoxEdit
             // 
-            this.wheelsChockedComboBoxEdit.Location = new System.Drawing.Point(357, 350);
+            this.wheelsChockedComboBoxEdit.Location = new System.Drawing.Point(357, 327);
             this.wheelsChockedComboBoxEdit.MenuManager = this.BarManager1;
             this.wheelsChockedComboBoxEdit.Name = "wheelsChockedComboBoxEdit";
             this.wheelsChockedComboBoxEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -606,7 +596,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl13
             // 
-            this.LabelControl13.Location = new System.Drawing.Point(268, 353);
+            this.LabelControl13.Location = new System.Drawing.Point(268, 330);
             this.LabelControl13.Name = "LabelControl13";
             this.LabelControl13.Size = new System.Drawing.Size(83, 13);
             this.LabelControl13.TabIndex = 42;
@@ -614,7 +604,7 @@ namespace SuperiorPackGroup
             // 
             // loadConditionLookUpEdit
             // 
-            this.loadConditionLookUpEdit.Location = new System.Drawing.Point(357, 298);
+            this.loadConditionLookUpEdit.Location = new System.Drawing.Point(357, 275);
             this.loadConditionLookUpEdit.MenuManager = this.BarManager1;
             this.loadConditionLookUpEdit.Name = "loadConditionLookUpEdit";
             this.loadConditionLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -639,7 +629,7 @@ namespace SuperiorPackGroup
             // 
             // physicalConditionLookUpEdit
             // 
-            this.physicalConditionLookUpEdit.Location = new System.Drawing.Point(134, 298);
+            this.physicalConditionLookUpEdit.Location = new System.Drawing.Point(134, 275);
             this.physicalConditionLookUpEdit.MenuManager = this.BarManager1;
             this.physicalConditionLookUpEdit.Name = "physicalConditionLookUpEdit";
             this.physicalConditionLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -657,7 +647,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl23
             // 
-            this.LabelControl23.Location = new System.Drawing.Point(268, 301);
+            this.LabelControl23.Location = new System.Drawing.Point(268, 278);
             this.LabelControl23.Name = "LabelControl23";
             this.LabelControl23.Size = new System.Drawing.Size(75, 13);
             this.LabelControl23.TabIndex = 30;
@@ -665,7 +655,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl22
             // 
-            this.LabelControl22.Location = new System.Drawing.Point(35, 301);
+            this.LabelControl22.Location = new System.Drawing.Point(35, 278);
             this.LabelControl22.Name = "LabelControl22";
             this.LabelControl22.Size = new System.Drawing.Size(90, 13);
             this.LabelControl22.TabIndex = 28;
@@ -673,7 +663,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl21
             // 
-            this.LabelControl21.Location = new System.Drawing.Point(35, 353);
+            this.LabelControl21.Location = new System.Drawing.Point(35, 330);
             this.LabelControl21.Name = "LabelControl21";
             this.LabelControl21.Size = new System.Drawing.Size(66, 13);
             this.LabelControl21.TabIndex = 36;
@@ -686,7 +676,7 @@ namespace SuperiorPackGroup
             0,
             0,
             0});
-            this.temperatureSpinEdit.Location = new System.Drawing.Point(134, 350);
+            this.temperatureSpinEdit.Location = new System.Drawing.Point(134, 327);
             this.temperatureSpinEdit.MenuManager = this.BarManager1;
             this.temperatureSpinEdit.Name = "temperatureSpinEdit";
             this.temperatureSpinEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -704,7 +694,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl20
             // 
-            this.LabelControl20.Location = new System.Drawing.Point(268, 326);
+            this.LabelControl20.Location = new System.Drawing.Point(268, 303);
             this.LabelControl20.Name = "LabelControl20";
             this.LabelControl20.Size = new System.Drawing.Size(56, 13);
             this.LabelControl20.TabIndex = 34;
@@ -713,7 +703,7 @@ namespace SuperiorPackGroup
             // finishTimeEdit
             // 
             this.finishTimeEdit.EditValue = null;
-            this.finishTimeEdit.Location = new System.Drawing.Point(357, 323);
+            this.finishTimeEdit.Location = new System.Drawing.Point(357, 300);
             this.finishTimeEdit.MenuManager = this.BarManager1;
             this.finishTimeEdit.Name = "finishTimeEdit";
             this.finishTimeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -724,7 +714,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl19
             // 
-            this.LabelControl19.Location = new System.Drawing.Point(35, 327);
+            this.LabelControl19.Location = new System.Drawing.Point(35, 304);
             this.LabelControl19.Name = "LabelControl19";
             this.LabelControl19.Size = new System.Drawing.Size(53, 13);
             this.LabelControl19.TabIndex = 32;
@@ -733,7 +723,7 @@ namespace SuperiorPackGroup
             // startTimeEdit
             // 
             this.startTimeEdit.EditValue = null;
-            this.startTimeEdit.Location = new System.Drawing.Point(134, 324);
+            this.startTimeEdit.Location = new System.Drawing.Point(134, 301);
             this.startTimeEdit.MenuManager = this.BarManager1;
             this.startTimeEdit.Name = "startTimeEdit";
             this.startTimeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -744,7 +734,7 @@ namespace SuperiorPackGroup
             // 
             // checkedByLookUpEdit
             // 
-            this.checkedByLookUpEdit.Location = new System.Drawing.Point(357, 272);
+            this.checkedByLookUpEdit.Location = new System.Drawing.Point(357, 249);
             this.checkedByLookUpEdit.MenuManager = this.BarManager1;
             this.checkedByLookUpEdit.Name = "checkedByLookUpEdit";
             this.checkedByLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -769,7 +759,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl18
             // 
-            this.LabelControl18.Location = new System.Drawing.Point(268, 275);
+            this.LabelControl18.Location = new System.Drawing.Point(268, 252);
             this.LabelControl18.Name = "LabelControl18";
             this.LabelControl18.Size = new System.Drawing.Size(60, 13);
             this.LabelControl18.TabIndex = 26;
@@ -777,7 +767,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl17
             // 
-            this.LabelControl17.Location = new System.Drawing.Point(35, 275);
+            this.LabelControl17.Location = new System.Drawing.Point(35, 252);
             this.LabelControl17.Name = "LabelControl17";
             this.LabelControl17.Size = new System.Drawing.Size(64, 13);
             this.LabelControl17.TabIndex = 25;
@@ -785,7 +775,7 @@ namespace SuperiorPackGroup
             // 
             // unloadedByLookUpEdit
             // 
-            this.unloadedByLookUpEdit.Location = new System.Drawing.Point(134, 272);
+            this.unloadedByLookUpEdit.Location = new System.Drawing.Point(134, 249);
             this.unloadedByLookUpEdit.MenuManager = this.BarManager1;
             this.unloadedByLookUpEdit.Name = "unloadedByLookUpEdit";
             this.unloadedByLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -822,7 +812,7 @@ namespace SuperiorPackGroup
             // 
             // LabelControl1
             // 
-            this.LabelControl1.Location = new System.Drawing.Point(35, 173);
+            this.LabelControl1.Location = new System.Drawing.Point(35, 150);
             this.LabelControl1.Name = "LabelControl1";
             this.LabelControl1.Size = new System.Drawing.Size(32, 13);
             this.LabelControl1.TabIndex = 22;
@@ -830,7 +820,7 @@ namespace SuperiorPackGroup
             // 
             // notesMemoEdit
             // 
-            this.notesMemoEdit.Location = new System.Drawing.Point(134, 170);
+            this.notesMemoEdit.Location = new System.Drawing.Point(134, 147);
             this.notesMemoEdit.Name = "notesMemoEdit";
             this.notesMemoEdit.Size = new System.Drawing.Size(352, 96);
             this.notesMemoEdit.TabIndex = 23;
@@ -906,23 +896,6 @@ namespace SuperiorPackGroup
             this.sealTextEdit.Size = new System.Drawing.Size(129, 20);
             this.sealTextEdit.TabIndex = 17;
             // 
-            // palletsTextEdit
-            // 
-            this.palletsTextEdit.Location = new System.Drawing.Point(357, 144);
-            this.palletsTextEdit.Name = "palletsTextEdit";
-            this.palletsTextEdit.Properties.ReadOnly = true;
-            this.palletsTextEdit.Size = new System.Drawing.Size(129, 20);
-            this.palletsTextEdit.TabIndex = 21;
-            this.palletsTextEdit.TabStop = false;
-            // 
-            // skitsTextEdit
-            // 
-            this.skitsTextEdit.Location = new System.Drawing.Point(134, 144);
-            this.skitsTextEdit.Name = "skitsTextEdit";
-            this.skitsTextEdit.Size = new System.Drawing.Size(126, 20);
-            this.skitsTextEdit.TabIndex = 19;
-            this.skitsTextEdit.Validated += new System.EventHandler(this.skitsTextEdit_Validated);
-            // 
             // trailerTextEdit
             // 
             this.trailerTextEdit.Location = new System.Drawing.Point(134, 118);
@@ -976,14 +949,6 @@ namespace SuperiorPackGroup
             this.LabelControl9.TabIndex = 14;
             this.LabelControl9.Text = "Trailer Number:";
             // 
-            // LabelControl8
-            // 
-            this.LabelControl8.Location = new System.Drawing.Point(35, 147);
-            this.LabelControl8.Name = "LabelControl8";
-            this.LabelControl8.Size = new System.Drawing.Size(85, 13);
-            this.LabelControl8.TabIndex = 18;
-            this.LabelControl8.Text = "Additional Pallets:";
-            // 
             // LabelControl7
             // 
             this.LabelControl7.Location = new System.Drawing.Point(274, 121);
@@ -991,14 +956,6 @@ namespace SuperiorPackGroup
             this.LabelControl7.Size = new System.Drawing.Size(64, 13);
             this.LabelControl7.TabIndex = 16;
             this.LabelControl7.Text = "Seal Number:";
-            // 
-            // LabelControl6
-            // 
-            this.LabelControl6.Location = new System.Drawing.Point(274, 147);
-            this.LabelControl6.Name = "LabelControl6";
-            this.LabelControl6.Size = new System.Drawing.Size(62, 13);
-            this.LabelControl6.TabIndex = 20;
-            this.LabelControl6.Text = "Total Pallets:";
             // 
             // LabelControl5
             // 
@@ -1131,7 +1088,7 @@ namespace SuperiorPackGroup
             // 
             this.QtyPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyPerPltTextEdit.EditValue = 0D;
-            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(871, 50);
+            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(776, 49);
             this.QtyPerPltTextEdit.MenuManager = this.BarManager1;
             this.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit";
             this.QtyPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1146,7 +1103,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsPerPltTextEdit.EditValue = 0D;
-            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(776, 50);
+            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(871, 49);
             this.UnitsPerPltTextEdit.MenuManager = this.BarManager1;
             this.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit";
             this.UnitsPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1161,7 +1118,7 @@ namespace SuperiorPackGroup
             // 
             this.QtyTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyTextEdit.EditValue = 0D;
-            this.QtyTextEdit.Location = new System.Drawing.Point(670, 49);
+            this.QtyTextEdit.Location = new System.Drawing.Point(560, 49);
             this.QtyTextEdit.MenuManager = this.BarManager1;
             this.QtyTextEdit.Name = "QtyTextEdit";
             this.QtyTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1175,7 +1132,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsTextEdit.EditValue = 0D;
-            this.UnitsTextEdit.Location = new System.Drawing.Point(564, 49);
+            this.UnitsTextEdit.Location = new System.Drawing.Point(666, 49);
             this.UnitsTextEdit.MenuManager = this.BarManager1;
             this.UnitsTextEdit.Name = "UnitsTextEdit";
             this.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1183,6 +1140,7 @@ namespace SuperiorPackGroup
             this.UnitsTextEdit.Properties.ReadOnly = true;
             this.UnitsTextEdit.Size = new System.Drawing.Size(100, 20);
             this.UnitsTextEdit.TabIndex = 29;
+            this.UnitsTextEdit.TabStop = false;
             this.UnitsTextEdit.Tag = "0";
             this.UnitsTextEdit.Validated += new System.EventHandler(this.UnitsTextEdit_Validated);
             // 
@@ -1210,7 +1168,7 @@ namespace SuperiorPackGroup
             // 
             this.Label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label8.AutoSize = true;
-            this.Label8.Location = new System.Drawing.Point(876, 32);
+            this.Label8.Location = new System.Drawing.Point(773, 31);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(61, 13);
             this.Label8.TabIndex = 37;
@@ -1220,7 +1178,7 @@ namespace SuperiorPackGroup
             // 
             this.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(773, 32);
+            this.Label7.Location = new System.Drawing.Point(876, 31);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(67, 13);
             this.Label7.TabIndex = 36;
@@ -1230,7 +1188,7 @@ namespace SuperiorPackGroup
             // 
             this.Label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(667, 32);
+            this.Label6.Location = new System.Drawing.Point(557, 31);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(96, 13);
             this.Label6.TabIndex = 35;
@@ -1240,7 +1198,7 @@ namespace SuperiorPackGroup
             // 
             this.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(561, 32);
+            this.Label5.Location = new System.Drawing.Point(667, 31);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(78, 13);
             this.Label5.TabIndex = 34;
@@ -1905,8 +1863,6 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.receiveDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receiveDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sealTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.palletsTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skitsTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trailerTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bolTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.poTextEdit.Properties)).EndInit();
@@ -1963,8 +1919,6 @@ namespace SuperiorPackGroup
 		internal DevExpress.XtraEditors.LookUpEdit carrierLookUpEdit;
 		internal DevExpress.XtraEditors.DateEdit receiveDateEdit;
 		internal DevExpress.XtraEditors.TextEdit sealTextEdit;
-		internal DevExpress.XtraEditors.TextEdit palletsTextEdit;
-		internal DevExpress.XtraEditors.TextEdit skitsTextEdit;
 		internal DevExpress.XtraEditors.TextEdit trailerTextEdit;
 		internal DevExpress.XtraEditors.TextEdit bolTextEdit;
 		internal DevExpress.XtraEditors.TextEdit poTextEdit;
@@ -1972,9 +1926,7 @@ namespace SuperiorPackGroup
 		internal DevExpress.XtraEditors.LabelControl LabelControl11;
 		internal DevExpress.XtraEditors.LabelControl LabelControl10;
 		internal DevExpress.XtraEditors.LabelControl LabelControl9;
-		internal DevExpress.XtraEditors.LabelControl LabelControl8;
 		internal DevExpress.XtraEditors.LabelControl LabelControl7;
-		internal DevExpress.XtraEditors.LabelControl LabelControl6;
 		internal DevExpress.XtraEditors.LabelControl LabelControl5;
 		internal DevExpress.XtraEditors.LabelControl LabelControl4;
 		internal DevExpress.XtraEditors.LabelControl LabelControl3;

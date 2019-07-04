@@ -1168,7 +1168,7 @@ namespace SuperiorPackGroup
 			bol.itemTotalQuantityXrLabel.DataBindings.Add("Text", null, "ShipDetDetQty");
 			bol.groupItemCodeXrLabel.DataBindings.Add("Text", null, "ItemCode");
 			bol.groupItemDescriptionXrLabel.DataBindings.Add("Text", null, "ItemDescription");
-			bol.itemTotalPalletsXrLabel.DataBindings.Add("Text", null, "sngPallets", "{0:N2}");
+			bol.itemTotalPalletsXrLabel.DataBindings.Add("Text", null, "sngPallets");
 			bol.itemTotalWeightXrLabel.DataBindings.Add("Text", null, "Weight", "{0:N2}");
 			bol.billTo.Text = $"{cstmr.CustomerName}{Environment.NewLine}{cstmr.Address}{Environment.NewLine}{cstmr.City}, {cstmr.State} {cstmr.ZipCode}";
 			bol.DataSource = (new BOLReportBLL()).Getbolreport(m_CurrentShippingID.Value);
@@ -1594,17 +1594,15 @@ namespace SuperiorPackGroup
 			packingList.itemDescriptionXrLabel.DataBindings.Add("Text", null, "ItemDescription");
 			packingList.palletsXrLabel.DataBindings.Add("Text", null, "sngPallets", "{0:N2}");
 			//.additionalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngSkits")
-			packingList.totalPalletsXrLabel.DataBindings.Add("Text", null, "sngTotalPallets", "{0:N2}");
-			packingList.palletsTotalXrLabel.DataBindings.Add("Text", null, "sngTotalPallets", "{0:N2}");
 			packingList.weightXrLabel.DataBindings.Add("Text", null, "Weight", "{0:N2}");
-			packingList.totalWeightXrLabel.DataBindings.Add("Text", null, "TotalGrossWeight", "{0:N1}");
+			//packingList.totalWeightXrLabel.DataBindings.Add("Text", null, "TotalGrossWeight", "{0:N1}");
 			packingList.lpnXrLabel.DataBindings.Add("Text", null, "FullLPNNumber");
 			packingList.lotXrLabel.DataBindings.Add("Text", null, "ShipDetLot");
 			packingList.expirationDateXrLabel.DataBindings.Add("Text", null, "ExpirationDate", string.Format("{{0:{0}}}", CustomersBLL.GetExpirationDateFormat(Convert.ToInt32(customerLookUpEdit.EditValue))));
 			packingList.itemTotalQuantityXrLabel.DataBindings.Add("Text", null, "ShipDetDetQty");
 			packingList.groupItemCodeXrLabel.DataBindings.Add("Text", null, "ItemCode");
 			packingList.groupItemDescriptionXrLabel.DataBindings.Add("Text", null, "ItemDescription");
-			packingList.itemTotalPalletsXrLabel.DataBindings.Add("Text", null, "sngPallets", "{0:N2}");
+			packingList.itemTotalPalletsXrLabel.DataBindings.Add("Text", null, "sngPallets");
 			packingList.itemTotalWeightXrLabel.DataBindings.Add("Text", null, "Weight", "{0:N2}");
 			packingList.loadedByXrLabel.DataBindings.Add("Text", null, "LoadedBy");
 			packingList.checkedByXrLabel.DataBindings.Add("Text", null, "CheckedBy");

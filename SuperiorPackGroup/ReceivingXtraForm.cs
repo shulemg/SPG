@@ -15,6 +15,7 @@ using DevExpress.Data.Filtering;
 using DevExpress.XtraReports.UI;
 using DevExpress.Xpo;
 using DXDAL.SPGData;
+using System.Linq;
 
 namespace SuperiorPackGroup
 {
@@ -175,8 +176,8 @@ namespace SuperiorPackGroup
 			}
 			trailerTextEdit.Text = receiving.strTrailer;
 			sealTextEdit.Text = receiving.strSeal;
-			skitsTextEdit.EditValue = receiving.sngSkits;
-			palletsTextEdit.EditValue = receiving.sngTotalPallets;
+			//skitsTextEdit.EditValue = receiving.sngSkits;
+			//palletsTextEdit.EditValue = receiving.sngTotalPallets;
 			notesMemoEdit.EditValue = receiving.Notes;
 			if (receiving.UnloadedBy == null)
 			{
@@ -395,7 +396,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				if (m_Receivings.UpdateReceiving(m_CurrentReceivingID.Value, (DateTime?)receiveDateEdit.EditValue, (int?)carrierLookUpEdit.EditValue, (int?)customerLookUpEdit.EditValue, bolTextEdit.Text, (int?)vendorLookUpEdit.EditValue, Utilities.ChangeType<float?>(skitsTextEdit.EditValue), Utilities.ChangeType<float?>(palletsTextEdit.EditValue), poTextEdit.Text, (int?)shiftLookUpEdit.EditValue, trailerTextEdit.Text, sealTextEdit.Text, Convert.ToString(notesMemoEdit.EditValue), (int?)unloadedByLookUpEdit.EditValue, (int?)checkedByLookUpEdit.EditValue, GetThreeWayYesNoValue(wheelsChockedComboBoxEdit.Text), (DateTime?)startTimeEdit.EditValue, (DateTime?)finishTimeEdit.EditValue, Utilities.ChangeType<double?>(temperatureSpinEdit.EditValue), (int?)physicalConditionLookUpEdit.EditValue, (int?)loadConditionLookUpEdit.EditValue, GetThreeWayYesNoValue(foreignSubstanceComboBoxEdit.Text), GetThreeWayYesNoValue(insectActivityComboBoxEdit.Text), GetThreeWayYesNoValue(correctPalletsComboBoxEdit.Text), Convert.ToInt32(locationLookUpEdit.EditValue)) != true)
+				if (m_Receivings.UpdateReceiving(m_CurrentReceivingID.Value, (DateTime?)receiveDateEdit.EditValue, (int?)carrierLookUpEdit.EditValue, (int?)customerLookUpEdit.EditValue, bolTextEdit.Text, (int?)vendorLookUpEdit.EditValue, null, null, poTextEdit.Text, (int?)shiftLookUpEdit.EditValue, trailerTextEdit.Text, sealTextEdit.Text, Convert.ToString(notesMemoEdit.EditValue), (int?)unloadedByLookUpEdit.EditValue, (int?)checkedByLookUpEdit.EditValue, GetThreeWayYesNoValue(wheelsChockedComboBoxEdit.Text), (DateTime?)startTimeEdit.EditValue, (DateTime?)finishTimeEdit.EditValue, Utilities.ChangeType<double?>(temperatureSpinEdit.EditValue), (int?)physicalConditionLookUpEdit.EditValue, (int?)loadConditionLookUpEdit.EditValue, GetThreeWayYesNoValue(foreignSubstanceComboBoxEdit.Text), GetThreeWayYesNoValue(insectActivityComboBoxEdit.Text), GetThreeWayYesNoValue(correctPalletsComboBoxEdit.Text), Convert.ToInt32(locationLookUpEdit.EditValue)) != true)
 				{
 					MessageBox.Show("The receiving was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
@@ -663,11 +664,12 @@ namespace SuperiorPackGroup
 			//Make sure the summary is updated before calculating the total pallets
 			receivingGridView.UpdateTotalSummary();
 			returnsGridView.UpdateTotalSummary();
-			palletsTextEdit.Text = (Convert.ToInt32(ReceivDetLPNColumn.SummaryItem.SummaryValue) + Convert.ToDouble(returnPalletsGridColumn.SummaryItem.SummaryValue) + Math.Ceiling(Convert.ToDouble(skitsTextEdit.EditValue))).ToString("f2");
+            //palletsTextEdit.Text = (Convert.ToInt32(ReceivDetLPNColumn.SummaryItem.SummaryValue) + Convert.ToDouble(returnPalletsGridColumn.SummaryItem.SummaryValue) + Math.Ceiling(Convert.ToDouble(skitsTextEdit.EditValue))).ToString("f2");
+            //palletsTextEdit.Text = (Convert.ToInt32(ReceivDetLPNColumn.SummaryItem.SummaryValue) + Convert.ToDouble(returnPalletsGridColumn.SummaryItem.SummaryValue)).ToString();
 
-		}
+        }
 
-		private void skitsTextEdit_Validated(object sender, EventArgs e)
+        private void skitsTextEdit_Validated(object sender, EventArgs e)
 		{
 
 			UpdateTotalPallets();
@@ -768,10 +770,10 @@ namespace SuperiorPackGroup
 			carrierLookUpEdit.EditValue = null;
 			bolTextEdit.Text = string.Empty;
 			vendorLookUpEdit.EditValue = null;
-			skitsTextEdit.EditValue = 0;
+			//skitsTextEdit.EditValue = 0;
 			shiftLookUpEdit.EditValue = 3; //shift 1 == ID 3
 			poTextEdit.Text = string.Empty;
-			palletsTextEdit.EditValue = 0;
+			//palletsTextEdit.EditValue = 0;
 			trailerTextEdit.Text = string.Empty;
 			sealTextEdit.Text = string.Empty;
 			notesMemoEdit.EditValue = null;
@@ -794,7 +796,7 @@ namespace SuperiorPackGroup
 			receivingsXtraTabControl.SelectedTabPage = generalXtraTabPage;
 
 			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
-			palletsTextEdit.Properties.ReadOnly = true;
+			//palletsTextEdit.Properties.ReadOnly = true;
 			BulkEntryGroupControl.Enabled = false;
 			receivingGridView.OptionsBehavior.Editable = true;
 			Utilities.MakeGridReadOnly(returnsGridView, false);
@@ -821,7 +823,7 @@ namespace SuperiorPackGroup
 			}
 
 			Utilities.MakeFormReadOnly(generalXtraTabPage, false);
-			palletsTextEdit.Properties.ReadOnly = true;
+			//palletsTextEdit.Properties.ReadOnly = true;
 			//locationLookUpEdit.Properties.ReadOnly = True
 			BulkEntryGroupControl.Enabled = true;
 			receivingGridView.OptionsBehavior.Editable = true;
@@ -1208,22 +1210,20 @@ namespace SuperiorPackGroup
 			packingList.qtyXrLabel.DataBindings.Add("Text", null, "intUnits");
 			packingList.itemCodeXrLabel.DataBindings.Add("Text", null, "ItemCode");
 			packingList.itemDescriptionXrLabel.DataBindings.Add("Text", null, "ItemDescription");
-			packingList.palletsXrLabel.DataBindings.Add("Text", null, "sngPallets", "{0:N2}");
+			packingList.palletsXrLabel.DataBindings.Add("Text", null, "sngPallets");
 			//.additionalPalletsXrLabel.DataBindings.Add("Text", Nothing, "sngSkits")
-			packingList.totalPalletsXrLabel.DataBindings.Add("Text", null, "sngTotalPallets", "{0:N2}");
-			packingList.palletsTotalXrLabel.DataBindings.Add("Text", null, "sngTotalPallets", "{0:N2}");
 			packingList.weightXrLabel.DataBindings.Add("Text", null, "Weight", "{0:N2}");
-			//.totalWeightXrLabel.DataBindings.Add("Text", Nothing, "TotalGrossWeight", "{0:N2}")
-			packingList.lpnLabelXrLabel.Text = "QUANTITY";
+            //packingList.totalWeightXrLabel.DataBindings.Add("Text", null, "TotalGrossWeight", "{0:N2}");
 			packingList.lpnXrLabel.DataBindings.Add("Text", null, "ReceivDetQty");
 			packingList.lotXrLabel.DataBindings.Add("Text", null, "ReceivDetLot");
 			packingList.expirationDateXrLabel.DataBindings.Add("Text", null, "ExpirationDate", string.Format("{{0:{0}}}", CustomersBLL.GetExpirationDateFormat(Convert.ToInt32(customerLookUpEdit.EditValue))));
 			packingList.itemTotalQuantityXrLabel.DataBindings.Add("Text", null, "intUnits");
 			packingList.groupItemCodeXrLabel.DataBindings.Add("Text", null, "ItemCode");
 			packingList.groupItemDescriptionXrLabel.DataBindings.Add("Text", null, "ItemDescription");
-			packingList.itemTotalPalletsXrLabel.DataBindings.Add("Text", null, "sngPallets", "{0:N2}");
+			packingList.itemTotalPalletsXrLabel.DataBindings.Add("Text", null, "sngPallets");
 			packingList.itemTotalWeightXrLabel.DataBindings.Add("Text", null, "Weight", "{0:N2}");
-			packingList.loadedByLabelXrLabel.Text = "Unloaded By";
+            packingList.itemTotalQtyLabel.DataBindings.Add("Text", null, "ReceivDetQty");
+            packingList.loadedByLabelXrLabel.Text = "Unloaded By";
 			packingList.loadedByXrLabel.DataBindings.Add("Text", null, "UnloadedBy");
 			packingList.checkedByXrLabel.DataBindings.Add("Text", null, "CheckedBy");
 			packingList.physicalConditionXrLabel.DataBindings.Add("Text", null, "PhysicalCondition");
@@ -1231,7 +1231,14 @@ namespace SuperiorPackGroup
 			packingList.startTimeXrLabel.DataBindings.Add("Text", null, "StartTime", "{0:hh:mm:ss tt}");
 			packingList.finishTimeXrLabel.DataBindings.Add("Text", null, "FinishTime", "{0:hh:mm:ss tt}");
 			packingList.temperatureXrLabel.DataBindings.Add("Text", null, "Temparature", "{0:N1}");
+            //packingList.totalPalletsXrLabel.DataBindings.Add("Text", null, "sngPallets");
+            packingList.totalWeightXrLabel.DataBindings.Add("Text", null, "Weight", "{0:N2}");
             packingList.totalQtyLabel.Text = quantityGridColumn.SummaryItem.SummaryValue.ToString();
+            List<int> received = new List<int>();
+            for (int i = 0; i < receivingGridView.RowCount; i++)
+                received.Add((int)receivingGridView.GetListSourceRowCellValue(i, ReceivDetLPNColumn));
+            int pallets = received.Distinct().Count();
+            packingList.totalPalletsLPNXrLabel.Text = pallets.ToString();
             packingList.DataSource = (new ReceivingListReportBLL()).GetReceivingListreport(m_CurrentReceivingID.Value);
             packingList.ShowPreview();
 
@@ -1448,7 +1455,9 @@ namespace SuperiorPackGroup
 		{
 			UpdateQtyPerPallets("Qty");
 			BulkEntryChanged();
-		}
+            AddEntryButton.Focus();
+
+        }
 
 		private void UnitsPerPltTextEdit_Validated(object sender, EventArgs e)
 		{
