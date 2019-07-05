@@ -185,6 +185,8 @@ namespace SuperiorPackGroup
             this.GridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.FinishedProductAvailabilityReportTableAdapter1 = new SuperiorPackGroup.SPGReportsTableAdapters.FinishedProductAvailabilityReportTableAdapter();
+            this.uomTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.receivingsXtraTabControl)).BeginInit();
             this.receivingsXtraTabControl.SuspendLayout();
             this.generalXtraTabPage.SuspendLayout();
@@ -256,6 +258,7 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.receivingDateRepositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingDateRepositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerFilterRepositoryItemLookUpEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uomTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // receivingsXtraTabControl
@@ -1002,6 +1005,8 @@ namespace SuperiorPackGroup
             this.BulkEntryGroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BulkEntryGroupControl.AutoSize = true;
+            this.BulkEntryGroupControl.Controls.Add(this.label9);
+            this.BulkEntryGroupControl.Controls.Add(this.uomTextEdit);
             this.BulkEntryGroupControl.Controls.Add(this.duplicateButton);
             this.BulkEntryGroupControl.Controls.Add(this.LabelControl25);
             this.BulkEntryGroupControl.Controls.Add(this.UnitQtyLockCheckEdit);
@@ -1033,7 +1038,7 @@ namespace SuperiorPackGroup
             // duplicateButton
             // 
             this.duplicateButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.duplicateButton.Location = new System.Drawing.Point(3, 6);
+            this.duplicateButton.Location = new System.Drawing.Point(960, 6);
             this.duplicateButton.Name = "duplicateButton";
             this.duplicateButton.Size = new System.Drawing.Size(154, 23);
             this.duplicateButton.TabIndex = 42;
@@ -1043,7 +1048,7 @@ namespace SuperiorPackGroup
             // LabelControl25
             // 
             this.LabelControl25.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.LabelControl25.Location = new System.Drawing.Point(840, 31);
+            this.LabelControl25.Location = new System.Drawing.Point(857, 31);
             this.LabelControl25.Name = "LabelControl25";
             this.LabelControl25.Size = new System.Drawing.Size(32, 13);
             this.LabelControl25.TabIndex = 40;
@@ -1053,7 +1058,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitQtyLockCheckEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitQtyLockCheckEdit.EditValue = true;
-            this.UnitQtyLockCheckEdit.Location = new System.Drawing.Point(849, 50);
+            this.UnitQtyLockCheckEdit.Location = new System.Drawing.Point(866, 50);
             this.UnitQtyLockCheckEdit.MenuManager = this.BarManager1;
             this.UnitQtyLockCheckEdit.Name = "UnitQtyLockCheckEdit";
             this.UnitQtyLockCheckEdit.Properties.Caption = "CheckEdit1";
@@ -1088,7 +1093,7 @@ namespace SuperiorPackGroup
             // 
             this.QtyPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyPerPltTextEdit.EditValue = 0D;
-            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(776, 49);
+            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(793, 49);
             this.QtyPerPltTextEdit.MenuManager = this.BarManager1;
             this.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit";
             this.QtyPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1103,7 +1108,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsPerPltTextEdit.EditValue = 0D;
-            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(871, 49);
+            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(888, 49);
             this.UnitsPerPltTextEdit.MenuManager = this.BarManager1;
             this.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit";
             this.UnitsPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1118,12 +1123,12 @@ namespace SuperiorPackGroup
             // 
             this.QtyTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyTextEdit.EditValue = 0D;
-            this.QtyTextEdit.Location = new System.Drawing.Point(560, 49);
+            this.QtyTextEdit.Location = new System.Drawing.Point(543, 49);
             this.QtyTextEdit.MenuManager = this.BarManager1;
             this.QtyTextEdit.Name = "QtyTextEdit";
             this.QtyTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.QtyTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.QtyTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.QtyTextEdit.Size = new System.Drawing.Size(75, 20);
             this.QtyTextEdit.TabIndex = 30;
             this.QtyTextEdit.Tag = "0";
             this.QtyTextEdit.Validated += new System.EventHandler(this.QtyTextEdit_Validated);
@@ -1132,13 +1137,13 @@ namespace SuperiorPackGroup
             // 
             this.UnitsTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsTextEdit.EditValue = 0D;
-            this.UnitsTextEdit.Location = new System.Drawing.Point(666, 49);
+            this.UnitsTextEdit.Location = new System.Drawing.Point(708, 49);
             this.UnitsTextEdit.MenuManager = this.BarManager1;
             this.UnitsTextEdit.Name = "UnitsTextEdit";
             this.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.UnitsTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.UnitsTextEdit.Properties.ReadOnly = true;
-            this.UnitsTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.UnitsTextEdit.Size = new System.Drawing.Size(75, 20);
             this.UnitsTextEdit.TabIndex = 29;
             this.UnitsTextEdit.TabStop = false;
             this.UnitsTextEdit.Tag = "0";
@@ -1168,7 +1173,7 @@ namespace SuperiorPackGroup
             // 
             this.Label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label8.AutoSize = true;
-            this.Label8.Location = new System.Drawing.Point(773, 31);
+            this.Label8.Location = new System.Drawing.Point(794, 31);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(61, 13);
             this.Label8.TabIndex = 37;
@@ -1178,7 +1183,7 @@ namespace SuperiorPackGroup
             // 
             this.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(876, 31);
+            this.Label7.Location = new System.Drawing.Point(891, 31);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(67, 13);
             this.Label7.TabIndex = 36;
@@ -1188,17 +1193,17 @@ namespace SuperiorPackGroup
             // 
             this.Label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(557, 31);
+            this.Label6.Location = new System.Drawing.Point(543, 33);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(96, 13);
+            this.Label6.Size = new System.Drawing.Size(72, 13);
             this.Label6.TabIndex = 35;
-            this.Label6.Text = "Quantity Received";
+            this.Label6.Text = "Qty Received";
             // 
             // Label5
             // 
             this.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(667, 31);
+            this.Label5.Location = new System.Drawing.Point(706, 33);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(78, 13);
             this.Label5.TabIndex = 34;
@@ -1208,7 +1213,7 @@ namespace SuperiorPackGroup
             // 
             this.Label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(451, 32);
+            this.Label4.Location = new System.Drawing.Point(453, 32);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(81, 13);
             this.Label4.TabIndex = 33;
@@ -1256,7 +1261,7 @@ namespace SuperiorPackGroup
             this.ExpirationDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ExpirationDateEdit.Properties.MinValue = new System.DateTime(1800, 1, 1, 0, 0, 0, 0);
-            this.ExpirationDateEdit.Size = new System.Drawing.Size(100, 20);
+            this.ExpirationDateEdit.Size = new System.Drawing.Size(78, 20);
             this.ExpirationDateEdit.TabIndex = 28;
             this.ExpirationDateEdit.Tag = "";
             // 
@@ -1817,6 +1822,32 @@ namespace SuperiorPackGroup
             // 
             this.FinishedProductAvailabilityReportTableAdapter1.ClearBeforeFill = true;
             // 
+            // uomTextEdit
+            // 
+            this.uomTextEdit.EditValue = "";
+            this.uomTextEdit.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.uomTextEdit.Location = new System.Drawing.Point(624, 49);
+            this.uomTextEdit.MenuManager = this.BarManager1;
+            this.uomTextEdit.Name = "uomTextEdit";
+            this.uomTextEdit.Properties.Appearance.Options.UseTextOptions = true;
+            this.uomTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.uomTextEdit.Properties.ReadOnly = true;
+            this.uomTextEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.uomTextEdit.Size = new System.Drawing.Size(75, 20);
+            this.uomTextEdit.TabIndex = 43;
+            this.uomTextEdit.TabStop = false;
+            this.uomTextEdit.Tag = "";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(624, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 13);
+            this.label9.TabIndex = 44;
+            this.label9.Text = "UOM";
+            // 
             // ReceivingXtraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1907,6 +1938,7 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.receivingDateRepositoryItemDateEdit.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingDateRepositoryItemDateEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerFilterRepositoryItemLookUpEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uomTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2053,6 +2085,8 @@ namespace SuperiorPackGroup
 		internal DevExpress.XtraEditors.LabelControl LabelControl25;
 		internal SPGReportsTableAdapters.FinishedProductAvailabilityReportTableAdapter FinishedProductAvailabilityReportTableAdapter1;
         private SimpleButton duplicateButton;
+        internal Label label9;
+        internal TextEdit uomTextEdit;
     }
 
 }

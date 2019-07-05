@@ -1236,7 +1236,11 @@ namespace SuperiorPackGroup
             packingList.totalQtyLabel.Text = quantityGridColumn.SummaryItem.SummaryValue.ToString();
             List<int> received = new List<int>();
             for (int i = 0; i < receivingGridView.RowCount; i++)
-                received.Add((int)receivingGridView.GetListSourceRowCellValue(i, ReceivDetLPNColumn));
+            {
+                var LPNColumnValue = receivingGridView.GetListSourceRowCellValue(i, ReceivDetLPNColumn);
+                if(LPNColumnValue != null && LPNColumnValue.ToString() != "")
+                    received.Add((int)receivingGridView.GetListSourceRowCellValue(i, ReceivDetLPNColumn));
+            }                    
             int pallets = received.Distinct().Count();
             packingList.totalPalletsLPNXrLabel.Text = pallets.ToString();
             packingList.DataSource = (new ReceivingListReportBLL()).GetReceivingListreport(m_CurrentReceivingID.Value);
@@ -1515,7 +1519,9 @@ namespace SuperiorPackGroup
 			if (Changed == "Qty" && QuantityPerUnit > 0)
 			{
 				UnitsTextEdit.EditValue = Math.Ceiling(Convert.ToDouble(QtyTextEdit.Text) / QuantityPerUnit);
-			}
+                uomTextEdit.Text = ItemsBLL.GetUOMByItemID(itemId);
+
+            }
 			if (Changed == "Units" && QuantityPerUnit > 0)
 			{
 				QtyTextEdit.EditValue = Convert.ToDouble(UnitsTextEdit.Text) * QuantityPerUnit;
