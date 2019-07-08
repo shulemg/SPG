@@ -1039,7 +1039,7 @@ namespace SuperiorPackGroup
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(616, 32);
+            this.label9.Location = new System.Drawing.Point(618, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 44;
@@ -1050,7 +1050,7 @@ namespace SuperiorPackGroup
             this.uomTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.uomTextEdit.EditValue = "";
             this.uomTextEdit.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.uomTextEdit.Location = new System.Drawing.Point(619, 50);
+            this.uomTextEdit.Location = new System.Drawing.Point(619, 49);
             this.uomTextEdit.MenuManager = this.BarManager1;
             this.uomTextEdit.Name = "uomTextEdit";
             this.uomTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1120,7 +1120,7 @@ namespace SuperiorPackGroup
             // 
             this.QtyPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyPerPltTextEdit.EditValue = 0D;
-            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(781, 50);
+            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(781, 49);
             this.QtyPerPltTextEdit.MenuManager = this.BarManager1;
             this.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit";
             this.QtyPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1164,7 +1164,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsTextEdit.EditValue = 0D;
-            this.UnitsTextEdit.Location = new System.Drawing.Point(700, 50);
+            this.UnitsTextEdit.Location = new System.Drawing.Point(700, 49);
             this.UnitsTextEdit.MenuManager = this.BarManager1;
             this.UnitsTextEdit.Name = "UnitsTextEdit";
             this.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = true;

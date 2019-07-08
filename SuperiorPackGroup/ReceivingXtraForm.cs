@@ -1442,7 +1442,8 @@ namespace SuperiorPackGroup
 			if (!Convert.IsDBNull(ItemLookUpEdit.EditValue))
 			{
 				ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)ItemLookUpEdit.EditValue);
-			}
+                uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)ItemLookUpEdit.EditValue);
+            }
 			BulkEntryChanged();
 		}
 
@@ -1519,7 +1520,6 @@ namespace SuperiorPackGroup
 			if (Changed == "Qty" && QuantityPerUnit > 0)
 			{
 				UnitsTextEdit.EditValue = Math.Ceiling(Convert.ToDouble(QtyTextEdit.Text) / QuantityPerUnit);
-                uomTextEdit.Text = ItemsBLL.GetUOMByItemID(itemId);
 
             }
 			if (Changed == "Units" && QuantityPerUnit > 0)
@@ -1688,8 +1688,10 @@ namespace SuperiorPackGroup
         private void DuplicateButton_Click(object sender, EventArgs e)
         {
             //string receiveDetails = receivingGridView.GetFocusedRowCellDisplayText("");
+            ItemLookUpEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
             ItemLookUpEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(itemGridColumn);
             UpdateQtyPerPallets("Item");
+            ItemLookUpEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoFilter;
             ItemDescTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(descriptionGridColumn);
             LotTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(lotGridColumn);
             ExpirationDateEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(expirationDateGridColumn);
