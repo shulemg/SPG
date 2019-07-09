@@ -1479,7 +1479,7 @@ namespace SuperiorPackGroup
         {
             //INSTANT C# TODO TASK: The following 'On Error GoTo' statement cannot be converted by Instant C#:
             //On Error GoTo Err
-                try { 
+        try { 
 
             if (int.Parse(UnitsTextEdit.Text) > 0 && int.Parse(UnitsPerPltTextEdit.Text) > 0 && ((int.Parse(QtyTextEdit.Text) > 0 && int.Parse(QtyPerPltTextEdit.Text) > 0) || int.Parse(QtyTextEdit.Text) == 0) && LotCodeValidator.ValidateByItemID(Convert.ToInt32(ItemLookUpEdit.EditValue), LotTextEdit.Text, true))
             {
@@ -1632,7 +1632,7 @@ namespace SuperiorPackGroup
             {
                 if (control is TextEdit)
                 {
-                    if (control != ItemLookUpEdit && control != ItemDescTextEdit)
+                    if (control != ItemLookUpEdit && control != ItemDescTextEdit && control != uomTextEdit)
                     {
                         (control as TextEdit).Text = control.Tag?.ToString();
                     }
@@ -1692,6 +1692,7 @@ namespace SuperiorPackGroup
             ItemLookUpEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(itemGridColumn);
             UpdateQtyPerPallets("Item");
             ItemLookUpEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoFilter;
+            uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)ItemLookUpEdit.EditValue);
             ItemDescTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(descriptionGridColumn);
             LotTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(lotGridColumn);
             ExpirationDateEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(expirationDateGridColumn);

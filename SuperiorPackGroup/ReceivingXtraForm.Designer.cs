@@ -1039,7 +1039,7 @@ namespace SuperiorPackGroup
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(618, 32);
+            this.label9.Location = new System.Drawing.Point(618, 33);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 44;
@@ -1048,13 +1048,10 @@ namespace SuperiorPackGroup
             // uomTextEdit
             // 
             this.uomTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.uomTextEdit.EditValue = "";
-            this.uomTextEdit.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.uomTextEdit.Location = new System.Drawing.Point(619, 49);
+            this.uomTextEdit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.uomTextEdit.Location = new System.Drawing.Point(619, 50);
             this.uomTextEdit.MenuManager = this.BarManager1;
             this.uomTextEdit.Name = "uomTextEdit";
-            this.uomTextEdit.Properties.Appearance.Options.UseTextOptions = true;
-            this.uomTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.uomTextEdit.Properties.ReadOnly = true;
             this.uomTextEdit.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.uomTextEdit.Size = new System.Drawing.Size(75, 20);
@@ -1075,7 +1072,7 @@ namespace SuperiorPackGroup
             // LabelControl25
             // 
             this.LabelControl25.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.LabelControl25.Location = new System.Drawing.Point(845, 31);
+            this.LabelControl25.Location = new System.Drawing.Point(845, 33);
             this.LabelControl25.Name = "LabelControl25";
             this.LabelControl25.Size = new System.Drawing.Size(32, 13);
             this.LabelControl25.TabIndex = 40;
@@ -1085,7 +1082,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitQtyLockCheckEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitQtyLockCheckEdit.EditValue = true;
-            this.UnitQtyLockCheckEdit.Location = new System.Drawing.Point(854, 50);
+            this.UnitQtyLockCheckEdit.Location = new System.Drawing.Point(854, 51);
             this.UnitQtyLockCheckEdit.MenuManager = this.BarManager1;
             this.UnitQtyLockCheckEdit.Name = "UnitQtyLockCheckEdit";
             this.UnitQtyLockCheckEdit.Properties.Caption = "CheckEdit1";
@@ -1120,7 +1117,7 @@ namespace SuperiorPackGroup
             // 
             this.QtyPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QtyPerPltTextEdit.EditValue = 0D;
-            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(781, 49);
+            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(781, 50);
             this.QtyPerPltTextEdit.MenuManager = this.BarManager1;
             this.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit";
             this.QtyPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1135,7 +1132,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsPerPltTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsPerPltTextEdit.EditValue = 0D;
-            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(876, 49);
+            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(876, 50);
             this.UnitsPerPltTextEdit.MenuManager = this.BarManager1;
             this.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit";
             this.UnitsPerPltTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1164,7 +1161,7 @@ namespace SuperiorPackGroup
             // 
             this.UnitsTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnitsTextEdit.EditValue = 0D;
-            this.UnitsTextEdit.Location = new System.Drawing.Point(700, 49);
+            this.UnitsTextEdit.Location = new System.Drawing.Point(700, 50);
             this.UnitsTextEdit.MenuManager = this.BarManager1;
             this.UnitsTextEdit.Name = "UnitsTextEdit";
             this.UnitsTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -1200,7 +1197,7 @@ namespace SuperiorPackGroup
             // 
             this.Label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label8.AutoSize = true;
-            this.Label8.Location = new System.Drawing.Point(781, 33);
+            this.Label8.Location = new System.Drawing.Point(781, 34);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(61, 13);
             this.Label8.TabIndex = 37;
@@ -1210,7 +1207,7 @@ namespace SuperiorPackGroup
             // 
             this.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(879, 31);
+            this.Label7.Location = new System.Drawing.Point(879, 33);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(67, 13);
             this.Label7.TabIndex = 36;
@@ -1220,7 +1217,7 @@ namespace SuperiorPackGroup
             // 
             this.Label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(535, 33);
+            this.Label6.Location = new System.Drawing.Point(538, 33);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(72, 13);
             this.Label6.TabIndex = 35;
@@ -1230,7 +1227,7 @@ namespace SuperiorPackGroup
             // 
             this.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label5.AutoSize = true;
-            this.Label5.Location = new System.Drawing.Point(697, 33);
+            this.Label5.Location = new System.Drawing.Point(697, 34);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(78, 13);
             this.Label5.TabIndex = 34;
@@ -1240,7 +1237,7 @@ namespace SuperiorPackGroup
             // 
             this.Label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(451, 32);
+            this.Label4.Location = new System.Drawing.Point(453, 32);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(81, 13);
             this.Label4.TabIndex = 33;
