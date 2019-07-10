@@ -215,7 +215,7 @@ namespace SuperiorPackGroup
             this.palletsXrLabel.LocationFloat = new DevExpress.Utils.PointFloat(659F, 0F);
             this.palletsXrLabel.Name = "palletsXrLabel";
             this.palletsXrLabel.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.palletsXrLabel.SizeF = new System.Drawing.SizeF(58F, 25F);
+            this.palletsXrLabel.SizeF = new System.Drawing.SizeF(60F, 25F);
             this.palletsXrLabel.StylePriority.UseBorders = false;
             this.palletsXrLabel.StylePriority.UseFont = false;
             this.palletsXrLabel.StylePriority.UseTextAlignment = false;
@@ -1256,7 +1256,7 @@ namespace SuperiorPackGroup
             this.itemTotalQtyLabel.Multiline = true;
             this.itemTotalQtyLabel.Name = "itemTotalQtyLabel";
             this.itemTotalQtyLabel.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.itemTotalQtyLabel.SizeF = new System.Drawing.SizeF(233.2917F, 25F);
+            this.itemTotalQtyLabel.SizeF = new System.Drawing.SizeF(239.1667F, 25F);
             this.itemTotalQtyLabel.StylePriority.UseBackColor = false;
             this.itemTotalQtyLabel.StylePriority.UseBorders = false;
             this.itemTotalQtyLabel.StylePriority.UseFont = false;
@@ -1292,7 +1292,7 @@ namespace SuperiorPackGroup
             this.itemTotalPalletsXrLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(148)))), ((int)(((byte)(148)))));
             this.itemTotalPalletsXrLabel.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Top | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.itemTotalPalletsXrLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemTotalPalletsXrLabel.LocationFloat = new DevExpress.Utils.PointFloat(652.1251F, 0F);
+            this.itemTotalPalletsXrLabel.LocationFloat = new DevExpress.Utils.PointFloat(658F, 0F);
             this.itemTotalPalletsXrLabel.Name = "itemTotalPalletsXrLabel";
             this.itemTotalPalletsXrLabel.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.itemTotalPalletsXrLabel.SizeF = new System.Drawing.SizeF(60F, 25F);
@@ -1300,7 +1300,6 @@ namespace SuperiorPackGroup
             this.itemTotalPalletsXrLabel.StylePriority.UseBorders = false;
             this.itemTotalPalletsXrLabel.StylePriority.UseFont = false;
             this.itemTotalPalletsXrLabel.StylePriority.UseTextAlignment = false;
-            xrSummary4.FormatString = "{0:#,###.00}";
             xrSummary4.IgnoreNullValues = true;
             xrSummary4.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
             this.itemTotalPalletsXrLabel.Summary = xrSummary4;
