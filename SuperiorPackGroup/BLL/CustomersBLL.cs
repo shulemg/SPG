@@ -139,7 +139,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		private void SetCustomerFields(string customerName, string customerContact, string customerPhone, string customerEmail, string customerFax, string customerNote, string address, string city, string state, string postal, bool? inactive, string lpnPrefix, int? firstLPNNumber, int? lastLPNNumber, string plantCode, string expirationDateFormat, int? lotCodeFormat, Customers customer, Session dxSession)
+		private void SetCustomerFields(string customerName, string customerContact, string customerPhone, string customerEmail, string customerFax, string customerNote, string address, string city, string state, string postal, bool? inactive, string lpnPrefix, int? firstLPNNumber, int? lastLPNNumber,string beforeItemCode,string beforeLotCode,string beforeQtyCode,string endCode, string plantCode, string expirationDateFormat, int? lotCodeFormat, Customers customer, Session dxSession)
 		{
 
 			SetField(Customers.Fields.CustomerName.PropertyName, customer.CustomerName, customerName, customer);
@@ -155,15 +155,19 @@ namespace SuperiorPackGroup
 			SetField(Customers.Fields.Inactive.PropertyName, customer.Inactive, (inactive ?? false), customer);
 			SetField(Customers.Fields.LPNPrefix.PropertyName, customer.LPNPrefix, (string.IsNullOrEmpty(lpnPrefix) ? null : lpnPrefix), customer);
 			SetField(Customers.Fields.FirstLPNNumber.PropertyName, customer.FirstLPNNumber, (firstLPNNumber ?? null), customer);
-			SetField(Customers.Fields.LastLPNNumber.PropertyName, customer.LastLPNNumber, (lastLPNNumber ?? null), customer);
-			SetField(Customers.Fields.PlantCode.PropertyName, customer.PlantCode, (string.IsNullOrEmpty(plantCode) ? null : plantCode), customer);
+            SetField(Customers.Fields.LastLPNNumber.PropertyName, customer.LastLPNNumber, (lastLPNNumber ?? null), customer);
+            SetField(Customers.Fields.BeforeItemCode.PropertyName, customer.BeforeItemCode, (beforeItemCode ?? null), customer);
+            SetField(Customers.Fields.BeforeLotCode.PropertyName, customer.BeforeLotCode, (beforeLotCode ?? null), customer);
+            SetField(Customers.Fields.BeforeQtyCode.PropertyName, customer.BeforeQtyCode, (beforeQtyCode ?? null), customer);
+            SetField(Customers.Fields.EndCode.PropertyName, customer.EndCode, (endCode ?? null), customer);
+            SetField(Customers.Fields.PlantCode.PropertyName, customer.PlantCode, (string.IsNullOrEmpty(plantCode) ? null : plantCode), customer);
 			SetField(Customers.Fields.ExpirationDateFormat.PropertyName, customer.ExpirationDateFormat, (string.IsNullOrEmpty(expirationDateFormat) ? null : expirationDateFormat), customer);
 			SetField(Customers.Fields.DefaultLotCodeFormat.PropertyName, customer.DefaultLotCodeFormat, (lotCodeFormat.HasValue ? dxSession.GetObjectByKey<LotCodeFormats>(lotCodeFormat.Value) : null), customer);
 
 		}
 
 		[System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, true)]
-		public bool UpdateCustomer(int customerID, string customerName, string customerContact, string customerPhone, string customerEmail, string customerFax, string customerNote, string address, string city, string state, string postal, bool? inactive, string lpnPrefix, int? firstLPNNumber, int? lastLPNNumber, string plantCode, string expirationDateFormat, int? lotCodeFormat, Session DXSsession)
+		public bool UpdateCustomer(int customerID, string customerName, string customerContact, string customerPhone, string customerEmail, string customerFax, string customerNote, string address, string city, string state, string postal, bool? inactive, string lpnPrefix, int? firstLPNNumber, int? lastLPNNumber, string beforeItemCode, string beforeLotCode, string beforeQtyCode,string endCode, string plantCode, string expirationDateFormat, int? lotCodeFormat, Session DXSsession)
 		{
 
 			if (string.IsNullOrEmpty(customerName))
@@ -201,7 +205,7 @@ namespace SuperiorPackGroup
 					NewValue = customerID.ToString()
 				};
 				changes.Add(change);
-				return InsertCustomer(customerID, customerName, customerContact, customerPhone, customerEmail, customerFax, customerNote, address, city, state, postal, inactive, lpnPrefix, firstLPNNumber, lastLPNNumber, plantCode, expirationDateFormat, lotCodeFormat, DXSsession);
+				return InsertCustomer(customerID, customerName, customerContact, customerPhone, customerEmail, customerFax, customerNote, address, city, state, postal, inactive, lpnPrefix, firstLPNNumber, lastLPNNumber, beforeItemCode, beforeLotCode, beforeQtyCode,endCode, plantCode, expirationDateFormat, lotCodeFormat, DXSsession);
 			}
 
 			change = new Change()
@@ -211,7 +215,7 @@ namespace SuperiorPackGroup
 				NewValue = customer.CustomerID.ToString()
 			};
 			changes.Add(change);
-			SetCustomerFields(customerName, customerContact, customerPhone, customerEmail, customerFax, customerNote, address, city, state, postal, inactive, lpnPrefix, firstLPNNumber, lastLPNNumber, plantCode, expirationDateFormat, lotCodeFormat, customer, DXSsession);
+			SetCustomerFields(customerName, customerContact, customerPhone, customerEmail, customerFax, customerNote, address, city, state, postal, inactive, lpnPrefix, firstLPNNumber, lastLPNNumber, beforeItemCode, beforeLotCode, beforeQtyCode,endCode, plantCode, expirationDateFormat, lotCodeFormat, customer, DXSsession);
 
 			try
 			{
@@ -230,11 +234,11 @@ namespace SuperiorPackGroup
 		}
 
 		[System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, true)]
-		public bool InsertCustomer(int customerID, string customerName, string customerContact, string customerPhone, string customerEmail, string customerFax, string customerNote, string address, string city, string state, string postal, bool? inactive, string lpnPrefix, int? firstLPNNumber, int? lastLPNNumber, string plantCode, string expirationDateFormat, int? lotCodeFormat, Session dxSession)
+		public bool InsertCustomer(int customerID, string customerName, string customerContact, string customerPhone, string customerEmail, string customerFax, string customerNote, string address, string city, string state, string postal, bool? inactive, string lpnPrefix, int? firstLPNNumber, int? lastLPNNumber, string beforeItemCode, string beforeLotCode, string beforeQtyCode,string endCode, string plantCode, string expirationDateFormat, int? lotCodeFormat, Session dxSession)
 		{
 
 			Customers customer = new Customers(dxSession) {CustomerID = customerID};
-			SetCustomerFields(customerName, customerContact, customerPhone, customerEmail, customerFax, customerNote, address, city, state, postal, inactive, lpnPrefix, firstLPNNumber, lastLPNNumber, plantCode, expirationDateFormat, lotCodeFormat, customer, dxSession);
+			SetCustomerFields(customerName, customerContact, customerPhone, customerEmail, customerFax, customerNote, address, city, state, postal, inactive, lpnPrefix, firstLPNNumber, lastLPNNumber, beforeItemCode, beforeLotCode, beforeQtyCode,endCode, plantCode, expirationDateFormat, lotCodeFormat, customer, dxSession);
 			customer.strEnteredBy = Properties.Settings.Default.UserName;
 			customer.dtmEnteredOn = DateTime.Now;
 

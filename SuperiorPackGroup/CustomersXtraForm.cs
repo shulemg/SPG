@@ -141,6 +141,10 @@ namespace SuperiorPackGroup
 			lpnPrefixTextEdit.Text = customer.LPNPrefix;
 			firstLPNNumberTextEdit.EditValue = customer.FirstLPNNumber;
 			lastLPNNumberTextEdit.EditValue = customer.LastLPNNumber;
+            beforeItemCodetextEdit.EditValue = customer.BeforeItemCode;
+            beforeLotCodetextEdit.EditValue = customer.BeforeLotCode;
+            beforeQtyCodetextEdit.EditValue = customer.BeforeQtyCode;
+            endCodeTextEdit.EditValue = customer.EndCode;
 			plantCodeTextEdit.EditValue = customer.PlantCode;
 			lpnGroupControl.Text = string.Format("LPN Settings - Next LPN Number: {0}", customer.NextLPNNumber);
 			expirationDateFormatComboBox.EditValue = customer.ExpirationDateFormat;
@@ -181,7 +185,7 @@ namespace SuperiorPackGroup
 
 			try
 			{
-				if (m_Customer.UpdateCustomer(m_CurrentCustomer.Value, nameTextEdit.Text, contactTextEdit.Text, Convert.ToString(phoneTextEdit.EditValue), emailTextEdit.Text, Convert.ToString(faxTextEdit.EditValue), noteMemoEdit.Text, Convert.ToString(addressTextEdit.EditValue), Convert.ToString(cityTextEdit.EditValue), Convert.ToString(stateTextEdit.EditValue), Convert.ToString(postalTextEdit.EditValue), inactiveCheckEdit.Checked, Convert.ToString(lpnPrefixTextEdit.EditValue), Utilities.ChangeType<int?>(firstLPNNumberTextEdit.EditValue), Utilities.ChangeType<int?>(lastLPNNumberTextEdit.EditValue), Convert.ToString(plantCodeTextEdit.EditValue), Convert.ToString(expirationDateFormatComboBox.EditValue), Utilities.ChangeType<int?>(lotCodeFormatLookUpEdit.EditValue), m_CustomersSession) != true)
+				if (m_Customer.UpdateCustomer(m_CurrentCustomer.Value, nameTextEdit.Text, contactTextEdit.Text, Convert.ToString(phoneTextEdit.EditValue), emailTextEdit.Text, Convert.ToString(faxTextEdit.EditValue), noteMemoEdit.Text, Convert.ToString(addressTextEdit.EditValue), Convert.ToString(cityTextEdit.EditValue), Convert.ToString(stateTextEdit.EditValue), Convert.ToString(postalTextEdit.EditValue), inactiveCheckEdit.Checked, Convert.ToString(lpnPrefixTextEdit.EditValue), Utilities.ChangeType<int?>(firstLPNNumberTextEdit.EditValue), Utilities.ChangeType<int?>(lastLPNNumberTextEdit.EditValue), Convert.ToString(beforeItemCodetextEdit.EditValue), Convert.ToString(beforeLotCodetextEdit.EditValue), Convert.ToString(beforeQtyCodetextEdit.EditValue), Convert.ToString(endCodeTextEdit.EditValue), Convert.ToString(plantCodeTextEdit.EditValue), Convert.ToString(expirationDateFormatComboBox.EditValue), Utilities.ChangeType<int?>(lotCodeFormatLookUpEdit.EditValue), m_CustomersSession) != true)
 				{
 					MessageBox.Show("The customer was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
@@ -362,7 +366,11 @@ namespace SuperiorPackGroup
 			lpnPrefixTextEdit.EditValue = null;
 			firstLPNNumberTextEdit.EditValue = null;
 			lastLPNNumberTextEdit.EditValue = null;
-			plantCodeTextEdit.EditValue = null;
+            beforeItemCodetextEdit.EditValue = null;
+            beforeLotCodetextEdit.EditValue = null;
+            beforeQtyCodetextEdit.EditValue = null;
+            endCodeTextEdit.EditValue = null;
+            plantCodeTextEdit.EditValue = null;
 			lpnGroupControl.Text = "LPN Settings";
 			expirationDateFormatComboBox.EditValue = null;
 			lotCodeFormatLookUpEdit.EditValue = null;

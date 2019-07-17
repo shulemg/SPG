@@ -112,6 +112,7 @@ namespace SuperiorPackGroup
             this.LabelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.detailsXtraTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.BulkEntryGroupControl = new DevExpress.XtraEditors.GroupControl();
+            this.barcodeTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.label9 = new System.Windows.Forms.Label();
             this.uomTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.duplicateButton = new DevExpress.XtraEditors.SimpleButton();
@@ -222,6 +223,7 @@ namespace SuperiorPackGroup
             this.detailsXtraTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BulkEntryGroupControl)).BeginInit();
             this.BulkEntryGroupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uomTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitQtyLockCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyPerPltTextEdit.Properties)).BeginInit();
@@ -1005,6 +1007,7 @@ namespace SuperiorPackGroup
             this.BulkEntryGroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BulkEntryGroupControl.AutoSize = true;
+            this.BulkEntryGroupControl.Controls.Add(this.barcodeTextEdit);
             this.BulkEntryGroupControl.Controls.Add(this.label9);
             this.BulkEntryGroupControl.Controls.Add(this.uomTextEdit);
             this.BulkEntryGroupControl.Controls.Add(this.duplicateButton);
@@ -1034,6 +1037,15 @@ namespace SuperiorPackGroup
             this.BulkEntryGroupControl.Size = new System.Drawing.Size(1126, 78);
             this.BulkEntryGroupControl.TabIndex = 26;
             this.BulkEntryGroupControl.Text = "GroupControl1";
+            // 
+            // barcodeTextEdit
+            // 
+            this.barcodeTextEdit.Location = new System.Drawing.Point(5, 8);
+            this.barcodeTextEdit.MenuManager = this.BarManager1;
+            this.barcodeTextEdit.Name = "barcodeTextEdit";
+            this.barcodeTextEdit.Size = new System.Drawing.Size(942, 20);
+            this.barcodeTextEdit.TabIndex = 45;
+            this.barcodeTextEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BarcodeTextEdit_KeyDown);
             // 
             // label9
             // 
@@ -1900,6 +1912,7 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.BulkEntryGroupControl)).EndInit();
             this.BulkEntryGroupControl.ResumeLayout(false);
             this.BulkEntryGroupControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uomTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitQtyLockCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyPerPltTextEdit.Properties)).EndInit();
@@ -2085,6 +2098,7 @@ namespace SuperiorPackGroup
         private SimpleButton duplicateButton;
         internal Label label9;
         internal TextEdit uomTextEdit;
+        private TextEdit barcodeTextEdit;
     }
 
 }

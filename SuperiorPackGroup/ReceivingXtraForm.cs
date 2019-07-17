@@ -25,7 +25,7 @@ namespace SuperiorPackGroup
 		public ReceivingXtraForm()
 		{
 			InitializeComponent();
-		}
+        }
 
 		private string m_upc;
 		private Dictionary<int?, int?> m_lpnItems = new Dictionary<int?, int?>();
@@ -837,6 +837,8 @@ namespace SuperiorPackGroup
 			editBarButtonItem.Enabled = false;
 			addBarButtonItem.Enabled = false;
 			refreshBarButtonItem.Enabled = false;
+
+            barcodeTextEdit.Focus();
 
 		}
 
@@ -1699,6 +1701,55 @@ namespace SuperiorPackGroup
             QtyTextEdit.Text = receivingGridView.GetFocusedRowCellDisplayText(quantityGridColumn);
             UpdateQtyPerPallets("Qty");
             BulkEntryChanged();
+        }
+
+        private void BarcodeTextEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    string code = barcodeTextEdit.Text;
+
+                    Receiving receiving = m_ReceivingSession.GetObjectByKey<Receiving>(Convert.ToInt32(receivingSearchGridView.GetFocusedRowCellValue(receivingIDSearchGridColumn)));
+                    if (receiving.ReceivCustID.BeforeItemCode == null || receiving.ReceivCustID.BeforeLotCode == null || receiving.ReceivCustID.BeforeQtyCode == null)
+                    {
+                        MessageBox.Show("not all barcode values or set");
+                        return;
+                    }
+                    if (code.Contains(receiving.ReceivCustID.BeforeItemCode) && code.Contains(receiving.ReceivCustID.BeforeLotCode) || code.Contains(receiving.ReceivCustID.BeforeQtyCode))
+                    {
+                        code = code.Replace(receiving.ReceivCustID.BeforeItemCode, "");
+                        code = code.Replace(receiving.ReceivCustID.BeforeLotCode, "^");
+                        code = code.Replace(receiving.ReceivCustID.BeforeQtyCode, "^");
+                    }                      
+                    else
+                    {
+                        MessageBox.Show("this barcode is not registeret to this customer");
+                        barcodeTextEdit.Text = "";
+                        return;
+                    }
+                    if (receiving.ReceivCustID.EndCode != null)
+                        code = code.Replace(receiving.ReceivCustID.EndCode, "");
+                    ItemLookUpEdit.Text = code.Split('^')[0];
+                    LotTextEdit.Text = code.Split('^')[1];
+                    QtyTextEdit.Text = code.Split('^')[2];
+                    barcodeTextEdit.Text = "";
+
+                    UpdateQtyPerPallets("Item");
+                    ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)ItemLookUpEdit.EditValue);
+                    uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)ItemLookUpEdit.EditValue);
+                    UpdateQtyPerPallets("Qty");
+                    BulkEntryChanged();
+                    ExpirationDateEdit.EditValue = null;
+                    ExpirationDateEdit.Focus();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
         }
     }
 

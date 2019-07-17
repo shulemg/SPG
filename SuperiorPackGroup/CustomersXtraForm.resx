@@ -207,10 +207,4 @@
   <metadata name="spgShiftsXpView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1627, 25</value>
   </metadata>
-  <metadata name="spgLocationsXpView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1262, 25</value>
-  </metadata>
-  <metadata name="spgShiftsXpView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1627, 25</value>
-  </metadata>
 </root>

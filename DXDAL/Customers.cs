@@ -36,6 +36,10 @@ namespace DXDAL
             private int? _lastLPNNumber;
             private int? _firstLPNNumber;
             private string _lPNPrefix;
+            private string _beforeItemCode;
+            private string _beforeLotCode;
+            private string _beforeQtyCode;
+            private string _endCode;
             private string _expirationDateFormat;
             private LotCodeFormats _defaultLotCodeFormat;
 
@@ -165,6 +169,26 @@ namespace DXDAL
                 get => _nextLPNNumber;
                 set => SetPropertyValue<int>("NextLPNNumber", ref _nextLPNNumber, value);
             }
+            public string BeforeItemCode
+            {
+                get => _beforeItemCode;
+                set => SetPropertyValue<string>("BeforeItemCode", ref _beforeItemCode, value);
+            }
+            public string BeforeLotCode
+            {
+                get => _beforeLotCode;
+                set => SetPropertyValue<string>("BeforeLotCode", ref _beforeLotCode, value);
+            }
+            public string BeforeQtyCode
+            {
+                get => _beforeQtyCode;
+                set => SetPropertyValue<string>("BeforeQtyCode", ref _beforeQtyCode, value);
+            }
+            public string EndCode
+            {
+                get => _endCode;
+                set => SetPropertyValue<string>("EndCode", ref _endCode, value);
+            }
 
             public string PlantCode
             {
@@ -243,6 +267,10 @@ namespace DXDAL
                 public OperandProperty FirstLPNNumber => new OperandProperty(GetNestedName("FirstLPNNumber"));
                 public OperandProperty LastLPNNumber => new OperandProperty(GetNestedName("LastLPNNumber"));
                 public OperandProperty NextLPNNumber => new OperandProperty(GetNestedName("NextLPNNumber"));
+                public OperandProperty BeforeItemCode => new OperandProperty(GetNestedName("BeforeItemCode"));
+                public OperandProperty BeforeLotCode => new OperandProperty(GetNestedName("BeforeLotCode"));
+                public OperandProperty BeforeQtyCode => new OperandProperty(GetNestedName("BeforeQtyCode"));
+                public OperandProperty EndCode => new OperandProperty(GetNestedName("EndCode"));
                 public const string PlantCodeFieldName = "PlantCode";
                 public OperandProperty PlantCode => new OperandProperty(GetNestedName("PlantCode"));
                 public const string ExpirationDateFormatFieldName = "ExpirationDateFormat";
