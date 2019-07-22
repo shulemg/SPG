@@ -300,8 +300,8 @@ namespace SuperiorPackGroup
 
 		private void filterSimpleButton_Click(System.Object sender, EventArgs e)
 		{
-
-			if (toFilterDateEdit.DateTime.TimeOfDay.TotalMinutes == 0)
+            toFilterDateEdit.DateTime = toFilterDateEdit.DateTime.AddSeconds(59);
+            if (toFilterDateEdit.DateTime.TimeOfDay.TotalMinutes == 0)
 			{
 				toFilterDateEdit.DateTime = toFilterDateEdit.DateTime.AddMinutes(1439);
 			}

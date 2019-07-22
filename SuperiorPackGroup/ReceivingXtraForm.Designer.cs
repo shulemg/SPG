@@ -1040,6 +1040,8 @@ namespace SuperiorPackGroup
             // 
             // barcodeTextEdit
             // 
+            this.barcodeTextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.barcodeTextEdit.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.barcodeTextEdit.Location = new System.Drawing.Point(5, 8);
             this.barcodeTextEdit.MenuManager = this.BarManager1;
             this.barcodeTextEdit.Name = "barcodeTextEdit";
