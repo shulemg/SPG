@@ -16,24 +16,27 @@ namespace SuperiorPackGroup
 	public class LocationInventoryBLL
 	{
 
-		public static void UpdateStock(Session session, int ItemID, int LocationID, float Quantity, string lot = "", int? LPNNumber = null, DateTime? ExpirationDate = null)
+		public static void UpdateStock(Session session, int ItemID, int LocationID, float Quantity, string lot = "", int? LPNNumber = null, DateTime? ExpirationDate = null,bool newInventory = true)
 		{
+            if (newInventory)
+            {
+                LocationInventory inventory = session.FindObject<LocationInventory>(new BinaryOperator(LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, ItemID, BinaryOperatorType.Equal) & new BinaryOperator(LocationInventory.Fields.Location.Oid.PropertyName, LocationID, BinaryOperatorType.Equal));
 
-			LocationInventory inventory = session.FindObject<LocationInventory>(new BinaryOperator(LocationInventory.Fields.LocationInventoryItem.ItemID.PropertyName, ItemID, BinaryOperatorType.Equal) & new BinaryOperator(LocationInventory.Fields.Location.Oid.PropertyName, LocationID, BinaryOperatorType.Equal));
+			    if (inventory == null)
+			    {
+				    inventory = new LocationInventory(session);
+				    inventory.LocationInventoryItem = session.GetObjectByKey<Items>(ItemID);
+				    inventory.Location = session.GetObjectByKey<Locations>(LocationID);
+				    inventory.QuantityOnHand = Quantity;
+			    }
+			    else
+			    {
+				    inventory.QuantityOnHand += Quantity;
+			    }
 
-			if (inventory == null)
-			{
-				inventory = new LocationInventory(session);
-				inventory.LocationInventoryItem = session.GetObjectByKey<Items>(ItemID);
-				inventory.Location = session.GetObjectByKey<Locations>(LocationID);
-				inventory.QuantityOnHand = Quantity;
-			}
-			else
-			{
-				inventory.QuantityOnHand += Quantity;
-			}
-
-			inventory.Save();
+			    inventory.Save();
+            }
+			
 
 			if (((lot == null) || string.IsNullOrEmpty(lot)) && ((LPNNumber == null) || LPNNumber == 0))
 			{

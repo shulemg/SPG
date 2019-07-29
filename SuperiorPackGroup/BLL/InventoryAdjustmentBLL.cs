@@ -147,7 +147,7 @@ namespace SuperiorPackGroup
 		}
 
 		[System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Update, true)]
-		public bool UpdateInventoryAdjustment(int adjustmentID, DateTime adjustmentDate, int customer, int item, float originalQuantity, float? newQuantity, string reason, int locationID, string OriginalLot, string NewLot, int? LPN, DateTime? Expr)
+		public bool UpdateInventoryAdjustment(int adjustmentID, DateTime adjustmentDate, int customer, int item, float originalQuantity, float? newQuantity, string reason, int locationID, string OriginalLot, string NewLot, int? LPN, DateTime? Expr,bool IsNewInventory = true)
 		{
 
 			//Dim adjustments As SPG.InventoryAdjustmentDataTable = Adapter.GetInventoryAdjustmentByID(adjustmentID)
@@ -166,7 +166,7 @@ namespace SuperiorPackGroup
 					NewValue = adjustmentID.ToString()
 				};
 				changes.Add(change);
-				return InsertInventoryAdjustment(adjustmentID, adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, OriginalLot, NewLot, LPN, Expr);
+				return InsertInventoryAdjustment(adjustmentID, adjustmentDate, customer, item, originalQuantity, newQuantity, reason, locationID, OriginalLot, NewLot, LPN, Expr,IsNewInventory);
 			}
 
 			//Dim adjustment As SPG.InventoryAdjustmentRow = adjustments(0)
@@ -235,8 +235,8 @@ namespace SuperiorPackGroup
 			ItemsBLL items = new ItemsBLL();
 			if (!string.IsNullOrEmpty(originalNewLot))
 			{
-				items.UpdateStock(Session.DefaultSession, originalItem, originalOriginalQuantity, false, originalLocation, originalOldLot, originalLocation);
-				items.UpdateStock(Session.DefaultSession, originalItem, originalOriginalQuantity * -1, false, originalLocation, originalNewLot, originalLPN);
+				items.UpdateStock(Session.DefaultSession, originalItem, originalOriginalQuantity, false, originalLocation, originalOldLot, originalLocation,null,IsNewInventory);
+				items.UpdateStock(Session.DefaultSession, originalItem, originalOriginalQuantity * -1, false, originalLocation, originalNewLot, originalLPN, null, IsNewInventory);
 			}
 			else
 			{
@@ -244,8 +244,8 @@ namespace SuperiorPackGroup
 			}
 			if (!string.IsNullOrEmpty(NewLot))
 			{
-				items.UpdateStock(Session.DefaultSession, item, originalQuantity * -1, false, locationID, OriginalLot, LPN, Expr);
-				items.UpdateStock(Session.DefaultSession, item, originalQuantity, false, locationID, NewLot, LPN, Expr);
+				items.UpdateStock(Session.DefaultSession, item, originalQuantity * -1, false, locationID, OriginalLot, LPN, Expr, IsNewInventory);
+				items.UpdateStock(Session.DefaultSession, item, originalQuantity, false, locationID, NewLot, LPN, Expr, IsNewInventory);
 			}
 			else
 			{
@@ -267,7 +267,7 @@ namespace SuperiorPackGroup
 		}
 
 		[System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, true)]
-		public bool InsertInventoryAdjustment(int adjustmentID, DateTime adjustmentDate, int customer, int item, float originalQuantity, float? newQuantity, string reason, int locationID, string OriginalLot, string NewLot, int? LPN, DateTime? Expr)
+		public bool InsertInventoryAdjustment(int adjustmentID, DateTime adjustmentDate, int customer, int item, float originalQuantity, float? newQuantity, string reason, int locationID, string OriginalLot, string NewLot, int? LPN, DateTime? Expr,bool IsNewInventory = true)
 		{
 
 			//Dim adjustments As SPG.InventoryAdjustmentDataTable = New SPG.InventoryAdjustmentDataTable
@@ -304,8 +304,8 @@ namespace SuperiorPackGroup
 			ItemsBLL items = new ItemsBLL();
 			if (!string.IsNullOrEmpty(NewLot))
 			{
-				items.UpdateStock(Session.DefaultSession, item, originalQuantity * -1, false, locationID, OriginalLot, LPN, Expr);
-				items.UpdateStock(Session.DefaultSession, item, originalQuantity, false, locationID, NewLot, LPN, Expr);
+				items.UpdateStock(Session.DefaultSession, item, originalQuantity * -1, false, locationID, OriginalLot, LPN, Expr,IsNewInventory);
+				items.UpdateStock(Session.DefaultSession, item, originalQuantity, false, locationID, NewLot, LPN, Expr,IsNewInventory);
 			}
 			else
 			{

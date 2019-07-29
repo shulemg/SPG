@@ -824,7 +824,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		public void UpdateStock(Session session, int itemID, int? inventoryID, float quantity, bool updateBOM, int locationID, string lot = "", int? LPNNumber = null, DateTime? ExpirationDate = null)
+		public void UpdateStock(Session session, int itemID, int? inventoryID, float quantity, bool updateBOM, int locationID, string lot = "", int? LPNNumber = null, DateTime? ExpirationDate = null,bool IsNewInventory = true)
 		{
 
 			double scrapfactor = 0;
@@ -898,7 +898,7 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			LocationInventoryBLL.UpdateStock(session, itemID, locationID, quantity, lot, LPNNumber, ExpirationDate);
+			LocationInventoryBLL.UpdateStock(session, itemID, locationID, quantity, lot, LPNNumber, ExpirationDate,IsNewInventory);
 
 			//Dim item As SPG.ItemsRow = CType(GetItemBYId(itemID).Rows(0), SPG.ItemsRow)
 			//item.s ngQuantityOnHand += quantity
@@ -906,10 +906,10 @@ namespace SuperiorPackGroup
 
 		}
 
-		public void UpdateStock(Session session, int itemID, float quantity, bool updateBOM, int locationID, string lot = "", int? LPNNumber = null, DateTime? ExpirationDate = null)
+		public void UpdateStock(Session session, int itemID, float quantity, bool updateBOM, int locationID, string lot = "", int? LPNNumber = null, DateTime? ExpirationDate = null,bool IsNewInventory = true)
 		{
 
-			UpdateStock(session, itemID, null, quantity, updateBOM, locationID, lot, LPNNumber, ExpirationDate);
+			UpdateStock(session, itemID, null, quantity, updateBOM, locationID, lot, LPNNumber, ExpirationDate,IsNewInventory);
 
 		}
 

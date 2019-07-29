@@ -26,7 +26,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>F:\Shimon Lebovits\Desktop\SPG\SPG Test Install\</PublishUrl>
+    <PublishUrl>C:\Users\shulem green\Desktop\spg\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -39,7 +39,7 @@
     <UpdateUrl>\\server1\SPG\SPG Test Install\</UpdateUrl>
     <ProductName>Superior Pack Group - Test</ProductName>
     <PublisherName>PC Ware Business Solutions</PublisherName>
-    <ApplicationRevision>293</ApplicationRevision>
+    <ApplicationRevision>294</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

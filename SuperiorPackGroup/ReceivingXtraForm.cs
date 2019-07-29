@@ -1483,18 +1483,19 @@ namespace SuperiorPackGroup
             //On Error GoTo Err
         try { 
 
-            if (int.Parse(UnitsTextEdit.Text) > 0 && int.Parse(UnitsPerPltTextEdit.Text) > 0 && ((int.Parse(QtyTextEdit.Text) > 0 && int.Parse(QtyPerPltTextEdit.Text) > 0) || int.Parse(QtyTextEdit.Text) == 0) && LotCodeValidator.ValidateByItemID(Convert.ToInt32(ItemLookUpEdit.EditValue), LotTextEdit.Text, true))
-            {
-                AddEntryButton.Enabled = true;
-                AddToPalletButton.Enabled = int.Parse(UnitsTextEdit.Text) <= int.Parse(UnitsPerPltTextEdit.Text) && int.Parse(QtyTextEdit.Text) <= int.Parse(QtyPerPltTextEdit.Text) && Convert.ToInt32(ItemLookUpEdit.EditValue) == m_lastItem;
+                if (int.Parse(UnitsTextEdit.Text) > 0 && int.Parse(UnitsPerPltTextEdit.Text) > 0 && ((int.Parse(QtyTextEdit.Text) > 0 && int.Parse(QtyPerPltTextEdit.Text) > 0) || int.Parse(QtyTextEdit.Text) == 0) && LotCodeValidator.ValidateByItemID(Convert.ToInt32(ItemLookUpEdit.EditValue), LotTextEdit.Text, true))
+                {
+                    AddEntryButton.Enabled = true;
+                    AddToPalletButton.Enabled = int.Parse(UnitsTextEdit.Text) <= int.Parse(UnitsPerPltTextEdit.Text) && int.Parse(QtyTextEdit.Text) <= int.Parse(QtyPerPltTextEdit.Text) && Convert.ToInt32(ItemLookUpEdit.EditValue) == m_lastItem;
+                }
+                else
+                {
+                //Err:
+                    AddEntryButton.Enabled = false;
+                    AddToPalletButton.Enabled = false;
+                }
             }
-            else
-            {
-            //Err:
-                AddEntryButton.Enabled = false;
-                AddToPalletButton.Enabled = false;
-            }
-        }     catch
+            catch
             {
                 AddEntryButton.Enabled = false;
                 AddToPalletButton.Enabled = false;
@@ -1717,32 +1718,71 @@ namespace SuperiorPackGroup
                         MessageBox.Show("not all barcode values or set");
                         return;
                     }
-                    if (code.Contains(receiving.ReceivCustID.BeforeItemCode) && code.Contains(receiving.ReceivCustID.BeforeLotCode) || code.Contains(receiving.ReceivCustID.BeforeQtyCode))
+                    if (code.Contains(receiving.ReceivCustID.BeforeItemCode) && receiving.ReceivCustID.BeforeItemCode != "" && code.Contains(receiving.ReceivCustID.BeforeLotCode) && code.Contains(receiving.ReceivCustID.BeforeQtyCode))
                     {
                         code = code.Replace(receiving.ReceivCustID.BeforeItemCode, "");
                         code = code.Replace(receiving.ReceivCustID.BeforeLotCode, "^");
                         code = code.Replace(receiving.ReceivCustID.BeforeQtyCode, "^");
-                    }                      
+
+                        if (receiving.ReceivCustID.EndCode != null)
+                            code = code.Replace(receiving.ReceivCustID.EndCode, "");
+                        ItemLookUpEdit.Text = code.Split('^')[0];
+                        LotTextEdit.Text = code.Split('^')[1];
+                        QtyTextEdit.Text = code.Split('^')[2];
+                        barcodeTextEdit.Text = "";
+
+                        UpdateQtyPerPallets("Item");
+                        ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)ItemLookUpEdit.EditValue);
+                        uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)ItemLookUpEdit.EditValue);
+                        UpdateQtyPerPallets("Qty");
+                        BulkEntryChanged();
+                        ExpirationDateEdit.EditValue = null;
+                        ExpirationDateEdit.Focus();
+                    }
+                    else if (code.Length == 38)
+                    {
+                        LotTextEdit.Text = code.Substring(31, 6);//.ToCharArray(32, 6).ToString();
+                        ExpirationDateEdit.EditValue = int.Parse(code.Substring(27, 2)).ToString() + "/" + code.Substring(29,2) + "/" + code.Substring(23, 4) + " 12:00:00 AM";
+                        ItemLookUpEdit.Text = code.Substring(9, 9).Insert(1, "-").Insert(7, "-");
+                        QtyTextEdit.Text = int.Parse(code.Substring(18,5)).ToString();
+                        barcodeTextEdit.Text = "";
+
+                        UpdateQtyPerPallets("Item");
+                        ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)ItemLookUpEdit.EditValue);
+                        uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)ItemLookUpEdit.EditValue);
+                        UpdateQtyPerPallets("Qty");
+                        BulkEntryChanged();
+                        AddEntryButton.Focus();
+                    }
+                    else if (code.Length ==26)
+                    {
+                        string itemNumber = int.Parse(code.Substring(0, 13)).ToString();
+                        if(itemNumber.Length >= 9)
+                            ItemLookUpEdit.Text = itemNumber.Insert(1, "-").Insert(7, "-");
+                        else
+                            ItemLookUpEdit.Text = itemNumber;
+
+                        QtyTextEdit.Text = int.Parse(code.Substring(13, 5)).ToString();
+                        ExpirationDateEdit.EditValue = int.Parse(code.Substring(22, 2)).ToString() + "/" + code.Substring(24, 2) + "/" + code.Substring(18, 4) + " 12:00:00 AM";
+
+                        barcodeTextEdit.Text = "";
+                        UpdateQtyPerPallets("Item");
+                        ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)ItemLookUpEdit.EditValue);
+                        uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)ItemLookUpEdit.EditValue);
+                        UpdateQtyPerPallets("Qty");
+                        BulkEntryChanged();
+                        ExpirationDateEdit.EditValue = null;
+                        ExpirationDateEdit.Focus();
+                    }
                     else
                     {
-                        MessageBox.Show("this barcode is not registeret to this customer");
+                        MessageBox.Show("this barcode is not registeret");
                         barcodeTextEdit.Text = "";
                         return;
                     }
-                    if (receiving.ReceivCustID.EndCode != null)
-                        code = code.Replace(receiving.ReceivCustID.EndCode, "");
-                    ItemLookUpEdit.Text = code.Split('^')[0];
-                    LotTextEdit.Text = code.Split('^')[1];
-                    QtyTextEdit.Text = code.Split('^')[2];
-                    barcodeTextEdit.Text = "";
+                    
 
-                    UpdateQtyPerPallets("Item");
-                    ItemDescTextEdit.Text = ItemsBLL.GetDescriptionByItemID((int?)ItemLookUpEdit.EditValue);
-                    uomTextEdit.Text = ItemsBLL.GetUOMByItemID((int?)ItemLookUpEdit.EditValue);
-                    UpdateQtyPerPallets("Qty");
-                    BulkEntryChanged();
-                    ExpirationDateEdit.EditValue = null;
-                    ExpirationDateEdit.Focus();
+                    
                 }
                 catch (Exception ex)
                 {

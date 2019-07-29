@@ -388,7 +388,7 @@ namespace SuperiorPackGroup
 
 		}
 
-		public bool SaveRecord(int? id)
+		public bool SaveRecord(int? id,bool IsnewInventory = true)
 		{
 
 			if (saveSimpleButton.Tag == null)
@@ -403,7 +403,7 @@ namespace SuperiorPackGroup
 				}
 			}
 
-			if (m_Adjustment.UpdateInventoryAdjustment(Convert.ToInt32(saveSimpleButton.Tag), adjustmentDateEdit.DateTime, Convert.ToInt32(customerLookUpEdit.EditValue), Convert.ToInt32(itemLookUpEdit.EditValue), Convert.ToSingle(originalQtyTextEdit.EditValue), Convert.ToSingle(newQtyTextEdit.EditValue), Convert.ToString(reasonMemoExEdit.EditValue), Convert.ToInt32(locationLookUpEdit.EditValue), Convert.ToString(originalLotLookUpEdit.EditValue), newLotTextEdit.Text, Utilities.ChangeType<int?>(lpnLookUpEdit.EditValue), Utilities.ChangeType<DateTime?>(originalLotLookUpEdit.GetColumnValue("Expr"))) != true)
+			if (m_Adjustment.UpdateInventoryAdjustment(Convert.ToInt32(saveSimpleButton.Tag), adjustmentDateEdit.DateTime, Convert.ToInt32(customerLookUpEdit.EditValue), Convert.ToInt32(itemLookUpEdit.EditValue), Convert.ToSingle(originalQtyTextEdit.EditValue), Convert.ToSingle(newQtyTextEdit.EditValue), Convert.ToString(reasonMemoExEdit.EditValue), Convert.ToInt32(locationLookUpEdit.EditValue), Convert.ToString(originalLotLookUpEdit.EditValue), newLotTextEdit.Text, Utilities.ChangeType<int?>(lpnLookUpEdit.EditValue), Utilities.ChangeType<DateTime?>(originalLotLookUpEdit.GetColumnValue("Expr")),IsnewInventory) != true)
 			{
 				MessageBox.Show("The adjustment record was not updated succesfully.", "Error Encountered", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
@@ -626,6 +626,81 @@ namespace SuperiorPackGroup
 			labels.ShowPreviewDialog();
 		}
 
+        private void AddPalletsSimpleButton_Click(object sender, EventArgs e)
+        {
+            if (!ValidateAddLPN())
+                return;
+            originalQtyTextEdit.EditValue = QtyTextEdit.EditValue;
+            newQtyTextEdit.EditValue = QtyTextEdit.EditValue;
+            newLotTextEdit.EditValue = LotTextEdit.EditValue;
 
-	}
+            //m_newLpn = false;
+            if (((int?)itemLookUpEdit.EditValue).HasValue && ((int?)locationLookUpEdit.EditValue).HasValue && !m_newLpn)
+            {
+                int lpn = LPNLabel.GetNextLPNNumber(7);
+                ItemsBLL items = new ItemsBLL();
+                items.UpdateStock(Session.DefaultSession, Convert.ToInt32(itemLookUpEdit.EditValue), 0, false, Convert.ToInt32(locationLookUpEdit.EditValue), LotTextEdit.Text, lpn,null,false);
+                lpnXpView.Reload();
+                lpnLookUpEdit.EditValue = lpn;
+                FilterLots();
+                m_newLpn = true;
+
+                LPNTextEdit.Text = lpn.ToString();
+                AddToPalletSimpleButton.Enabled = true;
+            }
+            saveSimpleButton.Tag = null;
+            if (SaveRecord(null,false))
+            {
+                PrepareNewRecord();
+            }
+            
+        }
+
+        private void AddToPalletSimpleButton_Click(object sender, EventArgs e)
+        {
+            if (!ValidateAddLPN())
+                return;
+            originalQtyTextEdit.EditValue = QtyTextEdit.EditValue;
+            newQtyTextEdit.EditValue = QtyTextEdit.EditValue;
+            newLotTextEdit.EditValue = LotTextEdit.EditValue;
+            lpnLookUpEdit.EditValue = int.Parse(LPNTextEdit.Text);
+
+            //saveSimpleButton.Tag = null;
+            if (SaveRecord(null, false))
+            {
+                PrepareNewRecord();
+            }
+        }
+
+        bool ValidateAddLPN()
+        {
+            if (itemLookUpEdit.EditValue == null || (itemLookUpEdit.EditValue == null ? null : Convert.ToString(itemLookUpEdit.EditValue)) == itemLookUpEdit.Properties.NullText)
+            {
+                MessageBox.Show("You must select a Item Code.");
+                itemLookUpEdit.Focus();
+                return false; ;
+            }
+
+            if (string.IsNullOrWhiteSpace(QtyTextEdit.Text))
+            {
+                MessageBox.Show("You must enter quantity.");
+                QtyTextEdit.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(LotTextEdit.Text) || LotTextEdit.Text == "Lot #")
+            {
+                MessageBox.Show("You must enter lot.");
+                LotTextEdit.Focus();
+                return false; ;
+            }
+
+            if (string.IsNullOrEmpty(Convert.ToString(reasonMemoExEdit.EditValue)) == true)
+            {
+                reasonMemoExEdit.EditValue = "Added LPN";
+            }
+            return true;
+
+        }
+    }
 }

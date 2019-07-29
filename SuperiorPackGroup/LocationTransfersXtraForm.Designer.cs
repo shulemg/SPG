@@ -674,8 +674,8 @@ namespace SuperiorPackGroup
             // 
             // transferDetailsGridControl
             // 
-            this.transferDetailsGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.transferDetailsGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.transferDetailsGridControl.DataSource = this.transferDetailsXpCollection;
             this.transferDetailsGridControl.Location = new System.Drawing.Point(0, 33);
@@ -689,7 +689,7 @@ namespace SuperiorPackGroup
             this.repositoryItemMemoExEdit1,
             this.repositoryItemLookUpEdit1,
             this.lpnRepositoryItemLookUpEdit});
-            this.transferDetailsGridControl.Size = new System.Drawing.Size(692, 229);
+            this.transferDetailsGridControl.Size = new System.Drawing.Size(690, 229);
             this.transferDetailsGridControl.TabIndex = 0;
             this.transferDetailsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.transferDetailsGridView});

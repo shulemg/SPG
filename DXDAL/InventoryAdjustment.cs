@@ -97,6 +97,12 @@ namespace DXDAL
                 get => fInventoryLocation;
                 set => SetPropertyValue("InventoryLocation", ref fInventoryLocation, value);
             }
+            private bool fIsNewInventory;
+            public bool IsNewInvertory
+            {
+                get => fIsNewInventory;
+                set => SetPropertyValue("IsNewInvertory", ref fIsNewInventory, value);
+            }
             public InventoryAdjustment(Session session) : base(session)
             {
             }
@@ -126,6 +132,7 @@ namespace DXDAL
                 public OperandProperty LPN => new OperandProperty(GetNestedName("LPN"));
                 public OperandProperty Reason => new OperandProperty(GetNestedName("Reason"));
                 public OperandProperty strEnteredBy => new OperandProperty(GetNestedName("strEnteredBy"));
+                public OperandProperty IsNewInvertory => new OperandProperty(GetNestedName("IsNewInvertory"));
                 public OperandProperty dtmEnteredOn => new OperandProperty(GetNestedName("dtmEnteredOn"));
                 public Locations.FieldsClass InventoryLocation => new Locations.FieldsClass(GetNestedName("InventoryLocation"));
             }
