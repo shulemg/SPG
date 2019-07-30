@@ -637,11 +637,11 @@ namespace SuperiorPackGroup
             QuantityPerUnit = ItemsBLL.GetCaseQuantity(itemId);
             CasesPerPallet = m_Items.GetCasesPerPallet(itemId);
 
-            UnitsPerPltTextEdit.EditValue = CasesPerPallet;
+            //UnitsPerPltTextEdit.EditValue = CasesPerPallet;
             QtyPerPltTextEdit.EditValue = (CasesPerPallet * QuantityPerUnit);
 
-            if(!string.IsNullOrEmpty(QtyTextEdit.Text))
-                UnitsTextEdit.EditValue = Math.Ceiling(Convert.ToDouble(QtyTextEdit.Text) / QuantityPerUnit);
+            //if(!string.IsNullOrEmpty(QtyTextEdit.Text))
+            //    UnitsTextEdit.EditValue = Math.Ceiling(Convert.ToDouble(QtyTextEdit.Text) / QuantityPerUnit);
         }
         private int m_lastItem;
         private int m_lastLPN;
@@ -657,9 +657,9 @@ namespace SuperiorPackGroup
 
             m_lastItem = Convert.ToInt32(itemLookUpEdit.EditValue);
             qty = Convert.ToDouble(QtyTextEdit.Text);
-            units = Convert.ToDouble(UnitsTextEdit.Text);
+            //units = Convert.ToDouble(UnitsTextEdit.Text);
             qtyPerPlt = Convert.ToDouble(QtyPerPltTextEdit.Text);
-            UnitPerPlt = Convert.ToDouble(UnitsPerPltTextEdit.Text);
+            //UnitPerPlt = Convert.ToDouble(UnitsPerPltTextEdit.Text);
 
             while (!(addedQty >= qty))
             {
@@ -687,6 +687,7 @@ namespace SuperiorPackGroup
                     addedQty += double.Parse(newQtyTextEdit.EditValue.ToString());
                     saveSimpleButton.Tag = null;
                 }
+                LPNTextEdit.Text = lpn.ToString();
             }
             m_lastPalletQty = qtyPerPlt - double.Parse(newQtyTextEdit.EditValue.ToString());
             PrepareNewRecord();
@@ -694,9 +695,9 @@ namespace SuperiorPackGroup
             LotTextEdit.EditValue = null;
             ExprationDateEdit.EditValue = null;
             QtyTextEdit.EditValue = null;
-            UnitsTextEdit.EditValue = null;
+            //UnitsTextEdit.EditValue = null;
             QtyPerPltTextEdit.EditValue = null;
-            UnitsPerPltTextEdit.EditValue = null;
+            //UnitsPerPltTextEdit.EditValue = null;
             BulkEntryChanged();
         }
 
@@ -707,10 +708,10 @@ namespace SuperiorPackGroup
             try
             {
 
-                if (int.Parse(UnitsTextEdit.Text) > 0 && int.Parse(UnitsPerPltTextEdit.Text) > 0 && ((int.Parse(QtyTextEdit.Text) > 0 && int.Parse(QtyPerPltTextEdit.Text) > 0) || int.Parse(QtyTextEdit.Text) == 0) && LotCodeValidator.ValidateByItemID(Convert.ToInt32(itemLookUpEdit.EditValue), LotTextEdit.Text, true))
+                if (((int.Parse(QtyTextEdit.Text) > 0 && int.Parse(QtyPerPltTextEdit.Text) > 0) || int.Parse(QtyTextEdit.Text) == 0) && LotCodeValidator.ValidateByItemID(Convert.ToInt32(itemLookUpEdit.EditValue), LotTextEdit.Text, true))
                 {
                     AddLPN_SimpleButton.Enabled = true;
-                    AddToLPNSimpleButton.Enabled = int.Parse(UnitsTextEdit.Text) <= int.Parse(UnitsPerPltTextEdit.Text) && int.Parse(QtyTextEdit.Text) <= int.Parse(QtyPerPltTextEdit.Text) && Convert.ToInt32(itemLookUpEdit.EditValue) == m_lastItem;
+                    AddToLPNSimpleButton.Enabled = int.Parse(QtyTextEdit.Text) <= int.Parse(QtyPerPltTextEdit.Text) && Convert.ToInt32(itemLookUpEdit.EditValue) == m_lastItem;
                 }
                 else
                 {
@@ -761,7 +762,17 @@ namespace SuperiorPackGroup
             newLotTextEdit.EditValue = LotTextEdit.EditValue;
             lpnLookUpEdit.EditValue = m_lastLPN;
 
-            AddLpns();
+            if (SaveRecord(null, false))
+            {
+                PrepareNewRecord();
+            }
+            LotTextEdit.EditValue = null;
+            ExprationDateEdit.EditValue = null;
+            QtyTextEdit.EditValue = null;
+            //UnitsTextEdit.EditValue = null;
+            QtyPerPltTextEdit.EditValue = null;
+            //UnitsPerPltTextEdit.EditValue = null;
+            BulkEntryChanged();
         }
 
         bool ValidateAddLPN()

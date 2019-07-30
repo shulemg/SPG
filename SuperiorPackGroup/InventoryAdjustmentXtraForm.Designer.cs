@@ -39,10 +39,9 @@ namespace SuperiorPackGroup
 		[System.Diagnostics.DebuggerStepThrough()]
 		private void InitializeComponent()
 		{
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryAdjustmentXtraForm));
             this.adjustmentGridControl = new DevExpress.XtraGrid.GridControl();
-            this.inventoryXPView = new DevExpress.Xpo.XPView(this.components);
+            this.inventoryXPView = new DevExpress.Xpo.XPView();
             this.adjustmentGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.deleteGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.deleteRepositoryItemButtonEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -67,9 +66,9 @@ namespace SuperiorPackGroup
             this.filterSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.clearSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.itemFilterLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.itemsFilterXPView = new DevExpress.Xpo.XPView(this.components);
+            this.itemsFilterXPView = new DevExpress.Xpo.XPView();
             this.customerFilterLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.customersFilterXPView = new DevExpress.Xpo.XPView(this.components);
+            this.customersFilterXPView = new DevExpress.Xpo.XPView();
             this.LabelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -78,12 +77,10 @@ namespace SuperiorPackGroup
             this.fromFilterDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.recordGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.LPNgroupControl = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.UnitsPerPltTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.LPNTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.QtyPerPltTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.UnitsTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
@@ -95,13 +92,13 @@ namespace SuperiorPackGroup
             this.AddLpnSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.LabelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.locationLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.locationsXpView = new DevExpress.Xpo.XPView(this.components);
+            this.locationsXpView = new DevExpress.Xpo.XPView();
             this.LabelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.newLotTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.LabelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.lpnLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.lpnXpView = new DevExpress.Xpo.XPView(this.components);
+            this.lpnXpView = new DevExpress.Xpo.XPView();
             this.LabelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.reasonMemoExEdit = new DevExpress.XtraEditors.MemoExEdit();
             this.LabelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -110,7 +107,7 @@ namespace SuperiorPackGroup
             this.originalQtyTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.LabelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.customerLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.customersXPView = new DevExpress.Xpo.XPView(this.components);
+            this.customersXPView = new DevExpress.Xpo.XPView();
             this.cancelSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.editSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.saveSimpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -119,10 +116,10 @@ namespace SuperiorPackGroup
             this.LabelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.LabelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.itemLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.itemsXPView = new DevExpress.Xpo.XPView(this.components);
+            this.itemsXPView = new DevExpress.Xpo.XPView();
             this.adjustmentDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.originalLotLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.LotXpView = new DevExpress.Xpo.XPView(this.components);
+            this.LotXpView = new DevExpress.Xpo.XPView();
             ((System.ComponentModel.ISupportInitialize)(this.adjustmentGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryXPView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adjustmentGridView)).BeginInit();
@@ -142,9 +139,8 @@ namespace SuperiorPackGroup
             this.recordGroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LPNgroupControl)).BeginInit();
             this.LPNgroupControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitsPerPltTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LPNTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyPerPltTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitsTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LotTextEdit.Properties)).BeginInit();
@@ -614,12 +610,10 @@ namespace SuperiorPackGroup
             // 
             this.LPNgroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LPNgroupControl.Controls.Add(this.labelControl21);
-            this.LPNgroupControl.Controls.Add(this.labelControl20);
             this.LPNgroupControl.Controls.Add(this.labelControl19);
-            this.LPNgroupControl.Controls.Add(this.UnitsPerPltTextEdit);
+            this.LPNgroupControl.Controls.Add(this.LPNTextEdit);
+            this.LPNgroupControl.Controls.Add(this.labelControl20);
             this.LPNgroupControl.Controls.Add(this.QtyPerPltTextEdit);
-            this.LPNgroupControl.Controls.Add(this.UnitsTextEdit);
             this.LPNgroupControl.Controls.Add(this.labelControl18);
             this.LPNgroupControl.Controls.Add(this.labelControl17);
             this.LPNgroupControl.Controls.Add(this.labelControl16);
@@ -634,51 +628,35 @@ namespace SuperiorPackGroup
             this.LPNgroupControl.TabIndex = 27;
             this.LPNgroupControl.Text = "Add LPN Without Inventory";
             // 
-            // labelControl21
+            // labelControl19
             // 
-            this.labelControl21.Location = new System.Drawing.Point(492, 20);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(60, 13);
-            this.labelControl21.TabIndex = 14;
-            this.labelControl21.Text = "Units - Pallet";
+            this.labelControl19.Location = new System.Drawing.Point(472, 21);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(41, 13);
+            this.labelControl19.TabIndex = 15;
+            this.labelControl19.Text = "Last LPN";
+            // 
+            // LPNTextEdit
+            // 
+            this.LPNTextEdit.Location = new System.Drawing.Point(469, 41);
+            this.LPNTextEdit.Name = "LPNTextEdit";
+            this.LPNTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.LPNTextEdit.TabIndex = 14;
             // 
             // labelControl20
             // 
-            this.labelControl20.Location = new System.Drawing.Point(419, 20);
+            this.labelControl20.Location = new System.Drawing.Point(349, 20);
             this.labelControl20.Name = "labelControl20";
             this.labelControl20.Size = new System.Drawing.Size(54, 13);
             this.labelControl20.TabIndex = 13;
             this.labelControl20.Text = "Qty - Pallet";
             // 
-            // labelControl19
-            // 
-            this.labelControl19.Location = new System.Drawing.Point(305, 21);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(24, 13);
-            this.labelControl19.TabIndex = 12;
-            this.labelControl19.Text = "Units";
-            // 
-            // UnitsPerPltTextEdit
-            // 
-            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(487, 41);
-            this.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit";
-            this.UnitsPerPltTextEdit.Size = new System.Drawing.Size(65, 20);
-            this.UnitsPerPltTextEdit.TabIndex = 11;
-            // 
             // QtyPerPltTextEdit
             // 
-            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(416, 41);
+            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(344, 41);
             this.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit";
-            this.QtyPerPltTextEdit.Size = new System.Drawing.Size(65, 20);
+            this.QtyPerPltTextEdit.Size = new System.Drawing.Size(100, 20);
             this.QtyPerPltTextEdit.TabIndex = 10;
-            // 
-            // UnitsTextEdit
-            // 
-            this.UnitsTextEdit.Location = new System.Drawing.Point(303, 41);
-            this.UnitsTextEdit.Name = "UnitsTextEdit";
-            this.UnitsTextEdit.Properties.ReadOnly = true;
-            this.UnitsTextEdit.Size = new System.Drawing.Size(75, 20);
-            this.UnitsTextEdit.TabIndex = 9;
             // 
             // labelControl18
             // 
@@ -719,7 +697,7 @@ namespace SuperiorPackGroup
             // AddToLPNSimpleButton
             // 
             this.AddToLPNSimpleButton.Enabled = false;
-            this.AddToLPNSimpleButton.Location = new System.Drawing.Point(680, 39);
+            this.AddToLPNSimpleButton.Location = new System.Drawing.Point(683, 39);
             this.AddToLPNSimpleButton.Name = "AddToLPNSimpleButton";
             this.AddToLPNSimpleButton.Size = new System.Drawing.Size(102, 23);
             this.AddToLPNSimpleButton.TabIndex = 3;
@@ -729,7 +707,7 @@ namespace SuperiorPackGroup
             // AddLPN_SimpleButton
             // 
             this.AddLPN_SimpleButton.Enabled = false;
-            this.AddLPN_SimpleButton.Location = new System.Drawing.Point(572, 39);
+            this.AddLPN_SimpleButton.Location = new System.Drawing.Point(575, 39);
             this.AddLPN_SimpleButton.Name = "AddLPN_SimpleButton";
             this.AddLPN_SimpleButton.Size = new System.Drawing.Size(102, 23);
             this.AddLPN_SimpleButton.TabIndex = 2;
@@ -749,7 +727,7 @@ namespace SuperiorPackGroup
             this.QtyTextEdit.Name = "QtyTextEdit";
             this.QtyTextEdit.Properties.Mask.EditMask = "f0";
             this.QtyTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.QtyTextEdit.Size = new System.Drawing.Size(75, 20);
+            this.QtyTextEdit.Size = new System.Drawing.Size(100, 20);
             this.QtyTextEdit.TabIndex = 0;
             this.QtyTextEdit.Validated += new System.EventHandler(this.QtyTextEdit_Validated);
             // 
@@ -1136,9 +1114,8 @@ namespace SuperiorPackGroup
             ((System.ComponentModel.ISupportInitialize)(this.LPNgroupControl)).EndInit();
             this.LPNgroupControl.ResumeLayout(false);
             this.LPNgroupControl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitsPerPltTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LPNTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.QtyPerPltTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitsTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LotTextEdit.Properties)).EndInit();
@@ -1239,12 +1216,10 @@ namespace SuperiorPackGroup
         private LabelControl labelControl18;
         private LabelControl labelControl17;
         private LabelControl labelControl16;
-        private LabelControl labelControl21;
         private LabelControl labelControl20;
-        private LabelControl labelControl19;
-        private TextEdit UnitsPerPltTextEdit;
         private TextEdit QtyPerPltTextEdit;
-        private TextEdit UnitsTextEdit;
+        private LabelControl labelControl19;
+        private TextEdit LPNTextEdit;
     }
 
 }
