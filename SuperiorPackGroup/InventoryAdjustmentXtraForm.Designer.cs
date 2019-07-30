@@ -78,7 +78,15 @@ namespace SuperiorPackGroup
             this.fromFilterDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.recordGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.LPNgroupControl = new DevExpress.XtraEditors.GroupControl();
-            this.LPNTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.UnitsPerPltTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.QtyPerPltTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.UnitsTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.ExprationDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.AddToPalletSimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.AddPalletsSimpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -134,7 +142,9 @@ namespace SuperiorPackGroup
             this.recordGroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LPNgroupControl)).BeginInit();
             this.LPNgroupControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LPNTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitsPerPltTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyPerPltTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitsTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LotTextEdit.Properties)).BeginInit();
@@ -164,13 +174,13 @@ namespace SuperiorPackGroup
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.adjustmentGridControl.DataSource = this.inventoryXPView;
-            this.adjustmentGridControl.Location = new System.Drawing.Point(13, 324);
+            this.adjustmentGridControl.Location = new System.Drawing.Point(13, 367);
             this.adjustmentGridControl.MainView = this.adjustmentGridView;
             this.adjustmentGridControl.Name = "adjustmentGridControl";
             this.adjustmentGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.deleteRepositoryItemButtonEdit,
             this.reasonRepositoryItemMemoExEdit});
-            this.adjustmentGridControl.Size = new System.Drawing.Size(768, 243);
+            this.adjustmentGridControl.Size = new System.Drawing.Size(808, 269);
             this.adjustmentGridControl.TabIndex = 4;
             this.adjustmentGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.adjustmentGridView});
@@ -415,9 +425,9 @@ namespace SuperiorPackGroup
             this.filtersGroupControl.Controls.Add(this.LabelControl6);
             this.filtersGroupControl.Controls.Add(this.toFilterDateEdit);
             this.filtersGroupControl.Controls.Add(this.fromFilterDateEdit);
-            this.filtersGroupControl.Location = new System.Drawing.Point(13, 229);
+            this.filtersGroupControl.Location = new System.Drawing.Point(13, 272);
             this.filtersGroupControl.Name = "filtersGroupControl";
-            this.filtersGroupControl.Size = new System.Drawing.Size(768, 89);
+            this.filtersGroupControl.Size = new System.Drawing.Size(808, 89);
             this.filtersGroupControl.TabIndex = 3;
             this.filtersGroupControl.Text = "Filters and Display";
             // 
@@ -597,38 +607,107 @@ namespace SuperiorPackGroup
             this.recordGroupControl.Location = new System.Drawing.Point(13, 11);
             this.recordGroupControl.Name = "recordGroupControl";
             this.recordGroupControl.ShowCaption = false;
-            this.recordGroupControl.Size = new System.Drawing.Size(768, 212);
+            this.recordGroupControl.Size = new System.Drawing.Size(808, 255);
             this.recordGroupControl.TabIndex = 2;
             // 
             // LPNgroupControl
             // 
-            this.LPNgroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.LPNgroupControl.ContentImageAlignment = System.Drawing.ContentAlignment.BottomRight;
-            this.LPNgroupControl.Controls.Add(this.LPNTextEdit);
+            this.LPNgroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LPNgroupControl.Controls.Add(this.labelControl21);
+            this.LPNgroupControl.Controls.Add(this.labelControl20);
+            this.LPNgroupControl.Controls.Add(this.labelControl19);
+            this.LPNgroupControl.Controls.Add(this.UnitsPerPltTextEdit);
+            this.LPNgroupControl.Controls.Add(this.QtyPerPltTextEdit);
+            this.LPNgroupControl.Controls.Add(this.UnitsTextEdit);
+            this.LPNgroupControl.Controls.Add(this.labelControl18);
+            this.LPNgroupControl.Controls.Add(this.labelControl17);
+            this.LPNgroupControl.Controls.Add(this.labelControl16);
             this.LPNgroupControl.Controls.Add(this.ExprationDateEdit);
             this.LPNgroupControl.Controls.Add(this.AddToPalletSimpleButton);
             this.LPNgroupControl.Controls.Add(this.AddPalletsSimpleButton);
             this.LPNgroupControl.Controls.Add(this.LotTextEdit);
             this.LPNgroupControl.Controls.Add(this.QtyTextEdit);
-            this.LPNgroupControl.Location = new System.Drawing.Point(440, 133);
+            this.LPNgroupControl.Location = new System.Drawing.Point(5, 174);
             this.LPNgroupControl.Name = "LPNgroupControl";
-            this.LPNgroupControl.Size = new System.Drawing.Size(328, 74);
+            this.LPNgroupControl.Size = new System.Drawing.Size(798, 72);
             this.LPNgroupControl.TabIndex = 27;
-            this.LPNgroupControl.Text = "Add LPN";
+            this.LPNgroupControl.Text = "Add LPN Without Inventory";
             // 
-            // LPNTextEdit
+            // labelControl21
             // 
-            this.LPNTextEdit.Location = new System.Drawing.Point(110, 45);
-            this.LPNTextEdit.Name = "LPNTextEdit";
-            this.LPNTextEdit.Properties.NullText = "LPN #";
-            this.LPNTextEdit.Properties.ReadOnly = true;
-            this.LPNTextEdit.Size = new System.Drawing.Size(100, 20);
-            this.LPNTextEdit.TabIndex = 5;
+            this.labelControl21.Location = new System.Drawing.Point(492, 20);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(60, 13);
+            this.labelControl21.TabIndex = 14;
+            this.labelControl21.Text = "Units - Pallet";
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(419, 20);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(54, 13);
+            this.labelControl20.TabIndex = 13;
+            this.labelControl20.Text = "Qty - Pallet";
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Location = new System.Drawing.Point(305, 21);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(24, 13);
+            this.labelControl19.TabIndex = 12;
+            this.labelControl19.Text = "Units";
+            // 
+            // UnitsPerPltTextEdit
+            // 
+            this.UnitsPerPltTextEdit.Location = new System.Drawing.Point(487, 41);
+            this.UnitsPerPltTextEdit.Name = "UnitsPerPltTextEdit";
+            this.UnitsPerPltTextEdit.Size = new System.Drawing.Size(65, 20);
+            this.UnitsPerPltTextEdit.TabIndex = 11;
+            // 
+            // QtyPerPltTextEdit
+            // 
+            this.QtyPerPltTextEdit.Location = new System.Drawing.Point(416, 41);
+            this.QtyPerPltTextEdit.Name = "QtyPerPltTextEdit";
+            this.QtyPerPltTextEdit.Size = new System.Drawing.Size(65, 20);
+            this.QtyPerPltTextEdit.TabIndex = 10;
+            // 
+            // UnitsTextEdit
+            // 
+            this.UnitsTextEdit.Location = new System.Drawing.Point(303, 41);
+            this.UnitsTextEdit.Name = "UnitsTextEdit";
+            this.UnitsTextEdit.Properties.ReadOnly = true;
+            this.UnitsTextEdit.Size = new System.Drawing.Size(75, 20);
+            this.UnitsTextEdit.TabIndex = 9;
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(222, 21);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(18, 13);
+            this.labelControl18.TabIndex = 8;
+            this.labelControl18.Text = "Qty";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(116, 21);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(74, 13);
+            this.labelControl17.TabIndex = 7;
+            this.labelControl17.Text = "Expiration Date";
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(10, 21);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(26, 13);
+            this.labelControl16.TabIndex = 6;
+            this.labelControl16.Text = "Lot #";
             // 
             // ExprationDateEdit
             // 
             this.ExprationDateEdit.EditValue = null;
-            this.ExprationDateEdit.Location = new System.Drawing.Point(6, 45);
+            this.ExprationDateEdit.Location = new System.Drawing.Point(116, 41);
             this.ExprationDateEdit.Name = "ExprationDateEdit";
             this.ExprationDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -640,7 +719,7 @@ namespace SuperiorPackGroup
             // AddToPalletSimpleButton
             // 
             this.AddToPalletSimpleButton.Enabled = false;
-            this.AddToPalletSimpleButton.Location = new System.Drawing.Point(216, 43);
+            this.AddToPalletSimpleButton.Location = new System.Drawing.Point(680, 39);
             this.AddToPalletSimpleButton.Name = "AddToPalletSimpleButton";
             this.AddToPalletSimpleButton.Size = new System.Drawing.Size(102, 23);
             this.AddToPalletSimpleButton.TabIndex = 3;
@@ -649,7 +728,8 @@ namespace SuperiorPackGroup
             // 
             // AddPalletsSimpleButton
             // 
-            this.AddPalletsSimpleButton.Location = new System.Drawing.Point(216, 17);
+            this.AddPalletsSimpleButton.Enabled = false;
+            this.AddPalletsSimpleButton.Location = new System.Drawing.Point(572, 39);
             this.AddPalletsSimpleButton.Name = "AddPalletsSimpleButton";
             this.AddPalletsSimpleButton.Size = new System.Drawing.Size(102, 23);
             this.AddPalletsSimpleButton.TabIndex = 2;
@@ -658,19 +738,20 @@ namespace SuperiorPackGroup
             // 
             // LotTextEdit
             // 
-            this.LotTextEdit.Location = new System.Drawing.Point(110, 19);
+            this.LotTextEdit.Location = new System.Drawing.Point(10, 41);
             this.LotTextEdit.Name = "LotTextEdit";
-            this.LotTextEdit.Properties.NullText = "Lot #";
             this.LotTextEdit.Size = new System.Drawing.Size(100, 20);
             this.LotTextEdit.TabIndex = 1;
             // 
             // QtyTextEdit
             // 
-            this.QtyTextEdit.Location = new System.Drawing.Point(6, 19);
+            this.QtyTextEdit.Location = new System.Drawing.Point(222, 41);
             this.QtyTextEdit.Name = "QtyTextEdit";
-            this.QtyTextEdit.Properties.NullText = "Qty";
-            this.QtyTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.QtyTextEdit.Properties.Mask.EditMask = "f0";
+            this.QtyTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.QtyTextEdit.Size = new System.Drawing.Size(75, 20);
             this.QtyTextEdit.TabIndex = 0;
+            this.QtyTextEdit.Validated += new System.EventHandler(this.QtyTextEdit_Validated);
             // 
             // AddLpnSimpleButton
             // 
@@ -780,7 +861,7 @@ namespace SuperiorPackGroup
             // LabelControl11
             // 
             this.LabelControl11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelControl11.Location = new System.Drawing.Point(442, 87);
+            this.LabelControl11.Location = new System.Drawing.Point(482, 87);
             this.LabelControl11.Name = "LabelControl11";
             this.LabelControl11.Size = new System.Drawing.Size(94, 13);
             this.LabelControl11.TabIndex = 10;
@@ -789,7 +870,7 @@ namespace SuperiorPackGroup
             // reasonMemoExEdit
             // 
             this.reasonMemoExEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.reasonMemoExEdit.Location = new System.Drawing.Point(440, 104);
+            this.reasonMemoExEdit.Location = new System.Drawing.Point(480, 104);
             this.reasonMemoExEdit.Name = "reasonMemoExEdit";
             this.reasonMemoExEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -799,7 +880,7 @@ namespace SuperiorPackGroup
             // LabelControl10
             // 
             this.LabelControl10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelControl10.Location = new System.Drawing.Point(550, 47);
+            this.LabelControl10.Location = new System.Drawing.Point(590, 47);
             this.LabelControl10.Name = "LabelControl10";
             this.LabelControl10.Size = new System.Drawing.Size(42, 13);
             this.LabelControl10.TabIndex = 8;
@@ -808,7 +889,7 @@ namespace SuperiorPackGroup
             // LabelControl4
             // 
             this.LabelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelControl4.Location = new System.Drawing.Point(442, 47);
+            this.LabelControl4.Location = new System.Drawing.Point(482, 47);
             this.LabelControl4.Name = "LabelControl4";
             this.LabelControl4.Size = new System.Drawing.Size(18, 13);
             this.LabelControl4.TabIndex = 6;
@@ -817,7 +898,7 @@ namespace SuperiorPackGroup
             // newQtyTextEdit
             // 
             this.newQtyTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.newQtyTextEdit.Location = new System.Drawing.Point(550, 63);
+            this.newQtyTextEdit.Location = new System.Drawing.Point(590, 63);
             this.newQtyTextEdit.Name = "newQtyTextEdit";
             this.newQtyTextEdit.Size = new System.Drawing.Size(100, 20);
             this.newQtyTextEdit.TabIndex = 9;
@@ -825,7 +906,7 @@ namespace SuperiorPackGroup
             // originalQtyTextEdit
             // 
             this.originalQtyTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.originalQtyTextEdit.Location = new System.Drawing.Point(442, 63);
+            this.originalQtyTextEdit.Location = new System.Drawing.Point(482, 63);
             this.originalQtyTextEdit.Name = "originalQtyTextEdit";
             this.originalQtyTextEdit.Properties.DisplayFormat.FormatString = "{0:#,##0.######}";
             this.originalQtyTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -836,7 +917,7 @@ namespace SuperiorPackGroup
             // LabelControl1
             // 
             this.LabelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelControl1.Location = new System.Drawing.Point(442, 9);
+            this.LabelControl1.Location = new System.Drawing.Point(482, 9);
             this.LabelControl1.Name = "LabelControl1";
             this.LabelControl1.Size = new System.Drawing.Size(46, 13);
             this.LabelControl1.TabIndex = 4;
@@ -845,7 +926,7 @@ namespace SuperiorPackGroup
             // customerLookUpEdit
             // 
             this.customerLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customerLookUpEdit.Location = new System.Drawing.Point(442, 26);
+            this.customerLookUpEdit.Location = new System.Drawing.Point(482, 26);
             this.customerLookUpEdit.Name = "customerLookUpEdit";
             this.customerLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -874,7 +955,7 @@ namespace SuperiorPackGroup
             // cancelSimpleButton
             // 
             this.cancelSimpleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelSimpleButton.Location = new System.Drawing.Point(656, 82);
+            this.cancelSimpleButton.Location = new System.Drawing.Point(696, 82);
             this.cancelSimpleButton.Name = "cancelSimpleButton";
             this.cancelSimpleButton.Size = new System.Drawing.Size(102, 23);
             this.cancelSimpleButton.TabIndex = 16;
@@ -884,7 +965,7 @@ namespace SuperiorPackGroup
             // editSimpleButton
             // 
             this.editSimpleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.editSimpleButton.Location = new System.Drawing.Point(656, 53);
+            this.editSimpleButton.Location = new System.Drawing.Point(696, 53);
             this.editSimpleButton.Name = "editSimpleButton";
             this.editSimpleButton.Size = new System.Drawing.Size(102, 23);
             this.editSimpleButton.TabIndex = 15;
@@ -894,7 +975,7 @@ namespace SuperiorPackGroup
             // saveSimpleButton
             // 
             this.saveSimpleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveSimpleButton.Location = new System.Drawing.Point(656, 24);
+            this.saveSimpleButton.Location = new System.Drawing.Point(696, 24);
             this.saveSimpleButton.Name = "saveSimpleButton";
             this.saveSimpleButton.Size = new System.Drawing.Size(102, 23);
             this.saveSimpleButton.TabIndex = 14;
@@ -907,7 +988,7 @@ namespace SuperiorPackGroup
             | System.Windows.Forms.AnchorStyles.Right)));
             this.descriptionMemoEdit.Location = new System.Drawing.Point(230, 67);
             this.descriptionMemoEdit.Name = "descriptionMemoEdit";
-            this.descriptionMemoEdit.Size = new System.Drawing.Size(198, 101);
+            this.descriptionMemoEdit.Size = new System.Drawing.Size(238, 101);
             this.descriptionMemoEdit.TabIndex = 13;
             // 
             // LabelControl5
@@ -1023,7 +1104,7 @@ namespace SuperiorPackGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 579);
+            this.ClientSize = new System.Drawing.Size(834, 641);
             this.Controls.Add(this.adjustmentGridControl);
             this.Controls.Add(this.filtersGroupControl);
             this.Controls.Add(this.recordGroupControl);
@@ -1054,7 +1135,10 @@ namespace SuperiorPackGroup
             this.recordGroupControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LPNgroupControl)).EndInit();
             this.LPNgroupControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.LPNTextEdit.Properties)).EndInit();
+            this.LPNgroupControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitsPerPltTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QtyPerPltTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UnitsTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExprationDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LotTextEdit.Properties)).EndInit();
@@ -1152,7 +1236,15 @@ namespace SuperiorPackGroup
         private SimpleButton AddToPalletSimpleButton;
         private SimpleButton AddPalletsSimpleButton;
         private DateEdit ExprationDateEdit;
-        private TextEdit LPNTextEdit;
+        private LabelControl labelControl18;
+        private LabelControl labelControl17;
+        private LabelControl labelControl16;
+        private LabelControl labelControl21;
+        private LabelControl labelControl20;
+        private LabelControl labelControl19;
+        private TextEdit UnitsPerPltTextEdit;
+        private TextEdit QtyPerPltTextEdit;
+        private TextEdit UnitsTextEdit;
     }
 
 }
