@@ -88,8 +88,8 @@ namespace SuperiorPackGroup
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.ExprationDateEdit = new DevExpress.XtraEditors.DateEdit();
-            this.AddToPalletSimpleButton = new DevExpress.XtraEditors.SimpleButton();
-            this.AddPalletsSimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.AddToLPNSimpleButton = new DevExpress.XtraEditors.SimpleButton();
+            this.AddLPN_SimpleButton = new DevExpress.XtraEditors.SimpleButton();
             this.LotTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.QtyTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.AddLpnSimpleButton = new DevExpress.XtraEditors.SimpleButton();
@@ -624,8 +624,8 @@ namespace SuperiorPackGroup
             this.LPNgroupControl.Controls.Add(this.labelControl17);
             this.LPNgroupControl.Controls.Add(this.labelControl16);
             this.LPNgroupControl.Controls.Add(this.ExprationDateEdit);
-            this.LPNgroupControl.Controls.Add(this.AddToPalletSimpleButton);
-            this.LPNgroupControl.Controls.Add(this.AddPalletsSimpleButton);
+            this.LPNgroupControl.Controls.Add(this.AddToLPNSimpleButton);
+            this.LPNgroupControl.Controls.Add(this.AddLPN_SimpleButton);
             this.LPNgroupControl.Controls.Add(this.LotTextEdit);
             this.LPNgroupControl.Controls.Add(this.QtyTextEdit);
             this.LPNgroupControl.Location = new System.Drawing.Point(5, 174);
@@ -716,25 +716,25 @@ namespace SuperiorPackGroup
             this.ExprationDateEdit.Size = new System.Drawing.Size(100, 20);
             this.ExprationDateEdit.TabIndex = 4;
             // 
-            // AddToPalletSimpleButton
+            // AddToLPNSimpleButton
             // 
-            this.AddToPalletSimpleButton.Enabled = false;
-            this.AddToPalletSimpleButton.Location = new System.Drawing.Point(680, 39);
-            this.AddToPalletSimpleButton.Name = "AddToPalletSimpleButton";
-            this.AddToPalletSimpleButton.Size = new System.Drawing.Size(102, 23);
-            this.AddToPalletSimpleButton.TabIndex = 3;
-            this.AddToPalletSimpleButton.Text = "Add To Pallet";
-            this.AddToPalletSimpleButton.Click += new System.EventHandler(this.AddToPalletSimpleButton_Click);
+            this.AddToLPNSimpleButton.Enabled = false;
+            this.AddToLPNSimpleButton.Location = new System.Drawing.Point(680, 39);
+            this.AddToLPNSimpleButton.Name = "AddToLPNSimpleButton";
+            this.AddToLPNSimpleButton.Size = new System.Drawing.Size(102, 23);
+            this.AddToLPNSimpleButton.TabIndex = 3;
+            this.AddToLPNSimpleButton.Text = "Add To LPN";
+            this.AddToLPNSimpleButton.Click += new System.EventHandler(this.AddToPalletSimpleButton_Click);
             // 
-            // AddPalletsSimpleButton
+            // AddLPN_SimpleButton
             // 
-            this.AddPalletsSimpleButton.Enabled = false;
-            this.AddPalletsSimpleButton.Location = new System.Drawing.Point(572, 39);
-            this.AddPalletsSimpleButton.Name = "AddPalletsSimpleButton";
-            this.AddPalletsSimpleButton.Size = new System.Drawing.Size(102, 23);
-            this.AddPalletsSimpleButton.TabIndex = 2;
-            this.AddPalletsSimpleButton.Text = "Add Pallet";
-            this.AddPalletsSimpleButton.Click += new System.EventHandler(this.AddPalletsSimpleButton_Click);
+            this.AddLPN_SimpleButton.Enabled = false;
+            this.AddLPN_SimpleButton.Location = new System.Drawing.Point(572, 39);
+            this.AddLPN_SimpleButton.Name = "AddLPN_SimpleButton";
+            this.AddLPN_SimpleButton.Size = new System.Drawing.Size(102, 23);
+            this.AddLPN_SimpleButton.TabIndex = 2;
+            this.AddLPN_SimpleButton.Text = "Add LPN";
+            this.AddLPN_SimpleButton.Click += new System.EventHandler(this.AddPalletsSimpleButton_Click);
             // 
             // LotTextEdit
             // 
@@ -1233,8 +1233,8 @@ namespace SuperiorPackGroup
         private GroupControl LPNgroupControl;
         private TextEdit LotTextEdit;
         private TextEdit QtyTextEdit;
-        private SimpleButton AddToPalletSimpleButton;
-        private SimpleButton AddPalletsSimpleButton;
+        private SimpleButton AddToLPNSimpleButton;
+        private SimpleButton AddLPN_SimpleButton;
         private DateEdit ExprationDateEdit;
         private LabelControl labelControl18;
         private LabelControl labelControl17;

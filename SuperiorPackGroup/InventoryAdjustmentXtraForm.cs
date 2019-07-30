@@ -709,20 +709,20 @@ namespace SuperiorPackGroup
 
                 if (int.Parse(UnitsTextEdit.Text) > 0 && int.Parse(UnitsPerPltTextEdit.Text) > 0 && ((int.Parse(QtyTextEdit.Text) > 0 && int.Parse(QtyPerPltTextEdit.Text) > 0) || int.Parse(QtyTextEdit.Text) == 0) && LotCodeValidator.ValidateByItemID(Convert.ToInt32(itemLookUpEdit.EditValue), LotTextEdit.Text, true))
                 {
-                    AddPalletsSimpleButton.Enabled = true;
-                    AddToPalletSimpleButton.Enabled = int.Parse(UnitsTextEdit.Text) <= int.Parse(UnitsPerPltTextEdit.Text) && int.Parse(QtyTextEdit.Text) <= int.Parse(QtyPerPltTextEdit.Text) && Convert.ToInt32(itemLookUpEdit.EditValue) == m_lastItem;
+                    AddLPN_SimpleButton.Enabled = true;
+                    AddToLPNSimpleButton.Enabled = int.Parse(UnitsTextEdit.Text) <= int.Parse(UnitsPerPltTextEdit.Text) && int.Parse(QtyTextEdit.Text) <= int.Parse(QtyPerPltTextEdit.Text) && Convert.ToInt32(itemLookUpEdit.EditValue) == m_lastItem;
                 }
                 else
                 {
                     //Err:
-                    AddPalletsSimpleButton.Enabled = false;
-                    AddToPalletSimpleButton.Enabled = false;
+                    AddLPN_SimpleButton.Enabled = false;
+                    AddToLPNSimpleButton.Enabled = false;
                 }
             }
             catch
             {
-                AddPalletsSimpleButton.Enabled = false;
-                AddToPalletSimpleButton.Enabled = false;
+                AddLPN_SimpleButton.Enabled = false;
+                AddToLPNSimpleButton.Enabled = false;
             }
 
 
@@ -799,7 +799,7 @@ namespace SuperiorPackGroup
         {
             UpdateQtyPerPallet();
             BulkEntryChanged();
-            AddPalletsSimpleButton.Focus();
+            AddLPN_SimpleButton.Focus();
         }
     }
 }
